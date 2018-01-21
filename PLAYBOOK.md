@@ -5,7 +5,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 
 ### Prerequisites  
-| Software                      | Version  | Optical  |  
+| Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
 | Node                          | v9.4.0   |          | 
 | Angular CLI                   | v1.6.5   |          | 
@@ -67,4 +67,32 @@ npm i -D @angular/http
 ```
 
 #### Generate Artifacts
+> Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
+```bash
+# generate default app
+ng g app default --routing --style=scss
+# add `core` module to `default` app
+ng g module core --app=default --module=app
+# add `InMemoryDataService` in `core` module
+ng g service core/services/InMemoryData --app=default --module=core --spec=false
 
+# add `shared` module under that will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
+ng g lib shared
+# ng g lib material 
+# add flat `material` module in `shared` module dir
+ng g module material --app=shared --module=shared --flat
+
+# generate `Lazy-loaded Feature Modules`
+ng g lib home      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib dashboard --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+
+
+ng g component components/header --app=home
+ng g component components/footer --app=home
+ng g component containers/landing --app=home
+
+
+ng g component components/header --app=dashboard 
+ng g component components/footer --app=dashboard
+ng g component containers/accounts --app=dashboard
+```
