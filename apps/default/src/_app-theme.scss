@@ -1,0 +1,59 @@
+//Ref: https://github.com/angular/material.angular.io/blob/master/src/_app-theme.scss
+@import '~@angular/material/theming';
+
+//@import './app/pages/component-category-list/component-category-list-theme';
+//@import './app/pages/component-list/component-list-theme';
+//@import './app/pages/component-sidenav/component-sidenav-theme';
+//@import './app/pages/component-viewer/component-viewer-theme';
+//@import './app/pages/guide-list/guide-list-theme';
+//@import './app/pages/homepage/homepage-theme';
+//@import './app/shared/example-viewer/example-viewer-theme';
+//@import './app/shared/footer/footer-theme';
+//@import './app/shared/navbar/navbar-theme';
+//@import './app/shared/table-of-contents/table-of-contents-theme';
+//@import './styles/api-theme';
+//@import './styles/markdown-theme';
+//@import './styles/svg-theme';
+//@import './styles/tables-theme';
+
+
+// Styles for the default app that are based on the current theme.
+@mixin material-default-app-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .default-app-background {
+    background: mat-color($background, background);
+  }
+
+  .default-primary-header {
+    background: mat-color($primary);
+
+    h1 {
+      color: mat-color($primary, default-contrast);
+    }
+  }
+
+  .default-footer {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+  //@include component-category-list-theme($theme);
+  //@include component-list-theme($theme);
+  //@include component-viewer-sidenav-theme($theme);
+  //@include component-viewer-theme($theme);
+  //@include docs-site-api-theme($theme);
+  //@include docs-site-markdown-theme($theme);
+  //@include docs-site-svg-theme($theme);
+  //@include docs-site-tables-theme($theme);
+  //@include example-viewer-theme($theme);
+  //@include footer-theme($theme);
+  //@include guide-list-theme($theme);
+  //@include home-page-theme($theme);
+  //@include nav-bar-theme($theme);
+  //@include table-of-contents-theme($theme);
+}

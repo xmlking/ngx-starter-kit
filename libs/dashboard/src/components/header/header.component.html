@@ -1,3 +1,7 @@
-<p>
-  header works!
-</p>
+<mat-toolbar color="primary">
+  <!--future svg to go here-->
+  <span class="toolbar-filler"></span>
+  <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
+    <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
+  </button>
+</mat-toolbar>

@@ -10,7 +10,7 @@ import { Account } from '../../state/account/account.interfaces';
   styleUrls: ['./accounts.component.css']
 })
 export class AccountsComponent implements OnInit {
-  rows$: Observable<Account[]>;
+  rows$: Observable<[Account]>;
   loadingIndicator = true;
   selected = [];
   editing = {};
