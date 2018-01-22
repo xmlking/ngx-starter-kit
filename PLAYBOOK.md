@@ -71,6 +71,7 @@ npm i -D @angular/http
 ```bash
 # generate default app
 ng g app default --routing --style=scss
+
 # add `core` module to `default` app
 ng g module core --app=default --module=app
 # add `InMemoryDataService` in `core` module
@@ -78,21 +79,41 @@ ng g service core/services/InMemoryData --app=default --module=core --spec=false
 
 # add `shared` module under that will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 ng g lib shared
-# ng g lib material 
 # add flat `material` module in `shared` module dir
+# ng g lib material 
 ng g module material --app=shared --module=shared --flat
+ng g service services/entity/entity --app=shared --module=shared
+ng g directive directives/min  --app=shared --module=shared --export=true
+ng g component components/entityTable --app=shared --module=shared --export=true
+ng g component containers/entity --app=shared --module=shared --skip-import
+ng g component containers/entityForm  --app=shared --module=shared --skip-import
 
 # generate `Lazy-loaded Feature Modules`
 ng g lib home      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib dashboard --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib PageNotFound --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 
+# generate PageNotFoundComponents for `PageNotFound` Module
+ng g component containers/PageNotFound --app=page-not-found
 
+# generate containers, components for `dashboard` Module
 ng g component components/header --app=home
 ng g component components/footer --app=home
 ng g component containers/landing --app=home
 
-
+# generate containers, components, services for `dashboard` Module
 ng g component components/header --app=dashboard 
 ng g component components/footer --app=dashboard
 ng g component containers/accounts --app=dashboard
+ng g service services/account/account --app=dashboard --module=dashboard
+
+# scaffolding ngrx for root module i.e., app.module.ts
+ng g ngrx app --app=default --module=apps/default/src/app/app.module.ts  --only-empty-root
+# add `account` state for `dashboard` Feature Module
+ng g ngrx account --directory=state/account --app=dashboard --module=libs/dashboard/src/dashboard.module.ts
+```
+
+### Run
+```bash
+ng serve --e=demo
 ```

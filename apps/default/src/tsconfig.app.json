@@ -11,6 +11,8 @@
     , "../../../libs/home/index.ts"
 
     , "../../../libs/dashboard/index.ts"
+
+    , "../../../libs/page-not-found/index.ts"
 ],
   "exclude": [
     "**/*.spec.ts"

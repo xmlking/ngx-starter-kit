@@ -101,7 +101,8 @@
       {
         "lazyLoad": [
           "home",
-          "dashboard"
+          "dashboard",
+          "page-not-found"
         ],
         "allow": []
       }

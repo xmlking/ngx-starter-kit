@@ -67,7 +67,8 @@
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "prod": "environments/environment.prod.ts",
+        "demo": "environments/environment.demo.ts"
       }
     },
     {
@@ -79,6 +80,12 @@
     {
       "name": "home",
       "root": "libs/home/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "page-not-found",
+      "root": "libs/page-not-found/src",
       "test": "../../../test.js",
       "appRoot": ""
     },

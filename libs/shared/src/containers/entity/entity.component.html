@@ -1,0 +1,6 @@
+<app-entity-table [displayedExtraColumns]=[actionsColumn] [displayedDataColumns]=displayedColumns [dataSource]=dataSource
+                  (deleted)=delete($event)>
+</app-entity-table>
+<a routerLink="add" class="main-fab" mat-fab>
+  <mat-icon>add</mat-icon>
+</a>
