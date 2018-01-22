@@ -20,6 +20,7 @@ import { AccountService } from './services/account/account.service';
 @NgModule({
   imports: [
     SharedModule,
+    // FIXME: https://github.com/angular/in-memory-web-api/issues/167
     // commend this two lines to use core `InMemoryDataService`
     // HttpClientModule,
     // environment.demo ? HttpClientInMemoryWebApiModule.forFeature(AccountMockService) : [],
