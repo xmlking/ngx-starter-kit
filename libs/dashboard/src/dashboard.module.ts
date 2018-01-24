@@ -11,11 +11,12 @@ import { accountReducer } from './state/account/account.reducer';
 import { accountInitialState } from './state/account/account.init';
 import { AccountEffects } from './state/account/account.effects';
 import { AccountService } from './services/account/account.service';
+import {ThemePickerModule} from "@nx-starter-kit/theme-picker";
+
 // import {AccountMockService} from "./services/account/account.mock.service";
 // import {HttpClientModule} from "@angular/common/http";
 // import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
 // import {environment} from "../../../apps/default/src/environments/environment";
-
 
 @NgModule({
   imports: [
@@ -25,6 +26,7 @@ import { AccountService } from './services/account/account.service';
     // HttpClientModule,
     // environment.demo ? HttpClientInMemoryWebApiModule.forFeature(AccountMockService) : [],
     NgxDatatableModule,
+    ThemePickerModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', component: AccountsComponent }

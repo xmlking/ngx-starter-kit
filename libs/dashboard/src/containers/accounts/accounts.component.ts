@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from "rxjs/Observable";
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
-import {AccountService} from "../../services/account/account.service";
+import { AccountService } from '../../services/account/account.service';
 import { Account } from '../../state/account/account.interfaces';
 
 @Component({
@@ -24,7 +24,7 @@ export class AccountsComponent implements OnInit {
   updateValue(event, cell, cellValue, row) {
     this.editing[row.$$index + '-' + cell] = false;
     // this.materialService.update()
-    console.log(row.$$index, cell, event.target.value )
+    console.log(row.$$index, cell, event.target.value);
     // this.rows[row.$$index][cell] = event.target.value;
   }
 
@@ -58,7 +58,9 @@ export class AccountsComponent implements OnInit {
     this.loadingIndicator = true;
     // startWith needed for ngx-datatable.
     this.rows$ = this.accountService.list().startWith([]);
-    setTimeout(() => { this.loadingIndicator = false; }, 1000);
+    setTimeout(() => {
+      this.loadingIndicator = false;
+    }, 1000);
     this.selected = [];
   }
 

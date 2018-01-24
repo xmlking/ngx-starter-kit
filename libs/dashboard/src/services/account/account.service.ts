@@ -41,5 +41,4 @@ export class AccountService {
       .delete<any>(`${this.accountsUrl}/${payload.id}`)
       .pipe(catchError((error: any) => Observable.throw(error.json())));
   }
-
 }

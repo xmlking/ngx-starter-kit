@@ -34,6 +34,8 @@ npm i -g @angular/cli
 
 # verify globally installed packages
 npm list -g --depth=0
+# set scss as default css processor
+ng set defaults.styleExt scss
 ```
 
 ### Scaffold Project
@@ -92,6 +94,7 @@ ng g component containers/entityForm  --app=shared --module=shared --skip-import
 ng g lib home      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib dashboard --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib PageNotFound --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib ThemePicker 
 
 # generate PageNotFoundComponents for `PageNotFound` Module
 ng g component containers/PageNotFound --app=page-not-found
@@ -107,12 +110,26 @@ ng g component components/footer --app=dashboard
 ng g component containers/accounts --app=dashboard
 ng g service services/account/account --app=dashboard --module=dashboard
 
+# generate artifacts 
+ng g component components/ThemePicker --app=theme-picker --dry-run
+# ng g service services/ThemeStorage/ThemeStorage --app=theme-picker --module=theme-picker  --dry-run
+ng g service services/ThemeStorage/ThemeStorage --app=theme-picker   --dry-run
+ng g service services/styleManager/StyleManager --app=theme-picker   --dry-run
+
 # scaffolding ngrx for root module i.e., app.module.ts
 ng g ngrx app --app=default --module=apps/default/src/app/app.module.ts  --only-empty-root
 # add `account` state for `dashboard` Feature Module
 ng g ngrx account --directory=state/account --app=dashboard --module=libs/dashboard/src/dashboard.module.ts
 ```
 
+### Build
+```bash
+# build themes
+npx webpack --config tools/webpack.config.js
+npm run build-themes
+# build project 
+ng build
+```
 ### Run
 ```bash
 ng serve --e=demo

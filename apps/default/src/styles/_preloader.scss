@@ -1,7 +1,9 @@
+@import "variables";
+
 /* PRE LOADER
 -------------------------------------------------- */
-@import '../../../../node_modules/loaders.css/src/animations/line-scale';
-@import '../../../../node_modules/loaders.css/src/animations/line-scale-pulse-out';
+@import '~loaders.css/src/animations/line-scale';
+@import '~loaders.css/src/animations/line-scale-pulse-out';
 
 
 //$(window).load(function(){

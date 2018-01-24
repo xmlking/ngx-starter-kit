@@ -15,6 +15,7 @@
 //@import './styles/markdown-theme';
 //@import './styles/svg-theme';
 //@import './styles/tables-theme';
+//@import './styles/preloader-theme';
 
 
 // Styles for the default app that are based on the current theme.
@@ -56,4 +57,5 @@
   //@include home-page-theme($theme);
   //@include nav-bar-theme($theme);
   //@include table-of-contents-theme($theme);
+  //@include default-site-loader-theme($theme);
 }

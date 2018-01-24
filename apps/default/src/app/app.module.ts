@@ -29,8 +29,7 @@ import { CoreModule } from './core/core.module';
         { path: 'dashboard', loadChildren: '@nx-starter-kit/dashboard#DashboardModule' },
         { path: 'page-not-found', loadChildren: '@nx-starter-kit/page-not-found#PageNotFoundModule' },
         // 404 should be last
-        { path: '**', redirectTo: 'page-not-found', pathMatch: 'full'},
-
+        { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' }
       ],
       {
         initialNavigation: 'enabled'

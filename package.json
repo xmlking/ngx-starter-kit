@@ -18,7 +18,8 @@
     "format": "./node_modules/.bin/nx format write",
     "format:write": "./node_modules/.bin/nx format write",
     "format:check": "./node_modules/.bin/nx format check",
-    "nx-migrate": "./node_modules/.bin/nx migrate"
+    "nx-migrate": "./node_modules/.bin/nx migrate",
+    "build-themes": "webpack --config tools/webpack.config.js"
   },
   "private": true,
   "dependencies": {
@@ -58,6 +59,7 @@
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
     "codelyzer": "^4.0.1",
+    "extract-text-webpack-plugin": "^3.0.2",
     "jasmine-core": "~2.6.2",
     "jasmine-spec-reporter": "~4.1.0",
     "karma": "~1.7.0",

@@ -1,48 +1,7 @@
 {
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "nx-starter-kit",
-    "npmScope": "nx-starter-kit",
-    "latestMigration": "20180116-update-command-line-scripts-to-use-nx-command"
-  },
-  "e2e": {
-    "protractor": {
-      "config": "./protractor.conf.js"
-    }
-  },
-  "lint": [
-    {
-      "project": "./tsconfig.spec.json",
-      "exclude": "**/node_modules/**"
-    },
-    {
-      "project": "apps/default/src/tsconfig.app.json",
-      "exclude": "**/node_modules/**"
-    },
-    {
-      "project": "apps/default/e2e/tsconfig.e2e.json",
-      "exclude": "**/node_modules/**"
-    }
-  ],
-  "test": {
-    "karma": {
-      "config": "./karma.conf.js"
-    }
-  },
-  "defaults": {
-    "schematics": {
-      "collection": "@nrwl/schematics",
-      "postGenerate": "npm run format",
-      "newProject": [
-        "app",
-        "lib"
-      ]
-    },
-    "styleExt": "css",
-    "component": {}
-  },
-  "warnings": {
-    "typescriptMismatch": false
+    "name": "nx-starter-kit"
   },
   "apps": [
     {
@@ -73,27 +32,73 @@
     },
     {
       "name": "dashboard",
+      "appRoot": "",
       "root": "libs/dashboard/src",
-      "test": "../../../test.js",
-      "appRoot": ""
+      "test": "../../../test.js"
     },
     {
       "name": "home",
+      "appRoot": "",
       "root": "libs/home/src",
-      "test": "../../../test.js",
-      "appRoot": ""
+      "test": "../../../test.js"
     },
     {
       "name": "page-not-found",
+      "appRoot": "",
       "root": "libs/page-not-found/src",
-      "test": "../../../test.js",
-      "appRoot": ""
+      "test": "../../../test.js"
     },
     {
       "name": "shared",
+      "appRoot": "",
       "root": "libs/shared/src",
-      "test": "../../../test.js",
-      "appRoot": ""
+      "test": "../../../test.js"
+    },
+    {
+      "name": "theme-picker",
+      "appRoot": "",
+      "root": "libs/theme-picker/src",
+      "test": "../../../test.js"
     }
-  ]
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/default/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/default/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "scss",
+    "component": {
+    },
+    "schematics": {
+      "collection": "@nrwl/schematics",
+      "newProject": [
+        "app",
+        "lib"
+      ],
+      "postGenerate": "npm run format"
+    }
+  },
+  "warnings": {
+    "typescriptMismatch": false
+  }
 }
