@@ -6,8 +6,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { EntityTableComponent } from './components/entity-table/entity-table.component';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { RouterModule } from '@angular/router';
+import {FooterComponent} from "./components/footer/footer.component";
 
-const COMPONENTS = [EntityTableComponent];
+const COMPONENTS = [EntityTableComponent, FooterComponent];
 
 const DIRECTIVES = [MinValidatorDirective];
 
