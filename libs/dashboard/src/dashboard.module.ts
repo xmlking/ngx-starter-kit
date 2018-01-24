@@ -11,7 +11,7 @@ import { accountReducer } from './state/account/account.reducer';
 import { accountInitialState } from './state/account/account.init';
 import { AccountEffects } from './state/account/account.effects';
 import { AccountService } from './services/account/account.service';
-import {ThemePickerModule} from "@nx-starter-kit/theme-picker";
+import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
 
 // import {AccountMockService} from "./services/account/account.mock.service";
 // import {HttpClientModule} from "@angular/common/http";
