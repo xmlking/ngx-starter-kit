@@ -1,0 +1,39 @@
+app-root {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+//app-home-header {
+//  position: fixed;
+//  top: 0;
+//  left: 0;
+//  right: 0;
+//  z-index: 2;
+//}
+
+app-root > app-component-sidenav {
+  flex: 1;
+}
+
+app-root > app-landing,
+app-root > app-guides,
+app-root > guide-viewer {
+  overflow-y: auto;
+}
+
+@media (max-width: 720px) {
+  app-root {
+    top: 92px;
+  }
+
+  app-root > app-landing,
+  app-root > app-guides,
+  app-root > guide-viewer {
+    overflow-y: visible;
+  }
+}

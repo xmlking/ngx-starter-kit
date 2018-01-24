@@ -6,10 +6,10 @@
 //@import './app/pages/component-sidenav/component-sidenav-theme';
 //@import './app/pages/component-viewer/component-viewer-theme';
 //@import './app/pages/guide-list/guide-list-theme';
-//@import './app/pages/homepage/homepage-theme';
+@import '../../../libs/home/src/containers/landing/landing.component-theme';
 //@import './app/shared/example-viewer/example-viewer-theme';
-//@import './app/shared/footer/footer-theme';
-//@import './app/shared/navbar/navbar-theme';
+@import '../../../libs/shared/src/components/footer/footer.component-theme';
+@import '../../../libs/home/src/components/header/header.component-theme';
 //@import './app/shared/table-of-contents/table-of-contents-theme';
 //@import './styles/api-theme';
 //@import './styles/markdown-theme';
@@ -52,10 +52,10 @@
   //@include docs-site-svg-theme($theme);
   //@include docs-site-tables-theme($theme);
   //@include example-viewer-theme($theme);
-  //@include footer-theme($theme);
+  @include footer-theme($theme);
   //@include guide-list-theme($theme);
-  //@include home-page-theme($theme);
-  //@include nav-bar-theme($theme);
+  @include landing-page-theme($theme);
+  @include nav-bar-theme($theme);
   //@include table-of-contents-theme($theme);
   //@include default-site-loader-theme($theme);
 }
