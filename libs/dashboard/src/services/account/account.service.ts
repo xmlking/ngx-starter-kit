@@ -13,9 +13,7 @@ export class AccountService {
   constructor(private http: HttpClient) {}
 
   list() /*: Observable<[Account]>*/ {
-    return this.http
-      .get<Account[]>(this.accountsUrl)
-      .pipe(catchError((error: any) => Observable.throw(error.json())));
+    return this.http.get<Account[]>(this.accountsUrl).pipe(catchError((error: any) => Observable.throw(error.json())));
   }
 
   get(id: number): Observable<Account> {

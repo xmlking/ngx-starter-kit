@@ -30,13 +30,36 @@
     <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
       <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
     </button>
-    <h1 class="component-title">
-      <a class="title-link">App</a>
-    </h1>
+    <a mat-button class="default-button" routerLink="/" aria-label="Angular Material">
+      <img class="default-angular-logo"
+           src="assets/img/homepage/angular-white-transparent.svg"
+           alt="angular">
+      <span>IS360</span>
+    </a>
+
     <span class="toolbar-filler"></span>
     <app-theme-picker></app-theme-picker>
     <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
-    <button id="button-logout" mat-button>Log Out</button>
+    <!--<button id="button-logout" mat-button>Log Out</button>-->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>announcement</mat-icon>
+        <span>Issues</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
   </mat-toolbar>
 
   <br/><br/>
@@ -96,13 +119,7 @@
     </div>
   </div>
 
-  <div fxLayout="row">
-    <div fxFlex="100%">
-      <button mat-button (click)="showMessage()">Click me!</button>
-      <mat-slide-toggle>Slide me!</mat-slide-toggle>
-    </div>
-  </div>
-
+<!--
   <div fxLayout="row">
     <div fxFlex="100%">
       <form class="example-form">
@@ -114,15 +131,12 @@
             </mat-input-container>
           </td>
           <td>
-            <!--<mat-input-container class="example-full-width">-->
-            <!--<input mdInput placeholder="Long Last Name That Will Be Truncated">-->
             <div flex>
               <mat-select placeholder="Gender">
                 <mat-option value="male">male</mat-option>
                 <mat-option value="female">Female</mat-option>
               </mat-select>
             </div>
-            <!--</mat-input-container>-->
           </td>
         </tr></table>
 
@@ -151,6 +165,8 @@
       </form>
     </div>
   </div>
+  -->
 
-  <app-dashboard-footer></app-dashboard-footer>
+<!--<app-dashboard-footer></app-dashboard-footer>-->
+  <app-footer></app-footer>
 </mat-sidenav-container>
