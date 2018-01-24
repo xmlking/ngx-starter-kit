@@ -1,0 +1,63 @@
+.default-navbar-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 8px 16px;
+
+  > .mat-button {
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+}
+
+.flex-spacer {
+  flex-grow: 1;
+}
+
+.default-angular-logo {
+  height: 26px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
+}
+
+.default-github-logo {
+  height: 21px;
+  margin: 0 7px 2px 0;
+  vertical-align: middle;
+}
+
+.default-navbar-link {
+  text-decoration: inherit;
+  flex: 1;
+}
+
+.default-navbar {
+  display: none;
+}
+
+.default-navbar-show-small {
+  display: none;
+}
+
+/**
+  * Rules for when the device is detected to be a small screen.
+  * Moves content two rows instead of one.
+  */
+@media (max-width: 720px) {
+  .default-navbar-hide-small {
+    display: none;
+  }
+
+  .default-navbar-show-small {
+    display: block;
+  }
+
+  .default-navbar {
+    display: flex;
+  }
+
+  .default-navbar--github-logo {
+    margin: 0;
+  }
+}

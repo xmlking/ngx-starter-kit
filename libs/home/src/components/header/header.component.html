@@ -1,27 +1,34 @@
-<mat-toolbar color="primary">
-  <span><mat-icon>mood</mat-icon></span>
-
-  <span>Home Page</span>
-  <span class="spacer"></span>
-
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>fingerprint</mat-icon>
-      <span>Login</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>announcement</mat-icon>
-      <span>Issues</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>notifications_off</mat-icon>
-      <span>Disable alerts</span>
-    </button>
-  </mat-menu>
-
-</mat-toolbar>
-
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav class="default-navbar-header">
+  <a mat-button class="default-button" routerLink="/" aria-label="Angular Material">
+    <img class="default-angular-logo"
+         src="../../../assets/img/homepage/angular-white-transparent.svg"
+         alt="angular">
+    <span>IS 360</span>
+  </a>
+  <a mat-button class="default-navbar-hide-small default-button"
+     *ngFor="let key of sectionKeys"
+     [routerLink]="key">{{sections[key]}}</a>
+  <a mat-button class="default-navbar-hide-small default-button" routerLink="guides">About</a>
+  <div class="flex-spacer"></div>
+  <!--<theme-picker></theme-picker>-->
+  <a mat-button class="default-button default-navbar-hide-small" href="/"
+     aria-label="GitHub Repository">
+    <img class="default-angular-logo"
+         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+         alt="angular">
+    GitHub
+  </a>
+  <a mat-icon-button class="default-button default-navbar-show-small"
+     href="https://github.com/angular/material2" aria-label="GitHub Repository">
+    <img class="default-angular-logo"
+         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
+         alt="angular">
+  </a>
+</nav>
+<nav class="default-navbar default-navbar-show-small">
+  <a mat-button class="default-navbar-link"
+     *ngFor="let key of sectionKeys"
+     [routerLink]="key">{{sections[key]}}</a>
+  <a mat-button class="default-navbar-link" routerLink="guides">Guides</a>
+</nav>
