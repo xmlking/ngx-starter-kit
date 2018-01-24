@@ -1,5 +1,4 @@
-import {ThemeStorageService} from './theme-storage.service';
-
+import { ThemeStorageService } from './theme-storage.service';
 
 const testStorageKey = ThemeStorageService.storageKey;
 const testTheme = {

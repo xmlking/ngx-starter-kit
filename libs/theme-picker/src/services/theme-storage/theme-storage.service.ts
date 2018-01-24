@@ -1,4 +1,4 @@
-import {Injectable, EventEmitter} from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 export interface DocsSiteTheme {
   href: string;
@@ -7,7 +7,6 @@ export interface DocsSiteTheme {
   isDark?: boolean;
   isDefault?: boolean;
 }
-
 
 @Injectable()
 export class ThemeStorageService {

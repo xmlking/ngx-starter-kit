@@ -1,19 +1,22 @@
-import {inject, TestBed} from '@angular/core/testing';
+import { inject, TestBed } from '@angular/core/testing';
 import { HttpClientModule } from '@angular/common/http';
-import {StyleManagerService} from './style-manager.service';
-
+import { StyleManagerService } from './style-manager.service';
 
 describe('StyleManagerService', () => {
   let styleManager: StyleManagerService;
 
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientModule],
-    providers: [StyleManagerService]
-  }));
+  beforeEach(() =>
+    TestBed.configureTestingModule({
+      imports: [HttpClientModule],
+      providers: [StyleManagerService]
+    })
+  );
 
-  beforeEach(inject([StyleManagerService], (sm: StyleManagerService) => {
-    styleManager = sm;
-  }));
+  beforeEach(
+    inject([StyleManagerService], (sm: StyleManagerService) => {
+      styleManager = sm;
+    })
+  );
 
   afterEach(() => {
     const links = document.head.querySelectorAll('link');

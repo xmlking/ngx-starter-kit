@@ -1,14 +1,15 @@
-import {async, TestBed} from '@angular/core/testing';
-import {ThemePickerComponent } from './theme-picker.component';
+import { async, TestBed } from '@angular/core/testing';
+import { ThemePickerComponent } from './theme-picker.component';
 import { ThemePickerModule } from '../../theme-picker.module';
 
-
 describe('ThemePickerComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ThemePickerModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        imports: [ThemePickerModule]
+      }).compileComponents();
+    })
+  );
 
   it('should install theme based on href', () => {
     const fixture = TestBed.createComponent(ThemePickerComponent);
@@ -18,7 +19,7 @@ describe('ThemePickerComponent', () => {
     component.installTheme({
       primary: '#E91E63',
       accent: '#607D8B',
-      href,
+      href
     });
     expect(component.styleManager.setStyle).toHaveBeenCalled();
     expect(component.styleManager.setStyle).toHaveBeenCalledWith('theme', `assets/${href}`);

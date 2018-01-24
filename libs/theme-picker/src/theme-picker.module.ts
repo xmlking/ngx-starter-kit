@@ -3,23 +3,12 @@ import { CommonModule } from '@angular/common';
 import { ThemePickerComponent } from './components/theme-picker/theme-picker.component';
 import { StyleManagerService } from './services/style-manager/style-manager.service';
 import { ThemeStorageService } from './services/theme-storage/theme-storage.service';
-import {
-  MatButtonModule, MatGridListModule, MatIconModule, MatMenuModule,
-  MatTooltipModule
-} from '@angular/material';
-
+import { MatButtonModule, MatGridListModule, MatIconModule, MatMenuModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
-  imports: [
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    MatGridListModule,
-    MatTooltipModule,
-    CommonModule
-  ],
+  imports: [MatButtonModule, MatIconModule, MatMenuModule, MatGridListModule, MatTooltipModule, CommonModule],
   exports: [ThemePickerComponent],
   declarations: [ThemePickerComponent],
-  providers: [StyleManagerService, ThemeStorageService],
+  providers: [StyleManagerService, ThemeStorageService]
 })
-export class ThemePickerModule { }
+export class ThemePickerModule {}
