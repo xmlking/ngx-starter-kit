@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/theming';
+//@import './styles/typography';
 @import './app-theme';
 @import './styles/preloader';
 @import './styles/base';
@@ -7,7 +8,6 @@
 
 // Include material core styles.
 @include mat-core();
-
 
 // Define the light theme.
 $primary: mat-palette($mat-indigo);

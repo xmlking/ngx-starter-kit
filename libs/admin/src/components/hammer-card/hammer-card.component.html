@@ -1,0 +1,23 @@
+<mat-card class="example-card"
+          [@cardAnimator]="animationState"
+          (@cardAnimator.done)="resetAnimationState()"
+          (swipeleft)="startAnimation('slideOutLeft')"
+          (swiperight)="startAnimation('zoomOutRight')"
+          (swipeup)="startAnimation('rotateOutUpRight')"
+          (swipedown)="startAnimation('flipOutY')">
+
+  <mat-card-content>
+    <img mat-card-image src="https://angular.io/assets/images/logos/angular/angular.svg">
+
+    <p>
+      Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" (tap)="startAnimation('wobble')">WOBBLE</button>
+    <button mat-raised-button color="primary" (tap)="startAnimation('swing')">SWING</button>
+
+    <h5>Custom Events</h5>
+    <button hammertime  mat-raised-button color="accent" (doubleTap)="startAnimation('jello')">JELLO (doubleTap) </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,19 +1,64 @@
-<div>
-  <app-home-header></app-home-header>
+<header class="default-header-background">
+  <div class="default-header-section">
+    <div class="default-header-headline">
+      <h1 class="mat-h1">Sumo App</h1>
+      <h2>360 view of Sumo App</h2>
+    </div>
+    <div class="default-header-start">
+      <a mat-raised-button class="default-button" routerLink="/dashboard">Get started</a>
+    </div>
+  </div>
+</header>
 
-  <mat-card>
-    <button mat-button>All</button>
-    <button mat-raised-button>Of</button>
-    <button mat-raised-button color="primary">The</button>
-    <button mat-raised-button color="accent">Buttons</button>
-  </mat-card>
-
-  <span class="done">
-    <button mat-fab>
-      <mat-icon>check circle</mat-icon>
-    </button>
-  </span>
-
-  <app-home-footer></app-home-footer>
+<div class="default-homepage-promo">
+  <div class="default-homepage-row">
+    <div class="default-homepage-promo-img">
+      <app-svg-viewer
+        src="../assets/img/homepage/sprintzerotoapp.svg"
+        scaleToContainer="true"></app-svg-viewer>
+    </div>
+    <div class="default-homepage-promo-desc">
+      <h2>Sprint from Zero to App</h2>
+      <p>Hit the ground running with comprehensive, modern UI components that work across
+        the web, mobile and desktop.</p>
+    </div>
+  </div>
+  <div class="default-homepage-row default-homepage-reverse-row">
+    <div class="default-homepage-promo-img">
+      <app-svg-viewer
+        src="../assets/img/homepage/fastandconsistent.svg"
+        scaleToContainer="true"></app-svg-viewer>
+    </div>
+    <div class="default-homepage-promo-desc">
+      <h2>Fast and Consistent</h2>
+      <p>Finely tuned performance, because every millisecond counts. Fully tested across
+        modern browsers.</p>
+    </div>
+  </div>
+  <div class="default-homepage-row">
+    <div class="default-homepage-promo-img">
+      <app-svg-viewer
+        src="../assets/img/homepage/versatile.svg"
+        scaleToContainer="true"></app-svg-viewer>
+    </div>
+    <div class="default-homepage-promo-desc">
+      <h2>Versatile</h2>
+      <p>Themable, for when you need to stay on brand or just have a favorite color.
+        Accessible and internationalized so that all users are welcome.</p>
+    </div>
+  </div>
+  <div class="default-homepage-row default-homepage-reverse-row">
+    <div class="default-homepage-promo-img">
+      <app-svg-viewer
+        src="../assets/img/homepage/optimized.svg"
+        scaleToContainer="true"></app-svg-viewer>
+    </div>
+    <div class="default-homepage-promo-desc">
+      <h2>Optimized for Angular</h2>
+      <p>Built by the Angular team to integrate seamlessly with Angular.</p>
+    </div>
+  </div>
+  <div class="default-homepage-bottom-start">
+    <a mat-raised-button class="default-button" routerLink="/dashboard">Get started</a>
+  </div>
 </div>
-

@@ -1,34 +1,39 @@
 <!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
 <nav class="default-navbar-header">
-  <a mat-button class="default-button" routerLink="/" aria-label="Angular Material">
+  <a mat-button class="default-button" href="/" aria-label="Angular Material">
     <img class="default-angular-logo"
          src="../../../assets/img/homepage/angular-white-transparent.svg"
          alt="angular">
-    <span>IS 360</span>
+    <span>SumoApp</span>
   </a>
-  <a mat-button class="default-navbar-hide-small default-button"
+
+  <a mat-button class="default-button"  fxShow  fxHide.lt-md routerLink="/">Intro</a>
+
+  <div class="flex-spacer"></div>
+
+  <a mat-button class="default-button" fxShow  fxHide.lt-sm
      *ngFor="let key of sectionKeys"
      [routerLink]="key">{{sections[key]}}</a>
-  <a mat-button class="default-navbar-hide-small default-button" routerLink="guides">About</a>
-  <div class="flex-spacer"></div>
-  <!--<theme-picker></theme-picker>-->
-  <a mat-button class="default-button default-navbar-hide-small" href="/"
-     aria-label="GitHub Repository">
-    <img class="default-angular-logo"
+
+  <app-theme-picker></app-theme-picker>
+
+  <a mat-button class="default-button" fxShow  fxHide.lt-md
+     href="/" aria-label="GitHub Repository">
+    <img class="default-angular-logo"  ngClass.lt-md="default-github-logo"
          src="../../../assets/img/homepage/github-circle-white-transparent.svg"
          alt="angular">
-    GitHub
+    <span>GitHub</span>
   </a>
-  <a mat-icon-button class="default-button default-navbar-show-small"
-     href="https://github.com/angular/material2" aria-label="GitHub Repository">
-    <img class="default-angular-logo"
+  <a mat-icon-button class="default-button" fxHide fxShow.lt-md
+     href="/" aria-label="GitHub Repository">
+    <img class="default-angular-logo" ngClass.lt-sm="default-github-logo"
          src="../../../assets/img/homepage/github-circle-white-transparent.svg"
          alt="angular">
   </a>
 </nav>
-<nav class="default-navbar default-navbar-show-small">
+<nav  class="default-navbar" fxHide fxShow.lt-sm>
   <a mat-button class="default-navbar-link"
      *ngFor="let key of sectionKeys"
      [routerLink]="key">{{sections[key]}}</a>
-  <a mat-button class="default-navbar-link" routerLink="guides">Guides</a>
 </nav>
+

@@ -1,123 +1,57 @@
-<mat-sidenav-container fullscreen>
-  <mat-sidenav #sidenav mode="push" class="app-sidenav">
-    <!--<app-dashboard-header></app-dashboard-header>-->
-    <mat-toolbar color="primary">
-      <!--future svg to go here-->
-      <span class="toolbar-filler"></span>
-      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
-        <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
-      </button>
-    </mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item class="sidenav-link" [routerLink]="['/comp1']" (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon>account_balance</mat-icon>
-        <span class="title" mat-line>comp1</span>
-        <span mat-line class="secondary">test</span>
-      </a>
-      <a mat-list-item class="sidenav-link" [routerLink]="['/comp2']" (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon>android</mat-icon>
-        <span class="title" mat-line>comp2</span>
-        <span mat-line class="secondary">test</span>
-      </a>
-      <a mat-list-item class="sidenav-link" [routerLink]="['/fullscreen1']" (click)="sidenav.toggle()">
-        <mat-icon mat-list-icon><i class="material-icons">panorama_wide_angle</i></mat-icon>
-        <span class="title" mat-line>fullscreen1</span>
-        <span mat-line class="secondary">fullscreen1</span>
-      </a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-toolbar id="appToolbar" [ngClass]="{'toolbar-fullscreen': (fullscreen$ | async)}" color="primary">
-    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
-      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
-    </button>
-    <a mat-button class="default-button" routerLink="/" aria-label="Angular Material">
-      <img class="default-angular-logo"
-           src="assets/img/homepage/angular-white-transparent.svg"
-           alt="angular">
-      <span>IS360</span>
-    </a>
-
-    <span class="toolbar-filler"></span>
-    <app-theme-picker></app-theme-picker>
-    <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
-    <!--<button id="button-logout" mat-button>Log Out</button>-->
-    <button mat-icon-button [matMenuTriggerFor]="menu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
-
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>fingerprint</mat-icon>
-        <span>Login</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>announcement</mat-icon>
-        <span>Issues</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-
-  </mat-toolbar>
-
-  <br/><br/>
-
-  <div fxLayout="row">
-    <div fxFlex="100%">
-      <ngx-datatable
-        class="material"
-        [rows]="rows$ | async"
-        [loadingIndicator]="loadingIndicator"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-        [rowHeight]="'auto'"
-        [limit]="5"
-        [selected]="selected"
-        [selectionType]="'single'"
-        (select)='onSelect($event)'
-        [reorderable]="true">
-        <ngx-datatable-column name="Name">
-          <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
+<div fxLayout="row">
+  <div fxFlex="100%">
+    <ngx-datatable
+      class="material"
+      [rows]="rows$ | async"
+      [loadingIndicator]="loadingIndicator"
+      [columns]="columns"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      [limit]="5"
+      [selected]="selected"
+      [selectionType]="'single'"
+      (select)='onSelect($event)'
+      [reorderable]="true">
+      <ngx-datatable-column name="Name">
+        <ng-template ngx-datatable-cell-template let-value="value" let-row="row">
         <span
           title="Double click to edit"
           (dblclick)="editing[row.$$index + '-name'] = true"
           *ngIf="!editing[row.$$index + '-name']">
           {{value}}
         </span>
-            <input
-              autofocus
-              (blur)="updateValue($event, 'name', value, row)"
-              *ngIf="editing[row.$$index + '-name']"
-              type="text"
-              [value]="value"
-            />
-          </ng-template>
-        </ngx-datatable-column>
-        <ngx-datatable-column name="Gender"></ngx-datatable-column>
-        <ngx-datatable-column name="Age"></ngx-datatable-column>
-        <ngx-datatable-column name="City" prop="address.city"></ngx-datatable-column>
-        <ngx-datatable-column name="State" prop="address.state"></ngx-datatable-column>
-        <ngx-datatable-column name="Actions" sortable="false" prop="id">
-          <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
-            {{column.name}}
-          </ng-template>
-          <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
-            <button mat-icon-button (click)="update(row, value)" [disabled]="row['status']==='BLOCKED'">
-              <mat-icon>save</mat-icon>
-            </button>
-            <button mat-icon-button (click)="delete(row, value)" [disabled]="row['status']==='APPROVED'">
-              <mat-icon>delete</mat-icon>
+          <input
+            autofocus
+            (blur)="updateValue($event, 'name', value, row)"
+            *ngIf="editing[row.$$index + '-name']"
+            type="text"
+            [value]="value"
+          />
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column name="Gender"></ngx-datatable-column>
+      <ngx-datatable-column name="Age"></ngx-datatable-column>
+      <ngx-datatable-column name="City" prop="address.city"></ngx-datatable-column>
+      <ngx-datatable-column name="State" prop="address.state"></ngx-datatable-column>
+      <ngx-datatable-column name="Actions" sortable="false" prop="id">
+        <ng-template let-column="column" let-sort="sortFn" ngx-datatable-header-template>
+          {{column.name}}
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <button mat-icon-button (click)="update(row, value)" [disabled]="row['status']==='BLOCKED'">
+            <mat-icon>save</mat-icon>
+          </button>
+          <button mat-icon-button (click)="delete(row, value)" [disabled]="row['status']==='APPROVED'">
+            <mat-icon>delete</mat-icon>
 
-            </button>
-          </ng-template>
-        </ngx-datatable-column>
-      </ngx-datatable>
-    </div>
+          </button>
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
   </div>
+</div>
 
 <!--
   <div fxLayout="row">
@@ -166,7 +100,3 @@
     </div>
   </div>
   -->
-
-<!--<app-dashboard-footer></app-dashboard-footer>-->
-  <app-footer></app-footer>
-</mat-sidenav-container>

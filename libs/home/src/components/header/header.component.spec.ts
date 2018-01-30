@@ -20,6 +20,7 @@ describe('HeaderComponent', () => {
     fixture.detectChanges();
   });
 
+  // TODO: Add tests is logic is added to navbar class.
   it('should create', () => {
     expect(component).toBeTruthy();
   });

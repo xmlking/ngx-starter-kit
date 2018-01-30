@@ -10,6 +10,9 @@
 //@import './app/shared/example-viewer/example-viewer-theme';
 @import '../../../libs/shared/src/components/footer/footer.component-theme';
 @import '../../../libs/home/src/components/header/header.component-theme';
+@import '../../../libs/dashboard/src/containers/dashboard-layout/dashboard-layout.component-theme';
+@import '../../../libs/shared/src/components/side-menu/side-menu.component-theme';
+@import '../../../libs/shared/src/components/side-menu-item/side-menu-item.component-theme';
 //@import './app/shared/table-of-contents/table-of-contents-theme';
 //@import './styles/api-theme';
 //@import './styles/markdown-theme';
@@ -42,6 +45,28 @@
     background: mat-color($primary);
     color: mat-color($primary, default-contrast);
   }
+
+//----
+  app-side-menu{
+    $sidemenu-app-primary: mat-palette($primary , 400);
+    $sidemenu-app-accent:  mat-palette($accent , 900);
+    $sidemenu-app-warn:    mat-palette($warn );
+    $cdk-sidemenu-theme:   mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent,$sidemenu-app-warn);
+    @include mat-list-theme($cdk-sidemenu-theme);
+  }
+
+  $primary-app-primary: mat-palette($primary , 400);
+  $primary-app-accent:  mat-palette($accent , 900);
+  $primary-app-warn:    mat-palette($warn );
+  $cdk-theme:   mat-light-theme($primary-app-primary, $primary-app-accent,$primary-app-warn);
+
+  app-side-menu-item{
+    @include sidemenu-item($cdk-theme,20px)
+  }
+
+  @include dashboard($cdk-theme);
+//----
+
 
   //@include component-category-list-theme($theme);
   //@include component-list-theme($theme);

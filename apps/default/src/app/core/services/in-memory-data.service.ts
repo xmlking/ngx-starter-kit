@@ -1,4 +1,10 @@
-import { InMemoryDbService, RequestInfo, ResponseOptions } from 'angular-in-memory-web-api';
+import {
+  InMemoryDbService,
+  ParsedRequestUrl,
+  RequestInfo,
+  RequestInfoUtilities,
+  ResponseOptions
+} from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
 
 // /api/accounts/1
@@ -10,6 +16,7 @@ export class InMemoryDataService implements InMemoryDbService {
   async createDb() {
     const response = await fetch('assets/data/accounts.json');
     const accounts = await response.json();
+
     const symbols = [
       {
         id: 1,
@@ -30,4 +37,12 @@ export class InMemoryDataService implements InMemoryDbService {
 
     return { accounts, symbols };
   }
+
+  // parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
+  //   const newUrl = url.replace(/\/api\/tmdb-4705472\/appserver/, '/api/appservers');
+  //   console.log('newUrl', newUrl);
+  //   const parsed = utils.parseRequestUrl(newUrl);
+  //   console.log(`parseRequestUrl override of '${url}':`, parsed);
+  //   return parsed;
+  // }
 }

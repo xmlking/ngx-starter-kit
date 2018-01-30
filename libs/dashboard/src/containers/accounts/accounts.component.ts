@@ -15,6 +15,14 @@ export class AccountsComponent implements OnInit {
   selected = [];
   editing = {};
 
+  columns = [
+    { name: 'Name' },
+    { name: 'Gender', prop: 'gender' },
+    { name: 'Age' },
+    { name: 'City', prop: 'address.city' },
+    { name: 'State', prop: 'address.state' }
+  ];
+
   constructor(private accountService: AccountService) {}
 
   ngOnInit() {

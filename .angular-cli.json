@@ -27,8 +27,21 @@
       "environments": {
         "dev": "environments/environment.ts",
         "prod": "environments/environment.prod.ts",
-        "demo": "environments/environment.demo.ts"
-      }
+        "mock": "environments/environment.mock.ts"
+      },
+      "serviceWorker": true
+    },
+    {
+      "name": "admin",
+      "root": "libs/admin/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "animations",
+      "root": "libs/animations/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     },
     {
       "name": "dashboard",
@@ -87,8 +100,7 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {
-    },
+    "component": {},
     "schematics": {
       "collection": "@nrwl/schematics",
       "newProject": [

@@ -4,19 +4,22 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { PageTitleService } from './services/page-title/page-title.service';
+import { ServiceWorkerService } from './services/service-worker/service-worker.service';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
-    environment.demo
+    environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true
           // delay: 500,
           // apiBase: 'api'
         })
       : []
-  ]
+  ],
+  providers: [PageTitleService, ServiceWorkerService]
 })
 export class CoreModule {
   constructor(

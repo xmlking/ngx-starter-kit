@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {VERSION} from '@angular/material';
+import { VERSION } from '@angular/material';
 
 @Component({
   selector: 'app-footer',

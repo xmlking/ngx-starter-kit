@@ -1,0 +1,4 @@
+<button mat-icon-button [fxHide]="true" [fxHide.gt-xs]="false" (click)="toggleFullscreen()">
+  <mat-icon *ngIf="!isFullscreen">fullscreen</mat-icon>
+  <mat-icon *ngIf="isFullscreen">fullscreen_exit</mat-icon>
+</button>

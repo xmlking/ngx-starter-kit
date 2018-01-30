@@ -1,0 +1,41 @@
+<mat-sidenav-container class="container" fullscreen  >
+  <mat-sidenav   [mode]="sideNavMode" class="sidenav" #sidenav [opened]="sideNavOpened" style="overflow: hidden;">
+    <mat-toolbar color="primary" class="mat-elevation-z4">
+      <!--<img src="assets/img/logo.png" width="36px">-->
+      <!--<mat-icon style="font-size:36px; width: 36px; height:36px;">filter_vintage</mat-icon>-->
+      <mat-icon style="font-size:36px; width: 36px; height:36px;"> account_balance</mat-icon>
+      <h1 style="font-size: 26px;font-family: Roboto;color:white;margin-top: 8px" >
+        SUMOWOX.<span style="font-size: 12px;">com</span>
+      </h1>
+    </mat-toolbar>
+    <app-side-menu></app-side-menu>
+  </mat-sidenav>
+
+  <mat-sidenav-content  style="z-index: unset;overflow: hidden;">
+    <mat-drawer-container fullscreen >
+      <mat-drawer mode="side" #drawer class="drawer" [opened]="matDrawerOpened" style="overflow: hidden;">
+        <mat-toolbar  color="primary" class="mat-elevation-z4">
+          <!--<img src="assets/img/logo.png" width="36px">-->
+          <mat-icon style="font-size:36px; width: 36px; height:36px;"> account_balance</mat-icon>
+        </mat-toolbar>
+        <app-side-menu [iconOnly]="true"></app-side-menu>
+      </mat-drawer>
+      <mat-drawer-content style="overflow: hidden;">
+      <app-tool-bar [sidenav]="sidenav" [drawer]="drawer" [sidebar]="sidenav2" [matDrawerShow]="matDrawerShow" style="z-index: 500"></app-tool-bar>
+        <br/>
+      <perfect-scrollbar  style="height: calc(100% - 33px);">
+        <div  style="height: 100%;">
+          <div [@routeAnimation]="getRouteAnimation(dashboardOutlet)">
+            <router-outlet #dashboardOutlet="outlet"></router-outlet>
+          </div>
+        </div>
+      </perfect-scrollbar>
+      </mat-drawer-content>
+    </mat-drawer-container>
+  </mat-sidenav-content>
+
+  <mat-sidenav #sidenav2 position="end" mode="over">
+    <app-side-bar></app-side-bar>
+  </mat-sidenav>
+
+</mat-sidenav-container>

@@ -2,13 +2,6 @@
 $margin-promotion-sections: 60px;
 $margin-promotion-sections-small: 15px;
 
-app-home-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 2;
-}
 
 .default-header-background {
   overflow: hidden;
@@ -98,7 +91,7 @@ p {
 /**
   * Rules for when the device is detected to be a small screen.
   */
-@media (max-width: 720px) {
+@media (max-width: 959px) {
   .default-header-section {
     padding-top: $margin-promotion-sections-small;
   }

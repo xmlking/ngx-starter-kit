@@ -22,15 +22,12 @@ brew install node
 
 #### Install Global Packages
 ```bash
-npm install -g @nrwl/schematics
+npm remove -g @nrwl/schematics
+npm install -g @nrwl/schematics@next
 npm install -g @angular/cli
 # temp workaround
-npm un -g @angular-devkit/core @angular-devkit/schematics @schematics/angular @nrwl/schematics @angular/cli
-npm i -g @angular-devkit/core
-npm i -g @angular-devkit/schematics
-npm i -g @schematics/angular
-npm i -g @nrwl/schematics
-npm i -g @angular/cli
+vi /usr/local/lib/node_modules/@nrwl/schematics/bin/create-nx-workspace.js 
+'@angular-devkit/core': '^0.0.28' --> '@angular-devkit/core': '^0.0.29' 
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -43,11 +40,12 @@ ng set defaults.styleExt scss
 
 #### Create Workspace
 ```bash
-# create-nx-workspace nx-starter-kit
-ng new nx-starter-kit --collection=@nrwl/schematics
-# temp workaround
+create-nx-workspace nx-starter-kit
 cd nx-starter-kit
-npm i -D @angular-devkit/core
+# temp workaround
+vi package.json
+@angular-devkit/core': '^0.0.28' --> '@angular-devkit/core': '^0.0.29' 
+npm install
 ```
 
 #### Dependencies
@@ -60,6 +58,8 @@ npm i hammerjs
 npm i web-animations-js
 npm i @swimlane/ngx-charts
 npm i @swimlane/ngx-datatable
+npm i screenfull
+npm i ngx-perfect-scrollbar
 
 npm i -D loaders.css
 
@@ -72,12 +72,14 @@ npm i -D @angular/http
 > Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
 ```bash
 # generate default app
-ng g app default --routing --style=scss
+ng g app default --routing --style=scss --service-worker
 
 # add `core` module to `default` app
 ng g module core --app=default --module=app
 # add `InMemoryDataService` in `core` module
 ng g service core/services/InMemoryData --app=default --module=core --spec=false
+ng g service core/services/PageTitle/PageTitle --app=default --module=core
+ng g service core/services/serviceWorker/serviceWorker --app=default --module=core --dry-run
 
 # add `shared` module under that will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 ng g lib shared
@@ -89,26 +91,48 @@ ng g directive directives/min  --app=shared --module=shared --export=true
 ng g component components/entityTable --app=shared --module=shared --export=true
 ng g component containers/entity --app=shared --module=shared --skip-import
 ng g component containers/entityForm  --app=shared --module=shared --skip-import
+ng g component components/fullscreen --app=shared --module=shared  --skip-import
+ng g component components/searchBar --app=shared --module=shared
+ng g component components/sideBar --app=shared --module=shared 
+ng g component components/sideMenuItem --app=shared --module=shared  
+ng g component components/sideMenu --app=shared --module=shared 
+ng g component components/toolBarNotification --app=shared --module=shared
+ng g component components/toolBar --app=shared --module=shared
+ng g component components/userMenu --app=shared --module=shared
+
 
 # generate `Lazy-loaded Feature Modules`
 ng g lib home      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib dashboard --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib admin --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
 ng g lib PageNotFound --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib ThemePicker 
+ng g lib ThemePicker  
+ng g lib animations --nomodule --dry-run
+
 
 # generate PageNotFoundComponents for `PageNotFound` Module
 ng g component containers/PageNotFound --app=page-not-found
 
-# generate containers, components for `dashboard` Module
+# generate containers, components for `home` Module
 ng g component components/header --app=home
-ng g component components/footer --app=home
+ng g component components/svgViewer --app=home
+ng g component containers/homeLayout --app=home
 ng g component containers/landing --app=home
+ng g component containers/blog --app=home
+ng g component containers/about --app=home
 
 # generate containers, components, services for `dashboard` Module
 ng g component components/header --app=dashboard 
 ng g component components/footer --app=dashboard
+ng g component containers/dashboardLayout --app=dashboard --dry-run
 ng g component containers/accounts --app=dashboard
 ng g service services/account/account --app=dashboard --module=dashboard
+
+# generate containers, components for `admin` Module
+ng g component containers/adminLayout --app=admin --dry-run
+ng g component containers/experiments --app=admin --dry-run
+ng g component components/hammerCard --app=admin --dry-run
+ng g directive components/Hammertime/Hammertime --app=admin --dry-run
 
 # generate artifacts 
 ng g component components/ThemePicker --app=theme-picker --dry-run
@@ -128,9 +152,10 @@ ng g ngrx account --directory=state/account --app=dashboard --module=libs/dashbo
 npx webpack --config tools/webpack.config.js
 npm run build-themes
 # build project 
-ng build
+ng build --prod
+ng build -e mock
 ```
 ### Run
 ```bash
-ng serve --e=demo
+ng s -e mock
 ```

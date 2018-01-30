@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageTitleService } from '../../../../../apps/default/src/app/core/services/page-title/page-title.service';
 
 @Component({
   selector: 'app-landing',
@@ -6,7 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./landing.component.scss']
 })
 export class LandingComponent implements OnInit {
-  constructor() {}
+  constructor(public _pageTitleService: PageTitleService) {}
 
-  ngOnInit() {}
+  ngOnInit(): void {
+    this._pageTitleService.title = '';
+  }
 }

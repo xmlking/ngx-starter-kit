@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
-const CDK = 'guides';
-const COMPONENTS = 'blog';
+const BLOG = 'blog';
+const ABOUT = 'about';
 
 export const SECTIONS = {
-  [COMPONENTS]: 'Blog',
-  [CDK]: 'Guides',
+  [BLOG]: 'Blog',
+  [ABOUT]: 'About'
 };
 const SECTIONS_KEYS = Object.keys(SECTIONS);
 
