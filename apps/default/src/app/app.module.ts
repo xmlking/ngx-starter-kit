@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 
 import { NxModule } from '@nrwl/nx';
 import { StoreModule } from '@ngrx/store';
@@ -21,6 +22,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     NxModule.forRoot(),
     CoreModule,
+    NgxPageScrollModule,
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
@@ -31,6 +33,7 @@ import { CoreModule } from './core/core.module';
         { path: 'home', loadChildren: '@nx-starter-kit/home#HomeModule' },
         { path: 'dashboard', loadChildren: '@nx-starter-kit/dashboard#DashboardModule' },
         { path: 'admin', loadChildren: '@nx-starter-kit/admin#AdminModule' },
+        { path: 'experiments', loadChildren: '@nx-starter-kit/experiments#ExperimentsModule' },
         { path: 'page-not-found', loadChildren: '@nx-starter-kit/page-not-found#PageNotFoundModule' },
         // 404 should be last
         { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' }

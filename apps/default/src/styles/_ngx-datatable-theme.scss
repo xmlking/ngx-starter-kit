@@ -1,0 +1,26 @@
+@import '~@angular/material/theming';
+
+@mixin ngx-datatable-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .ngx-datatable.material, .ngx-datatable.dark {
+
+    //background: mat-color($background, background);
+    //color: mat-color($primary, default-contrast);
+
+    datatable-body-row.active .datatable-row-group {
+      @debug mat-color($primary);
+
+      background-color: mat-color($primary) !important;
+      color: mat-color($primary, default-contrast) !important;
+    }
+
+    .datatable-body-row.active .datatable-body-cell {
+      color: mat-color($primary, default-contrast) !important;
+    }
+  }
+}

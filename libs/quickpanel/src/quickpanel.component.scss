@@ -1,0 +1,39 @@
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+// Custom title that uses all of the typography styles from the `title` level.
+//.unicorn-title {
+//  @include mat-typography-level-to-styles($config, title);
+//}
+
+.sidebar{
+}
+.content{
+  margin-top: 2px;
+
+}
+.example-margin {
+  margin: 0 10px;
+}
+.today{
+  width: 100%;
+  height: 22%;
+  position: absolute;
+  background: '#17161642';
+  z-index: 1;
+}
+.today-bg{
+  padding: 30px 0;
+  background: url('../../../apps/default/src/assets/img/bg/city1.jpg');
+}
+.today-time{
+  margin: 0;
+  color: white;
+  z-index: 2;
+}
+.today-date{
+  margin: 0;
+  color: white;
+  z-index: 2;
+}

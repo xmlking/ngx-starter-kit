@@ -1,25 +1,18 @@
 //Ref: https://github.com/angular/material.angular.io/blob/master/src/_app-theme.scss
 @import '~@angular/material/theming';
 
-//@import './app/pages/component-category-list/component-category-list-theme';
-//@import './app/pages/component-list/component-list-theme';
-//@import './app/pages/component-sidenav/component-sidenav-theme';
-//@import './app/pages/component-viewer/component-viewer-theme';
-//@import './app/pages/guide-list/guide-list-theme';
 @import '../../../libs/home/src/containers/landing/landing.component-theme';
-//@import './app/shared/example-viewer/example-viewer-theme';
 @import '../../../libs/shared/src/components/footer/footer.component-theme';
 @import '../../../libs/home/src/components/header/header.component-theme';
-@import '../../../libs/dashboard/src/containers/dashboard-layout/dashboard-layout.component-theme';
-@import '../../../libs/shared/src/components/side-menu/side-menu.component-theme';
-@import '../../../libs/shared/src/components/side-menu-item/side-menu-item.component-theme';
-//@import './app/shared/table-of-contents/table-of-contents-theme';
-//@import './styles/api-theme';
-//@import './styles/markdown-theme';
-//@import './styles/svg-theme';
-//@import './styles/tables-theme';
-//@import './styles/preloader-theme';
+@import '../../../libs/admin/src/containers/admin-layout/admin-layout.component-theme';
+@import '../../../libs/admin/src/components/side-menu/side-menu.component-theme';
+@import '../../../libs/admin/src/components/side-menu-item/side-menu-item.component-theme';
+@import '../../../libs/admin/src/components/user-menu/user-menu.component-theme';
+@import './styles/svg-theme';
+@import './styles/ngx-datatable-theme';
 
+
+//@import './styles/tables-theme';
 
 // Styles for the default app that are based on the current theme.
 @mixin material-default-app-theme($theme) {
@@ -64,23 +57,15 @@
     @include sidemenu-item($cdk-theme,20px)
   }
 
-  @include dashboard($cdk-theme);
+  @include admin($cdk-theme);
 //----
 
 
-  //@include component-category-list-theme($theme);
-  //@include component-list-theme($theme);
-  //@include component-viewer-sidenav-theme($theme);
-  //@include component-viewer-theme($theme);
-  //@include docs-site-api-theme($theme);
-  //@include docs-site-markdown-theme($theme);
-  //@include docs-site-svg-theme($theme);
-  //@include docs-site-tables-theme($theme);
-  //@include example-viewer-theme($theme);
+  @include default-site-svg-theme($theme);
+  //@include default-site-tables-theme($theme);
   @include footer-theme($theme);
-  //@include guide-list-theme($theme);
   @include landing-page-theme($theme);
   @include nav-bar-theme($theme);
-  //@include table-of-contents-theme($theme);
-  //@include default-site-loader-theme($theme);
+  @include ngx-datatable-theme($theme);
+  @include user-menu-theme($theme);
 }

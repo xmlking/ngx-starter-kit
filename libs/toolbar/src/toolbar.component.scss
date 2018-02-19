@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+mat-toolbar {
+  background: #ffffff;
+  padding-right: 0;
+}
+
+sumo-notifications, sumo-fullscreen, sumo-search, user-menu {
+  height: 100%;
+}
+
+button.quickpanel-toggle {
+  border-radius: 0;
+  padding: 0;
+  min-width: 75px;
+  max-width: 75px;
+  height: 100%;
+}
+
+@import "../../../apps/default/src/styles/_var";
+:host {
+  z-index: $z-index__main-toolbar;
+}

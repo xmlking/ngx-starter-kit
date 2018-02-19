@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DashboardLayoutComponent } from './dashboard-layout.component';
 
-describe('DashboardLayoutComponent', () => {
+describe('AdminLayoutComponent', () => {
   let component: DashboardLayoutComponent;
   let fixture: ComponentFixture<DashboardLayoutComponent>;
 

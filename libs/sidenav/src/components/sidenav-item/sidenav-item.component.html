@@ -1,0 +1,30 @@
+<a class="sidenav-anchor" [ngClass]="item.customClass"
+   *ngIf="!(item.children?.length > 0)"
+   mat-list-item matRipple
+   [routerLink]="[item.link]"
+   routerLinkActive="active"
+   [routerLinkActiveOptions]="{exact: true}">
+
+  <mat-icon>{{ item.icon }}</mat-icon>
+  <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+  <span fxFlex><!-- fill space --></span>
+  <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor">{{ item.badge }}</span>
+</a>
+
+
+<a class="sidenav-anchor"
+   *ngIf="(item.children?.length > 0)"
+   mat-list-item matRipple
+   (click)="toggleDropdown()"
+   [ngClass]="item.customClass">
+
+  <mat-icon>{{ item.icon }}</mat-icon>
+  <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+  <span fxFlex><!-- fill space --></span>
+  <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor" style="margin-right: 12px;">{{ item.badge }}</span>
+  <mat-icon class="sidenav-item-dropdown-indicator rotate fade-in-on-icon-sidenav">expand_more</mat-icon>
+</a>
+
+<mat-nav-list class="sidenav-list sidenav-list-nested" fxLayout="column" [style.height]="getSubItemsHeight()">
+  <sumo-sidenav-item *ngFor="let submenu of item.children" [item]="submenu"></sumo-sidenav-item>
+</mat-nav-list>

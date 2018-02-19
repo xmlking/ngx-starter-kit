@@ -1,0 +1,203 @@
+@import "../../../../../apps/default/src/styles/_var";
+
+:host {
+  display: block;
+}
+
+mat-nav-list a.sidenav-anchor {
+
+  &.mat-list-item .mat-list-item-content {
+    padding-left: $padding-left-right__sidenav-list__mat-list-item;
+    padding-right: $padding-left-right__sidenav-list__mat-list-item;
+  }
+
+  .sidenav-item-name {
+    margin-left: $margin-left__sidenav-list__item-name;
+    font-size: 14px;
+  }
+
+  mat-icon {
+    width: $width-height__sidenav-list__icon;
+    height: $width-height__sidenav-list__icon;
+    font-size: 18px;
+    line-height: 18px;
+  }
+}
+
+.sidenav-list {
+  transition: height .4s cubic-bezier(.35, 0, .25, 1);
+
+  > sumo-sidenav-item {
+    &.open {
+
+      > .sidenav-anchor {
+        .sidenav-item-dropdown-indicator {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .sidenav-item-dropdown-indicator {
+      transition: transform .25s;
+    }
+
+    .badge {
+      padding: 4px 8px;
+      font-size: 12px;
+      background: #2196F3;
+      border-radius: 5px;
+      color: #FFF;
+    }
+  }
+}
+
+.sidenav-toplevel {
+
+  // Every sidenav-anchor in this sidenav
+  .sidenav-anchor {
+    position: relative;
+    cursor: pointer;
+    color: $color__sidenav-list;
+    transition: color .1s;
+    outline: none;
+
+    &:hover {
+      color: #FFFFFF;
+    }
+
+    &.active {
+      color: #FFFFFF;
+    }
+  }
+
+  > .sidenav-item { // Top Level Item
+
+    > .sidenav-anchor {
+      &:hover {
+        background: $background-color__sidenav-list__hover;
+      }
+
+      &.active {
+        background: $background-color__sidenav-list__active;
+      }
+    }
+
+    > .sidenav-list-nested > .sidenav-item { // Level 1 aka 1st Dropdown
+      background: $background-color__sidenav-list__level1;
+
+      > .sidenav-anchor {
+        &:hover {
+          background: $background-color__sidenav-list__level1__hover;
+        }
+
+        &.active {
+          background: $background-color__sidenav-list__level1__active;
+        }
+      }
+
+      > .sidenav-list-nested > .sidenav-item { // Level 2
+        background: $background-color__sidenav-list__level2;
+
+        > .sidenav-anchor {
+          padding-left: $padding__sidenav-item__level2;
+
+          &:hover {
+            background: $background-color__sidenav-list__level2__hover;
+          }
+
+          &.active {
+            background: $background-color__sidenav-list__level2__active;
+          }
+        }
+
+        > .sidenav-list-nested > .sidenav-item { // Level 3
+          background: $background-color__sidenav-list__level3;
+
+          > .sidenav-anchor {
+            padding-left: $padding__sidenav-item__level3;
+
+            &:hover {
+              background: $background-color__sidenav-list__level3__hover;
+            }
+
+            &.active {
+              background: $background-color__sidenav-list__level3__active;
+            }
+          }
+
+          > .sidenav-list-nested > .sidenav-item { // Level 4
+            background: $background-color__sidenav-list__level4;
+
+            > .sidenav-anchor {
+              padding-left: $padding__sidenav-item__level4;
+
+              &:hover {
+                background: $background-color__sidenav-list__level4__hover;
+              }
+
+              &.active {
+                background: $background-color__sidenav-list__level4__active;
+              }
+            }
+
+            > .sidenav-list-nested > .sidenav-item { // Level 5
+              background: $background-color__sidenav-list__level5;
+
+              > .sidenav-anchor {
+                padding-left: $padding__sidenav-item__level5;
+
+                &:hover {
+                  background: $background-color__sidenav-list__level5__hover;
+                }
+
+                &.active {
+                  background: $background-color__sidenav-list__level5__active;
+                }
+              }
+
+              .sidenav-list-nested > .sidenav-item { // Infinite Levels after
+                > .sidenav-anchor {
+                  padding-left: $padding__sidenav-item__level6;
+
+                  &:hover {
+                    background: $background-color__sidenav-list__level6__hover;
+                  }
+
+                  &.active {
+                    background: $background-color__sidenav-list__level6__active;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .sidenav-item .sidenav-list-nested {
+    position: relative;
+    padding: 0;
+    overflow: hidden;
+
+    &:before, &:after {
+      content: " ";
+      left: 0;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      z-index: 3;
+    }
+
+    &:before {
+      background: linear-gradient(180deg, rgba(0,0,0,.3) 0, transparent);
+      top: 0;
+    }
+
+    &:after {
+      background: linear-gradient(-180deg, rgba(0,0,0,.3) 0, transparent);
+      bottom: 0;
+    }
+  }
+}
+

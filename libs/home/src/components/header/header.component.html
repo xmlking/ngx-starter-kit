@@ -1,5 +1,4 @@
-<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
-<nav class="default-navbar-header">
+<nav class="default-navbar-header" id="top">
   <a mat-button class="default-button" href="/" aria-label="Angular Material">
     <img class="default-angular-logo"
          src="../../../assets/img/homepage/angular-white-transparent.svg"
@@ -9,27 +8,33 @@
 
   <a mat-button class="default-button"  fxShow  fxHide.lt-md routerLink="/">Intro</a>
 
-  <div class="flex-spacer"></div>
+  <span fxFlex><!-- fill space --></span>
 
   <a mat-button class="default-button" fxShow  fxHide.lt-sm
      *ngFor="let key of sectionKeys"
      [routerLink]="key">{{sections[key]}}</a>
 
-  <app-theme-picker></app-theme-picker>
+  <theme-picker fxShow  fxHide.lt-sm></theme-picker>
 
-  <a mat-button class="default-button" fxShow  fxHide.lt-md
-     href="/" aria-label="GitHub Repository">
-    <img class="default-angular-logo"  ngClass.lt-md="default-github-logo"
-         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
-         alt="angular">
-    <span>GitHub</span>
-  </a>
-  <a mat-icon-button class="default-button" fxHide fxShow.lt-md
-     href="/" aria-label="GitHub Repository">
-    <img class="default-angular-logo" ngClass.lt-sm="default-github-logo"
-         src="../../../assets/img/homepage/github-circle-white-transparent.svg"
-         alt="angular">
-  </a>
+  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Signup">
+    <mat-icon class="default-menu-icon">person_outline</mat-icon>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>fingerprint</mat-icon>
+      <span>Login</span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon>cake</mat-icon>
+      <span>Signup</span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon>lock_open</mat-icon>
+      <span style="padding-right: 40px;" ngStyle.lt-sm="padding-right: 10px;" >Logout</span>
+    </button>
+  </mat-menu>
+
 </nav>
 <nav  class="default-navbar" fxHide fxShow.lt-sm>
   <a mat-button class="default-navbar-link"

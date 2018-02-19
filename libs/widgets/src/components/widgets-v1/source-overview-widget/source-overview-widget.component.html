@@ -1,0 +1,41 @@
+<mat-card class="widget source-overview-widget">
+  <mat-card-title fxLayout="row" fxLayoutAlign="space-between center">
+    <span class="name">{{ options.name }}</span>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+  </mat-card-title>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content>
+    <div fxLayout="column" fxLayoutAlign="space-around stretch">
+
+      <div class="section" fxLayout="row" fxLayoutAlign="space-between center" *ngFor="let chartData of chartDataArray">
+        <div fxFlex="100px" fxLayout="row" fxLayoutAlign="center center" class="source" [style.background-color]="chartData[0].color">
+          {{ chartData[0].key }}
+        </div>
+        <span fxFlex fxLayout="row" fxLayoutAlign="center center" class="value">
+          {{ chartData[0].sum | number: '1.0-0' }}
+        </span>
+        <nvd3 fxFlex fxLayout="row" fxLayoutAlign="center center" [options]="chartOptions" [data]="chartData"></nvd3>
+      </div>
+
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> settings </mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon> more </mat-icon>
+    <span> More Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> remove_circle </mat-icon>
+    <span> Remove Widget </span>
+  </button>
+</mat-menu>

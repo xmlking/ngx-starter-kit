@@ -15,7 +15,7 @@ app-root > app-component-sidenav {
 
 app-root > app-home-layout,
 app-root > app-dashboard-layout,
-app-root > app-admin {
+app-root > app-admin-layout {
   overflow-y: auto;
 }
 
@@ -27,7 +27,7 @@ app-root > app-admin {
 
   app-root > app-home-layout,
   app-root > app-dashboard-layout,
-  app-root > app-admin {
+  app-root > app-admin-layout {
     overflow-y: visible;
   }
 }

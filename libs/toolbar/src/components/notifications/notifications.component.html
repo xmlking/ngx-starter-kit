@@ -1,0 +1,52 @@
+<div class="notification-container" fxLayout="row" fxLayoutAlign="start center" (sumoClickOutside)="onClickOutside()">
+
+  <button class="icon-button" type="button" mat-button (click)="toggleDropdown()" [ngClass]="[cssPrefix+'-btn']" [class.open]="isOpen">
+    <span *ngIf="notifications && notifications?.length > 0;then withBadge else withOutBadge"></span>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="card">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+          <div class="name">Notifications</div>
+          <div class="extra">You have {{notifications?.length}} new notifications.</div>
+        </div>
+        <button type="button" mat-icon-button>
+          <mat-icon class="icon">settings</mat-icon>
+        </button>
+      </div>
+      <div *ngIf="notifications?.length !== 0; then thenBlock else elseBlock;"></div>
+      <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+        <div class="action">Mark all as read</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<ng-template #withBadge>
+  <mat-icon matBadge="{{notifications?.length}}" matBadgePosition="above after" matBadgeColor="accent">notifications_active</mat-icon>
+</ng-template>
+<ng-template #withOutBadge><mat-icon>notifications_none</mat-icon></ng-template>
+
+<ng-template #thenBlock>
+  <perfect-scrollbar class="content">
+    <div *ngFor="let notification of notifications; last as isLast">
+      <div class="notification" [ngClass]="notification.color" fxLayout="row" fxLayoutAlign="start center" matRipple>
+        <mat-icon class="icon">{{ notification.icon }}</mat-icon>
+        <div class="title" fxLayout="column">
+          <div class="name">{{ notification.title }}</div>
+          <div class="time">{{ notification.lastTime }}</div>
+        </div>
+        <span fxFlex></span>
+        <button type="button" mat-icon-button (click)="delete(notification)">
+          <mat-icon class="close">close</mat-icon>
+        </button>
+      </div>
+      <div class="divider" *ngIf="!isLast"></div>
+    </div>
+  </perfect-scrollbar>
+</ng-template>
+<ng-template #elseBlock>
+  <div class="no" fxLayout="row" fxLayoutAlign="center center">Sumo</div>
+</ng-template>

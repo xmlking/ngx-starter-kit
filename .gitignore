@@ -41,6 +41,10 @@ testem.log
 .DS_Store
 Thumbs.db
 
+# Environment variables
+src/environments/base.ts
+.env
+
 # Sumo
 todo
 docs

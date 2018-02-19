@@ -1,7 +1,7 @@
 <div fxLayout="column" fxFlexFill>
-  <app-home-header class="mat-elevation-z6"></app-home-header>
+  <app-home-header class="mat-elevation-z6" id="top"></app-home-header>
   <router-outlet></router-outlet>
-  <!--spacer to push footer down-->
-  <div fxFlex></div>
+  <span fxFlex><!-- fill space --></span>
+  <scroll-to-top><!-- add id="top" --></scroll-to-top>
   <app-footer></app-footer>
 </div>

@@ -9,7 +9,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v9.4.0   |          | 
 | Angular CLI                   | v1.6.5   |          | 
-| @nrwl/schematics              | v0.6.15  |          | 
+| @nrwl/schematics              | v0.7.3   |          | 
 
 
 ### Install Prerequisites
@@ -23,11 +23,8 @@ brew install node
 #### Install Global Packages
 ```bash
 npm remove -g @nrwl/schematics
-npm install -g @nrwl/schematics@next
+npm install -g @nrwl/schematics
 npm install -g @angular/cli
-# temp workaround
-vi /usr/local/lib/node_modules/@nrwl/schematics/bin/create-nx-workspace.js 
-'@angular-devkit/core': '^0.0.28' --> '@angular-devkit/core': '^0.0.29' 
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -42,9 +39,6 @@ ng set defaults.styleExt scss
 ```bash
 create-nx-workspace nx-starter-kit
 cd nx-starter-kit
-# temp workaround
-vi package.json
-@angular-devkit/core': '^0.0.28' --> '@angular-devkit/core': '^0.0.29' 
 npm install
 ```
 
@@ -53,8 +47,7 @@ npm install
 ```bash
 cd nx-starter-kit
 npm i @angular/flex-layout
-npm i @angular/material @angular/cdk
-npm i hammerjs
+npm i @angular/material @angular/cdk hammerjs
 npm i web-animations-js
 npm i @swimlane/ngx-charts
 npm i @swimlane/ngx-datatable
@@ -62,10 +55,17 @@ npm i screenfull
 npm i ngx-perfect-scrollbar
 
 npm i -D loaders.css
+npm i -D @types/hammerjs
+npm install -D standard-version
 
 npm i angular-in-memory-web-api
 #  temp workaround
 npm i -D @angular/http
+
+npm i d3
+npm i nvd3
+npm i -D @types/nvd3
+npm i -D @types/d3
 ```
 
 #### Generate Artifacts
@@ -76,46 +76,89 @@ ng g app default --routing --style=scss --service-worker
 
 # add `core` module to `default` app
 ng g module core --app=default --module=app
-# add `InMemoryDataService` in `core` module
+# add shared services for `core` Module
 ng g service core/services/InMemoryData --app=default --module=core --spec=false
 ng g service core/services/PageTitle/PageTitle --app=default --module=core
 ng g service core/services/serviceWorker/serviceWorker --app=default --module=core --dry-run
 
-# add `shared` module under that will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
-ng g lib shared
-# add flat `material` module in `shared` module dir
-# ng g lib material 
-ng g module material --app=shared --module=shared --flat
+# generate `Lazy-loaded Feature Modules`
+ng g lib home           --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+ng g lib admin          --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
+ng g lib experiments    --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
+ng g lib PageNotFound   --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+
+ng g lib widgets   --routing --lazy --parent-module=apps/default/src/app/app.module.ts
+
+ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts
+
+ng g lib material --spec=false --dry-run
+ng g lib animations --nomodule --dry-run 
+ng g lib Tree --nomodule --dry-run 
+ng g lib shared # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
+
+# generate containers, components for `shared` Module
 ng g service services/entity/entity --app=shared --module=shared
 ng g directive directives/min  --app=shared --module=shared --export=true
 ng g component components/entityTable --app=shared --module=shared --export=true
 ng g component containers/entity --app=shared --module=shared --skip-import
 ng g component containers/entityForm  --app=shared --module=shared --skip-import
-ng g component components/fullscreen --app=shared --module=shared  --skip-import
-ng g component components/searchBar --app=shared --module=shared
-ng g component components/sideBar --app=shared --module=shared 
-ng g component components/sideMenuItem --app=shared --module=shared  
-ng g component components/sideMenu --app=shared --module=shared 
-ng g component components/toolBarNotification --app=shared --module=shared
-ng g component components/toolBar --app=shared --module=shared
-ng g component components/userMenu --app=shared --module=shared
 
-
-# generate `Lazy-loaded Feature Modules`
-ng g lib home      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib dashboard --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib admin --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
-ng g lib PageNotFound --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib ThemePicker  
-ng g lib animations --nomodule --dry-run
-
-
-# generate PageNotFoundComponents for `PageNotFound` Module
+# generate containers for `PageNotFound` Module
 ng g component containers/PageNotFound --app=page-not-found
+
+
+### generate `Reusable lib Modules`
+
+# generate components for `fullscreen` Module
+ng g lib Fullscreen
+ng g component fullscreen --app=fullscreen --flat --dry-run
+
+# generate components for `Breadcrumbs` Module
+ng g lib Breadcrumbs
+ng g component breadcrumbs --app=breadcrumbs --flat --dry-run
+ng g service  breadcrumbs --app=breadcrumbs --module=breadcrumbs --dry-run
+
+# generate components for `ScrollToTop` Module
+ng g lib ScrollToTop
+ng g component ScrollToTop --app=scroll-to-top --flat --dry-run
+
+# generate components, services for `ThemePicker` Module
+ng g lib ThemePicker  
+ng g component ThemePicker --app=theme-picker --flat --dry-run
+ng g service  ThemeStorage --app=theme-picker --module=theme-picker --dry-run
+ng g service  StyleManager --app=theme-picker --module=theme-picker --dry-run
+
+# generate components for `Quickpanel` Module
+ng g lib Quickpanel
+ng g component Quickpanel --app=quickpanel --flat --dry-run
+
+# generate components for `LoadingOverlay` Module
+ng g lib LoadingOverlay
+ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
+
+# generate components for `svgViewer` Module
+ng g lib svgViewer
+ng g component svgViewer --app=svg-viewer --flat --dry-run 
+
+# generate components for `toolbar` Module
+ng g lib toolbar --dry-run 
+ng g component toolbar --app=toolbar --flat --dry-run 
+ng g component components/search --app=toolbar  --dry-run 
+ng g component components/searchBar --app=toolbar
+ng g component components/Notifications --app=toolbar
+ng g component components/UserMenu --app=toolbar
+ng g directive components/ClickOutside/ClickOutside  --app=toolbar --dry-run 
+
+# generate components for `sidenav` Module
+ng g lib sidenav --dry-run 
+ng g component sidenav --app=sidenav --flat --dry-run 
+ng g component components/sidenavItem --app=sidenav  --dry-run 
+ng g service services/navigation/navigation --app=sidenav --module=sidenav --dry-run 
+ng g directive  IconSidenav --app=sidenav --module=sidenav --dry-run 
 
 # generate containers, components for `home` Module
 ng g component components/header --app=home
-ng g component components/svgViewer --app=home
 ng g component containers/homeLayout --app=home
 ng g component containers/landing --app=home
 ng g component containers/blog --app=home
@@ -127,18 +170,34 @@ ng g component components/footer --app=dashboard
 ng g component containers/dashboardLayout --app=dashboard --dry-run
 ng g component containers/accounts --app=dashboard
 ng g service services/account/account --app=dashboard --module=dashboard
+todo
+
+
+
+ng g component components/searchBar --app=dashboard
+ng g component components/sideBar --app=dashboard
+ng g component components/sideMenuItem --app=dashboard
+ng g component components/sideMenu --app=dashboard
+ng g component components/toolBarNotification --app=dashboard
+ng g component components/toolBar --app=dashboard
+ng g component components/userMenu --app=dashboard
+
+
+# generate containers, components for `widgets` Module
+ng g component containers/wizdash --app=widgets --dry-run
 
 # generate containers, components for `admin` Module
 ng g component containers/adminLayout --app=admin --dry-run
-ng g component containers/experiments --app=admin --dry-run
-ng g component components/hammerCard --app=admin --dry-run
-ng g directive components/Hammertime/Hammertime --app=admin --dry-run
+ng g component containers/overview --app=admin --dry-run
+ng g component components/rainbow --app=admin --dry-run
 
-# generate artifacts 
-ng g component components/ThemePicker --app=theme-picker --dry-run
-# ng g service services/ThemeStorage/ThemeStorage --app=theme-picker --module=theme-picker  --dry-run
-ng g service services/ThemeStorage/ThemeStorage --app=theme-picker   --dry-run
-ng g service services/styleManager/StyleManager --app=theme-picker   --dry-run
+# generate containers, components for `experiments` Module
+ng g component containers/experimentsLayout --app=experiments --dry-run
+ng g component containers/experiments --app=experiments --dry-run
+ng g component components/hammerCard --app=experiments --dry-run
+ng g directive components/Hammertime/Hammertime --app=experiments --dry-run
+
+
 
 # scaffolding ngrx for root module i.e., app.module.ts
 ng g ngrx app --app=default --module=apps/default/src/app/app.module.ts  --only-empty-root
@@ -146,16 +205,45 @@ ng g ngrx app --app=default --module=apps/default/src/app/app.module.ts  --only-
 ng g ngrx account --directory=state/account --app=dashboard --module=libs/dashboard/src/dashboard.module.ts
 ```
 
+### Install
+```bash
+npm install
+cp .env.example .env
+```
+### Test
+```bash
+ng test --browser=ChromeHeadless
+```
+
 ### Build
 ```bash
 # build themes
-npx webpack --config tools/webpack.config.js
-npm run build-themes
 # build project 
-ng build --prod
-ng build -e mock
+ng build --prod -oh=media
+ng build -e mock -oh=media
 ```
 ### Run
 ```bash
-ng s -e mock
+# run mock mode
+ng s -e mock --extract-css --preserve-symlinks -o
+# ES2015 support: Set tsconfig.json target value as "es2015" and  use --aot 
+ng s -e mock --extract-css --preserve-symlinks --aot -o
+# run prod mode
+ng s -e prod
 ```
+
+### Serve from dist
+> use this to test service-workers
+```bash
+# 1st terminal - Start the build
+ng build --watch
+# 2nd terminal - Start the web server
+npx lite-server --baseDir="dist"
+```
+
+### Publish
+```bash
+ng build --prod -e mock --output-path docs --base-href nx-starter-kit
+# Make a copy of docs/index.html and name it docs/404.html
+```
+

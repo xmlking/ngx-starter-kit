@@ -1,0 +1,84 @@
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="push" class="app-sidenav">
+    <!--<app-dashboard-header></app-dashboard-header>-->
+    <mat-toolbar color="primary">
+      <!--future svg to go here-->
+      <span class="toolbar-filler"></span>
+      <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="!sidenav.opened">
+        <mat-icon aria-label="Menu" class="material-icons">close</mat-icon>
+      </button>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/comp1']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>account_balance</mat-icon>
+        <span class="title" mat-line>comp1</span>
+        <span mat-line class="secondary">test</span>
+      </a>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/comp2']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>android</mat-icon>
+        <span class="title" mat-line>comp2</span>
+        <span mat-line class="secondary">test</span>
+      </a>
+      <a mat-list-item class="sidenav-link" [routerLink]="['/fullscreen1']" (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon><i class="material-icons">panorama_wide_angle</i></mat-icon>
+        <span class="title" mat-line>fullscreen1</span>
+        <span mat-line class="secondary">fullscreen1</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <!--<app-home-header class="mat-elevation-z6"></app-home-header>-->
+  <div fxLayout="column" fxFlexFill>
+  <mat-toolbar id="appToolbar"  color="primary">
+    <button mat-icon-button (click)="sidenav.toggle()" class="mat-icon-button sidenav-toggle-button" [hidden]="sidenav.opened">
+      <mat-icon aria-label="Menu" class="material-icons">menu</mat-icon>
+    </button>
+    <a mat-button class="default-button" routerLink="/" aria-label="Angular Material">
+      <img class="default-angular-logo"
+           src="assets/img/homepage/angular-white-transparent.svg"
+           alt="angular">
+      <span>SumoApp</span>
+    </a>
+    <span class="toolbar-filler"></span>
+    <a mat-button class="default-button" routerLink="/home">home</a>
+    <a mat-button class="default-button" routerLink="/dashboard">dashboard</a>
+    <a mat-button class="default-button" routerLink="orders">orders</a>
+    <a mat-button class="default-button" routerLink="products">products</a>
+    <a mat-button class="default-button" routerLink="/admin">admin</a>
+    <span class="toolbar-filler"></span>
+    <theme-picker></theme-picker>
+    <!--<button id="button-login" mat-button [routerLink]="['/signupin']" *ngIf="!(user | async)">Log In</button>-->
+    <!--<button id="button-logout" mat-button>Log Out</button>-->
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>announcement</mat-icon>
+        <span>Issues</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
+  </mat-toolbar>
+    <!--top spacer-->
+    <div fxFlex="5"></div>
+    <!--route animation -->
+    <div [@routeAnimation]="getRouteAnimation(adminOutlet)">
+      <router-outlet #adminOutlet="outlet"></router-outlet>
+    </div>
+    <!--spacer to push footer down-->
+    <div fxFlex></div>
+  <!-- app-footer remove me -->
+  <app-footer></app-footer>
+  </div>
+</mat-sidenav-container>
+
+

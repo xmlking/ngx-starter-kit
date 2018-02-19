@@ -1,55 +1,70 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { routeAnimation } from '@nx-starter-kit/animations';
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ViewEncapsulation,
+  AfterViewInit,
+  ViewChildren,
+  QueryList,
+  ElementRef,
+  OnDestroy,
+  HostBinding
+} from '@angular/core';
+import { Subscription } from 'rxjs/Subscription';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { Router, NavigationEnd } from '@angular/router';
+import { routeAnimation } from '@nx-starter-kit/animations';
 
 @Component({
   selector: 'app-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
   animations: [routeAnimation]
+  // encapsulation: ViewEncapsulation.None
 })
-export class DashboardLayoutComponent implements OnInit, OnChanges {
-  @Input() isVisible = true;
-  visibility = 'shown';
+export class DashboardLayoutComponent implements OnInit, OnDestroy {
+  @ViewChild('sidenav') sidenav;
 
-  sideNavOpened = true;
-  matDrawerOpened = false;
-  matDrawerShow = true;
-  sideNavMode = 'side';
+  private _mediaSubscription: Subscription;
+  private _routerEventsSubscription: Subscription;
 
-  constructor(private media: ObservableMedia) {}
+  quickpanelOpen = false;
+  sidenavOpen = true;
+  sidenavMode = 'side';
+  isMobile = false;
 
-  ngOnChanges() {
-    this.visibility = this.isVisible ? 'shown' : 'hidden';
-  }
+  constructor(private router: Router, private media: ObservableMedia) {}
 
   ngOnInit() {
-    this.media.subscribe((mediaChange: MediaChange) => {
-      this.toggleView();
+    this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
+      const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+
+      this.isMobile = isMobile;
+      this.sidenavMode = isMobile ? 'over' : 'side';
+      this.sidenavOpen = !isMobile;
     });
+
+    this._routerEventsSubscription = this.router.events.subscribe(event => {
+      if (event instanceof NavigationEnd && this.isMobile) {
+        this.sidenav.close();
+      }
+    });
+
+    setTimeout(() => {
+      window.dispatchEvent(new Event('resize'));
+    }, 2000);
+  }
+
+  ngOnDestroy() {
+    this._mediaSubscription.unsubscribe();
+  }
+
+  onActivate(e, scrollContainer) {
+    scrollContainer.scrollTop = 0;
   }
 
   getRouteAnimation(outlet) {
     return outlet.activatedRouteData['animation'] || 'one';
     //return outlet.isActivated ? outlet.activatedRoute : ''
-  }
-
-  toggleView() {
-    if (this.media.isActive('gt-md')) {
-      this.sideNavMode = 'side';
-      this.sideNavOpened = true;
-      this.matDrawerOpened = false;
-      this.matDrawerShow = true;
-    } else if (this.media.isActive('gt-xs')) {
-      this.sideNavMode = 'side';
-      this.sideNavOpened = false;
-      this.matDrawerOpened = true;
-      this.matDrawerShow = true;
-    } else if (this.media.isActive('lt-sm')) {
-      this.sideNavMode = 'over';
-      this.sideNavOpened = false;
-      this.matDrawerOpened = false;
-      this.matDrawerShow = false;
-    }
   }
 }

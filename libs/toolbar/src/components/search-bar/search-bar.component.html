@@ -1,0 +1,53 @@
+<div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex (sumoClickOutside)="closeDropdown()">
+  <mat-icon class="search-icon">search</mat-icon>
+  <input type="search"
+         autocomplete="off"
+         spellcheck="false"
+         class="search-input"
+         [(ngModel)]="input"
+         (focus)="openDropdown()"
+         placeholder="Search...">
+
+  <div class="search-dropdown mat-elevation-z1">
+    <div class="content results" *ngIf="input" fxLayout="column">
+      <div class="heading" fxLayout="row" fxLayoutAlign="start center">
+        <mat-icon class="icon">search</mat-icon>
+        Search results for: {{ input }}
+      </div>
+      <div class="items">
+        <div class="item" matRipple>Overview</div>
+        <div class="item" matRipple>Settings</div>
+        <div class="item" matRipple>Servers</div>
+        <div class="item" matRipple>Profile</div>
+        <div class="item" matRipple>Admin</div>
+        <div class="item" matRipple>Home</div>
+      </div>
+    </div>
+
+    <div class="content recents" fxLayout="row" *ngIf="!input">
+      <div class="recently" fxLayout="column" fxFlex>
+        <div class="heading" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="icon">restore</mat-icon>
+          Recently Visited
+        </div>
+        <div class="items">
+          <div class="item" matRipple *ngFor="let item of recentlyVisited" [routerLink]="item.route" (click)="closeDropdown()">{{ item.name }}</div>
+        </div>
+      </div>
+      <div class="frequently" fxLayout="column" fxFlex fxFlexOffset="16px">
+        <div class="heading" fxLayout="row" fxLayoutAlign="start center">
+          <mat-icon class="icon">youtube_searched_for</mat-icon>
+          Frequently Visited
+        </div>
+        <div class="items">
+          <div class="item" matRipple [routerLink]="['/dashboard']">Overview</div>
+          <div class="item" matRipple [routerLink]="['/dashboard/overview1']">Settings</div>
+          <div class="item" matRipple [routerLink]="['/dashboard/overview2']">Servers</div>
+          <div class="item" matRipple [routerLink]="['/dashboard/overview3']">Profile</div>
+          <div class="item" matRipple [routerLink]="['/admin']">Admin</div>
+          <div class="item" matRipple [routerLink]="['/home']">Home</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

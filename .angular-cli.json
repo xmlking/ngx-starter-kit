@@ -1,7 +1,9 @@
 {
   "$schema": "./node_modules/@nrwl/schematics/src/schema.json",
   "project": {
-    "name": "nx-starter-kit"
+    "name": "nx-starter-kit",
+    "npmScope": "nx-starter-kit",
+    "latestMigration": "20180130-add-migration-check-and-skip"
   },
   "apps": [
     {
@@ -18,9 +20,31 @@
       "test": "../../../test.js",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
-      "prefix": "app",
+      "prefix": [
+        "app"
+      ],
       "styles": [
-        "styles.scss"
+        "styles.scss",
+        {
+          "input": "styles/themes/deeppurple-amber.scss",
+          "output": "assets/themes/deeppurple-amber",
+          "lazy": true
+        },
+        {
+          "input": "styles/themes/indigo-pink.scss",
+          "output": "assets/themes/indigo-pink",
+          "lazy": true
+        },
+        {
+          "input": "styles/themes/pink-bluegrey.scss",
+          "output": "assets/themes/pink-bluegrey",
+          "lazy": true
+        },
+        {
+          "input": "styles/themes/purple-green.scss",
+          "output": "assets/themes/purple-green",
+          "lazy": true
+        }
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",
@@ -44,10 +68,28 @@
       "appRoot": ""
     },
     {
+      "name": "breadcrumbs",
+      "root": "libs/breadcrumbs/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "dashboard",
       "appRoot": "",
       "root": "libs/dashboard/src",
       "test": "../../../test.js"
+    },
+    {
+      "name": "experiments",
+      "root": "libs/experiments/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "fullscreen",
+      "root": "libs/fullscreen/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     },
     {
       "name": "home",
@@ -56,10 +98,34 @@
       "test": "../../../test.js"
     },
     {
+      "name": "loading-overlay",
+      "root": "libs/loading-overlay/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "material",
+      "root": "libs/material/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "page-not-found",
       "appRoot": "",
       "root": "libs/page-not-found/src",
       "test": "../../../test.js"
+    },
+    {
+      "name": "quickpanel",
+      "root": "libs/quickpanel/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "scroll-to-top",
+      "root": "libs/scroll-to-top/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     },
     {
       "name": "shared",
@@ -68,10 +134,46 @@
       "test": "../../../test.js"
     },
     {
+      "name": "sidenav",
+      "root": "libs/sidenav/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "sidenav2",
+      "root": "libs/sidenav2/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "svg-viewer",
+      "root": "libs/svg-viewer/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "theme-picker",
       "appRoot": "",
       "root": "libs/theme-picker/src",
       "test": "../../../test.js"
+    },
+    {
+      "name": "toolbar",
+      "root": "libs/toolbar/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "tree",
+      "root": "libs/tree/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "widgets",
+      "root": "libs/widgets/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     }
   ],
   "e2e": {

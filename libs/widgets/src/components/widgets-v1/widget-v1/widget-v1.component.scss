@@ -1,0 +1,47 @@
+.widget {
+  margin: 12px;
+  color: #333;
+
+  .icon {
+    vertical-align: middle;
+    color: #7A8B93;
+  }
+
+  .name {
+    margin-left: 10px;
+    font-size: 18px;
+  }
+
+  .number {
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: 0.05em;
+  }
+
+  .arrow {
+    width: 22px;
+    height: 22px;
+    font-size: 22px;
+    vertical-align: top;
+
+    &.red {
+      color: red;
+    }
+
+    &.green {
+      color: green;
+    }
+  }
+
+  .description {
+    font-size: 16px;
+  }
+
+  mat-card-title {
+    margin-bottom: 10px;
+  }
+
+  mat-card-subtitle {
+    margin-bottom: 20px;
+  }
+}

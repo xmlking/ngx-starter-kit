@@ -1,0 +1,17 @@
+<button mat-icon-button [matMenuTriggerFor]="themeMenu" matTooltip="Select a theme!" tabindex="-1">
+  <mat-icon>format_color_fill</mat-icon>
+</button>
+
+<!-- TODO: replace use of `mat-menu` here with a custom overlay -->
+<mat-menu class="default-theme-picker-menu" #themeMenu="matMenu" x-position="before">
+  <mat-grid-list cols="2">
+    <mat-grid-tile *ngFor="let theme of themes">
+      <div mat-menu-item (click)="installTheme(theme)">
+        <div class="default-theme-picker-swatch">
+          <mat-icon class="default-theme-chosen-icon" *ngIf="currentTheme === theme">check_circle</mat-icon>
+          <div class="default-theme-picker-primary" [style.background]="theme.primary"></div>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</mat-menu>

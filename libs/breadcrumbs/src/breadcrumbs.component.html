@@ -1,0 +1,9 @@
+<ul class="breadcrumbs" fxLayout="row">
+  <li *ngFor="let url of urls; let last = last; let first = first" [ngClass]="{'active': last}" fxLayout="row" fxLayoutAlign="center center"> <!-- disable link of last item -->
+    <mat-icon *ngIf="!first">keyboard_arrow_right</mat-icon>
+    <a role="button" *ngIf="!last && url == prefix">{{url}}</a>
+    <a role="button" *ngIf="!last && url != prefix">{{friendlyName(url)}}</a>
+    <span *ngIf="last">{{friendlyName(url)}}</span>
+    <span *ngIf="last && url == prefix">{{friendlyName('/')}}</span>
+  </li>
+</ul>

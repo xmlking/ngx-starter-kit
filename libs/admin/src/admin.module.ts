@@ -1,25 +1,50 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './components/header/header.component';
+import { AccountsComponent } from './containers/accounts/accounts.component';
 import { SharedModule } from '@nx-starter-kit/shared';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { accountReducer } from './state/account/account.reducer';
+import { accountInitialState } from './state/account/account.init';
+import { AccountEffects } from './state/account/account.effects';
+import { AccountService } from './services/account/account.service';
 import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
-import { ExperimentsComponent } from './containers/experiments/experiments.component';
-import { HammerCardComponent } from './components/hammer-card/hammer-card.component';
 import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
-import { HammertimeDirective } from './components/hammertime/hammertime.directive';
 
-import { Hammer } from 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { SideMenuComponent } from './components/side-menu/side-menu.component';
+import { SideMenuItemComponent } from './components/side-menu-item/side-menu-item.component';
+import { ToolBarNotificationComponent } from './components/tool-bar-notification/tool-bar-notification.component';
+import { ToolBarComponent } from './components/tool-bar/tool-bar.component';
+import { UserMenuComponent } from './components/user-menu/user-menu.component';
+import { SearchBarComponent } from './components/search-bar/search-bar.component';
+import { SideBarComponent } from './components/side-bar/side-bar.component';
 
-export class MyHammerConfig extends HammerGestureConfig {
-  overrides = <any>{
-    // override hammerjs default configuration
-    swipe: { direction: Hammer.DIRECTION_ALL }
-  };
-}
+// import {AccountMockService} from "./services/account/account.mock.service";
+// import {HttpClientModule} from "@angular/common/http";
+// import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+// import {environment} from "../../../apps/default/src/environments/environment";
+
+const COMPONENTS = [
+  HeaderComponent,
+  SideMenuComponent,
+  SideMenuItemComponent,
+  ToolBarNotificationComponent,
+  ToolBarComponent,
+  SearchBarComponent,
+  SideBarComponent,
+  UserMenuComponent
+];
 
 @NgModule({
   imports: [
     SharedModule,
+    // FIXME: https://github.com/angular/in-memory-web-api/issues/167
+    // commend this two lines to use core `InMemoryDataService`
+    // HttpClientModule,
+    // environment.envName === 'mock' ? HttpClientInMemoryWebApiModule.forFeature(AccountMockService) : [],
+    NgxDatatableModule,
     ThemePickerModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
@@ -30,19 +55,26 @@ export class MyHammerConfig extends HammerGestureConfig {
         children: [
           {
             path: '',
-            component: ExperimentsComponent,
-            data: { animation: 'experiments' }
+            component: AccountsComponent,
+            data: { animation: 'accounts' }
+          },
+          {
+            path: 'products',
+            component: AccountsComponent,
+            data: { animation: 'products' }
+          },
+          {
+            path: 'orders',
+            component: AccountsComponent,
+            data: { animation: 'orders' }
           }
         ]
       }
-    ])
+    ]),
+    StoreModule.forFeature('account', accountReducer, { initialState: accountInitialState }),
+    EffectsModule.forFeature([AccountEffects])
   ],
-  providers: [
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig
-    }
-  ],
-  declarations: [ExperimentsComponent, HammerCardComponent, AdminLayoutComponent, HammertimeDirective]
+  declarations: [...COMPONENTS, AccountsComponent, AdminLayoutComponent],
+  providers: [AccountService, AccountEffects]
 })
 export class AdminModule {}

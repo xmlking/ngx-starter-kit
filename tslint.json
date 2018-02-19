@@ -71,13 +71,22 @@
     "directive-selector": [
       true,
       "attribute",
-      "app",
+      [
+        "app",
+        "sumo",
+        "ngx"
+      ],
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      "app",
+      [
+        "",
+        "app",
+        "sumo",
+        "ngx"
+      ],
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -97,7 +106,9 @@
           "home",
           "dashboard",
           "page-not-found",
-          "admin"
+          "admin",
+          "experiments",
+          "widgets"
         ],
         "allow": []
       }

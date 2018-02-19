@@ -1,0 +1,16 @@
+<div class="sw-update-toolbar mat-elevation-z4" *ngIf="swUpdate">
+  <div class="rainbow" fxLayout="row">
+    <div fxLayout="row" fxLayoutAlign="center center" fxFlex>
+      <div class="name" fxHide fxShow.gt-sm>new software is avaialble. do you want to install?</div>
+      <a href="https://sdfsff" class="action" mat-raised-button color="accent">
+        <mat-icon class="icon">shopping_basket</mat-icon>
+        GET IT HERE
+      </a>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="start center">
+      <button type="button" mat-icon-button (click)="swUpdate = false">
+        <mat-icon class="close">close</mat-icon>
+      </button>
+    </div>
+  </div>
+</div>

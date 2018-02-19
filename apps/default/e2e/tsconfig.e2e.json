@@ -13,7 +13,7 @@
   "include": [
     "../**/*.ts"
     /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
-  
+
     , "../../../libs/home/index.ts"
 
     , "../../../libs/dashboard/index.ts"
@@ -21,6 +21,10 @@
     , "../../../libs/page-not-found/index.ts"
 
     , "../../../libs/admin/index.ts"
+
+    , "../../../libs/experiments/index.ts"
+
+    , "../../../libs/widgets/index.ts"
 ],
   "exclude": [
     "**/*.spec.ts"

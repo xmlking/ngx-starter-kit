@@ -1,0 +1,38 @@
+@import '~@angular/material/theming';
+
+$small-breakpoint-width: 720px;
+
+/* For desktop, the content should be aligned with the page title. */
+$content-padding-side: 70px;
+$content-padding-side-xs: 15px;
+
+
+/* material unexposed constants*/
+$mat-toolbar-height-desktop: 64px !default;
+$mat-toolbar-height-mobile-portrait: 56px !default;
+$mat-toolbar-height-mobile-landscape: 48px !default;
+
+/* Form-Control
+-------------------------------------------------- */
+//** Placeholder text color
+//$input-color-placeholder:       #636c72 !default;
+
+
+/* PRE LOADER
+-------------------------------------------------- */
+//$primary-color: #fff !default;
+//$ball-size: 15px !default;
+//$margin: 2px !default;
+//$line-height: 35px !default;
+//$line-width: 4px !default;
+$loader_bg: #303030;
+
+
+/* Form-Control
+-------------------------------------------------- */
+//** Placeholder text color
+$input-color-placeholder:       #636c72 !default;
+
+
+/* btn
+-------------------------------------------------- */

@@ -1,0 +1,8 @@
+<div fxLayout="row" fxLayoutAlign="center stretch" style="height: 100%;">
+  <button class="search-button" mat-button (click)="open()">
+    <mat-icon>search</mat-icon>
+  </button>
+  <mat-form-field class="search" [class.search-open]="isOpen">
+    <input id="searchInput" #input (blur)="close()" matInput placeholder="Search...">
+  </mat-form-field>
+</div>

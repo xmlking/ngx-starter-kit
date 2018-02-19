@@ -1,0 +1,113 @@
+.chart-widget {
+  position: relative;
+  background: white;
+  border-radius: 3px;
+
+  .title-container {
+    padding: 18px;
+    color: #212121;
+
+    .title {
+      font-weight: 500;
+    }
+
+    .extra {
+      font-size: 13px;
+
+      .arrow {
+        width: 14px;
+        height: 14px;
+        font-size: 14px;
+        vertical-align: sub;
+      }
+    }
+  }
+
+  .chart-container {
+    padding: 12px 18px 18px;
+
+    .thin-discrete-bar {
+      .bar-rect {
+        clip-path: inset(0 0.1vw) !important;
+        shape-rendering: crispEdges !important;
+        fill-opacity: 1 !important;
+      }
+
+      .nv-axis line {
+        stroke-opacity: 0;
+      }
+    }
+
+    .display-dots-line-chart {
+      .nvd3 .nv-groups .nv-point {
+        stroke-opacity: 1 !important;
+        fill-opacity: 1 !important;
+        stroke-width: 3px;
+
+        &.hover {
+          stroke-width: 7px;
+        }
+      }
+    }
+
+    .no-clipping svg {
+      overflow: visible !important;
+    }
+  }
+
+  .chart-footer {
+    border-top: 1px solid #E1E1E1;
+    padding: 12px;
+
+    .border-right {
+      border-right: 1px solid #E1E1E1;
+    }
+
+    .border-left {
+      border-left: 1px solid #E1E1E1;
+    }
+
+    .title {
+      font-weight: 500;
+      font-size: 24px;
+    }
+
+    .extra {
+      font-size: 15px;
+    }
+  }
+}
+
+.piechart-widget {
+  .title-container {
+    padding: 12px 18px;
+    background: #EEEEEE;
+    border-bottom: 1px solid #E1E1E1;
+  }
+}
+
+.fill-bg-opacity .nvd3 .nv-group.nv-series-0 {
+  fill-opacity: 1 !important;
+}
+
+.nvd3 text {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 12px;
+}
+
+.nvtooltip {
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 13px;
+  border-radius: 0;
+  background: #FFF;
+  border: none;
+  @include mdShadow-z3();
+}
+
+.intense-colors-pie-chart .nvd3.nv-pie path {
+  fill-opacity: .8 !important;
+}
+
+.white-labels-pie-chart .nvd3.nv-pie .nv-label text {
+  fill: white !important;
+}

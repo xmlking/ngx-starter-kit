@@ -1,61 +1,53 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { HeaderComponent } from './components/header/header.component';
-import { AccountsComponent } from './containers/accounts/accounts.component';
 import { SharedModule } from '@nx-starter-kit/shared';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { accountReducer } from './state/account/account.reducer';
-import { accountInitialState } from './state/account/account.init';
-import { AccountEffects } from './state/account/account.effects';
-import { AccountService } from './services/account/account.service';
-import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
-import { environment } from '../../../apps/default/src/environments/environment';
+
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
-// import {AccountMockService} from "./services/account/account.mock.service";
-// import {HttpClientModule} from "@angular/common/http";
-// import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
-// import {environment} from "../../../apps/default/src/environments/environment";
+import { OverviewComponent } from './containers/overview/overview.component';
+import { RainbowComponent } from './components/rainbow/rainbow.component';
+import { QuickpanelModule } from '@nx-starter-kit/quickpanel';
+import { ToolbarModule } from '@nx-starter-kit/toolbar';
+import { SidenavModule } from '@nx-starter-kit/sidenav';
+import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
 
 @NgModule({
   imports: [
     SharedModule,
-    // FIXME: https://github.com/angular/in-memory-web-api/issues/167
-    // commend this two lines to use core `InMemoryDataService`
-    // HttpClientModule,
-    // environment.envName === 'mock' ? HttpClientInMemoryWebApiModule.forFeature(AccountMockService) : [],
-    NgxDatatableModule,
-    ThemePickerModule,
+    SidenavModule,
+    ToolbarModule,
+    QuickpanelModule,
+    LoadingOverlayModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       {
         path: '',
         component: DashboardLayoutComponent,
-        data: { animation: 'dashboard' },
+        data: { animation: 'admin' },
         children: [
           {
             path: '',
-            component: AccountsComponent,
-            data: { animation: 'dashboard' }
+            component: OverviewComponent,
+            data: { animation: 'overview' }
           },
           {
-            path: 'products',
-            component: AccountsComponent,
-            data: { animation: 'products' }
+            path: 'overview1',
+            loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
+            data: { animation: 'overview1' }
           },
           {
-            path: 'orders',
-            component: AccountsComponent,
-            data: { animation: 'orders' }
+            path: 'overview2',
+            loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
+            data: { animation: 'overview2' }
+          },
+          {
+            path: 'overview3',
+            loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
+            data: { animation: 'overview3' }
           }
         ]
       }
-    ]),
-    StoreModule.forFeature('account', accountReducer, { initialState: accountInitialState }),
-    EffectsModule.forFeature([AccountEffects])
+    ])
   ],
-  declarations: [HeaderComponent, AccountsComponent, DashboardLayoutComponent],
-  providers: [AccountService, AccountEffects]
+  declarations: [DashboardLayoutComponent, OverviewComponent, RainbowComponent]
 })
 export class DashboardModule {}

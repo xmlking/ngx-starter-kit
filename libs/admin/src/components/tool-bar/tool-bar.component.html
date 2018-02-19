@@ -1,0 +1,26 @@
+<mat-toolbar   class="mat-elevation-z4">
+  <button mat-icon-button (click)="sidenav.toggle();drawer.toggle();" *ngIf="matDrawerShow">
+    <i class="material-icons app-toolbar-menu">menu </i>
+  </button>
+  <button mat-icon-button (click)="sidenav.toggle();" *ngIf="!matDrawerShow">
+    <i class="material-icons app-toolbar-menu">menu </i>
+  </button>
+
+  <span class="spacer"></span>
+
+  <button  mat-icon-button (click)="searchOpen = !searchOpen" fxHide="true" [fxHide.gt-xs]="false">
+    <i class="material-icons">search</i>
+  </button>
+  <app-search-bar [open]="searchOpen"></app-search-bar>
+
+  <sumo-fullscreen></sumo-fullscreen>
+
+  <app-tool-bar-notification [notifications]="toolbarHelpers?.notifications"></app-tool-bar-notification>
+
+  <app-user-menu [currentUser]="toolbarHelpers?.currentUser"></app-user-menu>
+
+  <button mat-icon-button (click)="sidebar.toggle();">
+    <i class="material-icons app-toolbar-menu">menu </i>
+  </button>
+
+</mat-toolbar>

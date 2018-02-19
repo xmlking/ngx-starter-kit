@@ -1,0 +1,36 @@
+.widget {
+  color: #333;
+  margin: 12px;
+
+  .icon {
+    vertical-align: middle;
+    color: #7A8B93;
+  }
+
+  .name {
+    margin-left: 5px;
+    font-size: 22px;
+  }
+
+  mat-card-title {
+    margin-bottom: 20px;
+  }
+
+  .footer {
+    margin: 0 -24px -24px -24px;
+  }
+
+  .extra-info {
+    color: #555;
+    padding: 12px 0;
+    font-size: 20px;
+
+    .value {
+      font-weight: 500;
+    }
+
+    .property {
+      color: #888;
+    }
+  }
+}

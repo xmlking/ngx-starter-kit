@@ -1,6 +1,6 @@
 import { AdminModule } from './admin.module';
 
-describe('AdminModule', () => {
+describe('DashboardModule', () => {
   it('should work', () => {
     expect(new AdminModule()).toBeDefined();
   });

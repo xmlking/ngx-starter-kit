@@ -1,15 +1,9 @@
-@import "variables";
+@import "constants";
 
 /* PRE LOADER
 -------------------------------------------------- */
 @import '~loaders.css/src/animations/line-scale';
 @import '~loaders.css/src/animations/line-scale-pulse-out';
-
-
-//$(window).load(function(){
-///*preloader*/
-//  $('.loader').delay(1500).fadeOut();
-//});
 
 
 .loader {

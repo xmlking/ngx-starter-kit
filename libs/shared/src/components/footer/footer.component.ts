@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { VERSION } from '@angular/material';
+import { environment } from '../../../../../apps/default/src/environments/environment';
+const { version: appVersion } = require('../../../../../package.json');
 
 @Component({
   selector: 'app-footer',
@@ -7,14 +8,14 @@ import { VERSION } from '@angular/material';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
+  environment = environment.envName;
   constructor() {}
 
   ngOnInit() {}
 
   get version() {
-    const version = VERSION.full.match(/\d+\.\d+\.\d+/);
-    if (version) {
-      return version[0];
+    if (appVersion) {
+      return appVersion;
     }
     return '';
   }

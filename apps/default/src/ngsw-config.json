@@ -33,16 +33,4 @@
       ]
     }
   }]
-//  "dataGroups": [
-//    {
-//      "name": "races-api",
-//      "urls": ["/api/races"],
-//      "cacheConfig": {
-//        "strategy": "performance",
-//        "maxSize": 10,
-//        "maxAge": "30m",
-//        "timeout": "5s"
-//      }
-//    }
-//  ]
 }

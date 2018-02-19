@@ -1,0 +1,37 @@
+<mat-card class="widget line-chart-widget">
+  <mat-card-title fxLayout="row" fxLayoutAlign="start center">
+    <mat-icon class="icon">{{ options.icon }}</mat-icon>
+    <span class="name">{{ options.name }}</span>
+  </mat-card-title>
+
+  <mat-card-content>
+    <nvd3 [options]="chartOptions" [data]="data"></nvd3>
+  </mat-card-content>
+
+  <div class="footer">
+    <mat-divider></mat-divider>
+    <div class="extra-info" fxLayout="column" fxLayout.gt-sm="row" fxLayoutAlign="space-around stretch" style="background-color: #FAFAFA">
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div style="width: 5px; height: 90%; background-color: #2196F3; margin-right: 10px;"></div>
+        <div fxLayout="column">
+          <span class="value">${{ revenueSum | number: '1.0-2' }}</span>
+          <span class="property">{{ data[0].key }}</span>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div style="width: 5px; height: 90%; background-color: #3F51B5; margin-right: 10px;"></div>
+        <div fxLayout="column">
+          <span class="value">${{ taxSum | number: '1.0-2' }}</span>
+          <span class="property">{{ data[1].key }}</span>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <div style="width: 5px; height: 90%; background-color: #4CAF50; margin-right: 10px;"></div>
+        <div fxLayout="column">
+          <span class="value">${{ shippingSum | number: '1.0-2' }}</span>
+          <span class="property">{{ data[2].key }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</mat-card>

@@ -1,13 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+
 @import '~@angular/material/theming';
-//@import './styles/typography';
+@import './styles/typography';
 @import './app-theme';
 @import './styles/preloader';
 @import './styles/base';
 
 
 // Include material core styles.
-@include mat-core();
+@include mat-core($custom-typography);
 
 // Define the light theme.
 $primary: mat-palette($mat-indigo);
@@ -19,5 +20,9 @@ $theme: mat-light-theme($primary, $accent);
 
 // 3rd party
 @import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/src/themes/material.scss'; // material.scss or dark.scss
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
+@import '~@swimlane/ngx-datatable/src/themes/material.scss';
+@import '~@swimlane/ngx-datatable/src/themes/dark.scss';
+
+@import '~perfect-scrollbar/css/perfect-scrollbar.css';
+@import "~nvd3/build/nv.d3.css";

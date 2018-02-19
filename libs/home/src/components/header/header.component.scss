@@ -19,10 +19,6 @@
   }
 }
 
-.flex-spacer {
-  flex-grow: 1;
-}
-
 .default-navbar-link {
   text-decoration: inherit;
   flex: 1;
@@ -34,10 +30,8 @@
   vertical-align: middle;
 }
 
-.default-github-logo {
-  height: 21px;
-  margin: 0 7px 2px 0;
-  vertical-align: middle;
+.default-menu-icon {
+  font-size:36px;
 }
 
 .default-navbar {

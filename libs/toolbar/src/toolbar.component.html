@@ -1,0 +1,30 @@
+<mat-toolbar class="main-toolbar" class="mat-elevation-z2">
+
+<!--<div class="main-toolbar mat-elevation-z2">-->
+  <div fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.lt-md>
+    <button (click)="sidenav.open()" mat-icon-button>
+      <mat-icon>menu</mat-icon>
+    </button>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="500px" fxShow fxHide.lt-lg>
+    <sumo-search-bar></sumo-search-bar>
+  </div>
+
+  <sumo-breadcrumbs *ngIf="showBreadcrumbs" fxShow fxHide.lt-lg></sumo-breadcrumbs>
+
+  <span fxFlex><!-- fill space --></span>
+
+  <sumo-fullscreen fxShow  fxHide.lt-lg></sumo-fullscreen>
+
+  <sumo-search fxShow  fxHide.lt-sm></sumo-search>
+
+  <sumo-notifications fxShow  fxHide.lt-md [notifications]="toolbarHelpers?.notifications"></sumo-notifications>
+
+  <user-menu [currentUser]="toolbarHelpers?.currentUser"></user-menu>
+
+  <button mat-button class="quickpanel-toggle" (click)="quickpanel.open()">
+    <mat-icon>format_align_right</mat-icon>
+  </button>
+<!--</div>-->
+</mat-toolbar>

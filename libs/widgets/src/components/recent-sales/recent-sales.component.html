@@ -1,0 +1,24 @@
+<div class="recent-sales mat-elevation-z2">
+  <table class="table table-condensed table-grey-header table-bordered table-hover">
+    <thead>
+    <tr>
+      <th></th>
+      <th>Recent Sales</th>
+      <th>Value</th>
+      <th>Time ago</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr class="pointer" *ngFor="let sale of sales">
+      <td style="text-align: center;"><img class="middle avatar" [src]="sale.image" [alt]="sale.itemName"/></td>
+      <td>{{ sale.itemName }}</td>
+      <td>{{ sale.value | currency:'EUR':'symbol' }}</td>
+      <td>{{ sale.timeAgo }}</td>
+    </tr>
+    </tbody>
+  </table>
+
+  <div class="chart-container">
+    <nvd3 class="fill-bg-opacity" [options]="chartOptions" [data]="chartData" ></nvd3>
+  </div>
+</div>

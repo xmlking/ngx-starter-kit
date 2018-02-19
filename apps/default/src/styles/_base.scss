@@ -1,21 +1,24 @@
-body {
-  font-family: "Roboto","Helvetica Neue Light","Helvetica Neue",Helvetica,Arial,"Lucida Grande",sans-serif;
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+html, body {
   margin: 0;
+  padding: 0;
+  height:100%;
+}
+body{
+  font-family: mat-font-family($config);
 }
 
-.default-button[md-button], .default-button[md-raised-button] {
+.default-button[mat-button], .default-button[mat-raised-button] {
   text-transform: uppercase;
-}
-
-h1, h2 {
-  font-weight: 400;
 }
 
 .default-primary-header {
   padding-left: 20px;
 
   h1 {
-    font-size: 30px;
     font-weight: 300;
     margin: 0;
     padding: 28px 8px;
@@ -47,8 +50,3 @@ code {
   vertical-align: middle;
 }
 
-.default-github-logo svg {
-  height: 21px;
-  margin: 0 7px 2px 0;
-  vertical-align: middle;
-}
