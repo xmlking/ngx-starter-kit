@@ -1,6 +1,48 @@
-<app-entity-table [displayedExtraColumns]=[actionsColumn] [displayedDataColumns]=displayedColumns [dataSource]=dataSource
-                  (deleted)=delete($event)>
-</app-entity-table>
-<a routerLink="add" class="main-fab" mat-fab>
-  <mat-icon>add</mat-icon>
-</a>
+<!--<div fxLayout="column" fxLayoutAlign="start stretch">-->
+<div fxLayout="column">
+<mat-card class="mat-elevation-z8">
+  <mat-toolbar *ngIf="showToolbar">
+    <mat-form-field fxFlex>
+      <input matInput (keyup)="applyFilter($event.target.value)">
+      <mat-placeholder>
+        <mat-icon>search</mat-icon>Filter
+      </mat-placeholder>
+    </mat-form-field>
+    <button mat-icon-button style="margin-left: 16px" (click)="add()">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <!--<button mat-mini-fab color="primary" style="margin-left: 16px" (click)="add()" matTooltip="add">-->
+      <!--<mat-icon>add</mat-icon>-->
+    <!--</button>-->
+    <button mat-mini-fab color="primary" style="margin-left: 16px" routerLink="add" matTooltip="add">
+      <mat-icon>add</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <mat-table #table [dataSource]="dataSource" matSort>
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{column.cell(row)}} </mat-cell>
+    </ng-container>
+
+    <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn">
+      <mat-header-cell *matHeaderCellDef>{{actionColumn}}</mat-header-cell>
+      <mat-cell *matCellDef="let entity">
+        <a mat-icon-button color=primary [routerLink]="entity.id">
+          <mat-icon>edit_mode</mat-icon>
+        </a>
+        <button type="button" (click)="delete(entity.id)" color="warn" mat-icon-button>
+          <mat-icon>delete</mat-icon>
+        </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"  (click)="openDialogDetail(row)"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+
+</mat-card>
+
+</div>

@@ -4,7 +4,6 @@ import { MaterialModule } from '@nx-starter-kit/material';
 import { FullscreenModule } from '@nx-starter-kit/fullscreen';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { EntityTableComponent } from './components/entity-table/entity-table.component';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
@@ -19,10 +18,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
-const COMPONENTS = [
-  EntityTableComponent,
-  FooterComponent,
-];
+const COMPONENTS = [FooterComponent];
 
 const DIRECTIVES = [MinValidatorDirective];
 

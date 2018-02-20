@@ -43,6 +43,11 @@ import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
             path: 'overview3',
             loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
             data: { animation: 'overview3' }
+          },
+          {
+            path: 'crud',
+            loadChildren: '@nx-starter-kit/crud#CrudModule',
+            data: { animation: 'crud' }
           }
         ]
       }

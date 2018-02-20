@@ -64,7 +64,6 @@ export const menus = [
         chip: false,
         open: false
       }
-
     ]
   },
   {

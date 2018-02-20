@@ -12,13 +12,9 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
   // animations: [ fadeInAnimation ]
 })
 export class OverviewComponent implements OnInit, AfterViewInit {
-
-
   constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  ngAfterViewInit() {
-  }
+  ngAfterViewInit() {}
 }

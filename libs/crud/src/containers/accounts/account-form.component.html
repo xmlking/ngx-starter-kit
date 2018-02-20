@@ -1,0 +1,38 @@
+<div fxLayout="column" fxLayoutAlign="start stretch">
+  <mat-card class="mat-elevation-z8">
+  <form (ngSubmit)="onSubmit()" #entityForm="ngForm">
+    <div *ngIf="isNew; else elseBlock">
+      <mat-form-field>
+        <input matInput type="number" name="id" required matInput [(ngModel)]="entity.id" placeholder="Id">
+      </mat-form-field>
+    </div>
+    <ng-template #elseBlock>
+      <mat-form-field>
+        <input matInput type="number" name="id" required matInput [(ngModel)]="entity.id" disabled
+               placeholder="Id (disabled)">
+      </mat-form-field>
+    </ng-template>
+    <mat-form-field>
+      <input matInput type="text" name="name" required matInput [(ngModel)]="entity.name" placeholder="Name">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select name="gender" [(ngModel)]="entity.gender" placeholder="Gender">
+        <mat-option *ngFor="let gender of genderOptions" [value]="gender"> {{ gender}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="number" name="age" required matInput [(ngModel)]="entity.age" placeholder="Age">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="state" required matInput [(ngModel)]="entity?.address.state"
+             placeholder="State">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput type="text" name="city" required matInput [(ngModel)]="entity?.address.city" placeholder="City">
+    </mat-form-field>
+    <button [disabled]="!entityForm.form.valid" mat-raised-button color=primary type="submit">Submit</button>
+  </form>
+  </mat-card>
+</div>
+
+

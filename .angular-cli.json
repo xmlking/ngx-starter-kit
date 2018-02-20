@@ -74,6 +74,12 @@
       "appRoot": ""
     },
     {
+      "name": "crud",
+      "root": "libs/crud/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "dashboard",
       "appRoot": "",
       "root": "libs/dashboard/src",
@@ -110,10 +116,10 @@
       "appRoot": ""
     },
     {
-      "name": "page-not-found",
-      "appRoot": "",
-      "root": "libs/page-not-found/src",
-      "test": "../../../test.js"
+      "name": "not-found",
+      "root": "libs/not-found/src",
+      "test": "../../../test.js",
+      "appRoot": ""
     },
     {
       "name": "quickpanel",

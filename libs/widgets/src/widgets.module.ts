@@ -19,7 +19,7 @@ import {
 } from './components';
 import { D3ChartService } from './components';
 import { environment } from '../../../apps/default/src/environments/environment';
-import {LoadingOverlayModule} from "@nx-starter-kit/loading-overlay";
+import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
 
 const WIDGETS = [
   WidgetComponent,

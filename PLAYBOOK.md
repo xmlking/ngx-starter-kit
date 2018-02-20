@@ -86,15 +86,14 @@ ng g lib home           --routing --lazy --parent-module=apps/default/src/app/ap
 ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib admin          --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
 ng g lib experiments    --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
-ng g lib PageNotFound   --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-
-ng g lib widgets   --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-
+ng g lib NotFound       --routing --lazy --parent-module=apps/default/src/app/app.module.ts
 ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts
+ng g lib crud           --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts
 
 ng g lib material --spec=false --dry-run
 ng g lib animations --nomodule --dry-run 
 ng g lib Tree --nomodule --dry-run 
+
 ng g lib shared # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 
 # generate containers, components for `shared` Module
@@ -104,8 +103,8 @@ ng g component components/entityTable --app=shared --module=shared --export=true
 ng g component containers/entity --app=shared --module=shared --skip-import
 ng g component containers/entityForm  --app=shared --module=shared --skip-import
 
-# generate containers for `PageNotFound` Module
-ng g component containers/PageNotFound --app=page-not-found
+# generate containers for `NotFound` Module
+ng g component containers/NotFound --app=not-found
 
 
 ### generate `Reusable lib Modules`
@@ -170,7 +169,7 @@ ng g component components/footer --app=dashboard
 ng g component containers/dashboardLayout --app=dashboard --dry-run
 ng g component containers/accounts --app=dashboard
 ng g service services/account/account --app=dashboard --module=dashboard
-todo
+ 
 
 
 
@@ -185,6 +184,9 @@ ng g component components/userMenu --app=dashboard
 
 # generate containers, components for `widgets` Module
 ng g component containers/wizdash --app=widgets --dry-run
+
+# generate containers, components for `crud` Module
+ng g component containers/accounts --app=crud --module=crud --dry-run
 
 # generate containers, components for `admin` Module
 ng g component containers/adminLayout --app=admin --dry-run
@@ -247,3 +249,13 @@ ng build --prod -e mock --output-path docs --base-href nx-starter-kit
 # Make a copy of docs/index.html and name it docs/404.html
 ```
 
+### Production build and deployment
+The prod image serves the minified app (sources compiles with a minimal set of dependencies), via an Nginx server. 
+It is self-contained, and can therefore be pushed to a Docker registry to be deployed somewhere else easily.
+
+To start the container, use:
+```bash
+$ docker-compose -f docker-compose.prod.yml up -d   # optional: --build, see below
+```
+
+Now open your browser at http://localhost:5555

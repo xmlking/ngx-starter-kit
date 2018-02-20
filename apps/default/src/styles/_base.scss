@@ -11,42 +11,5 @@ body{
   font-family: mat-font-family($config);
 }
 
-.default-button[mat-button], .default-button[mat-raised-button] {
-  text-transform: uppercase;
-}
 
-.default-primary-header {
-  padding-left: 20px;
-
-  h1 {
-    font-weight: 300;
-    margin: 0;
-    padding: 28px 8px;
-    font-size: 20px;
-  }
-}
-
-code {
-  font-size: 90%;
-}
-
-.default-markdown-pre code {
-  font-size: 100%;
-}
-
-// These styles are for controlling SVGs without using the /deep/ selector
-
-.default-component-category-list-card-image svg {
-  width: 100%;
-}
-
-.default-footer-angular-logo svg {
-  height: 50px;
-}
-
-.default-angular-logo svg {
-  height: 26px;
-  margin: 0 4px 3px 0;
-  vertical-align: middle;
-}
 

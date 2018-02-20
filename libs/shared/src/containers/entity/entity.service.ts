@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../../../apps/default/src/environments/environment';
+import {Entity} from "./entity.model";
 
-export abstract class EntityService<T> {
+export abstract class EntityService<T extends Entity> {
   private baseUrl = environment.API_BASE_URL;
 
   readonly entityPath: string;

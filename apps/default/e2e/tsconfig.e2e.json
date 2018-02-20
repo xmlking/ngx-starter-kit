@@ -18,13 +18,15 @@
 
     , "../../../libs/dashboard/index.ts"
 
-    , "../../../libs/page-not-found/index.ts"
-
     , "../../../libs/admin/index.ts"
 
     , "../../../libs/experiments/index.ts"
 
     , "../../../libs/widgets/index.ts"
+
+    , "../../../libs/crud/index.ts"
+
+    , "../../../libs/not-found/index.ts"
 ],
   "exclude": [
     "**/*.spec.ts"

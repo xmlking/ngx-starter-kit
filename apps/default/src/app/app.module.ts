@@ -34,9 +34,9 @@ import { CoreModule } from './core/core.module';
         { path: 'dashboard', loadChildren: '@nx-starter-kit/dashboard#DashboardModule' },
         { path: 'admin', loadChildren: '@nx-starter-kit/admin#AdminModule' },
         { path: 'experiments', loadChildren: '@nx-starter-kit/experiments#ExperimentsModule' },
-        { path: 'page-not-found', loadChildren: '@nx-starter-kit/page-not-found#PageNotFoundModule' },
+        { path: 'not-found', loadChildren: '@nx-starter-kit/not-found#NotFoundModule' },
         // 404 should be last
-        { path: '**', redirectTo: 'page-not-found', pathMatch: 'full' }
+        { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
       ],
       {
         initialNavigation: 'enabled'

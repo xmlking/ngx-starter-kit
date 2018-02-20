@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  padding: 1.5%;
+  position: relative;
+}
+
+mat-toolbar {
+  padding: 8px 24px 0;
+}
+
+mat-form-field {
+  font-size: 16px;
+}
+
+mat-table {
+  position: relative;
+  top: 0;
+  max-height: 400px;
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+}
+
+.row {
+  //position: relative; // For mdRipple
+  &:hover {
+    //cursor: pointer;
+    background: #f5f5f5;
+    //background: #353535; //darl
+  }
+  &:active {
+    background: #eaeaea;
+    //background: #292929; //darl
+  }
+}
+
+
+.mat-column-select {
+  overflow: visible;
+}

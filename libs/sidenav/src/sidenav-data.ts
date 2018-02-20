@@ -45,6 +45,48 @@ export const defaultMenu: SidenavItem[] = [
   //   type: SidenavItemType.Separator,
   // },
   {
+    name: 'Dashboard',
+    icon: 'list',
+    chip: { value: 3, color: 'accent' },
+    children: [
+      {
+        name: 'Overview',
+        icon: 'filter_list',
+        link: '/dashboard'
+      },
+      {
+        name: 'CRUD',
+        icon: 'filter_center_focus',
+        link: '/dashboard/crud'
+      },
+      {
+        name: 'Overview 1',
+        icon: 'filter_list',
+        link: '/dashboard/overview1'
+      },
+      {
+        name: 'overview 2',
+        icon: 'done_all',
+        link: '/dashboard/overview2'
+      },
+      {
+        name: 'overview 3',
+        icon: 'filter_center_focus',
+        link: '/dashboard/overview3'
+      }
+    ]
+  },
+  {
+    name: 'Guarded Routes',
+    icon: 'mode_edit',
+    link: '/admin/guarded-routes'
+  },
+  {
+    name: 'Scrumboard',
+    link: '/home',
+    icon: 'grade'
+  },
+  {
     name: 'Material Widget',
     icon: 'widgets',
     children: [
@@ -135,43 +177,6 @@ export const defaultMenu: SidenavItem[] = [
         link: 'material-widgets/select'
       }
     ]
-  },
-  {
-    name: 'Dashboard',
-    icon: 'list',
-    chip: { value: 3, color: 'accent' },
-    children: [
-      {
-        name: 'Overview',
-        icon: 'filter_list',
-        link: '/dashboard'
-      },
-      {
-        name: 'Overview 1',
-        icon: 'filter_list',
-        link: '/dashboard/overview1'
-      },
-      {
-        name: 'overview 2',
-        icon: 'done_all',
-        link: '/dashboard/overview2'
-      },
-      {
-        name: 'overview 3',
-        icon: 'filter_center_focus',
-        link: '/dashboard/overview3'
-      }
-    ]
-  },
-  {
-    name: 'Guarded Routes',
-    icon: 'mode_edit',
-    link: '/admin/guarded-routes'
-  },
-  {
-    name: 'Scrumboard',
-    link: '/home',
-    icon: 'grade'
   },
   {
     name: 'Admin',

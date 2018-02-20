@@ -1,9 +1,10 @@
 import { OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
-import { EntityService } from '../../services/entity/entity.service';
+import { EntityService } from './entity.service';
+import {Entity} from "./entity.model";
 
-export abstract class EntityFormComponent<TEntity, TEntityService extends EntityService<TEntity>> implements OnInit {
+export abstract class EntityFormComponent<TEntity extends Entity, TEntityService extends EntityService<TEntity>> implements OnInit {
   isNew: boolean;
 
   entity: TEntity;
