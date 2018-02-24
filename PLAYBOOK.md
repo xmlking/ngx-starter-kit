@@ -109,6 +109,11 @@ ng g component containers/NotFound --app=not-found
 
 ### generate `Reusable lib Modules`
 
+# generate components for `AppConfirm` Module
+ng g lib AppConfirmq --dry-run
+ng g component AppConfirm --app=app-confirm  --flat  --dry-run
+ng g service AppConfirm --app=app-confirm --module=app-confirm --spec=false --dry-run
+
 # generate components for `fullscreen` Module
 ng g lib Fullscreen
 ng g component fullscreen --app=fullscreen --flat --dry-run

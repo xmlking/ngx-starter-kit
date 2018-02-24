@@ -1,10 +1,15 @@
-import {AfterViewInit, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
-import {MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import {OnInit, ViewChild} from '@angular/core';
+import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
 
-import { EntityService } from './entity.service';
-import {EntityColumnDef, Entity} from "./entity.model";
+import {EntityService} from './entity.service';
+import {Entity, EntityColumnDef} from './entity.model';
+import {map, mergeMap} from "rxjs/operators";
+import 'rxjs/add/operator/mergeMap';
+import {EntityFormComponent} from "./entity-form.component";
+import {ComponentType} from "@angular/cdk/portal/typings/portal";
 
-export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>> implements OnInit {
+export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
+  implements OnInit {
   dataSource: MatTableDataSource<TEntity>;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -12,40 +17,56 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   readonly columns: Array<EntityColumnDef<TEntity>>;
   readonly showToolbar?: boolean = false;
   readonly showActionColumn?: boolean = false;
-  readonly actionColumn?: string = "Actions";
+  readonly actionColumn?: string = 'Actions';
+  abstract readonly formRef:  ComponentType<EntityFormComponent<TEntity>>;
 
-  constructor(protected entityService: TService) {}
-
-  ngOnInit() {
-    this.update();
+  constructor(protected entityService: TService) {
   }
 
-  delete(id: number) {
-    this.entityService.delete(id).subscribe(
-      result => {
-        this.update();
-      },
-      error => {
-        console.log(error);
-      }
+  ngOnInit() {
+    this.update().subscribe();
+  }
+
+  abstract getNewEntity(): TEntity;
+
+
+  getOne(id: number) {
+    return this.entityService.getOne(id)
+  }
+
+  delete(item: TEntity) {
+    return this.entityService.delete(item.id).pipe(
+      mergeMap(_ => this.update())
     );
+  }
+
+  updateOrCreate(entity: TEntity, isNew: boolean) {
+    if (isNew) {
+      return this.entityService.post(entity).pipe(
+        mergeMap(_ => this.update())
+      );
+    } else {
+      return this.entityService.put(entity).pipe(
+        mergeMap(_ => this.update())
+      );
+    }
   }
 
   update() {
-    this.entityService.getAll().subscribe(
-      result => {
+    return this.entityService.getAll().pipe(
+      map(result => {
         this.dataSource = new MatTableDataSource(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-      },
-      error => {
-        console.log(error);
-      }
-    );
+        this.enrichColumnDefs();
+        //return nothing as we don't need.
+        //return result
+      })
+    )
   }
 
-  openDialogDetail(entity: TEntity) {
-    console.log(entity)
+  select(entity: TEntity) {
+    //console.log(entity);
   }
 
   applyFilter(filterValue: string) {
@@ -54,26 +75,30 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     this.dataSource.filter = filterValue;
   }
 
-
-  get displayedColumns(): string[] {
-    if(this.showActionColumn) {
-      return this.columns.map(x => x.columnDef).concat(this.actionColumn);
-    } else {
-      return this.columns.map(x => x.columnDef);
-    }
-
-    // if (this.displayedDataColumns && this.actionColumn) {
-    //   return [...this.displayedDataColumns, this.actionColumn];
-    // } else if (this.displayedDataColumns) {
-    //   return this.displayedDataColumns;
-    // } else if (this.actionColumn) {
-    //   return [this.actionColumn];
-    // } else {
-    //   return [];
+  private enrichColumnDefs() {
+    // if(this.columns.length === 0 && this.dataSource.data[0]) {
+    //   this.columns.push( ... Object.keys(this.dataSource.data[0]).map((key) =>  { return <EntityColumnDef<TEntity>>{ 'path': key} }));
     // }
+    this.columns.forEach(columnDef => {
+      if (columnDef.header === undefined) {
+        columnDef.header = columnDef.path;
+      }
+      if (columnDef.cell === undefined) {
+        columnDef.cell = (row: TEntity) => row[columnDef.path];
+      }
+    });
   }
 
-  add() {
-    //this.router.navigate(['add', {   }]);
+  get displayedColumns(): string[] {
+    if (this.showActionColumn) {
+      return this.columns.map(x => x.path).concat(this.actionColumn);
+    } else {
+      return this.columns.map(x => x.path);
+    }
+  }
+
+
+
+  selectColumns() {
   }
 }

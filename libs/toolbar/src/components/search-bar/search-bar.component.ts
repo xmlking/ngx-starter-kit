@@ -20,7 +20,7 @@ export class SearchBarComponent implements OnInit {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         const item = this.sidenavService.getSidenavItemByRoute(event.urlAfterRedirects);
-        if(item) {
+        if (item) {
           const index = this.recentlyVisited.indexOf(item);
           if (index > -1) {
             this.recentlyVisited.splice(index, 1);

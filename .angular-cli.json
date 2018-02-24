@@ -68,6 +68,12 @@
       "appRoot": ""
     },
     {
+      "name": "app-confirm",
+      "root": "libs/app-confirm/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "breadcrumbs",
       "root": "libs/breadcrumbs/src",
       "test": "../../../test.js",

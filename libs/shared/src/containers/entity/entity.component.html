@@ -8,19 +8,18 @@
         <mat-icon>search</mat-icon>Filter
       </mat-placeholder>
     </mat-form-field>
-    <button mat-icon-button style="margin-left: 16px" (click)="add()">
+    <button mat-icon-button style="margin-left: 16px" (click)="selectColumns()">
       <mat-icon>filter_list</mat-icon>
     </button>
-    <!--<button mat-mini-fab color="primary" style="margin-left: 16px" (click)="add()" matTooltip="add">-->
-      <!--<mat-icon>add</mat-icon>-->
-    <!--</button>-->
-    <button mat-mini-fab color="primary" style="margin-left: 16px" routerLink="add" matTooltip="add">
+    <button mat-mini-fab color="primary" style="margin-left: 16px" (click)="openPopUp()" matTooltip="add">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
 
+  <mat-progress-bar   *ngIf="entityService.loading$ | async" mode="indeterminate"></mat-progress-bar>
+
   <mat-table #table [dataSource]="dataSource" matSort>
-    <ng-container *ngFor="let column of columns" [matColumnDef]="column.columnDef">
+    <ng-container *ngFor="let column of columns" [matColumnDef]="column.path">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{column.cell(row)}} </mat-cell>
     </ng-container>
@@ -28,17 +27,22 @@
     <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn">
       <mat-header-cell *matHeaderCellDef>{{actionColumn}}</mat-header-cell>
       <mat-cell *matCellDef="let entity">
-        <a mat-icon-button color=primary [routerLink]="entity.id">
+        <!--<a mat-icon-button color=primary [routerLink]="entity.id">-->
+          <!--<mat-icon>edit_mode</mat-icon>-->
+        <!--</a>-->
+        <!---->
+        <button type="button" (click)="openPopUp(entity)" color="primary" mat-icon-button>
           <mat-icon>edit_mode</mat-icon>
-        </a>
-        <button type="button" (click)="delete(entity.id)" color="warn" mat-icon-button>
+        </button>
+
+        <button type="button" (click)="delete(entity).subscribe()" color="warn" mat-icon-button>
           <mat-icon>delete</mat-icon>
         </button>
       </mat-cell>
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"  (click)="openDialogDetail(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"  (click)="select(row)"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>

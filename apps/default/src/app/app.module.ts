@@ -39,8 +39,8 @@ import { CoreModule } from './core/core.module';
         { path: '**', redirectTo: 'not-found', pathMatch: 'full' }
       ],
       {
-        initialNavigation: 'enabled'
-        // paramsInheritanceStrategy: 'always',
+        initialNavigation: 'enabled',
+        paramsInheritanceStrategy: 'always',
         // onSameUrlNavigation: 'reload'
       }
     ),
