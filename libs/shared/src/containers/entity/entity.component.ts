@@ -8,6 +8,7 @@ import { fromEvent } from 'rxjs/observable/fromEvent';
 import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionModel } from '@angular/cdk/collections';
+import {Observable} from "rxjs/src/Observable";
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, AfterViewInit {
@@ -18,6 +19,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild('filter') filterRef: ElementRef;
 
+  readonly loading$;
   readonly columns: Array<EntityColumnDef<TEntity>>;
   readonly title?: string = null;
   readonly showToolbar?: boolean = false;
@@ -31,7 +33,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   filterPredicate?(entity: TEntity, filter: string): boolean;
   //TODO: make them optional abstract end
 
-  constructor(protected entityService: TService) {}
+  constructor(protected entityService: TService) {
+    this.loading$ =  entityService.loading$
+  }
 
   ngOnInit() {
     this.update().subscribe();

@@ -1,6 +1,6 @@
 <div class="notification-container" fxLayout="row" fxLayoutAlign="start center" (nxtkClickOutside)="onClickOutside()">
 
-  <button class="icon-button" type="button" mat-button (click)="toggleDropdown()" [ngClass]="[cssPrefix+'-btn']" [class.open]="isOpen">
+  <button class="icon-button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
     <span *ngIf="notifications && notifications?.length > 0;then withBadge else withOutBadge"></span>
   </button>
 

@@ -39,8 +39,10 @@
 
 </nav>
 <nav  class="default-navbar" fxHide fxShow.lt-sm>
-  <a mat-button class="default-navbar-link"
-     *ngFor="let key of sectionKeys"
-     [routerLink]="key">{{sections[key]}}</a>
+  <button mat-button class="default-navbar-link"
+          *ngFor="let item of navigation"
+          [routerLink]="[item.link]" routerLinkActive="active">
+    {{item.label}}
+  </button>
 </nav>
 
