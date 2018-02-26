@@ -22,7 +22,7 @@ import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
       {
         path: '',
         component: DashboardLayoutComponent,
-        data: { animation: 'admin' },
+        data: { animation: 'dashboard' },
         children: [
           {
             path: '',

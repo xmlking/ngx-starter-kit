@@ -13,238 +13,176 @@ export const defaultMenu: SidenavItem[] = [
   },
   {
     name: 'Admin',
-    icon: 'grade',
-    link: '/admin'
-  },
-  {
-    name: 'Dashboards',
-    type: SidenavItemType.DropDown,
-    icon: 'dashboard',
-    chip: { value: 1, color: 'accent' },
-    tooltip: 'Dashboard',
-    children: [
-      {
-        name: 'Dashboard',
-        link: '/dashboard',
-        icon: 'dashboard'
-      },
-      {
-        name: 'Admin',
-        link: '/admin',
-        icon: 'dashboard'
-      },
-      {
-        name: 'Home',
-        link: '/home',
-        icon: 'home'
-      }
-    ]
+    icon: 'format_shapes',
+    link: '/dashboard/overview1'
   },
   // {
   //   name: 'Custom components',
   //   type: SidenavItemType.Separator,
   // },
   {
-    name: 'Dashboard',
+    name: 'AppServers',
+    type: SidenavItemType.DropDown,
+    icon: 'dashboard',
+    chip: { value: 1, color: 'accent' },
+    tooltip: 'AppServers',
+    children: [
+      {
+        name: 'Servers',
+        link: '/dashboard/appservers/servers',
+        icon: 'dashboard'
+      },
+      {
+        name: 'DataSource',
+        link: '/dashboard/appservers/datasource',
+        icon: 'dashboard'
+      },
+      {
+        name: 'MQSource',
+        link: '/dashboard/appservers/mqsource',
+        icon: 'home'
+      },
+      {
+        name: 'AEMServers',
+        link: '/dashboard/appservers/aemservers',
+        icon: 'home'
+      }
+    ]
+  },
+  {
+    name: 'Database',
     icon: 'list',
     chip: { value: 3, color: 'accent' },
     children: [
       {
-        name: 'Overview',
+        name: 'Servers',
         icon: 'filter_list',
-        link: '/dashboard'
+        link: '/dashboard/database/servers'
       },
       {
-        name: 'CRUD',
+        name: 'Oracle',
         icon: 'filter_center_focus',
-        link: '/dashboard/crud'
+        link: '/dashboard/database/oracle'
       },
       {
-        name: 'Overview 1',
+        name: 'MySQL',
         icon: 'filter_list',
-        link: '/dashboard/overview1'
+        link: '/dashboard/database/mysql'
       },
       {
-        name: 'overview 2',
+        name: 'DB2',
         icon: 'done_all',
-        link: '/dashboard/overview2'
+        link: '/dashboard/database/db2'
       },
       {
-        name: 'overview 3',
+        name: 'Sybase',
         icon: 'filter_center_focus',
-        link: '/dashboard/overview3'
+        link: '/dashboard/database/sybase'
       }
     ]
   },
   {
-    name: 'Guarded Routes',
-    icon: 'mode_edit',
-    link: '/admin/guarded-routes'
-  },
-  {
-    name: 'Scrumboard',
-    link: '/home',
-    icon: 'grade'
-  },
-  {
-    name: 'Material Widget',
+    name: 'Layer7',
     icon: 'widgets',
     children: [
       {
-        name: 'Buttons',
-        link: 'material-widgets/buttons',
+        name: 'my.cnf',
+        link: '/dashboard/layer7/my.cnf',
         icon: 'indeterminate_check_box'
       },
       {
-        name: 'List',
-        link: 'material-widgets/list',
+        name: 'host.properties',
+        link: '/dashboard/layer7/host.properties',
         icon: 'list'
       },
       {
-        name: 'Stepper',
-        link: 'material-widgets/stepper',
+        name: 'appliance.conf',
+        link: '/dashboard/layer7/appliance.conf',
         icon: 'view_week'
       },
       {
-        name: 'Expansion',
-        link: 'material-widgets/expansion',
+        name: 'node.properties',
+        link: '/dashboard/layer7/node.properties',
         icon: 'web_aaset'
       },
       {
-        name: 'Progress Spinner',
-        link: 'material-widgets/spinner',
+        name: 'system.properties',
+        link: '/dashboard/layer7/system.properties',
         icon: 'cached'
       },
       {
-        name: 'Cards',
-        link: 'material-widgets/cards',
+        name: 'appliancedefs.sh',
+        link: '/dashboard/layer7/appliancedefs.sh',
         icon: 'crop_16_9'
       },
       {
-        name: 'Icons',
-        link: 'material-widgets/icons',
+        name: 'cluster.properties',
+        link: '/dashboard/layer7/cluster.properties',
         icon: 'gif'
-      },
-      {
-        name: 'AutoComplete',
-        link: 'material-widgets/autocomplete',
-        icon: 'get_app'
-      },
-      {
-        name: 'CheckBox',
-        link: 'material-widgets/checkbox',
-        icon: 'check_box'
-      },
-      {
-        name: 'DatePicker',
-        link: 'material-widgets/datepicker',
-        icon: 'date_range'
-      },
-
-      {
-        name: 'Slider',
-        link: 'material-widgets/slider',
-        icon: 'keyboard_tab'
-      },
-      {
-        name: 'Slide Toggle',
-        link: 'material-widgets/slide-toggle',
-        icon: 'album'
-      },
-      {
-        name: 'Menu',
-        link: 'material-widgets/menu',
-        icon: 'menu'
-      },
-      {
-        name: 'Progress Bar',
-        link: 'material-widgets/progress-bar',
-        icon: 'trending_flat'
-      },
-      {
-        name: 'Input',
-        link: 'material-widgets/input',
-        icon: 'input'
-      },
-      {
-        name: 'Radio',
-        icon: 'radio_button_checked',
-        link: 'material-widgets/radio'
-      },
-      {
-        name: 'Select',
-        icon: 'select_all',
-        link: 'material-widgets/select'
       }
-    ]
+     ]
   },
   {
-    name: 'Admin',
+    name: 'MapR',
+    link: '/dashboard/mapr',
+    icon: 'gif'
+  },
+  {
+    name: 'NAS',
     icon: 'map',
     children: [
       {
-        name: 'overview',
-        icon: 'directions',
-        link: '/admin'
+        name: 'Cluster',
+        icon: 'radio_remove_me',
+        link: 'dashboard/nas/cluster'
       },
       {
-        name: 'Products',
-        icon: 'directions',
-        link: '/admin/products'
+        name: 'Cluster Node',
+        icon: 'show_chart',
+        link: 'dashboard/nas/cluster-node'
       },
       {
-        name: 'Orders',
+        name: 'Virtual NAS',
+        icon: 'view_list',
+        link: 'dashboard/nas/virtual-nas'
+      },
+      {
+        name: 'Cluster Network',
         icon: 'directions',
-        link: '/admin/orders'
+        link: 'dashboard/nas/cluster-network'
+      },
+      {
+        name: 'CIFS Shares',
+        icon: 'editor',
+        link: 'dashboard/nas/cifs-shares'
+      },
+      {
+        name: 'NFS Shares',
+        icon: 'mail',
+        link: 'dashboard/nas/nas-shares'
       }
     ]
   },
   {
-    name: 'Applications',
+    name: 'DataPower',
     icon: 'view_module',
     children: [
       {
-        name: 'Products',
+        name: '  serviceproxy',
         link: '/dashboard/products',
         icon: 'dashboard'
-      },
-      {
-        name: 'mail',
-        icon: 'mail',
-        link: 'mail/mail'
-      },
-      {
-        name: 'Editor',
-        icon: 'editor',
-        link: 'editor/editor'
       }
     ]
   },
-  {
-    name: 'Pages',
-    icon: 'content_copy',
-    children: [
-      {
-        name: 'Login',
-        icon: 'work',
-        link: '../login'
-      },
-      {
-        name: 'Services',
-        icon: 'local_laundry_service',
-        link: 'pages/services'
-      },
-      {
-        name: 'Contact',
-        icon: 'directions',
-        link: 'pages/contact'
-      }
-    ]
-  },
-  {
+   {
     name: 'Experiments',
     icon: 'pie_chart_outlined',
     children: [
+      {
+        name: 'CRUD',
+        icon: 'web_aaset',
+        link: '/dashboard/crud'
+      },
       {
         name: 'experiments',
         icon: 'view_list',
@@ -253,17 +191,17 @@ export const defaultMenu: SidenavItem[] = [
       {
         name: 'experiments1',
         icon: 'show_chart',
-        link: '/experiments/experiment1'
+        link: '/dashboard/overview1'
       },
       {
         name: 'experiments3',
         icon: 'pie_chart',
-        link: '/experiments/experiment2'
+        link: '/dashboard/overview2'
       },
       {
-        name: 'Radio',
-        icon: 'radio_remove_me',
-        link: 'radio_remove_me/radio'
+        name: 'experiments3',
+        icon: 'crop_16_9',
+        link: '/dashboard/overview3'
       }
     ]
   },

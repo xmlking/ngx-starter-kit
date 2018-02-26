@@ -1,0 +1,56 @@
+.default-bg {
+  background: #ffffff !important;
+}
+.height-100 {
+  min-height: 100vh;
+}
+.page-wrap {
+  display: flex;
+  align-items: center;
+  padding: 40px 1rem;
+  height: 100%;
+}
+
+.app-error {
+  text-align: center;
+  width: 320px;
+  max-width: 320px;
+  margin: 0 auto;
+}
+.app-error {
+ .error-icon {
+    height: 120px;
+    width: 120px;
+    font-size: 120px;
+    float: left;
+  }
+ .error-text {
+    float: right;
+    width: 200px;
+    max-width: 200px;
+  }
+ .error-title {
+    font-size: 5rem;
+    font-weight: 900;
+    margin: 0;
+  }
+ .error-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+ .error-actions {
+    width: 100%;
+    overflow: hidden;
+    min-height: 54px;
+    margin-top: 100px;
+  }
+}
+
+.mb-1 {
+  margin-bottom: 1rem !important;
+}
+
+.fix {
+  position: relative;
+  overflow: hidden;
+}
