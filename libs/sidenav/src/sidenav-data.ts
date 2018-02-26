@@ -120,7 +120,7 @@ export const defaultMenu: SidenavItem[] = [
         link: '/dashboard/layer7/cluster.properties',
         icon: 'gif'
       }
-     ]
+    ]
   },
   {
     name: 'MapR',
@@ -168,13 +168,13 @@ export const defaultMenu: SidenavItem[] = [
     icon: 'view_module',
     children: [
       {
-        name: '  serviceproxy',
-        link: '/dashboard/products',
-        icon: 'dashboard'
+        name: 'serviceproxy',
+        link: '/dashboard/datapower',
+        icon: 'mail'
       }
     ]
   },
-   {
+  {
     name: 'Experiments',
     icon: 'pie_chart_outlined',
     children: [

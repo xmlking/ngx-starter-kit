@@ -1,13 +1,13 @@
-import {AfterViewInit, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource} from '@angular/material';
+import { AfterViewInit, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
-import {EntityService} from './entity.service';
-import {Entity, EntityColumnDef} from './entity.model';
-import {map, mergeMap, debounceTime, distinctUntilChanged, concatMap} from "rxjs/operators";
+import { EntityService } from './entity.service';
+import { Entity, EntityColumnDef } from './entity.model';
+import { map, mergeMap, debounceTime, distinctUntilChanged, concatMap } from 'rxjs/operators';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-import {EntityFormComponent} from "./entity-form.component";
-import {ComponentType} from "@angular/cdk/portal/typings/portal";
-import {SelectionModel} from "@angular/cdk/collections";
+import { EntityFormComponent } from './entity-form.component';
+import { ComponentType } from '@angular/cdk/portal/typings/portal';
+import { SelectionModel } from '@angular/cdk/collections';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, AfterViewInit {
@@ -19,18 +19,19 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   @ViewChild('filter') filterRef: ElementRef;
 
   readonly columns: Array<EntityColumnDef<TEntity>>;
+  readonly title?: string = null;
   readonly showToolbar?: boolean = false;
   readonly showActionColumn?: boolean = false;
   readonly showSelectColumn?: boolean = false;
   readonly actionColumn?: string = 'Actions';
   readonly selectColumn?: string = 'select';
-  abstract readonly formRef:  ComponentType<EntityFormComponent<TEntity>>;
-  abstract getNewEntity(): TEntity;
-  //TODO: abstract filterPredicate?(entity: TEntity, filter: string): boolean
-  filterPredicate?(entity: TEntity, filter: string): boolean
+  //TODO: make them optional abstract
+  readonly formRef?: ComponentType<EntityFormComponent<TEntity>>;
+  getNewEntity?(): TEntity;
+  filterPredicate?(entity: TEntity, filter: string): boolean;
+  //TODO: make them optional abstract end
 
-  constructor(protected entityService: TService) {
-  }
+  constructor(protected entityService: TService) {}
 
   ngOnInit() {
     this.update().subscribe();
@@ -46,7 +47,6 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     //   this.paginator.pageIndex = 0;
     //   this.applyFilter(this.filterRef.nativeElement.value)
     // });
-
   }
 
   ngAfterViewInit() {
@@ -56,29 +56,19 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     this.dataSource.paginator = this.paginator;
   }
 
-
-
-
-
   getOne(id: number) {
-    return this.entityService.getOne(id)
+    return this.entityService.getOne(id);
   }
 
   delete(item: TEntity) {
-    return this.entityService.delete(item.id).pipe(
-      concatMap(_ => this.update())
-    );
+    return this.entityService.delete(item.id).pipe(concatMap(_ => this.update()));
   }
 
   updateOrCreate(entity: TEntity, isNew: boolean) {
     if (isNew) {
-      return this.entityService.post(entity).pipe(
-        concatMap(_ => this.update())
-      );
+      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
     } else {
-      return this.entityService.put(entity).pipe(
-        concatMap(_ => this.update())
-      );
+      return this.entityService.put(entity).pipe(concatMap(_ => this.update()));
     }
   }
 
@@ -93,9 +83,8 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
         //return nothing as we don't need.
         //return result
       })
-    )
+    );
   }
-
 
   /** Whether all filtered rows are selected. */
   isAllFilteredRowsSelected() {
@@ -104,9 +93,11 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   /** Whether the selection it totally matches the filtered rows. */
   isMasterToggleChecked() {
-    return this.selection.hasValue() &&
+    return (
+      this.selection.hasValue() &&
       this.isAllFilteredRowsSelected() &&
-      this.selection.selected.length >= this.dataSource.filteredData.length;
+      this.selection.selected.length >= this.dataSource.filteredData.length
+    );
   }
 
   /**
@@ -114,8 +105,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
    * filtered rows there are no filtered rows displayed.
    */
   isMasterToggleIndeterminate() {
-    return this.selection.hasValue() &&
-      (!this.isAllFilteredRowsSelected() || !this.dataSource.filteredData.length);
+    return this.selection.hasValue() && (!this.isAllFilteredRowsSelected() || !this.dataSource.filteredData.length);
   }
 
   /** Selects all filtered rows if they are not all selected; otherwise clear selection. */
@@ -160,8 +150,8 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   selectRow(entity: TEntity) {
-    if(this.showSelectColumn) {
-      this.selection.toggle(entity)
+    if (this.showSelectColumn) {
+      this.selection.toggle(entity);
     }
   }
 

@@ -1,3 +1,6 @@
+<div *ngIf="title" class="default-primary-header">
+  <h1>{{title}}</h1>
+</div>
 <!--<div fxLayout="column" fxLayoutAlign="start stretch">-->
 <div fxLayout="column">
 <mat-card class="mat-elevation-z8">
@@ -11,7 +14,7 @@
     <button mat-icon-button style="margin-left: 16px" (click)="selectColumns()">
       <mat-icon>filter_list</mat-icon>
     </button>
-    <button mat-mini-fab color="primary" style="margin-left: 16px" (click)="openPopUp()" matTooltip="add">
+    <button *ngIf="showActionColumn" mat-mini-fab color="primary" style="margin-left: 16px" (click)="openPopUp()" matTooltip="add">
       <mat-icon>add</mat-icon>
     </button>
   </mat-toolbar>
