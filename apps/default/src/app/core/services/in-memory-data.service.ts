@@ -23,6 +23,9 @@ export class InMemoryDataService implements InMemoryDbService {
     const clusterResponse = await fetch('assets/data/nas/cluster.json');
     const cluster = await clusterResponse.json();
 
+    const mycnfResponse = await fetch('assets/data/layer7/my.cnf.json');
+    const mycnf = await mycnfResponse.json();
+
     const symbols = [
       {
         id: 1,
@@ -41,17 +44,18 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { accounts, symbols, serviceproxy, cluster };
+    return { accounts, symbols, serviceproxy, cluster, mycnf };
   }
 
   parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
     const newUrl = url
       .replace(/\/datapower\/serviceproxy/, '/serviceproxy')
-      .replace(/\/nas\/cluster/, '/cluster');
+      .replace(/\/nas\/cluster/, '/cluster')
+      .replace(/\/layer7\/my.cnf/, '/mycnf');
 
-    // console.log('newUrl', newUrl);
     const parsed = utils.parseRequestUrl(newUrl);
-    console.log(`parseRequestUrl override of '${url}':`, parsed);
+    // console.log(`parseRequestUrl override of '${url}':`, parsed);
+    console.log(`parseRequestUrl override of '${url}':`, `new: ${newUrl}`);
     return parsed;
   }
 }
