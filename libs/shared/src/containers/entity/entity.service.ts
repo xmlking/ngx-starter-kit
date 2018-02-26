@@ -13,7 +13,7 @@ export abstract class EntityService<T extends Entity> {
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
 
-  readonly abstract entityPath: string;
+  abstract readonly entityPath: string;
 
   constructor(protected httpClient: HttpClient) {}
 

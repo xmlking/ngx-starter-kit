@@ -17,6 +17,12 @@ export class InMemoryDataService implements InMemoryDbService {
     const response = await fetch('assets/data/accounts.json');
     const accounts = await response.json();
 
+    const serviceProxyResponse = await fetch('assets/data/datapower/serviceproxy.json');
+    const serviceproxy = await serviceProxyResponse.json();
+
+    const clusterResponse = await fetch('assets/data/nas/cluster.json');
+    const cluster = await clusterResponse.json();
+
     const symbols = [
       {
         id: 1,
@@ -35,14 +41,17 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { accounts, symbols };
+    return { accounts, symbols, serviceproxy, cluster };
   }
 
-  // parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
-  //   const newUrl = url.replace(/\/api\/tmdb-4705472\/appserver/, '/api/appservers');
-  //   console.log('newUrl', newUrl);
-  //   const parsed = utils.parseRequestUrl(newUrl);
-  //   console.log(`parseRequestUrl override of '${url}':`, parsed);
-  //   return parsed;
-  // }
+  parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
+    const newUrl = url
+      .replace(/\/datapower\/serviceproxy/, '/serviceproxy')
+      .replace(/\/nas\/cluster/, '/cluster');
+
+    // console.log('newUrl', newUrl);
+    const parsed = utils.parseRequestUrl(newUrl);
+    console.log(`parseRequestUrl override of '${url}':`, parsed);
+    return parsed;
+  }
 }

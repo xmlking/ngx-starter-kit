@@ -134,32 +134,32 @@ export const defaultMenu: SidenavItem[] = [
       {
         name: 'Cluster',
         icon: 'radio_remove_me',
-        link: 'dashboard/nas/cluster'
+        link: '/dashboard/nas/cluster'
       },
       {
         name: 'Cluster Node',
         icon: 'show_chart',
-        link: 'dashboard/nas/cluster-node'
+        link: '/dashboard/nas/cluster-node'
       },
       {
         name: 'Virtual NAS',
         icon: 'view_list',
-        link: 'dashboard/nas/virtual-nas'
+        link: '/dashboard/nas/virtual-nas'
       },
       {
         name: 'Cluster Network',
         icon: 'directions',
-        link: 'dashboard/nas/cluster-network'
+        link: '/dashboard/nas/cluster-network'
       },
       {
         name: 'CIFS Shares',
         icon: 'editor',
-        link: 'dashboard/nas/cifs-shares'
+        link: '/dashboard/nas/cifs-shares'
       },
       {
         name: 'NFS Shares',
         icon: 'mail',
-        link: 'dashboard/nas/nas-shares'
+        link: '/dashboard/nas/nas-shares'
       }
     ]
   },
