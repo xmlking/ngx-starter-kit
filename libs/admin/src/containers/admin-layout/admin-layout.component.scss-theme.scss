@@ -1,4 +1,4 @@
-@mixin admin($theme) {
+@mixin nxtk-admin-layout-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);

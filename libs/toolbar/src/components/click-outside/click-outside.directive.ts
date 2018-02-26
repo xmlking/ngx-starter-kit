@@ -1,10 +1,10 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
-  selector: '[sumoClickOutside]'
+  selector: '[nxtkClickOutside]'
 })
 export class ClickOutsideDirective {
-  @Output() public sumoClickOutside = new EventEmitter<MouseEvent>();
+  @Output() public nxtkClickOutside = new EventEmitter<MouseEvent>();
 
   constructor(private _elementRef: ElementRef) {}
 
@@ -16,7 +16,7 @@ export class ClickOutsideDirective {
 
     const clickedInside = this._elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
-      this.sumoClickOutside.emit(event);
+      this.nxtkClickOutside.emit(event);
     }
   }
 }

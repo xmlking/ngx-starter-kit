@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ToolBarHelpers } from './toolbar.helpers';
 
 @Component({
-  selector: 'sumo-toolbar',
+  selector: 'nxtk-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss']
 })

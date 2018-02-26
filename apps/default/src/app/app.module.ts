@@ -11,7 +11,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { environment } from '../environments/environment';
+import { environment } from '@env/environment';
 
 import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';

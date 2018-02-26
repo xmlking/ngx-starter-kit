@@ -1,7 +1,8 @@
 <div fxLayout="column" fxFlexFill>
   <app-home-header class="mat-elevation-z6" id="top"></app-home-header>
-  <router-outlet></router-outlet>
-  <span fxFlex><!-- fill space --></span>
+  <div fxFlex class="content" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
+    <router-outlet #o="outlet"></router-outlet>
+  </div>
   <scroll-to-top><!-- add id="top" --></scroll-to-top>
   <app-footer></app-footer>
 </div>

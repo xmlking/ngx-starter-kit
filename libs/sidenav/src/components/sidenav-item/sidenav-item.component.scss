@@ -27,7 +27,7 @@ mat-nav-list a.sidenav-anchor {
 .sidenav-list {
   transition: height .4s cubic-bezier(.35, 0, .25, 1);
 
-  > sumo-sidenav-item {
+  > nxtk-sidenav-item {
     &.open {
 
       > .sidenav-anchor {

@@ -1,4 +1,4 @@
-@mixin user-menu-theme($theme) {
+@mixin nxtk-user-menu-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);

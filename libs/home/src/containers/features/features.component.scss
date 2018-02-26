@@ -1,0 +1,40 @@
+@import '~@angular/material/theming';
+
+.features-container {
+  display: block;
+  padding: 1.2%;
+  position: relative;
+}
+
+mat-card {
+  margin: 0 0 20px 0;
+
+  mat-card-title {
+    position: relative;
+
+    code {
+      position: absolute;
+      top: 11px;
+      right: 0;
+      float: right;
+      font-size: 10px;
+    }
+  }
+  mat-card-subtitle {
+    min-height: 60px;
+  }
+
+  @media ($mat-xsmall) {
+    mat-card-subtitle {
+      min-height: auto;
+    }
+  }
+
+  a {
+    i {
+      position: relative;
+      top: -1px;
+      left: -3px;
+    }
+  }
+}

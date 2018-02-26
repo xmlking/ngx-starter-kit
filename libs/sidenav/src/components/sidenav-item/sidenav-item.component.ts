@@ -4,7 +4,7 @@ import { SidenavItem } from './sidenav-item.model';
 import { SidenavService } from '../../sidenav.service';
 
 @Component({
-  selector: 'sumo-sidenav-item',
+  selector: 'nxtk-sidenav-item',
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.scss'],
   encapsulation: ViewEncapsulation.None

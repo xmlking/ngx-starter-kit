@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'sumo-quickpanel',
+  selector: 'nxtk-quickpanel',
   templateUrl: './quickpanel.component.html',
   styleUrls: ['./quickpanel.component.scss']
 })

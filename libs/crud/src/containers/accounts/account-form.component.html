@@ -49,14 +49,28 @@
       </div>
 
       <div fxFlex="33" class="pr-1">
+        <!--<mat-form-field class="full-width">-->
+          <!--<input-->
+            <!--matInput-->
+            <!--type="number"-->
+            <!--name="dob"-->
+            <!--formControlName="dob"-->
+            <!--placeholder="Date of Birth"-->
+            <!--required>-->
+        <!--</mat-form-field>-->
+
+
         <mat-form-field class="full-width">
           <input
             matInput
-            type="number"
-            name="age"
-            formControlName="age"
-            placeholder="Age"
+            name="dob"
+            formControlName="dob"
+            [matDatepicker]="picker"
+            placeholder="Date of Birth"
+            [min]="minDate" [max]="maxDate"
             required>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
       </div>
 

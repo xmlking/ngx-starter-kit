@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as screenfull from 'screenfull';
 
 @Component({
-  selector: 'sumo-fullscreen',
+  selector: 'nxtk-fullscreen',
   templateUrl: './fullscreen.component.html',
   styleUrls: ['./fullscreen.component.scss']
 })

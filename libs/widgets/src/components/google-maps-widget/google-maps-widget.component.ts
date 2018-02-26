@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sumo-google-maps-widget',
+  selector: 'nxtk-google-maps-widget',
   templateUrl: './google-maps-widget.component.html'
 })
 export class GoogleMapsWidgetComponent implements OnInit {

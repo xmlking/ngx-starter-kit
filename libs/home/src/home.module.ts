@@ -9,6 +9,7 @@ import { BlogComponent } from './containers/blog/blog.component';
 import { AboutComponent } from './containers/about/about.component';
 import { ScrollToTopModule } from '@nx-starter-kit/scroll-to-top';
 import { SvgViewerModule } from '@nx-starter-kit/svg-viewer';
+import {FeaturesComponent} from "./containers/features/features.component";
 
 @NgModule({
   imports: [
@@ -37,11 +38,16 @@ import { SvgViewerModule } from '@nx-starter-kit/svg-viewer';
             path: 'about',
             component: AboutComponent,
             data: { animation: 'about' }
+          },
+          {
+            path: 'features',
+            component: FeaturesComponent,
+            data: { animation: 'features' }
           }
         ]
       }
     ])
   ],
-  declarations: [HeaderComponent, HomeLayoutComponent, LandingComponent, BlogComponent, AboutComponent]
+  declarations: [HeaderComponent, HomeLayoutComponent, LandingComponent, BlogComponent, AboutComponent, FeaturesComponent]
 })
 export class HomeModule {}

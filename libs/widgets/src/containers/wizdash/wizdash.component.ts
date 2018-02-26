@@ -10,7 +10,7 @@ import {
 } from '../../data/widgetDemoData.data';
 
 @Component({
-  selector: 'sumo-wizdash',
+  selector: 'nxtk-wizdash',
   templateUrl: './wizdash.component.html',
   styleUrls: ['./wizdash.component.scss']
 })

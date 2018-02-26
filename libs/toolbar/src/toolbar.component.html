@@ -8,18 +8,18 @@
   </div>
 
   <div fxLayout="row" fxLayoutAlign="start center" fxFlex="500px" fxShow fxHide.lt-lg>
-    <sumo-search-bar></sumo-search-bar>
+    <nxtk-search-bar></nxtk-search-bar>
   </div>
 
-  <sumo-breadcrumbs *ngIf="showBreadcrumbs" fxShow fxHide.lt-lg></sumo-breadcrumbs>
+  <nxtk-breadcrumbs *ngIf="showBreadcrumbs" fxShow fxHide.lt-lg></nxtk-breadcrumbs>
 
   <span fxFlex><!-- fill space --></span>
 
-  <sumo-fullscreen fxShow  fxHide.lt-lg></sumo-fullscreen>
+  <nxtk-fullscreen fxShow  fxHide.lt-lg></nxtk-fullscreen>
 
-  <sumo-search fxShow  fxHide.lt-sm></sumo-search>
+  <nxtk-search fxShow  fxHide.lt-sm></nxtk-search>
 
-  <sumo-notifications fxShow  fxHide.lt-md [notifications]="toolbarHelpers?.notifications"></sumo-notifications>
+  <nxtk-notifications fxShow  fxHide.lt-md [notifications]="toolbarHelpers?.notifications"></nxtk-notifications>
 
   <user-menu [currentUser]="toolbarHelpers?.currentUser"></user-menu>
 

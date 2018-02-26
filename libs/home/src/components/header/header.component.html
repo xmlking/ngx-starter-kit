@@ -6,13 +6,15 @@
     <span>SumoApp</span>
   </a>
 
-  <a mat-button class="default-button"  fxShow  fxHide.lt-md routerLink="/">Intro</a>
+  <button mat-button class="default-button"  fxShow  fxHide.lt-md routerLink="/home"
+          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Intro</button>
 
   <span fxFlex><!-- fill space --></span>
 
-  <a mat-button class="default-button" fxShow  fxHide.lt-sm
-     *ngFor="let key of sectionKeys"
-     [routerLink]="key">{{sections[key]}}</a>
+  <button mat-button class="default-button" fxShow  fxHide.lt-md *ngFor="let item of navigation"
+          [routerLink]="[item.link]" routerLinkActive="active">
+    {{item.label}}
+  </button>
 
   <theme-picker fxShow  fxHide.lt-sm></theme-picker>
 

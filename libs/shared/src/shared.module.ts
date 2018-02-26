@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MaterialModule } from '@nx-starter-kit/material';
+import { MaterialDateModule } from '@nx-starter-kit/material';
 import { FullscreenModule } from '@nx-starter-kit/fullscreen';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -31,6 +32,7 @@ const DIRECTIVES = [MinValidatorDirective];
     ReactiveFormsModule,
     FlexLayoutModule,
     MaterialModule,
+    MaterialDateModule,
     PerfectScrollbarModule,
     FullscreenModule,
     ...COMPONENTS,

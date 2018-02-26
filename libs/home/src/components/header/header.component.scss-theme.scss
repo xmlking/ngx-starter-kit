@@ -1,4 +1,4 @@
-@mixin nav-bar-theme($theme) {
+@mixin nxtk-header-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
@@ -11,5 +11,13 @@
     .default-navbar, .default-navbar-header {
       background: mat-color($primary);
     }
+
+    .mat-button {
+      &.active {
+        color: mat-color($accent, default-contrast);
+        background-color: mat-color($accent);
+      }
+    }
+
   }
 }

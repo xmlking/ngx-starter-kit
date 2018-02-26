@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { D3ChartService, D3 } from '../charts/nvD3/nvD3.service';
 
 @Component({
-  selector: 'sumo-traffic-sources',
+  selector: 'nxtk-traffic-sources',
   templateUrl: './traffic-sources.component.html'
 })
 export class TrafficSourcesComponent implements OnInit {

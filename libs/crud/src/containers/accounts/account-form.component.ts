@@ -6,9 +6,11 @@ import {Account, Gender} from "./account.model";
 import {states} from "./states"
 import {Observable} from "rxjs/Observable";
 import {EntityFormComponent} from "@nx-starter-kit/shared";
+import * as moment from 'moment';
+
 
 @Component({
-  selector: 'sumo-account-form',
+  selector: 'nxtk-account-form',
   templateUrl: './account-form.component.html',
   styleUrls: ['./account-form.component.scss']
 })
@@ -17,6 +19,9 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
   readonly genderOptions = Object.keys(Gender);
   readonly states:string[] = states;
   filteredStates: Observable<string[]>;
+
+  readonly maxDate = moment();
+  readonly minDate = moment().subtract(100, 'years');
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: {title: string, payload: Account},
@@ -46,20 +51,18 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
     this.entityForm = this.fb.group({
       first_name: [item.first_name || '', Validators.required],
       last_name: [item.last_name || '', Validators.required],
-      // name: [item.name || '', Validators.required],
       gender: [item.gender || '', Validators.required],
-      age: [item.age || 0, Validators.required],
+      dob: [item.dob , Validators.required],
       email: [item.email || '',  [Validators.required,  Validators.email]],
-      phone: [item.phone || '',  [Validators.required,  Validators.minLength(11), Validators.pattern('1[0-9]{10}')]],
+      phone: [item.phone || '',  [Validators.required,  Validators.minLength(11)]],
       company: [item.company || '', Validators.required],
-      // address: this.fb.group( item.address|| new Address()),
       address: this.fb.group({
         street: [item.address.street || '', Validators.required],
         city: [item.address.city || '', Validators.required],
         state: [item.address.state || '', Validators.required],
         zip: [item.address.zip || '', Validators.required]
       })
-    })
+    },{ updateOn: 'blur' })
   }
 
 

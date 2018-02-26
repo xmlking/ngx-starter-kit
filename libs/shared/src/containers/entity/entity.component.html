@@ -3,7 +3,7 @@
 <mat-card class="mat-elevation-z8">
   <mat-toolbar *ngIf="showToolbar">
     <mat-form-field fxFlex>
-      <input matInput (keyup)="applyFilter($event.target.value)">
+      <input matInput #filter (keyup)="applyFilter($event.target.value)">
       <mat-placeholder>
         <mat-icon>search</mat-icon>Filter
       </mat-placeholder>
@@ -19,6 +19,24 @@
   <mat-progress-bar   *ngIf="entityService.loading$ | async" mode="indeterminate"></mat-progress-bar>
 
   <mat-table #table [dataSource]="dataSource" matSort>
+
+    <!-- Checkbox Column -->
+    <ng-container *ngIf="showSelectColumn" matColumnDef="select">
+      <mat-header-cell *matHeaderCellDef>
+        <mat-checkbox (change)="$event ? masterToggle() : null"
+                      [disabled]="!dataSource.filteredData.length"
+                      [checked]="isMasterToggleChecked()"
+                      [indeterminate]="isMasterToggleIndeterminate()">
+        </mat-checkbox>
+      </mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <mat-checkbox (click)="$event.stopPropagation()"
+                      (change)="$event ? selectRow(row) : null"
+                      [checked]="selection.isSelected(row)">
+        </mat-checkbox>
+      </mat-cell>
+    </ng-container>
+
     <ng-container *ngFor="let column of columns" [matColumnDef]="column.path">
       <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </mat-header-cell>
       <mat-cell *matCellDef="let row"> {{column.cell(row)}} </mat-cell>
@@ -27,10 +45,6 @@
     <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn">
       <mat-header-cell *matHeaderCellDef>{{actionColumn}}</mat-header-cell>
       <mat-cell *matCellDef="let entity">
-        <!--<a mat-icon-button color=primary [routerLink]="entity.id">-->
-          <!--<mat-icon>edit_mode</mat-icon>-->
-        <!--</a>-->
-        <!---->
         <button type="button" (click)="openPopUp(entity)" color="primary" mat-icon-button>
           <mat-icon>edit_mode</mat-icon>
         </button>
@@ -42,7 +56,9 @@
     </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"  (click)="select(row)"></mat-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"
+             [class.selected]="selection.isSelected(row)"
+             (click)="selectRow(row)"></mat-row>
   </mat-table>
 
   <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>

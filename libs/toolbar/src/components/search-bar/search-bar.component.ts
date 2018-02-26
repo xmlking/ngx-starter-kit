@@ -4,7 +4,7 @@ import { SidenavItem } from '@nx-starter-kit/sidenav';
 import { SidenavService } from '@nx-starter-kit/sidenav';
 
 @Component({
-  selector: 'sumo-search-bar',
+  selector: 'nxtk-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })

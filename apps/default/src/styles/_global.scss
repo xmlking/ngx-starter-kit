@@ -13,8 +13,11 @@
   }
 }
 
+
 code {
-  font-size: 90%;
+  white-space: nowrap;
+  border-radius: 10px;
+  padding: 0 8px 1px 8px;
 }
 
 .default-markdown-pre code {

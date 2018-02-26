@@ -5,12 +5,13 @@ import {AccountService} from './account.service';
 import {EntitiesComponent} from '@nx-starter-kit/shared';
 import {AppConfirmService} from "@nx-starter-kit/app-confirm";
 import {MatDialog, MatSnackBar} from "@angular/material";
-import {catchError, tap, filter, map, mergeMap} from "rxjs/operators";
+import {catchError, tap, concatMap, filter, map, mergeMap} from "rxjs/operators";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {AccountFormComponent} from "./account-form.component";
+import * as moment from 'moment';
 
 @Component({
-  selector: 'sumo-accounts',
+  selector: 'nxtk-accounts',
   templateUrl: '../../../../shared/src/containers/entity/entity.component.html',
   styleUrls: ['../../../../shared/src/containers/entity/entity.component.scss']
 })
@@ -18,15 +19,17 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
   // readonly columns = [ { path: 'id'},{ path: 'name'},{ path: 'gender'},{ path: 'age'} ]
   readonly columns = [
     {path: 'userId', header: 'No.', cell: (row: Account) => `${row.id}`},
-    {path: 'userName', header: 'Name', cell: (row: Account) => `${row.name}`},
+    {path: 'Name', header: 'Name', cell: (row: Account) => `${row.first_name} ${row.last_name}`},
     {path: 'gender', header: 'Gender', cell: (row: Account) => `${row.gender}`},
-    {path: 'age', header: 'Age', cell: (row: Account) => `${row.age}`},
+    // {path: 'dob', header: 'DoB', cell: (row: Account) =>  `${row.dob}`},
+    {path: 'dob', header: 'DoB', cell: (row: Account) =>  `${moment(row.dob).format('LL')}`},
     {path: 'city', header: 'City', cell: (row: Account) => `${row.address.city}`},
     {path: 'state', header: 'State', cell: (row: Account) => `${row.address.state}`}
   ];
 
   // optional
   readonly showActionColumn = true;
+  readonly showSelectColumn = true;
   readonly showToolbar = true;
 
   readonly formRef = AccountFormComponent;
@@ -40,7 +43,7 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
 
   // optional
   delete(item: Account) {
-    return this.confirmService.confirm('Confirm', `Delete ${item.name}?`).pipe(
+    return this.confirmService.confirm('Confirm', `Delete ${item.first_name} ${item.last_name}?`).pipe(
       filter(confirmed=> confirmed === true),
       mergeMap(_ => super.delete(item)),
       map(_ =>
@@ -59,6 +62,10 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
     entity.address = new Address();
     return entity;
   }
+
+  // filterPredicate(entity: Account, _filter: string): boolean  {
+  //   return entity.first_name.indexOf(_filter) !== -1;
+  // }
 
   /**
    *  openPopUp() is used in entity.component.html
@@ -83,7 +90,7 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
       filter(res=> res !== false),
       // tap(res => console.log(res)),
       map(res=> { if(!isNew) res.id = entity.id; return res }),
-      mergeMap(res =>  super.updateOrCreate(res, isNew))
+      concatMap(res =>  super.updateOrCreate(res, isNew))
     ).subscribe(
       _ => this.snack.open(isNew? 'Member Created!': 'Member Updated!', 'OK', {duration: 5000}),
       error =>  this.snack.open(error, 'OK', {duration: 10000})

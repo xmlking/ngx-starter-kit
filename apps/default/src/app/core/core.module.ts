@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { HttpClientModule } from '@angular/common/http';
-import { environment } from '../../environments/environment';
+import { environment } from '@env/environment';
 import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
 

@@ -46,19 +46,12 @@ npm install
 > adding 3rd party modules/libs
 ```bash
 cd nx-starter-kit
-npm i @angular/flex-layout
-npm i @angular/material @angular/cdk hammerjs
-npm i web-animations-js
-npm i @swimlane/ngx-charts
-npm i @swimlane/ngx-datatable
-npm i screenfull
-npm i ngx-perfect-scrollbar
+npm i @angular/flex-layout @angular/material @angular/cdk @angular/material-moment-adapter hammerjs web-animations-js  \
+ngx-perfect-scrollbar screenfull angular2-moment \
+@swimlane/ngx-datatable @swimlane/ngx-charts angular-in-memory-web-api 
+ 
+npm i -D loaders.css @types/hammerjs standard-version
 
-npm i -D loaders.css
-npm i -D @types/hammerjs
-npm install -D standard-version
-
-npm i angular-in-memory-web-api
 #  temp workaround
 npm i -D @angular/http
 
@@ -248,7 +241,12 @@ ng build --watch
 npx lite-server --baseDir="dist"
 ```
 
-### Publish
+### Release
+```bash
+npx standard-version
+"release": "standard-version && git push — follow-tags origin master && npm publish"
+```
+### Demo Deploy
 ```bash
 ng build --prod -e mock --output-path docs --base-href nx-starter-kit
 # Make a copy of docs/index.html and name it docs/404.html

@@ -18,7 +18,9 @@
     "paths": {
       "@nx-starter-kit/*": [
         "libs/*"
-      ]
+      ],
+      "@default/*": ["apps/default/src/app/*"],
+      "@env/*": ["apps/default/src/environments/*"]
     }
   },
   "exclude": [

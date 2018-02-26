@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 
 @Component({
-  selector: 'sumo-search',
+  selector: 'nxtk-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })

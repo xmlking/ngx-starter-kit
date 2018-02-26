@@ -6,3 +6,4 @@ export * from './src/rotate.animation';
 export * from './src/route.animation';
 export * from './src/scroll.animation';
 export * from './src/scroll-fab.animation';
+export * from './src/router.transition';

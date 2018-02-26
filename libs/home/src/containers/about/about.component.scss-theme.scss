@@ -1,0 +1,25 @@
+@import '~@angular/material/theming';
+
+@mixin nxtk-about-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+
+  nxtk-about {
+    .background {
+      color: mat-color($foreground, text);
+      background-color: mat-color($background, background);
+
+      .gradient {
+        &::before {
+          background: linear-gradient(
+              to bottom,
+              mat-color($background, background, 0) 0%,
+              mat-color($background, background, 1) 100%
+          );
+        }
+      }
+    }
+  }
+}

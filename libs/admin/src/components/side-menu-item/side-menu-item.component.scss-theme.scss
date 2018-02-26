@@ -7,7 +7,7 @@
   padding: 1px 7px;
 }
 
-@mixin sidemenu-item($theme,$icon-size) {
+@mixin nxtk-side-menu-item-component-theme($theme,$icon-size) {
   .sidenav-dropdown-indicator {
     transition: transform .25s;
     &.indicateOpen {

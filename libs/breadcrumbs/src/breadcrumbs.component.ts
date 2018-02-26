@@ -3,7 +3,7 @@ import { Router, NavigationEnd } from '@angular/router';
 import { BreadcrumbsService } from './breadcrumbs.service';
 //TODO http://preview.themeforest.net/item/codex-responsive-admin-dashboard-template/full_screen_preview/19692729?_ga=2.224649502.540505891.1517685272-1559617809.1517685272
 @Component({
-  selector: 'sumo-breadcrumbs',
+  selector: 'nxtk-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss']
 })

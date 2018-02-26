@@ -1,0 +1,120 @@
+@import '~@angular/material/theming';
+
+canvas {
+  position: absolute;
+  min-width: 100%;
+  //min-height: 78vh;
+  //min-height: 100%;
+}
+
+
+.about-container {
+  //display: block;
+  //padding: 1.2%;
+  position: relative;
+
+  h1 {
+    margin-top: 75px;
+    text-align: center;
+    font-size: 3em;
+    text-transform: uppercase;
+    z-index: 1;
+  }
+
+  .actions {
+    text-align: center;
+    margin: 50px;
+    z-index: 1;
+
+    span {
+      display: inline-block;
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    a {
+      margin: 0 0 10px 0;
+    }
+  }
+
+  .get-started {
+    width: 700px;
+    //margin: 50px auto 0 auto;
+    margin: 0 auto 0 auto;
+    padding-bottom: 50px;
+    font-size: 1.2em;
+    letter-spacing: 0.01px;
+    overflow-wrap: break-word;
+    z-index: 1;
+
+    code {
+      display: inline-block;
+      word-wrap: break-word;
+      white-space: normal;
+      margin: 0 0 10px 0;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-size: cover;
+    opacity: 0.7;
+    content: '';
+    z-index: 0;
+  }
+
+  .gradient {
+    &::before {
+      position: absolute;
+      top: 60%;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      content: '';
+      z-index: 0;
+    }
+  }
+
+  .container {
+    position: relative;
+  }
+}
+
+@media ($mat-small) {
+  .about-container {
+    .get-started {
+      width: auto;
+    }
+  }
+}
+
+@media ($mat-xsmall) {
+  .about-container {
+
+    h1 {
+      line-height: 1em;
+    }
+
+    .actions {
+      margin: 40px 0 0 0;
+
+      span {
+        padding: 0 0 10px 0;
+      }
+
+      a {
+        width: 100%;
+      }
+    }
+
+    .get-started {
+      width: auto;
+      margin: 40px auto 0 auto;
+      padding-bottom: 40px;
+    }
+  }
+}

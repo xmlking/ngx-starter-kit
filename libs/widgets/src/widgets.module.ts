@@ -18,7 +18,7 @@ import {
   NvD3Component
 } from './components';
 import { D3ChartService } from './components';
-import { environment } from '../../../apps/default/src/environments/environment';
+import { environment } from '@env/environment';
 import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
 
 const WIDGETS = [

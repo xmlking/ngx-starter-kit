@@ -1,11 +1,12 @@
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {of as observableOf, of} from 'rxjs/observable/of';
-import {environment} from '../../../../../apps/default/src/environments/environment';
+import { environment } from '@env/environment';
 import {Entity} from './entity.model';
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {map, retry, catchError, finalize} from "rxjs/operators";
+import * as moment from 'moment';
 
 export abstract class EntityService<T extends Entity> {
   private baseUrl = environment.API_BASE_URL;
@@ -66,6 +67,7 @@ export abstract class EntityService<T extends Entity> {
   }
 
   put(entity: T) {
+    console.log(entity)
     this.loadingSubject.next(true);
     return this.httpClient.put(`${this.baseUrl}/${this.entityPath}`, entity).pipe(
       catchError(this.handleError),
@@ -87,6 +89,16 @@ export abstract class EntityService<T extends Entity> {
     // return an ErrorObservable with a user-facing error message
     return new ErrorObservable(
       'Something bad happened; please try again later.');
+  }
+
+  private convertToJson(body: any) {
+    const temporalFunctionToJson = Date.prototype.toJSON;
+    Date.prototype.toJSON = function() { return moment(this).format('YYYY-MM-DD'); };
+
+    const jsonBody = JSON.stringify(body);
+
+    Date.prototype.toJSON = temporalFunctionToJson;
+    return jsonBody;
   }
 
 }

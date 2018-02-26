@@ -1,35 +1,35 @@
 <div class="dashboard-container" fxLayout="column" fxLayoutAlign="start stretch">
   <div fxLayout="row" fxLayoutAlign="center stretch" fxLayoutWrap="wrap">
-    <sumo-bar-chart class="margin-bottom-sm"
+    <nxtk-bar-chart class="margin-bottom-sm"
                     widgetTitle="Total Sales" subTitle="Latest 10 May, 10:00" bgColor="linear-gradient(60deg, #8C99E0, #6572B8)" textColor="#FFFFFF" chartColor="#FFFFFF" gain="16.3" comparedTo="% compared to last month"
                     [data]="discreteBarDemoData"
                     fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
-    </sumo-bar-chart>
-    <sumo-line-chart class="margin-bottom-sm"
+    </nxtk-bar-chart>
+    <nxtk-line-chart class="margin-bottom-sm"
                      widgetTitle="Visits" bgColor="linear-gradient(60deg, #4DD0E2, #4CA8BA)" textColor="#FFFFFF" chartColor="#FFFFFF" gain="42.5" comparedTo="% compared to last month"
                      [data]="lineChartDemoData"
                      fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md fxFlexOffset.gt-sm="1%">
-    </sumo-line-chart>
-    <sumo-line-chart class="margin-top-md"
+    </nxtk-line-chart>
+    <nxtk-line-chart class="margin-top-md"
                      widgetTitle="Total Clicks" subTitle="Latest 10 May, 10:00" bgColor="linear-gradient(60deg, #81C683, #62A864)" textColor="#FFFFFF" chartColor="#FFFFFF" interpolate="true" gain="-6.1" comparedTo="% compared to last month"
                      [data]="lineChartInterpolatedDemoData"
                      fxFlex="100%" fxFlex.sm="100%" fxFlex.gt-md fxFlexOffset.gt-md="1%">
-    </sumo-line-chart>
+    </nxtk-line-chart>
   </div>
 
   <div class="margin-top" fxLayout="row" fxLayoutAlign="center stretch" fxLayoutWrap="wrap">
 
     <div class="margin-bottom-sm" fxLayout="column" fxFlex="100%" fxFlex.md="49.5%" fxFlex.gt-md>
 
-      <sumo-traffic-sources [chartData]="trafficSourcesDemoData"></sumo-traffic-sources>
+      <nxtk-traffic-sources [chartData]="trafficSourcesDemoData"></nxtk-traffic-sources>
 
       <div class="margin-top">
-        <sumo-activity [feeds]="activityFeedsDemoData"></sumo-activity>
+        <nxtk-activity [feeds]="activityFeedsDemoData"></nxtk-activity>
       </div>
     </div>
 
     <div class="margin-bottom-sm" fxLayout="column" fxFlex.gt-md fxFlex="100%" fxFlex.md="49.5%" fxFlexOffset.gt-sm="1%">
-      <sumo-pie-chart [data]="pieChartDemoData" widgetTitle="Top 5 Categories" subTitle="Compared by sale share" textColor="#757575"></sumo-pie-chart>
+      <nxtk-pie-chart [data]="pieChartDemoData" widgetTitle="Top 5 Categories" subTitle="Compared by sale share" textColor="#757575"></nxtk-pie-chart>
 
       <div class="margin-top">
         <mat-card class="social-card">
@@ -68,10 +68,10 @@
 
     <div class="margin-top-md" fxLayout="column" fxFlex.gt-md fxFlex="100%" fxFlex.sm="100%" fxFlexOffset.gt-md="1%">
 
-      <sumo-recent-sales [sales]="recentSalesProductsDemoData" [chartData]="recentSalesDemoData"></sumo-recent-sales>
+      <nxtk-recent-sales [sales]="recentSalesProductsDemoData" [chartData]="recentSalesDemoData"></nxtk-recent-sales>
 
       <div class="margin-top">
-        <sumo-google-maps-widget height="450px"></sumo-google-maps-widget>
+        <nxtk-google-maps-widget height="450px"></nxtk-google-maps-widget>
       </div>
     </div>
 

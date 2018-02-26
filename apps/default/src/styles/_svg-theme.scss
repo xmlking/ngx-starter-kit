@@ -16,7 +16,7 @@
 }
 
 // Mixin to apply theme colors for generated API docs.
-@mixin default-site-svg-theme($theme) {
+@mixin nxtk-site-svg-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { environment } from '../../../../../apps/default/src/environments/environment';
+import { environment } from '@env/environment';
 const { version: appVersion } = require('../../../../../package.json');
 
 @Component({

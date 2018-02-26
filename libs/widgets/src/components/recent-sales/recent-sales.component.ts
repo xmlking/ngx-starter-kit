@@ -4,7 +4,7 @@ import { recentCustomersDemoValues } from '../../data/widgetDemoData.data';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'sumo-recent-sales',
+  selector: 'nxtk-recent-sales',
   templateUrl: './recent-sales.component.html',
   styleUrls: ['./recent-sales.component.scss']
 })

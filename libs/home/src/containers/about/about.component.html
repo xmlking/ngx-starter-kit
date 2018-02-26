@@ -1,3 +1,42 @@
-<div class="default-primary-header">
-  <h1>My about content</h1>
+<!--<div class="default-primary-header">-->
+  <!--<h1>About</h1>-->
+<!--if enabled, set parentNode.offsetHeight -80 in  renderCanvas()-->
+<!--</div>-->
+<div class="about-container">
+  <div class="gradient">
+    <div fxLayout="column">
+      <canvas #trianglify></canvas>
+      <h1>Angular Nx-Material Starter Kit</h1>
+      <div class="actions">
+        <a [ngClass]="animateOnRouteEnter"
+           mat-raised-button color="primary" routerLink="../features">
+          Check Features
+        </a>
+        <a mat-raised-button color="accent" routerLink="../examples"
+           [ngClass]="animateOnRouteEnter">
+          Check Examples
+        </a>
+        <a mat-raised-button routerLink="../settings"
+           [ngClass]="animateOnRouteEnter">
+          Change Theme
+        </a>
+        <a mat-raised-button (click)="color= 'random'; renderCanvas()"
+           [ngClass]="animateOnRouteEnter">
+          Refresh Background
+        </a>
+      </div>
+      <div class="get-started" [ngClass]="animateOnRouteEnter">
+        <h2>Getting started</h2>
+        <code>git clone
+          https://github.com/xmlking/nx-starter-kit.git
+          my-project</code><br>
+        <code>cd my-project</code><br>
+        <code>npm install</code><br>
+        <code>npm start</code>
+      </div>
+    </div>
+
+  </div>
 </div>
+
+

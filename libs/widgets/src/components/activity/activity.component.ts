@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
-  selector: 'sumo-activity',
+  selector: 'nxtk-activity',
   templateUrl: './activity.component.html'
 })
 export class ActivityComponent implements OnInit {

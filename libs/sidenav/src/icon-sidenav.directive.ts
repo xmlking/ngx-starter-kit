@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/Subscription';
 import { SidenavService } from './sidenav.service';
 
 @Directive({
-  selector: '[sumoIconSidenav]'
+  selector: '[nxtkIconSidenav]'
 })
 export class IconSidenavDirective implements OnInit, OnDestroy {
   private _mediaSubscription: Subscription;

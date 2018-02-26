@@ -3,7 +3,7 @@ import { D3, D3ChartService } from '../charts/nvD3/nvD3.service';
 import { lineChartDemoValues } from '../../data/widgetDemoData.data';
 
 @Component({
-  selector: 'sumo-line-chart',
+  selector: 'nxtk-line-chart',
   templateUrl: './line-chart.component.html',
   encapsulation: ViewEncapsulation.None
 })

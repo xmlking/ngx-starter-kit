@@ -24,7 +24,7 @@ import { SideBarComponent } from './components/side-bar/side-bar.component';
 // import {AccountMockService} from "./services/account/account.mock.service";
 // import {HttpClientModule} from "@angular/common/http";
 // import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
-// import {environment} from "../../../apps/default/src/environments/environment";
+// import { environment } from '@env/environment';
 
 const COMPONENTS = [
   HeaderComponent,

@@ -72,8 +72,7 @@
       true,
       "attribute",
       [
-        "app",
-        "sumo",
+        "nxtk",
         "ngx"
       ],
       "camelCase"
@@ -83,8 +82,7 @@
       "element",
       [
         "",
-        "app",
-        "sumo",
+        "nxtk",
         "ngx"
       ],
       "kebab-case"

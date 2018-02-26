@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject } from '@angular/core';
 import { D3, D3ChartService } from '../charts/nvD3/nvD3.service';
 
 @Component({
-  selector: 'sumo-pie-chart',
+  selector: 'nxtk-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss']
 })

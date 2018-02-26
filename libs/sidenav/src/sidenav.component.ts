@@ -9,7 +9,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { SidenavService } from './sidenav.service';
 
 @Component({
-  selector: 'sumo-sidenav',
+  selector: 'nxtk-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   encapsulation: ViewEncapsulation.None

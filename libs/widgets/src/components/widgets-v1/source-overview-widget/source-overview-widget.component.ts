@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { D3ChartService, D3 } from '../../charts/nvD3/nvD3.service';
 
 @Component({
-  selector: 'sumo-source-overview-widget',
+  selector: 'nxtk-source-overview-widget',
   templateUrl: './source-overview-widget.component.html',
   styleUrls: ['./source-overview-widget.component.scss']
 })

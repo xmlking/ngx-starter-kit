@@ -1,18 +1,18 @@
-<!--<sumo-rainbow></sumo-rainbow>-->
-<mat-sidenav-container class="admin-container">
+<!--<nxtk-rainbow></nxtk-rainbow>-->
+<mat-sidenav-container class="dashboard-container">
 
   <mat-sidenav class="quickpanel" [opened]="quickpanelOpen" align="end" mode="over" #quickpanel>
-    <sumo-quickpanel></sumo-quickpanel>
+    <nxtk-quickpanel></nxtk-quickpanel>
   </mat-sidenav>
 
-  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" [mode]="sidenavMode" sumoIconSidenav #sidenav>
-    <sumo-sidenav></sumo-sidenav>
+  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" [mode]="sidenavMode" nxtkIconSidenav #sidenav>
+    <nxtk-sidenav></nxtk-sidenav>
   </mat-sidenav>
 
   <mat-sidenav-content class="content-container" fxLayout="column">
-    <sumo-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></sumo-toolbar>
+    <nxtk-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></nxtk-toolbar>
 
-    <perfect-scrollbar  style="height: calc(100% - 33px);">
+    <perfect-scrollbar >
         <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)" #scrollContainer>
           <router-outlet #dashboardOutlet="outlet" (activate)="onActivate($event, scrollContainer)"></router-outlet>
         </div>

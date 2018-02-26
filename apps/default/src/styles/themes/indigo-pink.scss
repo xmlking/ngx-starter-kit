@@ -6,4 +6,4 @@ $accent:  mat-palette($mat-pink, A200, A100, A400);
 
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
-@include material-default-app-theme($theme);
+@include custom-components-theme($theme);

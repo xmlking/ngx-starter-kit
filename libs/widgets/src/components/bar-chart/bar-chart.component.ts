@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Inject, ViewEncapsulation } from '@angular/co
 import { D3ChartService, D3 } from '../charts/nvD3/nvD3.service';
 
 @Component({
-  selector: 'sumo-bar-chart',
+  selector: 'nxtk-bar-chart',
   templateUrl: './bar-chart.component.html',
   encapsulation: ViewEncapsulation.None
 })

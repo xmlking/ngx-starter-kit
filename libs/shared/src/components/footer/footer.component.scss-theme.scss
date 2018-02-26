@@ -1,4 +1,6 @@
-@mixin footer-theme($theme) {
+@import '~@angular/material/theming';
+
+@mixin nxtk-footer-component-theme($theme) {
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
   $warn: map-get($theme, warn);
