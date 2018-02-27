@@ -5,7 +5,7 @@ FROM node:8-alpine as builder
 
 COPY package.json package-lock.json ./
 
-COPY .angular_cli.tgz ./
+COPY .angular_cli165.tgz ./
 
 RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
 
@@ -17,9 +17,7 @@ WORKDIR /ng-app
 COPY . .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/webpack --config tools/webpack.config.js
-RUN $(npm bin)/ng build --app=default --prod
-
+RUN $(npm bin)/ng build --app=default --prod -oh=media
 
 ### STAGE 2: Setup ###
 
@@ -34,6 +32,6 @@ COPY nginx/nginx-default-cfg /opt/app-root/etc/nginx.default.d
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /ng-app/dist/apps/default  ./
 
-EXPOSE 8080 8081 8443
+EXPOSE 8081
 
 CMD ["nginx", "-g", "daemon off;"]
