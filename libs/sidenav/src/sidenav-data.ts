@@ -14,7 +14,8 @@ export const defaultMenu: SidenavItem[] = [
   {
     name: 'Admin',
     icon: 'format_shapes',
-    link: '/dashboard/overview1'
+    link: '/dashboard/overview1',
+    disabled: true
   },
   // {
   //   name: 'Custom components',
@@ -23,7 +24,7 @@ export const defaultMenu: SidenavItem[] = [
   {
     name: 'AppServers',
     type: SidenavItemType.DropDown,
-    icon: 'dashboard',
+    icon: 'dns',
     chip: { value: 1, color: 'accent' },
     tooltip: 'AppServers',
     children: [
@@ -51,7 +52,7 @@ export const defaultMenu: SidenavItem[] = [
   },
   {
     name: 'Database',
-    icon: 'list',
+    icon: 'view_list',
     chip: { value: 3, color: 'accent' },
     children: [
       {
@@ -123,9 +124,15 @@ export const defaultMenu: SidenavItem[] = [
     ]
   },
   {
-    name: 'MapR',
-    link: '/dashboard/mapr',
-    icon: 'gif'
+    name: 'BigData',
+    icon: 'insert_chart',
+    children: [
+      {
+        name: 'MapR',
+        link: '/dashboard/mapr',
+        icon: 'storage'
+      }
+    ]
   },
   {
     name: 'NAS',
@@ -177,6 +184,7 @@ export const defaultMenu: SidenavItem[] = [
   {
     name: 'Experiments',
     icon: 'pie_chart_outlined',
+    disabled: true,
     children: [
       {
         name: 'CRUD',
@@ -208,6 +216,7 @@ export const defaultMenu: SidenavItem[] = [
   {
     name: 'Multi-Level Menu',
     icon: 'menu',
+    disabled: true,
     children: [
       {
         name: 'Level 1',
