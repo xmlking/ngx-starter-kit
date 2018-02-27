@@ -1,5 +1,5 @@
-<a class="sidenav-anchor" [ngClass]="item.customClass"
-   *ngIf="!(item.children?.length > 0)"
+<a class="sidenav-anchor"
+   *ngIf="!item.disabled && !(item.children?.length > 0)"
    mat-list-item matRipple
    [routerLink]="[item.link]"
    routerLinkActive="active"
@@ -13,10 +13,9 @@
 
 
 <a class="sidenav-anchor"
-   *ngIf="(item.children?.length > 0)"
+   *ngIf="!item.disabled && (item.children?.length > 0)"
    mat-list-item matRipple
-   (click)="toggleDropdown()"
-   [ngClass]="item.customClass">
+   (click)="toggleDropdown()">
 
   <mat-icon>{{ item.icon }}</mat-icon>
   <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
