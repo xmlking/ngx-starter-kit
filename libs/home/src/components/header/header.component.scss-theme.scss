@@ -1,23 +1,22 @@
 @mixin nxtk-header-component-theme($theme) {
+  // retrieve variables from theme
+  // (all possible variables, use only what you really need)
   $primary: map-get($theme, primary);
   $accent: map-get($theme, accent);
-  $warn: map-get($theme, warn);
-  $background: map-get($theme, background);
+  $warn: map-get($theme, accent);
   $foreground: map-get($theme, foreground);
+  $background: map-get($theme, background);
+  // all of these variables contain many additional variables
 
   app-home-header {
-    color: mat-color($primary, default-contrast);
-
-    .default-navbar, .default-navbar-header {
-      background: mat-color($primary);
-    }
 
     .mat-button {
       &.active {
         color: mat-color($accent, default-contrast);
         background-color: mat-color($accent);
       }
+      //&:active {
+      //}
     }
-
   }
 }

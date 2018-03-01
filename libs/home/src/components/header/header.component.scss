@@ -6,24 +6,6 @@
   z-index: 2;
 }
 
-.default-navbar-header {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  padding: 8px 16px;
-
-  > .mat-button {
-    &:last-child {
-      margin-left: auto;
-    }
-  }
-}
-
-.default-navbar-link {
-  text-decoration: inherit;
-  flex: 1;
-}
-
 .default-angular-logo {
   height: 26px;
   margin: 0 4px 3px 0;
@@ -34,6 +16,8 @@
   font-size:36px;
 }
 
-.default-navbar {
-  display: flex;
+:host ::ng-deep theme-picker {
+  .mat-icon-button {
+    margin-left:50px;
+  }
 }

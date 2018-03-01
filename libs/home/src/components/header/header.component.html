@@ -1,48 +1,59 @@
-<nav class="default-navbar-header" id="top">
-  <a mat-button class="default-button" href="/" aria-label="Angular Material">
-    <img class="default-angular-logo"
-         src="../../../assets/img/homepage/angular-white-transparent.svg"
-         alt="angular">
-    <span>SumoApp</span>
-  </a>
+<mat-toolbar color="primary" class="default-navbar-header mat-elevation-z6">
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
 
-  <button mat-button class="default-button"  fxShow  fxHide.lt-md routerLink="/home"
-          routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Intro</button>
+    <a mat-button href="/" aria-label="Angular Material">
+      <!--<img class="default-angular-logo"-->
+      <!--src="assets/img/optum-logo-icon.png"-->
+      <!--alt="is360">-->
+      <img class="default-angular-logo"
+           src="assets/img/homepage/angular-white-transparent.svg"
+           alt="angular">
+      <span>IS360</span>
+    </a>
 
-  <span fxFlex><!-- fill space --></span>
-
-  <button mat-button class="default-button" fxShow  fxHide.lt-md *ngFor="let item of navigation"
-          [routerLink]="[item.link]" routerLinkActive="active">
-    {{item.label}}
-  </button>
-
-  <theme-picker fxShow  fxHide.lt-sm></theme-picker>
-
-  <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Signup">
-    <mat-icon class="default-menu-icon">person_outline</mat-icon>
-  </button>
-
-  <mat-menu #menu="matMenu">
-    <button mat-menu-item>
-      <mat-icon>fingerprint</mat-icon>
-      <span>Login</span>
+    <button mat-button fxShow fxHide.lt-md routerLink="/home"
+            routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Intro
     </button>
-    <button mat-menu-item>
-      <mat-icon>cake</mat-icon>
-      <span>Signup</span>
-    </button>
-    <button mat-menu-item disabled>
-      <mat-icon>lock_open</mat-icon>
-      <span style="padding-right: 40px;" ngStyle.lt-sm="padding-right: 10px;" >Logout</span>
-    </button>
-  </mat-menu>
 
-</nav>
-<nav  class="default-navbar" fxHide fxShow.lt-sm>
-  <button mat-button class="default-navbar-link"
-          *ngFor="let item of navigation"
-          [routerLink]="[item.link]" routerLinkActive="active">
-    {{item.label}}
-  </button>
-</nav>
+    <span fxFlex><!-- fill space --></span>
+
+    <mat-nav-list>
+      <a mat-button fxShow fxHide.lt-md *ngFor="let item of navigation"
+         [routerLink]="[item.link]" routerLinkActive="active">
+        {{item.label}}
+      </a>
+    </mat-nav-list>
+
+    <theme-picker fxShow fxHide.lt-sm></theme-picker>
+
+    <button mat-icon-button [matMenuTriggerFor]="menu" matTooltip="Signup">
+      <mat-icon class="default-menu-icon">person_outline</mat-icon>
+    </button>
+
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>fingerprint</mat-icon>
+        <span>Login</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>cake</mat-icon>
+        <span>Signup</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>lock_open</mat-icon>
+        <span style="padding-right: 40px;" ngStyle.lt-sm="padding-right: 10px;">Logout</span>
+      </button>
+    </mat-menu>
+
+  </mat-toolbar-row>
+
+  <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center" fxHide fxShow.lt-sm>
+    <a mat-button *ngFor="let item of navigation"
+       [routerLink]="[item.link]" routerLinkActive="active">
+      {{item.label}}
+    </a>
+  </mat-toolbar-row>
+
+</mat-toolbar>
+
 
