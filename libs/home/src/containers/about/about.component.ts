@@ -1,14 +1,12 @@
-import {AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, ViewChild} from '@angular/core';
-// declare var Trianglify: any;
-import {ANIMATE_ON_ROUTE_ENTER } from '@nx-starter-kit/animations';
-import * as Trianglify from 'trianglify';
-// import Trianglify from 'trianglify';
-import {Observable} from "rxjs/Observable";
-import {Subscription} from "rxjs/Subscription"
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ANIMATE_ON_ROUTE_ENTER } from '@nx-starter-kit/animations';
+// import * as Trianglify from 'trianglify';
+declare var Trianglify: any;
+import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/fromEvent';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-import {map, debounceTime, distinctUntilChanged} from "rxjs/operators";
-
+import {map, debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
+import {Subject} from "rxjs/Subject";
 
 @Component({
   selector: 'nxtk-about',
@@ -16,41 +14,44 @@ import {map, debounceTime, distinctUntilChanged} from "rxjs/operators";
   styleUrls: ['./about.component.scss']
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
+  private _destroyed = new Subject();
+
   animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
-  @ViewChild("trianglify") trianglifyCanvasRef: ElementRef;
+  @ViewChild('trianglify') trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
   private _sub: Subscription;
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
-    const widthStream = fromEvent<Event>(window, 'resize').pipe(
+    fromEvent<Event>(window, 'resize').pipe(
+      takeUntil(this._destroyed),
       debounceTime(100),
-      map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight] ),
-      distinctUntilChanged(),
-    );
-
-    this._sub = widthStream.subscribe(res => {
-      this.renderCanvas()
+      map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
+      distinctUntilChanged()
+    ).subscribe(res => {
+      // setTimeout(() => {this.renderCanvas() }, 1000)
+      this.renderCanvas();
     })
-    // setTimeout(() => {this.renderCanvas() }, 1000)
   }
 
   ngOnDestroy() {
-    this._sub.unsubscribe()
+    this._destroyed.next();
   }
 
   ngAfterViewInit() {
-    setTimeout(() => {this.renderCanvas() }, 500)
+    setTimeout(() => {
+      this.renderCanvas();
+    }, 500);
   }
 
   renderCanvas() {
-    if(!this.elementRef.nativeElement.parentNode) return;
+    if (!this.elementRef.nativeElement.parentNode) return;
     const width = this.elementRef.nativeElement.children[0].offsetWidth;
     // const height = this.elementRef.nativeElement.children[0].offsetHeight;
     const height = this.elementRef.nativeElement.parentNode.offsetHeight;
 
     const pattern = Trianglify({
-      cell_size: width/50 + Math.random()*100,
+      cell_size: width / 50 + Math.random() * 100,
       variance: Math.random(),
       x_colors: this.color,
       // x_colors: 'Blues',

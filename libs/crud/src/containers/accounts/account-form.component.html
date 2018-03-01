@@ -2,7 +2,7 @@
 
 <form [formGroup]="entityForm" (ngSubmit)="submit()">
   <mat-dialog-content>
-    <div fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap"
+    <div fxLayout="row wrap" fxLayout.lt-sm="column"
          style="flex-flow: row wrap; box-sizing: border-box; display: flex;">
 
       <div fxFlex="50" class="pr-1">
@@ -99,7 +99,7 @@
       </div>
     </div>
 
-    <div formGroupName="address" fxLayout="row" fxLayout.lt-sm="column" fxLayoutWrap="wrap"
+    <div formGroupName="address" fxLayout="row wrap" fxLayout.lt-sm="column"
          style="flex-flow: row wrap; box-sizing: border-box; display: flex;">
 
       <div fxFlex="100" class="pr-1">
