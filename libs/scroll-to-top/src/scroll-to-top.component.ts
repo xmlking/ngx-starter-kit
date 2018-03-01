@@ -1,7 +1,16 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { scrollFabAnimation } from '@nx-starter-kit/animations';
 import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
+import { fromEvent } from 'rxjs/observable/fromEvent';
+import {map, tap, debounceTime, distinctUntilChanged, throttleTime, takeUntil} from "rxjs/operators";
+import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {Subject} from "rxjs/Subject";
+
+enum ShowStatus {
+  show = 'show',
+  hide = 'hide'
+}
 
 @Component({
   selector: 'scroll-to-top',
@@ -9,37 +18,49 @@ import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-pag
   styleUrls: ['./scroll-to-top.component.scss'],
   animations: [scrollFabAnimation]
 })
-export class ScrollToTopComponent implements OnInit {
-  state = 'hide';
+export class ScrollToTopComponent implements OnInit, OnDestroy {
+  private _destroyed = new Subject();
+
+  private _stateSubject = new BehaviorSubject<string>(ShowStatus.hide );
+  state$ = this._stateSubject.asObservable();
+
   pageScrollInstance: PageScrollInstance;
 
   constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: Document) {}
 
-  ngOnInit() {
-    this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
-  }
-
-  @HostListener('document:scroll')
-  onWindowScroll() {
-    if (window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop > 100) {
-      this.state = 'show';
-    } else if (
-      (this.state === 'show' && window.pageYOffset) ||
-      document.documentElement.scrollTop ||
-      document.body.scrollTop < 10
-    ) {
-      this.state = 'hide';
+  private getShowHide() {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    if(scrollTop > 100) {
+      return ShowStatus.show ;
+    } else {
+      return ShowStatus.hide ;
     }
   }
 
-  scrollToTop() {
+  ngOnInit() {
+    this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
+    fromEvent(window, "scroll").pipe(
+      takeUntil(this._destroyed),
+      // throttleTime(50),
+      map( _ => this.getShowHide()),
+      distinctUntilChanged(),
+      tap(state => this._stateSubject.next(state))
+    ).subscribe();
+  }
+
+  ngOnDestroy() {
+    console.log("ngOnDestroy");
+    this._destroyed.next();
+  }
+
+  scrollToTop(){
     this.pageScrollService.start(this.pageScrollInstance);
-    //TODO if PageScrollService not use default scrolling
+    // //use if PageScrollService not installed.
     // (function smoothscroll() {
     //   const currentScroll = document.documentElement.scrollTop || document.body.scrollTop;
     //   if (currentScroll > 0) {
     //     window.requestAnimationFrame(smoothscroll);
-    //     window.scrollTo(0, currentScroll - currentScroll / 5);
+    //     window.scrollTo(0, currentScroll - currentScroll / 20);
     //   }
     // })();
   }

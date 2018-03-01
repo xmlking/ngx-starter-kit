@@ -1,5 +1,5 @@
-<div fxLayout="column" fxFlexFill>
-  <app-home-header class="mat-elevation-z6" id="top"></app-home-header>
+<div  id="top" fxLayout="column" fxFlexFill>
+  <app-home-header></app-home-header>
   <div fxFlex class="content" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
     <router-outlet #o="outlet"></router-outlet>
   </div>
