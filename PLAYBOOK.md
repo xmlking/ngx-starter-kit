@@ -8,8 +8,8 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
 | Node                          | v9.4.0   |          | 
-| Angular CLI                   | v1.6.5   |          | 
-| @nrwl/schematics              | v0.7.3   |          | 
+| Angular CLI                   | v6.0.0   |          | 
+| @nrwl/schematics              | v0.8.0   |          | 
 
 
 ### Install Prerequisites
@@ -161,23 +161,24 @@ ng g component containers/landing --app=home
 ng g component containers/blog --app=home
 ng g component containers/about --app=home
 
-# generate containers, components, services for `dashboard` Module
-ng g component components/header --app=dashboard 
-ng g component components/footer --app=dashboard
-ng g component containers/dashboardLayout --app=dashboard --dry-run
-ng g component containers/accounts --app=dashboard
-ng g service services/account/account --app=dashboard --module=dashboard
- 
+# generate containers, components, services for `admin` Module
+ng g component components/header --app=admin 
+ng g component components/footer --app=admin
+ng g component containers/adminLayout --app=admin --dry-run
+ng g component containers/accounts --app=admin
+ng g service services/account/account --app=admin --module=admin
+ng g component components/searchBar --app=admin
+ng g component components/sideBar --app=admin
+ng g component components/sideMenuItem --app=admin
+ng g component components/sideMenu --app=admin
+ng g component components/toolBarNotification --app=admin
+ng g component components/toolBar --app=admin
+ng g component components/userMenu --app=admin
 
-
-
-ng g component components/searchBar --app=dashboard
-ng g component components/sideBar --app=dashboard
-ng g component components/sideMenuItem --app=dashboard
-ng g component components/sideMenu --app=dashboard
-ng g component components/toolBarNotification --app=dashboard
-ng g component components/toolBar --app=dashboard
-ng g component components/userMenu --app=dashboard
+# generate containers, components for `dashboard` Module
+ng g component components/rainbow --app=dashboard --dry-run
+ng g component containers/adminLayout --app=dashboard --dry-run
+ng g component containers/overview --app=dashboard --dry-run
 
 
 # generate containers, components for `widgets` Module
@@ -185,11 +186,6 @@ ng g component containers/wizdash --app=widgets --dry-run
 
 # generate containers, components for `crud` Module
 ng g component containers/accounts --app=crud --module=crud --dry-run
-
-# generate containers, components for `admin` Module
-ng g component containers/adminLayout --app=admin --dry-run
-ng g component containers/overview --app=admin --dry-run
-ng g component components/rainbow --app=admin --dry-run
 
 # generate containers, components for `experiments` Module
 ng g component containers/experimentsLayout --app=experiments --dry-run
@@ -226,6 +222,8 @@ ng build -e mock -oh=media
 ```bash
 # run mock mode
 ng s -e mock --extract-css --preserve-symlinks -o
+# to bind to host IP
+ng s --host 
 # ES2015 support: Set tsconfig.json target value as "es2015" and  use --aot 
 ng s -e mock --extract-css --preserve-symlinks --aot -o
 # run prod mode
