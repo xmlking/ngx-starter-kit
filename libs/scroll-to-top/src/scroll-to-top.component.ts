@@ -21,6 +21,9 @@ enum ShowStatus {
 export class ScrollToTopComponent implements OnInit, OnDestroy {
   private _destroyed = new Subject();
 
+  //TODO should I  use CDK Scrollable?
+  // @ViewChild(Scrollable) scrollable: Scrollable;
+
   private _stateSubject = new BehaviorSubject<string>(ShowStatus.hide);
   state$ = this._stateSubject.asObservable();
 

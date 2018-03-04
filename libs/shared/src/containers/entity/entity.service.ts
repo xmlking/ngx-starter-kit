@@ -1,3 +1,4 @@
+//TODO https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/default-data.service.ts
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { of as observableOf, of } from 'rxjs/observable/of';
@@ -8,6 +9,10 @@ import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map, retry, catchError, finalize } from 'rxjs/operators';
 import * as moment from 'moment';
 
+export interface Filter {
+  [name: string]: string | string[];
+}
+
 export abstract class EntityService<T extends Entity> {
   private baseUrl = environment.API_BASE_URL;
   private loadingSubject = new BehaviorSubject<boolean>(false);
@@ -17,19 +22,19 @@ export abstract class EntityService<T extends Entity> {
 
   constructor(protected httpClient: HttpClient) {}
 
-  getOne(id: number) {
+  getById(id: number) {
     this.loadingSubject.next(true);
     return this.httpClient
       .get<T>(`${this.baseUrl}/${this.entityPath}/${id}`)
       .pipe(catchError(this.handleError), finalize(() => this.loadingSubject.next(false)));
   }
 
-  findAll(filter = '', sortOrder = 'asc', pageNumber = 0, pageSize = 100): Observable<T[]> | ErrorObservable {
+  findAll(filter: Filter, sortOrder = 'asc', pageNumber = 0, pageSize = 100): Observable<T[]> | ErrorObservable {
     this.loadingSubject.next(true);
     return this.httpClient
       .get<T[]>(`${this.baseUrl}/${this.entityPath}`, {
         params: new HttpParams()
-          .set('filter', filter)
+          .set('filter', "filter TODO")
           .set('sortOrder', sortOrder)
           .set('pageNumber', pageNumber.toString())
           .set('pageSize', pageSize.toString())

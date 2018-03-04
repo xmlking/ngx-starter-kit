@@ -60,8 +60,8 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     this.dataSource.paginator = this.paginator;
   }
 
-  getOne(id: number) {
-    return this.entityService.getOne(id);
+  getById(id: number) {
+    return this.entityService.getById(id);
   }
 
   delete(item: TEntity) {
