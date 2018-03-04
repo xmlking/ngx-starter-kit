@@ -1,14 +1,5 @@
 import { NgModule } from '@angular/core';
 
-import { CdkTableModule } from '@angular/cdk/table';
-import { CdkAccordionModule } from '@angular/cdk/accordion';
-import { A11yModule } from '@angular/cdk/a11y';
-import { BidiModule } from '@angular/cdk/bidi';
-import { OverlayModule } from '@angular/cdk/overlay';
-import { PlatformModule } from '@angular/cdk/platform';
-import { ObserversModule } from '@angular/cdk/observers';
-import { PortalModule } from '@angular/cdk/portal';
-
 import {
   MatAutocompleteModule,
   MatButtonModule,
@@ -44,7 +35,6 @@ import {
 } from '@angular/material';
 
 const MATERIAL_MODULES = [
-  CdkTableModule,
   MatAutocompleteModule,
   MatButtonModule,
   MatButtonToggleModule,
@@ -79,7 +69,6 @@ const MATERIAL_MODULES = [
 ];
 
 @NgModule({
-  imports: MATERIAL_MODULES,
   exports: MATERIAL_MODULES
 })
 export class MaterialModule {}
