@@ -17,15 +17,6 @@ export class InMemoryDataService implements InMemoryDbService {
     const response = await fetch('assets/data/accounts.json');
     const accounts = await response.json();
 
-    const serviceProxyResponse = await fetch('assets/data/datapower/serviceproxy.json');
-    const serviceproxy = await serviceProxyResponse.json();
-
-    const clusterResponse = await fetch('assets/data/nas/cluster.json');
-    const cluster = await clusterResponse.json();
-
-    const mycnfResponse = await fetch('assets/data/layer7/my.cnf.json');
-    const mycnf = await mycnfResponse.json();
-
     const symbols = [
       {
         id: 1,
@@ -44,7 +35,7 @@ export class InMemoryDataService implements InMemoryDbService {
       }
     ];
 
-    return { accounts, symbols, serviceproxy, cluster, mycnf };
+    return { accounts, symbols };
   }
 
   parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {

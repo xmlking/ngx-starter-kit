@@ -48,8 +48,11 @@ npm install
 cd nx-starter-kit
 npm i @angular/flex-layout @angular/material @angular/cdk @angular/material-moment-adapter hammerjs web-animations-js  \
 ngx-perfect-scrollbar screenfull angular2-moment \
-@swimlane/ngx-datatable @swimlane/ngx-charts angular-in-memory-web-api 
- 
+@swimlane/ngx-datatable @swimlane/ngx-charts angular-in-memory-web-api angular-oauth2-oidc 
+
+# install without saving
+npm install trianglify --no-save --no-lock
+
 npm i -D loaders.css @types/hammerjs standard-version
 
 #  temp workaround
