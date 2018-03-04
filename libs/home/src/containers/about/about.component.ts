@@ -5,8 +5,8 @@ declare var Trianglify: any;
 import { Subscription } from 'rxjs/Subscription';
 import 'rxjs/add/observable/fromEvent';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-import {map, debounceTime, distinctUntilChanged, takeUntil} from 'rxjs/operators';
-import {Subject} from "rxjs/Subject";
+import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'nxtk-about',
@@ -23,15 +23,17 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   constructor(private elementRef: ElementRef) {}
 
   ngOnInit() {
-    fromEvent<Event>(window, 'resize').pipe(
-      takeUntil(this._destroyed),
-      debounceTime(100),
-      map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
-      distinctUntilChanged()
-    ).subscribe(res => {
-      // setTimeout(() => {this.renderCanvas() }, 1000)
-      this.renderCanvas();
-    })
+    fromEvent<Event>(window, 'resize')
+      .pipe(
+        takeUntil(this._destroyed),
+        debounceTime(100),
+        map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
+        distinctUntilChanged()
+      )
+      .subscribe(res => {
+        // setTimeout(() => {this.renderCanvas() }, 1000)
+        this.renderCanvas();
+      });
   }
 
   ngOnDestroy() {

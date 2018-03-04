@@ -1,11 +1,11 @@
-import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { scrollFabAnimation } from '@nx-starter-kit/animations';
 import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
 import { fromEvent } from 'rxjs/observable/fromEvent';
-import {map, tap, debounceTime, distinctUntilChanged, throttleTime, takeUntil} from "rxjs/operators";
-import {BehaviorSubject} from "rxjs/BehaviorSubject";
-import {Subject} from "rxjs/Subject";
+import { map, tap, debounceTime, distinctUntilChanged, throttleTime, takeUntil } from 'rxjs/operators';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Subject } from 'rxjs/Subject';
 
 enum ShowStatus {
   show = 'show',
@@ -21,7 +21,7 @@ enum ShowStatus {
 export class ScrollToTopComponent implements OnInit, OnDestroy {
   private _destroyed = new Subject();
 
-  private _stateSubject = new BehaviorSubject<string>(ShowStatus.hide );
+  private _stateSubject = new BehaviorSubject<string>(ShowStatus.hide);
   state$ = this._stateSubject.asObservable();
 
   pageScrollInstance: PageScrollInstance;
@@ -30,30 +30,32 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
 
   private getShowHide() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-    if(scrollTop > 100) {
-      return ShowStatus.show ;
+    if (scrollTop > 100) {
+      return ShowStatus.show;
     } else {
-      return ShowStatus.hide ;
+      return ShowStatus.hide;
     }
   }
 
   ngOnInit() {
     this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
-    fromEvent(window, "scroll").pipe(
-      takeUntil(this._destroyed),
-      // throttleTime(50),
-      map( _ => this.getShowHide()),
-      distinctUntilChanged(),
-      tap(state => this._stateSubject.next(state))
-    ).subscribe();
+    fromEvent(window, 'scroll')
+      .pipe(
+        takeUntil(this._destroyed),
+        // throttleTime(50),
+        map(_ => this.getShowHide()),
+        distinctUntilChanged(),
+        tap(state => this._stateSubject.next(state))
+      )
+      .subscribe();
   }
 
   ngOnDestroy() {
-    console.log("ngOnDestroy");
+    console.log('ngOnDestroy');
     this._destroyed.next();
   }
 
-  scrollToTop(){
+  scrollToTop() {
     this.pageScrollService.start(this.pageScrollInstance);
     // //use if PageScrollService not installed.
     // (function smoothscroll() {
