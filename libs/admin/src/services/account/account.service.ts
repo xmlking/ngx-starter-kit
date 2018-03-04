@@ -4,7 +4,7 @@ import { environment } from '@env/environment';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch';
 import { catchError } from 'rxjs/operators';
-import { Account } from '../../state/account/account.interfaces';
+import { Account } from './account.model';
 
 @Injectable()
 export class AccountService {

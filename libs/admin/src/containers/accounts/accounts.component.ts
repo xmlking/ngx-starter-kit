@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/startWith';
 import { AccountService } from '../../services/account/account.service';
-import { Account } from '../../state/account/account.interfaces';
+import { Account } from '../../services/account/account.model';
 
 @Component({
   selector: 'app-accounts',

@@ -6,9 +6,6 @@ import { SharedModule } from '@nx-starter-kit/shared';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
-import { accountReducer } from './state/account/account.reducer';
-import { accountInitialState } from './state/account/account.init';
-import { AccountEffects } from './state/account/account.effects';
 import { AccountService } from './services/account/account.service';
 import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
 import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
@@ -71,10 +68,8 @@ const COMPONENTS = [
         ]
       }
     ]),
-    StoreModule.forFeature('account', accountReducer, { initialState: accountInitialState }),
-    EffectsModule.forFeature([AccountEffects])
   ],
   declarations: [...COMPONENTS, AccountsComponent, AdminLayoutComponent],
-  providers: [AccountService, AccountEffects]
+  providers: [AccountService]
 })
 export class AdminModule {}
