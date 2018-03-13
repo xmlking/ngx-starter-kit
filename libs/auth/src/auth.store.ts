@@ -6,7 +6,6 @@ import {ChangeAuthMode} from "./auth.events";
 import {authConfigImplicit, authConfigPassword} from "./oauth.config";
 import {OAuthService} from "angular-oauth2-oidc";
 import {AuthMode} from "./auth.events";
-import {fromPromise} from "rxjs/observable/fromPromise";
 
 @Store({
   defaults: {
@@ -41,7 +40,7 @@ export class AuthStore {
     state.authMode = payload;
   }
 
-  // @Action(ChangeAuthMode)
+  @Action(ChangeAuthMode)
   async changeAuthMode(state, {payload}) {
     if (state.authMode !== payload) {
       switch (payload) {
@@ -56,12 +55,6 @@ export class AuthStore {
       return new AuthModeChanged(payload);
     }
   }
-
-  @Action(ChangeAuthMode)
-  workAroundChangeAuthMode(state, { payload }) {
-    return fromPromise( this.changeAuthMode(state, { payload }))
-  }
-
 
   @Action(Logout)
   logout(state, {payload}) {

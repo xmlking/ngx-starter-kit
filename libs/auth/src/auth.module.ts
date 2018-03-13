@@ -15,7 +15,6 @@ import {
 import {ReactiveFormsModule} from "@angular/forms";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {AuthGuard} from "./auth.guard";
-import {environment} from "@env/environment";
 
 @NgModule({
   imports: [
@@ -35,7 +34,6 @@ import {environment} from "@env/environment";
         sendAccessToken: true
       }
     }),
-    // NgxsModule.forRoot([AuthStore]),
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
