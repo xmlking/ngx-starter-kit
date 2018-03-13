@@ -1,6 +1,9 @@
 Style Guide
 ===========
 
+Below are suggestions for naming and style conventions.
+
+
 1. Theme files naming conversion 
 ``` 
 about.component.scss
@@ -43,3 +46,10 @@ about.component.scss-theme.scss
   }
 ]
 ```
+
+4. NGXS naming conventions 
+> Ref: https://github.com/amcdnl/ngxs#style-guide
+
+* Stores should always have the `Store` suffix. Right: `ZooStore` Wrong: `Zoo`
+* Stores should have a `.store.ts` suffix for the filename
+* Selects should have a `$` suffix. Right: `animals$` Wrong: `animals`

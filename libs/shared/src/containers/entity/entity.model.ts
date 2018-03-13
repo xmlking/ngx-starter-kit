@@ -1,5 +1,6 @@
 export interface Entity {
   id: number | string;
+  [key: string]: any;
 }
 
 export interface EntityColumnDef<T> {

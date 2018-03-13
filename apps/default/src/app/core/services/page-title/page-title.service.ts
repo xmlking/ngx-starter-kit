@@ -17,7 +17,7 @@ export class PageTitleService {
     if (title !== '') {
       title = `${title} | `;
     }
-    this.bodyTitle.setTitle(`${title}Angular Material`);
+    this.bodyTitle.setTitle(`${title}IS360`);
   }
 
   constructor(private bodyTitle: Title) {}

@@ -6,11 +6,21 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
+import { NgxsModule, ReduxDevtoolsPluginModule } from 'ngxs';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { AuthModule, AuthStore } from "@nx-starter-kit/auth";
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    NgxPageScrollModule,
+    NgxsModule.forRoot([AuthStore]),
+    // TODO
+    // ReduxDevtoolsPluginModule.forRoot({
+    //   disabled: environment.production // Set to true for prod mode
+    // }),
+    AuthModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true

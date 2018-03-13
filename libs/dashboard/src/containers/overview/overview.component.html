@@ -1,4 +1,23 @@
-<div class="default-primary-header">
-  <h1>Overview</h1>
-</div>
+<!--<div class="default-primary-header">-->
+<!--<h1>Overview</h1>-->
+<!--</div>-->
 
+
+<!--<div fxLayout fxLayoutAlign="center center">-->
+  <!--<mat-card fxFlex="30%">-->
+    <!--<mat-card-title>Search</mat-card-title>-->
+
+    <!--<mat-card-content fxLayout="column">-->
+      <!--<mat-form-field>-->
+        <!--<input matInput placeholder="Search">-->
+      <!--</mat-form-field>-->
+    <!--</mat-card-content>-->
+
+    <!--<button mat-raised-button color="accent">Search</button>-->
+  <!--</mat-card>-->
+<!--</div>-->
+<div fxLayout="column">
+<button mat-button (click)="testSilentRefresh()">Test silent-refresh for implicit flow</button>
+<button mat-button (click)="testRefreshToken()">Test refresh token for password flow</button>
+<button mat-button (click)="getProfile()">getProfile</button>
+</div>

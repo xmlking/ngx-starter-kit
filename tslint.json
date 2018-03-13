@@ -73,6 +73,7 @@
       "attribute",
       [
         "nxtk",
+        "",
         "ngx"
       ],
       "camelCase"
@@ -107,7 +108,10 @@
           "experiments",
           "widgets",
           "crud",
-          "not-found"
+          "not-found",
+          "datapower",
+          "nas",
+          "layer7"
         ],
         "allow": []
       }

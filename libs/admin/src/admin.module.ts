@@ -3,8 +3,6 @@ import { RouterModule } from '@angular/router';
 import { HeaderComponent } from './components/header/header.component';
 import { AccountsComponent } from './containers/accounts/accounts.component';
 import { SharedModule } from '@nx-starter-kit/shared';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { AccountService } from './services/account/account.service';
 import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
@@ -67,7 +65,7 @@ const COMPONENTS = [
           }
         ]
       }
-    ]),
+    ])
   ],
   declarations: [...COMPONENTS, AccountsComponent, AdminLayoutComponent],
   providers: [AccountService]

@@ -12,7 +12,8 @@
       "outDir": "dist/apps/default",
       "assets": [
         "assets",
-        "favicon.ico"
+        "favicon.ico",
+        "silent-refresh.html"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -74,8 +75,20 @@
       "appRoot": ""
     },
     {
+      "name": "auth",
+      "root": "libs/auth/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
       "name": "breadcrumbs",
       "root": "libs/breadcrumbs/src",
+      "test": "../../../test.js",
+      "appRoot": ""
+    },
+    {
+      "name": "context-menu",
+      "root": "libs/context-menu/src",
       "test": "../../../test.js",
       "appRoot": ""
     },

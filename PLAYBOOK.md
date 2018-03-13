@@ -123,6 +123,13 @@ ng g service  breadcrumbs --app=breadcrumbs --module=breadcrumbs --dry-run
 ng g lib ScrollToTop
 ng g component ScrollToTop --app=scroll-to-top --flat --dry-run
 
+
+# generate components for `ContextMenu` Module
+ng g lib ContextMenu
+ng g component ContextMenu --app=context-menu --flat --dry-run
+ng g directive ContextMenuTrigger --app=context-menu --flat --dry-run
+
+
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker  
 ng g component ThemePicker --app=theme-picker --flat --dry-run
@@ -156,6 +163,11 @@ ng g component sidenav --app=sidenav --flat --dry-run
 ng g component components/sidenavItem --app=sidenav  --dry-run 
 ng g service services/navigation/navigation --app=sidenav --module=sidenav --dry-run 
 ng g directive  IconSidenav --app=sidenav --module=sidenav --dry-run 
+
+
+# generate components for `auth` Module
+ng g lib auth --dry-run 
+ng g component components/login --app=auth
 
 # generate containers, components for `home` Module
 ng g component components/header --app=home
@@ -225,12 +237,19 @@ ng build -e mock -oh=media
 ```bash
 # run mock mode
 ng s -e mock --extract-css --preserve-symlinks -o
-# to bind to host IP
+# use proxy
+ng s -e mock --extract-css --preserve-symlinks --proxy-config proxy.conf.js
+# to bind to host IP, to demo from laptop
 ng s --host 
 # ES2015 support: Set tsconfig.json target value as "es2015" and  use --aot 
 ng s -e mock --extract-css --preserve-symlinks --aot -o
 # run prod mode
 ng s -e prod
+
+# build and run web
+docker-compose up --build web
+# run web
+docker-compose up web
 ```
 
 ### Serve from dist

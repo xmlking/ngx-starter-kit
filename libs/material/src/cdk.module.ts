@@ -10,11 +10,7 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
-const CDK_MODULES = [
-  CdkTableModule,
-  PortalModule,
-  ScrollDispatchModule,
-];
+const CDK_MODULES = [CdkTableModule, PortalModule, ScrollDispatchModule];
 
 @NgModule({
   exports: CDK_MODULES

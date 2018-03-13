@@ -19,7 +19,7 @@ enum ShowStatus {
   animations: [scrollFabAnimation]
 })
 export class ScrollToTopComponent implements OnInit, OnDestroy {
-  private _destroyed = new Subject();
+  private _destroyed$ = new Subject<void>();
 
   //TODO should I  use CDK Scrollable?
   // @ViewChild(Scrollable) scrollable: Scrollable;
@@ -44,7 +44,7 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
     this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
     fromEvent(window, 'scroll')
       .pipe(
-        takeUntil(this._destroyed),
+        takeUntil(this._destroyed$),
         // throttleTime(50),
         map(_ => this.getShowHide()),
         distinctUntilChanged(),
@@ -54,8 +54,8 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('ngOnDestroy');
-    this._destroyed.next();
+      this._destroyed$.next();
+      this._destroyed$.complete();
   }
 
   scrollToTop() {

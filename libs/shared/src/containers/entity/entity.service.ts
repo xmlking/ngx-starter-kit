@@ -34,7 +34,7 @@ export abstract class EntityService<T extends Entity> {
     return this.httpClient
       .get<T[]>(`${this.baseUrl}/${this.entityPath}`, {
         params: new HttpParams()
-          .set('filter', "filter TODO")
+          .set('filter', 'filter TODO')
           .set('sortOrder', sortOrder)
           .set('pageNumber', pageNumber.toString())
           .set('pageSize', pageSize.toString())

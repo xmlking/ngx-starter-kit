@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import {Logout} from "@nx-starter-kit/auth";
+import {Ngxs} from "ngxs";
 
 @Component({
   selector: 'user-menu',
@@ -9,7 +11,7 @@ export class UserMenuComponent implements OnInit {
   isOpen: boolean;
   @Input() currentUser = null;
 
-  constructor() {}
+  constructor(private ngxs: Ngxs) {}
 
   ngOnInit() {}
 
@@ -19,5 +21,9 @@ export class UserMenuComponent implements OnInit {
 
   onClickOutside() {
     this.isOpen = false;
+  }
+
+  public logout() {
+    this.ngxs.dispatch(new Logout());
   }
 }

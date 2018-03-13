@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>Login</h1>
+
+<h4 class="mt-20 subheading-1" *ngIf="infoMsg">{{infoMsg}}</h4>
+<mat-error class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
+
+<form [formGroup]="loginForm" class="app-login-form" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
+
+  <div mat-dialog-content>
+    <mat-form-field>
+      <input matInput formControlName="username" placeholder="Username" required>
+      <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
+        User name is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input matInput formControlName="password" placeholder="Password" type="password" required>
+      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+        Password is <strong>required</strong>
+      </mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-checkbox formControlName="rememberMe">Remember me!</mat-checkbox>
+  <!-- https://github.com/angular/material2/issues/8798 -->
+  <div>&nbsp;</div>
+
+  <div mat-dialog-actions>
+    <div fxFlex="100">
+      <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
+      <span fxFlex></span>
+      <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
+      <button mat-raised-button type="submit" cdkFocusInitial>Login</button>
+    </div>
+  </div>
+
+</form>
+

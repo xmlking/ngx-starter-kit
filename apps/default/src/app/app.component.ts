@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { ServiceWorkerService } from './core/services/service-worker/service-worker.service';
+import { ServiceWorkerService } from '@default/core';
 
 @Component({
   selector: 'app-root',

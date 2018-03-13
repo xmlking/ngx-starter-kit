@@ -25,7 +25,7 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  .default-app-background {
+  .mat-app-background {
     background: mat-color($background, background);
   }
 

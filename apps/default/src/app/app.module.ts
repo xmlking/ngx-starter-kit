@@ -4,13 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { NgxPageScrollModule } from 'ngx-page-scroll';
 
-import { NxModule } from '@nrwl/nx';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { environment } from '@env/environment';
 
 import { AppComponent } from './app.component';
@@ -20,13 +14,6 @@ import { CoreModule } from './core/core.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    NxModule.forRoot(),
-    CoreModule,
-    NgxPageScrollModule,
-    StoreModule.forRoot({}),
-    EffectsModule.forRoot([]),
-    !environment.production ? StoreDevtoolsModule.instrument() : [],
-    StoreRouterConnectingModule,
     RouterModule.forRoot(
       [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,10 +27,11 @@ import { CoreModule } from './core/core.module';
       ],
       {
         initialNavigation: 'enabled',
-        paramsInheritanceStrategy: 'always',
+        paramsInheritanceStrategy: 'always'
         // onSameUrlNavigation: 'reload'
       }
     ),
+    CoreModule, // IMP: Please keep CoreModule after RouterModule
     ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent],

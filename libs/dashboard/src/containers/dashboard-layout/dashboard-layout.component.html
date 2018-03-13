@@ -12,7 +12,7 @@
   <mat-sidenav-content class="content-container" fxLayout="column">
     <nxtk-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></nxtk-toolbar>
 
-    <perfect-scrollbar >
+    <perfect-scrollbar>
         <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)" #scrollContainer>
           <router-outlet #dashboardOutlet="outlet" (activate)="onActivate($event, scrollContainer)"></router-outlet>
         </div>
