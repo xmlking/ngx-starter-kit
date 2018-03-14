@@ -35,14 +35,13 @@ services:
     build:
       context: .
       dockerfile: .docker/prod.dockerfile
-    image: is360-nx:latest
+    image: nx-starter-kit:latest
     container_name: web
     command: dockerize -template /etc/nginx/conf.d/nginx.conf.tmpl:/etc/nginx/conf.d/default.conf nginx -g 'daemon off;'
     environment:
       - NGINX_HOST=localhost
       - NGINX_PORT=8080
-#      - AUTH_BASE_URL=http://keycloak:8080
-      - AUTH_BASE_URL=https://keycloak-is360-phase-2.ocp-ctc-core-nonprod.optum.com
+      - AUTH_BASE_URL=http://keycloak:8080
     volumes:
       - .docker/nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf.tmpl:ro
     ports:
