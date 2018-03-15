@@ -1,6 +1,6 @@
 const PROXY_CONFIG = {
   "/auth/realms": {
-    "target": "http://localhost:8080",
+    "target": "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com",
     "secure": false,
     "logLevel": "debug",
     // "changeOrigin": true,
