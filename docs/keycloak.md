@@ -11,7 +11,7 @@ docker-compose up keycloak
 ### Config
 > After fresh Keycloak installation, Import [realm-export](./realm-export.json) or follow instructions below. 
 
-1. Add `is360` realm. Then switch to `is360` realm.
+1. Add `is360` realm. Then **switch** to `is360` realm.
 2. Create client `is360ui` with `openid-connect` Protocol
     ```
     Implicit Flow Enabled: Enabled

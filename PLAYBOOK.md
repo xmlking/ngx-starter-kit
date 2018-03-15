@@ -228,10 +228,16 @@ ng test --browser=ChromeHeadless
 
 ### Build
 ```bash
-# build themes
 # build project 
-ng build --prod -oh=media
-ng build -e mock -oh=media
+ng build --app=default --prod -oh=media
+# FIXME UglifyJS is breaking
+ng build --app=default -oh=media  -e prod  --aot=true --build-optimizer=true --named-chunks=false --sourcemaps=false
+# build project with mock env
+ng build --app=default --prod -oh=media  -e mock
+# FIXME UglifyJS is breaking
+ng build --app=default -oh=media  -e mock  --aot=true --build-optimizer=true --named-chunks=false --sourcemaps=false
+
+
 ```
 ### Run
 ```bash
@@ -257,8 +263,8 @@ docker-compose up web
 ```bash
 # 1st terminal - Start the build
 ng build --watch
-# 2nd terminal - Start the web server
-npx lite-server --baseDir="dist"
+# 2nd terminal - Start the web server (start server on port 4200)
+npx lite-server --baseDir="dist/apps/default"
 ```
 
 ### Release

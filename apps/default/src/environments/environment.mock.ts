@@ -2,6 +2,7 @@ import sharedEnvironment from './base';
 
 export const environment = {
   ...sharedEnvironment,
+  // TODO: production: true,
   production: false,
   envName: 'mock',
 
