@@ -15,9 +15,9 @@ docker-compose up keycloak
 2. Create client `is360ui` with `openid-connect` Protocol
     ```
     Implicit Flow Enabled: Enabled
-    Valid Redirect URIs: http://localhost:4200/*
-    Base URL: http://localhost:4200
-    Web Origins: http://localhost:4200
+    Root URL: http://localhost:4200
+    Valid Redirect URIs: /*
+    Web Origins: *
     ```
 3. Add Local User `Manage > Users > Add User`
     ```
