@@ -229,21 +229,18 @@ ng test --browser=ChromeHeadless
 ### Build
 ```bash
 # build project 
-ng build --app=default --prod -oh=media
 # FIXME UglifyJS is breaking
-ng build --app=default -oh=media  -e prod  --aot=true --build-optimizer=true --named-chunks=false --sourcemaps=false
+# edit and remove node_modules/@angular/cli/models/webpack-configs/production.js `new UglifyJSPlugin({` section
+ng build --app=default --prod -oh=media
 # build project with mock env
 ng build --app=default --prod -oh=media  -e mock
-# FIXME UglifyJS is breaking
-ng build --app=default -oh=media  -e mock  --aot=true --build-optimizer=true --named-chunks=false --sourcemaps=false
-
 
 ```
 ### Run
 ```bash
 # run mock mode
 ng s -e mock --extract-css --preserve-symlinks -o
-# use proxy
+# use proxy (if you have CORS disabled backend API)
 ng s -e mock --extract-css --preserve-symlinks --proxy-config proxy.conf.js
 # to bind to host IP, to demo from laptop
 ng s --host 

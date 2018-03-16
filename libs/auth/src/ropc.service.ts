@@ -21,7 +21,7 @@ export class ROPCService {
     //   - client_id : <client>
     //   - refresh_token : <refresh-token-from-login-token>
     //
-    // Headers:
+    // Headers: (FIXME: this is not working : https://issues.jboss.org/plugins/servlet/mobile#issue/KEYCLOAK-2939
     // - Authorization Bearer <IdToken/accessToken?>
 
     if (this.oauthService.getRefreshToken() === null) return;
@@ -33,10 +33,10 @@ export class ROPCService {
 
     const body = new HttpParams().set('client_id', this.oauthService.clientId).set('refresh_token', refresh_token);
 
-    return this.httpClient.post(environment.auth.proxyLogoutUrl, body.toString(), {
+    return this.httpClient.post(this.oauthService.logoutUrl, body.toString(), {
       headers: new HttpHeaders()
         .set('Content-Type', 'application/x-www-form-urlencoded')
-        .set('Authorization', `Bearer ${access_token}`)
+      // .set('Authorization', `Bearer ${access_token}`)
     });
   }
 }
