@@ -89,7 +89,11 @@ export class AuthService {
     }
   }
 
-  setupAutoRefreshToken() {
+  stopAutoRefreshToken() {
+    if (this._refresher && !this._refresher.closed) this._refresher.unsubscribe();
+  }
+
+  startAutoRefreshToken() {
     if (this._refresher && !this._refresher.closed) this._refresher.unsubscribe();
     if (this._monitorer && !this._monitorer.closed) this._monitorer.unsubscribe();
 

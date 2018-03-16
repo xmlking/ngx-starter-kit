@@ -25,13 +25,14 @@ export class AuthStore {
   loginSuccess(state, {payload}) {
     state.isLoggedIn = payload.isLoggedIn;
     state.profile = payload.profile;
-    this.authService.setupAutoRefreshToken();
+    this.authService.startAutoRefreshToken();
   }
 
   @Mutation([LogoutSuccess, LoginCanceled])
   logoutSuccess(state, {payload}) {
     state.isLoggedIn = false;
     state.profile = {};
+    this.authService.stopAutoRefreshToken();
     this.router.navigate(['/home']);
   }
 
