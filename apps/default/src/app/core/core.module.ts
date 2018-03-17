@@ -16,9 +16,9 @@ import { AuthModule, AuthStore } from "@nx-starter-kit/auth";
     HttpClientModule,
     NgxPageScrollModule,
     NgxsModule.forRoot([AuthStore]),
-    ReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production // Set to true for prod mode
-    }),
+    // ReduxDevtoolsPluginModule.forRoot({
+    //   disabled: environment.production // Set to true for prod mode
+    // }),
     AuthModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {

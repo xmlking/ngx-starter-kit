@@ -9,9 +9,10 @@ export const environment = {
   production: false,
   envName: 'dev',
 
-  API_BASE_URL: 'http://localhost:3000/api',
+  API_BASE_URL: 'https://is360api-grid-ms-is360-phase-2.ocp-ctc-core-nonprod.optum.com/api',
   auth: {
     clientId: 'is360ui',
-    issuer: 'http://localhost:8080/auth/realms/is360'
+    //issuer: 'http://localhost:8080/auth/realms/is360'
+    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360'
   }
 };

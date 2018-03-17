@@ -238,8 +238,10 @@ ng build --app=default --prod -oh=media  -e mock
 ```
 ### Run
 ```bash
+# dev run
+ng s --extract-css --preserve-symlinks  -o
 # run mock mode
-ng s -e mock --extract-css --preserve-symlinks -o
+ng s -e mock --extract-css --preserve-symlinks
 # use proxy (if you have CORS disabled backend API)
 ng s -e mock --extract-css --preserve-symlinks --proxy-config proxy.conf.js
 # to bind to host IP, to demo from laptop
@@ -271,7 +273,7 @@ npx standard-version
 ```
 ### Demo Deploy
 ```bash
-ng build --prod -e mock --output-path docs --base-href nx-starter-kit
+ng build --prod -e mock -oh=media --output-path docs --base-href nx-starter-kit
 # Make a copy of docs/index.html and name it docs/404.html
 ```
 

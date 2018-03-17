@@ -27,12 +27,12 @@ import {AuthGuard} from "@nx-starter-kit/auth";
         data: { animation: 'dashboard' },
         children: [
           {
-            path: '',
+            path: 'overview1',
             component: OverviewComponent,
             data: { animation: 'overview' }
           },
           {
-            path: 'overview1',
+            path: '',
             loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
             data: { animation: 'overview1' }
           },

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { SidenavItem } from './components/sidenav-item/sidenav-item.model';
-import { defaultMenu, iconMenu, adminMenu } from './sidenav-data';
+import { defaultMenu, demoMenu, adminMenu } from './sidenav-data';
 
 import { Tree } from '@nx-starter-kit/tree';
 
@@ -93,8 +93,8 @@ export class SidenavService {
       case 'admin-menu':
         menuItems = adminMenu;
         break;
-      case 'icon-menu':
-        menuItems = iconMenu;
+      case 'demo-menu':
+        menuItems = demoMenu;
         break;
       default:
         menuItems = defaultMenu;
