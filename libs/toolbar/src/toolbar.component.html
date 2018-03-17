@@ -21,7 +21,7 @@
 
   <nxtk-notifications fxShow  fxHide.lt-md [notifications]="toolbarHelpers?.notifications"></nxtk-notifications>
 
-  <user-menu [currentUser]="toolbarHelpers?.currentUser"></user-menu>
+  <user-menu [currentUser]="profile$ | async"></user-menu>
 
   <button mat-button class="quickpanel-toggle" (click)="quickpanel.open()">
     <mat-icon>format_align_right</mat-icon>

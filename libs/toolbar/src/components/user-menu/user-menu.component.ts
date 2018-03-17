@@ -13,7 +13,11 @@ export class UserMenuComponent implements OnInit {
 
   constructor(private ngxs: Ngxs) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if(this.currentUser.given_name && this.currentUser.given_name === 'Sumanth')  {
+      this.currentUser.photoURL = 'assets/img/avatars/user-image.jpg'
+    }
+  }
 
   toggleDropdown() {
     this.isOpen = !this.isOpen;
