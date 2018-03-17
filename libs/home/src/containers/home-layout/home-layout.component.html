@@ -1,7 +1,7 @@
 <div  id="top" fxLayout="column" fxFlexFill>
   <app-home-header></app-home-header>
   <div fxFlex class="content" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
-    <router-outlet #o="outlet"></router-outlet>
+    <router-outlet #o="outlet" (deactivate)="onDeactivate()"></router-outlet>
   </div>
   <scroll-to-top><!-- add id="top" --></scroll-to-top>
   <app-footer></app-footer>

@@ -1,16 +1,19 @@
 import {AuthConfig} from "angular-oauth2-oidc";
 import {environment} from "@env/environment";
 
+const base = document.querySelector('base');
+const baseUrl = base && base.href || window.location.origin + '/';
+
 const authConfig: AuthConfig = {
   // Url of the Identity Provider
   issuer: environment.auth.issuer,
 
   // URL of the SPA to redirect the user to after login
-  redirectUri: window.location.origin + '/dashboard',
+  redirectUri: baseUrl + 'dashboard',
 
-  postLogoutRedirectUri: window.location.origin + '/home',
+  postLogoutRedirectUri: baseUrl + 'home',
 
-  silentRefreshRedirectUri: window.location.origin + '/silent-refresh.html',
+  silentRefreshRedirectUri: baseUrl + 'silent-refresh.html',
 
   // The SPA's id. The SPA is registerd with this id at the auth-server
   clientId: environment.auth.clientId,

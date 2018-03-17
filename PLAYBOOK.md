@@ -9,7 +9,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v9.4.0   |          | 
 | Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v0.8.0   |          | 
+| @nrwl/schematics              | v0.9.0   |          | 
 
 
 ### Install Prerequisites
@@ -232,9 +232,6 @@ ng test --browser=ChromeHeadless
 # FIXME UglifyJS is breaking
 # edit and remove node_modules/@angular/cli/models/webpack-configs/production.js `new UglifyJSPlugin({` section
 ng build --app=default --prod -oh=media
-# build project with mock env
-ng build --app=default --prod -oh=media  -e mock
-
 ```
 ### Run
 ```bash
@@ -261,7 +258,7 @@ docker-compose up web
 > use this to test service-workers
 ```bash
 # 1st terminal - Start the build
-ng build --watch
+ng build --app=default -oh=media --watch
 # 2nd terminal - Start the web server (start server on port 4200)
 npx lite-server --baseDir="dist/apps/default"
 ```
@@ -271,9 +268,13 @@ npx lite-server --baseDir="dist/apps/default"
 npx standard-version
 "release": "standard-version && git push — follow-tags origin master && npm publish"
 ```
-### Demo Deploy
+### Deploy
+> deploy demo to gp-pages
 ```bash
-ng build --prod -e mock -oh=media --output-path docs --base-href /nx-starter-kit/
+# build for gp-pages
+# FIXME UglifyJS is breaking
+# edit and remove node_modules/@angular/cli/models/webpack-configs/production.js `new UglifyJSPlugin({` section
+ng build --prod -oh=media -e mock --output-path docs --base-href /nx-starter-kit/
 # Make a copy of docs/index.html and name it docs/404.html
 ```
 
@@ -283,7 +284,7 @@ It is self-contained, and can therefore be pushed to a Docker registry to be dep
 
 To start the container, use:
 ```bash
-$ docker-compose -f docker-compose.prod.yml up -d   # optional: --build, see below
+$ docker-compose up web   # optional: --build, see below
 ```
 
-Now open your browser at http://localhost:5555
+Now open your browser at http://localhost:80

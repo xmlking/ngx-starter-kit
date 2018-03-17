@@ -11,4 +11,10 @@ export class HomeLayoutComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {}
+
+  onDeactivate() {
+    console.log("in TODO onDeactivate scrollTop");
+    document.body.scrollTop = 0;
+    window.scrollTo(0,0)
+  }
 }

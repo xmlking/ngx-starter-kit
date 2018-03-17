@@ -1,38 +1,38 @@
-import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {Component, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
+import {SvgViewerService} from "./svg-viewer.service";
 
 @Component({
   selector: 'svg-viewer',
-  template: '<div class="svg-viewer" aria-hidden="true"></div>'
+  template: '<div class="svg-viewer" aria-hidden="true"></div>',
+  providers: [SvgViewerService]
 })
 export class SvgViewerComponent implements OnInit {
   @Input() src: string;
   @Input() scaleToContainer: boolean;
 
-  constructor(private elementRef: ElementRef, private http: HttpClient) {}
-
-  static getAbsolutePathFromSrc(src: string) {
-    return src.slice(src.indexOf('assets/') - 1);
+  constructor(private elementRef: ElementRef,
+              private renderer: Renderer2,
+              private svgViewerService: SvgViewerService) {
   }
 
   ngOnInit() {
     this.fetchAndInlineSvgContent(this.src);
   }
 
-  private inlineSvgContent(template) {
-    this.elementRef.nativeElement.innerHTML = template;
+  private inlineSvgContent(svg: SVGElement) {
+    const el = this.elementRef.nativeElement;
+    el.innerHTML = '';
 
     if (this.scaleToContainer) {
-      const svg = this.elementRef.nativeElement.querySelector('svg');
-      svg.setAttribute('width', '100%');
-      svg.setAttribute('height', '100%');
-      svg.setAttribute('preserveAspectRatio', 'xMidYMid meet');
+      this.renderer.setAttribute(svg, 'width', '100%');
+      this.renderer.setAttribute(svg, 'height', '100%');
+      this.renderer.setAttribute(svg, 'preserveAspectRatio', 'xMidYMid meet');
     }
+    this.renderer.appendChild(el, svg);
   }
 
   private fetchAndInlineSvgContent(path: string): void {
-    const svgAbsPath = SvgViewerComponent.getAbsolutePathFromSrc(path);
-    this.http.get(svgAbsPath, { responseType: 'text' }).subscribe((svgResponse: any) => {
+    this.svgViewerService.getSVG(path).subscribe((svgResponse: SVGElement) => {
       this.inlineSvgContent(svgResponse);
     });
   }
