@@ -1,1 +1,540 @@
-webpackJsonp([5],{Wnje:function(t,n,e){"use strict";Object.defineProperty(n,"__esModule",{value:!0});var l=e("WT6e"),o=e("TToO"),a=e("rxKx"),d=e("OE0E"),p=function(t){function n(){var n=null!==t&&t.apply(this,arguments)||this;return n.overrides={swipe:{direction:a.DIRECTION_ALL}},n}return Object(o.__extends)(n,t),n}(d.HammerGestureConfig),s={},u={animation:"experiments"},i={animation:"experiment1"},r={animation:"experiment2"},m=function(){},f=e("zI1e"),c=e("INQx"),y=e("efkn"),g=e("D0Vv"),b=e("RsmO"),w=e("bfOx"),v=e("IFpB"),O=e("d8ij"),h=function(){function t(){}return t.prototype.ngOnInit=function(){},t}(),x=l["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function T(t){return l["\u0275vid"](0,[(t()(),l["\u0275eld"](0,0,null,null,8,"div",[["fxFlexFill",""],["fxLayout","column"]],null,null,null,null,null)),l["\u0275did"](1,737280,null,0,b.j,[b.m,l.ElementRef,b.u],{layout:[0,"layout"]},null),l["\u0275did"](2,737280,null,0,b.f,[b.m,l.ElementRef,b.u],null,null),(t()(),l["\u0275eld"](3,16777216,null,null,1,"router-outlet",[],null,null,null,null,null)),l["\u0275did"](4,212992,null,0,w.s,[w.b,l.ViewContainerRef,l.ComponentFactoryResolver,[8,null],l.ChangeDetectorRef],null,null),(t()(),l["\u0275eld"](5,0,null,null,1,"div",[["fxFlex",""]],null,null,null,null,null)),l["\u0275did"](6,737280,null,0,b.e,[b.m,l.ElementRef,[3,b.j],b.u],{flex:[0,"flex"]},null),(t()(),l["\u0275eld"](7,0,null,null,1,"app-footer",[],null,null,null,v.b,v.a)),l["\u0275did"](8,114688,null,0,O.a,[],null,null)],function(t,n){t(n,1,0,"column"),t(n,2,0),t(n,4,0),t(n,6,0,""),t(n,8,0)},null)}var E=l["\u0275ccf"]("experiments-layout",h,function(t){return l["\u0275vid"](0,[(t()(),l["\u0275eld"](0,0,null,null,1,"experiments-layout",[],null,null,null,T,x)),l["\u0275did"](1,114688,null,0,h,[],null,null)],function(t,n){t(n,1,0)},null)},{},{},[]),C=e("mu/C"),N=e("1OzB"),M=e("BTH+"),R=e("gsbp"),D=e("XHgV"),k=e("U/+3"),A=function(){function t(){this.doubleTap=new l.EventEmitter,this.tripleTap=new l.EventEmitter}return t.prototype.onTap=function(t){2===t.tapCount&&this.doubleTap.emit(t),3===t.tapCount&&this.tripleTap.emit(t)},t}(),I=function(){function t(){}return t.prototype.ngOnInit=function(){},t.prototype.startAnimation=function(t){console.log(t),this.animationState||(this.animationState=t)},t.prototype.resetAnimationState=function(){this.animationState=""},t}(),L=l["\u0275crt"]({encapsulation:0,styles:[["img[_ngcontent-%COMP%]{width:200px}.example-card[_ngcontent-%COMP%]{text-align:center}"]],data:{animation:[{type:7,name:"cardAnimator",definitions:[{type:1,expr:"* => wobble",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg)",offset:.15},offset:null},{type:6,styles:{transform:"translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg)",offset:.3},offset:null},{type:6,styles:{transform:"translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg)",offset:.45},offset:null},{type:6,styles:{transform:"translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg)",offset:.6},offset:null},{type:6,styles:{transform:"translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg)",offset:.75},offset:null},{type:6,styles:{transform:"none",offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => swing",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"rotate3d(0, 0, 1, 15deg)",offset:.2},offset:null},{type:6,styles:{transform:"rotate3d(0, 0, 1, -10deg)",offset:.4},offset:null},{type:6,styles:{transform:"rotate3d(0, 0, 1, 5deg)",offset:.6},offset:null},{type:6,styles:{transform:"rotate3d(0, 0, 1, -5deg)",offset:.8},offset:null},{type:6,styles:{transform:"none",offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => jello",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"skewX(-12.5deg) skewY(-12.5deg)",offset:.111},offset:null},{type:6,styles:{transform:"skewX(6.25deg) skewY(6.25deg)",offset:.222},offset:null},{type:6,styles:{transform:"skewX(-3.125deg) skewY(-3.125deg)",offset:.333},offset:null},{type:6,styles:{transform:"skewX(1.5625deg) skewY(1.5625deg)",offset:.444},offset:null},{type:6,styles:{transform:"skewX(-0.78125deg) skewY(-0.78125deg)",offset:.555},offset:null},{type:6,styles:{transform:"skewX(0.390625deg) skewY(0.390625deg)",offset:.666},offset:null},{type:6,styles:{transform:"skewX(0.390625deg) skewY(0.390625deg)",offset:.777},offset:null},{type:6,styles:{transform:"skewX(-0.1953125deg) skewY(-0.1953125deg)",offset:.888},offset:null},{type:6,styles:{transform:"none",offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => zoomOutRight",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"scale3d(.475, .475, .475) translate3d(-42px, 0, 0)",offset:.4},offset:null},{type:6,styles:{transform:"scale(.1) translate3d(2000px, 0, 0)","transform-origin":"right center",offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => slideOutLeft",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"translate3d(0, 0, 0)",offset:0},offset:null},{type:6,styles:{transform:"translate3d(-150%, 0, 0)",opacity:0,offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => rotateOutUpRight",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"rotate3d(0, 0, 0, 0deg)",opacity:1,"transform-origin":"right bottom",offset:0},offset:null},{type:6,styles:{transform:"rotate3d(0, 0, 1, 90deg)",opacity:0,"transform-origin":"right bottom",offset:1},offset:null}]},timings:1e3},options:null},{type:1,expr:"* => flipOutY",animation:{type:4,styles:{type:5,steps:[{type:6,styles:{transform:"perspective(400px)",offset:0},offset:null},{type:6,styles:{transform:"perspective(400px) rotate3d(0, 1, 0, -15deg)",opacity:1,offset:.33},offset:null},{type:6,styles:{transform:"perspective(400px) rotate3d(0, 1, 0, 90deg)",opacity:0,offset:1},offset:null}]},timings:1e3},options:null}],options:{}}]}});function j(t){return l["\u0275vid"](0,[(t()(),l["\u0275eld"](0,0,null,null,21,"mat-card",[["class","example-card mat-card"]],[[24,"@cardAnimator",0]],[[null,"@cardAnimator.done"],[null,"swipeleft"],[null,"swiperight"],[null,"swipeup"],[null,"swipedown"]],function(t,n,e){var l=!0,o=t.component;return"@cardAnimator.done"===n&&(l=!1!==o.resetAnimationState()&&l),"swipeleft"===n&&(l=!1!==o.startAnimation("slideOutLeft")&&l),"swiperight"===n&&(l=!1!==o.startAnimation("zoomOutRight")&&l),"swipeup"===n&&(l=!1!==o.startAnimation("rotateOutUpRight")&&l),"swipedown"===n&&(l=!1!==o.startAnimation("flipOutY")&&l),l},C.d,C.a)),l["\u0275did"](1,49152,null,0,N.a,[],null,null),(t()(),l["\u0275eld"](2,0,null,0,5,"mat-card-content",[["class","mat-card-content"]],null,null,null,null,null)),l["\u0275did"](3,16384,null,0,N.d,[],null,null),(t()(),l["\u0275eld"](4,0,null,null,1,"img",[["class","mat-card-image"],["mat-card-image",""],["src","https://angular.io/assets/images/logos/angular/angular.svg"]],null,null,null,null,null)),l["\u0275did"](5,16384,null,0,N.f,[],null,null),(t()(),l["\u0275eld"](6,0,null,null,1,"p",[],null,null,null,null,null)),(t()(),l["\u0275ted"](-1,null,[" Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop. "])),(t()(),l["\u0275eld"](8,0,null,0,13,"mat-card-actions",[["class","mat-card-actions"]],[[2,"mat-card-actions-align-end",null]],null,null,null,null)),l["\u0275did"](9,16384,null,0,N.b,[],null,null),(t()(),l["\u0275eld"](10,0,null,null,2,"button",[["color","primary"],["mat-raised-button",""]],[[8,"disabled",0]],[[null,"tap"]],function(t,n,e){var l=!0;return"tap"===n&&(l=!1!==t.component.startAnimation("wobble")&&l),l},M.d,M.b)),l["\u0275did"](11,180224,null,0,R.b,[l.ElementRef,D.a,k.i],{color:[0,"color"]},null),(t()(),l["\u0275ted"](-1,0,["WOBBLE"])),(t()(),l["\u0275eld"](13,0,null,null,2,"button",[["color","primary"],["mat-raised-button",""]],[[8,"disabled",0]],[[null,"tap"]],function(t,n,e){var l=!0;return"tap"===n&&(l=!1!==t.component.startAnimation("swing")&&l),l},M.d,M.b)),l["\u0275did"](14,180224,null,0,R.b,[l.ElementRef,D.a,k.i],{color:[0,"color"]},null),(t()(),l["\u0275ted"](-1,0,["SWING"])),(t()(),l["\u0275eld"](16,0,null,null,1,"h5",[],null,null,null,null,null)),(t()(),l["\u0275ted"](-1,null,["Custom Events"])),(t()(),l["\u0275eld"](18,0,null,null,3,"button",[["color","accent"],["hammertime",""],["mat-raised-button",""]],[[8,"disabled",0]],[[null,"doubleTap"],[null,"tap"]],function(t,n,e){var o=!0,a=t.component;return"tap"===n&&(o=!1!==l["\u0275nov"](t,20).onTap(e)&&o),"doubleTap"===n&&(o=!1!==a.startAnimation("jello")&&o),o},M.d,M.b)),l["\u0275did"](19,180224,null,0,R.b,[l.ElementRef,D.a,k.i],{color:[0,"color"]},null),l["\u0275did"](20,16384,null,0,A,[],null,{doubleTap:"doubleTap"}),(t()(),l["\u0275ted"](-1,0,["JELLO (doubleTap) "]))],function(t,n){t(n,11,0,"primary"),t(n,14,0,"primary"),t(n,19,0,"accent")},function(t,n){t(n,0,0,n.component.animationState),t(n,8,0,"end"===l["\u0275nov"](n,9).align),t(n,10,0,l["\u0275nov"](n,11).disabled||null),t(n,13,0,l["\u0275nov"](n,14).disabled||null),t(n,18,0,l["\u0275nov"](n,19).disabled||null)})}var F=function(){function t(){}return t.prototype.ngOnInit=function(){},t}(),U=l["\u0275crt"]({encapsulation:0,styles:[[""]],data:{}});function _(t){return l["\u0275vid"](0,[(t()(),l["\u0275eld"](0,0,null,null,1,"app-hammer-card",[],null,null,null,j,L)),l["\u0275did"](1,114688,null,0,I,[],null,null)],function(t,n){t(n,1,0)},null)}var S=l["\u0275ccf"]("app-experiments",F,function(t){return l["\u0275vid"](0,[(t()(),l["\u0275eld"](0,0,null,null,1,"app-experiments",[],null,null,null,_,U)),l["\u0275did"](1,114688,null,0,F,[],null,null)],function(t,n){t(n,1,0)},null)},{},{},[]),Y=e("Xjw4"),P=e("9Sd6"),X=e("1T37"),B=e("+j5Y"),z=e("F1jI"),Z=e("a9YB"),q=e("6sdf"),W=e("Uo70"),G=e("8tOD"),H=e("z7Rf"),V=e("ItHS"),J=e("704W"),Q=e("kINy"),K=e("WQzG"),$=e("NwsS"),tt=e("Mcof"),nt=e("7u3n"),et=e("Z+/l"),lt=e("p5vt"),ot=e("hahM"),at=e("YEB1"),dt=e("7DMc"),pt=e("1GLL"),st=e("bkcK"),ut=e("bq7Y"),it=e("AP/s"),rt=e("+76Z"),mt=e("yvW1"),ft=e("q2BM"),ct=e("TBIh"),yt=e("4rwD"),gt=e("ZuzD"),bt=e("sqmn"),wt=e("Xbny"),vt=e("Bp8q"),Ot=e("y/Fr"),ht=e("kJ/S"),xt=e("JkvL"),Tt=e("86rF"),Et=e("XMYV"),Ct=e("W91W"),Nt=e("6GVX"),Mt=e("j06o"),Rt=e("Oz7M"),Dt=e("RNkg"),kt=e("ab5T"),At=e("RpQI"),It=e("qH0t"),Lt=e("QL1P");e.d(n,"ExperimentsModuleNgFactory",function(){return jt});var jt=l["\u0275cmf"](m,[],function(t){return l["\u0275mod"]([l["\u0275mpd"](512,l.ComponentFactoryResolver,l["\u0275CodegenComponentFactoryResolver"],[[8,[f.a,c.a,y.a,y.b,g.a,E,S]],[3,l.ComponentFactoryResolver],l.NgModuleRef]),l["\u0275mpd"](4608,Y.NgLocalization,Y.NgLocaleLocalization,[l.LOCALE_ID,[2,Y["\u0275a"]]]),l["\u0275mpd"](5120,b.a,b.c,[]),l["\u0275mpd"](4608,b.b,b.b,[b.a]),l["\u0275mpd"](4608,b.l,b.l,[l.NgZone,l.PLATFORM_ID,Y.DOCUMENT]),l["\u0275mpd"](4608,b.m,b.m,[b.b,b.l]),l["\u0275mpd"](5120,b.p,b.o,[[3,b.p],b.l,b.b]),l["\u0275mpd"](6144,b.w,null,[Y.DOCUMENT]),l["\u0275mpd"](4608,b.x,b.x,[[2,b.w]]),l["\u0275mpd"](4608,b.r,b.r,[]),l["\u0275mpd"](4608,b.u,b.u,[[2,b.r],[2,b.q],l.PLATFORM_ID]),l["\u0275mpd"](5120,l.APP_BOOTSTRAP_LISTENER,function(t,n){return[b.v(t,n)]},[Y.DOCUMENT,l.PLATFORM_ID]),l["\u0275mpd"](6144,P.b,null,[Y.DOCUMENT]),l["\u0275mpd"](4608,P.c,P.c,[[2,P.b]]),l["\u0275mpd"](4608,D.a,D.a,[]),l["\u0275mpd"](5120,X.d,X.b,[[3,X.d],l.NgZone,D.a]),l["\u0275mpd"](5120,X.g,X.f,[[3,X.g],D.a,l.NgZone]),l["\u0275mpd"](4608,B.i,B.i,[X.d,X.g,l.NgZone,Y.DOCUMENT]),l["\u0275mpd"](5120,B.e,B.j,[[3,B.e],Y.DOCUMENT]),l["\u0275mpd"](4608,B.h,B.h,[X.g,Y.DOCUMENT]),l["\u0275mpd"](5120,B.f,B.m,[[3,B.f],Y.DOCUMENT]),l["\u0275mpd"](4608,B.c,B.c,[B.i,B.e,l.ComponentFactoryResolver,B.h,B.f,l.ApplicationRef,l.Injector,l.NgZone,Y.DOCUMENT,P.c]),l["\u0275mpd"](5120,B.k,B.l,[B.c]),l["\u0275mpd"](5120,z.b,z.c,[B.c]),l["\u0275mpd"](4608,k.k,k.k,[D.a]),l["\u0275mpd"](4608,k.j,k.j,[k.k,l.NgZone,Y.DOCUMENT]),l["\u0275mpd"](136192,k.d,k.b,[[3,k.d],Y.DOCUMENT]),l["\u0275mpd"](5120,k.n,k.m,[[3,k.n],[2,k.l],Y.DOCUMENT]),l["\u0275mpd"](5120,k.i,k.g,[[3,k.i],l.NgZone,D.a]),l["\u0275mpd"](5120,Z.c,Z.d,[[3,Z.c]]),l["\u0275mpd"](4608,q.b,q.b,[]),l["\u0275mpd"](4608,W.d,W.d,[]),l["\u0275mpd"](5120,G.c,G.d,[B.c]),l["\u0275mpd"](4608,G.e,G.e,[B.c,l.Injector,[2,Y.Location],[2,G.b],G.c,[3,G.e],B.e]),l["\u0275mpd"](5120,H.d,H.a,[[3,H.d],[2,V.HttpClient],d.DomSanitizer,[2,Y.DOCUMENT]]),l["\u0275mpd"](135680,J.a,J.a,[D.a]),l["\u0275mpd"](5120,Q.b,Q.g,[B.c]),l["\u0275mpd"](4352,W.h,"en-GB",[]),l["\u0275mpd"](4608,W.c,K.b,[W.h]),l["\u0275mpd"](5120,$.a,$.b,[B.c]),l["\u0275mpd"](4608,tt.d,tt.d,[D.a]),l["\u0275mpd"](135680,tt.a,tt.a,[tt.d,l.NgZone]),l["\u0275mpd"](5120,nt.b,nt.c,[B.c]),l["\u0275mpd"](5120,et.c,et.a,[[3,et.c]]),l["\u0275mpd"](4608,d.HAMMER_GESTURE_CONFIG,p,[]),l["\u0275mpd"](4608,lt.b,lt.b,[B.c,k.n,l.Injector,tt.a,[3,lt.b]]),l["\u0275mpd"](5120,ot.d,ot.a,[[3,ot.d]]),l["\u0275mpd"](4608,at.a,at.a,[]),l["\u0275mpd"](4608,dt.v,dt.v,[]),l["\u0275mpd"](4608,dt.e,dt.e,[]),l["\u0275mpd"](4608,pt.h,pt.h,[]),l["\u0275mpd"](5120,pt.a,pt.b,[B.c]),l["\u0275mpd"](1073742336,Y.CommonModule,Y.CommonModule,[]),l["\u0275mpd"](1073742336,w.r,w.r,[[2,w.w],[2,w.n]]),l["\u0275mpd"](1073742336,b.n,b.n,[]),l["\u0275mpd"](1073742336,b.y,b.y,[]),l["\u0275mpd"](1073742336,b.g,b.g,[[2,b.q],l.PLATFORM_ID]),l["\u0275mpd"](1073742336,P.a,P.a,[]),l["\u0275mpd"](256,W.f,!0,[]),l["\u0275mpd"](1073742336,W.n,W.n,[[2,W.f]]),l["\u0275mpd"](1073742336,D.b,D.b,[]),l["\u0275mpd"](1073742336,W.y,W.y,[]),l["\u0275mpd"](1073742336,W.w,W.w,[]),l["\u0275mpd"](1073742336,W.u,W.u,[]),l["\u0275mpd"](1073742336,st.g,st.g,[]),l["\u0275mpd"](1073742336,X.c,X.c,[]),l["\u0275mpd"](1073742336,B.g,B.g,[]),l["\u0275mpd"](1073742336,z.e,z.e,[]),l["\u0275mpd"](1073742336,k.a,k.a,[]),l["\u0275mpd"](1073742336,R.c,R.c,[]),l["\u0275mpd"](1073742336,ut.a,ut.a,[]),l["\u0275mpd"](1073742336,N.g,N.g,[]),l["\u0275mpd"](1073742336,q.c,q.c,[]),l["\u0275mpd"](1073742336,it.c,it.c,[]),l["\u0275mpd"](1073742336,rt.c,rt.c,[]),l["\u0275mpd"](1073742336,G.j,G.j,[]),l["\u0275mpd"](1073742336,mt.c,mt.c,[]),l["\u0275mpd"](1073742336,ft.a,ft.a,[]),l["\u0275mpd"](1073742336,ct.d,ct.d,[]),l["\u0275mpd"](1073742336,W.p,W.p,[]),l["\u0275mpd"](1073742336,yt.b,yt.b,[]),l["\u0275mpd"](1073742336,H.c,H.c,[]),l["\u0275mpd"](1073742336,J.d,J.d,[]),l["\u0275mpd"](1073742336,gt.b,gt.b,[]),l["\u0275mpd"](1073742336,bt.e,bt.e,[]),l["\u0275mpd"](1073742336,Q.e,Q.e,[]),l["\u0275mpd"](1073742336,W.A,W.A,[]),l["\u0275mpd"](1073742336,W.r,W.r,[]),l["\u0275mpd"](1073742336,$.d,$.d,[]),l["\u0275mpd"](1073742336,tt.c,tt.c,[]),l["\u0275mpd"](1073742336,nt.e,nt.e,[]),l["\u0275mpd"](1073742336,et.d,et.d,[]),l["\u0275mpd"](1073742336,wt.b,wt.b,[]),l["\u0275mpd"](1073742336,vt.a,vt.a,[]),l["\u0275mpd"](1073742336,Ot.a,Ot.a,[]),l["\u0275mpd"](1073742336,ht.h,ht.h,[]),l["\u0275mpd"](1073742336,xt.a,xt.a,[]),l["\u0275mpd"](1073742336,Tt.a,Tt.a,[]),l["\u0275mpd"](1073742336,lt.d,lt.d,[]),l["\u0275mpd"](1073742336,ot.e,ot.e,[]),l["\u0275mpd"](1073742336,Et.l,Et.l,[]),l["\u0275mpd"](1073742336,Ct.l,Ct.l,[]),l["\u0275mpd"](1073742336,Nt.i,Nt.i,[]),l["\u0275mpd"](1073742336,Mt.b,Mt.b,[]),l["\u0275mpd"](1073742336,Rt.d,Rt.d,[]),l["\u0275mpd"](1073742336,at.b,at.b,[]),l["\u0275mpd"](1073742336,Dt.a,Dt.a,[]),l["\u0275mpd"](1073742336,kt.a,kt.a,[]),l["\u0275mpd"](1073742336,At.d,At.d,[]),l["\u0275mpd"](1073742336,dt.t,dt.t,[]),l["\u0275mpd"](1073742336,dt.i,dt.i,[]),l["\u0275mpd"](1073742336,dt.q,dt.q,[]),l["\u0275mpd"](1073742336,K.c,K.c,[]),l["\u0275mpd"](1073742336,K.a,K.a,[]),l["\u0275mpd"](1073742336,pt.i,pt.i,[]),l["\u0275mpd"](1073742336,It.a,It.a,[]),l["\u0275mpd"](1073742336,Lt.a,Lt.a,[]),l["\u0275mpd"](1073742336,m,m,[]),l["\u0275mpd"](256,Q.a,{overlapTrigger:!0,xPosition:"after",yPosition:"below"},[]),l["\u0275mpd"](256,W.g,It.b,[]),l["\u0275mpd"](256,nt.a,{showDelay:0,hideDelay:0,touchendHideDelay:1500},[]),l["\u0275mpd"](256,ht.a,!1,[]),l["\u0275mpd"](256,At.a,Lt.b,[]),l["\u0275mpd"](1024,w.l,function(){return[[{path:"",component:h,data:s,children:[{path:"",component:F,data:u},{path:"experiment1",component:F,data:i},{path:"experiment2",component:F,data:r}]}]]},[])])})}});
+webpackJsonp([5],{
+
+/***/ "Wnje":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+
+// EXTERNAL MODULE: ./node_modules/@angular/core/esm5/core.js
+var core = __webpack_require__("WT6e");
+
+// EXTERNAL MODULE: ./node_modules/tslib/tslib.es6.js
+var tslib_es6 = __webpack_require__("TToO");
+
+// EXTERNAL MODULE: ./node_modules/hammerjs/hammer.js
+var hammer = __webpack_require__("rxKx");
+var hammer_default = /*#__PURE__*/__webpack_require__.n(hammer);
+
+// EXTERNAL MODULE: ./node_modules/@angular/platform-browser/esm5/platform-browser.js
+var platform_browser = __webpack_require__("OE0E");
+
+// CONCATENATED MODULE: ./libs/experiments/src/experiments.module.ts
+
+
+
+var experiments_module_MyHammerConfig = /*@__PURE__*/ (function (_super) {
+    Object(tslib_es6["__extends"])(MyHammerConfig, _super);
+    function MyHammerConfig() {
+        var _this = _super !== null && _super.apply(this, arguments) || this;
+        _this.overrides = {
+            // override hammerjs default configuration
+            swipe: { direction: hammer["DIRECTION_ALL"] }
+        };
+        return _this;
+    }
+    return MyHammerConfig;
+}(platform_browser["HammerGestureConfig"]));
+
+var ɵ0 = {}, ɵ1 = { animation: 'experiments' }, ɵ2 = { animation: 'experiment1' }, ɵ3 = { animation: 'experiment2' };
+var ExperimentsModule = /*@__PURE__*/ (function () {
+    function ExperimentsModule() {
+    }
+    return ExperimentsModule;
+}());
+
+
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/dialog/typings/index.ngfactory.js
+var index_ngfactory = __webpack_require__("zI1e");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/tooltip/typings/index.ngfactory.js
+var typings_index_ngfactory = __webpack_require__("INQx");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/snack-bar/typings/index.ngfactory.js
+var snack_bar_typings_index_ngfactory = __webpack_require__("efkn");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/datepicker/typings/index.ngfactory.js
+var datepicker_typings_index_ngfactory = __webpack_require__("D0Vv");
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments-layout/experiments-layout.component.scss.shim.ngstyle.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+var styles = [""];
+
+
+// EXTERNAL MODULE: ./node_modules/@angular/flex-layout/esm5/flex-layout.es5.js
+var flex_layout_es5 = __webpack_require__("RsmO");
+
+// EXTERNAL MODULE: ./node_modules/@angular/router/esm5/router.js + 6 modules
+var router = __webpack_require__("bfOx");
+
+// EXTERNAL MODULE: ./libs/shared/src/components/footer/footer.component.ngfactory.js + 1 modules
+var footer_component_ngfactory = __webpack_require__("IFpB");
+
+// EXTERNAL MODULE: ./libs/shared/src/components/footer/footer.component.ts
+var footer_component = __webpack_require__("d8ij");
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments-layout/experiments-layout.component.ts
+
+var ExperimentsLayoutComponent = /*@__PURE__*/ (function () {
+    function ExperimentsLayoutComponent() {
+    }
+    ExperimentsLayoutComponent.prototype.ngOnInit = function () { };
+    return ExperimentsLayoutComponent;
+}());
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments-layout/experiments-layout.component.ngfactory.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START _experiments_layout.component.scss.shim.ngstyle,_angular_core,_angular_flex_layout,_angular_router,_.._.._.._shared_src_components_footer_footer.component.ngfactory,_.._.._.._shared_src_components_footer_footer.component,_experiments_layout.component PURE_IMPORTS_END */
+/** PURE_IMPORTS_START _experiments_layout.component.scss.shim.ngstyle,_angular_core,_angular_flex_layout,_angular_router,_.._.._.._shared_src_components_footer_footer.component.ngfactory,_.._.._.._shared_src_components_footer_footer.component,_experiments_layout.component PURE_IMPORTS_END */
+
+
+
+
+
+
+
+var styles_ExperimentsLayoutComponent = [styles];
+var RenderType_ExperimentsLayoutComponent = /*@__PURE__*/ core["ɵcrt"]({ encapsulation: 0, styles: styles_ExperimentsLayoutComponent, data: {} });
+
+function View_ExperimentsLayoutComponent_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 8, "div", [["fxFlexFill", ""], ["fxLayout", "column"]], null, null, null, null, null)), core["ɵdid"](1, 737280, null, 0, flex_layout_es5["j" /* LayoutDirective */], [flex_layout_es5["m" /* MediaMonitor */], core["ElementRef"], flex_layout_es5["u" /* StyleUtils */]], { layout: [0, "layout"] }, null), core["ɵdid"](2, 737280, null, 0, flex_layout_es5["f" /* FlexFillDirective */], [flex_layout_es5["m" /* MediaMonitor */], core["ElementRef"], flex_layout_es5["u" /* StyleUtils */]], null, null), (_l()(), core["ɵeld"](3, 16777216, null, null, 1, "router-outlet", [], null, null, null, null, null)), core["ɵdid"](4, 212992, null, 0, router["s" /* RouterOutlet */], [router["b" /* ChildrenOutletContexts */], core["ViewContainerRef"], core["ComponentFactoryResolver"], [8, null], core["ChangeDetectorRef"]], null, null), (_l()(), core["ɵeld"](5, 0, null, null, 1, "div", [["fxFlex", ""]], null, null, null, null, null)), core["ɵdid"](6, 737280, null, 0, flex_layout_es5["e" /* FlexDirective */], [flex_layout_es5["m" /* MediaMonitor */], core["ElementRef"], [3, flex_layout_es5["j" /* LayoutDirective */]], flex_layout_es5["u" /* StyleUtils */]], { flex: [0, "flex"] }, null), (_l()(), core["ɵeld"](7, 0, null, null, 1, "app-footer", [], null, null, null, footer_component_ngfactory["b" /* View_FooterComponent_0 */], footer_component_ngfactory["a" /* RenderType_FooterComponent */])), core["ɵdid"](8, 114688, null, 0, footer_component["a" /* FooterComponent */], [], null, null)], function (_ck, _v) { var currVal_0 = "column"; _ck(_v, 1, 0, currVal_0); _ck(_v, 2, 0); _ck(_v, 4, 0); var currVal_1 = ""; _ck(_v, 6, 0, currVal_1); _ck(_v, 8, 0); }, null); }
+function View_ExperimentsLayoutComponent_Host_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "experiments-layout", [], null, null, null, View_ExperimentsLayoutComponent_0, RenderType_ExperimentsLayoutComponent)), core["ɵdid"](1, 114688, null, 0, ExperimentsLayoutComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var ExperimentsLayoutComponentNgFactory = /*@__PURE__*/ core["ɵccf"]("experiments-layout", ExperimentsLayoutComponent, View_ExperimentsLayoutComponent_Host_0, {}, {}, []);
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments/experiments.component.scss.shim.ngstyle.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+var experiments_component_scss_shim_ngstyle_styles = [""];
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/components/hammer-card/hammer-card.component.scss.shim.ngstyle.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+/** PURE_IMPORTS_START  PURE_IMPORTS_END */
+var hammer_card_component_scss_shim_ngstyle_styles = ["img[_ngcontent-%COMP%]{width:200px}.example-card[_ngcontent-%COMP%]{text-align:center}"];
+
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/card/typings/index.ngfactory.js
+var card_typings_index_ngfactory = __webpack_require__("mu/C");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/card.es5.js
+var card_es5 = __webpack_require__("1OzB");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/button/typings/index.ngfactory.js
+var button_typings_index_ngfactory = __webpack_require__("BTH+");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/button.es5.js
+var button_es5 = __webpack_require__("gsbp");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/platform.es5.js
+var platform_es5 = __webpack_require__("XHgV");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/a11y.es5.js
+var a11y_es5 = __webpack_require__("U/+3");
+
+// CONCATENATED MODULE: ./libs/experiments/src/components/hammertime/hammertime.directive.ts
+
+var hammertime_directive_HammertimeDirective = /*@__PURE__*/ (function () {
+    function HammertimeDirective() {
+        this.doubleTap = new core["EventEmitter"]();
+        this.tripleTap = new core["EventEmitter"]();
+    }
+    HammertimeDirective.prototype.onTap = function (e) {
+        if (e.tapCount === 2) {
+            this.doubleTap.emit(e);
+        }
+        if (e.tapCount === 3) {
+            this.tripleTap.emit(e);
+        }
+    };
+    return HammertimeDirective;
+}());
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/components/hammer-card/hammer-card.component.ts
+
+var HammerCardComponent = /*@__PURE__*/ (function () {
+    function HammerCardComponent() {
+    }
+    HammerCardComponent.prototype.ngOnInit = function () { };
+    HammerCardComponent.prototype.startAnimation = function (state) {
+        console.log(state);
+        if (!this.animationState) {
+            this.animationState = state;
+        }
+    };
+    HammerCardComponent.prototype.resetAnimationState = function () {
+        this.animationState = '';
+    };
+    return HammerCardComponent;
+}());
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/components/hammer-card/hammer-card.component.ngfactory.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START _hammer_card.component.scss.shim.ngstyle,_angular_core,_.._.._.._.._node_modules__angular_material_card_typings_index.ngfactory,_angular_material_card,_.._.._.._.._node_modules__angular_material_button_typings_index.ngfactory,_angular_material_button,_angular_cdk_platform,_angular_cdk_a11y,_hammertime_hammertime.directive,_hammer_card.component PURE_IMPORTS_END */
+/** PURE_IMPORTS_START _hammer_card.component.scss.shim.ngstyle,_angular_core,_.._.._.._.._node_modules__angular_material_card_typings_index.ngfactory,_angular_material_card,_.._.._.._.._node_modules__angular_material_button_typings_index.ngfactory,_angular_material_button,_angular_cdk_platform,_angular_cdk_a11y,_hammertime_hammertime.directive,_hammer_card.component PURE_IMPORTS_END */
+
+
+
+
+
+
+
+
+
+
+var styles_HammerCardComponent = [hammer_card_component_scss_shim_ngstyle_styles];
+var RenderType_HammerCardComponent = /*@__PURE__*/ core["ɵcrt"]({ encapsulation: 0, styles: styles_HammerCardComponent, data: { "animation": [{ type: 7, name: "cardAnimator", definitions: [{ type: 1, expr: "* => wobble", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "translate3d(-25%, 0, 0) rotate3d(0, 0, 1, -5deg)", offset: 0.15 }, offset: null }, { type: 6, styles: { transform: "translate3d(20%, 0, 0) rotate3d(0, 0, 1, 3deg)", offset: 0.3 }, offset: null }, { type: 6, styles: { transform: "translate3d(-15%, 0, 0) rotate3d(0, 0, 1, -3deg)", offset: 0.45 }, offset: null }, { type: 6, styles: { transform: "translate3d(10%, 0, 0) rotate3d(0, 0, 1, 2deg)", offset: 0.6 }, offset: null }, { type: 6, styles: { transform: "translate3d(-5%, 0, 0) rotate3d(0, 0, 1, -1deg)", offset: 0.75 }, offset: null }, { type: 6, styles: { transform: "none", offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => swing", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "rotate3d(0, 0, 1, 15deg)", offset: 0.2 }, offset: null }, { type: 6, styles: { transform: "rotate3d(0, 0, 1, -10deg)", offset: 0.4 }, offset: null }, { type: 6, styles: { transform: "rotate3d(0, 0, 1, 5deg)", offset: 0.6 }, offset: null }, { type: 6, styles: { transform: "rotate3d(0, 0, 1, -5deg)", offset: 0.8 }, offset: null }, { type: 6, styles: { transform: "none", offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => jello", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "skewX(-12.5deg) skewY(-12.5deg)", offset: 0.111 }, offset: null }, { type: 6, styles: { transform: "skewX(6.25deg) skewY(6.25deg)", offset: 0.222 }, offset: null }, { type: 6, styles: { transform: "skewX(-3.125deg) skewY(-3.125deg)", offset: 0.333 }, offset: null }, { type: 6, styles: { transform: "skewX(1.5625deg) skewY(1.5625deg)", offset: 0.444 }, offset: null }, { type: 6, styles: { transform: "skewX(-0.78125deg) skewY(-0.78125deg)", offset: 0.555 }, offset: null }, { type: 6, styles: { transform: "skewX(0.390625deg) skewY(0.390625deg)", offset: 0.666 }, offset: null }, { type: 6, styles: { transform: "skewX(0.390625deg) skewY(0.390625deg)", offset: 0.777 }, offset: null }, { type: 6, styles: { transform: "skewX(-0.1953125deg) skewY(-0.1953125deg)", offset: 0.888 }, offset: null }, { type: 6, styles: { transform: "none", offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => zoomOutRight", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "scale3d(.475, .475, .475) translate3d(-42px, 0, 0)", offset: 0.4 }, offset: null }, { type: 6, styles: { transform: "scale(.1) translate3d(2000px, 0, 0)", "transform-origin": "right center", offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => slideOutLeft", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "translate3d(0, 0, 0)", offset: 0 }, offset: null }, { type: 6, styles: { transform: "translate3d(-150%, 0, 0)", opacity: 0, offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => rotateOutUpRight", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "rotate3d(0, 0, 0, 0deg)", opacity: 1, "transform-origin": "right bottom", offset: 0 }, offset: null }, { type: 6, styles: { transform: "rotate3d(0, 0, 1, 90deg)", opacity: 0, "transform-origin": "right bottom", offset: 1 }, offset: null }] }, timings: 1000 }, options: null }, { type: 1, expr: "* => flipOutY", animation: { type: 4, styles: { type: 5, steps: [{ type: 6, styles: { transform: "perspective(400px)", offset: 0 }, offset: null }, { type: 6, styles: { transform: "perspective(400px) rotate3d(0, 1, 0, -15deg)", opacity: 1, offset: 0.33 }, offset: null }, { type: 6, styles: { transform: "perspective(400px) rotate3d(0, 1, 0, 90deg)", opacity: 0, offset: 1 }, offset: null }] }, timings: 1000 }, options: null }], options: {} }] } });
+
+function View_HammerCardComponent_0(_l) {
+    return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 21, "mat-card", [["class", "example-card mat-card"]], [[24, "@cardAnimator", 0]], [[null, "@cardAnimator.done"], [null, "swipeleft"], [null, "swiperight"], [null, "swipeup"], [null, "swipedown"]], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (("@cardAnimator.done" === en)) {
+                var pd_0 = (_co.resetAnimationState() !== false);
+                ad = (pd_0 && ad);
+            }
+            if (("swipeleft" === en)) {
+                var pd_1 = (_co.startAnimation("slideOutLeft") !== false);
+                ad = (pd_1 && ad);
+            }
+            if (("swiperight" === en)) {
+                var pd_2 = (_co.startAnimation("zoomOutRight") !== false);
+                ad = (pd_2 && ad);
+            }
+            if (("swipeup" === en)) {
+                var pd_3 = (_co.startAnimation("rotateOutUpRight") !== false);
+                ad = (pd_3 && ad);
+            }
+            if (("swipedown" === en)) {
+                var pd_4 = (_co.startAnimation("flipOutY") !== false);
+                ad = (pd_4 && ad);
+            }
+            return ad;
+        }, card_typings_index_ngfactory["d" /* View_MatCard_0 */], card_typings_index_ngfactory["a" /* RenderType_MatCard */])), core["ɵdid"](1, 49152, null, 0, card_es5["a" /* MatCard */], [], null, null), (_l()(), core["ɵeld"](2, 0, null, 0, 5, "mat-card-content", [["class", "mat-card-content"]], null, null, null, null, null)), core["ɵdid"](3, 16384, null, 0, card_es5["d" /* MatCardContent */], [], null, null), (_l()(), core["ɵeld"](4, 0, null, null, 1, "img", [["class", "mat-card-image"], ["mat-card-image", ""], ["src", "https://angular.io/assets/images/logos/angular/angular.svg"]], null, null, null, null, null)), core["ɵdid"](5, 16384, null, 0, card_es5["f" /* MatCardImage */], [], null, null), (_l()(), core["ɵeld"](6, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), core["ɵted"](-1, null, [" Learn one way to build applications with Angular and reuse your code and abilities to build apps for any deployment target. For web, mobile web, native mobile and native desktop. "])), (_l()(), core["ɵeld"](8, 0, null, 0, 13, "mat-card-actions", [["class", "mat-card-actions"]], [[2, "mat-card-actions-align-end", null]], null, null, null, null)), core["ɵdid"](9, 16384, null, 0, card_es5["b" /* MatCardActions */], [], null, null), (_l()(), core["ɵeld"](10, 0, null, null, 2, "button", [["color", "primary"], ["mat-raised-button", ""]], [[8, "disabled", 0]], [[null, "tap"]], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (("tap" === en)) {
+                var pd_0 = (_co.startAnimation("wobble") !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, button_typings_index_ngfactory["d" /* View_MatButton_0 */], button_typings_index_ngfactory["b" /* RenderType_MatButton */])), core["ɵdid"](11, 180224, null, 0, button_es5["b" /* MatButton */], [core["ElementRef"], platform_es5["a" /* Platform */], a11y_es5["i" /* FocusMonitor */]], { color: [0, "color"] }, null), (_l()(), core["ɵted"](-1, 0, ["WOBBLE"])), (_l()(), core["ɵeld"](13, 0, null, null, 2, "button", [["color", "primary"], ["mat-raised-button", ""]], [[8, "disabled", 0]], [[null, "tap"]], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (("tap" === en)) {
+                var pd_0 = (_co.startAnimation("swing") !== false);
+                ad = (pd_0 && ad);
+            }
+            return ad;
+        }, button_typings_index_ngfactory["d" /* View_MatButton_0 */], button_typings_index_ngfactory["b" /* RenderType_MatButton */])), core["ɵdid"](14, 180224, null, 0, button_es5["b" /* MatButton */], [core["ElementRef"], platform_es5["a" /* Platform */], a11y_es5["i" /* FocusMonitor */]], { color: [0, "color"] }, null), (_l()(), core["ɵted"](-1, 0, ["SWING"])), (_l()(), core["ɵeld"](16, 0, null, null, 1, "h5", [], null, null, null, null, null)), (_l()(), core["ɵted"](-1, null, ["Custom Events"])), (_l()(), core["ɵeld"](18, 0, null, null, 3, "button", [["color", "accent"], ["hammertime", ""], ["mat-raised-button", ""]], [[8, "disabled", 0]], [[null, "doubleTap"], [null, "tap"]], function (_v, en, $event) {
+            var ad = true;
+            var _co = _v.component;
+            if (("tap" === en)) {
+                var pd_0 = (core["ɵnov"](_v, 20).onTap($event) !== false);
+                ad = (pd_0 && ad);
+            }
+            if (("doubleTap" === en)) {
+                var pd_1 = (_co.startAnimation("jello") !== false);
+                ad = (pd_1 && ad);
+            }
+            return ad;
+        }, button_typings_index_ngfactory["d" /* View_MatButton_0 */], button_typings_index_ngfactory["b" /* RenderType_MatButton */])), core["ɵdid"](19, 180224, null, 0, button_es5["b" /* MatButton */], [core["ElementRef"], platform_es5["a" /* Platform */], a11y_es5["i" /* FocusMonitor */]], { color: [0, "color"] }, null), core["ɵdid"](20, 16384, null, 0, hammertime_directive_HammertimeDirective, [], null, { doubleTap: "doubleTap" }), (_l()(), core["ɵted"](-1, 0, ["JELLO (doubleTap) "]))], function (_ck, _v) { var currVal_3 = "primary"; _ck(_v, 11, 0, currVal_3); var currVal_5 = "primary"; _ck(_v, 14, 0, currVal_5); var currVal_7 = "accent"; _ck(_v, 19, 0, currVal_7); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.animationState; _ck(_v, 0, 0, currVal_0); var currVal_1 = (core["ɵnov"](_v, 9).align === "end"); _ck(_v, 8, 0, currVal_1); var currVal_2 = (core["ɵnov"](_v, 11).disabled || null); _ck(_v, 10, 0, currVal_2); var currVal_4 = (core["ɵnov"](_v, 14).disabled || null); _ck(_v, 13, 0, currVal_4); var currVal_6 = (core["ɵnov"](_v, 19).disabled || null); _ck(_v, 18, 0, currVal_6); });
+}
+function View_HammerCardComponent_Host_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "app-hammer-card", [], null, null, null, View_HammerCardComponent_0, RenderType_HammerCardComponent)), core["ɵdid"](1, 114688, null, 0, HammerCardComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var HammerCardComponentNgFactory = /*@__PURE__*/ core["ɵccf"]("app-hammer-card", HammerCardComponent, View_HammerCardComponent_Host_0, {}, {}, []);
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments/experiments.component.ts
+
+var ExperimentsComponent = /*@__PURE__*/ (function () {
+    function ExperimentsComponent() {
+    }
+    ExperimentsComponent.prototype.ngOnInit = function () { };
+    return ExperimentsComponent;
+}());
+
+
+// CONCATENATED MODULE: ./libs/experiments/src/containers/experiments/experiments.component.ngfactory.js
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START _experiments.component.scss.shim.ngstyle,_angular_core,_.._components_hammer_card_hammer_card.component.ngfactory,_.._components_hammer_card_hammer_card.component,_experiments.component PURE_IMPORTS_END */
+/** PURE_IMPORTS_START _experiments.component.scss.shim.ngstyle,_angular_core,_.._components_hammer_card_hammer_card.component.ngfactory,_.._components_hammer_card_hammer_card.component,_experiments.component PURE_IMPORTS_END */
+
+
+
+
+
+var styles_ExperimentsComponent = [experiments_component_scss_shim_ngstyle_styles];
+var RenderType_ExperimentsComponent = /*@__PURE__*/ core["ɵcrt"]({ encapsulation: 0, styles: styles_ExperimentsComponent, data: {} });
+
+function View_ExperimentsComponent_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "app-hammer-card", [], null, null, null, View_HammerCardComponent_0, RenderType_HammerCardComponent)), core["ɵdid"](1, 114688, null, 0, HammerCardComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_ExperimentsComponent_Host_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "app-experiments", [], null, null, null, View_ExperimentsComponent_0, RenderType_ExperimentsComponent)), core["ɵdid"](1, 114688, null, 0, ExperimentsComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+var ExperimentsComponentNgFactory = /*@__PURE__*/ core["ɵccf"]("app-experiments", ExperimentsComponent, View_ExperimentsComponent_Host_0, {}, {}, []);
+
+
+// EXTERNAL MODULE: ./node_modules/@angular/common/esm5/common.js
+var common = __webpack_require__("Xjw4");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/bidi.es5.js
+var bidi_es5 = __webpack_require__("9Sd6");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/scrolling.es5.js
+var scrolling_es5 = __webpack_require__("1T37");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/overlay.es5.js
+var overlay_es5 = __webpack_require__("+j5Y");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/autocomplete.es5.js
+var autocomplete_es5 = __webpack_require__("F1jI");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/collections.es5.js
+var collections_es5 = __webpack_require__("a9YB");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/observers.es5.js
+var observers_es5 = __webpack_require__("6sdf");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/core.es5.js
+var core_es5 = __webpack_require__("Uo70");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/dialog.es5.js
+var dialog_es5 = __webpack_require__("8tOD");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/icon.es5.js
+var icon_es5 = __webpack_require__("z7Rf");
+
+// EXTERNAL MODULE: ./node_modules/@angular/common/esm5/http.js
+var http = __webpack_require__("ItHS");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/input.es5.js
+var input_es5 = __webpack_require__("704W");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/menu.es5.js
+var menu_es5 = __webpack_require__("kINy");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material-moment-adapter/esm5/material-moment-adapter.es5.js
+var material_moment_adapter_es5 = __webpack_require__("WQzG");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/select.es5.js
+var select_es5 = __webpack_require__("NwsS");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/layout.es5.js + 3 modules
+var layout_es5 = __webpack_require__("Mcof");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/tooltip.es5.js
+var tooltip_es5 = __webpack_require__("7u3n");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/paginator.es5.js
+var paginator_es5 = __webpack_require__("Z+/l");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/snack-bar.es5.js
+var snack_bar_es5 = __webpack_require__("p5vt");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/sort.es5.js
+var sort_es5 = __webpack_require__("hahM");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/stepper.es5.js
+var stepper_es5 = __webpack_require__("YEB1");
+
+// EXTERNAL MODULE: ./node_modules/@angular/forms/esm5/forms.js
+var esm5_forms = __webpack_require__("7DMc");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/datepicker.es5.js
+var datepicker_es5 = __webpack_require__("1GLL");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/portal.es5.js
+var portal_es5 = __webpack_require__("bkcK");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/button-toggle.es5.js
+var button_toggle_es5 = __webpack_require__("bq7Y");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/checkbox.es5.js
+var checkbox_es5 = __webpack_require__("AP/s");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/chips.es5.js
+var chips_es5 = __webpack_require__("+76Z");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/accordion.es5.js
+var accordion_es5 = __webpack_require__("yvW1");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/expansion.es5.js
+var expansion_es5 = __webpack_require__("q2BM");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/form-field.es5.js
+var form_field_es5 = __webpack_require__("TBIh");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/grid-list.es5.js
+var grid_list_es5 = __webpack_require__("4rwD");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/divider.es5.js
+var divider_es5 = __webpack_require__("ZuzD");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/list.es5.js
+var list_es5 = __webpack_require__("sqmn");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/progress-bar.es5.js
+var progress_bar_es5 = __webpack_require__("Xbny");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/progress-spinner.es5.js
+var progress_spinner_es5 = __webpack_require__("Bp8q");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/radio.es5.js
+var radio_es5 = __webpack_require__("y/Fr");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/sidenav.es5.js
+var sidenav_es5 = __webpack_require__("kJ/S");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/slider.es5.js
+var slider_es5 = __webpack_require__("JkvL");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/slide-toggle.es5.js
+var slide_toggle_es5 = __webpack_require__("86rF");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/table.es5.js
+var table_es5 = __webpack_require__("XMYV");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/table.es5.js
+var esm5_table_es5 = __webpack_require__("W91W");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/tabs.es5.js
+var tabs_es5 = __webpack_require__("6GVX");
+
+// EXTERNAL MODULE: ./node_modules/@angular/material/esm5/toolbar.es5.js
+var toolbar_es5 = __webpack_require__("j06o");
+
+// EXTERNAL MODULE: ./node_modules/@angular/cdk/esm5/stepper.es5.js
+var esm5_stepper_es5 = __webpack_require__("Oz7M");
+
+// EXTERNAL MODULE: ./libs/material/src/material.module.ts
+var material_module = __webpack_require__("RNkg");
+
+// EXTERNAL MODULE: ./libs/fullscreen/src/fullscreen.module.ts
+var fullscreen_module = __webpack_require__("ab5T");
+
+// EXTERNAL MODULE: ./node_modules/ngx-perfect-scrollbar/dist/ngx-perfect-scrollbar.es5.js + 1 modules
+var ngx_perfect_scrollbar_es5 = __webpack_require__("RpQI");
+
+// EXTERNAL MODULE: ./libs/material/src/material-date.module.ts
+var material_date_module = __webpack_require__("qH0t");
+
+// EXTERNAL MODULE: ./libs/shared/src/shared.module.ts
+var shared_module = __webpack_require__("QL1P");
+
+// CONCATENATED MODULE: ./libs/experiments/src/experiments.module.ngfactory.js
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ExperimentsModuleNgFactory", function() { return ExperimentsModuleNgFactory; });
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */
+/** PURE_IMPORTS_START _angular_core,_experiments.module,_.._.._node_modules__angular_material_dialog_typings_index.ngfactory,_.._.._node_modules__angular_material_tooltip_typings_index.ngfactory,_.._.._node_modules__angular_material_snack_bar_typings_index.ngfactory,_.._.._node_modules__angular_material_datepicker_typings_index.ngfactory,_containers_experiments_layout_experiments_layout.component.ngfactory,_containers_experiments_experiments.component.ngfactory,_angular_common,_angular_flex_layout,_angular_cdk_bidi,_angular_cdk_platform,_angular_cdk_scrolling,_angular_cdk_overlay,_angular_material_autocomplete,_angular_cdk_a11y,_angular_cdk_collections,_angular_cdk_observers,_angular_material_core,_angular_material_dialog,_angular_material_icon,_angular_common_http,_angular_platform_browser,_angular_material_input,_angular_material_menu,_angular_material_moment_adapter,_angular_material_select,_angular_cdk_layout,_angular_material_tooltip,_angular_material_paginator,_angular_material_snack_bar,_angular_material_sort,_angular_material_stepper,_angular_forms,_angular_material_datepicker,_angular_router,_angular_cdk_portal,_angular_material_button,_angular_material_button_toggle,_angular_material_card,_angular_material_checkbox,_angular_material_chips,_angular_cdk_accordion,_angular_material_expansion,_angular_material_form_field,_angular_material_grid_list,_angular_material_divider,_angular_material_list,_angular_material_progress_bar,_angular_material_progress_spinner,_angular_material_radio,_angular_material_sidenav,_angular_material_slider,_angular_material_slide_toggle,_angular_cdk_table,_angular_material_table,_angular_material_tabs,_angular_material_toolbar,_angular_cdk_stepper,_.._material_src_material.module,_.._fullscreen_src_fullscreen.module,ngx_perfect_scrollbar,_.._material_src_material_date.module,_.._shared_src_shared.module,_containers_experiments_layout_experiments_layout.component,_containers_experiments_experiments.component PURE_IMPORTS_END */
+/** PURE_IMPORTS_START _angular_core,_experiments.module,_.._.._node_modules__angular_material_dialog_typings_index.ngfactory,_.._.._node_modules__angular_material_tooltip_typings_index.ngfactory,_.._.._node_modules__angular_material_snack_bar_typings_index.ngfactory,_.._.._node_modules__angular_material_datepicker_typings_index.ngfactory,_containers_experiments_layout_experiments_layout.component.ngfactory,_containers_experiments_experiments.component.ngfactory,_angular_common,_angular_flex_layout,_angular_cdk_bidi,_angular_cdk_platform,_angular_cdk_scrolling,_angular_cdk_overlay,_angular_material_autocomplete,_angular_cdk_a11y,_angular_cdk_collections,_angular_cdk_observers,_angular_material_core,_angular_material_dialog,_angular_material_icon,_angular_common_http,_angular_platform_browser,_angular_material_input,_angular_material_menu,_angular_material_moment_adapter,_angular_material_select,_angular_cdk_layout,_angular_material_tooltip,_angular_material_paginator,_angular_material_snack_bar,_angular_material_sort,_angular_material_stepper,_angular_forms,_angular_material_datepicker,_angular_router,_angular_cdk_portal,_angular_material_button,_angular_material_button_toggle,_angular_material_card,_angular_material_checkbox,_angular_material_chips,_angular_cdk_accordion,_angular_material_expansion,_angular_material_form_field,_angular_material_grid_list,_angular_material_divider,_angular_material_list,_angular_material_progress_bar,_angular_material_progress_spinner,_angular_material_radio,_angular_material_sidenav,_angular_material_slider,_angular_material_slide_toggle,_angular_cdk_table,_angular_material_table,_angular_material_tabs,_angular_material_toolbar,_angular_cdk_stepper,_.._material_src_material.module,_.._fullscreen_src_fullscreen.module,ngx_perfect_scrollbar,_.._material_src_material_date.module,_.._shared_src_shared.module,_containers_experiments_layout_experiments_layout.component,_containers_experiments_experiments.component PURE_IMPORTS_END */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var ExperimentsModuleNgFactory = /*@__PURE__*/ core["ɵcmf"](ExperimentsModule, [], function (_l) { return core["ɵmod"]([core["ɵmpd"](512, core["ComponentFactoryResolver"], core["ɵCodegenComponentFactoryResolver"], [[8, [index_ngfactory["a" /* MatDialogContainerNgFactory */], typings_index_ngfactory["a" /* TooltipComponentNgFactory */], snack_bar_typings_index_ngfactory["a" /* MatSnackBarContainerNgFactory */], snack_bar_typings_index_ngfactory["b" /* SimpleSnackBarNgFactory */], datepicker_typings_index_ngfactory["a" /* MatDatepickerContentNgFactory */], ExperimentsLayoutComponentNgFactory, ExperimentsComponentNgFactory]], [3, core["ComponentFactoryResolver"]], core["NgModuleRef"]]), core["ɵmpd"](4608, common["NgLocalization"], common["NgLocaleLocalization"], [core["LOCALE_ID"], [2, common["ɵa"]]]), core["ɵmpd"](5120, flex_layout_es5["a" /* BREAKPOINTS */], flex_layout_es5["c" /* DEFAULT_BREAKPOINTS_PROVIDER_FACTORY */], []), core["ɵmpd"](4608, flex_layout_es5["b" /* BreakPointRegistry */], flex_layout_es5["b" /* BreakPointRegistry */], [flex_layout_es5["a" /* BREAKPOINTS */]]), core["ɵmpd"](4608, flex_layout_es5["l" /* MatchMedia */], flex_layout_es5["l" /* MatchMedia */], [core["NgZone"], core["PLATFORM_ID"], common["DOCUMENT"]]), core["ɵmpd"](4608, flex_layout_es5["m" /* MediaMonitor */], flex_layout_es5["m" /* MediaMonitor */], [flex_layout_es5["b" /* BreakPointRegistry */], flex_layout_es5["l" /* MatchMedia */]]), core["ɵmpd"](5120, flex_layout_es5["p" /* ObservableMedia */], flex_layout_es5["o" /* OBSERVABLE_MEDIA_PROVIDER_FACTORY */], [[3, flex_layout_es5["p" /* ObservableMedia */]], flex_layout_es5["l" /* MatchMedia */], flex_layout_es5["b" /* BreakPointRegistry */]]), core["ɵmpd"](6144, flex_layout_es5["w" /* ɵa */], null, [common["DOCUMENT"]]), core["ɵmpd"](4608, flex_layout_es5["x" /* ɵb */], flex_layout_es5["x" /* ɵb */], [[2, flex_layout_es5["w" /* ɵa */]]]), core["ɵmpd"](4608, flex_layout_es5["r" /* ServerStylesheet */], flex_layout_es5["r" /* ServerStylesheet */], []), core["ɵmpd"](4608, flex_layout_es5["u" /* StyleUtils */], flex_layout_es5["u" /* StyleUtils */], [[2, flex_layout_es5["r" /* ServerStylesheet */]], [2, flex_layout_es5["q" /* SERVER_TOKEN */]], core["PLATFORM_ID"]]), core["ɵmpd"](5120, core["APP_BOOTSTRAP_LISTENER"], function (p0_0, p0_1) { return [flex_layout_es5["v" /* removeStyles */](p0_0, p0_1)]; }, [common["DOCUMENT"], core["PLATFORM_ID"]]), core["ɵmpd"](6144, bidi_es5["b" /* DIR_DOCUMENT */], null, [common["DOCUMENT"]]), core["ɵmpd"](4608, bidi_es5["c" /* Directionality */], bidi_es5["c" /* Directionality */], [[2, bidi_es5["b" /* DIR_DOCUMENT */]]]), core["ɵmpd"](4608, platform_es5["a" /* Platform */], platform_es5["a" /* Platform */], []), core["ɵmpd"](5120, scrolling_es5["d" /* ScrollDispatcher */], scrolling_es5["b" /* SCROLL_DISPATCHER_PROVIDER_FACTORY */], [[3, scrolling_es5["d" /* ScrollDispatcher */]], core["NgZone"], platform_es5["a" /* Platform */]]), core["ɵmpd"](5120, scrolling_es5["g" /* ViewportRuler */], scrolling_es5["f" /* VIEWPORT_RULER_PROVIDER_FACTORY */], [[3, scrolling_es5["g" /* ViewportRuler */]], platform_es5["a" /* Platform */], core["NgZone"]]), core["ɵmpd"](4608, overlay_es5["i" /* ScrollStrategyOptions */], overlay_es5["i" /* ScrollStrategyOptions */], [scrolling_es5["d" /* ScrollDispatcher */], scrolling_es5["g" /* ViewportRuler */], core["NgZone"], common["DOCUMENT"]]), core["ɵmpd"](5120, overlay_es5["e" /* OverlayContainer */], overlay_es5["j" /* ɵa */], [[3, overlay_es5["e" /* OverlayContainer */]], common["DOCUMENT"]]), core["ɵmpd"](4608, overlay_es5["h" /* OverlayPositionBuilder */], overlay_es5["h" /* OverlayPositionBuilder */], [scrolling_es5["g" /* ViewportRuler */], common["DOCUMENT"]]), core["ɵmpd"](5120, overlay_es5["f" /* OverlayKeyboardDispatcher */], overlay_es5["m" /* ɵf */], [[3, overlay_es5["f" /* OverlayKeyboardDispatcher */]], common["DOCUMENT"]]), core["ɵmpd"](4608, overlay_es5["c" /* Overlay */], overlay_es5["c" /* Overlay */], [overlay_es5["i" /* ScrollStrategyOptions */], overlay_es5["e" /* OverlayContainer */], core["ComponentFactoryResolver"], overlay_es5["h" /* OverlayPositionBuilder */], overlay_es5["f" /* OverlayKeyboardDispatcher */], core["ApplicationRef"], core["Injector"], core["NgZone"], common["DOCUMENT"], bidi_es5["c" /* Directionality */]]), core["ɵmpd"](5120, overlay_es5["k" /* ɵc */], overlay_es5["l" /* ɵd */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](5120, autocomplete_es5["b" /* MAT_AUTOCOMPLETE_SCROLL_STRATEGY */], autocomplete_es5["c" /* MAT_AUTOCOMPLETE_SCROLL_STRATEGY_PROVIDER_FACTORY */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](4608, a11y_es5["k" /* InteractivityChecker */], a11y_es5["k" /* InteractivityChecker */], [platform_es5["a" /* Platform */]]), core["ɵmpd"](4608, a11y_es5["j" /* FocusTrapFactory */], a11y_es5["j" /* FocusTrapFactory */], [a11y_es5["k" /* InteractivityChecker */], core["NgZone"], common["DOCUMENT"]]), core["ɵmpd"](136192, a11y_es5["d" /* AriaDescriber */], a11y_es5["b" /* ARIA_DESCRIBER_PROVIDER_FACTORY */], [[3, a11y_es5["d" /* AriaDescriber */]], common["DOCUMENT"]]), core["ɵmpd"](5120, a11y_es5["n" /* LiveAnnouncer */], a11y_es5["m" /* LIVE_ANNOUNCER_PROVIDER_FACTORY */], [[3, a11y_es5["n" /* LiveAnnouncer */]], [2, a11y_es5["l" /* LIVE_ANNOUNCER_ELEMENT_TOKEN */]], common["DOCUMENT"]]), core["ɵmpd"](5120, a11y_es5["i" /* FocusMonitor */], a11y_es5["g" /* FOCUS_MONITOR_PROVIDER_FACTORY */], [[3, a11y_es5["i" /* FocusMonitor */]], core["NgZone"], platform_es5["a" /* Platform */]]), core["ɵmpd"](5120, collections_es5["c" /* UniqueSelectionDispatcher */], collections_es5["d" /* ɵa */], [[3, collections_es5["c" /* UniqueSelectionDispatcher */]]]), core["ɵmpd"](4608, observers_es5["b" /* MutationObserverFactory */], observers_es5["b" /* MutationObserverFactory */], []), core["ɵmpd"](4608, core_es5["d" /* ErrorStateMatcher */], core_es5["d" /* ErrorStateMatcher */], []), core["ɵmpd"](5120, dialog_es5["c" /* MAT_DIALOG_SCROLL_STRATEGY */], dialog_es5["d" /* MAT_DIALOG_SCROLL_STRATEGY_PROVIDER_FACTORY */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](4608, dialog_es5["e" /* MatDialog */], dialog_es5["e" /* MatDialog */], [overlay_es5["c" /* Overlay */], core["Injector"], [2, common["Location"]], [2, dialog_es5["b" /* MAT_DIALOG_DEFAULT_OPTIONS */]], dialog_es5["c" /* MAT_DIALOG_SCROLL_STRATEGY */], [3, dialog_es5["e" /* MatDialog */]], overlay_es5["e" /* OverlayContainer */]]), core["ɵmpd"](5120, icon_es5["d" /* MatIconRegistry */], icon_es5["a" /* ICON_REGISTRY_PROVIDER_FACTORY */], [[3, icon_es5["d" /* MatIconRegistry */]], [2, http["HttpClient"]], platform_browser["DomSanitizer"], [2, common["DOCUMENT"]]]), core["ɵmpd"](135680, input_es5["a" /* AutofillMonitor */], input_es5["a" /* AutofillMonitor */], [platform_es5["a" /* Platform */]]), core["ɵmpd"](5120, menu_es5["b" /* MAT_MENU_SCROLL_STRATEGY */], menu_es5["g" /* ɵc24 */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](4352, core_es5["h" /* MAT_DATE_LOCALE */], "en-GB", []), core["ɵmpd"](4608, core_es5["c" /* DateAdapter */], material_moment_adapter_es5["b" /* MomentDateAdapter */], [core_es5["h" /* MAT_DATE_LOCALE */]]), core["ɵmpd"](5120, select_es5["a" /* MAT_SELECT_SCROLL_STRATEGY */], select_es5["b" /* MAT_SELECT_SCROLL_STRATEGY_PROVIDER_FACTORY */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](4608, layout_es5["d" /* MediaMatcher */], layout_es5["d" /* MediaMatcher */], [platform_es5["a" /* Platform */]]), core["ɵmpd"](135680, layout_es5["a" /* BreakpointObserver */], layout_es5["a" /* BreakpointObserver */], [layout_es5["d" /* MediaMatcher */], core["NgZone"]]), core["ɵmpd"](5120, tooltip_es5["b" /* MAT_TOOLTIP_SCROLL_STRATEGY */], tooltip_es5["c" /* MAT_TOOLTIP_SCROLL_STRATEGY_PROVIDER_FACTORY */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](5120, paginator_es5["c" /* MatPaginatorIntl */], paginator_es5["a" /* MAT_PAGINATOR_INTL_PROVIDER_FACTORY */], [[3, paginator_es5["c" /* MatPaginatorIntl */]]]), core["ɵmpd"](4608, platform_browser["HAMMER_GESTURE_CONFIG"], experiments_module_MyHammerConfig, []), core["ɵmpd"](4608, snack_bar_es5["b" /* MatSnackBar */], snack_bar_es5["b" /* MatSnackBar */], [overlay_es5["c" /* Overlay */], a11y_es5["n" /* LiveAnnouncer */], core["Injector"], layout_es5["a" /* BreakpointObserver */], [3, snack_bar_es5["b" /* MatSnackBar */]]]), core["ɵmpd"](5120, sort_es5["d" /* MatSortHeaderIntl */], sort_es5["a" /* MAT_SORT_HEADER_INTL_PROVIDER_FACTORY */], [[3, sort_es5["d" /* MatSortHeaderIntl */]]]), core["ɵmpd"](4608, stepper_es5["a" /* MatStepperIntl */], stepper_es5["a" /* MatStepperIntl */], []), core["ɵmpd"](4608, esm5_forms["v" /* ɵi */], esm5_forms["v" /* ɵi */], []), core["ɵmpd"](4608, esm5_forms["e" /* FormBuilder */], esm5_forms["e" /* FormBuilder */], []), core["ɵmpd"](4608, datepicker_es5["h" /* MatDatepickerIntl */], datepicker_es5["h" /* MatDatepickerIntl */], []), core["ɵmpd"](5120, datepicker_es5["a" /* MAT_DATEPICKER_SCROLL_STRATEGY */], datepicker_es5["b" /* MAT_DATEPICKER_SCROLL_STRATEGY_PROVIDER_FACTORY */], [overlay_es5["c" /* Overlay */]]), core["ɵmpd"](1073742336, common["CommonModule"], common["CommonModule"], []), core["ɵmpd"](1073742336, router["r" /* RouterModule */], router["r" /* RouterModule */], [[2, router["w" /* ɵa */]], [2, router["n" /* Router */]]]), core["ɵmpd"](1073742336, flex_layout_es5["n" /* MediaQueriesModule */], flex_layout_es5["n" /* MediaQueriesModule */], []), core["ɵmpd"](1073742336, flex_layout_es5["y" /* ɵc */], flex_layout_es5["y" /* ɵc */], []), core["ɵmpd"](1073742336, flex_layout_es5["g" /* FlexLayoutModule */], flex_layout_es5["g" /* FlexLayoutModule */], [[2, flex_layout_es5["q" /* SERVER_TOKEN */]], core["PLATFORM_ID"]]), core["ɵmpd"](1073742336, bidi_es5["a" /* BidiModule */], bidi_es5["a" /* BidiModule */], []), core["ɵmpd"](256, core_es5["f" /* MATERIAL_SANITY_CHECKS */], true, []), core["ɵmpd"](1073742336, core_es5["n" /* MatCommonModule */], core_es5["n" /* MatCommonModule */], [[2, core_es5["f" /* MATERIAL_SANITY_CHECKS */]]]), core["ɵmpd"](1073742336, platform_es5["b" /* PlatformModule */], platform_es5["b" /* PlatformModule */], []), core["ɵmpd"](1073742336, core_es5["y" /* MatRippleModule */], core_es5["y" /* MatRippleModule */], []), core["ɵmpd"](1073742336, core_es5["w" /* MatPseudoCheckboxModule */], core_es5["w" /* MatPseudoCheckboxModule */], []), core["ɵmpd"](1073742336, core_es5["u" /* MatOptionModule */], core_es5["u" /* MatOptionModule */], []), core["ɵmpd"](1073742336, portal_es5["g" /* PortalModule */], portal_es5["g" /* PortalModule */], []), core["ɵmpd"](1073742336, scrolling_es5["c" /* ScrollDispatchModule */], scrolling_es5["c" /* ScrollDispatchModule */], []), core["ɵmpd"](1073742336, overlay_es5["g" /* OverlayModule */], overlay_es5["g" /* OverlayModule */], []), core["ɵmpd"](1073742336, autocomplete_es5["e" /* MatAutocompleteModule */], autocomplete_es5["e" /* MatAutocompleteModule */], []), core["ɵmpd"](1073742336, a11y_es5["a" /* A11yModule */], a11y_es5["a" /* A11yModule */], []), core["ɵmpd"](1073742336, button_es5["c" /* MatButtonModule */], button_es5["c" /* MatButtonModule */], []), core["ɵmpd"](1073742336, button_toggle_es5["a" /* MatButtonToggleModule */], button_toggle_es5["a" /* MatButtonToggleModule */], []), core["ɵmpd"](1073742336, card_es5["g" /* MatCardModule */], card_es5["g" /* MatCardModule */], []), core["ɵmpd"](1073742336, observers_es5["c" /* ObserversModule */], observers_es5["c" /* ObserversModule */], []), core["ɵmpd"](1073742336, checkbox_es5["c" /* MatCheckboxModule */], checkbox_es5["c" /* MatCheckboxModule */], []), core["ɵmpd"](1073742336, chips_es5["c" /* MatChipsModule */], chips_es5["c" /* MatChipsModule */], []), core["ɵmpd"](1073742336, dialog_es5["j" /* MatDialogModule */], dialog_es5["j" /* MatDialogModule */], []), core["ɵmpd"](1073742336, accordion_es5["c" /* CdkAccordionModule */], accordion_es5["c" /* CdkAccordionModule */], []), core["ɵmpd"](1073742336, expansion_es5["a" /* MatExpansionModule */], expansion_es5["a" /* MatExpansionModule */], []), core["ɵmpd"](1073742336, form_field_es5["d" /* MatFormFieldModule */], form_field_es5["d" /* MatFormFieldModule */], []), core["ɵmpd"](1073742336, core_es5["p" /* MatLineModule */], core_es5["p" /* MatLineModule */], []), core["ɵmpd"](1073742336, grid_list_es5["b" /* MatGridListModule */], grid_list_es5["b" /* MatGridListModule */], []), core["ɵmpd"](1073742336, icon_es5["c" /* MatIconModule */], icon_es5["c" /* MatIconModule */], []), core["ɵmpd"](1073742336, input_es5["d" /* MatInputModule */], input_es5["d" /* MatInputModule */], []), core["ɵmpd"](1073742336, divider_es5["b" /* MatDividerModule */], divider_es5["b" /* MatDividerModule */], []), core["ɵmpd"](1073742336, list_es5["e" /* MatListModule */], list_es5["e" /* MatListModule */], []), core["ɵmpd"](1073742336, menu_es5["e" /* MatMenuModule */], menu_es5["e" /* MatMenuModule */], []), core["ɵmpd"](1073742336, core_es5["A" /* NativeDateModule */], core_es5["A" /* NativeDateModule */], []), core["ɵmpd"](1073742336, core_es5["r" /* MatNativeDateModule */], core_es5["r" /* MatNativeDateModule */], []), core["ɵmpd"](1073742336, select_es5["d" /* MatSelectModule */], select_es5["d" /* MatSelectModule */], []), core["ɵmpd"](1073742336, layout_es5["c" /* LayoutModule */], layout_es5["c" /* LayoutModule */], []), core["ɵmpd"](1073742336, tooltip_es5["e" /* MatTooltipModule */], tooltip_es5["e" /* MatTooltipModule */], []), core["ɵmpd"](1073742336, paginator_es5["d" /* MatPaginatorModule */], paginator_es5["d" /* MatPaginatorModule */], []), core["ɵmpd"](1073742336, progress_bar_es5["b" /* MatProgressBarModule */], progress_bar_es5["b" /* MatProgressBarModule */], []), core["ɵmpd"](1073742336, progress_spinner_es5["a" /* MatProgressSpinnerModule */], progress_spinner_es5["a" /* MatProgressSpinnerModule */], []), core["ɵmpd"](1073742336, radio_es5["a" /* MatRadioModule */], radio_es5["a" /* MatRadioModule */], []), core["ɵmpd"](1073742336, sidenav_es5["h" /* MatSidenavModule */], sidenav_es5["h" /* MatSidenavModule */], []), core["ɵmpd"](1073742336, slider_es5["a" /* MatSliderModule */], slider_es5["a" /* MatSliderModule */], []), core["ɵmpd"](1073742336, slide_toggle_es5["a" /* MatSlideToggleModule */], slide_toggle_es5["a" /* MatSlideToggleModule */], []), core["ɵmpd"](1073742336, snack_bar_es5["d" /* MatSnackBarModule */], snack_bar_es5["d" /* MatSnackBarModule */], []), core["ɵmpd"](1073742336, sort_es5["e" /* MatSortModule */], sort_es5["e" /* MatSortModule */], []), core["ɵmpd"](1073742336, table_es5["l" /* CdkTableModule */], table_es5["l" /* CdkTableModule */], []), core["ɵmpd"](1073742336, esm5_table_es5["l" /* MatTableModule */], esm5_table_es5["l" /* MatTableModule */], []), core["ɵmpd"](1073742336, tabs_es5["i" /* MatTabsModule */], tabs_es5["i" /* MatTabsModule */], []), core["ɵmpd"](1073742336, toolbar_es5["b" /* MatToolbarModule */], toolbar_es5["b" /* MatToolbarModule */], []), core["ɵmpd"](1073742336, esm5_stepper_es5["d" /* CdkStepperModule */], esm5_stepper_es5["d" /* CdkStepperModule */], []), core["ɵmpd"](1073742336, stepper_es5["b" /* MatStepperModule */], stepper_es5["b" /* MatStepperModule */], []), core["ɵmpd"](1073742336, material_module["a" /* MaterialModule */], material_module["a" /* MaterialModule */], []), core["ɵmpd"](1073742336, fullscreen_module["a" /* FullscreenModule */], fullscreen_module["a" /* FullscreenModule */], []), core["ɵmpd"](1073742336, ngx_perfect_scrollbar_es5["d" /* PerfectScrollbarModule */], ngx_perfect_scrollbar_es5["d" /* PerfectScrollbarModule */], []), core["ɵmpd"](1073742336, esm5_forms["t" /* ɵba */], esm5_forms["t" /* ɵba */], []), core["ɵmpd"](1073742336, esm5_forms["i" /* FormsModule */], esm5_forms["i" /* FormsModule */], []), core["ɵmpd"](1073742336, esm5_forms["q" /* ReactiveFormsModule */], esm5_forms["q" /* ReactiveFormsModule */], []), core["ɵmpd"](1073742336, material_moment_adapter_es5["c" /* MomentDateModule */], material_moment_adapter_es5["c" /* MomentDateModule */], []), core["ɵmpd"](1073742336, material_moment_adapter_es5["a" /* MatMomentDateModule */], material_moment_adapter_es5["a" /* MatMomentDateModule */], []), core["ɵmpd"](1073742336, datepicker_es5["i" /* MatDatepickerModule */], datepicker_es5["i" /* MatDatepickerModule */], []), core["ɵmpd"](1073742336, material_date_module["a" /* MaterialDateModule */], material_date_module["a" /* MaterialDateModule */], []), core["ɵmpd"](1073742336, shared_module["a" /* SharedModule */], shared_module["a" /* SharedModule */], []), core["ɵmpd"](1073742336, ExperimentsModule, ExperimentsModule, []), core["ɵmpd"](256, menu_es5["a" /* MAT_MENU_DEFAULT_OPTIONS */], { overlapTrigger: true, xPosition: "after", yPosition: "below" }, []), core["ɵmpd"](256, core_es5["g" /* MAT_DATE_FORMATS */], material_date_module["b" /* ɵ0 */], []), core["ɵmpd"](256, tooltip_es5["a" /* MAT_TOOLTIP_DEFAULT_OPTIONS */], { showDelay: 0, hideDelay: 0, touchendHideDelay: 1500 }, []), core["ɵmpd"](256, sidenav_es5["a" /* MAT_DRAWER_DEFAULT_AUTOSIZE */], false, []), core["ɵmpd"](256, ngx_perfect_scrollbar_es5["a" /* PERFECT_SCROLLBAR_CONFIG */], shared_module["b" /* ɵ0 */], []), core["ɵmpd"](1024, router["l" /* ROUTES */], function () { return [[{ path: "", component: ExperimentsLayoutComponent, data: ɵ0, children: [{ path: "", component: ExperimentsComponent, data: ɵ1 }, { path: "experiment1", component: ExperimentsComponent, data: ɵ2 }, { path: "experiment2", component: ExperimentsComponent, data: ɵ3 }] }]]; }, [])]); });
+
+
+
+/***/ })
+
+});
