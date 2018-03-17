@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToolBarHelpers } from './toolbar.helpers';
-import {Select} from "ngxs";
-import {Observable} from "rxjs/Observable";
+import { Select } from 'ngxs';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'nxtk-toolbar',

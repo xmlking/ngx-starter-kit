@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {routerTransition} from "@nx-starter-kit/animations";
+import { routerTransition } from '@nx-starter-kit/animations';
 
 @Component({
   selector: 'app-home-layout',
@@ -13,8 +13,8 @@ export class HomeLayoutComponent implements OnInit {
   ngOnInit() {}
 
   onDeactivate() {
-    console.log("in TODO onDeactivate scrollTop");
+    console.log('in TODO onDeactivate scrollTop');
     document.body.scrollTop = 0;
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0);
   }
 }

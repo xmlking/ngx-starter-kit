@@ -1,12 +1,12 @@
-import {Component, Inject, OnInit} from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ROPCService } from '../../ropc.service';
 import { Router } from '@angular/router';
-import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material";
-import {HttpErrorResponse} from "@angular/common/http";
-import {OAuthService} from "angular-oauth2-oidc";
-import {Ngxs} from "ngxs";
-import {ChangeAuthMode, AuthMode} from "../../auth.events";
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { HttpErrorResponse } from '@angular/common/http';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { Ngxs } from 'ngxs';
+import { ChangeAuthMode, AuthMode } from '../../auth.events';
 
 @Component({
   selector: 'nxtk-login',
@@ -18,13 +18,16 @@ export class LoginComponent {
   public errorMsg: String;
   loginForm: FormGroup;
 
-  constructor(fb: FormBuilder,
-              private ngxs: Ngxs,
-              private oauthService: OAuthService,
-              private ropcService: ROPCService, private router: Router,
-              @Inject(MAT_DIALOG_DATA) public data: {infoMsg: string},
-              public dialogRef: MatDialogRef<LoginComponent>) {
-    if(data) {
+  constructor(
+    fb: FormBuilder,
+    private ngxs: Ngxs,
+    private oauthService: OAuthService,
+    private ropcService: ROPCService,
+    private router: Router,
+    @Inject(MAT_DIALOG_DATA) public data: { infoMsg: string },
+    public dialogRef: MatDialogRef<LoginComponent>
+  ) {
+    if (data) {
       this.infoMsg = data.infoMsg;
     }
     this.loginForm = fb.group({
@@ -32,29 +35,27 @@ export class LoginComponent {
       password: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       rememberMe: false
     });
-
   }
 
   initSSO() {
     this.ngxs.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
       this.oauthService.initImplicitFlow();
-      console.log("initSSO")
+      console.log('initSSO');
     });
   }
 
   onSubmit(values) {
-    if(this.loginForm.invalid) return;
+    if (this.loginForm.invalid) return;
 
     this.ngxs.dispatch(new ChangeAuthMode(AuthMode.PasswordFlow)).subscribe(async () => {
       try {
         const profile = await this.ropcService.login(values.username, values.password);
         this.dialogRef.close(profile);
-      } catch(error/*: HttpErrorResponse*/) {
+      } catch (error /*: HttpErrorResponse*/) {
         if (error.status === 401) {
           this.errorMsg = error.error.error_description; //'The user credentials is incorrect';
         }
       }
     });
   }
-
 }

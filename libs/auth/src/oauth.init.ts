@@ -1,9 +1,8 @@
-import {JwksValidationHandler, OAuthService} from 'angular-oauth2-oidc';
-import {Ngxs} from 'ngxs';
-import {LoginSuccess} from './auth.events';
-import {AuthorizationErrorResponse} from "./oauth.errors";
-import {authConfigImplicit} from "./oauth.config";
-
+import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
+import { Ngxs } from 'ngxs';
+import { LoginSuccess } from './auth.events';
+import { AuthorizationErrorResponse } from './oauth.errors';
+import { authConfigImplicit } from './oauth.config';
 
 export function initializeAuth(oauthService: OAuthService, ngxs: Ngxs) {
   // default: ImplicitFlow
@@ -15,7 +14,7 @@ export function initializeAuth(oauthService: OAuthService, ngxs: Ngxs) {
     (<any>window).loginTryed = false;
     await oauthService.loadDiscoveryDocumentAndTryLogin({
       onLoginError: (err: AuthorizationErrorResponse) => {
-        console.log(`Error Code: ${err.error}, Error Description: ${err.error_description}` );
+        console.log(`Error Code: ${err.error}, Error Description: ${err.error_description}`);
       }
     });
     (<any>window).loginTryed = true;

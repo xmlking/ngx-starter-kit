@@ -1,8 +1,8 @@
-import {AuthConfig} from "angular-oauth2-oidc";
-import {environment} from "@env/environment";
+import { AuthConfig } from 'angular-oauth2-oidc';
+import { environment } from '@env/environment';
 
 const base = document.querySelector('base');
-const baseUrl = base && base.href || window.location.origin + '/';
+const baseUrl = (base && base.href) || window.location.origin + '/';
 
 const authConfig: AuthConfig = {
   // Url of the Identity Provider
@@ -35,7 +35,7 @@ export const authConfigImplicit: AuthConfig = {
   sessionChecksEnabled: true,
   useIdTokenHintForSilentRefresh: true,
   // FIXME: use it for debugging only.
-  timeoutFactor: environment.production? 0.75 : 0.010,
+  timeoutFactor: environment.production ? 0.75 : 0.01
 };
 
 export const authConfigPassword: AuthConfig = {

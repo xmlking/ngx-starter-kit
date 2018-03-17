@@ -9,7 +9,7 @@ import { QuickpanelModule } from '@nx-starter-kit/quickpanel';
 import { ToolbarModule } from '@nx-starter-kit/toolbar';
 import { SidenavModule } from '@nx-starter-kit/sidenav';
 import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
-import {AuthGuard} from "@nx-starter-kit/auth";
+import { AuthGuard } from '@nx-starter-kit/auth';
 
 @NgModule({
   imports: [

@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturesComponent } from './features.component';
-import {SharedModule} from "@nx-starter-kit/shared";
+import { SharedModule } from '@nx-starter-kit/shared';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;

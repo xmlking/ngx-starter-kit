@@ -16,18 +16,10 @@ export class Account implements Entity {
 }
 
 export class Address {
-  constructor
-  (
-    public street?: string,
-    public city?: string,
-    public state?: string,
-    public zip?: string
-  ) {}
+  constructor(public street?: string, public city?: string, public state?: string, public zip?: string) {}
 }
 
 export enum Gender {
   male = 'make',
   female = 'female'
 }
-
-

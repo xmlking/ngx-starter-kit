@@ -54,8 +54,8 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-      this._destroyed$.next();
-      this._destroyed$.complete();
+    this._destroyed$.next();
+    this._destroyed$.complete();
   }
 
   scrollToTop() {

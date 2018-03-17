@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Ngxs, Select} from "ngxs";
-import {Observable} from "rxjs/Observable";
-import {Login, Logout} from "@nx-starter-kit/auth";
+import { Ngxs, Select } from 'ngxs';
+import { Observable } from 'rxjs/Observable';
+import { Login, Logout } from '@nx-starter-kit/auth';
 
 @Component({
   selector: 'app-home-header',
@@ -29,8 +29,5 @@ export class HeaderComponent implements OnInit {
     this.ngxs.dispatch(new Logout());
   }
 
-  public signup() {
-
-  }
-
+  public signup() {}
 }

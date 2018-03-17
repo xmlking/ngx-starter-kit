@@ -6,12 +6,13 @@ describe('ContextMenuComponent', () => {
   let component: ContextMenuComponent;
   let fixture: ComponentFixture<ContextMenuComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ ContextMenuComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [ContextMenuComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContextMenuComponent);

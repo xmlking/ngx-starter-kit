@@ -9,7 +9,7 @@ import { BlogComponent } from './containers/blog/blog.component';
 import { AboutComponent } from './containers/about/about.component';
 import { ScrollToTopModule } from '@nx-starter-kit/scroll-to-top';
 import { SvgViewerModule } from '@nx-starter-kit/svg-viewer';
-import {FeaturesComponent} from "./containers/features/features.component";
+import { FeaturesComponent } from './containers/features/features.component';
 
 @NgModule({
   imports: [
@@ -48,6 +48,13 @@ import {FeaturesComponent} from "./containers/features/features.component";
       }
     ])
   ],
-  declarations: [HeaderComponent, HomeLayoutComponent, LandingComponent, BlogComponent, AboutComponent, FeaturesComponent]
+  declarations: [
+    HeaderComponent,
+    HomeLayoutComponent,
+    LandingComponent,
+    BlogComponent,
+    AboutComponent,
+    FeaturesComponent
+  ]
 })
 export class HomeModule {}

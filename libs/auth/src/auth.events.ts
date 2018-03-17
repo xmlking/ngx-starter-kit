@@ -13,7 +13,7 @@ export class LoadProfile {
   constructor(public payload: any) {}
 }
 export class ChangeAuthMode {
-  constructor(public payload: AuthMode ) {}
+  constructor(public payload: AuthMode) {}
 }
 
 // Mutation Events
@@ -24,5 +24,5 @@ export class LoginCanceled {}
 export class LogoutSuccess {}
 export class ProfileLoaded {}
 export class AuthModeChanged {
-  constructor(public payload: AuthMode ) {}
+  constructor(public payload: AuthMode) {}
 }

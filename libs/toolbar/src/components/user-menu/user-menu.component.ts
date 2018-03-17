@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import {Logout} from "@nx-starter-kit/auth";
-import {Ngxs} from "ngxs";
+import { Logout } from '@nx-starter-kit/auth';
+import { Ngxs } from 'ngxs';
 
 @Component({
   selector: 'user-menu',
@@ -14,8 +14,8 @@ export class UserMenuComponent implements OnInit {
   constructor(private ngxs: Ngxs) {}
 
   ngOnInit() {
-    if(this.currentUser.given_name && this.currentUser.given_name === 'Sumanth')  {
-      this.currentUser.photoURL = 'assets/img/avatars/user-image.jpg'
+    if (this.currentUser.given_name && this.currentUser.given_name === 'Sumanth') {
+      this.currentUser.photoURL = 'assets/img/avatars/user-image.jpg';
     }
   }
 

@@ -1,36 +1,38 @@
-import {Injectable} from '@angular/core';
-import {OAuthService} from 'angular-oauth2-oidc';
-import {HttpClient, HttpErrorResponse} from '@angular/common/http';
-import {Subscription} from 'rxjs/Subscription';
-import {catchError, filter, map, mergeMap} from 'rxjs/operators';
-import {ErrorObservable} from 'rxjs/observable/ErrorObservable';
-import {AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess} from './auth.events';
-import {Ngxs, Select} from 'ngxs';
-import {fromPromise} from 'rxjs/observable/fromPromise';
-import {ROPCService} from "./ropc.service";
-import {LoginComponent} from "./components/login/login.component";
-import {MatDialog} from "@angular/material";
-import {Router} from "@angular/router";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Subscription } from 'rxjs/Subscription';
+import { catchError, filter, map, mergeMap } from 'rxjs/operators';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess } from './auth.events';
+import { Ngxs, Select } from 'ngxs';
+import { fromPromise } from 'rxjs/observable/fromPromise';
+import { ROPCService } from './ropc.service';
+import { LoginComponent } from './components/login/login.component';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class AuthService {
-  static loginDefaultConf = { width: '480px', disableClose: true};
+  static loginDefaultConf = { width: '480px', disableClose: true };
   @Select('auth.authMode') private _mode$: Observable<AuthMode>;
   private _refresher: Subscription;
   private _monitorer: Subscription;
   mode: AuthMode;
 
-  constructor(private ngxs: Ngxs,
-              private httpClient: HttpClient,
-              private router: Router,
-              private dialog: MatDialog,
-              private ropcService: ROPCService,
-              private oauthService: OAuthService) {
+  constructor(
+    private ngxs: Ngxs,
+    private httpClient: HttpClient,
+    private router: Router,
+    private dialog: MatDialog,
+    private ropcService: ROPCService,
+    private oauthService: OAuthService
+  ) {
     this._mode$.subscribe(mode => {
       console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
       this.mode = mode;
-    })
+    });
   }
 
   private monitorSessionActivities() {
@@ -62,21 +64,21 @@ export class AuthService {
   }
 
   login(payload?: { infoMsg?: string }) {
-      const isLoggedIn = true;
-      const loginDialogConf =   Object.is(payload, undefined)?
-        AuthService.loginDefaultConf : {...AuthService.loginDefaultConf, ...{data: payload}};
-      const dialogRef = this.dialog.open(LoginComponent, loginDialogConf);
-      return dialogRef.afterClosed().pipe(
-        map((profile) => {
-          if (profile === false) {
-            return new LoginCanceled();
-          }
-          else {
-            this.router.navigate(['/dashboard']);
-            return new LoginSuccess({isLoggedIn, profile})
-          }
-        })
-      )
+    const isLoggedIn = true;
+    const loginDialogConf = Object.is(payload, undefined)
+      ? AuthService.loginDefaultConf
+      : { ...AuthService.loginDefaultConf, ...{ data: payload } };
+    const dialogRef = this.dialog.open(LoginComponent, loginDialogConf);
+    return dialogRef.afterClosed().pipe(
+      map(profile => {
+        if (profile === false) {
+          return new LoginCanceled();
+        } else {
+          this.router.navigate(['/dashboard']);
+          return new LoginSuccess({ isLoggedIn, profile });
+        }
+      })
+    );
   }
 
   logout() {

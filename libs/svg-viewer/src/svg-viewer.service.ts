@@ -1,10 +1,9 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import {catchError, finalize, map, share} from "rxjs/operators";
+import { catchError, finalize, map, share } from 'rxjs/operators';
 import { of as observableOf } from 'rxjs/observable/of';
 import { SvgViewerConfig } from './svg-viewer.config';
-
 
 @Injectable()
 export class SvgViewerService {
@@ -13,9 +12,7 @@ export class SvgViewerService {
 
   private static _baseUrl: string;
 
-  constructor(
-    @Optional() config: SvgViewerConfig, private _http: HttpClient) {
-
+  constructor(@Optional() config: SvgViewerConfig, private _http: HttpClient) {
     if (config && !SvgViewerService._baseUrl) {
       this.setBaseUrl(config);
     }
@@ -43,7 +40,7 @@ export class SvgViewerService {
     }
 
     // Otherwise, make the HTTP call to fetch
-    const req = this._http.get(absUrl, {responseType: 'text'}).pipe(
+    const req = this._http.get(absUrl, { responseType: 'text' }).pipe(
       catchError((err: any) => err),
       finalize(() => SvgViewerService._inProgressReqs.delete(absUrl)),
       share(),
@@ -68,7 +65,7 @@ export class SvgViewerService {
   getAbsoluteUrl(url: string): string {
     // Prepend user-configured base if present and URL doesn't seem to have its own
     if (SvgViewerService._baseUrl && !/^https?:\/\//i.test(url)) {
-      url = SvgViewerService._baseUrl +  url.slice(url.indexOf('assets/'));
+      url = SvgViewerService._baseUrl + url.slice(url.indexOf('assets/'));
 
       // Convert leading "//" to "/" to prevent a malformed URL
       // See https://github.com/arkon/ng-inline-svg/issues/50

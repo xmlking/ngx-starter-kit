@@ -1,4 +1,4 @@
-import {Component, ChangeDetectionStrategy, HostListener, HostBinding} from '@angular/core';
+import { Component, ChangeDetectionStrategy, HostListener, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'df-context-menu',

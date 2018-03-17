@@ -8,7 +8,7 @@ import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
 import { NgxsModule, ReduxDevtoolsPluginModule } from 'ngxs';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
-import { AuthModule, AuthStore } from "@nx-starter-kit/auth";
+import { AuthModule, AuthStore } from '@nx-starter-kit/auth';
 
 @NgModule({
   imports: [

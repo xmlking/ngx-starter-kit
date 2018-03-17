@@ -1,5 +1,5 @@
-import {Component, ElementRef, Input, OnInit, Renderer2} from '@angular/core';
-import {SvgViewerService} from "./svg-viewer.service";
+import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
+import { SvgViewerService } from './svg-viewer.service';
 
 @Component({
   selector: 'svg-viewer',
@@ -10,10 +10,11 @@ export class SvgViewerComponent implements OnInit {
   @Input() src: string;
   @Input() scaleToContainer: boolean;
 
-  constructor(private elementRef: ElementRef,
-              private renderer: Renderer2,
-              private svgViewerService: SvgViewerService) {
-  }
+  constructor(
+    private elementRef: ElementRef,
+    private renderer: Renderer2,
+    private svgViewerService: SvgViewerService
+  ) {}
 
   ngOnInit() {
     this.fetchAndInlineSvgContent(this.src);

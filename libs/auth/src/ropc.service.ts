@@ -34,8 +34,7 @@ export class ROPCService {
     const body = new HttpParams().set('client_id', this.oauthService.clientId).set('refresh_token', refresh_token);
 
     return this.httpClient.post(this.oauthService.logoutUrl, body.toString(), {
-      headers: new HttpHeaders()
-        .set('Content-Type', 'application/x-www-form-urlencoded')
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded')
       // .set('Authorization', `Bearer ${access_token}`)
     });
   }

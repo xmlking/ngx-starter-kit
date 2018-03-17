@@ -2,10 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AppConfirmComponent } from './app-confirm.component';
 import { AppConfirmService } from './app-confirm.service';
-import {
-  MatDialogModule,
-  MatButtonModule
-} from '@angular/material';
+import { MatDialogModule, MatButtonModule } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({

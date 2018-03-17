@@ -1,20 +1,24 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { initializeAuth } from './oauth.init';
-import {Ngxs, NgxsModule, ReduxDevtoolsPluginModule} from 'ngxs';
+import { Ngxs, NgxsModule, ReduxDevtoolsPluginModule } from 'ngxs';
 import { AuthStore } from './auth.store';
 import { LoginComponent } from './components/login/login.component';
 import { ROPCService } from './ropc.service';
 import { AuthService } from './auth.service';
-import {CommonModule} from "@angular/common";
+import { CommonModule } from '@angular/common';
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule, MatDialogModule, MatFormFieldModule, MatIconModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatFormFieldModule,
+  MatIconModule,
   MatInputModule
-} from "@angular/material";
-import {ReactiveFormsModule} from "@angular/forms";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {AuthGuard} from "./auth.guard";
+} from '@angular/material';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { AuthGuard } from './auth.guard';
 
 @NgModule({
   imports: [
@@ -33,7 +37,7 @@ import {AuthGuard} from "./auth.guard";
         allowedUrls: ['http://localhost:8080/auth'],
         sendAccessToken: true
       }
-    }),
+    })
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],

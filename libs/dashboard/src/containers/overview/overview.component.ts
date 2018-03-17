@@ -45,5 +45,4 @@ export class OverviewComponent implements OnInit, AfterViewInit {
   getProfile() {
     console.log(this.oauthService.getIdentityClaims());
   }
-
 }
