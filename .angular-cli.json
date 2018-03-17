@@ -3,7 +3,7 @@
   "project": {
     "name": "nx-starter-kit",
     "npmScope": "nx-starter-kit",
-    "latestMigration": "20180227-cleanup-scripts"
+    "latestMigration": "20180313-add-tags"
   },
   "apps": [
     {
@@ -54,151 +54,176 @@
         "prod": "environments/environment.prod.ts",
         "mock": "environments/environment.mock.ts"
       },
-      "serviceWorker": true
+      "serviceWorker": true,
+      "tags": []
     },
     {
       "name": "admin",
       "root": "libs/admin/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "animations",
       "root": "libs/animations/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "app-confirm",
       "root": "libs/app-confirm/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "auth",
       "root": "libs/auth/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "breadcrumbs",
       "root": "libs/breadcrumbs/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "context-menu",
       "root": "libs/context-menu/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "crud",
       "root": "libs/crud/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "dashboard",
       "appRoot": "",
       "root": "libs/dashboard/src",
-      "test": "../../../test.js"
+      "test": "../../../test.js",
+      "tags": []
     },
     {
       "name": "experiments",
       "root": "libs/experiments/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "fullscreen",
       "root": "libs/fullscreen/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "home",
       "appRoot": "",
       "root": "libs/home/src",
-      "test": "../../../test.js"
+      "test": "../../../test.js",
+      "tags": []
     },
     {
       "name": "loading-overlay",
       "root": "libs/loading-overlay/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "material",
       "root": "libs/material/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "not-found",
       "root": "libs/not-found/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "quickpanel",
       "root": "libs/quickpanel/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "scroll-to-top",
       "root": "libs/scroll-to-top/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "shared",
       "appRoot": "",
       "root": "libs/shared/src",
-      "test": "../../../test.js"
+      "test": "../../../test.js",
+      "tags": []
     },
     {
       "name": "sidenav",
       "root": "libs/sidenav/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "sidenav2",
       "root": "libs/sidenav2/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "svg-viewer",
       "root": "libs/svg-viewer/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "theme-picker",
       "appRoot": "",
       "root": "libs/theme-picker/src",
-      "test": "../../../test.js"
+      "test": "../../../test.js",
+      "tags": []
     },
     {
       "name": "toolbar",
       "root": "libs/toolbar/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "tree",
       "root": "libs/tree/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     },
     {
       "name": "widgets",
       "root": "libs/widgets/src",
       "test": "../../../test.js",
-      "appRoot": ""
+      "appRoot": "",
+      "tags": []
     }
   ],
   "e2e": {

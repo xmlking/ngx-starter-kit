@@ -101,19 +101,11 @@
     "nx-enforce-module-boundaries": [
       true,
       {
-        "lazyLoad": [
-          "home",
-          "dashboard",
-          "admin",
-          "experiments",
-          "widgets",
-          "crud",
-          "not-found",
-          "datapower",
-          "nas",
-          "layer7"
-        ],
-        "allow": []
+        "allow": [],
+        "depConstraints": [
+          { "sourceTag": "lazyModule", "onlyDependOnLibsWithTags": ["utils"] },
+          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
+        ]
       }
     ]
   }
