@@ -273,7 +273,7 @@ npx standard-version
 ```
 ### Demo Deploy
 ```bash
-ng build --prod -e mock -oh=media --output-path docs --base-href nx-starter-kit
+ng build --prod -e mock -oh=media --output-path docs --base-href /nx-starter-kit/
 # Make a copy of docs/index.html and name it docs/404.html
 ```
 
