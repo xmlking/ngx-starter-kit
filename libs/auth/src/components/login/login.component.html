@@ -2,6 +2,7 @@
 
 <h4 class="mt-20 subheading-1" *ngIf="infoMsg">{{infoMsg}}</h4>
 <mat-error class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
+<div style="float: right; color: indianred" class="mt-20 mat-caption">(Usernames: sumo, sumo1, sumo2, sumo3 Password: demo)</div>
 
 <form [formGroup]="loginForm" class="app-login-form" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
 
