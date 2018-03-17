@@ -9,7 +9,7 @@ import {Observable} from "rxjs/Observable";
   styleUrls: ['./toolbar.component.scss']
 })
 export class ToolbarComponent implements OnInit {
-  @Select('auth.profile') private profile$: Observable<any>;
+  @Select('auth.profile') public profile$: Observable<any>;
 
   @Input('quickpanel') quickpanel: any;
   @Input('sidenav') sidenav: any;
