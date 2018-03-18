@@ -31,39 +31,35 @@ export class AuthState {
   constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {}
 
   @Action(LoginSuccess)
-  loginSuccess({ state, setState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
-    setState({
+  loginSuccess({ getState, patchState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
+    patchState({
       isLoggedIn: true,
       profile: payload,
-      authMode: state.authMode
     });
     this.authService.startAutoRefreshToken();
   }
 
   @Action([LogoutSuccess, LoginCanceled])
-  logoutSuccess({ state, setState }: StateContext<AuthStateModel>) {
+  logoutSuccess({ getState, setState }: StateContext<AuthStateModel>) {
     setState({
       isLoggedIn: false,
       profile: {},
-      authMode: state.authMode
+      authMode: getState().authMode
     });
     this.authService.stopAutoRefreshToken();
     this.router.navigate(['/home']);
   }
 
   @Action(AuthModeChanged)
-  authModeChanged({ state, setState }: StateContext<AuthStateModel>, { payload }: AuthModeChanged) {
-    setState({
-      isLoggedIn: state.isLoggedIn,
-      profile: state.profile,
+  authModeChanged({ getState, patchState }: StateContext<AuthStateModel>, { payload }: AuthModeChanged) {
+    patchState({
       authMode: payload
     });
   }
 
   @Action(ChangeAuthMode)
-  //TODO async changeAuthMode({ state, setState, dispatch }: StateContext<AuthStateModel>, { payload }: ChangeAuthMode) {
-  async changeAuthMode({ state, setState, dispatch }, { payload }: ChangeAuthMode) {
-    if (state.authMode !== payload) {
+  async changeAuthMode({ getState, dispatch }: StateContext<AuthStateModel>, { payload }: ChangeAuthMode) {
+    if (getState().authMode !== payload) {
       switch (payload) {
         case AuthMode.PasswordFlow:
           this.oauthService.configure(authConfigPassword);
@@ -78,12 +74,12 @@ export class AuthState {
   }
 
   @Action(Logout)
-  logout({ state, setState }: StateContext<AuthStateModel>) {
+  logout({ getState }: StateContext<AuthStateModel>) {
     return this.authService.logout();
   }
 
   @Action(Login)
-  login({ state, setState }: StateContext<AuthStateModel>, { payload }: Login) {
+  login({ getState }: StateContext<AuthStateModel>, { payload }: Login) {
     return this.authService.login(payload);
   }
 }
