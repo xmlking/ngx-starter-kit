@@ -53,9 +53,15 @@ var router = __webpack_require__("bfOx");
 // CONCATENATED MODULE: ./libs/not-found/src/containers/not-found/not-found.component.ts
 
 var NotFoundComponent = /*@__PURE__*/ (function () {
-    function NotFoundComponent() {
+    function NotFoundComponent(renderer) {
+        this.renderer = renderer;
     }
-    NotFoundComponent.prototype.ngOnInit = function () { };
+    NotFoundComponent.prototype.ngOnInit = function () {
+        this.renderer.removeClass(document.body, 'mat-typography');
+    };
+    NotFoundComponent.prototype.ngOnDestroy = function () {
+        this.renderer.addClass(document.body, 'mat-typography');
+    };
     return NotFoundComponent;
 }());
 
@@ -92,7 +98,7 @@ function View_NotFoundComponent_0(_l) {
             return ad;
         }, typings_index_ngfactory["d" /* View_MatButton_0 */], typings_index_ngfactory["b" /* RenderType_MatButton */])), core["ɵdid"](13, 180224, null, 0, button_es5["b" /* MatButton */], [core["ElementRef"], platform_es5["a" /* Platform */], a11y_es5["i" /* FocusMonitor */]], { color: [0, "color"] }, null), core["ɵdid"](14, 16384, null, 0, router["o" /* RouterLink */], [router["n" /* Router */], router["a" /* ActivatedRoute */], [8, null], core["Renderer2"], core["ElementRef"]], { routerLink: [0, "routerLink"] }, null), core["ɵpad"](15, 1), (_l()(), core["ɵted"](-1, 0, ["Back to Dashboard"])), (_l()(), core["ɵeld"](17, 0, null, null, 2, "button", [["color", "warn"], ["mat-raised-button", ""]], [[8, "disabled", 0]], null, null, typings_index_ngfactory["d" /* View_MatButton_0 */], typings_index_ngfactory["b" /* RenderType_MatButton */])), core["ɵdid"](18, 180224, null, 0, button_es5["b" /* MatButton */], [core["ElementRef"], platform_es5["a" /* Platform */], a11y_es5["i" /* FocusMonitor */]], { color: [0, "color"] }, null), (_l()(), core["ɵted"](-1, 0, ["Report this Problem"]))], function (_ck, _v) { var currVal_0 = "warn"; _ck(_v, 4, 0, currVal_0); var currVal_2 = "primary"; _ck(_v, 13, 0, currVal_2); var currVal_3 = _ck(_v, 15, 0, "/dashboard"); _ck(_v, 14, 0, currVal_3); var currVal_5 = "warn"; _ck(_v, 18, 0, currVal_5); }, function (_ck, _v) { var currVal_1 = (core["ɵnov"](_v, 13).disabled || null); _ck(_v, 12, 0, currVal_1); var currVal_4 = (core["ɵnov"](_v, 18).disabled || null); _ck(_v, 17, 0, currVal_4); });
 }
-function View_NotFoundComponent_Host_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "not-found", [], null, null, null, View_NotFoundComponent_0, RenderType_NotFoundComponent)), core["ɵdid"](1, 114688, null, 0, NotFoundComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_NotFoundComponent_Host_0(_l) { return core["ɵvid"](0, [(_l()(), core["ɵeld"](0, 0, null, null, 1, "not-found", [], null, null, null, View_NotFoundComponent_0, RenderType_NotFoundComponent)), core["ɵdid"](1, 245760, null, 0, NotFoundComponent, [core["Renderer2"]], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 var NotFoundComponentNgFactory = /*@__PURE__*/ core["ɵccf"]("not-found", NotFoundComponent, View_NotFoundComponent_Host_0, {}, {}, []);
 
 
