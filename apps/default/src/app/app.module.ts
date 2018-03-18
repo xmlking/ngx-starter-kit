@@ -20,7 +20,6 @@ import { CoreModule } from './core/core.module';
         { path: 'home', loadChildren: '@nx-starter-kit/home#HomeModule' },
         { path: 'dashboard', loadChildren: '@nx-starter-kit/dashboard#DashboardModule' },
         { path: 'admin', loadChildren: '@nx-starter-kit/admin#AdminModule' },
-        { path: 'experiments', loadChildren: '@nx-starter-kit/experiments#ExperimentsModule' },
         { path: '404', loadChildren: '@nx-starter-kit/not-found#NotFoundModule' },
         // 404 should be last
         { path: '**', redirectTo: '404', pathMatch: 'full' }

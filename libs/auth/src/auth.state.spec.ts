@@ -1,17 +1,19 @@
-import {NgxsModule, Store} from "ngxs";
+import { NgxsModule, Store } from 'ngxs';
 import { async, TestBed } from '@angular/core/testing';
-import {AuthState} from "./auth.state";
-import {LogoutSuccess} from "./auth.actions";
+import { AuthState } from './auth.state';
+import { LogoutSuccess } from './auth.actions';
 
 describe('Auth', () => {
   let store: Store;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([AuthState])],
-    }).compileComponents();
-    store = TestBed.get(Store);
-  }));
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        imports: [NgxsModule.forRoot([AuthState])]
+      }).compileComponents();
+      store = TestBed.get(Store);
+    })
+  );
 
   it('it toggles feed', () => {
     store.dispatch(new LogoutSuccess());
@@ -19,5 +21,4 @@ describe('Auth', () => {
       expect(isLoggedIn).toBe(false);
     });
   });
-
 });

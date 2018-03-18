@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { initializeAuth } from './oauth.init';
-import { Store} from 'ngxs';
+import { Store } from 'ngxs';
 import { AuthState } from './auth.state';
 import { LoginComponent } from './components/login/login.component';
 import { ROPCService } from './ropc.service';

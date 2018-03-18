@@ -1,4 +1,4 @@
-import {Action, State, StateContext} from 'ngxs';
+import { Action, State, StateContext } from 'ngxs';
 import {
   Login,
   LoginCanceled,
@@ -9,15 +9,15 @@ import {
   Logout,
   AuthModeChanged
 } from './auth.actions';
-import {AuthService} from './auth.service';
-import {Router} from '@angular/router';
-import {authConfigImplicit, authConfigPassword} from './oauth.config';
-import {OAuthService} from 'angular-oauth2-oidc';
+import { AuthService } from './auth.service';
+import { Router } from '@angular/router';
+import { authConfigImplicit, authConfigPassword } from './oauth.config';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 export interface AuthStateModel {
-  isLoggedIn: boolean,
-  profile: any,
-  authMode: AuthMode
+  isLoggedIn: boolean;
+  profile: any;
+  authMode: AuthMode;
 }
 
 @State<AuthStateModel>({
@@ -28,11 +28,10 @@ export interface AuthStateModel {
   }
 })
 export class AuthState {
-  constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {
-  }
+  constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {}
 
   @Action(LoginSuccess)
-  loginSuccess({state, setState}: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
+  loginSuccess({ state, setState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
     setState({
       isLoggedIn: true,
       profile: payload,
@@ -42,7 +41,7 @@ export class AuthState {
   }
 
   @Action([LogoutSuccess, LoginCanceled])
-  logoutSuccess({state, setState}: StateContext<AuthStateModel>) {
+  logoutSuccess({ state, setState }: StateContext<AuthStateModel>) {
     setState({
       isLoggedIn: false,
       profile: {},
@@ -53,7 +52,7 @@ export class AuthState {
   }
 
   @Action(AuthModeChanged)
-  authModeChanged({state, setState}: StateContext<AuthStateModel>, { payload }: AuthModeChanged) {
+  authModeChanged({ state, setState }: StateContext<AuthStateModel>, { payload }: AuthModeChanged) {
     setState({
       isLoggedIn: state.isLoggedIn,
       profile: state.profile,
@@ -79,7 +78,7 @@ export class AuthState {
   }
 
   @Action(Logout)
-  logout({state, setState}: StateContext<AuthStateModel>) {
+  logout({ state, setState }: StateContext<AuthStateModel>) {
     return this.authService.logout();
   }
 

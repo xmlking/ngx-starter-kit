@@ -28,7 +28,7 @@ export const defaultMenu: SidenavItem[] = [
       {
         name: 'experiments',
         icon: 'view_list',
-        link: '/experiments'
+        link: '/dashboard/experiments'
       }
     ]
   },

@@ -27,29 +27,24 @@ import { AuthGuard } from '@nx-starter-kit/auth';
         data: { animation: 'dashboard' },
         children: [
           {
-            path: 'overview1',
+            path: 'overview',
             component: OverviewComponent,
             data: { animation: 'overview' }
           },
           {
             path: '',
             loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview1' }
-          },
-          {
-            path: 'overview2',
-            loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview2' }
-          },
-          {
-            path: 'overview3',
-            loadChildren: '@nx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview3' }
+            data: { animation: 'overview' }
           },
           {
             path: 'crud',
             loadChildren: '@nx-starter-kit/crud#CrudModule',
             data: { animation: 'crud' }
+          },
+          {
+            path: 'experiments',
+            loadChildren: '@nx-starter-kit/experiments#ExperimentsModule',
+            data: { animation: 'experiments' }
           }
         ]
       }

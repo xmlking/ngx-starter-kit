@@ -3,7 +3,6 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@nx-starter-kit/shared';
 import { ExperimentsComponent } from './containers/experiments/experiments.component';
 import { HammerCardComponent } from './components/hammer-card/hammer-card.component';
-import { ExperimentsLayoutComponent } from './containers/experiments-layout/experiments-layout.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
 
 import * as Hammer from 'hammerjs';
@@ -22,27 +21,21 @@ export class MyHammerConfig extends HammerGestureConfig {
     SharedModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
+      { path: '', redirectTo: 'experiments1', pathMatch: 'full', data: { animation: 'experiments' } },
       {
-        path: '',
-        component: ExperimentsLayoutComponent,
-        data: {},
-        children: [
-          {
-            path: '',
-            component: ExperimentsComponent,
-            data: { animation: 'experiments' }
-          },
-          {
-            path: 'experiment1',
-            component: ExperimentsComponent,
-            data: { animation: 'experiment1' }
-          },
-          {
-            path: 'experiment2',
-            component: ExperimentsComponent,
-            data: { animation: 'experiment2' }
-          }
-        ]
+        path: 'experiments1',
+        component: ExperimentsComponent,
+        data: { animation: 'experiments1' }
+      },
+      {
+        path: 'experiment2',
+        component: ExperimentsComponent,
+        data: { animation: 'experiment2' }
+      },
+      {
+        path: 'experiment3',
+        component: ExperimentsComponent,
+        data: { animation: 'experiment3' }
       }
     ])
   ],
@@ -52,6 +45,6 @@ export class MyHammerConfig extends HammerGestureConfig {
       useClass: MyHammerConfig
     }
   ],
-  declarations: [ExperimentsComponent, HammerCardComponent, ExperimentsLayoutComponent, HammertimeDirective]
+  declarations: [ExperimentsComponent, HammerCardComponent, HammertimeDirective]
 })
 export class ExperimentsModule {}
