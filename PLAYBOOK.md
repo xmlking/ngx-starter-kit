@@ -229,8 +229,6 @@ ng test --browser=ChromeHeadless
 ### Build
 ```bash
 # build project 
-# FIXME UglifyJS is breaking
-# edit and remove node_modules/@angular/cli/models/webpack-configs/production.js `new UglifyJSPlugin({` section
 ng build --app=default --prod -oh=media
 ```
 ### Run
@@ -272,8 +270,6 @@ npx standard-version
 > deploy demo to gp-pages
 ```bash
 # build for gp-pages
-# FIXME UglifyJS is breaking
-# edit and remove node_modules/@angular/cli/models/webpack-configs/production.js `new UglifyJSPlugin({` section
 ng build --prod -oh=media -e mock --output-path docs --base-href /nx-starter-kit/
 # Make a copy of docs/index.html and name it docs/404.html
 # edit docs/main.bundle.js   add nx-starter-kit prefix  i.e., /nx-starter-kit/ngsw-worker.js
