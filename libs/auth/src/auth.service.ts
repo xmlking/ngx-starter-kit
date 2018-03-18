@@ -4,8 +4,8 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Subscription } from 'rxjs/Subscription';
 import { catchError, filter, map, mergeMap } from 'rxjs/operators';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess } from './auth.events';
-import { Ngxs, Select } from 'ngxs';
+import { AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess } from './auth.actions';
+import { Store, Select } from 'ngxs';
 import { fromPromise } from 'rxjs/observable/fromPromise';
 import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
@@ -22,7 +22,7 @@ export class AuthService {
   mode: AuthMode;
 
   constructor(
-    private ngxs: Ngxs,
+    private store: Store,
     private httpClient: HttpClient,
     private router: Router,
     private dialog: MatDialog,
@@ -41,11 +41,11 @@ export class AuthService {
         case 'logout':
         case 'session_terminated':
           console.log('Your session has been terminated!', e);
-          this.ngxs.dispatch(new LogoutSuccess());
+          this.store.dispatch(new LogoutSuccess());
           break;
         case 'token_received':
           console.log('received token_received event', e);
-          //this.ngxs.dispatch(new LoadProfile());
+          //this.store.dispatch(new LoadProfile());
           //this.oauthService.loadUserProfile();
           break;
         case 'token_expires':
@@ -64,7 +64,6 @@ export class AuthService {
   }
 
   login(payload?: { infoMsg?: string }) {
-    const isLoggedIn = true;
     const loginDialogConf = Object.is(payload, undefined)
       ? AuthService.loginDefaultConf
       : { ...AuthService.loginDefaultConf, ...{ data: payload } };
@@ -75,7 +74,7 @@ export class AuthService {
           return new LoginCanceled();
         } else {
           this.router.navigate(['/dashboard']);
-          return new LoginSuccess({ isLoggedIn, profile });
+          return new LoginSuccess(profile);
         }
       })
     );
@@ -107,7 +106,7 @@ export class AuthService {
           mergeMap(_ => fromPromise(this.oauthService.refreshToken())),
           catchError((error: HttpErrorResponse) => {
             console.log('Auto token refresh failed. Logging Out...', error.error);
-            this.ngxs.dispatch(new Logout());
+            this.store.dispatch(new Logout());
             return new ErrorObservable(error.error);
           })
         )

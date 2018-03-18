@@ -1,10 +1,10 @@
 import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import { Ngxs } from 'ngxs';
-import { LoginSuccess } from './auth.events';
+import { Store } from 'ngxs';
+import { LoginSuccess } from './auth.actions';
 import { AuthorizationErrorResponse } from './oauth.errors';
 import { authConfigImplicit } from './oauth.config';
 
-export function initializeAuth(oauthService: OAuthService, ngxs: Ngxs) {
+export function initializeAuth(oauthService: OAuthService, store: Store) {
   // default: ImplicitFlow
   oauthService.configure(authConfigImplicit);
   oauthService.tokenValidationHandler = new JwksValidationHandler();
@@ -23,8 +23,7 @@ export function initializeAuth(oauthService: OAuthService, ngxs: Ngxs) {
       // This is called when using ImplicitFlow or page reload, no effect for ROPC Flow
       console.log('hasValidAccessToken');
       const profile: any = oauthService.getIdentityClaims();
-      const isLoggedIn = true;
-      ngxs.dispatch(new LoginSuccess({ isLoggedIn, profile }));
+      store.dispatch(new LoginSuccess(profile));
     }
   };
 }

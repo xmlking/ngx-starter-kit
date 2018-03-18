@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Logout } from '@nx-starter-kit/auth';
-import { Ngxs } from 'ngxs';
+import { Store } from 'ngxs';
 
 @Component({
   selector: 'user-menu',
@@ -11,7 +11,7 @@ export class UserMenuComponent implements OnInit {
   isOpen: boolean;
   @Input() currentUser = null;
 
-  constructor(private ngxs: Ngxs) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {
     if (this.currentUser.given_name && this.currentUser.given_name === 'Sumanth') {
@@ -28,6 +28,6 @@ export class UserMenuComponent implements OnInit {
   }
 
   public logout() {
-    this.ngxs.dispatch(new Logout());
+    this.store.dispatch(new Logout());
   }
 }

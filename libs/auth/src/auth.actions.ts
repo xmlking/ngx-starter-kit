@@ -4,7 +4,7 @@ export enum AuthMode {
   AuthorizationCodeFLow = 'AuthorizationCodeFLow'
 }
 
-//  Action Events
+//  Actions
 export class Login {
   constructor(public payload?: { infoMsg?: string }) {}
 }
@@ -16,9 +16,9 @@ export class ChangeAuthMode {
   constructor(public payload: AuthMode) {}
 }
 
-// Mutation Events
+// Mutation Actions
 export class LoginSuccess {
-  constructor(public payload: { isLoggedIn: boolean; profile: any }) {}
+  constructor(public payload: any) {}
 }
 export class LoginCanceled {}
 export class LogoutSuccess {}

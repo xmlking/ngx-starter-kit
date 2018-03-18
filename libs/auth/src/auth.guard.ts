@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Ngxs } from 'ngxs';
-import { Login } from './auth.events';
+import { Store } from 'ngxs';
+import { Login } from './auth.actions';
 
 function waitUntil(condition, timeout = 2000) {
   return new Promise(function(resolve, reject) {
@@ -21,7 +21,7 @@ function waitUntil(condition, timeout = 2000) {
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private oauthService: OAuthService, private ngxs: Ngxs) {}
+  constructor(private oauthService: OAuthService, private store: Store) {}
 
   async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean> {
     if (this.oauthService.hasValidIdToken() || this.oauthService.hasValidAccessToken()) {
@@ -32,7 +32,7 @@ export class AuthGuard implements CanActivate {
       if (this.oauthService.hasValidIdToken() || this.oauthService.hasValidAccessToken()) {
         return true;
       } else {
-        this.ngxs.dispatch(new Login({ infoMsg: 'Please login to Enter' }));
+        this.store.dispatch(new Login({ infoMsg: 'Please login to Enter' }));
         return false;
       }
     }

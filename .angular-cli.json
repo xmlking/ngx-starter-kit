@@ -184,13 +184,6 @@
       "tags": []
     },
     {
-      "name": "sidenav2",
-      "root": "libs/sidenav2/src",
-      "test": "../../../test.js",
-      "appRoot": "",
-      "tags": []
-    },
-    {
       "name": "svg-viewer",
       "root": "libs/svg-viewer/src",
       "test": "../../../test.js",

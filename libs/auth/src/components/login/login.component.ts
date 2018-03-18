@@ -5,8 +5,8 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { HttpErrorResponse } from '@angular/common/http';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Ngxs } from 'ngxs';
-import { ChangeAuthMode, AuthMode } from '../../auth.events';
+import { Store } from 'ngxs';
+import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 
 @Component({
   selector: 'nxtk-login',
@@ -20,7 +20,7 @@ export class LoginComponent {
 
   constructor(
     fb: FormBuilder,
-    private ngxs: Ngxs,
+    private store: Store,
     private oauthService: OAuthService,
     private ropcService: ROPCService,
     private router: Router,
@@ -38,7 +38,7 @@ export class LoginComponent {
   }
 
   initSSO() {
-    this.ngxs.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
+    this.store.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
       this.oauthService.initImplicitFlow();
       console.log('initSSO');
     });
@@ -47,7 +47,7 @@ export class LoginComponent {
   onSubmit(values) {
     if (this.loginForm.invalid) return;
 
-    this.ngxs.dispatch(new ChangeAuthMode(AuthMode.PasswordFlow)).subscribe(async () => {
+    this.store.dispatch(new ChangeAuthMode(AuthMode.PasswordFlow)).subscribe(async () => {
       try {
         const profile = await this.ropcService.login(values.username, values.password);
         this.dialogRef.close(profile);

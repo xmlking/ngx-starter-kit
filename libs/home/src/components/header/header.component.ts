@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Ngxs, Select } from 'ngxs';
+import { Store, Select } from 'ngxs';
 import { Observable } from 'rxjs/Observable';
 import { Login, Logout } from '@nx-starter-kit/auth';
 
@@ -17,16 +17,16 @@ export class HeaderComponent implements OnInit {
     { link: 'features', label: 'Features' }
   ];
 
-  constructor(private ngxs: Ngxs) {}
+  constructor(private store: Store) {}
 
   ngOnInit() {}
 
   public login() {
-    this.ngxs.dispatch(new Login());
+    this.store.dispatch(new Login());
   }
 
   public logout() {
-    this.ngxs.dispatch(new Logout());
+    this.store.dispatch(new Logout());
   }
 
   public signup() {}

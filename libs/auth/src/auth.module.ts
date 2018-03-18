@@ -1,8 +1,8 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
 import { initializeAuth } from './oauth.init';
-import { Ngxs, NgxsModule, ReduxDevtoolsPluginModule } from 'ngxs';
-import { AuthStore } from './auth.store';
+import { Store} from 'ngxs';
+import { AuthState } from './auth.state';
 import { LoginComponent } from './components/login/login.component';
 import { ROPCService } from './ropc.service';
 import { AuthService } from './auth.service';
@@ -41,13 +41,13 @@ import { AuthGuard } from './auth.guard';
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
-  providers: [AuthStore, ROPCService, AuthService, AuthGuard]
+  providers: [AuthState, ROPCService, AuthService, AuthGuard]
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthModule,
-      providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Ngxs], multi: true }]
+      providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Store], multi: true }]
     };
   }
 }
