@@ -272,7 +272,6 @@ npx standard-version
 # build for gp-pages
 ng build --prod -oh=media -e mock --output-path docs --base-href /nx-starter-kit/
 # Make a copy of docs/index.html and name it docs/404.html
-# edit docs/main.bundle.js   add nx-starter-kit prefix  i.e., /nx-starter-kit/ngsw-worker.js
 ```
 
 ### Production build and deployment

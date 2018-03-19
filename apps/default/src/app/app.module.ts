@@ -31,7 +31,7 @@ import { CoreModule } from './core/core.module';
       }
     ),
     CoreModule, // IMP: Please keep CoreModule after RouterModule
-    ServiceWorkerModule.register('/ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('./ngsw-worker.js', { enabled: environment.production })
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent]
