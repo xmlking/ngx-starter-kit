@@ -54,6 +54,8 @@ export class LoginComponent {
       } catch (error /*: HttpErrorResponse*/) {
         if (error.status === 401) {
           this.errorMsg = error.error.error_description; //'The user credentials is incorrect';
+        } else {
+          console.error(error);
         }
       }
     });
