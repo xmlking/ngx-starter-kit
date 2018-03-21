@@ -1,4 +1,4 @@
-import { Action, State, StateContext } from 'ngxs';
+import { Action, Select, Selector, State, StateContext } from 'ngxs';
 import {
   Login,
   LoginCanceled,
@@ -13,6 +13,7 @@ import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { authConfigImplicit, authConfigPassword } from './oauth.config';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { map } from 'rxjs/operators';
 
 export interface AuthStateModel {
   isLoggedIn: boolean;
@@ -31,13 +32,29 @@ export interface AuthStateModel {
 export class AuthState {
   constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {}
 
+  @Selector()
+  static isLoggedIn(state: AuthStateModel) {
+    return state.isLoggedIn;
+  }
+
+  @Selector()
+  static profile(state: AuthStateModel) {
+    return state.profile;
+  }
+
+  @Selector()
+  static authMode(state: AuthStateModel) {
+    return state ? state.authMode : AuthMode.ImplicitFLow;
+  }
+
   @Action(LoginSuccess)
   loginSuccess({ getState, patchState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
     patchState({
       isLoggedIn: true,
-      profile: payload,
+      profile: payload
     });
     this.authService.startAutoRefreshToken();
+    this.router.navigate(['/dashboard']);
   }
 
   @Action([LogoutSuccess, LoginCanceled])
@@ -80,7 +97,15 @@ export class AuthState {
   }
 
   @Action(Login)
-  login({ getState }: StateContext<AuthStateModel>, { payload }: Login) {
-    return this.authService.login(payload);
+  login({ getState, dispatch }: StateContext<AuthStateModel>, { payload }: Login) {
+    return this.authService.login(payload).pipe(
+      map(profile => {
+        if (profile === false) {
+          return dispatch(new LoginCanceled());
+        } else {
+          return dispatch(new LoginSuccess(profile));
+        }
+      })
+    );
   }
 }

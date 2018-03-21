@@ -1,12 +1,14 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-import { initializeAuth } from './oauth.init';
 import { Store } from 'ngxs';
+
+import { initializeAuth } from './oauth.init';
 import { AuthState } from './auth.state';
 import { LoginComponent } from './components/login/login.component';
 import { ROPCService } from './ropc.service';
 import { AuthService } from './auth.service';
-import { CommonModule } from '@angular/common';
+
 import {
   MatButtonModule,
   MatCardModule,

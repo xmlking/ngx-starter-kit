@@ -6,17 +6,18 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
-import { NgxsModule, ReduxDevtoolsPluginModule } from 'ngxs';
+import { NgxsModule, NgxsReduxDevtoolsPluginModule } from 'ngxs';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { AuthModule, AuthState } from '@nx-starter-kit/auth';
+import {RouterState} from "./state/router.state";
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     NgxPageScrollModule,
-    NgxsModule.forRoot([AuthState]),
-    ReduxDevtoolsPluginModule.forRoot({
+    NgxsModule.forRoot([AuthState,RouterState]),
+    NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production // Set to true for prod mode
     }),
     AuthModule.forRoot(),

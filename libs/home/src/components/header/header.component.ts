@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store, Select } from 'ngxs';
 import { Observable } from 'rxjs/Observable';
 import { Login, Logout } from '@nx-starter-kit/auth';
+import { AuthState } from '@nx-starter-kit/auth';
 
 @Component({
   selector: 'app-home-header',
@@ -9,7 +10,7 @@ import { Login, Logout } from '@nx-starter-kit/auth';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  @Select('auth.isLoggedIn') isLoggedIn$: Observable<boolean>;
+  @Select(AuthState.isLoggedIn) isLoggedIn$: Observable<boolean>;
 
   navigation = [
     { link: 'about', label: 'About' },

@@ -12,11 +12,11 @@ import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
+import { AuthState } from './auth.state';
 
 @Injectable()
 export class AuthService {
   static loginDefaultConf = { width: '480px', disableClose: true };
-  @Select('auth.authMode') private _mode$: Observable<AuthMode>;
   private _refresher: Subscription;
   private _monitorer: Subscription;
   mode: AuthMode;
@@ -29,7 +29,7 @@ export class AuthService {
     private ropcService: ROPCService,
     private oauthService: OAuthService
   ) {
-    this._mode$.subscribe(mode => {
+    this.store.select(AuthState.authMode).subscribe(mode => {
       console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
       this.mode = mode;
     });
@@ -68,16 +68,7 @@ export class AuthService {
       ? AuthService.loginDefaultConf
       : { ...AuthService.loginDefaultConf, ...{ data: payload } };
     const dialogRef = this.dialog.open(LoginComponent, loginDialogConf);
-    return dialogRef.afterClosed().pipe(
-      map(profile => {
-        if (profile === false) {
-          return new LoginCanceled();
-        } else {
-          this.router.navigate(['/dashboard']);
-          return new LoginSuccess(profile);
-        }
-      })
-    );
+    return dialogRef.afterClosed();
   }
 
   logout() {

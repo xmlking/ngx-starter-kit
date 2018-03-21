@@ -50,7 +50,7 @@
     "hammerjs": "^2.0.8",
     "ngx-page-scroll": "^4.0.2",
     "ngx-perfect-scrollbar": "^5.3.5",
-    "ngxs": "^2.0.0-rc.9",
+    "ngxs": "^2.0.0-rc.12",
     "nvd3": "^1.8.6",
     "rxjs": "^5.5.7",
     "screenfull": "^3.3.2",

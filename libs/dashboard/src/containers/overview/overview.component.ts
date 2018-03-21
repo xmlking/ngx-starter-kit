@@ -2,6 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { Select } from 'ngxs';
 import { Observable } from 'rxjs/Observable';
 import { OAuthService } from 'angular-oauth2-oidc';
+import { AuthState } from '@nx-starter-kit/auth';
 
 // import {fadeInAnimation} from "../../route.animation";
 
@@ -15,8 +16,8 @@ import { OAuthService } from 'angular-oauth2-oidc';
   // animations: [ fadeInAnimation ]
 })
 export class OverviewComponent implements OnInit, AfterViewInit {
-  @Select('auth.isLoggedIn') isLoggedIn$: Observable<boolean>;
-  @Select('auth.profile') profile$: Observable<any>;
+  @Select(AuthState.isLoggedIn) isLoggedIn$: Observable<boolean>;
+  @Select(AuthState.profile) profile$: Observable<any>;
 
   constructor(private oauthService: OAuthService) {}
 
