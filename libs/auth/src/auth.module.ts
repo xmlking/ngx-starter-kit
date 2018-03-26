@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
-import { Store } from 'ngxs';
+import { Store } from '@ngxs/store';
 
 import { initializeAuth } from './oauth.init';
 import { AuthState } from './auth.state';
@@ -16,7 +16,8 @@ import {
   MatDialogModule,
   MatFormFieldModule,
   MatIconModule,
-  MatInputModule
+  MatInputModule,
+  MatToolbarModule
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -25,13 +26,14 @@ import { AuthGuard } from './auth.guard';
 @NgModule({
   imports: [
     CommonModule,
+    MatButtonModule,
     MatCardModule,
+    MatCheckboxModule,
     MatDialogModule,
     MatFormFieldModule,
-    MatButtonModule,
-    MatInputModule,
-    MatCheckboxModule,
     MatIconModule,
+    MatInputModule,
+    MatToolbarModule,
     FlexLayoutModule,
     ReactiveFormsModule,
     OAuthModule.forRoot({

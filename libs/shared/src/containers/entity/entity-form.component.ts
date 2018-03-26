@@ -23,6 +23,6 @@ export abstract class EntityFormComponent<TEntity extends Entity> implements OnI
   }
 
   submit() {
-    this.dialogRef.close(this.entityForm.value);
+    this.dialogRef.close(this.entityForm.value as Partial<TEntity>);
   }
 }

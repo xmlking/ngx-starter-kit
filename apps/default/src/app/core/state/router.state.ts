@@ -1,17 +1,26 @@
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Router, NavigationEnd, ActivatedRoute, NavigationExtras } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
-import { State, Action, Store, StateContext, NgxsModule } from 'ngxs';
+import { State, Action, Store, StateContext, NgxsModule } from '@ngxs/store';
 
-export class UpdateRouterModel {
-  constructor(public readonly payload: RouterModel) {}
-}
-
-export interface RouterModel {
-  data: any;
+//------ router model -------
+export interface RouterStateModel {
   path: string;
+  data?: any;
 }
 
-@State<RouterModel>({
+//---- router actions ------
+export class UpdateRouterState {
+  constructor(public readonly payload: RouterStateModel) {}
+}
+
+export class Go {
+  constructor(public readonly payload: { path: any[]; query?: object; extras?: NavigationExtras }) {}
+}
+
+export class Back {}
+export class Forward {}
+
+@State<RouterStateModel>({
   name: 'router',
   defaults: {
     data: {},
@@ -19,8 +28,8 @@ export interface RouterModel {
   }
 })
 export class RouterState {
-  constructor(private store: Store, private _router: Router, private activatedRoute: ActivatedRoute) {
-    this._router.events
+  constructor(private store: Store, private router: Router, private activatedRoute: ActivatedRoute) {
+    this.router.events
       .pipe(
         filter(event => event instanceof NavigationEnd),
         map(() => this.activatedRoute),
@@ -32,14 +41,32 @@ export class RouterState {
       .subscribe((event: any) => {
         const { data, path } = event.routeConfig;
 
-        this.store.dispatch(new UpdateRouterModel({ data, path }));
+        this.store.dispatch(new UpdateRouterState({ data, path }));
       });
   }
 
-  @Action(UpdateRouterModel)
-  update({ getState, setState }: StateContext<RouterModel>, { payload }: UpdateRouterModel) {
+  @Action(UpdateRouterState)
+  update({ getState, setState }: StateContext<RouterStateModel>, { payload }: UpdateRouterState) {
     setState({
       ...payload
     });
+  }
+
+  @Action(Go)
+  go(sc: StateContext<RouterStateModel>, { payload }: Go) {
+    const { path, query: queryParams, extras } = payload;
+    return this.router.navigate(path, { queryParams, ...extras });
+  }
+
+  @Action(Back)
+  back() {
+    console.log('TODO: back');
+    // this.location.back();
+  }
+
+  @Action(Forward)
+  forward() {
+    console.log('TODO: forward');
+    // this.location.forward();
   }
 }

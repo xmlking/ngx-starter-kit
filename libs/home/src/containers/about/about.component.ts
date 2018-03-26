@@ -2,11 +2,9 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } fr
 import { ANIMATE_ON_ROUTE_ENTER } from '@nx-starter-kit/animations';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
-import { Subscription } from 'rxjs/Subscription';
+import { fromEvent, Subject, Subscription } from 'rxjs';
 import 'rxjs/add/observable/fromEvent';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 
 @Component({
   selector: 'nxtk-about',

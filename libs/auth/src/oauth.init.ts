@@ -1,5 +1,5 @@
 import { JwksValidationHandler, OAuthService } from 'angular-oauth2-oidc';
-import { Store } from 'ngxs';
+import { Store } from '@ngxs/store';
 import { LoginSuccess } from './auth.actions';
 import { AuthorizationErrorResponse } from './oauth.errors';
 import { authConfigImplicit } from './oauth.config';

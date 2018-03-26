@@ -1,11 +1,9 @@
-import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { scrollFabAnimation } from '@nx-starter-kit/animations';
 import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 import { map, tap, debounceTime, distinctUntilChanged, throttleTime, takeUntil } from 'rxjs/operators';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Subject } from 'rxjs/Subject';
+import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
 
 enum ShowStatus {
   show = 'show',
@@ -29,7 +27,7 @@ export class ScrollToTopComponent implements OnInit, OnDestroy {
 
   pageScrollInstance: PageScrollInstance;
 
-  constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: Document) {}
+  constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any) {}
 
   private getShowHide() {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;

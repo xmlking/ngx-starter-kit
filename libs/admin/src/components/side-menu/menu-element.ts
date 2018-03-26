@@ -4,27 +4,27 @@ export const menus = [
     icon: 'dashboard',
     link: false,
     open: false,
-    chip: { value: 1, color: 'accent' },
+    badge: { value: 1, color: 'accent' },
     sub: [
       {
         name: 'Admin',
         link: '/admin',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Products',
         link: '/admin/products',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Orders',
         link: '/admin/orders',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       }
     ]
@@ -34,34 +34,34 @@ export const menus = [
     icon: 'dashboard',
     link: false,
     open: false,
-    chip: { value: 1, color: 'accent' },
+    badge: { value: 1, color: 'accent' },
     sub: [
       {
         name: 'Dashboard',
         link: '/dashboard',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Overview 1',
         link: '/dashboard/overview1',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Overview 2',
         link: '/dashboard/overview2',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Overview 3',
         link: '/dashboard/overview3',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       }
     ]
@@ -76,70 +76,70 @@ export const menus = [
         name: 'Buttons',
         link: 'material-widgets/buttons',
         icon: 'indeterminate_check_box',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'List',
         link: 'material-widgets/list',
         icon: 'list',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Stepper',
         link: 'material-widgets/stepper',
         icon: 'view_week',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Expansion',
         link: 'material-widgets/expansion',
         icon: 'web_aaset',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Progress Spinner',
         link: 'material-widgets/spinner',
         icon: 'cached',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Cards',
         link: 'material-widgets/cards',
         icon: 'crop_16_9',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Icons',
         link: 'material-widgets/icons',
         icon: 'gif',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'AutoComplete',
         link: 'material-widgets/autocomplete',
         icon: 'get_app',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'CheckBox',
         link: 'material-widgets/checkbox',
         icon: 'check_box',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'DatePicker',
         link: 'material-widgets/datepicker',
         icon: 'date_range',
-        chip: false,
+        badge: false,
         open: false
       },
 
@@ -147,28 +147,28 @@ export const menus = [
         name: 'Slider',
         link: 'material-widgets/slider',
         icon: 'keyboard_tab',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Slide Toggle',
         link: 'material-widgets/slide-toggle',
         icon: 'album',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Menu',
         icon: 'menu',
         link: 'material-widgets/menu',
-        chip: false,
+        badge: false,
         open: false
       },
       {
         name: 'Progress Bar',
         link: 'material-widgets/progress-bar',
         icon: 'trending_flat',
-        chip: false,
+        badge: false,
         open: false
       },
       {
@@ -181,7 +181,7 @@ export const menus = [
         name: 'Radio',
         icon: 'radio_button_checked',
         link: 'material-widgets/radio',
-        chip: false,
+        badge: false,
         open: false
       },
       {
@@ -197,7 +197,7 @@ export const menus = [
     icon: 'list',
     link: false,
     open: false,
-    chip: { value: 3, color: 'accent' },
+    badge: { value: 3, color: 'accent' },
     sub: [
       {
         name: 'Fixed',
@@ -241,7 +241,7 @@ export const menus = [
         name: 'Products',
         link: '/dashboard/products',
         icon: 'dashboard',
-        chip: false,
+        badge: false,
         open: false
       },
       {

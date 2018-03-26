@@ -42,7 +42,6 @@ testem.log
 Thumbs.db
 
 # Environment variables
-src/environments/base.ts
 .env
 
 # Sumo

@@ -6,7 +6,8 @@ import { EntitiesComponent } from '@nx-starter-kit/shared';
 import { AppConfirmService } from '@nx-starter-kit/app-confirm';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { throwError } from 'rxjs';
+
 import { AccountFormComponent } from './account-form.component';
 import * as moment from 'moment';
 
@@ -48,10 +49,10 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
     return this.confirmService.confirm('Confirm', `Delete ${item.first_name} ${item.last_name}?`).pipe(
       filter(confirmed => confirmed === true),
       mergeMap(_ => super.delete(item)),
-      map(_ => this.snack.open('Member Deleted!', 'OK', { duration: 5000 })),
+      tap(_ => this.snack.open('Member Deleted!', 'OK', { duration: 5000 })),
       catchError(error => {
         this.snack.open(error, 'OK', { duration: 10000 });
-        return new ErrorObservable('Ignore Me!');
+        return throwError('Ignore Me!');
       })
     );
   }
@@ -91,11 +92,11 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
       .pipe(
         filter(res => res !== false),
         // tap(res => console.log(res)),
-        map(res => {
+        map((res: Account) => {
           if (!isNew) res.id = entity.id;
           return res;
         }),
-        concatMap(res => super.updateOrCreate(res, isNew))
+        concatMap((res: Account) => super.updateOrCreate(res, isNew))
       )
       .subscribe(
         _ => this.snack.open(isNew ? 'Member Created!' : 'Member Updated!', 'OK', { duration: 5000 }),

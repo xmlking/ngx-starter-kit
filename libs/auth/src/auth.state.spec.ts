@@ -1,4 +1,4 @@
-import { NgxsModule, Store } from 'ngxs';
+import { NgxsModule, Store } from '@ngxs/store';
 import { async, TestBed } from '@angular/core/testing';
 import { AuthState } from './auth.state';
 import { LogoutSuccess } from './auth.actions';

@@ -1,11 +1,10 @@
-@import "../../../../../apps/default/src/styles/_var";
+@import '../../../../../apps/default/src/styles/_var';
 
 :host {
   display: block;
 }
 
 mat-nav-list a.sidenav-anchor {
-
   &.mat-list-item .mat-list-item-content {
     padding-left: $padding-left-right__sidenav-list__mat-list-item;
     padding-right: $padding-left-right__sidenav-list__mat-list-item;
@@ -25,11 +24,10 @@ mat-nav-list a.sidenav-anchor {
 }
 
 .sidenav-list {
-  transition: height .4s cubic-bezier(.35, 0, .25, 1);
+  transition: height 0.4s cubic-bezier(0.35, 0, 0.25, 1);
 
   > nxtk-sidenav-item {
     &.open {
-
       > .sidenav-anchor {
         .sidenav-item-dropdown-indicator {
           transform: rotate(180deg);
@@ -38,39 +36,39 @@ mat-nav-list a.sidenav-anchor {
     }
 
     .sidenav-item-dropdown-indicator {
-      transition: transform .25s;
+      transition: transform 0.25s;
     }
 
     .badge {
       padding: 4px 8px;
       font-size: 12px;
-      background: #2196F3;
+      background: #2196f3;
       border-radius: 5px;
-      color: #FFF;
+      color: #fff;
     }
   }
 }
 
 .sidenav-toplevel {
-
   // Every sidenav-anchor in this sidenav
   .sidenav-anchor {
     position: relative;
     cursor: pointer;
     color: $color__sidenav-list;
-    transition: color .1s;
+    transition: color 0.1s;
     outline: none;
 
     &:hover {
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
     &.active {
-      color: #FFFFFF;
+      color: #ffffff;
     }
   }
 
-  > .sidenav-item { // Top Level Item
+  > .sidenav-item {
+    // Top Level Item
 
     > .sidenav-anchor {
       &:hover {
@@ -82,7 +80,8 @@ mat-nav-list a.sidenav-anchor {
       }
     }
 
-    > .sidenav-list-nested > .sidenav-item { // Level 1 aka 1st Dropdown
+    > .sidenav-list-nested > .sidenav-item {
+      // Level 1 aka 1st Dropdown
       background: $background-color__sidenav-list__level1;
 
       > .sidenav-anchor {
@@ -95,7 +94,8 @@ mat-nav-list a.sidenav-anchor {
         }
       }
 
-      > .sidenav-list-nested > .sidenav-item { // Level 2
+      > .sidenav-list-nested > .sidenav-item {
+        // Level 2
         background: $background-color__sidenav-list__level2;
 
         > .sidenav-anchor {
@@ -110,7 +110,8 @@ mat-nav-list a.sidenav-anchor {
           }
         }
 
-        > .sidenav-list-nested > .sidenav-item { // Level 3
+        > .sidenav-list-nested > .sidenav-item {
+          // Level 3
           background: $background-color__sidenav-list__level3;
 
           > .sidenav-anchor {
@@ -125,7 +126,8 @@ mat-nav-list a.sidenav-anchor {
             }
           }
 
-          > .sidenav-list-nested > .sidenav-item { // Level 4
+          > .sidenav-list-nested > .sidenav-item {
+            // Level 4
             background: $background-color__sidenav-list__level4;
 
             > .sidenav-anchor {
@@ -140,7 +142,8 @@ mat-nav-list a.sidenav-anchor {
               }
             }
 
-            > .sidenav-list-nested > .sidenav-item { // Level 5
+            > .sidenav-list-nested > .sidenav-item {
+              // Level 5
               background: $background-color__sidenav-list__level5;
 
               > .sidenav-anchor {
@@ -155,7 +158,8 @@ mat-nav-list a.sidenav-anchor {
                 }
               }
 
-              .sidenav-list-nested > .sidenav-item { // Infinite Levels after
+              .sidenav-list-nested > .sidenav-item {
+                // Infinite Levels after
                 > .sidenav-anchor {
                   padding-left: $padding__sidenav-item__level6;
 
@@ -180,8 +184,9 @@ mat-nav-list a.sidenav-anchor {
     padding: 0;
     overflow: hidden;
 
-    &:before, &:after {
-      content: " ";
+    &:before,
+    &:after {
+      content: ' ';
       left: 0;
       position: absolute;
       width: 100%;
@@ -190,14 +195,13 @@ mat-nav-list a.sidenav-anchor {
     }
 
     &:before {
-      background: linear-gradient(180deg, rgba(0,0,0,.3) 0, transparent);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0, transparent);
       top: 0;
     }
 
     &:after {
-      background: linear-gradient(-180deg, rgba(0,0,0,.3) 0, transparent);
+      background: linear-gradient(-180deg, rgba(0, 0, 0, 0.3) 0, transparent);
       bottom: 0;
     }
   }
 }
-

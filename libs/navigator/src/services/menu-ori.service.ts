@@ -1,22 +1,28 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { SidenavItem } from './components/sidenav-item/sidenav-item.model';
-import { defaultMenu, demoMenu, adminMenu } from './sidenav-data';
+import { BehaviorSubject } from 'rxjs';
+import { MenuItem } from '../models/menu-item.model';
+import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 
 import { Tree } from '@nx-starter-kit/tree';
 
 @Injectable()
-export class SidenavService {
-  // Icon menu TITLE at the very top of navigation.
-  // This title will appear if any icon type item is present in menu.
-  iconTypeMenuTitle = 'Frequently Accessed';
+export class MenuService {
+  private _tree: Tree<MenuItem>;
 
-  private _tree: Tree<SidenavItem>;
-  private _navItemsSubject = new BehaviorSubject<SidenavItem[]>([{ name: 'dummy' }]);
-  navItems$ = this._navItemsSubject.asObservable();
+  private _items = new BehaviorSubject<MenuItem[]>([{ name: 'dummy' }]);
 
-  private _currentlyOpen: SidenavItem[] = [];
-  private _currentlyOpenSubject = new BehaviorSubject<SidenavItem[]>([]);
+  items$ = this._items.asObservable();
+
+  get items(): MenuItem[] {
+    return this._items.getValue();
+  }
+
+  set items(items: MenuItem[]) {
+    this._items.next(items);
+  }
+
+  private _currentlyOpen: MenuItem[] = [];
+  private _currentlyOpenSubject = new BehaviorSubject<MenuItem[]>([]);
   currentlyOpen$ = this._currentlyOpenSubject.asObservable();
 
   isIconSidenav: boolean;
@@ -26,11 +32,11 @@ export class SidenavService {
     this.publishMenuChange('default-menu');
   }
 
-  isOpen(item: SidenavItem) {
+  isOpen(item: MenuItem) {
     return this._currentlyOpen.indexOf(item) !== -1;
   }
 
-  toggleCurrentlyOpen(item: SidenavItem) {
+  toggleCurrentlyOpen(item: MenuItem) {
     let currentlyOpen = this._currentlyOpen;
 
     if (this.isOpen(item)) {
@@ -43,17 +49,16 @@ export class SidenavService {
       currentlyOpen = this.getParents(item);
     }
 
-    this._currentlyOpen = currentlyOpen;
-    this._currentlyOpenSubject.next(currentlyOpen);
+    this.nextCurrentlyOpen(currentlyOpen);
   }
 
-  nextCurrentlyOpen(currentlyOpen: SidenavItem[]) {
+  nextCurrentlyOpen(currentlyOpen: MenuItem[]) {
     this._currentlyOpen = currentlyOpen;
     this._currentlyOpenSubject.next(currentlyOpen);
   }
 
   nextCurrentlyOpenByRoute(route: string) {
-    let currentlyOpen: SidenavItem[] = [];
+    let currentlyOpen: MenuItem[] = [];
 
     const item = this._tree.findByPredicateBFS(node => {
       return node.link === route;
@@ -78,7 +83,7 @@ export class SidenavService {
     });
   }
 
-  private getParents(item: SidenavItem): SidenavItem[] {
+  private getParents(item: MenuItem): MenuItem[] {
     const ancestors = this._tree.getAllParents(item);
     ancestors.shift();
     return ancestors;
@@ -100,7 +105,13 @@ export class SidenavService {
         menuItems = defaultMenu;
     }
 
-    this._tree = new Tree<SidenavItem>({ name: 'root', children: menuItems });
-    this._navItemsSubject.next(this._tree.root.children);
+    this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
+    this._items.next(this._tree.root.children);
+  }
+
+  getDefaultMenu() {
+    let menuItems;
+    menuItems = defaultMenu;
+    return new Tree<MenuItem>({ name: 'root', children: menuItems });
   }
 }

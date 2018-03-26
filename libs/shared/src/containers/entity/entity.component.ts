@@ -4,11 +4,10 @@ import { MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource } fr
 import { EntityService } from './entity.service';
 import { Entity, EntityColumnDef } from './entity.model';
 import { map, mergeMap, debounceTime, distinctUntilChanged, concatMap } from 'rxjs/operators';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { fromEvent, Observable, OperatorFunction } from 'rxjs';
 import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionModel } from '@angular/cdk/collections';
-import { Observable } from 'rxjs/src/Observable';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, AfterViewInit {

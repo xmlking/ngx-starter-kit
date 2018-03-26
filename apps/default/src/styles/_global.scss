@@ -1,4 +1,5 @@
-.default-button[mat-button], .default-button[mat-raised-button] {
+.default-button[mat-button],
+.default-button[mat-raised-button] {
   text-transform: uppercase;
 }
 
@@ -12,7 +13,6 @@
     font-size: 20px;
   }
 }
-
 
 code {
   white-space: nowrap;
@@ -38,4 +38,8 @@ code {
   height: 26px;
   margin: 0 4px 3px 0;
   vertical-align: middle;
+}
+
+.mylogin-no-padding-dialog .mat-dialog-container {
+  padding: 0;
 }

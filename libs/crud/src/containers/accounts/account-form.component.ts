@@ -2,9 +2,10 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
+
 import { Account, Gender } from './account.model';
 import { states } from './states';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { EntityFormComponent } from '@nx-starter-kit/shared';
 import * as moment from 'moment';
 
@@ -43,6 +44,7 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
   }
 
   buildForm(item: Account) {
+    // this.entityForm = this.fb.group(item);
     this.entityForm = this.fb.group(
       {
         first_name: [item.first_name || '', Validators.required],

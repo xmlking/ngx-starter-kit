@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Store } from 'ngxs';
+import { Store } from '@ngxs/store';
 import { Login } from './auth.actions';
 
 function waitUntil(condition, timeout = 2000) {

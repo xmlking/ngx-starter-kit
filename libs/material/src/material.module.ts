@@ -2,11 +2,14 @@ import { NgModule } from '@angular/core';
 
 import {
   MatAutocompleteModule,
+  MatBadgeModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
+  MatDividerModule,
   MatDialogModule,
   MatExpansionModule,
   MatFormFieldModule,
@@ -36,12 +39,15 @@ import {
 
 const MATERIAL_MODULES = [
   MatAutocompleteModule,
+  MatBadgeModule,
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatDatepickerModule,
   MatDialogModule,
+  MatDividerModule,
   MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
@@ -60,11 +66,11 @@ const MATERIAL_MODULES = [
   MatSliderModule,
   MatSlideToggleModule,
   MatSnackBarModule,
-  MatSortModule,
-  MatTableModule,
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
+  MatSortModule,
+  MatTableModule,
   MatStepperModule
 ];
 

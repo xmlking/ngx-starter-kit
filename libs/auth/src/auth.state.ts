@@ -1,4 +1,4 @@
-import { Action, Select, Selector, State, StateContext } from 'ngxs';
+import { Action, Select, Selector, State, StateContext } from '@ngxs/store';
 import {
   Login,
   LoginCanceled,
@@ -49,6 +49,7 @@ export class AuthState {
 
   @Action(LoginSuccess)
   loginSuccess({ getState, patchState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
+    console.log('in LoginSuccess');
     patchState({
       isLoggedIn: true,
       profile: payload
@@ -59,6 +60,7 @@ export class AuthState {
 
   @Action([LogoutSuccess, LoginCanceled])
   logoutSuccess({ getState, setState }: StateContext<AuthStateModel>) {
+    console.log('in LogoutSuccess or LoginCanceled');
     setState({
       isLoggedIn: false,
       profile: {},
@@ -93,6 +95,7 @@ export class AuthState {
 
   @Action(Logout)
   logout({ getState }: StateContext<AuthStateModel>) {
+    console.log('in  logout store');
     return this.authService.logout();
   }
 
@@ -101,9 +104,9 @@ export class AuthState {
     return this.authService.login(payload).pipe(
       map(profile => {
         if (profile === false) {
-          return dispatch(new LoginCanceled());
+          dispatch(new LoginCanceled());
         } else {
-          return dispatch(new LoginSuccess(profile));
+          dispatch(new LoginSuccess(profile));
         }
       })
     );

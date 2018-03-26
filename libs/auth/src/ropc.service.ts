@@ -14,6 +14,7 @@ export class ROPCService {
   }
 
   logOut() {
+    console.log('in ROPCService logOut');
     // POST /auth/realms/<realm>/protocol/openid-connect/logout
     //
     // ContentType: x-www-form-urlencoded

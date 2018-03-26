@@ -5,6 +5,30 @@
     "npmScope": "nx-starter-kit",
     "latestMigration": "20180313-add-tags"
   },
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "./tsconfig.spec.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/default/src/tsconfig.app.json",
+      "exclude": "**/node_modules/**"
+    },
+    {
+      "project": "apps/default/e2e/tsconfig.e2e.json",
+      "exclude": "**/node_modules/**"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
   "apps": [
     {
       "name": "default",
@@ -21,9 +45,7 @@
       "test": "../../../test.js",
       "tsconfig": "tsconfig.app.json",
       "testTsconfig": "../../../tsconfig.spec.json",
-      "prefix": [
-        "nxtk"
-      ],
+      "prefix": "nxtk",
       "styles": [
         "styles.scss",
         {
@@ -55,194 +77,245 @@
         "mock": "environments/environment.mock.ts"
       },
       "serviceWorker": true,
-      "tags": []
+      "tags": [
+        "app-module"
+      ]
     },
     {
       "name": "admin",
       "root": "libs/admin/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "entry-module"
+      ]
     },
     {
       "name": "animations",
       "root": "libs/animations/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "utils"
+      ]
     },
     {
       "name": "app-confirm",
       "root": "libs/app-confirm/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "auth",
       "root": "libs/auth/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "private-module",
+        "core-module"
+      ]
     },
     {
       "name": "breadcrumbs",
       "root": "libs/breadcrumbs/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "context-menu",
       "root": "libs/context-menu/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "crud",
       "root": "libs/crud/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "child-module"
+      ]
     },
     {
       "name": "dashboard",
       "appRoot": "",
       "root": "libs/dashboard/src",
       "test": "../../../test.js",
-      "tags": []
+      "tags": [
+        "layout",
+        "entry-module"
+      ]
     },
     {
       "name": "experiments",
       "root": "libs/experiments/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "child-module"
+      ]
     },
     {
       "name": "fullscreen",
       "root": "libs/fullscreen/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "home",
       "appRoot": "",
       "root": "libs/home/src",
       "test": "../../../test.js",
-      "tags": []
+      "tags": [
+        "layout",
+        "entry-module"
+      ]
     },
     {
       "name": "loading-overlay",
       "root": "libs/loading-overlay/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "material",
       "root": "libs/material/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "shared-module"
+      ]
+    },
+    {
+      "name": "navigator",
+      "root": "libs/navigator/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "private-module",
+        "core-module"
+      ]
     },
     {
       "name": "not-found",
       "root": "libs/not-found/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "entry-module"
+      ]
     },
     {
       "name": "quickpanel",
       "root": "libs/quickpanel/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "private-module"
+      ]
     },
     {
       "name": "scroll-to-top",
       "root": "libs/scroll-to-top/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
+    },
+    {
+      "name": "scrollbar",
+      "root": "libs/scrollbar/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "shared",
       "appRoot": "",
       "root": "libs/shared/src",
       "test": "../../../test.js",
-      "tags": []
+      "tags": [
+        "shared-module"
+      ]
     },
     {
       "name": "sidenav",
       "root": "libs/sidenav/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "private-module"
+      ]
     },
     {
       "name": "svg-viewer",
       "root": "libs/svg-viewer/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "theme-picker",
       "appRoot": "",
       "root": "libs/theme-picker/src",
       "test": "../../../test.js",
-      "tags": []
+      "tags": [
+        "public-module"
+      ]
     },
     {
       "name": "toolbar",
       "root": "libs/toolbar/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "private-module"
+      ]
     },
     {
       "name": "tree",
       "root": "libs/tree/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
+      "tags": [
+        "utils"
+      ]
     },
     {
       "name": "widgets",
       "root": "libs/widgets/src",
       "test": "../../../test.js",
       "appRoot": "",
-      "tags": []
-    }
-  ],
-  "e2e": {
-    "protractor": {
-      "config": "./protractor.conf.js"
-    }
-  },
-  "lint": [
-    {
-      "project": "./tsconfig.spec.json",
-      "exclude": "**/node_modules/**"
+      "tags": [
+        "child-module"
+      ]
     },
     {
-      "project": "apps/default/src/tsconfig.app.json",
-      "exclude": "**/node_modules/**"
-    },
-    {
-      "project": "apps/default/e2e/tsconfig.e2e.json",
-      "exclude": "**/node_modules/**"
+      "name": "$workspaceRoot",
+      "root": ".",
+      "appRoot": ""
     }
   ],
-  "test": {
-    "karma": {
-      "config": "./karma.conf.js"
-    }
-  },
   "defaults": {
     "styleExt": "scss",
     "component": {},

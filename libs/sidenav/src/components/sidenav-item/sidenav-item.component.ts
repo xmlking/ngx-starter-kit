@@ -1,7 +1,6 @@
 import { Component, OnInit, ViewEncapsulation, HostBinding } from '@angular/core';
 import { Input } from '@angular/core';
-import { SidenavItem } from './sidenav-item.model';
-import { SidenavService } from '../../sidenav.service';
+import { MenuItem, MenuService } from '@nx-starter-kit/navigator';
 
 @Component({
   selector: 'nxtk-sidenav-item',
@@ -10,22 +9,22 @@ import { SidenavService } from '../../sidenav.service';
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavItemComponent implements OnInit {
-  @Input('item') item: SidenavItem;
+  @Input('item') item: MenuItem;
 
   @HostBinding('class.open')
   get isOpen() {
-    return this.sidenavService.isOpen(this.item);
+    return this.menuService.isOpen(this.item);
   }
 
   @HostBinding('class.sidenav-item') sidenavItemClass = true;
 
-  constructor(private sidenavService: SidenavService) {}
+  constructor(private menuService: MenuService) {}
 
   ngOnInit() {}
 
   toggleDropdown(): void {
     if (this.item.children && this.item.children.length > 0) {
-      this.sidenavService.toggleCurrentlyOpen(this.item);
+      this.menuService.toggleItemOpen(this.item);
     }
   }
 
@@ -35,10 +34,10 @@ export class SidenavItemComponent implements OnInit {
   }
 
   // Counts the amount of Sub Items there is and returns the count.
-  private getOpenSubItemsCount(item: SidenavItem): number {
+  private getOpenSubItemsCount(item: MenuItem): number {
     let count = 0;
 
-    if (item.children && item.children.length > 0 && this.sidenavService.isOpen(item)) {
+    if (item.children && item.children.length > 0 && this.menuService.isOpen(item)) {
       count += item.children.length;
 
       item.children.forEach(subItem => {

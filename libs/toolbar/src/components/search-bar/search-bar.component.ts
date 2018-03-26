@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { SidenavItem } from '@nx-starter-kit/sidenav';
-import { SidenavService } from '@nx-starter-kit/sidenav';
+import { MenuItem, MenuService } from '@nx-starter-kit/navigator';
 
 @Component({
   selector: 'nxtk-search-bar',
@@ -12,14 +11,15 @@ export class SearchBarComponent implements OnInit {
   input: string;
   focused: boolean;
 
-  recentlyVisited: SidenavItem[] = [];
+  recentlyVisited: MenuItem[] = [];
 
-  constructor(private router: Router, private sidenavService: SidenavService) {}
+  constructor(private router: Router, private sidenavService: MenuService) {}
 
   ngOnInit() {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
-        const item = this.sidenavService.getSidenavItemByRoute(event.urlAfterRedirects);
+        const item = this.sidenavService.getItemByRoute(event.urlAfterRedirects);
+
         if (item) {
           const index = this.recentlyVisited.indexOf(item);
           if (index > -1) {

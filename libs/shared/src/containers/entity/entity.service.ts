@@ -1,11 +1,8 @@
 //TODO https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/default-data.service.ts
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import { of as observableOf, of } from 'rxjs/observable/of';
+import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { environment } from '@env/environment';
 import { Entity } from './entity.model';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
-import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { map, retry, catchError, finalize } from 'rxjs/operators';
 import * as moment from 'moment';
 
@@ -29,7 +26,7 @@ export abstract class EntityService<T extends Entity> {
       .pipe(catchError(this.handleError), finalize(() => this.loadingSubject.next(false)));
   }
 
-  findAll(filter: Filter, sortOrder = 'asc', pageNumber = 0, pageSize = 100): Observable<T[]> | ErrorObservable {
+  findAll(filter: Filter, sortOrder = 'asc', pageNumber = 0, pageSize = 100): Observable<T[]> | Observable<never> {
     this.loadingSubject.next(true);
     return this.httpClient
       .get<T[]>(`${this.baseUrl}/${this.entityPath}`, {
@@ -87,7 +84,7 @@ export abstract class EntityService<T extends Entity> {
       console.error(`Backend returned code ${error.status}, ` + `body was: ${error.error}`);
     }
     // return an ErrorObservable with a user-facing error message
-    return new ErrorObservable('Something bad happened; please try again later.');
+    return throwError('Something bad happened; please try again later.');
   }
 
   private convertToJson(body: any) {

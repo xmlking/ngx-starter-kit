@@ -1,46 +1,59 @@
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { SidenavItem } from './components/sidenav-item/sidenav-item.model';
-// import { NavigationService } from "./services/navigation/navigation.service";
-
+import {
+  Component,
+  OnInit,
+  ViewEncapsulation,
+  OnDestroy,
+  HostBinding,
+  ChangeDetectorRef,
+  HostListener
+} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
-import { Subscription } from 'rxjs/Subscription';
+import { Observable, Subject, Subscription } from 'rxjs';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
-import { SidenavService } from './sidenav.service';
+import { MenuItem, MenuService, SidenavState } from '@nx-starter-kit/navigator';
+// import { sidenavAnimation } from '@nx-starter-kit/animations';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'nxtk-sidenav',
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
+  // animations: [sidenavAnimation]
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  items: SidenavItem[];
+  private _destroyed$ = new Subject<void>();
 
-  private _itemsSubscription: Subscription;
-  private _routerEventsSubscription: Subscription;
+  items: MenuItem[];
 
   constructor(
-    // private navigationService: NavigationService,
-    private navigationService: SidenavService,
     private router: Router,
-    // private breadcrumbService: BreadcrumbService,
-    private snackBar: MatSnackBar
+    private menuService: MenuService,
+    private snackBar: MatSnackBar,
+    private cd: ChangeDetectorRef
   ) {}
 
   ngOnInit() {
-    this._itemsSubscription = this.navigationService.navItems$.subscribe((items: SidenavItem[]) => {
+    this.menuService.items$.pipe(takeUntil(this._destroyed$)).subscribe((items: MenuItem[]) => {
       this.items = items;
     });
 
-    this._routerEventsSubscription = this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.navigationService.nextCurrentlyOpenByRoute(event.url);
-        setTimeout(() => {
-          window.dispatchEvent(new Event('resize'));
-        }, 400);
-      }
-    });
+    // this.router.events.pipe(takeUntil(this._destroyed$))
+    //   .subscribe(event => {
+    //   if (event instanceof NavigationEnd) {
+    //     this.menuService.setCurrentlyOpenByRoute(event.url);
+    //     // setTimeout(() => {
+    //     //   window.dispatchEvent(new Event('resize'));
+    //     // }, 400);
+    //     this.cd.markForCheck();
+    //   }
+    // });
+  }
+
+  ngOnDestroy() {
+    this._destroyed$.next();
+    this._destroyed$.complete();
   }
 
   toggleIconSidenav() {
@@ -48,13 +61,13 @@ export class SidenavComponent implements OnInit, OnDestroy {
       window.dispatchEvent(new Event('resize'));
     }, 300);
 
-    this.navigationService.isIconSidenav = !this.navigationService.isIconSidenav;
+    this.menuService.isIconSidenav = !this.menuService.isIconSidenav;
 
     const snackBarConfig: MatSnackBarConfig = <MatSnackBarConfig>{
       duration: 10000
     };
 
-    if (this.navigationService.isIconSidenav) {
+    if (this.menuService.isIconSidenav) {
       this.snackBar.open(
         'You activated Icon-Sidenav, move your mouse to the content and see what happens!',
         '',
@@ -64,11 +77,6 @@ export class SidenavComponent implements OnInit, OnDestroy {
   }
 
   isIconSidenav(): boolean {
-    return this.navigationService.isIconSidenav;
-  }
-
-  ngOnDestroy() {
-    this._itemsSubscription.unsubscribe();
-    this._routerEventsSubscription.unsubscribe();
+    return this.menuService.isIconSidenav;
   }
 }

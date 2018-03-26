@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MenuItemComponent } from './components/menu-item/menu-item.component';
 import { SidenavItemComponent } from './components/sidenav-item/sidenav-item.component';
+import { IconSidenavDirective } from './components/icon-sidenav/icon-sidenav.directive';
 import { SidenavComponent } from './sidenav.component';
-import { IconSidenavDirective } from './icon-sidenav.directive';
 import {
   MatButtonModule,
+  MatChipsModule,
   MatIconModule,
   MatListModule,
   MatRippleModule,
@@ -13,9 +15,8 @@ import {
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-// import {NavigationService} from "./services/navigation/navigation.service";
-import { SidenavService } from './sidenav.service';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { ScrollbarModule } from '@nx-starter-kit/scrollbar';
 
 @NgModule({
   imports: [
@@ -23,32 +24,16 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     MatToolbarModule,
     MatListModule,
     MatButtonModule,
+    MatSidenavModule,
+    MatRippleModule,
+    MatChipsModule,
     RouterModule,
     PerfectScrollbarModule,
-    // MatTabsModule,
-    // MatDialogModule,
-    // MatMenuModule,
-    // MatGridListModule,
-    // MatCardModule,
-    // MatSnackBarModule,
-    // MatTooltipModule,
-    // MatSliderModule,
-    // MatAutocompleteModule,
-    // MatSlideToggleModule,
-    MatSidenavModule,
-    // MatCheckboxModule,
-    // MatNativeDateModule,
-    // MatProgressBarModule,
-    // MatProgressSpinnerModule,
-    // MatSelectModule,
-    MatRippleModule,
-    // MatButtonToggleModule
     FlexLayoutModule,
+    ScrollbarModule,
     CommonModule
   ],
   exports: [SidenavComponent, IconSidenavDirective],
-  declarations: [SidenavItemComponent, SidenavComponent, IconSidenavDirective],
-  // providers: [NavigationService]
-  providers: [SidenavService]
+  declarations: [SidenavItemComponent, MenuItemComponent, SidenavComponent, IconSidenavDirective]
 })
 export class SidenavModule {}

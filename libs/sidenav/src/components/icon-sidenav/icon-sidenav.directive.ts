@@ -1,9 +1,8 @@
 import { Directive, HostBinding, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
-import { SidenavItem } from './components/sidenav-item/sidenav-item.model';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Subscription } from 'rxjs/Subscription';
-// import {NavigationService} from "./services/navigation/navigation.service";
-import { SidenavService } from './sidenav.service';
+import { Subscription } from 'rxjs';
+import { MenuItem, MenuService } from '@nx-starter-kit/navigator';
+import { Store } from '@ngxs/store';
 
 @Directive({
   selector: '[nxtkIconSidenav]'
@@ -14,19 +13,21 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
 
   @HostBinding('class.icon-sidenav')
   get isIconSidenav(): boolean {
-    return this.navigationService.isIconSidenav;
+    return this.menuService.isIconSidenav;
   }
 
   @HostBinding('class.collapsed') collapsed: boolean;
 
-  currentlyOpen: SidenavItem[];
+  currentlyOpen: MenuItem[];
 
   @HostListener('mouseenter')
   onMouseEnter() {
     if (this.isIconSidenav && !this.isMobile) {
       this.collapsed = false;
 
-      this.navigationService.nextCurrentlyOpen(this.currentlyOpen);
+      this.menuService.currentlyOpen = this.currentlyOpen;
+      //this.store.dispatch(new NextCurrentlyOpened(this.currentlyOpen));
+      //this.store.dispatch(new SetIconMode(false));
     }
   }
 
@@ -35,12 +36,14 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
     if (this.isIconSidenav && !this.isMobile) {
       this.collapsed = true;
 
-      this.currentlyOpen = this.navigationService.currentlyOpen;
-      this.navigationService.nextCurrentlyOpen([]);
+      this.currentlyOpen = this.menuService.currentlyOpen;
+      this.menuService.currentlyOpen = [];
+      //this.store.dispatch(new NextCurrentlyOpened([]));
+      //this.store.dispatch(new SetIconMode(true));
     }
   }
 
-  constructor(private navigationService: SidenavService, private media: ObservableMedia) {}
+  constructor(private store: Store, private menuService: MenuService, private media: ObservableMedia) {}
 
   ngOnInit() {
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {

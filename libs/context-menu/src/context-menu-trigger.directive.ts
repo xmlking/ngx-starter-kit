@@ -1,9 +1,8 @@
 import { Directive, HostListener, TemplateRef, Input, ViewContainerRef, ElementRef, OnDestroy } from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { fromEvent } from 'rxjs/observable/fromEvent';
+import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { Subject } from 'rxjs/Subject';
 
 @Directive({
   selector: '[contextMenu]'

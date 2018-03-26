@@ -1,39 +1,37 @@
-<h1 mat-dialog-title>Login</h1>
+<div class="login-container">
+  <div class="login-content">
+    <mat-toolbar  color="primary">
+      <mat-toolbar-row class="login-toolbar">
+        <span>Login</span>
+      </mat-toolbar-row>
+    </mat-toolbar>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-subtitle *ngIf="infoMsg">{{infoMsg}}</mat-card-subtitle>
+        <mat-error class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
+      </mat-card-header>
 
-<h4 class="mt-20 subheading-1" *ngIf="infoMsg">{{infoMsg}}</h4>
-<mat-error class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
-<div style="float: right; color: indianred" class="mt-20 mat-caption">(Usernames: sumo, sumo1, sumo2, sumo3 Password: demo)</div>
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
+        <mat-form-field>
+          <mat-icon matPrefix>person_outline</mat-icon>
+          <input autofocus type="text" matInput placeholder="Usernames:  sumo, sumo1, sumo2, sumo3" formControlName="username">
+        </mat-form-field>
 
-<form [formGroup]="loginForm" class="app-login-form" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
+        <mat-form-field>
+          <mat-icon matPrefix>lock_outline</mat-icon>
+          <input type="password" autocomplete="false" matInput placeholder="Password: demo" formControlName="password">
+        </mat-form-field>
 
-  <div mat-dialog-content>
-    <mat-form-field>
-      <input matInput formControlName="username" placeholder="Username" required>
-      <mat-error *ngIf="loginForm.controls['username'].hasError('required')">
-        User name is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <input matInput formControlName="password" placeholder="Password" type="password" required>
-      <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
-        Password is <strong>required</strong>
-      </mat-error>
-    </mat-form-field>
+        <div mat-dialog-actions>
+          <div fxFlex="100">
+            <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
+            <span fxFlex></span>
+            <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
+            <!--<button mat-raised-button color="primary" type="submit" cdkFocusInitial>Login</button>-->
+            <button mat-raised-button color="primary" type="submit" >Login</button>
+          </div>
+        </div>
+      </form>
+    </mat-card>
   </div>
-
-  <mat-checkbox formControlName="rememberMe">Remember me!</mat-checkbox>
-  <!-- https://github.com/angular/material2/issues/8798 -->
-  <div>&nbsp;</div>
-
-  <div mat-dialog-actions>
-    <div fxFlex="100">
-      <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
-      <span fxFlex></span>
-      <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
-      <button mat-raised-button type="submit" cdkFocusInitial>Login</button>
-    </div>
-  </div>
-
-</form>
-
+</div>

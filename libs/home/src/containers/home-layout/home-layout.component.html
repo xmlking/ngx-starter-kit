@@ -1,4 +1,4 @@
-<div  id="top" fxLayout="column" fxFlexFill>
+<div id="top" fxLayout="column" fxFlexFill>
   <app-home-header></app-home-header>
   <div fxFlex class="content" [@routerTransition]="o.isActivated && o.activatedRoute.routeConfig.path">
     <router-outlet #o="outlet" (deactivate)="onDeactivate()"></router-outlet>

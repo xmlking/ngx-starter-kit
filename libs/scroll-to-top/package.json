@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/ng-packagr/package.schema.json",
+  "name": "@xmlking/scroll-to-top",
+  "version": "0.1.0",
+  "license": "MIT",
+  "peerDependencies": {
+    "ngx-page-scroll": "^4.0.2"
+  },
+  "ngPackage": {
+    "lib": {
+      "entryFile": "index.ts",
+      "embedded": ["@nx-starter-kit/animations"]
+    },
+    "dest": "../../@nx-packaged/scroll-to-top"
+  }
+}

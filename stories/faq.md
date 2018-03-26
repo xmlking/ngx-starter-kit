@@ -70,6 +70,11 @@ How to manage state in the front-end?
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
 
+* How to package the libs for publishing ?
+
+> Use[ng-packagr](https://github.com/dherges/ng-packagr)
+> Use[with nx](https://github.com/dherges/nx-packaged)
+
 * How to implement security interceptors?
 
 > [Refer](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8)

@@ -37,6 +37,7 @@ export enum TraversalStrategy {
 export interface TreeNode<T> {
   parent?: T;
   children?: T[];
+  [key: string]: any;
 }
 
 export interface TreeConfig<T> {

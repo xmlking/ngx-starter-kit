@@ -10,7 +10,7 @@ import {
   OnDestroy,
   HostBinding
 } from '@angular/core';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimation } from '@nx-starter-kit/animations';

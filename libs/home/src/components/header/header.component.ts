@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, Select } from 'ngxs';
-import { Observable } from 'rxjs/Observable';
+import { Store, Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { Login, Logout } from '@nx-starter-kit/auth';
 import { AuthState } from '@nx-starter-kit/auth';
 

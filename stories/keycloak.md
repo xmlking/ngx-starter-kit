@@ -64,3 +64,7 @@ curl -X POST  'http://localhost:8080/auth/realms/is360/protocol/openid-connect/l
  -d 'client_id=is360ui' \
  -d "refresh_token=$refresh_token" | jq .
  ```
+
+
+### Ref
+https://medium.com/@robert.broeckelmann/when-to-use-which-oauth2-grants-and-oidc-flows-ec6a5c00d864

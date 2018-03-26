@@ -1,8 +1,7 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { of as observableOf, Observable } from 'rxjs';
 import { catchError, finalize, map, share } from 'rxjs/operators';
-import { of as observableOf } from 'rxjs/observable/of';
 import { SvgViewerConfig } from './svg-viewer.config';
 
 @Injectable()

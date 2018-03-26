@@ -1,22 +1,23 @@
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs/Subscription';
+import { Subscription } from 'rxjs';
 import { catchError, filter, map, mergeMap } from 'rxjs/operators';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess } from './auth.actions';
-import { Store, Select } from 'ngxs';
-import { fromPromise } from 'rxjs/observable/fromPromise';
+import { Store, Select } from '@ngxs/store';
 import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable, throwError } from 'rxjs';
 import { AuthState } from './auth.state';
+import { fromPromise } from 'rxjs/internal/observable/fromPromise';
+import { OAuthEvent } from 'angular-oauth2-oidc/events';
+import { AuthStateModel } from '@nx-starter-kit/auth/src/auth.state';
 
 @Injectable()
 export class AuthService {
-  static loginDefaultConf = { width: '480px', disableClose: true };
+  static loginDefaultConf = { width: '400px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
   private _refresher: Subscription;
   private _monitorer: Subscription;
   mode: AuthMode;
@@ -29,6 +30,10 @@ export class AuthService {
     private ropcService: ROPCService,
     private oauthService: OAuthService
   ) {
+    // this.store.select((state: {foo: AuthStateModel}) => state.foo.authMode).subscribe(mode => {
+    //   console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
+    //   this.mode = mode;
+    // });
     this.store.select(AuthState.authMode).subscribe(mode => {
       console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
       this.mode = mode;
@@ -93,12 +98,12 @@ export class AuthService {
       // for Password Flow
       this._refresher = this.oauthService.events
         .pipe(
-          filter(e => e.type === 'token_expires'),
+          filter((e: OAuthEvent) => e.type === 'token_expires'),
           mergeMap(_ => fromPromise(this.oauthService.refreshToken())),
           catchError((error: HttpErrorResponse) => {
             console.log('Auto token refresh failed. Logging Out...', error.error);
             this.store.dispatch(new Logout());
-            return new ErrorObservable(error.error);
+            return throwError(error.error);
           })
         )
         .subscribe();

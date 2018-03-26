@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { Logout } from '@nx-starter-kit/auth';
-import { Store } from 'ngxs';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'user-menu',

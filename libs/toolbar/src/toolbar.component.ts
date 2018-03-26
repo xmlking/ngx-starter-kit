@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ToolBarHelpers } from './toolbar.helpers';
-import { Select } from 'ngxs';
-import { Observable } from 'rxjs/Observable';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { AuthState } from '@nx-starter-kit/auth';
 
 @Component({

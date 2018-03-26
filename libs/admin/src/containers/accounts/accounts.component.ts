@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/startWith';
+import { Observable } from 'rxjs';
+import { startWith } from 'rxjs/operators';
 import { AccountService } from '../../services/account/account.service';
 import { Account } from '../../services/account/account.model';
 
@@ -65,7 +65,7 @@ export class AccountsComponent implements OnInit {
   private refreshData() {
     this.loadingIndicator = true;
     // startWith needed for ngx-datatable.
-    this.rows$ = this.accountService.list().startWith([]);
+    this.rows$ = this.accountService.list().pipe(startWith(<[Account]>[]));
     setTimeout(() => {
       this.loadingIndicator = false;
     }, 1000);

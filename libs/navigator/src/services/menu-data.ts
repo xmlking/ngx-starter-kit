@@ -1,6 +1,6 @@
-import { SidenavItem, SidenavItemType } from './components/sidenav-item/sidenav-item.model';
+import { MenuItem, MenuItemType } from '../models/menu-item.model';
 
-export const defaultMenu: SidenavItem[] = [
+export const defaultMenu: MenuItem[] = [
   {
     name: 'Home',
     icon: 'home',
@@ -69,12 +69,12 @@ export const defaultMenu: SidenavItem[] = [
   }
 ];
 
-export const adminMenu: SidenavItem[] = [
+export const adminMenu: MenuItem[] = [
   {
     name: 'Dashboard',
-    type: SidenavItemType.DropDown,
+    type: MenuItemType.DropDown,
     icon: 'dashboard',
-    chip: { value: 1, color: 'accent' },
+    badge: { value: 1, color: 'accent' },
     tooltip: 'Dashboard',
     children: [
       {
@@ -96,16 +96,16 @@ export const adminMenu: SidenavItem[] = [
   },
   {
     name: 'Custom components',
-    type: SidenavItemType.Separator
+    type: MenuItemType.Separator
   }
 ];
 
-export const demoMenu: SidenavItem[] = [
+export const demoMenu: MenuItem[] = [
   {
     name: 'Dashboard',
-    type: SidenavItemType.DropDown,
+    type: MenuItemType.DropDown,
     icon: 'dashboard',
-    chip: { value: 1, color: 'accent' },
+    badge: { value: 1, color: 'accent' },
     tooltip: 'Dashboard',
     children: [
       {
@@ -127,6 +127,6 @@ export const demoMenu: SidenavItem[] = [
   },
   {
     name: 'Custom components',
-    type: SidenavItemType.Separator
+    type: MenuItemType.Separator
   }
 ];

@@ -7,9 +7,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 ### Prerequisites  
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v9.4.0   |          | 
+| Node                          | v9.9.0   |          | 
+| NPM                           | v5.8.0   |          | 
 | Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v0.9.0   |          | 
+| @nrwl/schematics              | v0.9.1   |          | 
 
 
 ### Install Prerequisites
@@ -28,6 +29,8 @@ npm install -g @angular/cli
 
 # verify globally installed packages
 npm list -g --depth=0
+# find out which packages need to be updated
+npm outdated -g --depth=0
 # set scss as default css processor
 ng set defaults.styleExt scss
 ```
@@ -58,6 +61,7 @@ npm i -D loaders.css @types/hammerjs standard-version
 #  temp workaround
 npm i -D @angular/http
 
+npm i -D ng-packagr
 npm i d3
 npm i nvd3
 npm i -D @types/nvd3
@@ -78,19 +82,20 @@ ng g service core/services/PageTitle/PageTitle --app=default --module=core
 ng g service core/services/serviceWorker/serviceWorker --app=default --module=core --dry-run
 
 # generate `Lazy-loaded Feature Modules`
-ng g lib home           --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib admin          --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
-ng g lib experiments    --routing --lazy --parent-module=apps/default/src/app/app.module.ts 
-ng g lib NotFound       --routing --lazy --parent-module=apps/default/src/app/app.module.ts
-ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts
-ng g lib crud           --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts
+ng g lib home           --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
+ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
+ng g lib admin          --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=entry-module 
+ng g lib NotFound       --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=entry-module
+ng g lib experiments    --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
+ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
+ng g lib crud           --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
 
-ng g lib material --spec=false --dry-run
-ng g lib animations --nomodule --dry-run 
-ng g lib Tree --nomodule --dry-run 
 
-ng g lib shared # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
+ng g lib material --spec=false --tags=shared-module --dry-run
+ng g lib animations --nomodule -tags=utils --dry-run 
+ng g lib Tree --nomodule --tags=utils --dry-run
+
+ng g lib shared --tags=shared-module # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 
 # generate containers, components for `shared` Module
 ng g service services/entity/entity --app=shared --module=shared
@@ -106,50 +111,52 @@ ng g component containers/NotFound --app=not-found
 ### generate `Reusable lib Modules`
 
 # generate components for `AppConfirm` Module
-ng g lib AppConfirmq --dry-run
+ng g lib AppConfirm  --tags=public-module --dry-run
 ng g component AppConfirm --app=app-confirm  --flat  --dry-run
 ng g service AppConfirm --app=app-confirm --module=app-confirm --spec=false --dry-run
 
 # generate components for `fullscreen` Module
-ng g lib Fullscreen
+ng g lib Fullscreen --tags=public-module --dry-run
 ng g component fullscreen --app=fullscreen --flat --dry-run
 
 # generate components for `Breadcrumbs` Module
-ng g lib Breadcrumbs
+ng g lib Breadcrumbs --tags=public-module
 ng g component breadcrumbs --app=breadcrumbs --flat --dry-run
 ng g service  breadcrumbs --app=breadcrumbs --module=breadcrumbs --dry-run
 
 # generate components for `ScrollToTop` Module
-ng g lib ScrollToTop
+ng g lib ScrollToTop --tags=public-module
 ng g component ScrollToTop --app=scroll-to-top --flat --dry-run
+
+ng g lib scrollbar --tags=public-module
 
 
 # generate components for `ContextMenu` Module
-ng g lib ContextMenu
+ng g lib ContextMenu --tags=public-module
 ng g component ContextMenu --app=context-menu --flat --dry-run
 ng g directive ContextMenuTrigger --app=context-menu --flat --dry-run
 
 
 # generate components, services for `ThemePicker` Module
-ng g lib ThemePicker  
+ng g lib ThemePicker --tags=public-module  
 ng g component ThemePicker --app=theme-picker --flat --dry-run
 ng g service  ThemeStorage --app=theme-picker --module=theme-picker --dry-run
 ng g service  StyleManager --app=theme-picker --module=theme-picker --dry-run
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel
+ng g lib Quickpanel --tags=private-module
 ng g component Quickpanel --app=quickpanel --flat --dry-run
 
 # generate components for `LoadingOverlay` Module
-ng g lib LoadingOverlay
+ng g lib LoadingOverlay --tags=public-module
 ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
 
 # generate components for `svgViewer` Module
-ng g lib svgViewer
+ng g lib svgViewer --tags=public-module
 ng g component svgViewer --app=svg-viewer --flat --dry-run 
 
 # generate components for `toolbar` Module
-ng g lib toolbar --dry-run 
+ng g lib toolbar --tags=private-module --dry-run 
 ng g component toolbar --app=toolbar --flat --dry-run 
 ng g component components/search --app=toolbar  --dry-run 
 ng g component components/searchBar --app=toolbar
@@ -158,16 +165,20 @@ ng g component components/UserMenu --app=toolbar
 ng g directive components/ClickOutside/ClickOutside  --app=toolbar --dry-run 
 
 # generate components for `sidenav` Module
-ng g lib sidenav --dry-run 
+ng g lib sidenav --tags=private-module --dry-run 
 ng g component sidenav --app=sidenav --flat --dry-run 
 ng g component components/sidenavItem --app=sidenav  --dry-run 
-ng g service services/navigation/navigation --app=sidenav --module=sidenav --dry-run 
 ng g directive  IconSidenav --app=sidenav --module=sidenav --dry-run 
 
+# generate components for `auth` Module
+ng g lib auth --tags=private-module,core-module --dry-run 
+ng g component components/login --app=auth
 
 # generate components for `auth` Module
-ng g lib auth --dry-run 
-ng g component components/login --app=auth
+ng g lib navigator --tags=private-module,core-module --dry-run 
+ng g service services/menu --app=navigator --module=navigator --dry-run 
+ng g class models/menuItem --app=navigator --type=model  --dry-run
+ng g class state/menu --app=navigator --type=state  --dry-run
 
 # generate containers, components for `home` Module
 ng g component components/header --app=home

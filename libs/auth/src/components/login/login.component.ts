@@ -1,11 +1,11 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ROPCService } from '../../ropc.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { HttpErrorResponse } from '@angular/common/http';
 import { OAuthService } from 'angular-oauth2-oidc';
-import { Store } from 'ngxs';
+import { Store } from '@ngxs/store';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 
 @Component({
@@ -52,10 +52,10 @@ export class LoginComponent {
         const profile = await this.ropcService.login(values.username, values.password);
         this.dialogRef.close(profile);
       } catch (error /*: HttpErrorResponse*/) {
-        if (error.status === 401) {
+        if (error.error && error.error.error_description !== undefined) {
           this.errorMsg = error.error.error_description; //'The user credentials is incorrect';
         } else {
-          console.error(error);
+          this.errorMsg = 'Login Failed';
         }
       }
     });

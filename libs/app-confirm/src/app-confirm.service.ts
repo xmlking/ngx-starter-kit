@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { MatDialogRef, MatDialog, MatDialogConfig } from '@angular/material';
 
 import { AppConfirmComponent } from './app-confirm.component';
@@ -15,6 +15,6 @@ export class AppConfirmService {
       disableClose: true,
       data: { title, message }
     });
-    return dialogRef.afterClosed();
+    return <Observable<boolean>>dialogRef.afterClosed();
   }
 }

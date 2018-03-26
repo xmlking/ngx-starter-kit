@@ -13,7 +13,6 @@
     },
     "import-blacklist": [
       true,
-      "rxjs",
       "rxjs/Rx"
     ],
     "interface-over-type-literal": true,
@@ -72,8 +71,8 @@
       true,
       "attribute",
       [
-        "nxtk",
         "",
+        "nxtk",
         "ngx"
       ],
       "camelCase"
@@ -103,7 +102,7 @@
       {
         "allow": [],
         "depConstraints": [
-          { "sourceTag": "lazyModule", "onlyDependOnLibsWithTags": ["utils"] },
+          { "sourceTag": "child-module", "onlyDependOnLibsWithTags": ["utils","public-module"] },
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }

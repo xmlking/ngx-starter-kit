@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
-import { Select } from 'ngxs';
-import { Observable } from 'rxjs/Observable';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { AuthState } from '@nx-starter-kit/auth';
 

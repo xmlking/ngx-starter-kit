@@ -6,21 +6,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
-import { NgxsModule, NgxsReduxDevtoolsPluginModule } from 'ngxs';
+import { MediaQueryService } from './services/mediareplay/media-replay.service';
+import { NgxsModule } from '@ngxs/store';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { AuthModule, AuthState } from '@nx-starter-kit/auth';
-import {RouterState} from "./state/router.state";
+import { NavigatorModule, MenuState } from '@nx-starter-kit/navigator';
+import { RouterState } from './state/router.state';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     NgxPageScrollModule,
-    NgxsModule.forRoot([AuthState,RouterState]),
+    NgxsModule.forRoot([AuthState, RouterState, MenuState]),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production // Set to true for prod mode
     }),
     AuthModule.forRoot(),
+    NavigatorModule,
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true
@@ -29,7 +33,7 @@ import {RouterState} from "./state/router.state";
         })
       : []
   ],
-  providers: [PageTitleService, ServiceWorkerService]
+  providers: [PageTitleService, MediaQueryService, ServiceWorkerService]
 })
 export class CoreModule {
   constructor(

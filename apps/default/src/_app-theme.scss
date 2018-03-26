@@ -1,7 +1,7 @@
 //Ref: https://github.com/angular/material.angular.io/blob/master/src/_app-theme.scss
 @import '~@angular/material/theming';
 
-@import '../../../libs/sidenav/src/components/menu-item-remove-me/menu-item.component.scss-theme';
+@import '../../../libs/sidenav/src/components/menu-item/menu-item.component.scss-theme';
 @import '../../../libs/home/src/containers/landing/landing.component.scss-theme';
 @import '../../../libs/shared/src/components/footer/footer.component.scss-theme';
 @import '../../../libs/home/src/components/header/header.component.scss-theme';
@@ -13,7 +13,6 @@
 @import './styles/global.scss-theme';
 @import './styles/svg-theme';
 @import './styles/ngx-datatable-theme';
-
 
 //@import './styles/tables-theme';
 
@@ -42,27 +41,26 @@
     color: mat-color($primary, default-contrast);
   }
 
-//----
-  app-side-menu{
-    $sidemenu-app-primary: mat-palette($primary , 400);
-    $sidemenu-app-accent:  mat-palette($accent , 900);
-    $sidemenu-app-warn:    mat-palette($warn );
-    $cdk-sidemenu-theme:   mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent,$sidemenu-app-warn);
+  //----
+  app-side-menu {
+    $sidemenu-app-primary: mat-palette($primary, 400);
+    $sidemenu-app-accent: mat-palette($accent, 900);
+    $sidemenu-app-warn: mat-palette($warn);
+    $cdk-sidemenu-theme: mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent, $sidemenu-app-warn);
     @include mat-list-theme($cdk-sidemenu-theme);
   }
 
-  $primary-app-primary: mat-palette($primary , 400);
-  $primary-app-accent:  mat-palette($accent , 900);
-  $primary-app-warn:    mat-palette($warn );
-  $cdk-theme:   mat-light-theme($primary-app-primary, $primary-app-accent,$primary-app-warn);
+  $primary-app-primary: mat-palette($primary, 400);
+  $primary-app-accent: mat-palette($accent, 900);
+  $primary-app-warn: mat-palette($warn);
+  $cdk-theme: mat-light-theme($primary-app-primary, $primary-app-accent, $primary-app-warn);
 
-  app-side-menu-item{
-    @include nxtk-menu-item-component-theme($cdk-theme,20px)
+  app-side-menu-item {
+    @include nxtk-menu-item-component-theme($cdk-theme, 20px);
   }
 
   @include nxtk-admin-layout-component-theme($cdk-theme);
-//----
-
+  //----
 
   @include nxtk-site-svg-theme($theme);
   //@include default-site-tables-theme($theme);
