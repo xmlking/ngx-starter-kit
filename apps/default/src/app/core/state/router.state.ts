@@ -1,11 +1,15 @@
 import { Router, NavigationEnd, ActivatedRoute, NavigationExtras } from '@angular/router';
-import { filter, map } from 'rxjs/operators';
-import { State, Action, Store, StateContext, NgxsModule } from '@ngxs/store';
+import { filter, map, mergeMap } from 'rxjs/operators';
+import { State, Action, Store, StateContext } from '@ngxs/store';
+import { combineLatest } from 'rxjs';
+
 
 //------ router model -------
 export interface RouterStateModel {
   path: string;
   data?: any;
+  params?: any;
+  queryParams?: any;
 }
 
 //---- router actions ------
@@ -17,13 +21,10 @@ export class Go {
   constructor(public readonly payload: { path: any[]; query?: object; extras?: NavigationExtras }) {}
 }
 
-export class Back {}
-export class Forward {}
 
 @State<RouterStateModel>({
   name: 'router',
   defaults: {
-    data: {},
     path: window.location.pathname + window.location.search
   }
 })
@@ -33,16 +34,16 @@ export class RouterState {
       .pipe(
         filter(event => event instanceof NavigationEnd),
         map(() => this.activatedRoute),
-        map(route => {
+        map((route: ActivatedRoute) => {
           while (route.firstChild) route = route.firstChild;
           return route;
+        }),
+        mergeMap(({ params, queryParams, routeConfig: { data, path } }: ActivatedRoute) => {
+          return combineLatest(params, queryParams,  function (_params, _queryParams) { return { path, data, _params , _queryParams } })
         })
-      )
-      .subscribe((event: any) => {
-        const { data, path } = event.routeConfig;
-
-        this.store.dispatch(new UpdateRouterState({ data, path }));
-      });
+      ).subscribe(all => {
+        this.store.dispatch(new UpdateRouterState({path: all.path, data: all.data, params: all._params, queryParams: all._queryParams}));
+    })
   }
 
   @Action(UpdateRouterState)
@@ -58,15 +59,5 @@ export class RouterState {
     return this.router.navigate(path, { queryParams, ...extras });
   }
 
-  @Action(Back)
-  back() {
-    console.log('TODO: back');
-    // this.location.back();
-  }
 
-  @Action(Forward)
-  forward() {
-    console.log('TODO: forward');
-    // this.location.forward();
-  }
 }

@@ -89,13 +89,12 @@ export class AuthState {
           break;
       }
       await this.oauthService.loadDiscoveryDocument();
-      return dispatch(new AuthModeChanged(payload));
+      dispatch(new AuthModeChanged(payload));
     }
   }
 
   @Action(Logout)
   logout({ getState }: StateContext<AuthStateModel>) {
-    console.log('in  logout store');
     return this.authService.logout();
   }
 

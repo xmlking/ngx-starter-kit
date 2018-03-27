@@ -70,6 +70,9 @@ How to manage state in the front-end?
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
 
+* How to configure nginx?
+> Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+
 * How to package the libs for publishing ?
 
 > Use[ng-packagr](https://github.com/dherges/ng-packagr)

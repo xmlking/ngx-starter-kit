@@ -1,7 +1,9 @@
 # NxStarterKit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
- 
+
+live [Demo](https://xmlking.github.io/nx-starter-kit/index.html)
+
 ## Development server
 
 Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
