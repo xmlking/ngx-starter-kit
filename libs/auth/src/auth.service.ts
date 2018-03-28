@@ -1,42 +1,39 @@
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Subscription } from 'rxjs';
-import { catchError, filter, map, mergeMap } from 'rxjs/operators';
-import { AuthMode, LoginCanceled, LoginSuccess, Logout, LogoutSuccess } from './auth.actions';
+import { Observable, Subscription } from 'rxjs';
+import { catchError, filter, mergeMap } from 'rxjs/operators';
+import { AuthMode, Logout, LogoutSuccess } from './auth.actions';
 import { Store, Select } from '@ngxs/store';
 import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
-import { AuthState } from './auth.state';
+import { throwError } from 'rxjs';
+import { AuthState, AuthStateModel } from './auth.state';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
 import { OAuthEvent } from 'angular-oauth2-oidc/events';
-import { AuthStateModel } from '@nx-starter-kit/auth/src/auth.state';
 
 @Injectable()
 export class AuthService {
   static loginDefaultConf = { width: '400px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
   private _refresher: Subscription;
   private _monitorer: Subscription;
-  mode: AuthMode;
+  // @Select('auth.authMode') authMode$: Observable<AuthMode>;
+  // @Select(AuthState.authMode) authMode$: Observable<AuthMode>;
+  authMode: AuthMode;
 
-  constructor(
-    private store: Store,
-    private httpClient: HttpClient,
-    private router: Router,
-    private dialog: MatDialog,
-    private ropcService: ROPCService,
-    private oauthService: OAuthService
-  ) {
-    // this.store.select((state: {foo: AuthStateModel}) => state.foo.authMode).subscribe(mode => {
-    //   console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
-    //   this.mode = mode;
-    // });
-    this.store.select(AuthState.authMode).subscribe(mode => {
-      console.log(`Auth Mode Changed: ${this.mode} => ${mode}`);
-      this.mode = mode;
+  constructor(private store: Store,
+              private httpClient: HttpClient,
+              private router: Router,
+              private dialog: MatDialog,
+              private ropcService: ROPCService,
+              private oauthService: OAuthService) {
+    // this.authMode$.subscribe(authMode => {
+    // this.store.select('auth.authMode').subscribe(authMode => {
+    this.store.select(AuthState.authMode).subscribe(authMode => {
+      console.log(`Auth Mode Changed: ${this.authMode} => ${authMode}`);
+      this.authMode = authMode;
     });
   }
 
@@ -77,7 +74,7 @@ export class AuthService {
   }
 
   logout() {
-    if (this.mode === AuthMode.PasswordFlow) {
+    if (this.authMode === AuthMode.PasswordFlow) {
       // For Password Flow
       return this.ropcService.logOut();
     } else {
@@ -94,7 +91,7 @@ export class AuthService {
     if (this._refresher && !this._refresher.closed) this._refresher.unsubscribe();
     if (this._monitorer && !this._monitorer.closed) this._monitorer.unsubscribe();
 
-    if (this.mode === AuthMode.PasswordFlow) {
+    if (this.authMode === AuthMode.PasswordFlow) {
       // for Password Flow
       this._refresher = this.oauthService.events
         .pipe(

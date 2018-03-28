@@ -2,7 +2,7 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './services/in-memory-data.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { PageTitleService } from './services/page-title/page-title.service';
 import { ServiceWorkerService } from './services/service-worker/service-worker.service';
@@ -13,6 +13,8 @@ import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { AuthModule, AuthState } from '@nx-starter-kit/auth';
 import { NavigatorModule, MenuState } from '@nx-starter-kit/navigator';
 import { RouterState } from './state/router.state';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { EventBus } from './state/eventbus';
 
 @NgModule({
   imports: [
@@ -33,7 +35,17 @@ import { RouterState } from './state/router.state';
         })
       : []
   ],
-  providers: [PageTitleService, MediaQueryService, ServiceWorkerService]
+  providers: [
+    PageTitleService,
+    MediaQueryService,
+    ServiceWorkerService,
+    EventBus,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ]
 })
 export class CoreModule {
   constructor(

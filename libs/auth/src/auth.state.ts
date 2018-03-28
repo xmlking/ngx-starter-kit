@@ -49,7 +49,6 @@ export class AuthState {
 
   @Action(LoginSuccess)
   loginSuccess({ getState, patchState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
-    console.log('in LoginSuccess');
     patchState({
       isLoggedIn: true,
       profile: payload
@@ -60,7 +59,6 @@ export class AuthState {
 
   @Action([LogoutSuccess, LoginCanceled])
   logoutSuccess({ getState, setState }: StateContext<AuthStateModel>) {
-    console.log('in LogoutSuccess or LoginCanceled');
     setState({
       isLoggedIn: false,
       profile: {},
