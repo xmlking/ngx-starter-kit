@@ -4,7 +4,13 @@ const PROXY_CONFIG = {
     "secure": false,
     "logLevel": "debug",
     // "changeOrigin": true,
-  }
+  },
+  "/get": {
+    "target": "https://httpbin.org",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  },
 };
 
 module.exports = PROXY_CONFIG;

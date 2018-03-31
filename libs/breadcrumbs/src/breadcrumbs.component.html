@@ -1,9 +1,8 @@
-<ul class="breadcrumbs" fxLayout="row">
-  <li *ngFor="let url of urls; let last = last; let first = first" [ngClass]="{'active': last}" fxLayout="row" fxLayoutAlign="center center"> <!-- disable link of last item -->
-    <mat-icon *ngIf="!first">keyboard_arrow_right</mat-icon>
-    <a role="button" *ngIf="!last && url == prefix">{{url}}</a>
-    <a role="button" *ngIf="!last && url != prefix">{{friendlyName(url)}}</a>
-    <span *ngIf="last">{{friendlyName(url)}}</span>
-    <span *ngIf="last && url == prefix">{{friendlyName('/')}}</span>
-  </li>
-</ul>
+<div class="title">{{ title }}</div>
+<div class="crumbs" fxLayout="row" fxLayoutAlign="start center">
+  <div class="crumb" *ngFor="let crumb of crumbs; let last = last" [ngSwitch]="!!crumb.link" fxLayout="row" fxLayoutAlign="start center">
+    <a *ngSwitchCase="true" class="crumb link" [routerLink]="[crumb.link]">{{ crumb.name }}</a>
+    <div *ngSwitchDefault class="link">{{ crumb.name }}</div>
+    <mat-icon *ngIf="!last" class="chevron">chevron_right</mat-icon>
+  </div>
+</div>

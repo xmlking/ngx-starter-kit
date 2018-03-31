@@ -23,12 +23,14 @@ export class AuthService {
   // @Select(AuthState.authMode) authMode$: Observable<AuthMode>;
   authMode: AuthMode;
 
-  constructor(private store: Store,
-              private httpClient: HttpClient,
-              private router: Router,
-              private dialog: MatDialog,
-              private ropcService: ROPCService,
-              private oauthService: OAuthService) {
+  constructor(
+    private store: Store,
+    private httpClient: HttpClient,
+    private router: Router,
+    private dialog: MatDialog,
+    private ropcService: ROPCService,
+    private oauthService: OAuthService
+  ) {
     // this.authMode$.subscribe(authMode => {
     // this.store.select('auth.authMode').subscribe(authMode => {
     this.store.select(AuthState.authMode).subscribe(authMode => {

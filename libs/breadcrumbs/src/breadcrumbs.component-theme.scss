@@ -1,0 +1,46 @@
+@import '~@angular/material/theming';
+
+@mixin nxtk-breadcrumbs-component-theme($theme) {
+  $config: mat-typography-config();
+
+  $spacing: 24px;
+  $theme-foreground-map: map-get($theme, foreground);
+  $theme-secondary-text: mat-color($theme-foreground-map, secondary-text);
+  $theme-text: mat-color($theme-foreground-map, text);
+
+  nxtk-breadcrumbs {
+    .title {
+      @include mat-typography-level-to-styles($config, title);
+      font-weight: 400;
+    }
+
+    .crumb, .link {
+      color: $theme-secondary-text;
+      text-decoration: none;
+      transition: color $swift-ease-out-duration $swift-ease-out-timing-function;
+      text-transform: uppercase;
+
+      @include mat-typography-level-to-styles($config, caption);
+
+      &:hover {
+        color: $theme-text;
+      }
+    }
+
+    .link {
+      cursor: pointer;
+    }
+
+    .chevron {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-left: $spacing/4;
+      margin-right: $spacing/4;
+    }
+
+    .crumb.current, .crumb.current .link {
+      color: $theme-text;
+    }
+  }
+}

@@ -862,24 +862,7 @@ class LruList {
             return null;
         }
         const url = this.state.tail;
-        // Special case if this is the last node.
-        if (this.state.head === this.state.tail) {
-            // When removing the last node, both head and tail pointers become null.
-            this.state.head = null;
-            this.state.tail = null;
-        }
-        else {
-            // Normal node removal. All that needs to be done is to clear the next pointer
-            // of the previous node and make it the new tail.
-            const block = this.state.map[url];
-            const previous = this.state.map[block.previous];
-            this.state.tail = previous.url;
-            previous.next = block.next;
-        }
-        // In any case, this URL is no longer tracked, so remove it from the count and the
-        // map of tracked URLs.
-        delete this.state.map[url];
-        this.state.count--;
+        this.remove(url);
         // This URL has been successfully evicted.
         return url;
     }
@@ -903,6 +886,8 @@ class LruList {
             const next = this.state.map[node.next];
             next.previous = null;
             this.state.head = next.url;
+            node.next = null;
+            delete this.state.map[url];
             this.state.count--;
             return true;
         }
@@ -922,6 +907,9 @@ class LruList {
             // There is no next node - the accessed node must be the tail. Move the tail pointer.
             this.state.tail = node.previous;
         }
+        node.next = null;
+        node.previous = null;
+        delete this.state.map[url];
         // Count the removal.
         this.state.count--;
         return true;
@@ -1741,6 +1729,11 @@ class Driver {
          * Whether there is a check for updates currently scheduled due to navigation.
          */
         this.scheduledNavUpdateCheck = false;
+        /**
+         * Keep track of whether we have logged an invalid `only-if-cached` request.
+         * (See `.onFetch()` for details.)
+         */
+        this.loggedInvalidOnlyIfCachedRequest = false;
         // The install event is triggered when the service worker is first installed.
         this.scope.addEventListener('install', (event) => {
             // SW code updates are separate from application updates, so code updates are
@@ -1785,12 +1778,12 @@ class Driver {
      * asynchronous execution that eventually resolves for respondWith() and waitUntil().
      */
     onFetch(event) {
+        const req = event.request;
         // The only thing that is served unconditionally is the debug page.
-        if (this.adapter.parseUrl(event.request.url, this.scope.registration.scope).path ===
-            '/ngsw/state') {
+        if (this.adapter.parseUrl(req.url, this.scope.registration.scope).path === '/ngsw/state') {
             // Allow the debugger to handle the request, but don't affect SW state in any
             // other way.
-            event.respondWith(this.debugger.handleFetch(event.request));
+            event.respondWith(this.debugger.handleFetch(req));
             return;
         }
         // If the SW is in a broken state where it's not safe to handle requests at all,
@@ -1802,6 +1795,21 @@ class Driver {
             // Even though the worker is in safe mode, idle tasks still need to happen so
             // things like update checks, etc. can take place.
             event.waitUntil(this.idle.trigger());
+            return;
+        }
+        // When opening DevTools in Chrome, a request is made for the current URL (and possibly related
+        // resources, e.g. scripts) with `cache: 'only-if-cached'` and `mode: 'no-cors'`. These request
+        // will eventually fail, because `only-if-cached` is only allowed to be used with
+        // `mode: 'same-origin'`.
+        // This is likely a bug in Chrome DevTools. Avoid handling such requests.
+        // (See also https://github.com/angular/angular/issues/22362.)
+        // TODO(gkalpak): Remove once no longer necessary (i.e. fixed in Chrome DevTools).
+        if (req.cache === 'only-if-cached' && req.mode !== 'same-origin') {
+            // Log the incident only the first time it happens, to avoid spamming the logs.
+            if (!this.loggedInvalidOnlyIfCachedRequest) {
+                this.loggedInvalidOnlyIfCachedRequest = true;
+                this.debugger.log(`Ignoring invalid request: 'only-if-cached' can be set only with 'same-origin' mode`, `Driver.fetch(${req.url}, cache: ${req.cache}, mode: ${req.mode})`);
+            }
             return;
         }
         // Past this point, the SW commits to handling the request itself. This could still
@@ -2174,17 +2182,17 @@ class Driver {
             return this.lookupVersionByHash(this.latestHash, 'assignVersion');
         }
     }
-    /**
-     * Retrieve a copy of the latest manifest from the server.
-     */
-    async fetchLatestManifest() {
+    async fetchLatestManifest(ignoreOfflineError = false) {
         const res = await this.safeFetch(this.adapter.newRequest('ngsw.json?ngsw-cache-bust=' + Math.random()));
         if (!res.ok) {
             if (res.status === 404) {
                 await this.deleteAllCaches();
                 await this.scope.registration.unregister();
             }
-            throw new Error('Manifest fetch failed!');
+            else if (res.status === 504 && ignoreOfflineError) {
+                return null;
+            }
+            throw new Error(`Manifest fetch failed! (status: ${res.status})`);
         }
         this.lastUpdateCheck = this.adapter.time;
         return res.json();
@@ -2281,7 +2289,13 @@ class Driver {
     async checkForUpdate() {
         let hash = '(unknown)';
         try {
-            const manifest = await this.fetchLatestManifest();
+            const manifest = await this.fetchLatestManifest(true);
+            if (manifest === null) {
+                // Client or server offline. Unable to check for updates at this time.
+                // Continue to service clients (existing and new).
+                this.debugger.log('Check for update aborted. (Client or server offline.)');
+                return false;
+            }
             hash = hashManifest(manifest);
             // Check whether this is really an update.
             if (this.versions.has(hash)) {

@@ -10,18 +10,14 @@ export class ErrorInterceptor implements HttpInterceptor {
   // static snackBarConfig: MatSnackBarConfig = <MatSnackBarConfig>{
   //   duration: 10000
   // };
-  constructor(/*private snackBar: MatSnackBar, private store : Store*/) { }
+  constructor(/*private snackBar: MatSnackBar, private store : Store*/) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    return next.handle(req).pipe(
-      catchError(this.handleError)
-    )
+    return next.handle(req).pipe(catchError(this.handleError));
   }
 
-
   public handleError = (errorRes: HttpErrorResponse) => {
-
-    const {error: { status, error, message} } = errorRes;
+    const { error: { status, error, message } } = errorRes;
     // Do messaging and error handling here
     // this.snackBar.open(
     //   `Error ! ${message}`,
@@ -30,6 +26,6 @@ export class ErrorInterceptor implements HttpInterceptor {
     // );
     console.error(`Backend Error ! status: ${status}, error: ${error}, message: ${message}`);
 
-    return throwError(errorRes)
-  }
+    return throwError(errorRes);
+  };
 }

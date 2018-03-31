@@ -9,6 +9,8 @@ live [Demo](https://xmlking.github.io/nx-starter-kit/index.html)
 Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run start:mock` for a mock server.
+
+Run `npm run start:dev -- --proxy-config proxy.conf.js` to start with proxy
  
 ## Build
 

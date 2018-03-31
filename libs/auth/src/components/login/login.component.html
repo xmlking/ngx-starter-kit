@@ -22,14 +22,12 @@
           <input type="password" autocomplete="false" matInput placeholder="Password: demo" formControlName="password">
         </mat-form-field>
 
-        <div mat-dialog-actions>
-          <div fxFlex="100">
-            <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
-            <span fxFlex></span>
-            <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
-            <!--<button mat-raised-button color="primary" type="submit" cdkFocusInitial>Login</button>-->
-            <button mat-raised-button color="primary" type="submit" >Login</button>
-          </div>
+        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
+          <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
+          <span fxFlex></span>
+          <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
+          <!--<button mat-raised-button color="primary" type="submit" cdkFocusInitial>Login</button>-->
+          <button mat-raised-button color="primary" type="submit" >Login</button>
         </div>
       </form>
     </mat-card>

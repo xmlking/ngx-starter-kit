@@ -16,8 +16,4 @@
     <!--<button mat-raised-button color="accent">Search</button>-->
   <!--</mat-card>-->
 <!--</div>-->
-<div fxLayout="column">
-<button mat-button (click)="testSilentRefresh()">Test silent-refresh for implicit flow</button>
-<button mat-button (click)="testRefreshToken()">Test refresh token for password flow</button>
-<button mat-button (click)="getProfile()">getProfile</button>
-</div>
+<nxtk-breadcrumbs title="Overview" [crumbs]="crumbs"></nxtk-breadcrumbs>

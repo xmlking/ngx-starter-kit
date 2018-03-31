@@ -3,7 +3,6 @@ import { filter, map, mergeMap } from 'rxjs/operators';
 import { State, Action, Store, StateContext } from '@ngxs/store';
 import { combineLatest } from 'rxjs';
 
-
 //------ router model -------
 export interface RouterStateModel {
   path: string;
@@ -20,7 +19,6 @@ export class UpdateRouterState {
 export class Go {
   constructor(public readonly payload: { path: any[]; query?: object; extras?: NavigationExtras }) {}
 }
-
 
 @State<RouterStateModel>({
   name: 'router',
@@ -39,11 +37,16 @@ export class RouterState {
           return route;
         }),
         mergeMap(({ params, queryParams, routeConfig: { data, path } }: ActivatedRoute) => {
-          return combineLatest(params, queryParams,  function (_params, _queryParams) { return { path, data, _params , _queryParams } })
+          return combineLatest(params, queryParams, function(_params, _queryParams) {
+            return { path, data, _params, _queryParams };
+          });
         })
-      ).subscribe(all => {
-        this.store.dispatch(new UpdateRouterState({path: all.path, data: all.data, params: all._params, queryParams: all._queryParams}));
-    })
+      )
+      .subscribe(all => {
+        this.store.dispatch(
+          new UpdateRouterState({ path: all.path, data: all.data, params: all._params, queryParams: all._queryParams })
+        );
+      });
   }
 
   @Action(UpdateRouterState)
@@ -58,6 +61,4 @@ export class RouterState {
     const { path, query: queryParams, extras } = payload;
     return this.router.navigate(path, { queryParams, ...extras });
   }
-
-
 }

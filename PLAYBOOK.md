@@ -84,7 +84,6 @@ ng g service core/services/serviceWorker/serviceWorker --app=default --module=co
 # generate `Lazy-loaded Feature Modules`
 ng g lib home           --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
 ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
-ng g lib admin          --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=entry-module 
 ng g lib NotFound       --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=entry-module
 ng g lib experiments    --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
 ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
@@ -147,6 +146,11 @@ ng g service  StyleManager --app=theme-picker --module=theme-picker --dry-run
 ng g lib Quickpanel --tags=private-module
 ng g component Quickpanel --app=quickpanel --flat --dry-run
 
+# generate components for `NxPipes` Module
+ng g lib NxPipes --tags=public-module
+ng g pipe truncate/Characters --app=nx-pipes   --dry-run
+ng g pipe truncate/Words --app=nx-pipes   --dry-run
+
 # generate components for `LoadingOverlay` Module
 ng g lib LoadingOverlay --tags=public-module
 ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
@@ -187,23 +191,9 @@ ng g component containers/landing --app=home
 ng g component containers/blog --app=home
 ng g component containers/about --app=home
 
-# generate containers, components, services for `admin` Module
-ng g component components/header --app=admin 
-ng g component components/footer --app=admin
-ng g component containers/adminLayout --app=admin --dry-run
-ng g component containers/accounts --app=admin
-ng g service services/account/account --app=admin --module=admin
-ng g component components/searchBar --app=admin
-ng g component components/sideBar --app=admin
-ng g component components/sideMenuItem --app=admin
-ng g component components/sideMenu --app=admin
-ng g component components/toolBarNotification --app=admin
-ng g component components/toolBar --app=admin
-ng g component components/userMenu --app=admin
-
 # generate containers, components for `dashboard` Module
 ng g component components/rainbow --app=dashboard --dry-run
-ng g component containers/adminLayout --app=dashboard --dry-run
+ng g component containers/dashboardLayout --app=dashboard --dry-run
 ng g component containers/overview --app=dashboard --dry-run
 
 

@@ -7,23 +7,17 @@
 @import './styles/base';
 @import './styles/global';
 
-
 // Include material core styles.
 @include mat-core($custom-typography);
 
 // Define the light theme.
 $primary: mat-palette($mat-indigo);
-$accent:  mat-palette($mat-pink, A200, A100, A400);
+$accent: mat-palette($mat-pink, A200, A100, A400);
 
 $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
 @include custom-components-theme($theme);
 
 // 3rd party
-@import '~@swimlane/ngx-datatable/release/index.css';
-@import '~@swimlane/ngx-datatable/release/assets/icons.css';
-@import '~@swimlane/ngx-datatable/src/themes/material.scss';
-@import '~@swimlane/ngx-datatable/src/themes/dark.scss';
-
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
-@import "~nvd3/build/nv.d3.css";
+@import '~nvd3/build/nv.d3.css';

@@ -82,15 +82,6 @@
       ]
     },
     {
-      "name": "admin",
-      "root": "libs/admin/src",
-      "test": "../../../test.js",
-      "appRoot": "",
-      "tags": [
-        "entry-module"
-      ]
-    },
-    {
       "name": "animations",
       "root": "libs/animations/src",
       "test": "../../../test.js",
@@ -218,6 +209,15 @@
       "appRoot": "",
       "tags": [
         "entry-module"
+      ]
+    },
+    {
+      "name": "nx-pipes",
+      "root": "libs/nx-pipes/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
       ]
     },
     {

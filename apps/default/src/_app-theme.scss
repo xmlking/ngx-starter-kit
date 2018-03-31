@@ -5,14 +5,11 @@
 @import '../../../libs/home/src/containers/landing/landing.component.scss-theme';
 @import '../../../libs/shared/src/components/footer/footer.component.scss-theme';
 @import '../../../libs/home/src/components/header/header.component.scss-theme';
-@import '../../../libs/admin/src/containers/admin-layout/admin-layout.component.scss-theme';
-@import '../../../libs/admin/src/components/side-menu/side-menu.component.scss-theme';
-@import '../../../libs/admin/src/components/side-menu-item/side-menu-item.component.scss-theme';
-@import '../../../libs/admin/src/components/user-menu/user-menu.component.scss-theme';
 @import '../../../libs/home/src/containers/about/about.component.scss-theme';
+@import '../../../libs/breadcrumbs/src/breadcrumbs.component-theme';
+
 @import './styles/global.scss-theme';
 @import './styles/svg-theme';
-@import './styles/ngx-datatable-theme';
 
 //@import './styles/tables-theme';
 
@@ -41,36 +38,13 @@
     color: mat-color($primary, default-contrast);
   }
 
-  //----
-  app-side-menu {
-    $sidemenu-app-primary: mat-palette($primary, 400);
-    $sidemenu-app-accent: mat-palette($accent, 900);
-    $sidemenu-app-warn: mat-palette($warn);
-    $cdk-sidemenu-theme: mat-dark-theme($sidemenu-app-primary, $sidemenu-app-accent, $sidemenu-app-warn);
-    @include mat-list-theme($cdk-sidemenu-theme);
-  }
-
-  $primary-app-primary: mat-palette($primary, 400);
-  $primary-app-accent: mat-palette($accent, 900);
-  $primary-app-warn: mat-palette($warn);
-  $cdk-theme: mat-light-theme($primary-app-primary, $primary-app-accent, $primary-app-warn);
-
-  app-side-menu-item {
-    @include nxtk-menu-item-component-theme($cdk-theme, 20px);
-  }
-
-  @include nxtk-admin-layout-component-theme($cdk-theme);
-  //----
-
   @include nxtk-site-svg-theme($theme);
   //@include default-site-tables-theme($theme);
   @include nxtk-footer-component-theme($theme);
   @include nxtk-landing-component-theme($theme);
   @include nxtk-header-component-theme($theme);
 
-  @include nxtk-user-menu-component-theme($theme);
   @include nxtk-about-component-theme($theme);
+  @include nxtk-breadcrumbs-component-theme($theme);
   @include nxtk-global-theme($theme);
-
-  @include ngx-datatable-theme($theme);
 }

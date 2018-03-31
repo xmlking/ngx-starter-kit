@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { BreadcrumbsComponent } from './breadcrumbs.component';
-import { BreadcrumbsService } from './breadcrumbs.service';
 import { MatIconModule } from '@angular/material';
+import { RouterModule } from '@angular/router';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
-  imports: [MatIconModule, CommonModule],
+  imports: [MatIconModule, FlexLayoutModule, RouterModule, CommonModule],
   exports: [BreadcrumbsComponent],
-  declarations: [BreadcrumbsComponent],
-  providers: [BreadcrumbsService]
+  declarations: [BreadcrumbsComponent]
 })
 export class BreadcrumbsModule {}
