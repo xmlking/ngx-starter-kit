@@ -262,17 +262,28 @@ ng build --app=default -oh=media --watch
 npx lite-server --baseDir="dist/apps/default"
 ```
 
+### Docs
+> generate docs
+```bash
+# generate docs
+npx compodoc -p tsconfig.json -d docs
+# serve docs
+npx compodoc -s -d docs
+```
+
+### Deploy
+> deploy demo to gh-pages
+```bash
+# build for gh-pages
+ng build --app=default --prod -oh=media -e mock --base-href /is360-nx/
+# push gh-pages
+npx ngh --dir dist/apps/default
+```
+
 ### Release
 ```bash
 npx standard-version
 "release": "standard-version && git push — follow-tags origin master && npm publish"
-```
-### Deploy
-> deploy demo to gp-pages
-```bash
-# build for gp-pages
-ng build --prod -oh=media -e mock --output-path docs --base-href /nx-starter-kit/
-# Make a copy of docs/index.html and name it docs/404.html
 ```
 
 ### Production build and deployment

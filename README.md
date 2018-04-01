@@ -25,3 +25,11 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 Before running the tests make sure you are serving the app via `ng serve`.
 
+## Docs
+
+Run ` npm run doc:build` to build docs.
+Run ` npm run doc:serve` to serve docs.
+
+## Deploy
+
+Run `npm run deploy:mock` to deploy demo app to gp-pages.
