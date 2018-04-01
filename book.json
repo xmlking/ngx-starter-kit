@@ -1,7 +1,7 @@
 {
     "gitbook": "3.x.x",
     "title": "nx-starter-kit",
-    "root": "/docs",
+    "root": "./docs",
     "plugins": [
         "highlight",
         "github",
