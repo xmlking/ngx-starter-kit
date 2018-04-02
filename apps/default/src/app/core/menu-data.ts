@@ -1,4 +1,4 @@
-import { MenuItem, MenuItemType } from '../models/menu-item.model';
+import { MenuItemType, MenuItem } from '@nx-starter-kit/navigator';
 
 export const defaultMenu: MenuItem[] = [
   {

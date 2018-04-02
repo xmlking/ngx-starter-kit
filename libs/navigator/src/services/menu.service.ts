@@ -1,15 +1,16 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { MenuItem } from '../models/menu-item.model';
-import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 
 import { Tree } from '@nx-starter-kit/tree';
 import { NavigationEnd, Router } from '@angular/router';
 import { MediaQueryService } from '@default/core';
 import { SidenavState } from './sidenav-state.enum';
+import { MENU_ITEMS } from '../symbols';
 
 @Injectable()
 export class MenuService {
+
   /**
    * Menu Items
    */
@@ -25,6 +26,11 @@ export class MenuService {
 
   set items(items: MenuItem[]) {
     this._items.next(items);
+  }
+
+  // TODO: temp
+  get tree(): Tree<MenuItem> {
+    return this._tree
   }
 
   /**
@@ -59,7 +65,7 @@ export class MenuService {
   isIconSidenav: boolean;
   isLowerThanLarge: boolean;
 
-  constructor(private router: Router, private mediaQueryService: MediaQueryService) {
+  constructor(@Inject(MENU_ITEMS) private menuItems: MenuItem[], private router: Router, private mediaQueryService: MediaQueryService) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.setCurrentlyOpenByRoute(event.url);
@@ -84,7 +90,9 @@ export class MenuService {
     });
 
     // sets defaultMenu as default;
-    this.publishMenuChange('default-menu');
+    //this.publishMenuChange('default-menu');
+    this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
+    this._items.next(this._tree.root.children);
   }
 
   isOpen(item: MenuItem) {
@@ -138,26 +146,20 @@ export class MenuService {
   // Customizer component uses this method to change menu.
   // Or you can customize this method to supply different menu for
   // different user type.
-  publishMenuChange(menuType: string) {
-    let menuItems;
-    switch (menuType) {
-      case 'admin-menu':
-        menuItems = adminMenu;
-        break;
-      case 'demo-menu':
-        menuItems = demoMenu;
-        break;
-      default:
-        menuItems = defaultMenu;
-    }
-
-    this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
-    this._items.next(this._tree.root.children);
-  }
-
-  getDefaultMenu() {
-    let menuItems;
-    menuItems = defaultMenu;
-    return new Tree<MenuItem>({ name: 'root', children: menuItems });
-  }
+  // publishMenuChange(menuType: string) {
+  //   let menuItems;
+  //   switch (menuType) {
+  //     case 'admin-menu':
+  //       menuItems = adminMenu;
+  //       break;
+  //     case 'demo-menu':
+  //       menuItems = demoMenu;
+  //       break;
+  //     default:
+  //       menuItems = defaultMenu;
+  //   }
+  //
+  //   this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
+  //   this._items.next(this._tree.root.children);
+  // }
 }
