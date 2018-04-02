@@ -15,18 +15,19 @@ import { NavigatorModule, MenuState } from '@nx-starter-kit/navigator';
 import { RouterState } from './state/router.state';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { EventBus } from './state/eventbus';
+import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
     NgxPageScrollModule,
+    NavigatorModule.forRoot(defaultMenu),
     NgxsModule.forRoot([AuthState, RouterState, MenuState]),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production // Set to true for prod mode
     }),
     AuthModule.forRoot(),
-    NavigatorModule,
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true

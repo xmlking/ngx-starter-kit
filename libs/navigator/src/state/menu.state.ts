@@ -39,7 +39,7 @@ export interface MenuStateModel {
 })
 export class MenuState {
   constructor(private store: Store, private menuService: MenuService) {
-    const _tree = menuService.getDefaultMenu();
+    const _tree = menuService.tree;
     setTimeout(() => {
       this.store.dispatch(new InitializeData(_tree));
     });
