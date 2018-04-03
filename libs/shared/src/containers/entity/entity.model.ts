@@ -1,10 +1,15 @@
 export interface Entity {
-  id: number | string;
+  readonly id: number | string;
   [key: string]: any;
 }
 
-export interface EntityColumnDef<T> {
-  path: string; //Unique identifier
-  header?: string;
-  cell?: (entity: T) => string; // default : (entity) => row[entityColumnDef.path]
+export class EntityColumnDef<T> {
+  readonly property: string;
+  readonly header = this.property;
+  public visible = true;
+  readonly displayFn =  (entity: T) =>  entity[this.property];
+
+  public constructor(init?:Partial<EntityColumnDef<T>>) {
+    Object.assign(this, init);
+  }
 }
