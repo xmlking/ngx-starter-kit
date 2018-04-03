@@ -36,14 +36,14 @@
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
     "@angular/animations": "^6.0.0-rc.1",
-    "@angular/cdk": "6.0.0-beta.4",
+    "@angular/cdk": "^6.0.0-rc.0",
     "@angular/common": "^6.0.0-rc.1",
     "@angular/compiler": "^6.0.0-rc.1",
     "@angular/core": "^6.0.0-rc.1",
     "@angular/flex-layout": "^5.0.0-beta.14",
     "@angular/forms": "^6.0.0-rc.1",
-    "@angular/material": "6.0.0-beta.4",
-    "@angular/material-moment-adapter": "6.0.0-beta.4",
+    "@angular/material": "^6.0.0-rc.0",
+    "@angular/material-moment-adapter": "^6.0.0-rc.0",
     "@angular/platform-browser": "^6.0.0-rc.1",
     "@angular/platform-browser-dynamic": "^6.0.0-rc.1",
     "@angular/router": "^6.0.0-rc.1",
@@ -62,12 +62,12 @@
     "ngx-page-scroll": "^4.0.2",
     "ngx-perfect-scrollbar": "^v6.0.0-0",
     "nvd3": "^1.8.6",
-    "rxjs": "6.0.0-beta.4",
-    "rxjs-compat": "6.0.0-beta.4",
+    "rxjs": "6.0.0-rc.0",
+    "rxjs-compat": "6.0.0-rc.0",
     "screenfull": "^3.3.2",
     "smooth-scrollbar": "^8.2.7",
     "web-animations-js": "^2.3.1",
-    "zone.js": "^0.8.23"
+    "zone.js": "^0.8.24"
   },
   "devDependencies": {
     "@angular/cli": "^1.7.3",
@@ -98,6 +98,6 @@
     "standard-version": "^4.3.0",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
-    "typescript": "^2.7.2"
+    "typescript": "2.7.2"
   }
 }
