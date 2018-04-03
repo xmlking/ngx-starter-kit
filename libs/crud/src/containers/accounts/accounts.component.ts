@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import { Account, Address, Gender } from './account.model';
 import { AccountService } from './account.service';
-import { EntitiesComponent } from '@nx-starter-kit/shared';
+import { EntitiesComponent, EntityColumnDef } from '@nx-starter-kit/shared';
 import { AppConfirmService } from '@nx-starter-kit/app-confirm';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
@@ -11,26 +11,27 @@ import { throwError } from 'rxjs';
 import { AccountFormComponent } from './account-form.component';
 import * as moment from 'moment';
 
+
 @Component({
   selector: 'nxtk-accounts',
   templateUrl: '../../../../shared/src/containers/entity/entity.component.html',
   styleUrls: ['../../../../shared/src/containers/entity/entity.component.scss']
 })
 export class AccountsComponent extends EntitiesComponent<Account, AccountService> {
-  // readonly columns = [ { path: 'id'},{ path: 'name'},{ path: 'gender'},{ path: 'age'} ]
+  // readonly columns = [ { property: 'id'},{ property: 'name'},{ property: 'gender'},{ property: 'age'} ] as EntityColumnDef<Account>[]
   readonly columns = [
-    { path: 'userId', header: 'No.', cell: (row: Account) => `${row.id}` },
-    { path: 'Name', header: 'Name', cell: (row: Account) => `${row.first_name} ${row.last_name}` },
-    { path: 'gender', header: 'Gender', cell: (row: Account) => `${row.gender}` },
-    // {path: 'dob', header: 'DoB', cell: (row: Account) =>  `${row.dob}`},
-    { path: 'dob', header: 'DoB', cell: (row: Account) => `${moment(row.dob).format('LL')}` },
-    { path: 'city', header: 'City', cell: (row: Account) => `${row.address.city}` },
-    { path: 'state', header: 'State', cell: (row: Account) => `${row.address.state}` }
-  ];
+    new EntityColumnDef<Account>({ property: 'userId',  header: 'No.',    displayFn: (entity) => `${entity.id}` }),
+    new EntityColumnDef<Account>({ property: 'Name',    header: 'Name',   displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
+    new EntityColumnDef<Account>({ property: 'gender',  header: 'Gender' }),
+    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${moment(entity.dob).format('LL')}` }),
+    new EntityColumnDef<Account>({ property: 'city',    header: 'City',   displayFn: (entity) => `${entity.address.city}` }),
+    new EntityColumnDef<Account>({ property: 'state',   header: 'State',  displayFn: (entity) => `${entity.address.state}` })
+  ] as EntityColumnDef<Account>[];
 
   // optional
   readonly showActionColumn = true;
   readonly showSelectColumn = true;
+  readonly showColumnFilter = true;
   readonly showToolbar = true;
 
   readonly formRef = AccountFormComponent;

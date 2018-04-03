@@ -22,6 +22,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   readonly columns: Array<EntityColumnDef<TEntity>>;
   readonly title?: string = null;
   readonly showToolbar?: boolean = false;
+  readonly showColumnFilter?: boolean = false;
   readonly showActionColumn?: boolean = false;
   readonly showSelectColumn?: boolean = false;
   readonly actionColumn?: string = 'Actions';
@@ -128,20 +129,14 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   private enrichColumnDefs() {
     // if(this.columns.length === 0 && this.dataSource.data[0]) {
-    //   this.columns.push( ... Object.keys(this.dataSource.data[0]).map((key) =>  { return <EntityColumnDef<TEntity>>{ 'path': key} }));
+    //   this.columns.push( ... Object.keys(this.dataSource.data[0]).map((key) =>  { return <EntityColumnDef<TEntity>>{ 'property': key} }));
     // }
-    this.columns.forEach(columnDef => {
-      if (columnDef.header === undefined) {
-        columnDef.header = columnDef.path;
-      }
-      if (columnDef.cell === undefined) {
-        columnDef.cell = (row: TEntity) => row[columnDef.path];
-      }
-    });
   }
 
   get displayedColumns(): string[] {
-    let _displayedColumns = this.columns.map(x => x.path);
+    let _displayedColumns = this.columns
+      .filter(column => column.visible)
+      .map(x => x.property);
 
     if (this.showSelectColumn) {
       _displayedColumns.unshift(this.selectColumn);
@@ -158,7 +153,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     }
   }
 
-  selectColumns() {
-    //TODO
+  toggleColumnVisibility(column, event) {
+    event.stopPropagation();
+    event.stopImmediatePropagation();
+    column.visible = !column.visible;
   }
 }
