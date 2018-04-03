@@ -71,8 +71,9 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"
-             [class.selected]="selection.isSelected(row)"
-             (click)="selectRow(row)"></mat-row>
+             [class.selected]="selection.isSelected(row)"></mat-row>
+    <!--<mat-row *matRowDef="let row; columns: displayedColumns;" class="row"-->
+             <!--[class.selected]="selection.isSelected(row)" (click)="selectRow(row)"></mat-row>-->
   </mat-table>
 
   <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>

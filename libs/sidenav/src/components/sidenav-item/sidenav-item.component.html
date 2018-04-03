@@ -1,29 +1,33 @@
-<a class="sidenav-anchor"
-   *ngIf="!item.disabled && !(item.children?.length > 0)"
-   mat-list-item matRipple
-   [routerLink]="[item.link]"
-   routerLinkActive="active"
-   [routerLinkActiveOptions]="{exact: true}">
+<ng-container *ngIf="item.disabled !== false">
+  <a class="sidenav-anchor"
+     *ngIf="!(item.children?.length > 0); else elseBlock"
+     mat-list-item matRipple
+     [routerLink]="[item.link]"
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact: true}">
 
-  <mat-icon>{{ item.icon }}</mat-icon>
-  <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
-  <span fxFlex><!-- fill space --></span>
-  <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor">{{ item.badge }}</span>
-</a>
+    <mat-icon>{{ item.icon }}</mat-icon>
+    <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+    <span fxFlex><!-- fill space --></span>
+    <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge"
+          [style.background-color]="item.badgeColor">{{ item.badge }}</span>
+  </a>
 
+  <ng-template #elseBlock>
+    <a class="sidenav-anchor"
+       mat-list-item matRipple
+       (click)="toggleDropdown()">
 
-<a class="sidenav-anchor"
-   *ngIf="!item.disabled && (item.children?.length > 0)"
-   mat-list-item matRipple
-   (click)="toggleDropdown()">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
+      <span fxFlex><!-- fill space --></span>
+      <!--<span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" -->
+            <!--[style.background-color]="item.badge.color" style="margin-right: 12px;">{{ item.badge.value }}</span>-->
+      <mat-icon class="sidenav-item-dropdown-indicator rotate fade-in-on-icon-sidenav">expand_more</mat-icon>
+    </a>
+  </ng-template>
 
-  <mat-icon>{{ item.icon }}</mat-icon>
-  <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
-  <span fxFlex><!-- fill space --></span>
-  <!--<span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badge.color" style="margin-right: 12px;">{{ item.badge.value }}</span>-->
-  <mat-icon class="sidenav-item-dropdown-indicator rotate fade-in-on-icon-sidenav">expand_more</mat-icon>
-</a>
-
-<mat-nav-list class="sidenav-list sidenav-list-nested" fxLayout="column" [style.height]="getSubItemsHeight()">
-  <nxtk-sidenav-item *ngFor="let submenu of item.children" [item]="submenu"></nxtk-sidenav-item>
-</mat-nav-list>
+  <mat-nav-list class="sidenav-list sidenav-list-nested" fxLayout="column" [style.height]="getSubItemsHeight()">
+    <nxtk-sidenav-item *ngFor="let submenu of item.children" [item]="submenu"></nxtk-sidenav-item>
+  </mat-nav-list>
+</ng-container>
