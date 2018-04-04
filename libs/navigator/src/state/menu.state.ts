@@ -38,11 +38,7 @@ export interface MenuStateModel {
   }
 })
 export class MenuState {
-  constructor(private store: Store, private menuService: MenuService) {
-    const _tree = menuService.tree;
-    setTimeout(() => {
-      this.store.dispatch(new InitializeData(_tree));
-    });
+  constructor(private menuService: MenuService) {
   }
 
   @Selector()
@@ -59,19 +55,18 @@ export class MenuState {
     }
   }
 
+  onInit({ setState, getState }: StateContext<MenuStateModel>) {
+    setState({
+      tree: this.menuService.tree,
+      currentlyOpened: [],
+      iconMode: false
+    });
+  }
+
   private getParents(tree, item: MenuItem): MenuItem[] {
     const ancestors = tree.getAllParents(item);
     ancestors.shift();
     return ancestors;
-  }
-
-  @Action(InitializeData)
-  initializeData({ setState }: StateContext<MenuStateModel>, { payload }: InitializeData) {
-    setState({
-      tree: payload,
-      currentlyOpened: [],
-      iconMode: false
-    });
   }
 
   @Action(SetIconMode)
