@@ -18,7 +18,7 @@ export const defaultMenu: MenuItem[] = [
   {
     name: 'Experiments',
     icon: 'pie_chart_outlined',
-    disabled: false,
+    disabled: true,
     children: [
       {
         name: 'CRUD',
@@ -35,7 +35,7 @@ export const defaultMenu: MenuItem[] = [
   {
     name: 'Multi-Level Menu',
     icon: 'menu',
-    disabled: false,
+    disabled: true,
     children: [
       {
         name: 'Level 1',
