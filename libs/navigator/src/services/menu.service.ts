@@ -10,7 +10,6 @@ import { MENU_ITEMS } from '../symbols';
 
 @Injectable()
 export class MenuService {
-
   /**
    * Menu Items
    */
@@ -30,7 +29,7 @@ export class MenuService {
 
   // TODO: temp
   get tree(): Tree<MenuItem> {
-    return this._tree
+    return this._tree;
   }
 
   /**
@@ -65,7 +64,11 @@ export class MenuService {
   isIconSidenav: boolean;
   isLowerThanLarge: boolean;
 
-  constructor(@Inject(MENU_ITEMS) private menuItems: MenuItem[], private router: Router, private mediaQueryService: MediaQueryService) {
+  constructor(
+    @Inject(MENU_ITEMS) private menuItems: MenuItem[],
+    private router: Router,
+    private mediaQueryService: MediaQueryService
+  ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.setCurrentlyOpenByRoute(event.url);
