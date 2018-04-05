@@ -3,7 +3,7 @@
   "project": {
     "name": "nx-starter-kit",
     "npmScope": "nx-starter-kit",
-    "latestMigration": "20180313-add-tags"
+    "latestMigration": "20180328-add-nx-lint"
   },
   "e2e": {
     "protractor": {

@@ -46,6 +46,11 @@ import { defaultMenu, demoMenu, adminMenu } from './menu-data';
       useClass: ErrorInterceptor,
       multi: true
     }
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: JwtInterceptor,
+    //   multi: true
+    // }
   ]
 })
 export class CoreModule {

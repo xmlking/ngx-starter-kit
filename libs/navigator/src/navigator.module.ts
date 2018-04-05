@@ -11,10 +11,7 @@ export class NavigatorModule {
   static forRoot(menuItems: MenuItem[]): ModuleWithProviders {
     return {
       ngModule: NavigatorModule,
-      providers: [
-        MenuService,
-        {provide: MENU_ITEMS, useValue: menuItems }
-      ]
+      providers: [MenuService, { provide: MENU_ITEMS, useValue: menuItems }]
     };
   }
 }

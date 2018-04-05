@@ -11,7 +11,6 @@ import { throwError } from 'rxjs';
 import { AccountFormComponent } from './account-form.component';
 import * as moment from 'moment';
 
-
 @Component({
   selector: 'nxtk-accounts',
   templateUrl: '../../../../shared/src/containers/entity/entity.component.html',
@@ -20,12 +19,15 @@ import * as moment from 'moment';
 export class AccountsComponent extends EntitiesComponent<Account, AccountService> {
   // readonly columns = [ { property: 'id'},{ property: 'name'},{ property: 'gender'},{ property: 'age'} ] as EntityColumnDef<Account>[]
   readonly columns = [
+    // prettier-ignore
     new EntityColumnDef<Account>({ property: 'userId',  header: 'No.',    displayFn: (entity) => `${entity.id}` }),
+    // prettier-ignore
     new EntityColumnDef<Account>({ property: 'Name',    header: 'Name',   displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
-    new EntityColumnDef<Account>({ property: 'gender',  header: 'Gender' }),
+    new EntityColumnDef<Account>({ property: 'gender', header: 'Gender' }),
+    // prettier-ignore
     new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${moment(entity.dob).format('LL')}` }),
-    new EntityColumnDef<Account>({ property: 'city',    header: 'City',   displayFn: (entity) => `${entity.address.city}` }),
-    new EntityColumnDef<Account>({ property: 'state',   header: 'State',  displayFn: (entity) => `${entity.address.state}` })
+    new EntityColumnDef<Account>({ property: 'city', header: 'City', displayFn: entity => `${entity.address.city}` }),
+    new EntityColumnDef<Account>({ property: 'state', header: 'State', displayFn: entity => `${entity.address.state}` })
   ] as EntityColumnDef<Account>[];
 
   // optional

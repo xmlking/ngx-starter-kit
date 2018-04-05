@@ -38,8 +38,7 @@ export interface MenuStateModel {
   }
 })
 export class MenuState {
-  constructor(private menuService: MenuService) {
-  }
+  constructor(private menuService: MenuService) {}
 
   @Selector()
   static menuItems(state: MenuStateModel) {

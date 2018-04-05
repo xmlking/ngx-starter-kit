@@ -134,6 +134,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   get displayedColumns(): string[] {
+    // prettier-ignore
     let _displayedColumns = this.columns
       .filter(column => column.visible)
       .map(x => x.property);
