@@ -13,10 +13,12 @@ export interface RouterStateModel {
 
 //---- router actions ------
 export class UpdateRouterState {
+  static readonly type = '[Router] UpdateRouterState';
   constructor(public readonly payload: RouterStateModel) {}
 }
 
 export class Go {
+  static readonly type = '[Router] Go';
   constructor(public readonly payload: { path: any[]; query?: object; extras?: NavigationExtras }) {}
 }
 

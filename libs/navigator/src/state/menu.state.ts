@@ -3,23 +3,23 @@ import { MenuItem } from '../models/menu-item.model';
 import { MenuService } from '../services/menu.service';
 import { Tree } from '@nx-starter-kit/tree';
 
-export class InitializeData {
-  constructor(public readonly payload: Tree<MenuItem>) {}
-}
-
 export class NextCurrentlyOpened {
+  static readonly type = '[Menu] Next Currently Opened';
   constructor(public readonly payload: MenuItem[]) {}
 }
 
 export class SetIconMode {
+  static readonly type = '[Menu] SetIconMode';
   constructor(public readonly payload: boolean) {}
 }
 
 export class ToggleCurrentlyOpened {
+  static readonly type = '[Menu] ToggleCurrentlyOpened';
   constructor(public readonly payload: MenuItem) {}
 }
 
 export class ToggleCurrentlyOpenedByRoute {
+  static readonly type = '[Menu] ToggleCurrentlyOpenedByRoute';
   constructor(public readonly payload: string) {}
 }
 
