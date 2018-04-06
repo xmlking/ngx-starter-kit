@@ -27,8 +27,8 @@ Before running the tests make sure you are serving the app via `ng serve`.
 
 ## Docs
 
-Run ` npm run doc:build` to build docs.
-Run ` npm run doc:serve` to serve docs.
+Run `npm run doc:build` to build docs.
+Run `npm run doc:serve` to serve docs.
 
 ## Deploy
 
