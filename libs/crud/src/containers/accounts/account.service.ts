@@ -6,6 +6,9 @@ import { Account } from './account.model';
 
 @Injectable()
 export class AccountService extends EntityService<Account> {
+  // Optionally overwrite baseUrl
+  public baseUrl = environment.API_BASE_URL;
+
   readonly entityPath = 'accounts';
 
   constructor(httpClient: HttpClient) {

@@ -11,7 +11,7 @@ export interface Filter {
 }
 
 export abstract class EntityService<T extends Entity> {
-  private baseUrl = environment.API_BASE_URL;
+  public baseUrl = environment.API_BASE_URL;
   private loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
 
