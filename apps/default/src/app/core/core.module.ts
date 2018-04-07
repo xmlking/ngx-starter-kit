@@ -10,12 +10,13 @@ import { MediaQueryService } from './services/mediareplay/media-replay.service';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
-import { AuthModule, AuthState } from '@nx-starter-kit/auth';
-import { NavigatorModule, MenuState } from '@nx-starter-kit/navigator';
-import { RouterState } from './state/router.state';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { EventBus } from './state/eventbus';
 import { defaultMenu, demoMenu, adminMenu } from './menu-data';
+import { AuthModule, AuthState } from '@nx-starter-kit/auth';
+import { NavigatorModule, MenuState } from '@nx-starter-kit/navigator';
+import { RouterState } from './state/router.state';
+import { PreferenceState } from './state/preference.state';
 
 @NgModule({
   imports: [
@@ -23,9 +24,10 @@ import { defaultMenu, demoMenu, adminMenu } from './menu-data';
     HttpClientModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
-    NgxsModule.forRoot([AuthState, RouterState, MenuState]),
+    NgxsModule.forRoot([AuthState, RouterState, MenuState, PreferenceState]),
     NgxsReduxDevtoolsPluginModule.forRoot({
-      disabled: environment.production // Set to true for prod mode
+      disabled: environment.production, // Set to true for prod mode
+      maxAge: 10
     }),
     AuthModule.forRoot(),
     environment.envName === 'mock'
