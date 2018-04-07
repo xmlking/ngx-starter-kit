@@ -12,7 +12,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, AfterViewInit {
   dataSource = new MatTableDataSource<TEntity>([]);
-  selection = new SelectionModel<TEntity>(true, []);
+  selection = new SelectionModel<TEntity>(false, []);
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -25,6 +25,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   readonly showColumnFilter?: boolean = false;
   readonly showActionColumn?: boolean = false;
   readonly showSelectColumn?: boolean = false;
+  readonly selectionMultiple?: boolean = false;
   readonly actionColumn?: string = 'Actions';
   readonly selectColumn?: string = 'select';
   //TODO: make them optional abstract
@@ -38,6 +39,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   ngOnInit() {
+    this.selection = new SelectionModel<TEntity>(this.selectionMultiple, []);
     this.update().subscribe();
     if (this.filterPredicate) {
       this.dataSource.filterPredicate = this.filterPredicate;
