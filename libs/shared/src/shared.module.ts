@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MaterialModule } from '@nx-starter-kit/material';
 import { MaterialDateModule } from '@nx-starter-kit/material';
 import { FullscreenModule } from '@nx-starter-kit/fullscreen';
+import { BreadcrumbsModule } from '@nx-starter-kit/breadcrumbs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
-import { RouterModule } from '@angular/router';
 import { FooterComponent } from './components/footer/footer.component';
 
 import {
@@ -33,6 +34,7 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
     FormsModule, //FIXME : remove
     ReactiveFormsModule,
     FlexLayoutModule,
+    BreadcrumbsModule,
     MaterialModule,
     MaterialDateModule,
     PerfectScrollbarModule,
