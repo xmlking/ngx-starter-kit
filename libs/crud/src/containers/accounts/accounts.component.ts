@@ -32,7 +32,6 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
 
   // optional
   readonly showActionColumn = true;
-  readonly showSelectColumn = true;
   readonly showColumnFilter = true;
   readonly showToolbar = true;
 

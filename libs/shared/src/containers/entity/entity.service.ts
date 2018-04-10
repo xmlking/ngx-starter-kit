@@ -43,7 +43,7 @@ export abstract class EntityService<T extends Entity> {
       );
   }
 
-  getAll() {
+  getAll(): Observable<T[]> {
     this.loadingSubject.next(true);
     return this.httpClient.get<T[]>(`${this.baseUrl}/${this.entityPath}`).pipe(
       retry(3), // retry a failed request up to 3 times

@@ -175,6 +175,15 @@
       ]
     },
     {
+      "name": "json-diff",
+      "root": "libs/json-diff/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
+      ]
+    },
+    {
       "name": "loading-overlay",
       "root": "libs/loading-overlay/src",
       "test": "../../../test.js",

@@ -159,6 +159,11 @@ ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
 ng g lib svgViewer --tags=public-module
 ng g component svgViewer --app=svg-viewer --flat --dry-run 
 
+# generate components for `jsonDiff` Module
+ng g lib jsonDiff --tags=public-module
+ng g component jsonDiff --app=json-diff --flat --dry-run 
+ng g component jsonDiffTree --app=json-diff --flat --dry-run 
+
 # generate components for `toolbar` Module
 ng g lib toolbar --tags=private-module --dry-run 
 ng g component toolbar --app=toolbar --flat --dry-run 
