@@ -1,16 +1,17 @@
-import { AfterViewInit, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatDialogRef, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { EntityService } from './entity.service';
 import { Entity, EntityColumnDef } from './entity.model';
-import { map, mergeMap, debounceTime, distinctUntilChanged, concatMap } from 'rxjs/operators';
-import { fromEvent, Observable, OperatorFunction } from 'rxjs';
+import { concatMap, filter, map, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
 import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
-import { SelectionModel } from '@angular/cdk/collections';
+import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
-  implements OnInit, AfterViewInit {
+  implements OnInit, OnDestroy, AfterViewInit {
+  private _destroy$ = new Subject<void>();
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
@@ -24,8 +25,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   readonly showToolbar?: boolean = false;
   readonly showColumnFilter?: boolean = false;
   readonly showActionColumn?: boolean = false;
-  readonly showSelectColumn?: boolean = false;
-  readonly selectionMultiple?: boolean = false;
+  readonly maxSelectable?: number = 1;
   readonly actionColumn?: string = 'Actions';
   readonly selectColumn?: string = 'select';
   //TODO: make them optional abstract
@@ -39,10 +39,24 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   ngOnInit() {
-    this.selection = new SelectionModel<TEntity>(this.selectionMultiple, []);
+    this.selection = new SelectionModel<TEntity>(this.maxSelectable > 1, []);
+
     this.update().subscribe();
     if (this.filterPredicate) {
       this.dataSource.filterPredicate = this.filterPredicate;
+    }
+
+    // remove first selected entity if more then max selected.
+    if (this.maxSelectable > 1) {
+      // is multi select mode?
+      this.selection.onChange
+        .pipe(
+          takeUntil(this._destroy$),
+          // tap(console.log),
+          filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
+          filter(_ => this.selection.selected.length > this.maxSelectable)
+        )
+        .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
     }
 
     // fromEvent(this.filterRef.nativeElement, 'keyup')
@@ -53,6 +67,11 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     //   this.paginator.pageIndex = 0;
     //   this.applyFilter(this.filterRef.nativeElement.value)
     // });
+  }
+
+  ngOnDestroy() {
+    this._destroy$.next();
+    this._destroy$.complete();
   }
 
   ngAfterViewInit() {
@@ -78,14 +97,20 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     }
   }
 
-  update() {
-    return this.entityService.getAll().pipe(
+  /**
+   * Overwrite this method, to get the data your way.
+   * @returns {Observable<TEntity[]>}
+   */
+  getData(): Observable<TEntity[]> {
+    return this.entityService.getAll();
+  }
+
+  private update() {
+    return this.getData().pipe(
       map(result => {
-        this.dataSource = new MatTableDataSource(result);
+        this.dataSource = new MatTableDataSource<TEntity>(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-
-        this.enrichColumnDefs();
         //return nothing as we don't need.
         //return result
       })
@@ -129,19 +154,13 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     this.dataSource.filter = filterValue;
   }
 
-  private enrichColumnDefs() {
-    // if(this.columns.length === 0 && this.dataSource.data[0]) {
-    //   this.columns.push( ... Object.keys(this.dataSource.data[0]).map((key) =>  { return <EntityColumnDef<TEntity>>{ 'property': key} }));
-    // }
-  }
-
   get displayedColumns(): string[] {
     // prettier-ignore
     let _displayedColumns = this.columns
       .filter(column => column.visible)
       .map(x => x.property);
 
-    if (this.showSelectColumn) {
+    if (this.maxSelectable > 0) {
       _displayedColumns.unshift(this.selectColumn);
     }
     if (this.showActionColumn) {
@@ -151,10 +170,21 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   selectRow(entity: TEntity) {
-    if (this.showSelectColumn) {
+    if (this.maxSelectable > 0) {
       this.selection.toggle(entity);
+      if (this.selection.isSelected(entity)) {
+        this.showDetails(entity);
+      } else {
+        this.showDetails(undefined);
+      }
     }
   }
+
+  /**
+   * will be called with entity or undefined
+   * @param {TEntity} entity
+   */
+  showDetails(entity: TEntity) {}
 
   toggleColumnVisibility(column, event) {
     event.stopPropagation();

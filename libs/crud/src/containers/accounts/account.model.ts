@@ -1,18 +1,16 @@
 import { Entity } from '@nx-starter-kit/shared';
 import * as moment from 'moment';
 
-export class Account implements Entity {
-  constructor(
-    public id: number = 0,
-    public first_name?: string,
-    public last_name?: string,
-    public gender?: Gender,
-    public dob?: moment.Moment,
-    public email?: string,
-    public phone?: string,
-    public company?: string,
-    public address?: Address
-  ) {}
+export class Account extends Entity {
+  public id = 0;
+  public first_name?: string;
+  public last_name?: string;
+  public gender?: Gender;
+  public dob?: moment.Moment;
+  public email?: string;
+  public phone?: string;
+  public company?: string;
+  public address?: Address;
 }
 
 export class Address {

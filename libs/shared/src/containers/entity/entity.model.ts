@@ -1,6 +1,9 @@
-export interface Entity {
-  readonly id: number | string;
+export abstract class Entity {
+  abstract get id(): number | string;
   [key: string]: any;
+  constructor(init?: Partial<Entity>) {
+    Object.assign(this, init);
+  }
 }
 
 export class EntityColumnDef<T> {

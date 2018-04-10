@@ -1,0 +1,33 @@
+<ul [class]="side">
+  <li  *ngFor="let child of children"
+    (mouseout)="mouseOvered(false, child.index)"
+    (mouseover)="mouseOvered(true, child.index)"
+    [class.hover]="child.hover"
+    [class.added]="child.status === 5"
+    [class.removed]="child.status === 6"
+    [class.type-changed]="child.status === 2"
+    [class.name-changed]="child.status === 3"
+    [class.value-changed]="child.status === 4">
+    <div class='tree-node'
+        [ngClass]="'depth-' + depth"
+        [id] = "child.id">
+      <span *ngIf='child.name && child.name!=null'
+        class='name'
+        [innerHTML]="child.name.length ? child.name : '&nbsp;'">
+      </span>
+      <span *ngIf='child.value && child.value!=null'
+        class='value'
+        [class.string]="depth > 0 && child.value && child.value.length"
+        [innerHTML]="child.value ? child.value : '&nbsp;'">
+      </span>
+    </div>
+    <nxtk-json-diff-tree *ngIf="child.children.length"
+        [level]="depth+1"
+        (onhover)="bubleup($event)"
+        [class.child-node]="child.parent != 4"
+        [children]='child.children'></nxtk-json-diff-tree>
+    <div class="upper" *ngIf="child.status > 2"></div>
+    <div class="lower" *ngIf="child.status > 2"></div>
+  </li>
+</ul>
+
