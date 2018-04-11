@@ -93,6 +93,7 @@ ng g lib crud           --routing --lazy --parent-module=libs/dashboard/src/dash
 ng g lib material --spec=false --tags=shared-module --dry-run
 ng g lib animations --nomodule -tags=utils --dry-run 
 ng g lib Tree --nomodule --tags=utils --dry-run
+ng g lib utils --nomodule --tags=utils --dry-run
 
 ng g lib shared --tags=shared-module # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 

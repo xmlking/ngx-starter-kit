@@ -311,6 +311,15 @@
       ]
     },
     {
+      "name": "utils",
+      "root": "libs/utils/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "utils"
+      ]
+    },
+    {
       "name": "widgets",
       "root": "libs/widgets/src",
       "test": "../../../test.js",
