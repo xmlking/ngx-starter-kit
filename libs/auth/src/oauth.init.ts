@@ -11,13 +11,13 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
   oauthService.setStorage(sessionStorage);
 
   return async () => {
-    (<any>window).loginTryed = false;
+    // (<any>window).loginTryed = false;
     await oauthService.loadDiscoveryDocumentAndTryLogin({
       onLoginError: (err: AuthorizationErrorResponse) => {
         console.log(`Error Code: ${err.error}, Error Description: ${err.error_description}`);
       }
     });
-    (<any>window).loginTryed = true;
+    // (<any>window).loginTryed = true;
 
     if (oauthService.hasValidAccessToken()) {
       // This is called when using ImplicitFlow or page reload, no effect for ROPC Flow
@@ -25,5 +25,6 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
       const profile: any = oauthService.getIdentityClaims();
       store.dispatch(new LoginSuccess(profile));
     }
+    return true; //need to return.
   };
 }

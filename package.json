@@ -1,6 +1,6 @@
 {
   "name": "nx-starter-kit",
-  "version": "0.1.1",
+  "version": "1.0.0-ALPHA.1",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
@@ -49,8 +49,8 @@
     "@angular/platform-browser-dynamic": "^6.0.0-rc.3",
     "@angular/router": "^6.0.0-rc.3",
     "@angular/service-worker": "^6.0.0-rc.3",
-    "@ngxs/devtools-plugin": "^3.0.0-dev.82ecb5f",
-    "@ngxs/store": "^3.0.0-dev.82ecb5f",
+    "@ngxs/devtools-plugin": "^3.0.0-dev.4e68823",
+    "@ngxs/store": "^3.0.0-dev.4e68823",
     "@nrwl/nx": "^0.11.1",
     "@swimlane/ngx-charts": "^7.2.0",
     "angular-cli-ghpages": "^0.5.2",
@@ -81,7 +81,7 @@
     "@types/hammerjs": "^2.0.35",
     "@types/jasmine": "^2.8.6",
     "@types/jasminewd2": "^2.0.2",
-    "@types/node": "^9.6.2",
+    "@types/node": "^9.6.4",
     "@types/nvd3": "^1.8.38",
     "codelyzer": "^4.2.1",
     "jasmine-core": "^2.99.1",
