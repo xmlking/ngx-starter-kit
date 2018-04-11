@@ -1,4 +1,3 @@
-//TODO https://github.com/johnpapa/angular-ngrx-data/blob/master/lib/src/dataservices/default-data.service.ts
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError } from 'rxjs';
 import { environment } from '@env/environment';
@@ -11,11 +10,11 @@ export interface Filter {
 }
 
 export abstract class EntityService<T extends Entity> {
-  public baseUrl = environment.API_BASE_URL;
-  private loadingSubject = new BehaviorSubject<boolean>(false);
+  protected readonly baseUrl = environment.API_BASE_URL;
+  protected loadingSubject = new BehaviorSubject<boolean>(false);
   public loading$ = this.loadingSubject.asObservable();
 
-  abstract readonly entityPath: string;
+  protected abstract entityPath: string;
 
   constructor(protected httpClient: HttpClient) {}
 
@@ -74,7 +73,7 @@ export abstract class EntityService<T extends Entity> {
       .pipe(catchError(this.handleError), finalize(() => this.loadingSubject.next(false)));
   }
 
-  private handleError(error: HttpErrorResponse) {
+  protected handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
       console.error('An error occurred:', error.error.message);
@@ -87,7 +86,7 @@ export abstract class EntityService<T extends Entity> {
     return throwError('Something bad happened; please try again later.');
   }
 
-  private convertToJson(body: any) {
+  protected convertToJson(body: any) {
     const temporalFunctionToJson = Date.prototype.toJSON;
     Date.prototype.toJSON = function() {
       return moment(this).format('YYYY-MM-DD');
