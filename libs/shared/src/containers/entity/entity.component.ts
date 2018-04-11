@@ -11,7 +11,7 @@ import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
-  private _destroy$ = new Subject<void>();
+  protected _destroy$ = new Subject<void>();
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
@@ -105,7 +105,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     return this.entityService.getAll();
   }
 
-  private update() {
+  protected update() {
     return this.getData().pipe(
       map(result => {
         this.dataSource = new MatTableDataSource<TEntity>(result);
