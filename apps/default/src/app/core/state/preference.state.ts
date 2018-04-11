@@ -1,5 +1,4 @@
 import { State, Store } from '@ngxs/store';
-import { EventBus } from '@default/core/state/eventbus';
 
 export interface PreferenceStateModel {
   language?: string;
@@ -14,5 +13,5 @@ export interface PreferenceStateModel {
   }
 })
 export class PreferenceState {
-  constructor(private store: Store, private eventBus: EventBus) {}
+  constructor(private store: Store) {}
 }
