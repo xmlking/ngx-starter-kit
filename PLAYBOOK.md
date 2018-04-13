@@ -62,6 +62,7 @@ npm i -D loaders.css @types/hammerjs standard-version
 npm i -D @angular/http
 
 npm i -D ng-packagr
+npm i -D api-ai-javascript
 npm i d3
 npm i nvd3
 npm i -D @types/nvd3
@@ -159,6 +160,10 @@ ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
 # generate components for `svgViewer` Module
 ng g lib svgViewer --tags=public-module
 ng g component svgViewer --app=svg-viewer --flat --dry-run 
+
+# generate components for `chatBot` Module
+ng g lib chatBot --tags=public-module --dry-run 
+ng g component components/chatBot --app=chat-bot --dry-run 
 
 # generate components for `jsonDiff` Module
 ng g lib jsonDiff --tags=public-module
