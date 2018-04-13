@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@nx-starter-kit/shared';
 
+import { AuthGuard } from '@nx-starter-kit/auth';
+import {ChatBotModule} from "@nx-starter-kit/chat-bot";
+
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { OverviewComponent } from './containers/overview/overview.component';
 import { RainbowComponent } from './components/rainbow/rainbow.component';
@@ -9,7 +12,7 @@ import { QuickpanelModule } from '@nx-starter-kit/quickpanel';
 import { ToolbarModule } from '@nx-starter-kit/toolbar';
 import { SidenavModule } from '@nx-starter-kit/sidenav';
 import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
-import { AuthGuard } from '@nx-starter-kit/auth';
+
 
 @NgModule({
   imports: [
@@ -17,6 +20,7 @@ import { AuthGuard } from '@nx-starter-kit/auth';
     SidenavModule,
     ToolbarModule,
     QuickpanelModule,
+    ChatBotModule,
     LoadingOverlayModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */

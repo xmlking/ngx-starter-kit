@@ -15,6 +15,7 @@
     <perfect-scrollbar>
         <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)" #scrollContainer>
           <router-outlet #dashboardOutlet="outlet" (activate)="onActivate($event, scrollContainer)"></router-outlet>
+          <nxtk-chatbot></nxtk-chatbot>
         </div>
         <!--<div class="main-container" #scrollContainer>-->
           <!--<router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>-->
