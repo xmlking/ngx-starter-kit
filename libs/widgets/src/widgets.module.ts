@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from '@nx-starter-kit/shared';
-import { AgmCoreModule } from '@agm/core';
 
 import { WizdashComponent } from './containers/wizdash/wizdash.component';
 import {
@@ -12,7 +11,6 @@ import {
   LineChartComponent,
   RecentSalesComponent,
   PieChartComponent,
-  GoogleMapsWidgetComponent,
   ActivityComponent,
   TrafficSourcesComponent,
   NvD3Component
@@ -29,7 +27,6 @@ const WIDGETS = [
   LineChartComponent,
   RecentSalesComponent,
   PieChartComponent,
-  GoogleMapsWidgetComponent,
   ActivityComponent,
   TrafficSourcesComponent,
   NvD3Component
@@ -39,9 +36,6 @@ const WIDGETS = [
   imports: [
     SharedModule,
     LoadingOverlayModule,
-    AgmCoreModule.forRoot({
-      apiKey: environment.googleApiKey
-    }),
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       {

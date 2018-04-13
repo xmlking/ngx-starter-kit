@@ -7,7 +7,6 @@ export { BarChartComponent } from '../components/bar-chart/bar-chart.component';
 export { LineChartComponent } from '../components/line-chart/line-chart.component';
 export { RecentSalesComponent } from '../components/recent-sales/recent-sales.component';
 export { PieChartComponent } from '../components/pie-chart/pie-chart.component';
-export { GoogleMapsWidgetComponent } from '../components/google-maps-widget/google-maps-widget.component';
 export { ActivityComponent } from '../components/activity/activity.component';
 export { TrafficSourcesComponent } from '../components/traffic-sources/traffic-sources.component';
 export { NvD3Component } from '../components/charts/nvD3/nvD3.component';
