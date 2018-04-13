@@ -119,6 +119,15 @@
       ]
     },
     {
+      "name": "chat-bot",
+      "root": "libs/chat-bot/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
+      ]
+    },
+    {
       "name": "context-menu",
       "root": "libs/context-menu/src",
       "test": "../../../test.js",

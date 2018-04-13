@@ -19,7 +19,7 @@ import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 // Noop handler for factory function
-function noop() { return function() {}; }
+export function noop() { return function() {}; }
 
 @NgModule({
   imports: [
