@@ -1,0 +1,29 @@
+<button mat-fab  class="chat-circle" (click)="showChat = !showChat" [@scrollAnimation]="showChat? 'hide' : 'show'">
+  <mat-icon>chat_bubble</mat-icon>
+</button>
+<div class="chat-box resize" [@scrollAnimation]="showChat? 'show' : 'hide'">
+  <div class="chat-box-header" [draggable] dragHandle=".chat-box-header" dragTarget=".chat-box">
+    ChatBot <mat-icon class="chat-box-toggle" (click)="showChat = !showChat">close</mat-icon>
+  </div>
+  <div class="chat-box-body">
+    <div class="chat-box-overlay">
+    </div>
+    <div class="chat-logs" style="margin:auto">
+      <div *ngFor="let message of messages | async">
+        <div
+          class="message"
+          [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
+          {{ message.content }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="chat-input-container">
+      <mat-form-field>
+        <mat-icon matPrefix (click)="startTalkingToBot()">keyboard_voice</mat-icon>
+        <input type="text" [(ngModel)]="formInput" (keyup.enter)="sendMessageToBot()" matInput placeholder="Ask anything..." autocomplete="off">
+        <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>
+      </mat-form-field>
+  </div>
+</div>
+
