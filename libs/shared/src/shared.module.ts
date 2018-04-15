@@ -9,7 +9,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
-import {DraggableDirective} from "./directives/draggable/draggable.directive";
 import { FooterComponent } from './components/footer/footer.component';
 
 import {
@@ -25,7 +24,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 
 const COMPONENTS = [FooterComponent];
 
-const DIRECTIVES = [MinValidatorDirective, NgLetDirective, DraggableDirective];
+const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
 
 @NgModule({
   imports: [CommonModule, RouterModule, FullscreenModule, FlexLayoutModule, MaterialModule, PerfectScrollbarModule],
