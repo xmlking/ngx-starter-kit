@@ -120,6 +120,10 @@ ng g service AppConfirm --app=app-confirm --module=app-confirm --spec=false --dr
 ng g lib Fullscreen --tags=public-module --dry-run
 ng g component fullscreen --app=fullscreen --flat --dry-run
 
+# generate components for `Draggable` Module
+ng g lib Draggable --tags=public-module
+ng g directive directives/Draggable --module=draggable --export=true --dry-run
+
 # generate components for `Breadcrumbs` Module
 ng g lib Breadcrumbs --tags=public-module
 ng g component breadcrumbs --app=breadcrumbs --flat --dry-run

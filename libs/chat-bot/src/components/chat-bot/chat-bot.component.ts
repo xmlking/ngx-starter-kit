@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Observable} from "rxjs/index";
 import {ChatBotService, Message} from "./chat-bot.service";
 import {scan} from "rxjs/operators";
@@ -11,45 +11,53 @@ import {scrollFabAnimation} from "@nx-starter-kit/animations";
   animations: [scrollFabAnimation],
   providers: [ChatBotService]
 })
-export class ChatBotComponent implements OnInit {
+export class ChatBotComponent implements OnInit, OnDestroy {
   showChat = false;
-  reponseMessage: void;
-  formInput: string;
+  formInput = '';
   messages: Observable<Message[]>;
-  constructor(private chatBotService: ChatBotService) { }
+  canUseSpeechRecognition = false;
+  canUseSpeechSynthesis = false;
+  public voices: SpeechSynthesisVoice[];
+  public selectedVoice: SpeechSynthesisVoice;
+  constructor(private chatBotService: ChatBotService) {
+    this.canUseSpeechRecognition = chatBotService.canUseSpeechRecognition;
+    this.canUseSpeechSynthesis = chatBotService.canUseSpeechSynthesis;
+  }
 
-  ngOnInit() {
+  async ngOnInit() {
+    if(this.chatBotService.canUseSpeechSynthesis) {
+      this.voices = await this.chatBotService.getVoiceList();
+      console.log(this.voices[48]);
+      this.selectedVoice = this.voices[48];
+    }
+
     this.messages = this.chatBotService.conversation.asObservable().pipe(
       scan((acc, val) => acc.concat(val))
     )
   }
 
-  // ngOnDestroy() {
-  //   this.chatService.destroyVoiceConversation();
-  // }
+  ngOnDestroy() {
 
-  sendMessageToBot() {
-    this.chatBotService.talk(this.formInput);
+  }
+
+  private speak(text: string) {
+    if(this.canUseSpeechSynthesis) {
+      this.chatBotService.synthesisVoice(text, this.selectedVoice)
+    }
+  }
+
+  async sendMessageToBot() {
+    const res = await this.chatBotService.textConversation(this.formInput);
     this.formInput = '';
   }
 
-  startTalkingToBot() {
-    // this.chatService.voiceConversation()
-    //   .subscribe(
-    //     (value) => {
-    //       this.formInput = value;
-    //       // console.log(value);
-    //     },
-    //     (err) => {
-    //       console.log(err);
-    //       if (err.error  === 'no-speech') {
-    //         // console.log("Talking error");
-    //         this.startTalkingToBot();
-    //       }
-    //     },
-    //     () => {
-    //       // console.log("Talking complete");
-    //       this.startTalkingToBot();
-    //     });
+  async startTalkingToBot() {
+    try {
+      const sentence = await this.chatBotService.voiceConversation();
+      const res = await this.chatBotService.textConversation(sentence);
+      this.speak(res);
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
