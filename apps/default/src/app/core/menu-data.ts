@@ -16,26 +16,38 @@ export const defaultMenu: MenuItem[] = [
   //   type: SidenavItemType.Separator,
   // },
   {
-    name: 'Experiments',
-    icon: 'pie_chart_outlined',
-    disabled: true,
+    name: 'Tables',
+    icon: 'insert_chart',
+    disabled: false,
     children: [
       {
         name: 'CRUD',
         icon: 'web_aaset',
         link: '/dashboard/crud'
+      }
+    ]
+  },
+  {
+    name: 'Experiments',
+    icon: 'pie_chart_outlined',
+    disabled: false,
+    children: [
+      {
+        name: 'Animations',
+        icon: 'view_list',
+        link: '/dashboard/experiments/animations'
       },
       {
-        name: 'experiments',
-        icon: 'view_list',
-        link: '/dashboard/experiments'
+        name: 'Upload',
+        icon: 'directions',
+        link: '/dashboard/experiments/file-upload'
       }
     ]
   },
   {
     name: 'Multi-Level Menu',
     icon: 'menu',
-    disabled: true,
+    disabled: false,
     children: [
       {
         name: 'Level 1',
