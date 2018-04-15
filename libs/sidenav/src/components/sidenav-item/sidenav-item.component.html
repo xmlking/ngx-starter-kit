@@ -1,4 +1,4 @@
-<ng-container *ngIf="item.disabled !== false">
+<ng-container *ngIf="item.disabled !== true">
   <a class="sidenav-anchor"
      *ngIf="!(item.children?.length > 0); else elseBlock"
      mat-list-item matRipple
