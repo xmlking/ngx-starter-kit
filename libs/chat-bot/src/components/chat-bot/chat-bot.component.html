@@ -1,29 +1,34 @@
 <button mat-fab  class="chat-circle" (click)="showChat = !showChat" [@scrollAnimation]="showChat? 'hide' : 'show'">
   <mat-icon>chat_bubble</mat-icon>
 </button>
-<div class="chat-box resize" [@scrollAnimation]="showChat? 'show' : 'hide'">
-  <div class="chat-box-header" [draggable] dragHandle=".chat-box-header" dragTarget=".chat-box">
-    ChatBot <mat-icon class="chat-box-toggle" (click)="showChat = !showChat">close</mat-icon>
-  </div>
-  <div class="chat-box-body">
-    <div class="chat-box-overlay">
+
+<div fxLayout='column' class="chat-box resize" [@scrollAnimation]="showChat? 'show' : 'hide'">
+  <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
+               class="chat-box-header mat-elevation-z2" color="primary"
+               [draggable] dragTarget=".chat-box">
+    <span fxFlex>Chat</span>
+    <span fxFlex="grow"><!-- fill space --></span>
+    <button mat-icon-button>
+      <mat-icon (click)="showChat = !showChat">close</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div fxFlex="grow" class="chat-logs">
+    <div *ngFor="let message of messages | async"
+         class="message"
+         [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
+      {{ message.content }}
     </div>
-    <div class="chat-logs" style="margin:auto">
-      <div *ngFor="let message of messages | async">
-        <div
-          class="message"
-          [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
-          {{ message.content }}
-        </div>
-      </div>
-    </div>
   </div>
-  <div class="chat-input-container">
-      <mat-form-field>
-        <mat-icon matPrefix (click)="startTalkingToBot()">keyboard_voice</mat-icon>
-        <input type="text" [(ngModel)]="formInput" (keyup.enter)="sendMessageToBot()" matInput placeholder="Ask anything..." autocomplete="off">
-        <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>
-      </mat-form-field>
+
+  <mat-divider></mat-divider>
+  <div fxFlex class="chat-input-container">
+    <mat-form-field>
+      <mat-icon *ngIf="canUseSpeechRecognition" matPrefix (click)="startTalkingToBot()">keyboard_voice</mat-icon>
+      <input type="text" [(ngModel)]="formInput" (keyup.enter)="sendMessageToBot()" matInput
+             placeholder="Ask anything..." autocomplete="off">
+      <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>
+    </mat-form-field>
   </div>
 </div>
 

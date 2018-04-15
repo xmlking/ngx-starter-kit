@@ -156,6 +156,15 @@
       ]
     },
     {
+      "name": "draggable",
+      "root": "libs/draggable/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
+      ]
+    },
+    {
       "name": "experiments",
       "root": "libs/experiments/src",
       "test": "../../../test.js",

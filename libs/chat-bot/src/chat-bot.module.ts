@@ -1,15 +1,39 @@
 import { NgModule } from '@angular/core';
-import {SharedModule} from "@nx-starter-kit/shared";
+import {CommonModule} from "@angular/common";
+import {FormsModule} from "@angular/forms";
+import {
+  MatBadgeModule,
+  MatButtonModule,
+  MatCardModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatRippleModule,
+  MatSelectModule,
+  MatTabsModule,
+  MatToolbarModule
+} from "@angular/material";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {DraggableModule} from "@nx-starter-kit/draggable";
 import {ChatBotComponent} from "./components/chat-bot/chat-bot.component";
-import {MatButtonModule, MatCardModule, MatFormFieldModule, MatIconModule, MatInputModule} from "@angular/material";
 
 @NgModule({
   imports: [
-    SharedModule,
+    CommonModule,
+    DraggableModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatSelectModule,
+    MatToolbarModule,
+    MatRippleModule,
+    MatBadgeModule,
     MatButtonModule,
     MatInputModule,
     MatCardModule,
+    MatTabsModule,
     MatIconModule,
+    MatDividerModule,
     MatFormFieldModule
   ],
   declarations: [ChatBotComponent],
