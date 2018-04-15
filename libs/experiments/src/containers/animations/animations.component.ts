@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { cardAnimation } from '@nx-starter-kit/animations';
 
 @Component({
-  selector: 'app-hammer-card',
-  templateUrl: './hammer-card.component.html',
-  styleUrls: ['./hammer-card.component.scss'],
+  selector: 'nxtk-animations',
+  templateUrl: './animations.component.html',
+  styleUrls: ['./animations.component.scss'],
   animations: [cardAnimation]
 })
-export class HammerCardComponent implements OnInit {
+export class AnimationsComponent implements OnInit {
   animationState: string;
 
   constructor() {}
