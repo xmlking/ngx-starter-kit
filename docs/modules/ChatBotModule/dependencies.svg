@@ -22,15 +22,15 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_ChatBotModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="107,-70 107,-268 389,-268 389,-70 107,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="97,-70 97,-268 399,-268 399,-70 97,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_ChatBotModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="237,-78 237,-130 381,-130 381,-78 237,-78"/>
+<polygon fill="none" stroke="#000000" points="247,-78 247,-130 391,-130 391,-78 247,-78"/>
 </g>
 <g id="clust4" class="cluster">
 <title>cluster_ChatBotModule_imports</title>
-<polygon fill="none" stroke="#000000" points="115,-78 115,-130 229,-130 229,-78 115,-78"/>
+<polygon fill="none" stroke="#000000" points="105,-78 105,-130 239,-130 239,-78 105,-78"/>
 </g>
 <g id="clust5" class="cluster">
 <title>cluster_ChatBotModule_exports</title>
@@ -39,8 +39,8 @@
 <!-- ChatBotComponent -->
 <g id="node1" class="node">
 <title>ChatBotComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="373.0014,-122 244.9986,-122 244.9986,-86 373.0014,-86 373.0014,-122"/>
-<text text-anchor="middle" x="309" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ChatBotComponent</text>
+<polygon fill="#ffffb3" stroke="#000000" points="383.0014,-122 254.9986,-122 254.9986,-86 383.0014,-86 383.0014,-122"/>
+<text text-anchor="middle" x="319" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ChatBotComponent</text>
 </g>
 <!-- ChatBotModule -->
 <g id="node2" class="node">
@@ -51,8 +51,8 @@
 <!-- ChatBotComponent&#45;&gt;ChatBotModule -->
 <g id="edge1" class="edge">
 <title>ChatBotComponent&#45;&gt;ChatBotModule</title>
-<path fill="none" stroke="#000000" d="M273.0544,-122.1061C273.0544,-122.1061 273.0544,-140.991 273.0544,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="269.5544,-140.9909 273.0544,-150.991 276.5544,-140.991 269.5544,-140.9909"/>
+<path fill="none" stroke="#000000" d="M278.0544,-122.1061C278.0544,-122.1061 278.0544,-140.991 278.0544,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="274.5544,-140.9909 278.0544,-150.991 281.5544,-140.991 274.5544,-140.9909"/>
 </g>
 <!-- ChatBotComponent  -->
 <g id="node4" class="node">
@@ -66,17 +66,17 @@
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
 <polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
 </g>
-<!-- SharedModule -->
+<!-- DraggableModule -->
 <g id="node3" class="node">
-<title>SharedModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="221.4231,-122 218.4231,-126 197.4231,-126 194.4231,-122 122.5769,-122 122.5769,-86 221.4231,-86 221.4231,-122"/>
-<text text-anchor="middle" x="172" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">SharedModule</text>
+<title>DraggableModule</title>
+<polygon fill="#8dd3c7" stroke="#000000" points="230.8515,-122 227.8515,-126 206.8515,-126 203.8515,-122 113.1485,-122 113.1485,-86 230.8515,-86 230.8515,-122"/>
+<text text-anchor="middle" x="172" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableModule</text>
 </g>
-<!-- SharedModule&#45;&gt;ChatBotModule -->
+<!-- DraggableModule&#45;&gt;ChatBotModule -->
 <g id="edge2" class="edge">
-<title>SharedModule&#45;&gt;ChatBotModule</title>
-<path fill="none" stroke="#000000" d="M208.0509,-122.1061C208.0509,-122.1061 208.0509,-140.991 208.0509,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="204.5509,-140.9909 208.0509,-150.991 211.5509,-140.991 204.5509,-140.9909"/>
+<title>DraggableModule&#45;&gt;ChatBotModule</title>
+<path fill="none" stroke="#000000" d="M212.9082,-122.1061C212.9082,-122.1061 212.9082,-140.991 212.9082,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="209.4082,-140.9909 212.9082,-150.991 216.4082,-140.991 209.4082,-140.9909"/>
 </g>
 </g>
 </svg>
