@@ -8,9 +8,8 @@ describe('DialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ UploadComponent ]
-    })
-      .compileComponents();
+      declarations: [UploadComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -22,4 +21,4 @@ describe('DialogComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-})
+});

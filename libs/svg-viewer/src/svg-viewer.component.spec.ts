@@ -6,13 +6,11 @@ describe('SvgViewerComponent', () => {
   let component: SvgViewerComponent;
   let fixture: ComponentFixture<SvgViewerComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [SvgViewerComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [SvgViewerComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SvgViewerComponent);

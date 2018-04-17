@@ -4,9 +4,9 @@ import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 
 import { SharedModule } from '@nx-starter-kit/shared';
-import { UploadModule } from "@nx-starter-kit/upload";
+import { UploadModule } from '@nx-starter-kit/upload';
 import { AnimationsComponent } from './containers/animations/animations.component';
-import { FileUploadComponent } from "./containers/file-upload/file-upload.component";
+import { FileUploadComponent } from './containers/file-upload/file-upload.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
 
 export class MyHammerConfig extends HammerGestureConfig {

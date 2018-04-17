@@ -6,13 +6,11 @@ describe('FullScreenComponent', () => {
   let component: FullscreenComponent;
   let fixture: ComponentFixture<FullscreenComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [FullscreenComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [FullscreenComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FullscreenComponent);

@@ -6,14 +6,12 @@ import { LogoutSuccess } from './auth.actions';
 describe('Auth', () => {
   let store: Store;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        imports: [NgxsModule.forRoot([AuthState])]
-      }).compileComponents();
-      store = TestBed.get(Store);
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [NgxsModule.forRoot([AuthState])]
+    }).compileComponents();
+    store = TestBed.get(Store);
+  }));
 
   it('it toggles feed', () => {
     store.dispatch(new LogoutSuccess());

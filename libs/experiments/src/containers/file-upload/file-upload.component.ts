@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { UploadComponent } from "@nx-starter-kit/upload";
+import { UploadComponent } from '@nx-starter-kit/upload';
 
 @Component({
   selector: 'nxtk-file-upload',

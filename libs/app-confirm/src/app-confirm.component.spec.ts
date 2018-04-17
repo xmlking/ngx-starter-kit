@@ -6,13 +6,11 @@ describe('AppConfirmComponent', () => {
   let component: AppConfirmComponent;
   let fixture: ComponentFixture<AppConfirmComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [AppConfirmComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [AppConfirmComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppConfirmComponent);

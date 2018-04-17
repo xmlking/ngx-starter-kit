@@ -8,7 +8,15 @@ import { UploadService } from './upload.service';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  imports: [CommonModule, MatButtonModule, MatDialogModule, MatListModule, FlexLayoutModule, HttpClientModule, MatProgressBarModule],
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatDialogModule,
+    MatListModule,
+    FlexLayoutModule,
+    HttpClientModule,
+    MatProgressBarModule
+  ],
   declarations: [UploadComponent],
   exports: [UploadComponent],
   entryComponents: [UploadComponent],

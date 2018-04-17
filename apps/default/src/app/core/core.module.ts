@@ -1,4 +1,4 @@
-import {APP_INITIALIZER, NgModule, Optional, SkipSelf} from '@angular/core';
+import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
@@ -19,7 +19,9 @@ import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
 // Noop handler for factory function
-export function noop() { return function() {}; }
+export function noop() {
+  return function() {};
+}
 
 @NgModule({
   imports: [

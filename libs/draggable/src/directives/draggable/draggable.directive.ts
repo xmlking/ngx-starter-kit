@@ -1,12 +1,11 @@
-import {AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy} from "@angular/core";
-import {fromEvent, Subject} from "rxjs";
-import {map, switchMap, takeUntil} from "rxjs/operators";
+import { AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy } from '@angular/core';
+import { fromEvent, Subject } from 'rxjs';
+import { map, switchMap, takeUntil } from 'rxjs/operators';
 
 @Directive({
   selector: '[draggable]'
 })
 export class DraggableDirective implements AfterViewInit, OnDestroy {
-
   @Input() dragHandle: string;
   @Input() dragTarget: string;
 
@@ -14,17 +13,17 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
   private target: HTMLElement;
   // Drag handle
   private handle: HTMLElement;
-  private delta = {x: 0, y: 0};
-  private offset = {x: 0, y: 0};
+  private delta = { x: 0, y: 0 };
+  private offset = { x: 0, y: 0 };
 
   private destroy$ = new Subject<void>();
 
-  constructor(private elementRef: ElementRef, private zone: NgZone) {
-  }
+  constructor(private elementRef: ElementRef, private zone: NgZone) {}
 
   public ngAfterViewInit(): void {
-    this.handle = this.dragHandle ? document.querySelector(this.dragHandle) as HTMLElement :
-      this.elementRef.nativeElement;
+    this.handle = this.dragHandle
+      ? (document.querySelector(this.dragHandle) as HTMLElement)
+      : this.elementRef.nativeElement;
     this.target = document.querySelector(this.dragTarget) as HTMLElement;
     this.setupEvents();
   }
@@ -53,7 +52,7 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
               };
             }),
             takeUntil(mouseup$)
-          )
+          );
         }),
         takeUntil(this.destroy$)
       );
@@ -66,12 +65,11 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
         this.translate();
       });
 
-      mouseup$.pipe(takeUntil(this.destroy$))
-        .subscribe(() => {
-          this.offset.x += this.delta.x;
-          this.offset.y += this.delta.y;
-          this.delta = {x: 0, y: 0};
-        });
+      mouseup$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+        this.offset.x += this.delta.x;
+        this.offset.y += this.delta.y;
+        this.delta = { x: 0, y: 0 };
+      });
     });
   }
 
