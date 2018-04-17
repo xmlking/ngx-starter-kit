@@ -99,6 +99,7 @@ How to manage state in the front-end?
 > TL;DR: mergeMap doesn’t preserve the order, concatMap does preserve the order. 
 switchMap cancels previous inner Observables when a new inner Observable appears
 > Ref [blog](https://blog.angularindepth.com/practical-rxjs-in-the-wild-requests-with-concatmap-vs-mergemap-vs-forkjoin-11e5b2efe293)
+> Ref [blog](https://blog.angularindepth.com/learn-to-combine-rxjs-sequences-with-super-intuitive-interactive-diagrams-20fce8e6511)
 
 * Secure Angular App with KeyCloak?
 

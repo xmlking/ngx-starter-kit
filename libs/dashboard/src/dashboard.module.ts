@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@nx-starter-kit/shared';
 
 import { AuthGuard } from '@nx-starter-kit/auth';
-import {ChatBotModule} from "@nx-starter-kit/chat-bot";
+import { ChatBotModule } from '@nx-starter-kit/chat-bot';
 
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { OverviewComponent } from './containers/overview/overview.component';
@@ -12,7 +12,6 @@ import { QuickpanelModule } from '@nx-starter-kit/quickpanel';
 import { ToolbarModule } from '@nx-starter-kit/toolbar';
 import { SidenavModule } from '@nx-starter-kit/sidenav';
 import { LoadingOverlayModule } from '@nx-starter-kit/loading-overlay';
-
 
 @NgModule({
   imports: [

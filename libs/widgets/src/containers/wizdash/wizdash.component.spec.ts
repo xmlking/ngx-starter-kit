@@ -6,13 +6,11 @@ describe('WizdashComponent', () => {
   let component: WizdashComponent;
   let fixture: ComponentFixture<WizdashComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [WizdashComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [WizdashComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(WizdashComponent);

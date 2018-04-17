@@ -6,13 +6,11 @@ describe('RainbowComponent', () => {
   let component: RainbowComponent;
   let fixture: ComponentFixture<RainbowComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [RainbowComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [RainbowComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(RainbowComponent);

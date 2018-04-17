@@ -8,7 +8,7 @@ import { forkJoin } from 'rxjs/observable/forkJoin';
   templateUrl: './upload.component.html',
   styleUrls: ['./upload.component.scss']
 })
-export class UploadComponent{
+export class UploadComponent {
   constructor(public dialogRef: MatDialogRef<UploadComponent>, public uploadService: UploadService) {}
   @ViewChild('file') file;
   public files: Set<File> = new Set();

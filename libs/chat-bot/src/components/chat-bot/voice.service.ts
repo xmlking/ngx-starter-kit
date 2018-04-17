@@ -1,10 +1,13 @@
-const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).mozSpeechRecognition ||
-  (window as any).msSpeechRecognition || (window as any).oSpeechRecognition || (window as any).SpeechRecognition;
+const SpeechRecognition =
+  (window as any).webkitSpeechRecognition ||
+  (window as any).mozSpeechRecognition ||
+  (window as any).msSpeechRecognition ||
+  (window as any).oSpeechRecognition ||
+  (window as any).SpeechRecognition;
 const SpeechGrammarList = (window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList;
 const SpeechRecognitionEvent = (window as any).SpeechRecognitionEvent || (window as any).webkitSpeechRecognitionEvent;
 
 export class VoiceService {
-
   public canUseSpeechRecognition = false;
   public canUseSpeechSynthesis = false;
 
@@ -30,7 +33,9 @@ export class VoiceService {
       console.log(this.synth);
       // With Chrome, we have to wait for the event to fire before populateVoiceList
       if (this.synth.onvoiceschanged !== undefined) {
-        this.synth.onvoiceschanged = (): void =>  {this.populateVoiceList(); };
+        this.synth.onvoiceschanged = (): void => {
+          this.populateVoiceList();
+        };
       } else {
         this.populateVoiceList();
       }
@@ -38,7 +43,6 @@ export class VoiceService {
   }
 
   public startListening(): Promise<string> {
-
     return new Promise((resolve: any, reject: any): void => {
       this.recognition.start();
 
@@ -85,7 +89,6 @@ export class VoiceService {
       //     };
       // });
     });
-
   }
 
   public synthesisVoice(text: string): void {
@@ -103,5 +106,4 @@ export class VoiceService {
     console.log(this.voices);
     console.log(this.selectedVoice);
   }
-
 }

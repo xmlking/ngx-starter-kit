@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
-import {CommonModule} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import {
   MatBadgeModule,
   MatButtonModule,
@@ -9,14 +9,15 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatListModule,
   MatRippleModule,
   MatSelectModule,
   MatTabsModule,
   MatToolbarModule
-} from "@angular/material";
-import {FlexLayoutModule} from "@angular/flex-layout";
-import {DraggableModule} from "@nx-starter-kit/draggable";
-import {ChatBotComponent} from "./components/chat-bot/chat-bot.component";
+} from '@angular/material';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { DraggableModule } from '@nx-starter-kit/draggable';
+import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import {ChatBotComponent} from "./components/chat-bot/chat-bot.component";
     MatBadgeModule,
     MatButtonModule,
     MatInputModule,
+    MatListModule,
     MatCardModule,
     MatTabsModule,
     MatIconModule,

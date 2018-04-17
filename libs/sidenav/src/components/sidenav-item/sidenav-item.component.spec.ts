@@ -6,13 +6,11 @@ describe('SidenavItemComponent', () => {
   let component: SidenavItemComponent;
   let fixture: ComponentFixture<SidenavItemComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [SidenavItemComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [SidenavItemComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SidenavItemComponent);

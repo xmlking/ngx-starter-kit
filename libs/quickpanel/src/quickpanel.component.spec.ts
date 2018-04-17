@@ -6,13 +6,11 @@ describe('QuickpanelComponent', () => {
   let component: QuickpanelComponent;
   let fixture: ComponentFixture<QuickpanelComponent>;
 
-  beforeEach(
-    async(() => {
-      TestBed.configureTestingModule({
-        declarations: [QuickpanelComponent]
-      }).compileComponents();
-    })
-  );
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      declarations: [QuickpanelComponent]
+    }).compileComponents();
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(QuickpanelComponent);

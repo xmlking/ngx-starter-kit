@@ -17,7 +17,9 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   public handleError = (errorRes: HttpErrorResponse) => {
-    const { error: { status, error, message } } = errorRes;
+    const {
+      error: { status, error, message }
+    } = errorRes;
     // Do messaging and error handling here
     // this.snackBar.open(
     //   `Error ! ${message}`,

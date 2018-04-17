@@ -9,7 +9,10 @@ describe('UploadService', () => {
     });
   });
 
-  it('should be created', inject([UploadService], (service: UploadService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([UploadService], (service: UploadService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

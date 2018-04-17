@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {Observable} from "rxjs/index";
-import {ChatBotService, Message} from "./chat-bot.service";
-import {scan} from "rxjs/operators";
-import {scrollFabAnimation} from "@nx-starter-kit/animations";
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Observable } from 'rxjs/index';
+import { ChatBotService, Message } from './chat-bot.service';
+import { scan } from 'rxjs/operators';
+import { scrollFabAnimation } from '@nx-starter-kit/animations';
 
 @Component({
   selector: 'nxtk-chatbot',
@@ -25,24 +25,20 @@ export class ChatBotComponent implements OnInit, OnDestroy {
   }
 
   async ngOnInit() {
-    if(this.chatBotService.canUseSpeechSynthesis) {
+    if (this.chatBotService.canUseSpeechSynthesis) {
       this.voices = await this.chatBotService.getVoiceList();
       console.log(this.voices[48]);
       this.selectedVoice = this.voices[48];
     }
 
-    this.messages = this.chatBotService.conversation.asObservable().pipe(
-      scan((acc, val) => acc.concat(val))
-    )
+    this.messages = this.chatBotService.conversation.asObservable().pipe(scan((acc, val) => acc.concat(val)));
   }
 
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() {}
 
   private speak(text: string) {
-    if(this.canUseSpeechSynthesis) {
-      this.chatBotService.synthesisVoice(text, this.selectedVoice)
+    if (this.canUseSpeechSynthesis) {
+      this.chatBotService.synthesisVoice(text, this.selectedVoice);
     }
   }
 
@@ -57,7 +53,7 @@ export class ChatBotComponent implements OnInit, OnDestroy {
       const res = await this.chatBotService.textConversation(sentence);
       this.speak(res);
     } catch (err) {
-      console.log(err)
+      console.log(err);
     }
   }
 }

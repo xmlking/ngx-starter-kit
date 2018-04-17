@@ -9,7 +9,10 @@ describe('ChatBotService', () => {
     });
   });
 
-  it('should be created', inject([ChatBotService], (service: ChatBotService) => {
-    expect(service).toBeTruthy();
-  }));
+  it(
+    'should be created',
+    inject([ChatBotService], (service: ChatBotService) => {
+      expect(service).toBeTruthy();
+    })
+  );
 });

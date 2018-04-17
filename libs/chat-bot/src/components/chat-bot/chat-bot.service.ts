@@ -1,21 +1,24 @@
-import {Injectable, NgZone} from '@angular/core';
-import {BehaviorSubject, Observable} from 'rxjs';
-import {ApiAiClient} from 'api-ai-javascript';
-import {environment} from "@env/environment";
+import { Injectable, NgZone } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { ApiAiClient } from 'api-ai-javascript';
+import { environment } from '@env/environment';
 
-const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).mozSpeechRecognition ||
-  (window as any).msSpeechRecognition || (window as any).oSpeechRecognition || (window as any).SpeechRecognition;
+const SpeechRecognition =
+  (window as any).webkitSpeechRecognition ||
+  (window as any).mozSpeechRecognition ||
+  (window as any).msSpeechRecognition ||
+  (window as any).oSpeechRecognition ||
+  (window as any).SpeechRecognition;
 const SpeechGrammarList = (window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList;
 const SpeechRecognitionEvent = (window as any).SpeechRecognitionEvent || (window as any).webkitSpeechRecognitionEvent;
 
 export class Message {
-  constructor(public content: string, public sentBy: string) {
-  }
+  constructor(public content: string, public sentBy: string) {}
 }
 
 @Injectable()
 export class ChatBotService {
-  readonly client = new ApiAiClient({accessToken: environment.dialogFlow.apiToken});
+  readonly client = new ApiAiClient({ accessToken: environment.dialogFlow.apiToken });
   conversation = new BehaviorSubject<Message[]>([]);
 
   public canUseSpeechRecognition = false;
@@ -47,20 +50,16 @@ export class ChatBotService {
   textConversation(msg: string) {
     const userMessage = new Message(msg, 'user');
     this.update(userMessage);
-    return this.client.textRequest(msg)
-      .then(res => {
-        const speech = res.result.fulfillment.speech;
-        const botMessage = new Message(speech, 'bot');
-        this.update(botMessage);
-        return speech;
-      });
+    return this.client.textRequest(msg).then(res => {
+      const speech = res.result.fulfillment.speech;
+      const botMessage = new Message(speech, 'bot');
+      this.update(botMessage);
+      return speech;
+    });
   }
 
-
   public voiceConversation(): Promise<string> {
-
     return new Promise((resolve: any, reject: any): void => {
-
       this.speechRecognition.onresult = (speech: any): void => {
         let sentence = '';
         if (speech.results) {
@@ -68,9 +67,8 @@ export class ChatBotService {
           const transcript = result[0].transcript;
           if (result.isFinal) {
             if (result[0].confidence < 0.1) {
-              console.log("Unrecognized result - Please try again");
-            }
-            else {
+              console.log('Unrecognized result - Please try again');
+            } else {
               sentence = transcript.trim();
               console.log(`Sentence: ${sentence}`);
               console.log(`Confidence: ${result[0].confidence}`);
@@ -115,8 +113,6 @@ export class ChatBotService {
       this.speechRecognition.start();
       // console.log("I'm listening...");
     });
-
-
   }
 
   public synthesisVoice(text: string, voice: SpeechSynthesisVoice): void {
@@ -132,13 +128,12 @@ export class ChatBotService {
     return new Promise((resolve: any, reject: any): void => {
       // With Chrome, we have to wait for onvoiceschanged event to fire before calling getVoices
       if (this.speechSynthesis.onvoiceschanged !== undefined) {
-        this.speechSynthesis.onvoiceschanged = (): void =>  {
-          resolve(this.speechSynthesis.getVoices())
-        }
+        this.speechSynthesis.onvoiceschanged = (): void => {
+          resolve(this.speechSynthesis.getVoices());
+        };
       } else {
         resolve(this.speechSynthesis.getVoices());
       }
-    })
+    });
   }
-
 }
