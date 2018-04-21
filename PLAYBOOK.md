@@ -7,10 +7,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 ### Prerequisites  
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v9.9.0   |          | 
+| Node                          | v10.0.0  |          | 
 | NPM                           | v5.8.0   |          | 
 | Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v0.9.1   |          | 
+| @nrwl/schematics              | v1.0.1   |          | 
 
 
 ### Install Prerequisites
@@ -19,6 +19,22 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 brew update
 brew install node
 #brew upgrade node
+# upgrade npm to at least 5.8.0
+npm install -g npm
+```
+
+#### Install Bazel
+For Mac, install via Brew. [Instructions](https://docs.bazel.build/versions/master/install-os-x.html#install-on-mac-os-x-homebrew)
+```bash
+brew install bazel
+bazel version
+# you can upgrade to a newer version of Bazel with:
+brew upgrade bazel
+
+# if needed 
+sudo xcode-select -s /Applications/Xcode.app/Contents/Developer
+sudo xcodebuild -license
+bazel clean --expunge
 ```
 
 #### Install Global Packages
@@ -40,7 +56,7 @@ ng set defaults.styleExt scss
 
 #### Create Workspace
 ```bash
-create-nx-workspace nx-starter-kit
+create-nx-workspace  nx-starter-kit --bazel
 cd nx-starter-kit
 npm install
 ```
