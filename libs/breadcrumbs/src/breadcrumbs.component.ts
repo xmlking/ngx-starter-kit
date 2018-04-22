@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {List} from "immutable";
 
 export interface Crumb {
   name: string;
@@ -12,7 +13,7 @@ export interface Crumb {
 })
 export class BreadcrumbsComponent implements OnInit {
   @Input() title: string;
-  @Input() crumbs: Crumb[];
+  @Input() crumbs: List<Crumb>;
 
   constructor() {}
 
