@@ -15,7 +15,6 @@ export class ToolbarComponent implements OnInit {
   @Input('quickpanel') quickpanel: any;
   @Input('sidenav') sidenav: any;
   isFullscreen = false;
-  showBreadcrumbs = false;
   toolbarHelpers = ToolBarHelpers;
 
   constructor() {}
