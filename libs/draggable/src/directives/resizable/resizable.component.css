@@ -1,0 +1,115 @@
+.ngr-grabber {
+  position: absolute;
+}
+
+.ngr-grabber.ngr-top, .ngr-grabber.ngr-bottom {
+  cursor: ns-resize;
+  width: 100%;
+  height: 14px;
+}
+
+.ngr-grabber.ngr-left, .ngr-grabber.ngr-right {
+  cursor: ew-resize;
+  width: 14px;
+  height: 100%;
+}
+
+.ngr-grabber.ngr-top::after, .ngr-grabber.ngr-bottom::after,
+.ngr-grabber.ngr-left::after, .ngr-grabber.ngr-right::after,
+.ngr-grabber.ngr-top::before, .ngr-grabber.ngr-bottom::before,
+.ngr-grabber.ngr-left::before, .ngr-grabber.ngr-right::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+}
+
+.ngr-grabber.ngr-top::before, .ngr-grabber.ngr-bottom::before,
+.ngr-grabber.ngr-left::before, .ngr-grabber.ngr-right::before {
+  border-radius: 7px;
+  width: 7px;
+  height: 7px;
+}
+
+.ngr-grabber.ngr-top::after, .ngr-grabber.ngr-bottom::after {
+  width: 100%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+}
+
+.ngr-grabber.ngr-left::after, .ngr-grabber.ngr-right::after {
+  width: 2px;
+  height: 100%;
+  left: 50%;
+}
+
+.ngr-grabber.ngr-top::before, .ngr-grabber.ngr-bottom::before {
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+}
+
+.ngr-grabber.ngr-left::before, .ngr-grabber.ngr-right::before {
+  top: 50%;
+  left: 4px;
+  transform: translateY(-50%);
+}
+
+.ngr-grabber.ngr-top,
+.ngr-grabber.ngr-bottom {
+  left: 0;
+}
+
+.ngr-grabber.ngr-top {
+  top: -7px;
+}
+
+.ngr-grabber.ngr-bottom {
+  bottom: -7px;
+}
+
+.ngr-grabber.ngr-left,
+.ngr-grabber.ngr-right {
+  top: 0;
+}
+
+.ngr-grabber.ngr-left {
+  left: -7px;
+}
+
+.ngr-grabber.ngr-right {
+  right: -7px;
+}
+
+.ngr-grabber.ngr-top-left, .ngr-grabber.ngr-top-right,
+.ngr-grabber.ngr-bottom-left, .ngr-grabber.ngr-bottom-right {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  z-index: 1;
+}
+
+.ngr-grabber.ngr-top-left {
+  cursor: nwse-resize;
+  top: -5px;
+  left: -5px;
+}
+
+.ngr-grabber.ngr-top-right {
+  cursor: nesw-resize;
+  top: -5px;
+  right: -5px;
+}
+
+.ngr-grabber.ngr-bottom-left {
+  cursor: nesw-resize;
+  bottom: -5px;
+  left: -5px;
+}
+
+.ngr-grabber.ngr-bottom-right {
+  cursor: nwse-resize;
+  bottom: -5px;
+  right: -5px;
+}
