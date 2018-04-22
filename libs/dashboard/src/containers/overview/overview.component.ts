@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Crumb } from '@nx-starter-kit/breadcrumbs';
+import { List } from 'immutable';
 
 @Component({
   selector: 'nxtk-overview',
@@ -7,7 +8,7 @@ import { Crumb } from '@nx-starter-kit/breadcrumbs';
   styleUrls: ['./overview.component.scss']
 })
 export class OverviewComponent implements OnInit {
-  crumbs: Crumb[] = [{ name: 'Dashboard', link: '/dashboard' }];
+  crumbs: List<Crumb> = List([{ name: 'Dashboard', link: '/dashboard' }]);
 
   constructor() {}
 
