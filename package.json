@@ -61,6 +61,7 @@
     "core-js": "^2.5.5",
     "d3": "^3.5.17",
     "hammerjs": "^2.0.8",
+    "immutable": "^3.8.2",
     "ngx-moment": "^2.0.0-rc.0",
     "ngx-page-scroll": "^4.0.2",
     "ngx-perfect-scrollbar": "^v6.0.0-0",
