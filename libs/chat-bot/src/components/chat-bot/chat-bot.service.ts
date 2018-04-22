@@ -1,4 +1,4 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiAiClient } from 'api-ai-javascript';
 import { environment } from '@env/environment';
@@ -17,7 +17,7 @@ export class Message {
 }
 
 @Injectable()
-export class ChatBotService {
+export class ChatBotService implements OnDestroy {
   readonly client = new ApiAiClient({ accessToken: environment.dialogFlow.apiToken });
   conversation = new BehaviorSubject<Message[]>([]);
 
@@ -41,6 +41,10 @@ export class ChatBotService {
       this.canUseSpeechSynthesis = true;
       this.speechSynthesis = (window as any).speechSynthesis;
     }
+  }
+
+  ngOnDestroy() {
+    console.log('ChatBotService ngOnDestroy')
   }
 
   private update(msg: Message) {
