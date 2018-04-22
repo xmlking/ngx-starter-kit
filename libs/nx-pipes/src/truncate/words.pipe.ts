@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
+  pure: true,
   name: 'words'
 })
 export class WordsPipe implements PipeTransform {
