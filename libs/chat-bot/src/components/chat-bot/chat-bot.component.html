@@ -2,7 +2,10 @@
   <mat-icon>chat_bubble</mat-icon>
 </button>
 
-<div fxLayout='column' class="chat-box resize" [@scrollAnimation]="showChat? 'show' : 'hide'">
+<div fxLayout='column' class="chat-box"
+     resizable [width]="350" [height]="500" [minWidth]="350" [minHeight]="400"  [maxWidth]="800" [maxHeight]="700"
+     [directions]="['bottom', 'top', 'left', 'right', 'top-left', 'bottom-left', 'top-right', 'bottom-right']"
+     [@scrollAnimation]="showChat? 'show' : 'hide'">
   <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
                class="chat-box-header mat-elevation-z2" color="primary"
                [draggable] dragTarget=".chat-box">
