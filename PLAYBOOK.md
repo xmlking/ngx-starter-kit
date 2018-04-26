@@ -8,9 +8,9 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
 | Node                          | v10.0.0  |          | 
-| NPM                           | v5.8.0   |          | 
+| NPM                           | v6.0.0   |          | 
 | Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v1.0.1   |          | 
+| @nrwl/schematics              | v1.0.2   |          | 
 
 
 ### Install Prerequisites
