@@ -17,6 +17,7 @@ import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 import { RouterState } from './state/router.state';
 import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { NgxsSocketioPluginModule } from '@nx-starter-kit/socketio-plugin';
 
 // Noop handler for factory function
 export function noop() {
@@ -33,6 +34,9 @@ export function noop() {
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode
       maxAge: 10
+    }),
+    NgxsSocketioPluginModule.forRoot({
+      url: 'ws://localhost:8080/socket.io'
     }),
     AuthModule.forRoot(),
     environment.envName === 'mock'

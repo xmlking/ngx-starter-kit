@@ -62,6 +62,16 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
     const config = (this._config = { ...DEFAULT_SOCKETIO_CONFIG });
 
+    if (typeof urlConfigOrSource === 'string') {
+      config.url = urlConfigOrSource;
+    } else {
+      for (const key in urlConfigOrSource) {
+        if (urlConfigOrSource.hasOwnProperty(key)) {
+          config[key] = urlConfigOrSource[key];
+        }
+      }
+    }
+
     this._socket = io(config.url);
 
     this._socket.on('connect', event => config.openObserver.next(event));
