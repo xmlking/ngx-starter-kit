@@ -293,6 +293,15 @@
       ]
     },
     {
+      "name": "socketio-plugin",
+      "root": "libs/socketio-plugin/src",
+      "test": "../../../test.js",
+      "appRoot": "",
+      "tags": [
+        "public-module"
+      ]
+    },
+    {
       "name": "svg-viewer",
       "root": "libs/svg-viewer/src",
       "test": "../../../test.js",

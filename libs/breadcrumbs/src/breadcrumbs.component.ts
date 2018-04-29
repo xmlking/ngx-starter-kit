@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import {List} from "immutable";
+import { List } from 'immutable';
 
 export interface Crumb {
   name: string;

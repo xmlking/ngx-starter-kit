@@ -64,7 +64,7 @@ export class MenuState implements OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('MenuState ngOnDestroy')
+    console.log('MenuState ngOnDestroy');
   }
 
   private getParents(tree, item: MenuItem): MenuItem[] {

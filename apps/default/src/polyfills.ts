@@ -68,3 +68,6 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+// To support IE11 we need to install the filepond-polyfill files
+// import 'filepond-polyfill'

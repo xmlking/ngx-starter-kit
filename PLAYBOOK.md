@@ -185,6 +185,10 @@ ng g component svgViewer --app=svg-viewer --flat --dry-run
 ng g lib chatBot --tags=public-module --dry-run 
 ng g component components/chatBot --app=chat-bot --dry-run 
 
+# generate components for `socketioPlugin` Module
+ng g lib socketioPlugin --tags=public-module  --dry-run
+ng g service socketioSubject --app=socketio-plugin --dry-run 
+
 # generate components for `jsonDiff` Module
 ng g lib jsonDiff --tags=public-module
 ng g component jsonDiff --app=json-diff --flat --dry-run 
