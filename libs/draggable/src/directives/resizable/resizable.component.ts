@@ -1,13 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Renderer2,
-  Input,
-  Output,
-  EventEmitter,
-  OnInit,
-  OnChanges
-} from '@angular/core';
+import { Component, ElementRef, Renderer2, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
 
 import {
   Store,
@@ -44,7 +35,6 @@ import { MOUSE_DOWN, RESIZE_STOP, RESIZE } from './resizable.actions';
   }
 })
 export class ResizableComponent implements OnInit, OnChanges {
-
   // Resize start event.
   @Output() resizeStart = new EventEmitter<IResizeEvent>();
   // Resizing event.
@@ -84,17 +74,11 @@ export class ResizableComponent implements OnInit, OnChanges {
   ngOnInit() {
     this._renderer.addClass(this._el.nativeElement, 'ngresizable');
     this._store.addReducer(resizeReducer);
-    this.setSize(
-      { width: this.width, height: this.height },
-      { x: this.x, y: this.y }
-    );
+    this.setSize({ width: this.width, height: this.height }, { x: this.x, y: this.y });
   }
 
   ngOnChanges(c: any) {
-    this.setSize(
-      { width: this.width, height: this.height },
-      { x: this.x, y: this.y }
-    );
+    this.setSize({ width: this.width, height: this.height }, { x: this.x, y: this.y });
   }
 
   onMouseMove(e: any) {
@@ -117,16 +101,22 @@ export class ResizableComponent implements OnInit, OnChanges {
     if (e.touches) {
       e = e.touches[0];
     }
-    this.emitAction(MOUSE_DOWN, {
-      x: e.clientX,
-      y: e.clientY
-    }, {
-      x: this._el.nativeElement.offsetLeft,
-      y: this._el.nativeElement.offsetTop
-    }, {
-      width: this._el.nativeElement.offsetWidth,
-      height: this._el.nativeElement.offsetHeight
-    }, dir);
+    this.emitAction(
+      MOUSE_DOWN,
+      {
+        x: e.clientX,
+        y: e.clientY
+      },
+      {
+        x: this._el.nativeElement.offsetLeft,
+        y: this._el.nativeElement.offsetTop
+      },
+      {
+        width: this._el.nativeElement.offsetWidth,
+        height: this._el.nativeElement.offsetHeight
+      },
+      dir
+    );
     this.emitEvent(this.resizeStart);
   }
 
@@ -135,7 +125,13 @@ export class ResizableComponent implements OnInit, OnChanges {
     this.emitEvent(this.resizeEnd);
   }
 
-  private emitAction(action: String, mousePosition: IPoint, startPosition?: IPoint, startSize?: ISize, startDirection?: string) {
+  private emitAction(
+    action: String,
+    mousePosition: IPoint,
+    startPosition?: IPoint,
+    startSize?: ISize,
+    startDirection?: string
+  ) {
     const options: IOptions = {
       minSize: { width: this.minWidth, height: this.minHeight },
       maxSize: { width: this.maxWidth, height: this.maxHeight },

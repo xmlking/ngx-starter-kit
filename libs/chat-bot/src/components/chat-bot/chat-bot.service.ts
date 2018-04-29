@@ -44,7 +44,7 @@ export class ChatBotService implements OnDestroy {
   }
 
   ngOnDestroy() {
-    console.log('ChatBotService ngOnDestroy')
+    console.log('ChatBotService ngOnDestroy');
   }
 
   private update(msg: Message) {

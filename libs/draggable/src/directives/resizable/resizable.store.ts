@@ -38,7 +38,7 @@ export interface IOptions {
   disabled: boolean;
   bound: IRectangle;
   ratio: number;
-};
+}
 
 export const defaultGrid: ISize = {
   width: 1,
@@ -74,4 +74,3 @@ export class Store {
     }, this.state);
   }
 }
-
