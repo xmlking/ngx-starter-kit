@@ -22,45 +22,69 @@
 <text text-anchor="start" x="429.7258" y="-15.4" font-family="sans-serif" font-size="14.00" fill="#000000"> &#160;Exports</text>
 <g id="clust1" class="cluster">
 <title>cluster_DraggableModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="167,-70 167,-268 329,-268 329,-70 167,-70"/>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="88,-70 88,-268 408,-268 408,-70 88,-70"/>
 </g>
 <g id="clust2" class="cluster">
 <title>cluster_DraggableModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="177,-78 177,-130 319,-130 319,-78 177,-78"/>
+<polygon fill="none" stroke="#000000" points="100,-78 100,-130 396,-130 396,-78 100,-78"/>
 </g>
-<g id="clust5" class="cluster">
+<g id="clust6" class="cluster">
 <title>cluster_DraggableModule_exports</title>
-<polygon fill="none" stroke="#000000" points="175,-208 175,-260 321,-260 321,-208 175,-208"/>
+<polygon fill="none" stroke="#000000" points="96,-208 96,-260 400,-260 400,-208 96,-208"/>
 </g>
 <!-- DraggableDirective -->
 <g id="node1" class="node">
 <title>DraggableDirective</title>
-<polygon fill="#ffffb3" stroke="#000000" points="311.385,-122 184.615,-122 184.615,-86 311.385,-86 311.385,-122"/>
-<text text-anchor="middle" x="248" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableDirective</text>
+<polygon fill="#ffffb3" stroke="#000000" points="388.385,-122 261.615,-122 261.615,-86 388.385,-86 388.385,-122"/>
+<text text-anchor="middle" x="325" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableDirective</text>
 </g>
 <!-- DraggableModule -->
-<g id="node2" class="node">
+<g id="node3" class="node">
 <title>DraggableModule</title>
-<polygon fill="#8dd3c7" stroke="#000000" points="306.8515,-187 303.8515,-191 282.8515,-191 279.8515,-187 189.1485,-187 189.1485,-151 306.8515,-151 306.8515,-187"/>
-<text text-anchor="middle" x="248" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableModule</text>
+<polygon fill="#8dd3c7" stroke="#000000" points="235.8515,-187 232.8515,-191 211.8515,-191 208.8515,-187 118.1485,-187 118.1485,-151 235.8515,-151 235.8515,-187"/>
+<text text-anchor="middle" x="177" y="-164.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableModule</text>
 </g>
 <!-- DraggableDirective&#45;&gt;DraggableModule -->
 <g id="edge1" class="edge">
 <title>DraggableDirective&#45;&gt;DraggableModule</title>
-<path fill="none" stroke="#000000" d="M248,-122.1061C248,-122.1061 248,-140.991 248,-140.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-140.9909 248,-150.991 251.5001,-140.991 244.5001,-140.9909"/>
+<path fill="none" stroke="#000000" d="M346.1474,-122.0225C346.1474,-139.3734 346.1474,-163 346.1474,-163 346.1474,-163 246.1596,-163 246.1596,-163"/>
+<polygon fill="#000000" stroke="#000000" points="246.1596,-159.5001 236.1596,-163 246.1595,-166.5001 246.1596,-159.5001"/>
+</g>
+<!-- ResizableComponent -->
+<g id="node2" class="node">
+<title>ResizableComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="243.7534,-122 108.2466,-122 108.2466,-86 243.7534,-86 243.7534,-122"/>
+<text text-anchor="middle" x="176" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ResizableComponent</text>
+</g>
+<!-- ResizableComponent&#45;&gt;DraggableModule -->
+<g id="edge2" class="edge">
+<title>ResizableComponent&#45;&gt;DraggableModule</title>
+<path fill="none" stroke="#000000" d="M177,-122.1061C177,-122.1061 177,-140.991 177,-140.991"/>
+<polygon fill="#000000" stroke="#000000" points="173.5001,-140.9909 177,-150.991 180.5001,-140.991 173.5001,-140.9909"/>
 </g>
 <!-- DraggableDirective  -->
-<g id="node3" class="node">
+<g id="node4" class="node">
 <title>DraggableDirective </title>
-<polygon fill="#fb8072" stroke="#000000" points="312.8845,-252 183.1155,-252 183.1155,-216 312.8845,-216 312.8845,-252"/>
-<text text-anchor="middle" x="248" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableDirective </text>
+<polygon fill="#fb8072" stroke="#000000" points="391.8845,-252 262.1155,-252 262.1155,-216 391.8845,-216 391.8845,-252"/>
+<text text-anchor="middle" x="327" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">DraggableDirective </text>
 </g>
 <!-- DraggableModule&#45;&gt;DraggableDirective  -->
-<g id="edge2" class="edge">
+<g id="edge3" class="edge">
 <title>DraggableModule&#45;&gt;DraggableDirective </title>
-<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M248,-187.1061C248,-187.1061 248,-205.991 248,-205.991"/>
-<polygon fill="#000000" stroke="#000000" points="244.5001,-205.9909 248,-215.991 251.5001,-205.991 244.5001,-205.9909"/>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M236.0861,-175C269.2782,-175 304.1026,-175 304.1026,-175 304.1026,-175 304.1026,-205.9775 304.1026,-205.9775"/>
+<polygon fill="#000000" stroke="#000000" points="300.6027,-205.9774 304.1026,-215.9775 307.6027,-205.9775 300.6027,-205.9774"/>
+</g>
+<!-- ResizableComponent  -->
+<g id="node5" class="node">
+<title>ResizableComponent </title>
+<polygon fill="#fb8072" stroke="#000000" points="243.7534,-252 104.2466,-252 104.2466,-216 243.7534,-216 243.7534,-252"/>
+<text text-anchor="middle" x="174" y="-229.8" font-family="Times,serif" font-size="14.00" fill="#000000">ResizableComponent </text>
+</g>
+<!-- DraggableModule&#45;&gt;ResizableComponent  -->
+<g id="edge4" class="edge">
+<title>DraggableModule&#45;&gt;ResizableComponent </title>
+<path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M177,-187.1061C177,-187.1061 177,-205.991 177,-205.991"/>
+<polygon fill="#000000" stroke="#000000" points="173.5001,-205.9909 177,-215.991 180.5001,-205.991 173.5001,-205.9909"/>
 </g>
 </g>
 </svg>
