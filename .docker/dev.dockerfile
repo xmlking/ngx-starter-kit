@@ -1,4 +1,4 @@
-FROM node:8.6
+FROM node:10
 
 WORKDIR /home/node/angular-seed
 
