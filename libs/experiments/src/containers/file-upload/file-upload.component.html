@@ -1,20 +1,20 @@
 <mat-toolbar>
-<button mat-raised-button (click)="openUploadDialog()">Upload</button>
+  <button mat-raised-button (click)="openUploadDialog()">Upload</button>
 </mat-toolbar>
 
 <br/><br/>
 
 <mat-card>
-<FilePond #myPond
-          name="myFilePond"
-          required="true"
-          allowMultiple="true"
-          maxFiles="3"
-          maxFileSize="1MB"
-          [acceptedFileTypes]="['image/*', 'application/pdf', 'application/*', 'text/plain', 'text/csv', '.vsd']"
-          instantUpload=false
-          [server]="uploadToServer"
-          [files]="myFiles"
-          (oninit)="handleFilePondInit()">
-</FilePond>
+  <FilePond #myPond
+            name="myFilePond"
+            required="true"
+            allowMultiple="true"
+            maxFiles="3"
+            maxFileSize="1MB"
+            [acceptedFileTypes]="['image/*', 'application/pdf', 'application/*', 'text/plain', 'text/csv', '.vsd']"
+            [instantUpload]=false
+            [server]="uploadToServer"
+            [files]="myFiles"
+            (oninit)="handleFilePondInit()">
+  </FilePond>
 </mat-card>

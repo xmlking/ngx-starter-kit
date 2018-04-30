@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { FilePondModule, registerPlugin } from 'angular-filepond';
+import { FilePondModule,registerPlugin } from '@xmlking/ngx-filepond';
 
 import { SharedModule } from '@nx-starter-kit/shared';
 import { UploadModule } from '@nx-starter-kit/upload';
