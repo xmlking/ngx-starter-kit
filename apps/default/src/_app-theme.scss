@@ -33,11 +33,6 @@
     }
   }
 
-  .default-footer {
-    background: mat-color($primary);
-    color: mat-color($primary, default-contrast);
-  }
-
   @include nxtk-site-svg-theme($theme);
   //@include default-site-tables-theme($theme);
   @include nxtk-footer-component-theme($theme);
