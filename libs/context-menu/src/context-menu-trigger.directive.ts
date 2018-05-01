@@ -28,7 +28,13 @@ export class ContextMenuTriggerDirective implements OnDestroy {
 
     const positionStrategy = this._overlay
       .position()
-      .connectedTo(this._elementRef, { originX: 'start', originY: 'bottom' }, { overlayX: 'start', overlayY: 'top' });
+      .flexibleConnectedTo(this._elementRef)
+      .withPositions([{
+        overlayX: 'start',
+        overlayY: 'top',
+        originX: 'start',
+        originY: 'bottom'
+      }]);
 
     const overlayRef = this._overlay.create({ positionStrategy });
     const templatePortal = new TemplatePortal(this.contextMenu, this._vcr);

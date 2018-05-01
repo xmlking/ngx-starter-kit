@@ -4,9 +4,6 @@ import { Component, ChangeDetectionStrategy, HostListener, HostBinding } from '@
   selector: 'df-context-menu',
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.scss'],
-  // host: {
-  //   class: 'mat-elevation-z2'
-  // },
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ContextMenuComponent {
