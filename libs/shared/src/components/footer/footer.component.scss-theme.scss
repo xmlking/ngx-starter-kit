@@ -7,6 +7,11 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
+  .default-footer {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
   app-footer {
     .default-footer-links a {
       color: mat-color($primary, default-contrast);
