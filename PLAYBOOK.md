@@ -243,6 +243,7 @@ ng g component containers/experimentsLayout --app=experiments --dry-run
 ng g component containers/experiments --app=experiments --dry-run
 ng g component components/hammerCard --app=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --app=experiments --dry-run
+ng g component containers/ContextMenu --app=experiments --dry-run
 
 
 

@@ -41,6 +41,11 @@ export const defaultMenu: MenuItem[] = [
         name: 'Upload',
         icon: 'directions',
         link: '/dashboard/experiments/file-upload'
+      },
+      {
+        name: 'Context Menu',
+        icon: 'web_aaset',
+        link: '/dashboard/experiments/context-menu'
       }
     ]
   },

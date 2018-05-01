@@ -6,9 +6,11 @@ import { FilePondModule,registerPlugin } from '@xmlking/ngx-filepond';
 
 import { SharedModule } from '@nx-starter-kit/shared';
 import { UploadModule } from '@nx-starter-kit/upload';
+import {ContextMenuModule} from "@nx-starter-kit/context-menu";
 import { AnimationsComponent } from './containers/animations/animations.component';
 import { FileUploadComponent } from './containers/file-upload/file-upload.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
+import { ContextMenuComponent } from './containers/context-menu/context-menu.component';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -22,6 +24,7 @@ import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-t
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 
+
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
 @NgModule({
@@ -29,6 +32,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     SharedModule,
     UploadModule,
     FilePondModule,
+    ContextMenuModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
@@ -43,9 +47,9 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         data: { animation: 'file-upload' }
       },
       {
-        path: 'experiment3',
-        component: AnimationsComponent,
-        data: { animation: 'experiment3' }
+        path: 'context-menu',
+        component: ContextMenuComponent,
+        data: { animation: 'context-menu' }
       }
     ])
   ],
@@ -55,6 +59,6 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
       useClass: MyHammerConfig
     }
   ],
-  declarations: [AnimationsComponent, FileUploadComponent, HammertimeDirective]
+  declarations: [AnimationsComponent, FileUploadComponent, HammertimeDirective, ContextMenuComponent]
 })
 export class ExperimentsModule {}
