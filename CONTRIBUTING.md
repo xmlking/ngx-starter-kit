@@ -7,14 +7,14 @@ today! As a contributor, here are the guidelines we would like you to follow:
 
 ### Found an Issue?
 If you find a bug in the source code or a mistake in the documentation, you can help us by
-[submitting an issue](#submit-issue) to our [GitHub Repository][github]. Even better, you can
+[submitting an issue][issues] to our [GitHub Repository][github]. Even better, you can
 [submit a Pull Request](#submit-pr) with a fix.
 
 
 ### <a name="submit-pr"></a> Submitting a Pull Request (PR)
 Before you submit your Pull Request (PR) consider the following guidelines:
 
-* Search [GitHub](https://github.com/xmlking/nx-starter-kit/pulls) for an open or closed PR
+* Search [GitHub][pulls]for an open or closed PR
   that relates to your submission. You don't want to duplicate effort.
 * Make your changes in a new git branch:
 
@@ -26,7 +26,7 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 * Follow our [Coding Rules](#rules).
 * Run the full Angular CLI test suite, and ensure that all tests pass.
 * Commit your changes using a descriptive commit message that follows our
-  [commit message conventions](#commit). Adherence to these conventions
+  [commit message conventions](#commit-message-guidelines). Adherence to these conventions
   is necessary because release notes are automatically generated from these messages.
 
      ```shell
@@ -82,7 +82,7 @@ from the main (upstream) repository:
     git pull --ff upstream master
     ```
 
-## Commit Message Guidelines
+## <a name="commit-message-guidelines"></a> Commit Message Guidelines
 
 We have very precise rules over how our git commit messages can be formatted.  This leads to **more
 readable messages** that are easy to follow when looking through the **project history**.  But also,
@@ -147,4 +147,7 @@ The version in our package.json gets copied to the one we publish, and users nee
 
 [GitHub]: https://github.com/xmlking/nx-starter-kit
 [gitter]: https://gitter.im/xmlking/nx-starter-kit
+[issues]: https://github.com/xmlking/nx-starter-kit/issues
+[pulls]: https://github.com/xmlking/nx-starter-kit/pulls
+
 [js-style-guide]: https://google.github.io/styleguide/jsguide.html
