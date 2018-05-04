@@ -1,2 +1,2 @@
-export { Utils } from './src/utils';
+export { StateDef } from './src/StateDef';
 export { waitUntil } from './src/utils';
