@@ -12,6 +12,7 @@ import {
 } from './resizable.store';
 import { resizeReducer } from './resizable.reducer';
 import { MOUSE_DOWN, RESIZE_STOP, RESIZE } from './resizable.actions';
+import { ResizableState } from "./resizable.state";
 
 @Component({
   // tslint:disable-next-line
@@ -69,7 +70,7 @@ export class ResizableComponent implements OnInit, OnChanges {
   // Resize ratio.
   @Input() ratio: number = null;
 
-  constructor(private _el: ElementRef, private _store: Store, private _renderer: Renderer2) {}
+  constructor(private _el: ElementRef, private _store: Store, private _renderer: Renderer2, private rstate: ResizableState) {}
 
   ngOnInit() {
     this._renderer.addClass(this._el.nativeElement, 'ngresizable');

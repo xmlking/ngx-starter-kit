@@ -1,5 +1,3 @@
-export class Utils {}
-
 export function waitUntil(condition, timeout = 2000) {
   return new Promise(function(resolve, reject) {
     setTimeout(_ => reject(), timeout);
