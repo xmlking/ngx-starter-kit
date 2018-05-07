@@ -1,5 +1,5 @@
 import { AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy } from '@angular/core';
-import {fromEvent, merge, Subject} from 'rxjs';
+import { fromEvent, merge, Subject } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 
 @Directive({
@@ -34,7 +34,6 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
 
   private setupEvents() {
     this.zone.runOutsideAngular(() => {
-
       const mouseEvents = (e: MouseEvent) => {
         e.preventDefault();
         return {
@@ -59,16 +58,16 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
       const touchend$ = fromEvent(document, 'touchend').pipe(map(touchEvents));
 
       const start$ = merge(mousedown$, touchstart$);
-      const move$ =  merge(mousemove$, touchmove$);
-      const end$ =  merge(mouseup$, touchend$);
+      const move$ = merge(mousemove$, touchmove$);
+      const end$ = merge(mouseup$, touchend$);
 
       const drag$ = start$.pipe(
-        switchMap((start) => {
+        switchMap(start => {
           const startX = start.x;
           const startY = start.y;
 
           return move$.pipe(
-            map((move) => {
+            map(move => {
               this.delta = {
                 x: move.x - startX,
                 y: move.y - startY

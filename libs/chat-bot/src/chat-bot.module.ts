@@ -17,10 +17,10 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DraggableModule } from '@nx-starter-kit/draggable';
-import { LedModule } from "@nx-starter-kit/led";
+import { LedModule } from '@nx-starter-kit/led';
 
 import { ChatBotComponent } from './chat-bot.component';
-import {ChatBotService} from "./chat-bot.service";
+import { ChatBotService } from './chat-bot.service';
 
 @NgModule({
   imports: [

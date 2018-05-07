@@ -1,8 +1,8 @@
-import {Component, ElementRef, OnDestroy, OnInit, ViewChild} from '@angular/core';
-import {Observable} from 'rxjs';
-import {ChatBotService, Message} from './chat-bot.service';
-import {scan} from 'rxjs/operators';
-import {scrollFabAnimation} from '@nx-starter-kit/animations';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Observable } from 'rxjs';
+import { ChatBotService, Message } from './chat-bot.service';
+import { scan } from 'rxjs/operators';
+import { scrollFabAnimation } from '@nx-starter-kit/animations';
 
 @Component({
   selector: 'nxtk-chatbot',
@@ -32,14 +32,13 @@ export class ChatBotComponent implements OnInit, OnDestroy {
       (async () => {
         this.voices = await this.chatBotService.getVoiceList();
         this.selectedVoice = this.voices[48];
-      })()
+      })();
     }
 
     this.messages = this.chatBotService.conversation.asObservable().pipe(scan((acc, val) => acc.concat(val)));
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   private speak(text: string) {
     if (this.canUseSpeechSynthesis) {
@@ -51,7 +50,7 @@ export class ChatBotComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.input.nativeElement.focus();
       if (this.bottom !== undefined) {
-        this.bottom.nativeElement.scrollIntoView()
+        this.bottom.nativeElement.scrollIntoView();
       }
     }, 100);
   }

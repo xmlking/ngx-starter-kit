@@ -1,6 +1,6 @@
-import {Injectable} from "@angular/core";
-import { StateDef } from "@nx-starter-kit/utils";
-import { IResizeState } from "./resizable.store";
+import { Injectable } from '@angular/core';
+import { StateDef } from '@nx-starter-kit/utils';
+import { IResizeState } from './resizable.store';
 
 @Injectable()
 export class ResizableState extends StateDef<IResizeState> {
@@ -14,5 +14,4 @@ export class ResizableState extends StateDef<IResizeState> {
       direction: null
     });
   }
-
 }
