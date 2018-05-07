@@ -1,73 +1,77 @@
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-
-.resize {
-  resize: both;
-  overflow: auto;
-  width: 350px;
-  //height: 400px;
-  min-width: 300px;
-  min-height: 540px;
-  max-width: 85vw;
-  max-height: 100vh;
-
-  //:active {
-  //  width: 0;
-  //  height: 0;
-  //}
-}
-
-.chat-circle {
+/* Chat Button */
+.chat-button {
   position: fixed !important;
   bottom: 25px;
   right: 25px;
   z-index: 5;
 }
 
-.flex-vert-center {
-  display: flex;
-  align-items: center;
+//.flex-vert-center {
+//  display: flex;
+//  align-items: center;
+//}
+
+/* Chat Header */
+.chat-header {
+  min-height: 72px !important;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
-.chat-input-container {
-  display: flex;
-  flex-direction: column;
+/* Chat Box */
+.chat-box {
+  background: #efefef;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  width: 351px;
+  height: 60vh;
+  min-width: 350px;
+  min-height:400px;
+  max-width: 85vw;
+  max-height: 85vh;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 0px 5px 35px 9px #ccc;
+}
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) {
+  .chat-box {
+    min-height:30vh;
+    height: 40vh;
+  }
+}
+/* Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) {
+  .chat-box {
+    height: 60vh;
+  }
+}
+
+
+/* Chat Input Container */
+::ng-deep .mat-form-field-underline {
+  display: none;
+}
+.chat-input {
   padding: 10px 10px 10px;
 
-  background: #f4f7f9;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   overflow: hidden;
 }
+//.chat-input > * {
+//  width: 100%;
+//}
 
+/* Chat Content */
 .card-content {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.chat-box {
-  background: #efefef;
-  position: fixed;
-  right: 30px;
-  bottom: 50px;
-  width: 350px;
-  height: 400px;
-  max-width: 85vw;
-  max-height: 100vh;
-  border-radius: 5px;
-  z-index: 2;
-  /*   box-shadow: 0px 5px 35px 9px #464a92; */
-  box-shadow: 0px 5px 35px 9px #ccc;
-}
-
-.chat-box-header {
-  min-height: 72px !important;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-
+/* Chat Messages */
 .chat-logs {
   padding: 15px;
   overflow-y: scroll;
@@ -79,8 +83,7 @@
   }
 }
 
-
-//message
+/* Chat Messages */
 .message {
   padding: 8px 16px;
   font-weight: 400;

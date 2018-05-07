@@ -1,4 +1,14 @@
-import { Component, ElementRef, Renderer2, Input, Output, EventEmitter, OnInit, OnChanges } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Renderer2,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnChanges,
+  AfterViewInit, HostBinding
+} from '@angular/core';
 
 import {
   Store,
@@ -13,6 +23,7 @@ import {
 import { resizeReducer } from './resizable.reducer';
 import { MOUSE_DOWN, RESIZE_STOP, RESIZE } from './resizable.actions';
 import { ResizableState } from "./resizable.state";
+
 
 @Component({
   // tslint:disable-next-line
@@ -43,22 +54,24 @@ export class ResizableComponent implements OnInit, OnChanges {
   // Resize end event.
   @Output() resizeEnd = new EventEmitter<IResizeEvent>();
 
-  // Width of the element.
-  @Input() width: number;
-  // Height of the element.
-  @Input() height: number;
   // x coordinate of the element.
   @Input() x: number;
   // y coordinate of the element.
   @Input() y: number;
-  // Maximum width.
-  @Input() maxWidth = Infinity;
+  // Width of the element.
+  @Input() width?: number;
+  // Height of the element.
+  @Input() height?: number;
   // Minimum width.
-  @Input() minWidth = 0;
-  // Maximum height.
-  @Input() maxHeight = Infinity;
+  @Input() minWidth? = 350;
   // Minimum height.
-  @Input() minHeight = 0;
+  @Input() minHeight? = 400;
+  // Maximum width.
+  @Input() maxWidth? = Infinity;
+  // Maximum height.
+  @Input() maxHeight? = Infinity;
+
+
   // Disable the resize.
   @Input() disableResize = false;
   // An array which contains the resize directions.
@@ -70,10 +83,24 @@ export class ResizableComponent implements OnInit, OnChanges {
   // Resize ratio.
   @Input() ratio: number = null;
 
-  constructor(private _el: ElementRef, private _store: Store, private _renderer: Renderer2, private rstate: ResizableState) {}
+  constructor(private _el: ElementRef, private _store: Store, private _renderer: Renderer2, private rState: ResizableState) {}
 
   ngOnInit() {
     this._renderer.addClass(this._el.nativeElement, 'ngresizable');
+    const css = getComputedStyle(this._el.nativeElement);
+    this.width = css.width ?  parseInt(css.width, 10) : this.width;
+    this.height = css.height ?  parseInt(css.height, 10) : this.height;
+    this.minWidth = css.minWidth ?  parseInt(css.minWidth, 10) : this.minWidth;
+    this.minHeight = css.minHeight ?  parseInt(css.minHeight, 10) : this.minHeight;
+    this.maxWidth = css.maxWidth ?  parseInt(css.maxWidth, 10) : this.maxWidth;
+    this.maxHeight = css.maxHeight ?  parseInt(css.maxHeight, 10) : this.maxHeight;
+    // console.log(this.width);
+    // console.log(this.height);
+    // console.log(this.minWidth);
+    // console.log(this.minHeight);
+    // console.log(this.maxWidth);
+    // console.log(this.maxHeight);
+
     this._store.addReducer(resizeReducer);
     this.setSize({ width: this.width, height: this.height }, { x: this.x, y: this.y });
   }

@@ -1,8 +1,8 @@
-<button mat-fab class="chat-circle" (click)="showChat = !showChat" [@scrollAnimation]="showChat? 'hide' : 'show'">
+<button mat-fab class="chat-circle" (click)="showChatBox = !showChatBox" [@scrollAnimation]="showChatBox? 'hide' : 'show'">
   <mat-icon>chat_bubble</mat-icon>
 </button>
 
-<div  [@scrollAnimation]="showChat? 'show' : 'hide'">
+<div  [@scrollAnimation]="showChatBox? 'show' : 'hide'">
   <mat-tab-group headerPosition="below" [dynamicHeight]="true">
     <mat-tab label="CHAT">
       <ng-template mat-tab-label>
@@ -13,12 +13,12 @@
       </ng-template>
       <div fxLayout='column' class="chat-box resize">
         <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-                     class="chat-box-header mat-elevation-z2" color="primary"
+                     class="chat-header mat-elevation-z2" color="primary"
                      [draggable] dragTarget=".chat-box">
           <span fxFlex>Chat</span>
           <span fxFlex="grow"><!-- fill space --></span>
           <button mat-icon-button>
-            <mat-icon (click)="showChat = !showChat">close</mat-icon>
+            <mat-icon (click)="showChatBox = !showChatBox">close</mat-icon>
           </button>
         </mat-toolbar>
 
@@ -51,12 +51,12 @@
       </ng-template>
       <div fxLayout='column' class="chat-box resize">
         <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-                     class="chat-box-header mat-elevation-z2" color="primary"
+                     class="chat-header mat-elevation-z2" color="primary"
                      [draggable] dragTarget=".chat-box">
           <span fxFlex>Help</span>
           <span fxFlex="grow"><!-- fill space --></span>
           <button mat-icon-button>
-            <mat-icon (click)="showChat = !showChat">close</mat-icon>
+            <mat-icon (click)="showChatBox = !showChatBox">close</mat-icon>
           </button>
         </mat-toolbar>
         <div fxFlex="grow" class="chat-logs">
