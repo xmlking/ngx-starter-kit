@@ -2,11 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-import { FilePondModule,registerPlugin } from '@xmlking/ngx-filepond';
+import { FilePondModule, registerPlugin } from '@xmlking/ngx-filepond';
 
 import { SharedModule } from '@nx-starter-kit/shared';
 import { UploadModule } from '@nx-starter-kit/upload';
-import {ContextMenuModule} from "@nx-starter-kit/context-menu";
+import { ContextMenuModule } from '@nx-starter-kit/context-menu';
 import { AnimationsComponent } from './containers/animations/animations.component';
 import { FileUploadComponent } from './containers/file-upload/file-upload.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
@@ -23,7 +23,6 @@ export class MyHammerConfig extends HammerGestureConfig {
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
-
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 

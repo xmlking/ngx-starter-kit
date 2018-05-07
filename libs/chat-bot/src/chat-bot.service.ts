@@ -2,7 +2,7 @@ import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiAiClient } from 'api-ai-javascript';
 import { environment } from '@env/environment';
-import {ChatBotModule} from "./chat-bot.module";
+import { ChatBotModule } from './chat-bot.module';
 
 const SpeechRecognition =
   (window as any).webkitSpeechRecognition ||

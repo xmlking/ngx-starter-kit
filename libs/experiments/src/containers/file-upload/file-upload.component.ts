@@ -1,4 +1,4 @@
-import {Component, ViewChild} from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UploadComponent } from '@nx-starter-kit/upload';
 
@@ -8,21 +8,18 @@ import { UploadComponent } from '@nx-starter-kit/upload';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
-
   @ViewChild('myPond') myPond: any;
   myFiles = [];
   // Ref: https://pqina.nl/filepond/docs/patterns/api/server/
   uploadToServer = {
-
     process: (fieldName, file, metadata, load, error, progress, abort) => {
-
       // Create data object containing the file and the file metadata
       const formData = new FormData();
       formData.append(fieldName, file, file.name);
       formData.append(fieldName, JSON.stringify(metadata));
 
       // Progress indicator supported, set progress to 25% of 1
-      progress(true, .25, 1);
+      progress(true, 0.25, 1);
 
       // progress(false); // for infinite upload mode
 
@@ -34,7 +31,6 @@ export class FileUploadComponent {
       // Should expose an abort method so the request can be cancelled by the user
       return {
         abort: () => {
-
           // abort your request here (we clear timer for demo purposes)
           clearTimeout(timer);
 
@@ -44,7 +40,7 @@ export class FileUploadComponent {
       };
     },
 
-    revert:  (uniqueFileId, load, error) => {
+    revert: (uniqueFileId, load, error) => {
       // Should get a file object here
       // ...
 
@@ -84,15 +80,10 @@ export class FileUploadComponent {
       };
     },
 
-    fetch: (url, load, error, progress, abort, headers) => {
+    fetch: (url, load, error, progress, abort, headers) => {},
 
-    },
-
-    restore: (uniqueFileId, load, error, progress, abort, headers) => {
-
-    }
+    restore: (uniqueFileId, load, error, progress, abort, headers) => {}
   };
-
 
   constructor(public dialog: MatDialog) {}
 

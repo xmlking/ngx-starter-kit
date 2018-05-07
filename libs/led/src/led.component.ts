@@ -1,4 +1,4 @@
-import {Component, HostBinding, Input, OnInit} from '@angular/core';
+import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'nxtk-led',
@@ -11,12 +11,11 @@ export class LedComponent implements OnInit {
   @Input() speed = 1000;
   @Input() size = '24px';
   // @HostBinding('class.active') @Input() active: boolean = false;
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   onClick() {
-    this.blink = !this.blink
+    this.blink = !this.blink;
   }
 }

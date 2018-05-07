@@ -5,6 +5,6 @@ import { LedComponent } from './led.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [LedComponent],
-  exports:[LedComponent]
+  exports: [LedComponent]
 })
 export class LedModule {}
