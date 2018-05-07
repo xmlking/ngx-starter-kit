@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+@mixin nxtk-toolbar-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  nxtk-toolbar {
+    .mat-toolbar {
+      color: rgba(0, 0, 0, 0.87);
+      background-color: #ffffff;
+      //color: mat-color($foreground, text);
+      //background-color: mat-color($background, background, 0.6);
+    }
+
+    .mat-nav-list {
+      .mat-list-item {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+
+  }
+}

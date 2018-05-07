@@ -7,6 +7,9 @@
 @import '../../../libs/home/src/components/header/header.component.scss-theme';
 @import '../../../libs/home/src/containers/about/about.component.scss-theme';
 @import '../../../libs/breadcrumbs/src/breadcrumbs.component-theme';
+@import '../../../libs/toolbar/src/toolbar.component.scss-theme';
+@import '../../../libs/sidenav/src/sidenav.component.scss-theme';
+@import '../../../libs/chat-bot/src/chat-bot.component.scss-theme';
 
 @import './styles/global.scss-theme';
 @import './styles/svg-theme';
@@ -41,5 +44,9 @@
 
   @include nxtk-about-component-theme($theme);
   @include nxtk-breadcrumbs-component-theme($theme);
+  @include nxtk-toolbar-component-theme($theme);
+  @include nxtk-sidenav-component-theme($theme);
+  @include nxtk-chatbot-component-theme($theme);
+
   @include nxtk-global-theme($theme);
 }
