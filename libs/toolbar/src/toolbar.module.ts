@@ -15,9 +15,11 @@ import {
   MatBadgeModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+
 import { FullscreenModule } from '@nx-starter-kit/fullscreen';
 import { BreadcrumbsModule } from '@nx-starter-kit/breadcrumbs';
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { ThemePickerModule } from '@nx-starter-kit/theme-picker';
 
 import { ToolbarComponent } from './toolbar.component';
 import { SearchComponent } from './components/search/search.component';
@@ -41,6 +43,7 @@ import { ClickOutsideDirective } from './components/click-outside/click-outside.
     FlexLayoutModule,
     FullscreenModule,
     BreadcrumbsModule,
+    ThemePickerModule,
     FormsModule, //FIXME : remove
     PerfectScrollbarModule,
     RouterModule,
