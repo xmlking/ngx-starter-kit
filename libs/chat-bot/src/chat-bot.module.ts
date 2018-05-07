@@ -17,12 +17,16 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DraggableModule } from '@nx-starter-kit/draggable';
-import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
+import { LedModule } from "@nx-starter-kit/led";
+
+import { ChatBotComponent } from './chat-bot.component';
+import {ChatBotService} from "./chat-bot.service";
 
 @NgModule({
   imports: [
     CommonModule,
     DraggableModule,
+    LedModule,
     FormsModule,
     FlexLayoutModule,
     MatSelectModule,
@@ -39,6 +43,7 @@ import { ChatBotComponent } from './components/chat-bot/chat-bot.component';
     MatFormFieldModule
   ],
   declarations: [ChatBotComponent],
-  exports: [ChatBotComponent]
+  exports: [ChatBotComponent],
+  providers: [ChatBotService]
 })
 export class ChatBotModule {}

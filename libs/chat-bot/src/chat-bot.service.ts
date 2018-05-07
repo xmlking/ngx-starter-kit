@@ -2,6 +2,7 @@ import { Injectable, NgZone, OnDestroy } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { ApiAiClient } from 'api-ai-javascript';
 import { environment } from '@env/environment';
+import {ChatBotModule} from "./chat-bot.module";
 
 const SpeechRecognition =
   (window as any).webkitSpeechRecognition ||
@@ -17,6 +18,7 @@ export class Message {
 }
 
 @Injectable()
+// @Injectable({providedIn: ChatBotModule})
 export class ChatBotService implements OnDestroy {
   readonly client = new ApiAiClient({ accessToken: environment.dialogFlow.apiToken });
   conversation = new BehaviorSubject<Message[]>([]);

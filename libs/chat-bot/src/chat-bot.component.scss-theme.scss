@@ -1,0 +1,29 @@
+@import '../../../node_modules/@angular/material/theming';
+
+@mixin nxtk-chatbot-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  nxtk-chatbot {
+
+    .chat-input {
+      color: mat-color($foreground, text);
+      background-color: mat-color($background, background);
+      //background-color: mat-color($background, background, 0.6);
+    }
+
+    //.chat-input {
+    //
+    //  &:hover, &:active, &:focus {
+    //    background-color: mat-color($background, hover);
+    //  }
+    //
+    //  &.selected {
+    //    background-color: mat-color($primary, lighter, 0.5);
+    //    color: mat-color($foreground, text);
+    //  }
+    //}
+  }
+}
