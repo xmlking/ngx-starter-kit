@@ -10,7 +10,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Node                          | v10.0.0  |          | 
 | NPM                           | v6.0.0   |          | 
 | Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v1.0.2   |          | 
+| @nrwl/schematics              | v1.0.3   |          | 
 
 
 ### Install Prerequisites
@@ -49,6 +49,8 @@ npm list -g --depth=0
 npm outdated -g --depth=0
 # set scss as default css processor
 ng set defaults.styleExt scss
+# show dependency tree for specified package.
+npm ls jasmine-marbles
 ```
 
 ### Scaffold Project
@@ -181,6 +183,10 @@ ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
 ng g lib svgViewer --tags=public-module
 ng g component svgViewer --app=svg-viewer --flat --dry-run 
 
+# generate components for `led` Module
+ng g lib led --tags=public-module
+ng g component led --app=led --flat --dry-run 
+
 # generate components for `chatBot` Module
 ng g lib chatBot --tags=public-module --dry-run 
 ng g component components/chatBot --app=chat-bot --dry-run 
@@ -244,7 +250,6 @@ ng g component containers/experiments --app=experiments --dry-run
 ng g component components/hammerCard --app=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --app=experiments --dry-run
 ng g component containers/ContextMenu --app=experiments --dry-run
-
 
 
 # scaffolding ngrx for root module i.e., app.module.ts
