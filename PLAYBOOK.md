@@ -190,6 +190,7 @@ ng g component led --app=led --flat --dry-run
 # generate components for `chatBot` Module
 ng g lib chatBot --tags=public-module --dry-run 
 ng g component components/chatBot --app=chat-bot --dry-run 
+ng g component components/typingIndicator --app=chat-bot --dry-run 
 
 # generate components for `socketioPlugin` Module
 ng g lib socketioPlugin --tags=public-module  --dry-run

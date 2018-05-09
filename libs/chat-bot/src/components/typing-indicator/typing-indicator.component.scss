@@ -1,0 +1,58 @@
+/* TYPING
+-------------------------------------------------- */
+.typing-indicator {
+  $ti-color-bg: #E6E7ED;
+  background-color: $ti-color-bg;
+  will-change: transform;
+  width: auto;
+  border-radius: 33px;
+  padding: 10px;
+  display: inline-block;
+  margin: 5px auto 0;
+  top: -10px;
+  position: relative;
+  animation: 2s bulge infinite ease-out;
+  &::before, &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: -2px;
+    height: 10px;
+    width: 10px;
+    border-radius: 40%;
+    background-color: $ti-color-bg;
+  }
+  &::after {
+    height: 5px;
+    width: 5px;
+    left: -5px;
+    bottom: -5px;
+  }
+  span {
+    height: 6px;
+    width: 6px;
+    float: left;
+    margin: 0 1px;
+    background-color: #9E9EA1;
+    display: block;
+    border-radius: 50%;
+    opacity: 0.4;
+    @for $i from 1 through 3 {
+      &:nth-of-type(#{$i}) {
+        animation: 1s blink infinite ($i * .3333s);
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes bulge {
+  50% {
+    transform: scale(1.05);
+  }
+}

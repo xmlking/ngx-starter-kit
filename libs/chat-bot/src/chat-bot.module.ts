@@ -20,6 +20,7 @@ import { DraggableModule } from '@nx-starter-kit/draggable';
 import { LedModule } from '@nx-starter-kit/led';
 
 import { ChatBotComponent } from './chat-bot.component';
+import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
 import { ChatBotService } from './chat-bot.service';
 
 @NgModule({
@@ -42,7 +43,7 @@ import { ChatBotService } from './chat-bot.service';
     MatDividerModule,
     MatFormFieldModule
   ],
-  declarations: [ChatBotComponent],
+  declarations: [ChatBotComponent, TypingIndicatorComponent],
   exports: [ChatBotComponent],
   providers: [ChatBotService]
 })

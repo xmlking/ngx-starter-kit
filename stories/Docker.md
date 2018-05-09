@@ -58,3 +58,9 @@ docker image prune
 kubectl get services
 kubectl get pods
 kubectl logs -f  keycloak-server-6-grfmg
+
+
+### Ref
+* If you get 137 error
+  * https://samwize.com/2016/05/19/docker-error-returned-a-non-zero-code-137/
+  * https://docs.docker.com/docker-for-mac/#advanced
