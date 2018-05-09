@@ -7,7 +7,7 @@
      [@scrollAnimation]="showChatBox? 'show' : 'hide'">
 
   <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-               class="chat-header mat-elevation-z2" color="primary"
+               class="header mat-elevation-z2" color="primary"
                [draggable] dragTarget=".chat-box">
     <span fxFlex>ChatBot</span>
     <span fxFlex="grow"><!-- fill space --></span>
@@ -17,18 +17,21 @@
     </button>
   </mat-toolbar>
 
-  <div fxFlex="grow" class="chat-logs">
+  <div fxFlex="grow" class="body">
     <div *ngFor="let message of messages | async"
          class="message"
          [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
       {{ message.content }}
+    </div>
+    <div style="position: fixed; bottom: 60px;">
+      <typing-indicator *ngIf="typing"></typing-indicator>
     </div>
     <div #bottom></div>
   </div>
 
   <mat-divider></mat-divider>
 
-  <mat-form-field fxFlex class="chat-input" color="primary">
+  <mat-form-field fxFlex class="input" color="primary">
     <mat-icon matPrefix *ngIf="canUseSpeechRecognition" (click)="startTalkingToBot()">keyboard_voice</mat-icon>
     <input #input matInput type="text" [(ngModel)]="formInput"
            (keyup.enter)="sendMessageToBot()" (keyup.escape)="showChatBox = false"

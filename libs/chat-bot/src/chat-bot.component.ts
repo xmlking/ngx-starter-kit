@@ -1,17 +1,19 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
+import { fromEvent, Observable } from 'rxjs';
 import { ChatBotService, Message } from './chat-bot.service';
-import { scan } from 'rxjs/operators';
+import { filter, scan, take, takeUntil } from 'rxjs/operators';
 import { scrollFabAnimation } from '@nx-starter-kit/animations';
 
 @Component({
   selector: 'nxtk-chatbot',
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
-  animations: [scrollFabAnimation]
+  animations: [scrollFabAnimation],
+  providers: [ChatBotService]
 })
 export class ChatBotComponent implements OnInit, OnDestroy {
   showChatBox = false;
+  typing = false;
   formInput = '';
   @ViewChild('bottom') bottom: ElementRef;
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
@@ -38,7 +40,8 @@ export class ChatBotComponent implements OnInit, OnDestroy {
     this.messages = this.chatBotService.conversation.asObservable().pipe(scan((acc, val) => acc.concat(val)));
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+  }
 
   private speak(text: string) {
     if (this.canUseSpeechSynthesis) {
@@ -52,6 +55,7 @@ export class ChatBotComponent implements OnInit, OnDestroy {
       if (this.bottom !== undefined) {
         this.bottom.nativeElement.scrollIntoView();
       }
+      this.checkTyping();
     }, 100);
   }
 
@@ -77,5 +81,24 @@ export class ChatBotComponent implements OnInit, OnDestroy {
     if (this.showChatBox) {
       this.focus();
     }
+  }
+
+
+  checkTyping() {
+    console.log('in checkTyping');
+    const keyDowns = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keydown');
+    const enterUp = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keyup').pipe(
+      filter((x: any) => x.key === 'Enter'),
+      take(1)
+    );
+
+    const typing = keyDowns.pipe(
+      // map(true),
+      takeUntil(enterUp)
+    ).subscribe(
+      () => this.typing = true,
+      () => this.typing = false,
+      () => this.typing = false
+    );
   }
 }
