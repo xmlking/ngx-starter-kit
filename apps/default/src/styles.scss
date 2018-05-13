@@ -7,10 +7,12 @@
 @import './styles/base';
 @import './styles/global';
 
-// Include material core styles.
+/* Include material core styles.
+-------------------------------------------------- */
 @include mat-core($custom-typography);
 
-// Define the light theme.
+/* Define the light theme.
+-------------------------------------------------- */
 $primary: mat-palette($mat-indigo);
 $accent: mat-palette($mat-pink, A200, A100, A400);
 
@@ -18,6 +20,18 @@ $theme: mat-light-theme($primary, $accent);
 @include angular-material-theme($theme);
 @include custom-components-theme($theme);
 
-// 3rd party
+/* Used by Home only
+-------------------------------------------------- */
+$alt-primary: mat-palette($mat-yellow);
+$alt-accent:  mat-palette($mat-grey, 200);
+$alt-theme: mat-dark-theme($alt-primary, $alt-accent);
+
+.alternative {
+  @include angular-material-theme($alt-theme);
+  //@include custom-components-theme($alt-theme);
+}
+
+/* 3rd party
+-------------------------------------------------- */
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import '~nvd3/build/nv.d3.css';
