@@ -1,1 +1,1 @@
-export { ExperimentsModule } from './src/experiments.module';
+export { ExperimentsModule } from './src/lib/experiments.module';

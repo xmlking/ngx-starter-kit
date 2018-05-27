@@ -1,0 +1,37 @@
+:host {
+  display: block;
+}
+
+.dashboard-container {
+  padding: 1%;
+  position: relative;
+
+  .header {
+    min-height: 220px;
+    background: linear-gradient(60deg, #2196F3, #3F51B5);
+  }
+}
+
+.margin-top {
+  margin-top: 12px;
+}
+
+@media screen and (min-width: 960px) and (max-width: 1279px) {
+  .margin-top-md {
+    margin-top: 12px;
+  }
+}
+
+@media screen and (max-width: 959px) {
+  .margin-bottom-sm {
+    margin-bottom: 12px;
+  }
+}
+
+
+:host /deep/ {
+  @import "var";
+  @import "fu/charts";
+  @import "fu/cards";
+  @import "fu/tables";
+}

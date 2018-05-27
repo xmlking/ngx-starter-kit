@@ -1,1 +1,1 @@
-export { CrudModule } from './src/crud.module';
+export { CrudModule } from './src/lib/crud.module';

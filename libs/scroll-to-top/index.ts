@@ -1,1 +1,1 @@
-export { ScrollToTopModule } from './src/scroll-to-top.module';
+export { ScrollToTopModule } from './src/lib/scroll-to-top.module';

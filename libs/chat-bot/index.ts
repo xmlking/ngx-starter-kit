@@ -1,1 +1,1 @@
-export { ChatBotModule } from './src/chat-bot.module';
+export { ChatBotModule } from './src/lib/chat-bot.module';

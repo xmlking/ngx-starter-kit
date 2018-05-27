@@ -1,1 +1,1 @@
-export { WidgetsModule } from './src/widgets.module';
+export { WidgetsModule } from './src/lib/widgets.module';

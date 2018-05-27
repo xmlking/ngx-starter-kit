@@ -1,0 +1,20 @@
+@import '~@angular/material/theming';
+
+@mixin nxtk-footer-component-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $warn: map-get($theme, warn);
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+
+  .default-footer {
+    background: mat-color($primary);
+    color: mat-color($primary, default-contrast);
+  }
+
+  ngx-footer {
+    .default-footer-links a {
+      color: mat-color($primary, default-contrast);
+    }
+  }
+}

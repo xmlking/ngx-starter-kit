@@ -1,3 +1,3 @@
-export { MaterialModule } from './src/material.module';
-export { MaterialDateModule } from './src/material-date.module';
-export { CdkModule } from './src/cdk.module';
+export { MaterialModule } from './src/lib/material.module';
+export { MaterialDateModule } from './src/lib/material-date.module';
+export { CdkModule } from './src/lib/cdk.module';

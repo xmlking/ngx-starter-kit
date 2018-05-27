@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+$config: mat-typography-config();
+
+mat-toolbar {
+  padding-right: 0;
+}
+
+nxtk-notifications, nxtk-fullscreen, nxtk-search, user-menu {
+  height: 100%;
+}
+
+button.quickpanel-toggle {
+  border-radius: 0;
+  padding: 0;
+  min-width: 75px;
+  max-width: 75px;
+  height: 100%;
+}
+
+@import "var";
+:host {
+  z-index: $z-index__main-toolbar;
+}

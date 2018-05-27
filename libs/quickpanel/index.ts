@@ -1,1 +1,1 @@
-export { QuickpanelModule } from './src/quickpanel.module';
+export { QuickpanelModule } from './src/lib/quickpanel.module';

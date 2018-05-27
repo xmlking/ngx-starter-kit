@@ -1,1 +1,1 @@
-export { ToolbarModule } from './src/toolbar.module';
+export { ToolbarModule } from './src/lib/toolbar.module';

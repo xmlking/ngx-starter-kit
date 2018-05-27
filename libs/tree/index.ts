@@ -1,1 +1,1 @@
-export { TraversalStrategy, Tree, TreeNode, TreeConfig, Comparator } from './src/tree.model';
+export { TraversalStrategy, Tree, TreeNode, TreeConfig, Comparator } from './src/lib/tree.model';

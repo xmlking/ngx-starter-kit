@@ -1,0 +1,51 @@
+@import "var";
+@import '~@angular/material/theming';
+@import "constants";
+
+.dashboard-container {
+  height: 100%;
+}
+
+mat-sidenav.quickpanel {
+  z-index: 100;
+  width: 330px;
+  min-width: 330px;
+  max-width: 330px;
+}
+
+@media screen and ($mat-small) {
+  mat-sidenav.quickpanel {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+
+  button.user-button {
+    min-width: 72px;
+  }
+}
+
+/**
+ * deep TODO
+ */
+:host /deep/ {
+  @media screen and (min-width: 960px) {
+    .mat-drawer-backdrop {
+      z-index: 50 !important;
+    }
+  }
+}
+
+.main-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(100% - #{$mat-toolbar-height-desktop});
+  position: relative;
+  @media ($mat-xsmall) {
+    height: calc(100% - #{$mat-toolbar-height-mobile-portrait});
+  }
+}
+
+.content-container {
+  height: 100%;
+}

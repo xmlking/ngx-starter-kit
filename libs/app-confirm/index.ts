@@ -1,2 +1,2 @@
-export { AppConfirmModule } from './src/app-confirm.module';
-export { AppConfirmService } from './src/app-confirm.service';
+export { AppConfirmModule } from './src/lib/app-confirm.module';
+export { AppConfirmService } from './src/lib/app-confirm.service';

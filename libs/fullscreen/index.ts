@@ -1,1 +1,1 @@
-export { FullscreenModule } from './src/fullscreen.module';
+export { FullscreenModule } from './src/lib/fullscreen.module';
