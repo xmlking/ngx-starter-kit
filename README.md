@@ -6,15 +6,15 @@ live [Demo](https://xmlking.github.io/nx-starter-kit/index.html)
 
 ## Development server
 
-Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run start:mock` for a mock server.
 
-Run `npm run start:dev -- --proxy-config proxy.conf.js` to start with proxy
+Run `npm run start -- --proxy-config proxy.conf.js` to start with proxy
 
 ## Build
 
-Run `npm run build:prod` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Run `npm run build:prod` to build the project. The build artifacts will be stored in the `dist/` directory.
 
 ## Running unit tests
 
