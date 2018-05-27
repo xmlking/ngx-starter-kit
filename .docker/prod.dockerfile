@@ -16,7 +16,7 @@ WORKDIR /ng-app
 COPY . .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN $(npm bin)/ng build --app=default --prod -oh=media
+RUN npm run build:prod
 
 ### STAGE 2: Setup ###
 
@@ -31,7 +31,7 @@ RUN set -x \
 	&& chmod go+w /etc/nginx/conf.d/default.conf
 
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
-COPY --from=builder /ng-app/dist/apps/default  /usr/share/nginx/html
+COPY --from=builder /ng-app/dist/apps/webapp  /usr/share/nginx/html
 
 EXPOSE 8080
 

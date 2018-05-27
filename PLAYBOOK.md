@@ -321,30 +321,20 @@ ng update @angular/core
 ng update --all 
 ```
 
-### Test
-```bash
-ng test --browser=ChromeHeadless
-```
-
-### Build
-```bash
-# build project 
-ng build --app=webapp --prod -oh=media
-```
 ### Run
 ```bash
 # dev run
-ng s --extract-css --preserve-symlinks  -o
+ng serve
 # run mock mode
-ng s -e mock --extract-css --preserve-symlinks
+ng serve -c=mock
 # use proxy (if you have CORS disabled backend API)
-ng s -e mock --extract-css --preserve-symlinks --proxy-config proxy.conf.js
+ng serve -c=mock --proxy-config proxy.conf.js
 # to bind to host IP, to demo from laptop
 ng s --host 
 # ES2015 support: Set tsconfig.json target value as "es2015" and  use --aot 
-ng s -e mock --extract-css --preserve-symlinks --aot -o
+ng serve -c=mock --aot -o
 # run prod mode
-ng s -e prod
+ng serve -c=prod
 
 # build and run web
 docker-compose up --build web
