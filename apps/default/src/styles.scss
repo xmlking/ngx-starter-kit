@@ -35,3 +35,5 @@ $alt-theme: mat-dark-theme($alt-primary, $alt-accent);
 -------------------------------------------------- */
 @import '~perfect-scrollbar/css/perfect-scrollbar.css';
 @import '~nvd3/build/nv.d3.css';
+@import "~filepond/dist/filepond.min.css";
+@import "~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css";

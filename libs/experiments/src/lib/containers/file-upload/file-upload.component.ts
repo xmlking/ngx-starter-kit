@@ -2,13 +2,14 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 
 @Component({
-  selector: 'nxtk-file-upload',
+  selector: 'ngx-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
   @ViewChild('myPond') myPond: any;
   myFiles = [];
+
   // Ref: https://pqina.nl/filepond/docs/patterns/api/server/
   uploadToServer = {
     process: (fieldName, file, metadata, load, error, progress, abort) => {
@@ -84,10 +85,25 @@ export class FileUploadComponent {
     restore: (uniqueFileId, load, error, progress, abort, headers) => {}
   };
 
+  pondOptions = {
+    name: 'filepond',
+    multiple: true,
+    maxFiles: 3,
+    maxFileSize: "1MB",
+    instantUpload: false,
+    server: this.uploadToServer,
+    acceptedFileTypes: 'image/*, application/pdf, application/*, text/plain, text/csv, .vsd'
+  };
+
   constructor(public dialog: MatDialog) {}
 
-  handleFilePondInit() {
-    console.log('in handleFilePondInit');
+  pondHandleInit() {
+    console.log('FilePond has initialised', this.myPond);
     // FilePond instance methods are available on `this.myPond`
   }
+
+  pondHandleAddFile(event: any) {
+    console.log('A file was added', event);
+  }
+
 }
