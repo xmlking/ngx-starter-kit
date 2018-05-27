@@ -11,7 +11,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v10.1.0  |          | 
 | NPM                           | v6.0.0   |          | 
-| Angular CLI                   | v6.0.3   |          | 
+| Angular CLI                   | v6.0.6   |          | 
 | @nrwl/schematics              | v6.0.2   |          | 
 
 

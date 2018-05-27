@@ -16,12 +16,12 @@ docker push xmlking/openshift-nginx:latest
 
 ### Build app docker image
 ```bash
-docker build --tag=nx-starter-kit -f .docker/prod.dockerfile . 
+docker build --tag=ngx-starter-kit -f .docker/prod.dockerfile . 
 ```
 
 ### Run the container
 ```bash
-docker run -it --env AUTH_BASE_URL=http://keycloak:8080 -p 80:8080  nx-starter-kit
+docker run -it --env AUTH_BASE_URL=http://keycloak:8080 -p 80:8080  ngx-starter-kit
 ```
 
 The app will be available at http://localhost:80
@@ -39,13 +39,13 @@ docker-compose exec web sh
 
 #### Docker Push
 ```bash 
-# docker tag nx-starter-kit myRegistry.com/myImage`
-docker tag nx-starter-kit xmlking/nx-starter-kit:0.1.2-SNAPSHOT
-docker push xmlking/nx-starter-kit:0.1.2-SNAPSHOT
+# docker tag ngx-starter-kit myRegistry.com/myImage`
+docker tag ngx-starter-kit xmlking/ngx-starter-kit:0.1.2-SNAPSHOT
+docker push xmlking/ngx-starter-kit:0.1.2-SNAPSHOT
 
 # also tag `latest` and push
-docker tag xmlking/nx-starter-kit:0.1.2-SNAPSHOT  xmlking/nx-starter-kit:latest
-docker push xmlking/nx-starter-kit:latest
+docker tag xmlking/ngx-starter-kit:0.1.2-SNAPSHOT  xmlking/ngx-starter-kit:latest
+docker push xmlking/ngx-starter-kit:latest
 ```
 
 ###Maintenance

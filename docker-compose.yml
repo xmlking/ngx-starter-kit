@@ -35,7 +35,7 @@ services:
     build:
       context: .
       dockerfile: .docker/prod.dockerfile
-    image: nx-starter-kit:latest
+    image: ngx-starter-kit:latest
     container_name: web
     command: dockerize -template /etc/nginx/conf.d/nginx.conf.tmpl:/etc/nginx/conf.d/default.conf nginx -g 'daemon off;'
     environment:
