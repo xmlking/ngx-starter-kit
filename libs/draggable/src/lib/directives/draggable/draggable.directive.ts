@@ -1,4 +1,11 @@
-import { AfterViewInit, Directive, ElementRef, Input, NgZone, OnDestroy } from '@angular/core';
+import {
+  AfterViewInit,
+  Directive,
+  ElementRef,
+  Input,
+  NgZone,
+  OnDestroy
+} from '@angular/core';
 import { fromEvent, merge, Subject } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
 
@@ -49,12 +56,20 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
         };
       };
 
-      const mousedown$ = fromEvent(this.handle, 'mousedown').pipe(map(mouseEvents));
-      const mousemove$ = fromEvent(document, 'mousemove').pipe(map(mouseEvents));
+      const mousedown$ = fromEvent(this.handle, 'mousedown').pipe(
+        map(mouseEvents)
+      );
+      const mousemove$ = fromEvent(document, 'mousemove').pipe(
+        map(mouseEvents)
+      );
       const mouseup$ = fromEvent(document, 'mouseup').pipe(map(mouseEvents));
 
-      const touchstart$ = fromEvent(this.handle, 'touchstart').pipe(map(touchEvents));
-      const touchmove$ = fromEvent(document, 'touchmove').pipe(map(touchEvents));
+      const touchstart$ = fromEvent(this.handle, 'touchstart').pipe(
+        map(touchEvents)
+      );
+      const touchmove$ = fromEvent(document, 'touchmove').pipe(
+        map(touchEvents)
+      );
       const touchend$ = fromEvent(document, 'touchend').pipe(map(touchEvents));
 
       const start$ = merge(mousedown$, touchstart$);

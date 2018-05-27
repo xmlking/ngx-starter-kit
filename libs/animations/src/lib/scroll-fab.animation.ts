@@ -1,4 +1,10 @@
-import { trigger, animate, transition, style, state } from '@angular/animations';
+import {
+  trigger,
+  animate,
+  transition,
+  style,
+  state
+} from '@angular/animations';
 
 export const scrollFabAnimation = trigger('scrollAnimation', [
   state('show', style({ opacity: 1, transform: 'scale(1)' })),

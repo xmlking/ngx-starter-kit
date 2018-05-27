@@ -21,11 +21,11 @@
         [innerHTML]="child.value ? child.value : '&nbsp;'">
       </span>
     </div>
-    <nxtk-json-diff-tree *ngIf="child.children.length"
+    <ngx-json-diff-tree *ngIf="child.children.length"
         [level]="depth+1"
         (onhover)="bubleup($event)"
         [class.child-node]="child.parent != 4"
-        [children]='child.children'></nxtk-json-diff-tree>
+        [children]='child.children'></ngx-json-diff-tree>
     <div class="upper" *ngIf="child.status > 2"></div>
     <div class="lower" *ngIf="child.status > 2"></div>
   </li>

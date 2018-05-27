@@ -1,4 +1,10 @@
-import { NgModule, Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
+import {
+  NgModule,
+  Directive,
+  Input,
+  TemplateRef,
+  ViewContainerRef
+} from '@angular/core';
 
 export class NgLetContext {
   $implicit: any = null;

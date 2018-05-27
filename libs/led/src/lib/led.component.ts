@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nxtk-led',
+  selector: 'ngx-led',
   templateUrl: './led.component.html',
   styleUrls: ['./led.component.scss']
 })

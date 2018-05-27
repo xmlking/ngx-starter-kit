@@ -2,7 +2,7 @@ import { OnDestroy } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 import { MenuItem } from '../models/menu-item.model';
 import { MenuService } from '../services/menu.service';
-import { Tree } from '@nx-starter-kit/tree';
+import { Tree } from '@ngx-starter-kit/tree';
 
 export class NextCurrentlyOpened {
   static readonly type = '[Menu] Next Currently Opened';

@@ -17,26 +17,26 @@ export class ThemePickerComponent {
     {
       primary: '#673AB7',
       accent: '#FFC107',
-      href: 'deeppurple-amber.bundle.css',
+      href: 'deeppurple-amber.css',
       isDark: false
     },
     {
       primary: '#3F51B5',
       accent: '#E91E63',
-      href: 'indigo-pink.bundle.css',
+      href: 'indigo-pink.css',
       isDark: false,
       isDefault: true
     },
     {
       primary: '#E91E63',
       accent: '#607D8B',
-      href: 'pink-bluegrey.bundle.css',
+      href: 'pink-bluegrey.css',
       isDark: true
     },
     {
       primary: '#9C27B0',
       accent: '#4CAF50',
-      href: 'purple-green.bundle.css',
+      href: 'purple-green.css',
       isDark: true
     }
   ];

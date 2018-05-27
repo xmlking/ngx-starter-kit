@@ -1,4 +1,4 @@
-import { Entity } from '@nx-starter-kit/shared';
+import { Entity } from '@ngx-starter-kit/shared';
 import * as moment from 'moment';
 
 export class Account extends Entity {
@@ -14,7 +14,12 @@ export class Account extends Entity {
 }
 
 export class Address {
-  constructor(public street?: string, public city?: string, public state?: string, public zip?: string) {}
+  constructor(
+    public street?: string,
+    public city?: string,
+    public state?: string,
+    public zip?: string
+  ) {}
 }
 
 export enum Gender {

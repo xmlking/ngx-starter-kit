@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '@nx-starter-kit/animations';
+import { routerTransition } from '@ngx-starter-kit/animations';
 
 @Component({
-  selector: 'app-home-layout',
+  selector: 'ngx-home-layout',
   templateUrl: './home-layout.component.html',
   styleUrls: ['./home-layout.component.scss'],
   animations: [routerTransition]

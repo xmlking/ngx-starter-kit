@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '@nx-starter-kit/shared';
+import { SharedModule } from '@ngx-starter-kit/shared';
 import { AccountsComponent } from './containers/accounts/accounts.component';
 import { AccountFormComponent } from './containers/accounts/account-form.component';
 import { AccountService } from './containers/accounts/account.service';
-import { AppConfirmModule } from '@nx-starter-kit/app-confirm';
+import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
 
 @NgModule({
   imports: [

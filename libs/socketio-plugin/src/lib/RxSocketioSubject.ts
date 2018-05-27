@@ -37,7 +37,9 @@ export interface RxSocketioSubjectConfig<T> {
    * WebSocket impl in Node (WebSocket is a DOM API), or for mocking a WebSocket
    * for testing purposes
    */
-  WebSocketCtor?: { new (url: string, protocols?: string | string[]): WebSocket };
+  WebSocketCtor?: {
+    new (url: string, protocols?: string | string[]): WebSocket;
+  };
   /** Sets the `binaryType` property of the underlying WebSocket. */
   binaryType?: 'blob' | 'arraybuffer';
 }
@@ -57,7 +59,10 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
   private _config: RxSocketioSubjectConfig<T>;
   private _socket: SocketIOClient.Socket;
 
-  constructor(urlConfigOrSource: string | RxSocketioSubjectConfig<T> | Observable<T>, destination?: Observer<T>) {
+  constructor(
+    urlConfigOrSource: string | RxSocketioSubjectConfig<T> | Observable<T>,
+    destination?: Observer<T>
+  ) {
     super();
 
     const config = (this._config = { ...DEFAULT_SOCKETIO_CONFIG });
@@ -84,7 +89,10 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
       },
       error => {
         this._socket.close();
-        const errorEvent = new ErrorEvent('', { message: 'Error in data stream.', error: error });
+        const errorEvent = new ErrorEvent('', {
+          message: 'Error in data stream.',
+          error: error
+        });
         super.error.call(this, errorEvent);
       },
       () => {

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
-import { MenuItem, MenuService } from '@nx-starter-kit/navigator';
+import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 
 @Component({
-  selector: 'nxtk-search-bar',
+  selector: 'ngx-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss']
 })

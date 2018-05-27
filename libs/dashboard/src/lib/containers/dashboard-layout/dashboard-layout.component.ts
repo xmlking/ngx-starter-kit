@@ -13,10 +13,10 @@ import {
 import { Subscription } from 'rxjs';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Router, NavigationEnd } from '@angular/router';
-import { routeAnimation } from '@nx-starter-kit/animations';
+import { routeAnimation } from '@ngx-starter-kit/animations';
 
 @Component({
-  selector: 'app-dashboard-layout',
+  selector: 'ngx-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
   animations: [routeAnimation]

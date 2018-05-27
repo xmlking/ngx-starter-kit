@@ -1,0 +1,31 @@
+<div class="ngx-list-table">
+  <div class="ngx-list-header" *ngIf="!hideHeader"
+       fxLayout="row" fxLayoutAlign="start baseline" fxLayoutGap="8px"
+       fxLayoutGap.gt-xs="24px">
+    <div fxLayout="column" fxLayoutAlign="start baseline" fxLayoutGap="24px" fxFlex="grow"
+         fxLayout.gt-xs="row">
+      <div class="ngx-list-name">{{ name }}</div>
+      <mat-form-field class="ngx-filter-input" floatPlaceholder="never" fxFlex>
+        <mat-icon class="ngx-filter-input-icon" matPrefix>search</mat-icon>
+        <input matInput #filter placeholder="Search&hellip;">
+      </mat-form-field>
+    </div>
+
+    <button class="ngx-column-filter" type="button" mat-icon-button [matMenuTriggerFor]="columnFilter">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <ng-content select=".actions"></ng-content>
+  </div>
+
+  <mat-menu #columnFilter="matMenu" yPosition="below" xPosition="before">
+    <button class="checkbox-item mat-menu-item" *ngFor="let column of columns"
+            (click)="toggleColumnVisibility(column, $event)">
+      <mat-checkbox  [checked]="column.visible" (change)="column.visible = !column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">
+      <!--<mat-checkbox [(ngModel)]="column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">-->
+        {{ column.name }}
+      </mat-checkbox>
+    </button>
+  </mat-menu>
+
+  <ng-content></ng-content>
+</div>

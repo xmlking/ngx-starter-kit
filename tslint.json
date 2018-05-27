@@ -7,10 +7,10 @@
     "arrow-return-shorthand": true,
     "callable-types": true,
     "class-name": true,
-    "forin": true,
     "deprecation": {
       "severity": "warn"
     },
+    "forin": true,
     "import-blacklist": [
       true,
       "rxjs/Rx"
@@ -54,6 +54,7 @@
     "no-string-literal": false,
     "no-string-throw": true,
     "no-switch-case-fall-through": true,
+    "no-trailing-whitespace": true,
     "no-unnecessary-initializer": true,
     "no-unused-expression": true,
     "no-use-before-declare": true,
@@ -70,21 +71,13 @@
     "directive-selector": [
       true,
       "attribute",
-      [
-        "",
-        "nxtk",
-        "ngx"
-      ],
+      "app",
       "camelCase"
     ],
     "component-selector": [
       true,
       "element",
-      [
-        "",
-        "nxtk",
-        "ngx"
-      ],
+      "app",
       "kebab-case"
     ],
     "no-output-on-prefix": true,
@@ -97,6 +90,7 @@
     "use-pipe-transform-interface": true,
     "component-class-suffix": true,
     "directive-class-suffix": true,
+
     "nx-enforce-module-boundaries": [
       true,
       {

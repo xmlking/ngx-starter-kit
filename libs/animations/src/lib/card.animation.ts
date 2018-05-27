@@ -8,6 +8,9 @@ export const cardAnimation = trigger('cardAnimator', [
   transition('* => jello', animate(1000, keyframes(kf.jello))),
   transition('* => zoomOutRight', animate(1000, keyframes(kf.zoomOutRight))),
   transition('* => slideOutLeft', animate(1000, keyframes(kf.slideOutLeft))),
-  transition('* => rotateOutUpRight', animate(1000, keyframes(kf.rotateOutUpRight))),
+  transition(
+    '* => rotateOutUpRight',
+    animate(1000, keyframes(kf.rotateOutUpRight))
+  ),
   transition('* => flipOutY', animate(1000, keyframes(kf.flipOutY)))
 ]);

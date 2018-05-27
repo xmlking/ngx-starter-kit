@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Crumb } from '@nx-starter-kit/breadcrumbs';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 import { List } from 'immutable';
 
 @Component({
-  selector: 'nxtk-overview',
+  selector: 'ngx-overview',
   templateUrl: './overview.component.html',
   styleUrls: ['./overview.component.scss']
 })

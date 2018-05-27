@@ -1,12 +1,12 @@
 @import '~@angular/material/theming';
 
-@mixin nxtk-chatbot-component-theme($theme) {
+@mixin ngx-chatbot-component-theme($theme) {
   $primary: map-get($theme, primary);
   $warn: map-get($theme, warn);
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  nxtk-chatbot {
+  ngx-chatbot {
 
     .chat-input {
       color: mat-color($foreground, text);

@@ -1,22 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import * as Hammer from 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
 
-import { SharedModule } from '@nx-starter-kit/shared';
-import { ContextMenuModule } from '@nx-starter-kit/context-menu';
+import { SharedModule } from '@ngx-starter-kit/shared';
+import { ContextMenuModule } from '@ngx-starter-kit/context-menu';
 import { AnimationsComponent } from './containers/animations/animations.component';
 import { FileUploadComponent } from './containers/file-upload/file-upload.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
 import { ContextMenuComponent } from './containers/context-menu/context-menu.component';
 
-export class MyHammerConfig extends HammerGestureConfig {
-  overrides = <any>{
-    // override hammerjs default configuration
-    swipe: { direction: Hammer.DIRECTION_ALL }
-  };
-}
 
 // Registering plugins
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
@@ -49,12 +41,6 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         data: { animation: 'context-menu' }
       }
     ])
-  ],
-  providers: [
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: MyHammerConfig
-    }
   ],
   declarations: [AnimationsComponent, FileUploadComponent, HammertimeDirective, ContextMenuComponent]
 })

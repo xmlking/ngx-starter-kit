@@ -1,0 +1,14 @@
+@import "fu/var";
+
+.card-content {
+  padding: 0 !important;
+}
+
+.content {
+  margin-top: $spacing;
+  height: 180px;
+  max-width: 100%;
+  display: flex;
+  flex: 1;
+  position: relative;
+}

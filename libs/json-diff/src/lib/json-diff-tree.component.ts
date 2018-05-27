@@ -4,10 +4,10 @@
  * evaluated by the parent comparision tool.
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { JsonDiffComponent } from '@nx-starter-kit/json-diff/src/json-diff.component';
+import { JsonDiffComponent } from '@ngx-starter-kit/json-diff/src/json-diff.component';
 
 @Component({
-  selector: 'nxtk-json-diff-tree',
+  selector: 'ngx-json-diff-tree',
   templateUrl: './json-diff-tree.component.html',
   styleUrls: ['./json-diff-tree.component.scss']
 })

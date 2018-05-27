@@ -1,13 +1,19 @@
-import { AfterContentInit, Directive, ElementRef, Input, NgZone } from '@angular/core';
+import {
+  AfterContentInit,
+  Directive,
+  ElementRef,
+  Input,
+  NgZone
+} from '@angular/core';
 import Scrollbar from 'smooth-scrollbar';
 import { ScrollbarOptions } from 'smooth-scrollbar/interfaces';
 import { scrollbarOptions } from './scrollbar-options';
 
 @Directive({
-  selector: '[nxtkScrollbar]'
+  selector: '[ngxScrollbar]'
 })
 export class ScrollbarDirective implements AfterContentInit {
-  @Input('nxtkScrollbar') options: Partial<ScrollbarOptions>;
+  @Input('ngxScrollbar') options: Partial<ScrollbarOptions>;
 
   scrollbarRef: Scrollbar;
 

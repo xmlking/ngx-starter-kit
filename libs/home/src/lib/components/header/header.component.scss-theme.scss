@@ -1,4 +1,4 @@
-@mixin nxtk-header-component-theme($theme) {
+@mixin ngx-header-component-theme($theme) {
   // retrieve variables from theme
   // (all possible variables, use only what you really need)
   $primary: map-get($theme, primary);
@@ -8,7 +8,7 @@
   $background: map-get($theme, background);
   // all of these variables contain many additional variables
 
-  app-home-header {
+  ngx-home-header {
 
     .mat-button {
       &.active {

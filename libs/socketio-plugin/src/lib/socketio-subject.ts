@@ -2,7 +2,10 @@ import { Injectable, Inject } from '@angular/core';
 import { Subject, Observer, Observable, interval } from 'rxjs';
 import { NGXS_SOCKETIO_OPTIONS, NgxsSocketioPluginOptions } from './symbols';
 import { share, distinctUntilChanged, filter, takeWhile } from 'rxjs/operators';
-import { RxSocketioSubject, RxSocketioSubjectConfig } from './RxSocketioSubject';
+import {
+  RxSocketioSubject,
+  RxSocketioSubjectConfig
+} from './RxSocketioSubject';
 
 /**
  * Websocket Subject
@@ -21,13 +24,14 @@ export class SocketioSubject extends Subject<any> {
   private _connectionObserver: Observer<boolean>;
   private _internalConfig: RxSocketioSubjectConfig<any>;
 
-  constructor(@Inject(NGXS_SOCKETIO_OPTIONS) private _config: NgxsSocketioPluginOptions) {
+  constructor(
+    @Inject(NGXS_SOCKETIO_OPTIONS) private _config: NgxsSocketioPluginOptions
+  ) {
     super();
 
-    this.connectionStatus = new Observable(observer => (this._connectionObserver = observer)).pipe(
-      share(),
-      distinctUntilChanged()
-    );
+    this.connectionStatus = new Observable(
+      observer => (this._connectionObserver = observer)
+    ).pipe(share(), distinctUntilChanged());
 
     this._internalConfig = {
       url: this._config.url,
@@ -45,7 +49,11 @@ export class SocketioSubject extends Subject<any> {
     };
 
     this.connectionStatus
-      .pipe(filter(isConnected => !this._reconnectionObservable && isConnected === false))
+      .pipe(
+        filter(
+          isConnected => !this._reconnectionObservable && isConnected === false
+        )
+      )
       .subscribe(isConnected => this.reconnect());
   }
 
@@ -84,7 +92,9 @@ export class SocketioSubject extends Subject<any> {
    * Try to reconnect on a interval.
    */
   reconnect() {
-    this._reconnectionObservable = interval(this._config.reconnectInterval).pipe(
+    this._reconnectionObservable = interval(
+      this._config.reconnectInterval
+    ).pipe(
       takeWhile((v, index) => index < this._reconnectAttempts && !this._socket)
     );
 

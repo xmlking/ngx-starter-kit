@@ -1,0 +1,68 @@
+@import "fu/var";
+
+:host {
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  max-width: 100%;
+
+  @include mat-elevation($card-elevation);
+}
+
+.ngx-chart-widget {
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  position: relative;
+  max-width: 100%;
+
+  @include mat-elevation($card-elevation);
+}
+
+:host /deep/ {
+  .ngx-chart-widget-header {
+    padding: $spacing/1.5 $spacing;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    white-space: nowrap;
+
+    .ngx-chart-widget-header-title-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+
+      .ngx-chart-widget-header-title {
+        @include mat-typography-level-to-styles($config, subheading-1);
+        font-weight: 500;
+      }
+
+      .ngx-chart-widget-header-sub-title {
+        @include mat-typography-level-to-styles($config, caption);
+
+        .mat-icon {
+          width: 14px;
+          height: 14px;
+          font-size: 14px;
+          vertical-align: text-top;
+        }
+      }
+    }
+
+    .ngx-chart-widget-header-actions {
+    }
+  }
+
+  .ngx-chart-widget-content {
+    padding: $spacing/1.5 $spacing $spacing;
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+  }
+}

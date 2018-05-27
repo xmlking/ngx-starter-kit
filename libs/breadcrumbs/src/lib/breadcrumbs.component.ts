@@ -6,7 +6,7 @@ export interface Crumb {
   link?: string;
 }
 @Component({
-  selector: 'nxtk-breadcrumbs',
+  selector: 'ngx-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

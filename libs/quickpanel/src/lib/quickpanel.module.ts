@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { QuickpanelComponent } from './quickpanel.component';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '@nx-starter-kit/material';
+import { MaterialModule } from '@ngx-starter-kit/material';
 import {
   MatButtonModule,
   MatIconModule,
@@ -13,6 +13,7 @@ import {
   MatTabsModule
 } from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import {ScrollbarModule} from "@ngx-starter-kit/scrollbar";
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
     MaterialModule,
     PerfectScrollbarModule,
     FlexLayoutModule,
+    ScrollbarModule,
     CommonModule
   ],
   exports: [QuickpanelComponent],

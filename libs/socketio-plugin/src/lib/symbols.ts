@@ -1,6 +1,8 @@
 import { InjectionToken } from '@angular/core';
 
-export const NGXS_SOCKETIO_OPTIONS = new InjectionToken('NGXS_SOCKETIO_OPTIONS');
+export const NGXS_SOCKETIO_OPTIONS = new InjectionToken(
+  'NGXS_SOCKETIO_OPTIONS'
+);
 
 export interface NgxsSocketioPluginOptions {
   /**

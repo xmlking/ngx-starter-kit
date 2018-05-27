@@ -1,0 +1,87 @@
+.preview-card {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+  border-radius: 2px;
+
+  @include mat-elevation(2);
+
+  .preview {
+    padding: $spacing;
+    background: $theme-app-bar;
+    display: flex;
+    flex-direction: column;
+
+    .title {
+      margin-bottom: $spacing;
+
+      @include mat-typography-level-to-styles($config, title);
+    }
+
+    .preview-content {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      min-width: 200px;
+    }
+  }
+
+  .content {
+    background: $theme-card;
+
+    @include mat-elevation(8);
+
+    .header {
+      padding: $spacing $spacing 0;
+    }
+
+    .title {
+      @include mat-typography-level-to-styles($config, headline);
+    }
+
+    .tag {
+      color: $theme-secondary-text;
+      @include mat-typography-level-to-styles($config, body-1);
+    }
+
+    .tabs {
+      margin-top: $spacing;
+      border-top: 1px solid $theme-divider;
+    }
+
+    .tab-content {
+      padding: $spacing;
+    }
+  }
+}
+
+.session-card {
+  background: white;
+  width: 380px;
+
+  @include mat-elevation(12);
+
+  .header {
+    background: $sidenav-background;
+    padding: $spacing;
+  }
+
+  .content {
+    padding: $spacing $spacing*2 $spacing*2;
+
+    .link {
+      text-align: center;
+      text-decoration: none;
+      color: #2196F3;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .extra {
+      color: $theme-secondary-text;
+      text-align: center;
+    }
+  }
+}

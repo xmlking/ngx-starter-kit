@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 import { environment as env } from '@env/environment';
-import { ANIMATE_ON_ROUTE_ENTER } from '@nx-starter-kit/animations';
+import { ANIMATE_ON_ROUTE_ENTER } from '@ngx-starter-kit/animations';
 
 @Component({
-  selector: 'anms-features',
+  selector: 'ngx-features',
   templateUrl: './features.component.html',
   styleUrls: ['./features.component.scss']
 })

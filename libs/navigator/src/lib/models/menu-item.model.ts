@@ -1,4 +1,4 @@
-import { TreeNode } from '@nx-starter-kit/tree';
+import { TreeNode } from '@ngx-starter-kit/tree';
 
 export enum MenuItemType {
   Link = 'link',

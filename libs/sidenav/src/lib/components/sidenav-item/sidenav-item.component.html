@@ -28,6 +28,6 @@
   </ng-template>
 
   <mat-nav-list class="sidenav-list sidenav-list-nested" fxLayout="column" [style.height]="getSubItemsHeight()">
-    <nxtk-sidenav-item *ngFor="let submenu of item.children" [item]="submenu"></nxtk-sidenav-item>
+    <ngx-sidenav-item *ngFor="let submenu of item.children" [item]="submenu"></ngx-sidenav-item>
   </mat-nav-list>
 </ng-container>

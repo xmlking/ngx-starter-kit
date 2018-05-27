@@ -1,21 +1,21 @@
-<!--<nxtk-rainbow></nxtk-rainbow>-->
+<!--<ngx-rainbow></ngx-rainbow>-->
 <mat-sidenav-container class="dashboard-container">
 
   <mat-sidenav class="quickpanel" [opened]="quickpanelOpen" position="end" align="end" mode="over" #quickpanel>
-    <nxtk-quickpanel></nxtk-quickpanel>
+    <ngx-quickpanel></ngx-quickpanel>
   </mat-sidenav>
 
-  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" role="navigation" [mode]="sidenavMode" nxtkIconSidenav #sidenav>
-    <nxtk-sidenav></nxtk-sidenav>
+  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" role="navigation" [mode]="sidenavMode" ngxIconSidenav #sidenav>
+    <ngx-sidenav></ngx-sidenav>
   </mat-sidenav>
 
   <mat-sidenav-content class="content-container" fxLayout="column">
-    <nxtk-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></nxtk-toolbar>
+    <ngx-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></ngx-toolbar>
 
     <perfect-scrollbar>
         <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)" #scrollContainer>
           <router-outlet #dashboardOutlet="outlet" (activate)="onActivate($event, scrollContainer)"></router-outlet>
-          <nxtk-chatbot></nxtk-chatbot>
+          <ngx-chatbot></ngx-chatbot>
         </div>
         <!--<div class="main-container" #scrollContainer>-->
           <!--<router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>-->

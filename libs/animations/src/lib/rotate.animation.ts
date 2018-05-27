@@ -1,4 +1,10 @@
-import { trigger, animate, transition, style, state } from '@angular/animations';
+import {
+  trigger,
+  animate,
+  transition,
+  style,
+  state
+} from '@angular/animations';
 
 export const rotateAnimation = trigger('rotateAnimation', [
   state('initial', style({ transform: 'rotate(0deg)' })),

@@ -1,0 +1,175 @@
+/* -- Material Design Table style -------------- */
+
+// Variables
+// ---------------------
+$table-header-font-weight:      400;
+$table-header-font-color:       #757575;
+
+//$table-cell-padding:            1.6rem;
+$table-cell-padding:            16px;
+$table-condensed-cell-padding:  $table-cell-padding/2;
+
+
+$table-bg:                      #fff;
+$table-bg-accent:               #f5f5f5;
+$table-bg-hover:                rgba(0,0,0,.12);
+$table-bg-active:               $table-bg-hover;
+$table-border-color:            #e0e0e0;
+$table-grey-header-color:       #FAFAFA;
+
+// Tables
+//
+// -----------------
+
+// Baseline styles
+.table {
+  width: 100%;
+  max-width: 100%;
+  //margin-bottom: 2rem;
+  background-color: $table-bg;
+  border-spacing: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      transition: all .3s ease;
+      > th,
+      > td {
+        text-align: left;
+        padding: $table-cell-padding;
+        vertical-align: middle;
+        border-top: 0;
+        transition: all .3s ease;
+      }
+    }
+  }
+  > thead > tr > th {
+    font-weight: $table-header-font-weight;
+    color: $table-header-font-color;
+    vertical-align: bottom;
+    border-bottom: 1px solid rgba(0,0,0,.12);
+    font-size: 14px;
+  }
+  > caption + thead,
+  > colgroup + thead,
+  > thead:first-child {
+    > tr:first-child {
+      > th,
+      > td {
+        border-top: 0;
+      }
+    }
+  }
+  > tbody + tbody {
+    border-top: 1px solid rgba(0,0,0,.12);
+  }
+
+  // Nesting
+  .table {
+    background-color: $table-bg;
+  }
+
+  // Remove border
+  .no-border {
+    border: 0;
+  }
+}
+
+// Condensed table w/ half padding
+.table-condensed {
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        padding: $table-condensed-cell-padding;
+      }
+    }
+  }
+}
+
+
+// Bordered version
+//
+// Add horizontal borders between columns.
+.table-bordered {
+  border: 0;
+  > thead,
+  > tbody,
+  > tfoot {
+    > tr {
+      > th,
+      > td {
+        border: 0;
+        border-bottom: 1px solid $table-border-color;
+      }
+    }
+  }
+  > thead > tr {
+    > th,
+    > td {
+      border-bottom-width: 2px;
+    }
+  }
+}
+
+
+// Zebra-striping
+//
+// Default zebra-stripe styles (alternating gray and transparent backgrounds)
+.table-striped {
+  > tbody > tr:nth-child(even) {
+    > td,
+    > th {
+      background-color: $table-bg-accent;
+    }
+  }
+}
+
+// Hover effect
+//
+.table-hover {
+  > tbody > tr:hover {
+    > td,
+    > th {
+      background-color: $table-bg-hover;
+    }
+  }
+}
+
+// CSS/LESS Color variations
+//
+// --------------------------------
+
+
+.table-striped.table-mc-red > tbody > tr:nth-child(odd) > td,
+.table-striped.table-mc-red > tbody > tr:nth-child(odd) > th {
+  background-color: #fde0dc;
+}
+.table-hover.table-mc-red > tbody > tr:hover > td,
+.table-hover.table-mc-red > tbody > tr:hover > th {
+  background-color: #f9bdbb;
+}
+@media screen and (max-width: 767px) {
+  .table-responsive-vertical .table-striped.table-mc-red > tbody > tr > td,
+  .table-responsive-vertical .table-striped.table-mc-red > tbody > tr:nth-child(odd) {
+    background-color: $table-bg;
+  }
+  .table-responsive-vertical .table-striped.table-mc-red > tbody > tr > td:nth-child(odd) {
+    background-color: #fde0dc;
+  }
+  .table-responsive-vertical .table-hover.table-mc-red > tbody > tr:hover > td,
+  .table-responsive-vertical .table-hover.table-mc-red > tbody > tr:hover {
+    background-color: $table-bg;
+  }
+  .table-responsive-vertical .table-hover.table-mc-red > tbody > tr > td:hover {
+    background-color: #f9bdbb;
+  }
+}
+
+.table-grey-header {
+  thead {
+    background-color: #EEEEEE;
+  }
+}

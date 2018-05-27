@@ -57,7 +57,10 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     if (parent.children) {
       //mergeSort children
       if (this.config && this.config.nodeComparatorFn) {
-        parent.children = mergeSort<any>(parent.children, this.config.nodeComparatorFn);
+        parent.children = mergeSort<any>(
+          parent.children,
+          this.config.nodeComparatorFn
+        );
       }
 
       // add a parent link to a child structure
@@ -145,7 +148,10 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     return null;
   }
 
-  findByPredicateDFS(predicate: (node: T) => boolean, strategy: TraversalStrategy = TraversalStrategy.PreOrder): T {
+  findByPredicateDFS(
+    predicate: (node: T) => boolean,
+    strategy: TraversalStrategy = TraversalStrategy.PreOrder
+  ): T {
     //TODO
     return null;
   }
@@ -172,7 +178,10 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     }
   }
 
-  traverseDFS(fn: (node: T) => any, method: TraversalStrategy = TraversalStrategy.PreOrder) {
+  traverseDFS(
+    fn: (node: T) => any,
+    method: TraversalStrategy = TraversalStrategy.PreOrder
+  ) {
     const current = this.root;
     if ((method = TraversalStrategy.PreOrder)) {
       this._postOrder(current, fn);

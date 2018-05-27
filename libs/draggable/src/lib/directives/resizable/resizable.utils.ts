@@ -1,22 +1,47 @@
 import { IResizeState, ISize, IPoint, IOptions } from './resizable.store';
 
-export const resizeRight = (nextWidth: number, options: IOptions, currentElementPosition: IPoint) => {
+export const resizeRight = (
+  nextWidth: number,
+  options: IOptions,
+  currentElementPosition: IPoint
+) => {
   if (nextWidth <= options.minSize.width) nextWidth = options.minSize.width;
   if (nextWidth >= options.maxSize.width) nextWidth = options.maxSize.width;
-  if (nextWidth + currentElementPosition.x >= options.bound.x + options.bound.width)
-    nextWidth -= nextWidth + currentElementPosition.x - (options.bound.x + options.bound.width);
+  if (
+    nextWidth + currentElementPosition.x >=
+    options.bound.x + options.bound.width
+  )
+    nextWidth -=
+      nextWidth +
+      currentElementPosition.x -
+      (options.bound.x + options.bound.width);
   return { nextWidth, nextLeft: currentElementPosition.x };
 };
 
-export const resizeBottom = (nextHeight: number, options: IOptions, currentElementPosition: IPoint) => {
+export const resizeBottom = (
+  nextHeight: number,
+  options: IOptions,
+  currentElementPosition: IPoint
+) => {
   if (nextHeight <= options.minSize.height) nextHeight = options.minSize.height;
   if (nextHeight >= options.maxSize.height) nextHeight = options.maxSize.height;
-  if (nextHeight + currentElementPosition.y >= options.bound.y + options.bound.height)
-    nextHeight -= nextHeight + currentElementPosition.y - (options.bound.y + options.bound.height);
+  if (
+    nextHeight + currentElementPosition.y >=
+    options.bound.y + options.bound.height
+  )
+    nextHeight -=
+      nextHeight +
+      currentElementPosition.y -
+      (options.bound.y + options.bound.height);
   return { nextHeight, nextTop: currentElementPosition.y };
 };
 
-export const resizeTop = (nextHeight: number, currentPos: IPoint, currentSize: ISize, options: IOptions) => {
+export const resizeTop = (
+  nextHeight: number,
+  currentPos: IPoint,
+  currentSize: ISize,
+  options: IOptions
+) => {
   let nextTop = currentPos.y + (currentSize.height - nextHeight);
   // Lower priorty compared to all others
   if (nextHeight <= options.minSize.height) {
@@ -34,7 +59,12 @@ export const resizeTop = (nextHeight: number, currentPos: IPoint, currentSize: I
   return { nextHeight, nextTop };
 };
 
-export const resizeLeft = (nextWidth: number, currentPos: IPoint, currentSize: ISize, options: IOptions) => {
+export const resizeLeft = (
+  nextWidth: number,
+  currentPos: IPoint,
+  currentSize: ISize,
+  options: IOptions
+) => {
   let nextLeft = currentPos.x + (currentSize.width - nextWidth);
   // Lower priorty compared to all others
   if (nextWidth <= options.minSize.width) {
@@ -78,26 +108,47 @@ export const manageRatio = (
   bound.height = parseInt(bound.height.toFixed());
   switch (direction) {
     case 'left':
-      nextHeight = resizeBottom(options.ratio * nextWidth, options, currentElementPosition).nextHeight;
+      nextHeight = resizeBottom(
+        options.ratio * nextWidth,
+        options,
+        currentElementPosition
+      ).nextHeight;
       nextLeft += nextWidth - nextHeight / options.ratio;
       nextWidth = nextHeight / options.ratio;
       break;
     case 'right':
-      nextHeight = resizeBottom(options.ratio * nextWidth, options, currentElementPosition).nextHeight;
+      nextHeight = resizeBottom(
+        options.ratio * nextWidth,
+        options,
+        currentElementPosition
+      ).nextHeight;
       nextWidth = nextHeight / options.ratio;
       break;
     case 'top':
-      nextWidth = resizeRight(nextHeight / options.ratio, options, currentElementPosition).nextWidth;
+      nextWidth = resizeRight(
+        nextHeight / options.ratio,
+        options,
+        currentElementPosition
+      ).nextWidth;
       nextTop += nextHeight - nextWidth * options.ratio;
       nextHeight = options.ratio * nextWidth;
       break;
     case 'bottom':
     case 'bottom-right':
-      nextWidth = resizeRight(nextHeight / options.ratio, options, currentElementPosition).nextWidth;
+      nextWidth = resizeRight(
+        nextHeight / options.ratio,
+        options,
+        currentElementPosition
+      ).nextWidth;
       nextHeight = options.ratio * nextWidth;
       break;
     case 'top-left':
-      data = resizeLeft(nextHeight / options.ratio, currentPos, currentSize, options);
+      data = resizeLeft(
+        nextHeight / options.ratio,
+        currentPos,
+        currentSize,
+        options
+      );
       nextWidth = data.nextWidth;
       nextLeft = data.nextLeft;
       if (nextWidth < nextHeight / options.ratio) {
@@ -106,7 +157,12 @@ export const manageRatio = (
       }
       break;
     case 'bottom-left':
-      data = resizeLeft(nextHeight / options.ratio, currentPos, currentSize, options);
+      data = resizeLeft(
+        nextHeight / options.ratio,
+        currentPos,
+        currentSize,
+        options
+      );
       nextWidth = data.nextWidth;
       nextLeft = data.nextLeft;
       if (nextWidth < nextHeight / options.ratio) {
@@ -114,7 +170,11 @@ export const manageRatio = (
       }
       break;
     case 'top-right':
-      data = resizeRight(nextHeight / options.ratio, options, currentElementPosition);
+      data = resizeRight(
+        nextHeight / options.ratio,
+        options,
+        currentElementPosition
+      );
       nextWidth = data.nextWidth;
       if (nextWidth < nextHeight / options.ratio) {
         nextTop += nextHeight - nextWidth * options.ratio;

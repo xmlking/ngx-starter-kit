@@ -1,80 +1,140 @@
-<div class="dashboard-container" fxLayout="column" fxLayoutAlign="start stretch">
-  <div fxLayout="row wrap" fxLayoutAlign="center stretch">
-    <nxtk-bar-chart class="margin-bottom-sm"
-                    widgetTitle="Total Sales" subTitle="Latest 10 May, 10:00" bgColor="linear-gradient(60deg, #8C99E0, #6572B8)" textColor="#FFFFFF" chartColor="#FFFFFF" gain="16.3" comparedTo="% compared to last month"
-                    [data]="discreteBarDemoData"
-                    fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md>
-    </nxtk-bar-chart>
-    <nxtk-line-chart class="margin-bottom-sm"
-                     widgetTitle="Visits" bgColor="linear-gradient(60deg, #4DD0E2, #4CA8BA)" textColor="#FFFFFF" chartColor="#FFFFFF" gain="42.5" comparedTo="% compared to last month"
-                     [data]="lineChartDemoData"
-                     fxFlex="100%" fxFlex.md="49.5%" fxFlex.sm="100%" fxFlex.gt-md fxFlexOffset.gt-sm="1%">
-    </nxtk-line-chart>
-    <nxtk-line-chart class="margin-top-md"
-                     widgetTitle="Total Clicks" subTitle="Latest 10 May, 10:00" bgColor="linear-gradient(60deg, #81C683, #62A864)" textColor="#FFFFFF" chartColor="#FFFFFF" interpolate="true" gain="-6.1" comparedTo="% compared to last month"
-                     [data]="lineChartInterpolatedDemoData"
-                     fxFlex="100%" fxFlex.sm="100%" fxFlex.gt-md fxFlexOffset.gt-md="1%">
-    </nxtk-line-chart>
+<ngx-scrollbar class="dashboard" ngxPage ngxPagePadding fxLayout="column" [fxLayoutGap]="gap">
+
+  <!-- FIRST ROW -->
+  <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap"
+       fxLayout.gt-lg="row">
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
+         fxLayout.gt-sm="row">
+
+      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+           fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+        <ngx-bar-chart-widget furyAspectRatioContent class="widget" [data]="salesData$ | async"
+                               [options]="totalSalesOptions"></ngx-bar-chart-widget>
+      </div>
+
+      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+           fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+        <ngx-line-chart-widget furyAspectRatioContent class="widget" [data]="visitsData$ | async"
+                                [options]="totalVisitsOptions"></ngx-line-chart-widget>
+      </div>
+
+    </div>
+
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
+         fxLayout.gt-sm="row">
+
+      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+           fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+        <ngx-line-chart-widget furyAspectRatioContent [data]="clicksData$ | async"
+                                [options]="totalClicksOptions"></ngx-line-chart-widget>
+      </div>
+
+      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+           fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+        <ngx-line-chart-widget furyAspectRatioContent [data]="conversionsData$ | async"
+                                [options]="conversionsOptions"></ngx-line-chart-widget>
+      </div>
+
+    </div>
+  </div>
+  <!-- END FIRST ROW -->
+
+
+  <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap"
+       fxLayout.gt-lg="row">
+
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
+         fxLayout.gt-sm="row">
+
+      <div [furyAspectRatio.xs]="'1:2-' + gap" [furyAspectRatio]="'1.5:1-' + gap"
+           [furyAspectRatio.gt-md]="'2:1-' + gap" [furyAspectRatio.gt-lg]="'1.5:1-' + gap"
+           fxFlex="grow">
+        <ngx-audience-overview-widget furyAspectRatioContent
+                                       [options]="audienceOverviewOptions"></ngx-audience-overview-widget>
+      </div>
+
+    </div>
+
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
+         fxLayout.gt-sm="row">
+
+      <div fxLayout="column" [fxLayoutGap]="gap" fxFlex="grow">
+        <div furyAspectRatio="1:1" furyAspectRatio.sm="1.5:1" fxFlex="grow">
+          <ngx-sales-summary-widget furyAspectRatioContent [data]="salesSummaryData$ | async"
+                                     [options]="salesSummaryOptions"></ngx-sales-summary-widget>
+        </div>
+
+        <ngx-quick-info-widget fxFlex="grow" value="234" label="Customers" [background]="'#009688'" color="white"
+                                icon="people"></ngx-quick-info-widget>
+      </div>
+
+
+      <div furyAspectRatio.xs="1:1.1" furyAspectRatio.sm="1.5:1" furyAspectRatio.gt-sm="1:1.32" fxFlex="grow">
+        <ngx-realtime-users-widget furyAspectRatioContent [data$]="realtimeUsersData$"
+                                    [pages$]="realtimeUsersPages$"></ngx-realtime-users-widget>
+      </div>
+
+    </div>
   </div>
 
-  <div class="margin-top" fxLayout="row wrap" fxLayoutAlign="center stretch">
+  <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap"
+       fxLayout.gt-lg="row">
 
-    <div class="margin-bottom-sm" fxLayout="column" fxFlex="100%" fxFlex.md="49.5%" fxFlex.gt-md>
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
 
-      <nxtk-traffic-sources [chartData]="trafficSourcesDemoData"></nxtk-traffic-sources>
+      <ngx-advanced-pie-chart-widget [data]="advancedPieChartData$ | async"
+                                      [options]="advancedPieChartOptions"></ngx-advanced-pie-chart-widget>
 
-      <div class="margin-top">
-        <nxtk-activity [feeds]="activityFeedsDemoData"></nxtk-activity>
+      <div fxLayout="column" [fxLayoutGap]="gap"
+           fxLayout.gt-sm="row">
+        <div furyAspectRatio="1:1.3" furyAspectRatio.sm="1:1" fxFlex="grow">
+          <ngx-donut-chart-widget furyAspectRatioContent [data]="top5CategoriesData$ | async"
+                                   [options]="top5CategoriesOptions"></ngx-donut-chart-widget>
+        </div>
+
+        <div fxFlex="grow">
+          <mat-card class="example-card">
+            <mat-card-header>
+              <img mat-card-avatar src="assets/img/avatars/1.jpg">
+              <mat-card-title>Shiba Inu</mat-card-title>
+              <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg"
+                 alt="Photo of a Shiba Inu">
+            <mat-card-content>
+              <p>
+                The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+                A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+                bred for hunting.
+              </p>
+            </mat-card-content>
+            <mat-card-actions align="end">
+              <button mat-button>LIKE</button>
+              <button mat-button>SHARE</button>
+            </mat-card-actions>
+          </mat-card>
+        </div>
       </div>
+
+      <!--<ngx-market-widget></ngx-market-widget>-->
     </div>
 
-    <div class="margin-bottom-sm" fxLayout="column" fxFlex.gt-md fxFlex="100%" fxFlex.md="49.5%" fxFlexOffset.gt-sm="1%">
-      <nxtk-pie-chart [data]="pieChartDemoData" widgetTitle="Top 5 Categories" subTitle="Compared by sale share" textColor="#757575"></nxtk-pie-chart>
+    <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)">
 
-      <div class="margin-top">
-        <mat-card class="social-card">
-          <mat-card-header>
-            <img mat-card-avatar src="assets/img/avatars/3.png">
-            <mat-card-subtitle>
-              Yesterday
-            </mat-card-subtitle>
-            <mat-card-title>Sophie Miller</mat-card-title>
-          </mat-card-header>
-          <img mat-card-image src="assets/img/bg/1.jpg">
-          <mat-card-content>
-            <p>Piqued favour stairs it enable exeter as seeing. Remainder met improving but engrossed sincerity age.</p>
-          </mat-card-content>
-          <mat-divider></mat-divider>
-          <mat-card-actions>
-            <div fxLayout="row">
-              <button mat-icon-button>
-                <mat-icon>share</mat-icon>
-              </button>
-              <button mat-icon-button>
-                <mat-icon>favorite</mat-icon>
-              </button>
-              <span fxFlex></span>
-              <button mat-button>
-                More Info
-              </button>
-              <button mat-button>
-                Save as
-              </button>
-            </div>
-          </mat-card-actions>
-        </mat-card>
+      <div fxFlex="grow">
+        <ngx-recent-sales-widget [options]="recentSalesOptions" [chartData]="recentSalesData$ | async"
+                                  [tableOptions]="recentSalesTableOptions"
+                                  [tableData]="recentSalesTableData$ | async"></ngx-recent-sales-widget>
       </div>
-    </div>
 
-    <div class="margin-top-md" fxLayout="column" fxFlex.gt-md fxFlex="100%" fxFlex.sm="100%" fxFlexOffset.gt-md="1%">
-
-      <nxtk-recent-sales [sales]="recentSalesProductsDemoData" [chartData]="recentSalesDemoData"></nxtk-recent-sales>
-
-      <div class="margin-top">
-        <!--<nxtk-google-maps-widget height="450px"></nxtk-google-maps-widget>-->
+      <div fxFlex="grow">
+        <ngx-market-widget></ngx-market-widget>
+        <!--<ngx-maps-widget></ngx-maps-widget>-->
       </div>
+
     </div>
 
   </div>
+</ngx-scrollbar>
 
-</div>
+

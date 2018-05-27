@@ -2,10 +2,10 @@ import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/co
 import { fromEvent, Observable } from 'rxjs';
 import { ChatBotService, Message } from './chat-bot.service';
 import { filter, scan, take, takeUntil } from 'rxjs/operators';
-import { scrollFabAnimation } from '@nx-starter-kit/animations';
+import { scrollFabAnimation } from '@ngx-starter-kit/animations';
 
 @Component({
-  selector: 'nxtk-chatbot',
+  selector: 'ngx-chatbot',
   templateUrl: './chat-bot.component.html',
   styleUrls: ['./chat-bot.component.scss'],
   animations: [scrollFabAnimation],
@@ -14,7 +14,6 @@ import { scrollFabAnimation } from '@nx-starter-kit/animations';
 export class ChatBotComponent implements OnInit, OnDestroy {
   showChatBox = false;
   typing = false;
-  formInput = '';
   @ViewChild('bottom') bottom: ElementRef;
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
 
@@ -60,8 +59,8 @@ export class ChatBotComponent implements OnInit, OnDestroy {
   }
 
   async sendMessageToBot() {
-    const res = await this.chatBotService.textConversation(this.formInput);
-    this.formInput = '';
+    const res = await this.chatBotService.textConversation(this.input.nativeElement.value);
+    this.input.nativeElement.value = '';
     this.focus();
   }
 

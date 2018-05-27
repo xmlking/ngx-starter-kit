@@ -1,0 +1,42 @@
+<ngx-chart-widget class="widget" [style.background]="options.background" [style.color]="options.color">
+  <ngx-chart-widget-header>
+    <ngx-chart-widget-header-title>{{ options.title }}</ngx-chart-widget-header-title>
+    <ngx-chart-widget-header-sub-title>
+      <mat-icon *ngIf="options.gain >= 0">arrow_upward</mat-icon>
+      <mat-icon *ngIf="options.gain < 0">arrow_downward</mat-icon>
+      {{ options.gain }}% {{ options.subTitle }}
+    </ngx-chart-widget-header-sub-title>
+
+    <ngx-chart-widget-header-actions>
+      <button mat-icon-button (click)="reload()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </ngx-chart-widget-header-actions>
+  </ngx-chart-widget-header>
+
+  <ngx-chart-widget-content class="card-content">
+    <div class="content">
+      <canvas #canvas></canvas>
+    </div>
+  </ngx-chart-widget-content>
+
+  <ngx-loading-overlay [isLoading]="isLoading"></ngx-loading-overlay>
+</ngx-chart-widget>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> settings</mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon> more</mat-icon>
+    <span> More Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> remove_circle</mat-icon>
+    <span> Remove Widget </span>
+  </button>
+</mat-menu>

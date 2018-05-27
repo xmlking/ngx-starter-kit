@@ -1,0 +1,66 @@
+<ngx-card>
+  <ngx-card-header>
+    <ngx-card-header-title>
+      {{ options.title }}
+
+      <!-- <div class="gain" [class.increase]="options.gain >= 0" [class.decrease]="options.gain < 0" fxLayout="row"
+           fxLayoutAlign="start center">
+        <div class="percent">{{ options.gain >= 0 ? '+' : '-' }}{{ options.gain }}%</div>
+        <mat-icon *ngIf="options.gain >= 0">trending_up</mat-icon>
+        <mat-icon *ngIf="options.gain < 0">trending_down</mat-icon>
+      </div>-->
+    </ngx-card-header-title>
+    <ngx-card-header-sub-title>
+      {{ options.subTitle }}
+    </ngx-card-header-sub-title>
+
+    <ngx-card-header-actions>
+      <button mat-icon-button (click)="reload()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </ngx-card-header-actions>
+  </ngx-card-header>
+
+  <ngx-card-content class="card-content">
+    <div class="sections" fxLayout="row" fxLayoutAlign="start center">
+      <div class="section" fxFlex="grow">
+        <div class="label">Monthly Sales</div>
+        <div class="value" fxLayout="row" fxLayoutAlign="start center">
+          <span>473</span>
+          <mat-icon class="indicator success">trending_up</mat-icon>
+        </div>
+      </div>
+      <div class="section" fxFlex="grow">
+        <div class="label">Sales Today</div>
+        <div class="value" fxLayout="row" fxLayoutAlign="start center">
+          <span>46</span>
+          <mat-icon class="indicator warn">trending_down</mat-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="content">
+      <canvas #canvas></canvas>
+    </div>
+  </ngx-card-content>
+
+  <ngx-loading-overlay [isLoading]="isLoading"></ngx-loading-overlay>
+</ngx-card>
+
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>
+    <mat-icon> settings</mat-icon>
+    <span> Settings </span>
+  </button>
+  <button mat-menu-item disabled>
+    <mat-icon> more</mat-icon>
+    <span> More Info </span>
+  </button>
+  <button mat-menu-item>
+    <mat-icon> remove_circle</mat-icon>
+    <span> Remove Widget </span>
+  </button>
+</mat-menu>

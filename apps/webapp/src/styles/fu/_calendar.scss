@@ -1,0 +1,120 @@
+.cal-month-view {
+
+  .cal-header .cal-cell {
+    padding-top: $spacing/2;
+    padding-bottom: $spacing/2;
+  }
+
+  .cal-open-day-events {
+
+    > div {
+      background: $theme-card;
+      color: $theme-text;
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      align-content: center;
+      padding-left: $spacing;
+      padding-right: $spacing;
+
+      @include mat-elevation($card-elevation);
+
+      & + div {
+        margin-top: $spacing/2;
+      }
+
+      mwl-calendar-event-title {
+        flex: 1;
+        display: flex;
+        flex-direction: row;
+
+        .cal-event-title {
+          color: $theme-text;
+          flex: 1;
+          padding: $spacing/2;
+        }
+      }
+
+      .cal-event-action {
+        color: $theme-icon;
+
+        & + .cal-event-action {
+          margin-left: $spacing/2;
+        }
+      }
+    }
+  }
+}
+
+.cal-week-view, .cal-day-view {
+
+  .cal-event {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+
+    mwl-calendar-event-actions {
+      order: 2;
+    }
+
+    mwl-calendar-event-title {
+      order: 1;
+      flex: 1;
+      display: block;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+
+      .cal-event-title {
+        outline: none;
+      }
+    }
+
+    .cal-event-actions {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      align-content: center;
+
+      .cal-event-action {
+        color: $theme-icon;
+        height: auto;
+
+        .icon {
+          font-size: 18px;
+          padding: $spacing/4 $spacing/6;
+        }
+      }
+    }
+  }
+
+}
+
+.cal-event-title {
+  text-decoration: none;
+  color: $theme-text;
+
+  @include mat-typography-level-to-styles($config, body-1);
+}
+
+i.icon {
+  //noinspection CssNoGenericFontName
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 20px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+  vertical-align: middle;
+}

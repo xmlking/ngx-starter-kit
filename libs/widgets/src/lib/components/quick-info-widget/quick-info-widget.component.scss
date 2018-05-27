@@ -1,0 +1,23 @@
+@import "fu/var";
+
+.quick-info-widget {
+  background: white;
+  padding: $spacing;
+  border-radius: $border-radius;
+
+  @include mat-elevation($card-elevation);
+
+  .value {
+    @include mat-typography-level-to-styles($config, display-1);
+  }
+
+  .label {
+    @include mat-typography-level-to-styles($config, body-1);
+  }
+
+  .icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+  }
+}

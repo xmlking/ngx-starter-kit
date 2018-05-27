@@ -3,7 +3,7 @@ import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angu
 import { JsonDiffNode, JsonDiffNodeType, JsonDiffNodeStatus } from './json-diff.interfaces';
 
 @Component({
-  selector: 'nxtk-json-diff',
+  selector: 'ngx-json-diff',
   templateUrl: './json-diff.component.html',
   styleUrls: ['./json-diff.component.scss']
 })

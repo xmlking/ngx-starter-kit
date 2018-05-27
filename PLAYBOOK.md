@@ -11,8 +11,8 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v10.1.0  |          | 
 | NPM                           | v6.0.0   |          | 
-| Angular CLI                   | v6.0.1   |          | 
-| @nrwl/schematics              | v6.0.3   |          | 
+| Angular CLI                   | v6.0.3   |          | 
+| @nrwl/schematics              | v6.0.2   |          | 
 
 
 ### Install Prerequisites
@@ -42,8 +42,8 @@ bazel clean --expunge
 #### Install Global Packages
 ```bash
 npm remove -g @nrwl/schematics
-# you need at least 6.0.0-alpha.3
-npm install -g @nrwl/schematics@next
+# you need at least 6.0.2
+npm install -g @nrwl/schematics
 npm install -g @angular/cli
 
 # verify globally installed packages
@@ -119,6 +119,7 @@ npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutabl
 # Add Dev Tools
 npm i -D standard-version
 npm i -D angular-cli-ghpages
+npm i -D @compodoc/compodoc
 
 npm i -D loaders.css
 npm i -D api-ai-javascript
@@ -175,10 +176,6 @@ ng g component containers/NotFound --project=not-found --dry-run
 ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --dry-run
 ng g component AppConfirm --project=app-confirm  --flat  --dry-run
 ng g service AppConfirm --project=app-confirm --module=app-confirm --spec=false --dry-run
-
-# generate components for `fullscreen` Module
-ng g lib Fullscreen --prefix=ngx --tags=public-module --publishable=true --dry-run
-ng g component fullscreen --project=fullscreen --flat --dry-run
 
 # generate components for `Draggable` Module
 ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true
@@ -239,6 +236,11 @@ ng g component components/chatCard --project=chat-bot --dry-run
 ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --dry-run
 ng g service socketioSubject --project=socketio-plugin --dry-run 
 
+# generate components for `openTracing` Module
+ng g lib openTracing --prefix=ngx --tags=public-module  --publishable=true --spec=false --dry-run
+ng g service services/ZipkinTracing --project=open-tracing --dry-run
+ng g interceptor interceptors/tracing  --project=open-tracing --dry-run
+
 # generate components for `jsonDiff` Module
 ng g lib jsonDiff --prefix=ngx --tags=public-module --publishable=true
 ng g component jsonDiff --project=json-diff --flat --dry-run 
@@ -251,7 +253,10 @@ ng g component components/search --project=toolbar  --dry-run
 ng g component components/searchBar --project=toolbar
 ng g component components/Notifications --project=toolbar
 ng g component components/UserMenu --project=toolbar
-ng g directive components/ClickOutside/ClickOutside  --project=toolbar --dry-run 
+ng g directive components/ClickOutside  --project=toolbar --dry-run 
+ng g component components/FullscreenToggle --project=toolbar --dry-run
+ng g component components/SidenavMobileToggle --project=toolbar --dry-run
+ng g component components/QuickpanelToggle --project=toolbar --dry-run
 
 # generate components for `sidenav` Module
 ng g lib sidenav --prefix=ngx --tags=private-module --dry-run 
@@ -307,6 +312,15 @@ ng g ngrx account --directory=state/account --project=dashboard --module=libs/da
 npm install
 cp .env.example .env
 ```
+
+### Update
+```bash
+ng update 
+ng update @angular/cli
+ng update @angular/core
+ng update --all 
+```
+
 ### Test
 ```bash
 ng test --browser=ChromeHeadless
@@ -367,6 +381,7 @@ npx ngh --dir dist/apps/webapp
 
 ### Release
 ```bash
+npm whoami
 npx standard-version
 "release": "standard-version && git push — follow-tags origin master && npm publish"
 ```

@@ -1,6 +1,7 @@
 @import "var";
 @import "constants";
 @import '~@angular/material/theming';
+@import "fu/var";
 
 $config: mat-typography-config();
 
@@ -10,11 +11,14 @@ $config: mat-typography-config();
   align-items: center;
 }
 
-.icon-button {
+.button {
   height: 100%;
   padding: 0;
-  min-width: 50px;
-  justify-content: center;
+  min-width: $toolbar-button-width;
+
+  .icon {
+    color: $toolbar-button-icon-color;
+  }
 }
 
 .dropdown {
@@ -135,6 +139,16 @@ $config: mat-typography-config();
       }
     }
 
+    .empty {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      padding-top: $spacing;
+      padding-bottom: $spacing;
+    }
+
     .footer {
       min-height: 42px;
       border-top: 1px solid #EEE;
@@ -155,3 +169,5 @@ $config: mat-typography-config();
     }
   }
 }
+
+

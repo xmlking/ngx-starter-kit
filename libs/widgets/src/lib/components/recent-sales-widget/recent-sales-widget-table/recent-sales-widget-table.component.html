@@ -1,0 +1,26 @@
+<ngx-list fxFlex="grow" fxLayout="column" [hideHeader]="true">
+  <mat-table class="table" #table [dataSource]="dataSource" matSort>
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Model Properties Column -->
+    <ng-container *ngFor="let column of columns">
+      <ng-container *ngIf="column.isModelProperty" [matColumnDef]="column.property">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ column.name }}</mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <span class="ngx-mobile-label">{{ column.name }}</span>
+          {{ row[column.property] }}
+        </mat-cell>
+      </ng-container>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="visibleColumns"></mat-header-row>
+    <!--suppress UnnecessaryLabelJS -->
+    <mat-row *matRowDef="let row; columns: visibleColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator class="paginator" [pageSize]="pageSize"></mat-paginator>
+
+</ngx-list>

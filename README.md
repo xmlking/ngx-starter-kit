@@ -1,4 +1,4 @@
-# NxStarterKit
+# NgxStarterKit
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
 
@@ -11,7 +11,7 @@ Run `npm run start:dev` for a dev server. Navigate to `http://localhost:4200/`. 
 Run `npm run start:mock` for a mock server.
 
 Run `npm run start:dev -- --proxy-config proxy.conf.js` to start with proxy
- 
+
 ## Build
 
 Run `npm run build:prod` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.

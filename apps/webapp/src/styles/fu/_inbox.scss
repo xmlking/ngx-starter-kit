@@ -1,0 +1,35 @@
+$color__inactive: #616161;
+$color__primary: #3F51B5;
+$color__read: #9F9F9F;
+$color__checkbox__star: #616161;
+
+.inbox-compose {
+
+  [mat-dialog-actions], mat-dialog-action {
+    padding: 12px 0 26px;
+  }
+
+  .content {
+    margin: 24px -24px;
+
+    .input-container {
+      width: 100%;
+    }
+
+    .editor {
+      margin: 0;
+    }
+  }
+
+  .send {
+    margin-left: 12px;
+
+    mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      margin-left: 6px;
+    }
+  }
+}
+

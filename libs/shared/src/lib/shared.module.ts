@@ -1,11 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { MaterialModule } from '@nx-starter-kit/material';
-import { MaterialDateModule } from '@nx-starter-kit/material';
-import { FullscreenModule } from '@nx-starter-kit/fullscreen';
-import { BreadcrumbsModule } from '@nx-starter-kit/breadcrumbs';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@ngx-starter-kit/material';
+import { MaterialDateModule } from '@ngx-starter-kit/material';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
+import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
@@ -24,18 +23,17 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
 
 @NgModule({
-  imports: [CommonModule, RouterModule, FullscreenModule, FlexLayoutModule, MaterialModule, PerfectScrollbarModule],
+  // imports: [CommonModule, RouterModule, FlexLayoutModule, MaterialModule, PerfectScrollbarModule],
+  imports: [CommonModule, ],
   declarations: [...DIRECTIVES],
   exports: [
     CommonModule,
-    FormsModule, //FIXME : remove
     ReactiveFormsModule,
     FlexLayoutModule,
     BreadcrumbsModule,
     MaterialModule,
     MaterialDateModule,
     PerfectScrollbarModule,
-    FullscreenModule,
     ...DIRECTIVES
   ],
   providers: [{ provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }]
