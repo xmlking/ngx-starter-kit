@@ -1,0 +1,172 @@
+{
+  "npmScope": "nx-starter-kit",
+  "projects": {
+    "default": {
+      "tags": [
+        "app-module"
+      ]
+    },
+    "default-e2e": {
+      "tags": []
+    },
+    "animations": {
+      "tags": [
+        "utils"
+      ]
+    },
+    "app-confirm": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "auth": {
+      "tags": [
+        "private-module",
+        "core-module"
+      ]
+    },
+    "breadcrumbs": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "chat-bot": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "context-menu": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "crud": {
+      "tags": [
+        "child-module"
+      ]
+    },
+    "dashboard": {
+      "tags": [
+        "layout",
+        "entry-module"
+      ]
+    },
+    "draggable": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "experiments": {
+      "tags": [
+        "child-module"
+      ]
+    },
+    "fullscreen": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "home": {
+      "tags": [
+        "layout",
+        "entry-module"
+      ]
+    },
+    "json-diff": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "led": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "loading-overlay": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "material": {
+      "tags": [
+        "shared-module"
+      ]
+    },
+    "navigator": {
+      "tags": [
+        "private-module",
+        "core-module"
+      ]
+    },
+    "not-found": {
+      "tags": [
+        "entry-module"
+      ]
+    },
+    "nx-pipes": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "quickpanel": {
+      "tags": [
+        "private-module"
+      ]
+    },
+    "scroll-to-top": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "scrollbar": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "shared": {
+      "tags": [
+        "shared-module"
+      ]
+    },
+    "sidenav": {
+      "tags": [
+        "private-module"
+      ]
+    },
+    "socketio-plugin": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "svg-viewer": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "theme-picker": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "toolbar": {
+      "tags": [
+        "private-module"
+      ]
+    },
+    "tree": {
+      "tags": [
+        "utils"
+      ]
+    },
+    "utils": {
+      "tags": [
+        "utils"
+      ]
+    },
+    "widgets": {
+      "tags": [
+        "child-module"
+      ]
+    }
+  }
+}

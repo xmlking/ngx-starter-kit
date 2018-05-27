@@ -1,0 +1,61 @@
+@import "var";
+@import "constants";
+@import '~@angular/material/theming';
+
+.user-container {
+  height: 100%;
+  position: relative;
+
+  .user-button {
+    height: 100%;
+    min-width: 50px;
+
+    .user-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .name {
+      margin: 0 8px 0 10px;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      transform: rotate(0);
+      transition: transform .25s cubic-bezier(.25,.8,.25,1);
+    }
+
+    &.open {
+      background: rgba(0, 0, 0, .05);
+
+      .icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  .dropdown {
+    background: white;
+    position: absolute;
+    top: $mat-toolbar-height-desktop;
+    right: 0;
+    width: 100%;
+    min-width: 160px;
+    z-index: -1;
+    transform: translateY(-110%);
+    visibility: hidden;
+    transition: transform .4s cubic-bezier(.25,.8,.25,1), visibility .4s cubic-bezier(.25,.8,.25,1);
+
+    @media ($mat-xsmall) {
+      top: $mat-toolbar-height-mobile-portrait;
+    }
+
+    &.open {
+      transform: translateY(0);
+      visibility: visible;
+    }
+  }
+}

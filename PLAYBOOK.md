@@ -5,12 +5,14 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 
 ### Prerequisites  
+> you need following tools. versions listed here are minimal versions tested.
+
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.0.0  |          | 
+| Node                          | v10.1.0  |          | 
 | NPM                           | v6.0.0   |          | 
-| Angular CLI                   | v6.0.0   |          | 
-| @nrwl/schematics              | v1.0.3   |          | 
+| Angular CLI                   | v6.0.1   |          | 
+| @nrwl/schematics              | v6.0.3   |          | 
 
 
 ### Install Prerequisites
@@ -40,7 +42,8 @@ bazel clean --expunge
 #### Install Global Packages
 ```bash
 npm remove -g @nrwl/schematics
-npm install -g @nrwl/schematics
+# you need at least 6.0.0-alpha.3
+npm install -g @nrwl/schematics@next
 npm install -g @angular/cli
 
 # verify globally installed packages
@@ -48,7 +51,7 @@ npm list -g --depth=0
 # find out which packages need to be updated
 npm outdated -g --depth=0
 # set scss as default css processor
-ng set defaults.styleExt scss
+ng config -g defaults.styleExt=scss
 # show dependency tree for specified package.
 npm ls jasmine-marbles
 ```
@@ -58,205 +61,245 @@ npm ls jasmine-marbles
 
 #### Create Workspace
 ```bash
-create-nx-workspace  nx-starter-kit --bazel
-cd nx-starter-kit
-npm install
+create-nx-workspace ngx-starter-kit --prefix=ngx --style=scss --routing  --service-worker
+# if you want *bazel* builds instead of *webpack*
+create-nx-workspace ngx-starter-kit --bazel --prefix=ngx --style=scss --routing  --service-worker
+cd ngx-starter-kit
+# make sure we are up-to-date
+ng update @angular/core
+# generate webapp app
+ng g app webapp --routing --style=scss --service-worker --tags=app-module
 ```
 
 #### Dependencies
 > adding 3rd party modules/libs
 ```bash
-cd nx-starter-kit
-npm i @angular/flex-layout @angular/material @angular/cdk @angular/material-moment-adapter hammerjs web-animations-js  \
-ngx-perfect-scrollbar screenfull angular2-moment \
-@swimlane/ngx-datatable @swimlane/ngx-charts angular-in-memory-web-api angular-oauth2-oidc 
+cd ngx-starter-kit
 
-# install without saving
-npm install trianglify --no-save --no-lock
+# Add PWA
+ng add @angular/pwa
 
-npm i -D loaders.css @types/hammerjs standard-version
+# Add Material 
+# Ref: https://material.angular.io/guide/schematics
+# Ref: https://material.angular.io/guide/getting-started
+ng add @angular/material
+npm i @angular/material-moment-adapter
+npm i hammerjs
+npm i -D @types/hammerjs
+npm i ngx-moment
+npm i @angular/material-moment-adapter 
+
+# Add Flex-Layout 
+npm i @angular/flex-layout@next
+# Add in-memory-web-api
+npm i angular-in-memory-web-api
+# Add oauth2-oidc 
+npm i angular-oauth2-oidc 
+
+# Add Filepond
+npm i @ngxs/devtools-plugin @ngxs/store
+    
+# Add Filepond
+npm i @xmlking/ngx-filepond \
+filepond-plugin-file-encode \
+filepond-plugin-file-validate-size \
+filepond-plugin-file-validate-type \
+filepond-plugin-image-crop \
+filepond-plugin-image-preview
+
+# Add Socket.io
+npm i socket.io-client 
+npm i -D @types/socket.io-client
+
+# Add miscellaneous
+npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable socket.io-client
+
+
+
+# Add Dev Tools
+npm i -D standard-version
+npm i -D angular-cli-ghpages
+
+npm i -D loaders.css
+npm i -D api-ai-javascript
 
 #  temp workaround
 npm i -D @angular/http
 
-npm i -D ng-packagr
-npm i -D api-ai-javascript
-npm i d3
-npm i nvd3
-npm i -D @types/nvd3
-npm i -D @types/d3
+# install without saving
+npm install trianglify --no-save --no-lock
 ```
 
 #### Generate Artifacts
 > Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
 ```bash
-# generate default app
-ng g app default --routing --style=scss --service-worker
-
-# add `core` module to `default` app
-ng g module core --app=default --module=app
+# add `core` module to `webapp` app
+ng g module core --app=webapp --module=app --spec=false  --dry-run
 # add shared services for `core` Module
-ng g service core/services/InMemoryData --app=default --module=core --spec=false
-ng g service core/services/PageTitle/PageTitle --app=default --module=core
-ng g service core/services/serviceWorker/serviceWorker --app=default --module=core --dry-run
+ng g service core/services/InMemoryData --app=webapp --module=core --spec=false --dry-run
+ng g service core/services/PageTitle --app=webapp --module=core --dry-run
+ng g service core/services/ServiceWorker --app=webapp --module=core --dry-run
+ng g service core/services/MediaQuery --app=webapp --module=core --dry-run
 
 # generate `Lazy-loaded Feature Modules`
-ng g lib home           --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
-ng g lib dashboard      --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=layout,entry-module
-ng g lib NotFound       --routing --lazy --parent-module=apps/default/src/app/app.module.ts       --tags=entry-module
-ng g lib experiments    --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
-ng g lib widgets        --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
-ng g lib crud           --routing --lazy --parent-module=libs/dashboard/src/dashboard.module.ts   --tags=child-module
+ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --tags=layout,entry-module
+ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --tags=layout,entry-module
+ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --tags=entry-module
+ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
+ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
+ng g lib crud           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
 
 
 ng g lib material --spec=false --tags=shared-module --dry-run
 ng g lib animations --nomodule -tags=utils --dry-run 
-ng g lib Tree --nomodule --tags=utils --dry-run
+ng g lib Tree --nomodule  --publishable=true --tags=utils --dry-run
 ng g lib utils --nomodule --tags=utils --dry-run
 
-ng g lib shared --tags=shared-module # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
+# add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
+ng g lib shared --prefix=ngx --tags=shared-module 
 
 # generate containers, components for `shared` Module
-ng g service services/entity/entity --app=shared --module=shared
-ng g directive directives/min  --app=shared --module=shared --export=true
-ng g component components/entityTable --app=shared --module=shared --export=true
-ng g component containers/entity --app=shared --module=shared --skip-import
-ng g component containers/entityForm  --app=shared --module=shared --skip-import
+ng g service containers/entity/entity --project=shared --module=shared
+ng g directive directives/min  --project=shared --module=shared --export=true
+ng g component components/entityTable --project=shared --module=shared --export=true
+ng g component containers/entity --project=shared --module=shared --skip-import
+ng g component containers/entityForm  --project=shared --module=shared --skip-import
 
 # generate containers for `NotFound` Module
-ng g component containers/NotFound --app=not-found
+ng g component containers/NotFound --project=not-found --dry-run
 
 
 ### generate `Reusable lib Modules`
 
 # generate components for `AppConfirm` Module
-ng g lib AppConfirm  --tags=public-module --dry-run
-ng g component AppConfirm --app=app-confirm  --flat  --dry-run
-ng g service AppConfirm --app=app-confirm --module=app-confirm --spec=false --dry-run
+ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --dry-run
+ng g component AppConfirm --project=app-confirm  --flat  --dry-run
+ng g service AppConfirm --project=app-confirm --module=app-confirm --spec=false --dry-run
 
 # generate components for `fullscreen` Module
-ng g lib Fullscreen --tags=public-module --dry-run
-ng g component fullscreen --app=fullscreen --flat --dry-run
+ng g lib Fullscreen --prefix=ngx --tags=public-module --publishable=true --dry-run
+ng g component fullscreen --project=fullscreen --flat --dry-run
 
 # generate components for `Draggable` Module
-ng g lib Draggable --tags=public-module
+ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true
 ng g directive directives/Draggable --module=draggable --export=true --dry-run
 
 # generate components for `Breadcrumbs` Module
-ng g lib Breadcrumbs --tags=public-module
-ng g component breadcrumbs --app=breadcrumbs --flat --dry-run
-ng g service  breadcrumbs --app=breadcrumbs --module=breadcrumbs --dry-run
+ng g lib Breadcrumbs --prefix=ngx --tags=public-module --publishable=true
+ng g component breadcrumbs --project=breadcrumbs --flat --dry-run
+ng g service  breadcrumbs --project=breadcrumbs --module=breadcrumbs --dry-run
 
 # generate components for `ScrollToTop` Module
-ng g lib ScrollToTop --tags=public-module
-ng g component ScrollToTop --app=scroll-to-top --flat --dry-run
+ng g lib ScrollToTop --prefix=ngx --tags=public-module --publishable=true
+ng g component ScrollToTop --project=scroll-to-top --flat --dry-run
 
-ng g lib scrollbar --tags=public-module
+ng g lib scrollbar --prefix=ngx --tags=public-module --publishable=true
 
 
 # generate components for `ContextMenu` Module
-ng g lib ContextMenu --tags=public-module
-ng g component ContextMenu --app=context-menu --flat --dry-run
-ng g directive ContextMenuTrigger --app=context-menu --flat --dry-run
+ng g lib ContextMenu --prefix=ngx --tags=public-module --publishable=true
+ng g component ContextMenu --project=context-menu --flat --dry-run
+ng g directive ContextMenuTrigger --project=context-menu --flat --dry-run
 
 
 # generate components, services for `ThemePicker` Module
-ng g lib ThemePicker --tags=public-module  
-ng g component ThemePicker --app=theme-picker --flat --dry-run
-ng g service  ThemeStorage --app=theme-picker --module=theme-picker --dry-run
-ng g service  StyleManager --app=theme-picker --module=theme-picker --dry-run
+ng g lib ThemePicker --prefix=ngx --tags=public-module --publishable=true
+ng g component ThemePicker --project=theme-picker --flat --dry-run
+ng g service  ThemeStorage --project=theme-picker --module=theme-picker --dry-run
+ng g service  StyleManager --project=theme-picker --module=theme-picker --dry-run
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel --tags=private-module
-ng g component Quickpanel --app=quickpanel --flat --dry-run
+ng g lib Quickpanel --prefix=ngx --tags=private-module
+ng g component Quickpanel --project=quickpanel --flat --dry-run
 
 # generate components for `NxPipes` Module
-ng g lib NxPipes --tags=public-module
-ng g pipe truncate/Characters --app=nx-pipes   --dry-run
-ng g pipe truncate/Words --app=nx-pipes   --dry-run
+ng g lib NxPipes --prefix=ngx --tags=public-module --publishable=true
+ng g pipe truncate/Characters --project=nx-pipes   --dry-run
+ng g pipe truncate/Words --project=nx-pipes   --dry-run
 
 # generate components for `LoadingOverlay` Module
-ng g lib LoadingOverlay --tags=public-module
-ng g component LoadingOverlay --app=loading-overlay --flat --dry-run
+ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true
+ng g component LoadingOverlay --project=loading-overlay --flat --dry-run
 
 # generate components for `svgViewer` Module
-ng g lib svgViewer --tags=public-module
-ng g component svgViewer --app=svg-viewer --flat --dry-run 
+ng g lib svgViewer --prefix=ngx --tags=public-module --publishable=true
+ng g component svgViewer --project=svg-viewer --flat --dry-run 
 
 # generate components for `led` Module
-ng g lib led --tags=public-module
-ng g component led --app=led --flat --dry-run 
+ng g lib led --prefix=ngx --tags=public-module --publishable=true
+ng g component led --project=led --flat --dry-run 
 
 # generate components for `chatBot` Module
-ng g lib chatBot --tags=public-module --dry-run 
-ng g component components/chatBot --app=chat-bot --dry-run 
-ng g component components/typingIndicator --app=chat-bot --dry-run 
+ng g lib chatBot --prefix=ngx --tags=public-module --publishable=true --dry-run 
+ng g component chatBot --project=chat-bot --flat --dry-run 
+ng g component components/typingIndicator --project=chat-bot --dry-run 
+ng g component components/chatCard --project=chat-bot --dry-run 
 
 # generate components for `socketioPlugin` Module
-ng g lib socketioPlugin --tags=public-module  --dry-run
-ng g service socketioSubject --app=socketio-plugin --dry-run 
+ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --dry-run
+ng g service socketioSubject --project=socketio-plugin --dry-run 
 
 # generate components for `jsonDiff` Module
-ng g lib jsonDiff --tags=public-module
-ng g component jsonDiff --app=json-diff --flat --dry-run 
-ng g component jsonDiffTree --app=json-diff --flat --dry-run 
+ng g lib jsonDiff --prefix=ngx --tags=public-module --publishable=true
+ng g component jsonDiff --project=json-diff --flat --dry-run 
+ng g component jsonDiffTree --project=json-diff --flat --dry-run 
 
 # generate components for `toolbar` Module
-ng g lib toolbar --tags=private-module --dry-run 
-ng g component toolbar --app=toolbar --flat --dry-run 
-ng g component components/search --app=toolbar  --dry-run 
-ng g component components/searchBar --app=toolbar
-ng g component components/Notifications --app=toolbar
-ng g component components/UserMenu --app=toolbar
-ng g directive components/ClickOutside/ClickOutside  --app=toolbar --dry-run 
+ng g lib toolbar --prefix=ngx --tags=private-module --dry-run 
+ng g component toolbar --project=toolbar --flat --dry-run 
+ng g component components/search --project=toolbar  --dry-run 
+ng g component components/searchBar --project=toolbar
+ng g component components/Notifications --project=toolbar
+ng g component components/UserMenu --project=toolbar
+ng g directive components/ClickOutside/ClickOutside  --project=toolbar --dry-run 
 
 # generate components for `sidenav` Module
-ng g lib sidenav --tags=private-module --dry-run 
-ng g component sidenav --app=sidenav --flat --dry-run 
-ng g component components/sidenavItem --app=sidenav  --dry-run 
-ng g directive  IconSidenav --app=sidenav --module=sidenav --dry-run 
+ng g lib sidenav --prefix=ngx --tags=private-module --dry-run 
+ng g component sidenav --project=sidenav --flat --dry-run 
+ng g component components/sidenavItem --project=sidenav  --dry-run 
+ng g directive  IconSidenav --project=sidenav --module=sidenav --dry-run 
 
 # generate components for `auth` Module
-ng g lib auth --tags=private-module,core-module --dry-run 
-ng g component components/login --app=auth
+ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --dry-run 
+ng g component components/login --project=auth --dry-run 
 
-# generate components for `auth` Module
-ng g lib navigator --tags=private-module,core-module --dry-run 
-ng g service services/menu --app=navigator --module=navigator --dry-run 
-ng g class models/menuItem --app=navigator --type=model  --dry-run
-ng g class state/menu --app=navigator --type=state  --dry-run
+# generate components for `navigator` Module
+ng g lib navigator --prefix=ngx --tags=private-module,core-module --dry-run 
+ng g service services/menu --project=navigator --dry-run
+ng g class models/menuItem --project=navigator --type=model  --dry-run
+ng g class state/menu --project=navigator --type=state  --dry-run
 
 # generate containers, components for `home` Module
-ng g component components/header --app=home
-ng g component containers/homeLayout --app=home
-ng g component containers/landing --app=home
-ng g component containers/blog --app=home
-ng g component containers/about --app=home
+ng g component components/header --project=home
+ng g component containers/homeLayout --project=home
+ng g component containers/landing --project=home
+ng g component containers/blog --project=home
+ng g component containers/about --project=home
 
 # generate containers, components for `dashboard` Module
-ng g component components/rainbow --app=dashboard --dry-run
-ng g component containers/dashboardLayout --app=dashboard --dry-run
-ng g component containers/overview --app=dashboard --dry-run
+ng g component components/rainbow --project=dashboard --dry-run
+ng g component containers/dashboardLayout --project=dashboard --dry-run
+ng g component containers/overview --project=dashboard --dry-run
 
 
 # generate containers, components for `widgets` Module
-ng g component containers/wizdash --app=widgets --dry-run
+ng g component containers/wizdash --project=widgets --dry-run
 
 # generate containers, components for `crud` Module
-ng g component containers/accounts --app=crud --module=crud --dry-run
+ng g component containers/accounts --project=crud --module=crud --dry-run
 
 # generate containers, components for `experiments` Module
-ng g component containers/experimentsLayout --app=experiments --dry-run
-ng g component containers/experiments --app=experiments --dry-run
-ng g component components/hammerCard --app=experiments --dry-run
-ng g directive components/Hammertime/Hammertime --app=experiments --dry-run
-ng g component containers/ContextMenu --app=experiments --dry-run
+ng g component containers/experimentsLayout --project=experiments --dry-run
+ng g component containers/experiments --project=experiments --dry-run
+ng g component components/hammerCard --project=experiments --dry-run
+ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
+ng g component containers/ContextMenu --project=experiments --dry-run
 
 
 # scaffolding ngrx for root module i.e., app.module.ts
-ng g ngrx app --app=default --module=apps/default/src/app/app.module.ts  --only-empty-root
+ng g ngrx app --app=webapp --module=apps/webapp/src/app/app.module.ts  --only-empty-root
 # add `account` state for `dashboard` Feature Module
-ng g ngrx account --directory=state/account --app=dashboard --module=libs/dashboard/src/dashboard.module.ts
+ng g ngrx account --directory=state/account --project=dashboard --module=libs/dashboard/src/dashboard.module.ts
 ```
 
 ### Install
@@ -272,7 +315,7 @@ ng test --browser=ChromeHeadless
 ### Build
 ```bash
 # build project 
-ng build --app=default --prod -oh=media
+ng build --app=webapp --prod -oh=media
 ```
 ### Run
 ```bash
@@ -299,9 +342,9 @@ docker-compose up web
 > use this to test service-workers
 ```bash
 # 1st terminal - Start the build
-ng build --app=default -oh=media --watch
+ng build --app=webapp -oh=media --watch
 # 2nd terminal - Start the web server (start server on port 4200)
-npx lite-server --baseDir="dist/apps/default"
+npx lite-server --baseDir="dist/apps/webapp"
 ```
 
 ### Docs
@@ -317,9 +360,9 @@ npx compodoc -s -d docs
 > deploy demo to gh-pages
 ```bash
 # build for gh-pages
-ng build --app=default --prod -oh=media -e mock --base-href /is360-nx/
+ng build --app=webapp --prod -oh=media -e mock --base-href /is360-nx/
 # push gh-pages
-npx ngh --dir dist/apps/default
+npx ngh --dir dist/apps/webapp
 ```
 
 ### Release
@@ -338,3 +381,14 @@ $ docker-compose up web   # optional: --build, see below
 ```
 
 Now open your browser at http://localhost:80
+
+
+### IntelliJ
+
+Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.
+Right click on `apps/webapp/src` in project vie --> Make Directory as --> Resources Root.
+
+###  Reference 
+
+* Nx and Angular CLI
+  * https://github.com/nrwl/nx/wiki/Nx-and-Angular-CLI

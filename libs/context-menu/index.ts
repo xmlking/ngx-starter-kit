@@ -1,1 +1,1 @@
-export { ContextMenuModule } from './src/context-menu.module';
+export { ContextMenuModule } from './src/lib/context-menu.module';

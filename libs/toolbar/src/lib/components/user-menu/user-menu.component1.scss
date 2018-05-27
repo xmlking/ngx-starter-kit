@@ -1,0 +1,57 @@
+@import "constants";
+@import '~@angular/material/theming';
+
+.user-container {
+  height: 100%;
+  position: relative;
+
+  .user-button {
+    height: 100%;
+
+    .user-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+    }
+
+    .name {
+      margin: 0 8px 0 10px;
+    }
+
+    .icon {
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      transform: rotate(0);
+      transition: transform .25s cubic-bezier(.25,.8,.25,1);
+    }
+
+    &.open {
+      background: rgba(0, 0, 0, .05);
+
+      .icon {
+        transform: rotate(-180deg);
+      }
+    }
+  }
+
+  .dropdown {
+    background: white;
+    z-index: 2;
+    position: absolute;
+    width: 100%;
+    min-width: 160px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all .25s linear, max-height .25s linear, opacity .25s linear;
+
+    @media screen and ($mat-xsmall) {
+      min-width: 65px;
+    }
+
+    &.open {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}

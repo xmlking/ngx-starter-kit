@@ -1,0 +1,102 @@
+@import "var";
+
+mat-toolbar.mat-toolbar.sidenav-toolbar {
+  background: $background-color__sidenav-toolbar;
+  padding: 0 14px 0 24px;
+  z-index: 3;
+}
+
+.sidenav-container, .sidenav-scrollbar-container {
+  height: 100%;
+}
+
+.cdk-focus-trap-content, mat-sidenav {
+  overflow-y: hidden !important;
+  overflow-x: hidden;
+}
+
+.icon-sidenav-toggle {
+  color: $color__sidenav-list;
+  transition: transform .25s;
+
+  &.rotate {
+    transform: rotate(-180deg);
+  }
+}
+
+//Moved
+
+.sidenav {
+  width: $width__sidenav;
+  max-width: $width__sidenav;
+  background: $background-color__sidenav-list;
+  overflow-x: hidden;
+  z-index: $z-index__mat-sidenav;
+}
+
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@media screen and (min-width: 960px) {
+
+  .sidenav + .cdk-visually-hidden + .mat-drawer-content, .sidenav + .mat-drawer-content {
+    transition: all .4s cubic-bezier(.25, .8, .25, 1);
+    transition-property: transform, max-width, margin-left, margin-right !important;
+    margin-left: 0 !important;
+    background: #EEE;
+    z-index: $z-index__mat-sidenav-content;
+    overflow: hidden;
+
+    box-shadow: inset 7px 0 9px -7px rgba(0, 0, 0, 0.4);
+  }
+
+  .sidenav + .cdk-visually-hidden + .mat-drawer-content, .sidenav + .mat-drawer-content {
+    max-width: calc(100% - #{$width__sidenav});
+    transform: translate3d($width__sidenav, 0, 0) !important;
+  }
+
+  .sidenav.icon-sidenav.collapsed + .cdk-visually-hidden + .mat-drawer-content, .sidenav.icon-sidenav.collapsed + .mat-drawer-content {
+    max-width: calc(100% - #{$max-width__icon-sidenav});
+    transform: translate3d($max-width__icon-sidenav, 0, 0) !important;
+  }
+
+  .sidenav.icon-sidenav + .cdk-visually-hidden + .mat-drawer-content, .sidenav.icon-sidenav + .mat-drawer-content {
+    max-width: calc(100% - #{$max-width__icon-sidenav});
+  }
+
+  .sidenav {
+    &.collapsed {
+      //max-width: $max-width__icon-sidenav; // Padding width + icon width
+      //min-width: $max-width__icon-sidenav;
+      .fade-in-on-icon-sidenav {
+        //noinspection CssInvalidPropertyValue
+        animation: .5s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 fadeout;
+      }
+    }
+
+    &:not(.collapsed) {
+      .fade-in-on-icon-sidenav {
+        //noinspection CssInvalidPropertyValue
+        animation: .5s cubic-bezier(.25, .8, .25, 1) 0s normal forwards 1 fadein;
+      }
+    }
+  }
+
+}
+

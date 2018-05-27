@@ -1,1 +1,1 @@
-export { JsonDiffModule } from './src/json-diff.module';
+export { JsonDiffModule } from './src/lib/json-diff.module';

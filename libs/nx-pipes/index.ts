@@ -1,1 +1,1 @@
-export { NxPipesModule } from './src/nx-pipes.module';
+export { NxPipesModule } from './src/lib/nx-pipes.module';

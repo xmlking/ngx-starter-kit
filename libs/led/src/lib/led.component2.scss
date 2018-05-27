@@ -1,0 +1,137 @@
+@import "animation-helper";
+@mixin blink0($color: #F00, $duration: $global-duration, $function: $global-function, $delay: $global-delay, $count: $global-count, $fill: $global-fill, $visibility: $global-visibility) {
+  @include animation(blink+'_'+$color $duration $function $delay $count $fill);
+  @include visibility($visibility);
+
+  @at-root {
+    @include keyframes(blink+'_'+$color) {
+      0% {
+        background-color: $color;
+        box-shadow: #000 0 -1px 6px 1px, inset darken($color, 30%) 0 -1px 8px, $color 0 3px 11px;
+      }
+      50% {
+        background-color: rgba(255, 255, 255, 0.25);
+        box-shadow: #000 0 -1px 6px 1px;
+      }
+      100% {
+        background-color: $color;
+        box-shadow: #000 0 -1px 6px 1px, inset darken($color, 30%) 0 -1px 8px, $color 0 3px 11px;
+      }
+    }
+  }
+}
+
+@mixin blink($color: #FF0, $duration: $global-duration, $function: $global-function, $delay: $global-delay, $count: $global-count, $fill: $global-fill, $visibility: $global-visibility) {
+  @include animation(blink+'_'+$color $duration $function $delay $count $fill);
+  @include visibility($visibility);
+
+  @at-root {
+    @include keyframes(blink+'_'+$color) {
+      from {
+        background-color: $color;
+      }
+      50% {
+        background-color: darken($color, 20%);
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset  darken($color, 5%) 0 -1px 9px, $color 0 2px 0;
+      }
+      to {
+        background-color: $color;
+      }
+    }
+  }
+}
+
+.led {
+  //  margin: 20px auto;
+  margin: 0 5px;
+  display: inline-block;
+
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.25);
+  box-shadow: #000 0 -1px 6px 1px;
+
+  &.red {
+    background-color: #F00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 12px;
+
+    &.blink {
+      animation: blinkRed 1s infinite;
+      //@include blink($color: red, $duration: 1000ms, $count:infinite);
+    }
+  }
+
+  &.yellow {
+    background-color: #FF0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 12px;
+    &.blink {
+      animation: blinkYellow 1s infinite;
+      //@include blink($color: yellow, $duration: 1000ms, $count:infinite);
+    }
+  }
+
+  &.green {
+    background-color: #ABFF00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #304701 0 -1px 9px, #89FF00 0 2px 12px;
+  }
+
+  &.blue {
+    background-color: #24E0FF;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #006 0 -1px 9px, #3F8CFF 0 2px 14px;
+  }
+
+
+  &.led-red {
+    background-color: #F00;
+    box-shadow: #000 0 -1px 6px 1px, inset #600 0 -1px 8px, #F00 0 3px 11px;
+  }
+
+  &.orange {
+    background-color: #FF7000;
+    box-shadow: #000 0 -1px 6px 1px, inset #630 0 -1px 8px, #FF7000 0 3px 11px;
+  }
+
+  &.yellow {
+    background-color: #FF0;
+    box-shadow: #000 0 -1px 6px 1px, inset #660 0 -1px 8px, #FF0 0 3px 11px;
+  }
+
+  &.led-green {
+    background-color: #80FF00;
+    box-shadow: #000 0 -1px 6px 1px, inset #460 0 -1px 8px, #80FF00 0 3px 11px;
+  }
+
+  &.led-blue {
+    background-color: #06F;
+    box-shadow: #000 0 -1px 6px 1px, inset #006 0 -1px 8px, #06F 0 3px 11px;
+  }
+
+}
+
+@keyframes blinkRed {
+  from {
+    background-color: #F00;
+  }
+  50% {
+    background-color: #A00;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;
+  }
+  to {
+    background-color: #F00;
+  }
+}
+
+@keyframes blinkYellow {
+  from {
+    background-color: #FF0;
+  }
+  50% {
+    background-color: #AA0;
+    box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+  }
+  to {
+    background-color: #FF0;
+  }
+}
+

@@ -1,1 +1,1 @@
-export { DraggableModule } from './src/draggable.module';
+export { DraggableModule } from './src/lib/draggable.module';

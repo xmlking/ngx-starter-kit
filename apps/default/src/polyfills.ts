@@ -72,3 +72,7 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 
 // To support IE11 we need to install the filepond-polyfill files
 // import 'filepond-polyfill'
+
+// By Sumo
+// Add global to window, assigning the value of window itself.
+(window as any).global = window;
