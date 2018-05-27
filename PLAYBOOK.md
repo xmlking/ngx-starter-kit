@@ -77,13 +77,12 @@ ng g app webapp --routing --style=scss --service-worker --tags=app-module
 cd ngx-starter-kit
 
 # Add PWA
-ng add @angular/pwa
+ng add @angular/pwa --project webapp
 
 # Add Material 
 # Ref: https://material.angular.io/guide/schematics
 # Ref: https://material.angular.io/guide/getting-started
 ng add @angular/material
-npm i @angular/material-moment-adapter
 npm i hammerjs
 npm i -D @types/hammerjs
 npm i ngx-moment
@@ -96,11 +95,11 @@ npm i angular-in-memory-web-api
 # Add oauth2-oidc 
 npm i angular-oauth2-oidc 
 
-# Add Filepond
+# Add ngxs
 npm i @ngxs/devtools-plugin @ngxs/store
     
 # Add Filepond
-npm i @xmlking/ngx-filepond \
+npm i ngx-filepond \
 filepond-plugin-file-encode \
 filepond-plugin-file-validate-size \
 filepond-plugin-file-validate-type \
@@ -112,7 +111,7 @@ npm i socket.io-client
 npm i -D @types/socket.io-client
 
 # Add miscellaneous
-npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable socket.io-client
+npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable
 
 
 
@@ -364,7 +363,7 @@ npx compodoc -s -d docs
 > deploy demo to gh-pages
 ```bash
 # build for gh-pages
-ng build --app=webapp --prod -oh=media -e mock --base-href /is360-nx/
+build:mock --base-href /ngx-starter-kit/
 # push gh-pages
 npx ngh --dir dist/apps/webapp
 ```
