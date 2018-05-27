@@ -37,7 +37,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         // onSameUrlNavigation: 'reload'
       }
     ),
-    ServiceWorkerModule.register('/ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('./ngsw-worker.js', {enabled: environment.production}),
     CoreModule, // IMP: Please keep CoreModule after RouterModule
   ],
   providers: [
