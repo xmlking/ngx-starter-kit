@@ -1,4 +1,12 @@
-import { animate, query, style, transition, trigger, stagger, sequence } from '@angular/animations';
+import {
+  animate,
+  query,
+  style,
+  transition,
+  trigger,
+  stagger,
+  sequence
+} from '@angular/animations';
 
 export const ANIMATE_ON_ROUTE_ENTER = 'route-enter-staggered';
 
@@ -15,7 +23,10 @@ export const routerTransition = trigger('routerTransition', [
         ':leave > *',
         [
           style({ transform: 'translateY(0%)', opacity: 1 }),
-          animate('0.2s ease-in-out', style({ transform: 'translateY(-3%)', opacity: 0 })),
+          animate(
+            '0.2s ease-in-out',
+            style({ transform: 'translateY(-3%)', opacity: 0 })
+          ),
           style({ position: 'fixed' })
         ],
         { optional: true }
@@ -28,7 +39,10 @@ export const routerTransition = trigger('routerTransition', [
             opacity: 0,
             position: 'static'
           }),
-          animate('0.5s ease-in-out', style({ transform: 'translateY(0%)', opacity: 1 }))
+          animate(
+            '0.5s ease-in-out',
+            style({ transform: 'translateY(0%)', opacity: 1 })
+          )
         ],
         { optional: true }
       )
@@ -37,7 +51,10 @@ export const routerTransition = trigger('routerTransition', [
       ':enter .' + ANIMATE_ON_ROUTE_ENTER,
       stagger(100, [
         style({ transform: 'translateY(15%)', opacity: 0 }),
-        animate('0.5s ease-in-out', style({ transform: 'translateY(0%)', opacity: 1 }))
+        animate(
+          '0.5s ease-in-out',
+          style({ transform: 'translateY(0%)', opacity: 1 })
+        )
       ]),
       { optional: true }
     )

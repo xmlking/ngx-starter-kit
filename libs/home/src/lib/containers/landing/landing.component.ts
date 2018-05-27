@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageTitleService } from '@default/core';
 
 @Component({
-  selector: 'app-landing',
+  selector: 'ngx-landing',
   templateUrl: './landing.component.html',
   styleUrls: ['./landing.component.scss']
 })

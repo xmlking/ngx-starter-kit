@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { scrollFabAnimation } from '@nx-starter-kit/animations';
+import { scrollFabAnimation } from '@ngx-starter-kit/animations';
 import { PageScrollConfig, PageScrollService, PageScrollInstance } from 'ngx-page-scroll';
 import { map, tap, debounceTime, distinctUntilChanged, throttleTime, takeUntil } from 'rxjs/operators';
 import { BehaviorSubject, fromEvent, Subject } from 'rxjs';

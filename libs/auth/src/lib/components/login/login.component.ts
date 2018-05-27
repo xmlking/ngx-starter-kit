@@ -9,7 +9,7 @@ import { Store } from '@ngxs/store';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 
 @Component({
-  selector: 'nxtk-login',
+  selector: 'ngx-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

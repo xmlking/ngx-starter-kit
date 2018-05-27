@@ -2,23 +2,29 @@
 
 $config: mat-typography-config();
 
-mat-toolbar {
-  padding-right: 0;
-}
 
-nxtk-notifications, nxtk-fullscreen, nxtk-search, user-menu {
-  height: 100%;
-}
+@import "fu/var";
 
-button.quickpanel-toggle {
-  border-radius: 0;
-  padding: 0;
-  min-width: 75px;
-  max-width: 75px;
-  height: 100%;
-}
-
-@import "var";
 :host {
-  z-index: $z-index__main-toolbar;
+  z-index: $toolbar-z-index;
+}
+
+//mat-toolbar {
+.toolbar {
+  background: $toolbar-background;
+  padding-right: 0;
+  height: $toolbar-height;
+  padding-left: $spacing/1.5;
+  max-width: 100%;
+
+  @include mat-elevation($toolbar-elevation);
+
+  .button {
+    border-left: 1px solid rgba(0, 0, 0, 0.08);
+    display: flex;
+  }
+
+  @include media-xs {
+    padding-left: $spacing/3;
+  }
 }

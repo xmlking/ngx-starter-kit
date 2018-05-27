@@ -1,4 +1,4 @@
-//@import "../../../../../apps/default/src/styles/animation-helper";
+//@import "animation-helper";
 
 /* MISCELLANEOUS
 -------------------------------------------------- */
@@ -34,7 +34,7 @@
   max-width: 85vw;
   max-height: 85vh;
   border-radius: 5px;
-  z-index: 2;
+  z-index: 10;
   box-shadow: 0px 5px 35px 9px #ccc;
 
   /* Medium devices (tablets, 768px and up)*/
@@ -115,19 +115,19 @@
       }
 
     }
-
-    /* Chat Input */
-    .input {
-      padding: 10px 10px 10px;
-
-      border-bottom-right-radius: 5px;
-      border-bottom-left-radius: 5px;
-      overflow: hidden;
-    }
-    //.input > * {
-    //  width: 100%;
-    //}
   }
+
+  /* Chat Input */
+  .input {
+    padding: 10px 10px 10px;
+
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
+  }
+  //.input > * {
+  //  width: 100%;
+  //}
 }
 
 /* Chat Content */

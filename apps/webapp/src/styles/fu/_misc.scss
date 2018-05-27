@@ -1,0 +1,205 @@
+html, body {
+  min-height: 100%;
+  height: 100%;
+  line-height: normal;
+  font-family: Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+div {
+  box-sizing: border-box;
+}
+
+.ngx-page {
+  max-width: 100%;
+  background: $theme-background;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ngx-page-padding {
+  padding: $spacing/1.5;
+
+  @include media-xs {
+    padding: $spacing/3;
+  }
+
+  > .scroll-content {
+    padding-bottom: $spacing*2;
+
+    @include media-xs {
+      padding-bottom: ($spacing/3)*2;
+    }
+  }
+}
+
+[ngxScrollbar] > .scroll-content, ngx-scrollbar > .scroll-content {
+  display: inherit;
+  flex-direction: inherit;
+  flex: inherit;
+  justify-content: inherit;
+  align-content: inherit;
+  align-items: inherit;
+}
+
+.ngx-aspect-ratio-host-element {
+  position: relative;
+  width: 100%;
+  // overflow: hidden;
+  display: block;
+}
+
+.ngx-aspect-ratio-pseudo-element {
+  visibility: hidden !important;
+  height: 0 !important;
+  width: 0 !important;
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  opacity: 0 !important;
+  display: block;
+}
+
+.ngx-aspect-ratio-content-element {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+
+.mat-menu-panel.ngx-inbox-mail-label-list-menu {
+  max-height: 350px;
+  padding-top: $spacing/3;
+
+  .ngx-inbox-mail-label-list-menu-subheading {
+    @include mat-typography-level-to-styles($config, caption);
+    color: $theme-secondary-text;
+    font-weight: 500;
+    padding-left: $spacing/2;
+    padding-right: $spacing/2;
+    margin-bottom: $spacing/3;
+  }
+
+  .mat-checkbox {
+    margin-right: $spacing/2;
+  }
+
+  .ngx-inbox-mail-label-list-create {
+    padding-left: $spacing/2;
+    padding-right: $spacing/2;
+  }
+
+  .ngx-inbox-mail-label-list-color, .ngx-inbox-mail-label-list-name {
+
+    .mat-form-field-infix {
+      width: auto;
+    }
+  }
+}
+
+.ngx-inbox-mail-label-list-color-select {
+  .ngx-inbox-mail-label-list-color-select-indicator {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: $spacing/2;
+    vertical-align: middle;
+  }
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.005em;
+}
+
+pre {
+  margin: 0;
+}
+
+code {
+  white-space: pre;
+}
+
+p {
+  line-height: 1.5;
+}
+
+@media only screen and (min-width: 1280px) {
+  .demo-tabs {
+    overflow-x: hidden;
+  }
+}
+
+.inline {
+  display: inline-block;
+  padding: 0 0.5em;
+  white-space: normal;
+  vertical-align: text-bottom;
+}
+
+[mat-prefix] > mat-icon, [mat-suffix] > mat-icon {
+  font-size: 18px;
+  vertical-align: middle;
+  height: 16px;
+  width: 22px;
+}
+
+.subline {
+  color: #999999;
+}
+
+.avatar-flex {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.border-radius {
+  border-radius: 50%;
+}
+
+.avatar {
+  width: 40px;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-radius: 50%;
+  text-align: center;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+.quickpanel .mat-tab-body-content,
+.quickpanel .mat-tab-body-wrapper,
+.quickpanel mat-tab-body,
+.quickpanel mat-tab-group {
+  height: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.semi-bold {
+  font-weight: 500;
+}

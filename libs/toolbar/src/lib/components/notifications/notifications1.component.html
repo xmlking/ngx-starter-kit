@@ -1,0 +1,54 @@
+<div class="notification-container" (ngxClickOutside)="onClickOutside()"
+     fxFlex="grow" fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm>
+
+  <button class="button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen" fxFlex="grow">
+    <span *ngIf="unReadCount() > 0;then withBadge else withOutBadge"></span>
+    <ng-template #withBadge>
+      <mat-icon matBadge="{{ unReadCount() }}" matBadgePosition="above after" matBadgeColor="accent">
+        notifications_active
+      </mat-icon>
+    </ng-template>
+    <ng-template #withOutBadge>
+      <mat-icon>notifications_none</mat-icon>
+    </ng-template>
+  </button>
+
+  <div class="dropdown" [class.open]="isOpen">
+    <mat-card>
+      <mat-card-header class="header">
+        <mat-icon class="icon">settings</mat-icon>
+        <mat-card-title>Notifications</mat-card-title>
+        <mat-card-subtitle>You have {{ unReadCount() }} new notifications.</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content class="card-content">
+        <perfect-scrollbar class="content">
+          <mat-list>
+            <mat-list-item class="notification"
+                           *ngFor="let notification of notifications; let last = last"
+                           (click)="markAsRead(notification)"
+                           [ngClass]="notification.color" [class.read]="notification.read"
+                           fxLayout="row" fxLayoutAlign="start center"
+                           matRipple [@listFade]>
+              <mat-icon mat-list-icon>{{ notification.icon }}</mat-icon>
+              <h4 mat-line> {{ notification.message }} </h4>
+              <p mat-line class="time"> {{ notification.time }} </p>
+              <span fxFlex="grow"></span>
+              <button (click)="dismiss(notification, $event)" type="button" mat-icon-button>
+                <mat-icon class="close">close</mat-icon>
+              </button>
+              <mat-divider [inset]="true" *ngIf="!last"></mat-divider>
+            </mat-list-item>
+          </mat-list>
+          <div class="empty" *ngIf="notifications.length === 0" [@listFade]>
+            All fine! No notifications right now.
+          </div>
+        </perfect-scrollbar>
+      </mat-card-content>
+
+      <mat-card-actions class="footer" fxLayout="row" fxLayoutAlign="center center">
+        <div class="action" (click)="markAllAsRead()">Mark all as read</div>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,30 +1,28 @@
-<mat-toolbar class="main-toolbar" class="mat-elevation-z2">
+<mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
 
-<!--<div class="main-toolbar mat-elevation-z2">-->
-  <div fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.lt-md>
-    <button (click)="sidenav.open()" mat-icon-button>
-      <mat-icon>menu</mat-icon>
-    </button>
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <ngx-sidenav-toggle [sidenav]="sidenav"></ngx-sidenav-toggle>
+
+    <img class="logo" [routerLink]="['/']" fxHide.gt-md fxHide.xs
+         style="height: 35px; margin-left: 24px; margin-bottom: -5px;"
+         src="assets/img/logo_text_dark.png">
+
+    <ngx-search-bar fxFlex="500px" fxHide fxShow.gt-md></ngx-search-bar>
   </div>
 
-  <div fxLayout="row" fxLayoutAlign="start center" fxFlex="500px" fxShow fxHide.lt-lg>
-    <nxtk-search-bar></nxtk-search-bar>
+  <div fxLayout="row">
+
+    <ngx-fullscreen-toggle class="button"></ngx-fullscreen-toggle>
+
+    <ngx-search class="button"></ngx-search>
+
+    <ngx-notifications class="button"></ngx-notifications>
+
+    <user-menu [currentUser]="profile$ | async" class="button"></user-menu>
+
+    <!--<theme-picker fxShow fxHide.lt-md></theme-picker>-->
+
+    <ngx-quickpanel-toggle class="button" [quickpanel]="quickpanel"></ngx-quickpanel-toggle>
+
   </div>
-
-  <span fxFlex><!-- fill space --></span>
-
-  <nxtk-fullscreen fxShow  fxHide.lt-lg></nxtk-fullscreen>
-
-  <nxtk-search fxShow  fxHide.lt-sm></nxtk-search>
-
-  <nxtk-notifications fxShow  fxHide.lt-md [notifications]="toolbarHelpers?.notifications"></nxtk-notifications>
-
-  <user-menu [currentUser]="profile$ | async"></user-menu>
-
-  <!--<theme-picker fxShow fxHide.lt-md></theme-picker>-->
-
-  <button mat-button class="quickpanel-toggle" (click)="quickpanel.open()">
-    <mat-icon>format_align_right</mat-icon>
-  </button>
-<!--</div>-->
 </mat-toolbar>

@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Login, Logout } from '@nx-starter-kit/auth';
-import { AuthState } from '@nx-starter-kit/auth';
+import { Login, Logout } from '@ngx-starter-kit/auth';
+import { AuthState } from '@ngx-starter-kit/auth';
 
 @Component({
-  selector: 'app-home-header',
+  selector: 'ngx-home-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss']
 })

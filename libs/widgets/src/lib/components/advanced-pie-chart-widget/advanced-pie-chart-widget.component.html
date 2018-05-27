@@ -1,0 +1,56 @@
+<ngx-card>
+  <ngx-card-header>
+    <ngx-card-header-title>{{ options?.title }}</ngx-card-header-title>
+    <ngx-card-header-sub-title *ngIf="options?.subTitle">{{ options?.subTitle }}</ngx-card-header-sub-title>
+
+    <ngx-card-header-actions>
+      <button mat-icon-button (click)="reload()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </ngx-card-header-actions>
+  </ngx-card-header>
+
+  <ngx-card-content>
+    <div class="content" fxLayout="row">
+      <div class="chart" fxFlex="150px">
+        <canvas width="150" height="150" #canvas></canvas>
+      </div>
+      <div class="legend" fxLayout="column" fxFlex="0 1 100%">
+        <div class="total-value">{{ total }}</div>
+        <div class="total-label">Total Sales</div>
+
+        <ngx-scrollbar class="legend-items">
+          <div fxLayout="row" fxLayoutAlign="space-between stretch">
+            <div class="legend-item" *ngFor="let value of legendData; let i = index" fxLayout="row">
+              <div class="item-color" [style.background-color]="getLegendBackground(i)"></div>
+              <div fxLayout="column">
+                <div class="item-value">{{ value }}</div>
+                <div class="item-label">{{ getLegendLabel(i) }}</div>
+                <div class="item-percent">{{ getPercentageValue(value) }}</div>
+              </div>
+            </div>
+          </div>
+        </ngx-scrollbar>
+        <div class="fade-out-overlay"></div>
+      </div>
+    </div>
+  </ngx-card-content>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon> settings</mat-icon>
+      <span> Settings </span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon> more</mat-icon>
+      <span> More Info </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon> remove_circle</mat-icon>
+      <span> Remove Widget </span>
+    </button>
+  </mat-menu>
+</ngx-card>

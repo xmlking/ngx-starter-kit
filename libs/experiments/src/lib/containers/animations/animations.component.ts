@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { cardAnimation } from '@nx-starter-kit/animations';
+import { cardAnimation } from '@ngx-starter-kit/animations';
 
 @Component({
-  selector: 'nxtk-animations',
+  selector: 'ngx-animations',
   templateUrl: './animations.component.html',
   styleUrls: ['./animations.component.scss'],
   animations: [cardAnimation]

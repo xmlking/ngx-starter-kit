@@ -1,0 +1,12 @@
+@import '~@angular/material/theming';
+
+@mixin ngx-global-theme($theme) {
+  $primary: map-get($theme, primary);
+  $accent: map-get($theme, accent);
+  $foreground: map-get($theme, foreground);
+
+  code {
+    color: mat-color($accent, lighter-contrast);
+    background-color: mat-color($accent, lighter);
+  }
+}

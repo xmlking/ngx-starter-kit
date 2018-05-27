@@ -10,8 +10,11 @@ const SpeechRecognition =
   (window as any).msSpeechRecognition ||
   (window as any).oSpeechRecognition ||
   (window as any).SpeechRecognition;
-const SpeechGrammarList = (window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList;
-const SpeechRecognitionEvent = (window as any).SpeechRecognitionEvent || (window as any).webkitSpeechRecognitionEvent;
+const SpeechGrammarList =
+  (window as any).SpeechGrammarList || (window as any).webkitSpeechGrammarList;
+const SpeechRecognitionEvent =
+  (window as any).SpeechRecognitionEvent ||
+  (window as any).webkitSpeechRecognitionEvent;
 
 export class Message {
   constructor(public content: string, public sentBy: string) {}
@@ -20,7 +23,9 @@ export class Message {
 @Injectable()
 // @Injectable({providedIn: ChatBotModule})
 export class ChatBotService implements OnDestroy {
-  readonly client = new ApiAiClient({ accessToken: environment.dialogFlow.apiToken });
+  readonly client = new ApiAiClient({
+    accessToken: environment.dialogFlow.apiToken
+  });
   conversation = new BehaviorSubject<Message[]>([]);
 
   public canUseSpeechRecognition = false;

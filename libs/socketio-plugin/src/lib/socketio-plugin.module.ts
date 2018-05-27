@@ -1,4 +1,9 @@
-import { NgModule, ModuleWithProviders, APP_INITIALIZER, InjectionToken } from '@angular/core';
+import {
+  NgModule,
+  ModuleWithProviders,
+  APP_INITIALIZER,
+  InjectionToken
+} from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsSocketioPluginOptions, NGXS_SOCKETIO_OPTIONS } from './symbols';
 import { SocketioHandler } from './socketio-handler';

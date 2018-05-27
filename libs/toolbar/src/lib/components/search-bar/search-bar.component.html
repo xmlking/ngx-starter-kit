@@ -1,10 +1,9 @@
-<div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex (nxtkClickOutside)="closeDropdown()">
+<div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex (ngxClickOutside)="closeDropdown()">
   <mat-icon class="search-icon">search</mat-icon>
-  <input type="search"
+  <input #searchInput type="search"
          autocomplete="off"
          spellcheck="false"
          class="search-input"
-         [(ngModel)]="input"
          (focus)="openDropdown()"
          placeholder="Search...">
 
@@ -12,7 +11,7 @@
     <div class="content results" *ngIf="input" fxLayout="column">
       <div class="heading" fxLayout="row" fxLayoutAlign="start center">
         <mat-icon class="icon">search</mat-icon>
-        Search results for: {{ input }}
+        Search results for: {{ searchInput.value }}
       </div>
       <div class="items">
         <div class="item" matRipple>Overview</div>

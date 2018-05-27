@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MenuItem } from '@nx-starter-kit/navigator';
+import { MenuItem } from '@ngx-starter-kit/navigator';
 
 @Component({
-  selector: 'nxtk-menu-item',
+  selector: 'ngx-menu-item',
   templateUrl: './menu-item.component.html',
   styleUrls: ['./menu-item.component.scss']
 })

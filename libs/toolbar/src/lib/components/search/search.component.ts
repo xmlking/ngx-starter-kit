@@ -1,24 +1,27 @@
-import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
-  selector: 'nxtk-search',
+  selector: 'ngx-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
   isOpen: boolean;
 
-  @ViewChild('input') input: ElementRef;
+  @ViewChild('input', { read: ElementRef }) input: ElementRef;
 
-  constructor(private renderer: Renderer2) {}
+  constructor() {
+  }
 
   ngOnInit() {}
 
   open() {
     this.isOpen = true;
+
     setTimeout(() => {
-      this.renderer.selectRootElement(this.input.nativeElement).focus();
+      this.input.nativeElement.focus();
     }, 100);
+
   }
 
   close() {

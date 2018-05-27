@@ -1,6 +1,6 @@
 @import '~@angular/material/theming';
 
-@mixin nxtk-breadcrumbs-component-theme($theme) {
+@mixin ngx-breadcrumbs-component-theme($theme) {
   $config: mat-typography-config();
 
   $spacing: 24px;
@@ -8,7 +8,7 @@
   $theme-secondary-text: mat-color($theme-foreground-map, secondary-text);
   $theme-text: mat-color($theme-foreground-map, text);
 
-  nxtk-breadcrumbs {
+  ngx-breadcrumbs {
     .title {
       @include mat-typography-level-to-styles($config, title);
       font-weight: 400;

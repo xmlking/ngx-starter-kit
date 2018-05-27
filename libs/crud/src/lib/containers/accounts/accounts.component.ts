@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 
 import { Account, Address, Gender } from './account.model';
 import { AccountService } from './account.service';
-import { EntitiesComponent, EntityColumnDef } from '@nx-starter-kit/shared';
-import { AppConfirmService } from '@nx-starter-kit/app-confirm';
+import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
+import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
@@ -12,7 +12,7 @@ import { AccountFormComponent } from './account-form.component';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'nxtk-accounts',
+  selector: 'ngx-accounts',
   templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
   styleUrls: ['../../../../../shared/src/lib/containers/entity/entity.component.scss']
 })

@@ -12,7 +12,11 @@ export function mergeSort<T>(array: T[], comparatorFn: Comparator<T>): T[] {
   const left: T[] = array.slice(0, middle);
   const right: T[] = array.slice(middle);
 
-  return merge(mergeSort(left, comparatorFn), mergeSort(right, comparatorFn), comparatorFn);
+  return merge(
+    mergeSort(left, comparatorFn),
+    mergeSort(right, comparatorFn),
+    comparatorFn
+  );
 }
 
 /** Merge (conquer) step of mergeSort */

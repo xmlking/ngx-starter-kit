@@ -6,11 +6,11 @@ import { map, startWith } from 'rxjs/operators';
 import { Account, Gender } from './account.model';
 import { states } from './states';
 import { Observable } from 'rxjs';
-import { EntityFormComponent } from '@nx-starter-kit/shared';
+import { EntityFormComponent } from '@ngx-starter-kit/shared';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'nxtk-account-form',
+  selector: 'ngx-account-form',
   templateUrl: './account-form.component.html',
   styleUrls: ['./account-form.component.scss']
 })
@@ -36,11 +36,16 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
     super.ngOnInit();
     this.filteredStates = this.entityForm
       .get('address.state')
-      .valueChanges.pipe(startWith(''), map(state => (state ? this.filterStates(state) : this.states.slice())));
+      .valueChanges.pipe(
+        startWith(''),
+        map(state => (state ? this.filterStates(state) : this.states.slice()))
+      );
   }
 
   private filterStates(name: string) {
-    return this.states.filter(state => state.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return this.states.filter(
+      state => state.toLowerCase().indexOf(name.toLowerCase()) === 0
+    );
   }
 
   buildForm(item: Account) {
@@ -52,7 +57,10 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
         gender: [item.gender || '', Validators.required],
         dob: [item.dob, Validators.required],
         email: [item.email || '', [Validators.required, Validators.email]],
-        phone: [item.phone || '', [Validators.required, Validators.minLength(11)]],
+        phone: [
+          item.phone || '',
+          [Validators.required, Validators.minLength(11)]
+        ],
         company: [item.company || '', Validators.required],
         address: this.fb.group({
           street: [item.address.street || '', Validators.required],

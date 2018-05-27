@@ -1,11 +1,18 @@
-import { Directive, HostBinding, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
+import {
+  Directive,
+  HostBinding,
+  HostListener,
+  Inject,
+  OnInit,
+  OnDestroy
+} from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
-import { MenuItem, MenuService } from '@nx-starter-kit/navigator';
+import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 import { Store } from '@ngxs/store';
 
 @Directive({
-  selector: '[nxtkIconSidenav]'
+  selector: '[ngxIconSidenav]'
 })
 export class IconSidenavDirective implements OnInit, OnDestroy {
   private _mediaSubscription: Subscription;
@@ -43,7 +50,11 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private store: Store, private menuService: MenuService, private media: ObservableMedia) {}
+  constructor(
+    private store: Store,
+    private menuService: MenuService,
+    private media: ObservableMedia
+  ) {}
 
   ngOnInit() {
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {

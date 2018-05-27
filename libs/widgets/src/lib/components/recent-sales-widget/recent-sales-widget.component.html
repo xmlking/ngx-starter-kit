@@ -1,0 +1,41 @@
+<ngx-card>
+  <ngx-card-header>
+    <ngx-card-header-title>{{ options.title }}</ngx-card-header-title>
+    <ngx-card-header-sub-title *ngIf="options.subTitle">{{ options.subTitle }}</ngx-card-header-sub-title>
+
+    <ngx-card-header-actions>
+      <button mat-icon-button (click)="reload()">
+        <mat-icon>refresh</mat-icon>
+      </button>
+      <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>more_vert</mat-icon>
+      </button>
+    </ngx-card-header-actions>
+  </ngx-card-header>
+
+  <ngx-card-content class="card-content">
+    <ngx-recent-sales-widget-table [data]="tableData" [columns]="tableOptions?.columns"
+                                    [pageSize]="tableOptions?.pageSize"></ngx-recent-sales-widget-table>
+
+    <div class="content">
+      <canvas #canvas></canvas>
+    </div>
+  </ngx-card-content>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>
+      <mat-icon> settings</mat-icon>
+      <span> Settings </span>
+    </button>
+    <button mat-menu-item disabled>
+      <mat-icon> more</mat-icon>
+      <span> More Info </span>
+    </button>
+    <button mat-menu-item>
+      <mat-icon> remove_circle</mat-icon>
+      <span> Remove Widget </span>
+    </button>
+  </mat-menu>
+
+  <ngx-loading-overlay [isLoading]="isLoading"></ngx-loading-overlay>
+</ngx-card>

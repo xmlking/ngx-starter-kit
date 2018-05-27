@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'nxtk-quickpanel',
+  selector: 'ngx-quickpanel',
   templateUrl: './quickpanel.component.html',
   styleUrls: ['./quickpanel.component.scss']
 })
@@ -60,12 +60,12 @@ export class QuickpanelComponent implements OnInit {
   ];
 
   messages = [
-    { from: 'Catherin', img: 'assets/img/avatars/1.png', subject: 'Shopping', content: 'hi there??' },
-    { from: 'Jack', img: 'assets/img/avatars/5.png', subject: 'Function', content: 'yes' },
-    { from: 'Karina', img: 'assets/img/avatars/8.png', subject: 'Get together', content: 'nice' },
-    { from: 'Micheal', img: 'assets/img/avatars/11.png', subject: 'Trip', content: 'ya.. I will' },
-    { from: 'Ashik', img: 'assets/img/avatars/15.png', subject: 'Meeting', content: 'Time??' },
-    { from: 'Joy', img: 'assets/img/avatars/10.png', subject: 'Party', content: 'Lets enjoy' }
+    { from: 'Catherin', img: 'assets/img/avatars/4.jpg', subject: 'Shopping', content: 'hi there??' },
+    { from: 'Jack', img: 'assets/img/avatars/16.jpg', subject: 'Function', content: 'yes' },
+    { from: 'Karina', img: 'assets/img/avatars/1.jpg', subject: 'Get together', content: 'nice' },
+    { from: 'Micheal', img: 'assets/img/avatars/11.jpg', subject: 'Trip', content: 'ya.. I will' },
+    { from: 'Ashik', img: 'assets/img/avatars/19.jpg', subject: 'Meeting', content: 'Time??' },
+    { from: 'Joy', img: 'assets/img/avatars/10.jpg', subject: 'Party', content: 'Lets enjoy' }
   ];
 
   constructor() {}

@@ -11,7 +11,7 @@
                [draggable] dragTarget=".chat-box">
     <span fxFlex>ChatBot</span>
     <span fxFlex="grow"><!-- fill space --></span>
-    <nxtk-led color="orange" size="10px" [blink]=true></nxtk-led>
+    <ngx-led color="orange" size="10px" [blink]=true></ngx-led>
     <button mat-icon-button>
       <mat-icon (click)="toggleChatBox()">close</mat-icon>
     </button>
@@ -33,7 +33,7 @@
 
   <mat-form-field fxFlex class="input" color="primary">
     <mat-icon matPrefix *ngIf="canUseSpeechRecognition" (click)="startTalkingToBot()">keyboard_voice</mat-icon>
-    <input #input matInput type="text" [(ngModel)]="formInput"
+    <input #input matInput type="text"
            (keyup.enter)="sendMessageToBot()" (keyup.escape)="showChatBox = false"
            placeholder="Ask anything..." autocomplete="off">
     <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>

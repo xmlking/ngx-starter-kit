@@ -1,69 +1,28 @@
 {
-  "npmScope": "nx-starter-kit",
+  "npmScope": "ngx-starter-kit",
   "projects": {
-    "default": {
+    "webapp": {
       "tags": [
         "app-module"
       ]
     },
-    "default-e2e": {
+    "webapp-e2e": {
       "tags": []
     },
-    "animations": {
-      "tags": [
-        "utils"
-      ]
-    },
-    "app-confirm": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "auth": {
+    "navigator": {
       "tags": [
         "private-module",
         "core-module"
       ]
     },
-    "breadcrumbs": {
+    "socketio-plugin": {
       "tags": [
         "public-module"
       ]
     },
-    "chat-bot": {
+    "tree": {
       "tags": [
-        "public-module"
-      ]
-    },
-    "context-menu": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "crud": {
-      "tags": [
-        "child-module"
-      ]
-    },
-    "dashboard": {
-      "tags": [
-        "layout",
-        "entry-module"
-      ]
-    },
-    "draggable": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "experiments": {
-      "tags": [
-        "child-module"
-      ]
-    },
-    "fullscreen": {
-      "tags": [
-        "public-module"
+        "utils"
       ]
     },
     "home": {
@@ -72,30 +31,10 @@
         "entry-module"
       ]
     },
-    "json-diff": {
+    "dashboard": {
       "tags": [
-        "public-module"
-      ]
-    },
-    "led": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "loading-overlay": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "material": {
-      "tags": [
-        "shared-module"
-      ]
-    },
-    "navigator": {
-      "tags": [
-        "private-module",
-        "core-module"
+        "layout",
+        "entry-module"
       ]
     },
     "not-found": {
@@ -103,14 +42,58 @@
         "entry-module"
       ]
     },
-    "nx-pipes": {
+    "experiments": {
+      "tags": [
+        "child-module"
+      ]
+    },
+    "widgets": {
+      "tags": [
+        "child-module"
+      ]
+    },
+    "crud": {
+      "tags": [
+        "child-module"
+      ]
+    },
+    "material": {
+      "tags": [
+        "shared-module"
+      ]
+    },
+    "animations": {
+      "tags": []
+    },
+    "utils": {
+      "tags": [
+        "utils"
+      ]
+    },
+    "auth": {
+      "tags": [
+        "private-module",
+        "core-module"
+      ]
+    },
+    "shared": {
+      "tags": [
+        "shared-module"
+      ]
+    },
+    "app-confirm": {
       "tags": [
         "public-module"
       ]
     },
-    "quickpanel": {
+    "draggable": {
       "tags": [
-        "private-module"
+        "public-module"
+      ]
+    },
+    "breadcrumbs": {
+      "tags": [
+        "public-module"
       ]
     },
     "scroll-to-top": {
@@ -123,22 +106,7 @@
         "public-module"
       ]
     },
-    "shared": {
-      "tags": [
-        "shared-module"
-      ]
-    },
-    "sidenav": {
-      "tags": [
-        "private-module"
-      ]
-    },
-    "socketio-plugin": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "svg-viewer": {
+    "context-menu": {
       "tags": [
         "public-module"
       ]
@@ -148,24 +116,49 @@
         "public-module"
       ]
     },
+    "quickpanel": {
+      "tags": [
+        "private-module"
+      ]
+    },
+    "nx-pipes": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "svg-viewer": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "led": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "chat-bot": {
+      "tags": [
+        "public-module"
+      ]
+    },
+    "json-diff": {
+      "tags": [
+        "public-module"
+      ]
+    },
     "toolbar": {
       "tags": [
         "private-module"
       ]
     },
-    "tree": {
+    "sidenav": {
       "tags": [
-        "utils"
+        "private-module"
       ]
     },
-    "utils": {
+    "loading-overlay": {
       "tags": [
-        "utils"
-      ]
-    },
-    "widgets": {
-      "tags": [
-        "child-module"
+        "public-module"
       ]
     }
   }

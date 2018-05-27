@@ -21,7 +21,10 @@ export class SvgViewerService {
     }
 
     if (!SvgViewerService._inProgressReqs) {
-      SvgViewerService._inProgressReqs = new Map<string, Observable<SVGElement>>();
+      SvgViewerService._inProgressReqs = new Map<
+        string,
+        Observable<SVGElement>
+      >();
     }
   }
 

@@ -1,0 +1,35 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/webapp-e2e",
+    "module": "commonjs",
+    "target": "es5",
+    "types": [
+      "jasmine",
+      "jasminewd2",
+      "node"
+    ]
+  },
+  "include": [
+    "**/*.ts"
+    /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
+
+  , "../../libs/home/src/index.ts"
+
+  , "../../libs/dashboard/src/index.ts"
+
+  , "../../libs/experiments/src/index.ts"
+
+  , "../../libs/widgets/src/index.ts"
+
+  , "../../libs/crud/src/index.ts"
+
+  , "../../libs/not-found/src/index.ts"
+
+  ,"../../node_modules/api-ai-javascript/index.ts"
+  ,"../../node_modules/api-ai-javascript/ts/**/*.ts"
+  ],
+  "exclude": [
+    "../../node_modules/api-ai-javascript/ts/Request/TTSRequest.ts"
+  ]
+}

@@ -1,4 +1,10 @@
-import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { EntityService } from './entity.service';
@@ -9,8 +15,10 @@ import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 
-export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
-  implements OnInit, OnDestroy, AfterViewInit {
+export abstract class EntitiesComponent<
+  TEntity extends Entity,
+  TService extends EntityService<TEntity>
+> implements OnInit, OnDestroy, AfterViewInit {
   protected _destroy$ = new Subject<void>();
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
@@ -56,7 +64,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
           filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
           filter(_ => this.selection.selected.length > this.maxSelectable)
         )
-        .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
+        .subscribe(_ =>
+          this.selection.deselect(this.selection.selected.shift())
+        );
     }
 
     // fromEvent(this.filterRef.nativeElement, 'keyup')
@@ -86,12 +96,16 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   delete(item: TEntity) {
-    return this.entityService.delete(item.id).pipe(concatMap(_ => this.update()));
+    return this.entityService
+      .delete(item.id)
+      .pipe(concatMap(_ => this.update()));
   }
 
   updateOrCreate(entity: TEntity, isNew: boolean) {
     if (isNew) {
-      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
+      return this.entityService
+        .post(entity)
+        .pipe(concatMap(_ => this.update()));
     } else {
       return this.entityService.put(entity).pipe(concatMap(_ => this.update()));
     }
@@ -119,7 +133,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   /** Whether all filtered rows are selected. */
   isAllFilteredRowsSelected() {
-    return this.dataSource.filteredData.every(data => this.selection.isSelected(data));
+    return this.dataSource.filteredData.every(data =>
+      this.selection.isSelected(data)
+    );
   }
 
   /** Whether the selection it totally matches the filtered rows. */
@@ -136,7 +152,11 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
    * filtered rows there are no filtered rows displayed.
    */
   isMasterToggleIndeterminate() {
-    return this.selection.hasValue() && (!this.isAllFilteredRowsSelected() || !this.dataSource.filteredData.length);
+    return (
+      this.selection.hasValue() &&
+      (!this.isAllFilteredRowsSelected() ||
+        !this.dataSource.filteredData.length)
+    );
   }
 
   /** Selects all filtered rows if they are not all selected; otherwise clear selection. */

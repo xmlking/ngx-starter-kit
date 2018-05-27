@@ -1,0 +1,74 @@
+@import "fu/var";
+
+  .gain {
+    margin-left: $spacing/3;
+    @include mat-typography-level-to-styles($config, caption);
+
+    .mat-icon {
+      font-size: 18px;
+      height: 18px;
+      width: 18px;
+      line-height: 18px;
+    }
+
+    &.increase {
+      color: $color-success;
+    }
+
+    &.decrease {
+      color: $theme-color-warn;
+    }
+  }
+
+  .card-content {
+    padding: 0 !important;
+
+    .sections {
+      padding: 0 $spacing $spacing;
+
+      .section {
+
+        .label {
+          @include mat-typography-level-to-styles($config, body-1);
+          color: $theme-secondary-text;
+          text-transform: uppercase;
+        }
+
+        .value {
+          @include mat-typography-level-to-styles($config, display-1);
+
+          .indicator {
+            margin-left: $spacing/8;
+            font-size: 32px;
+            height: 32px;
+            width: 32px;
+
+            &.success {
+              color: $color-success;
+            }
+
+            &.primary {
+              color: $theme-color-primary;
+            }
+
+            &.accent {
+              color: $theme-color-accent;
+            }
+
+            &.warn {
+              color: $theme-color-warn;
+            }
+          }
+        }
+      }
+    }
+
+    .content {
+      max-width: 100%;
+      display: flex;
+      flex: 1;
+      position: relative;
+    }
+
+  }
+

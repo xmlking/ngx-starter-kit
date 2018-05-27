@@ -1,0 +1,82 @@
+@import "fu/var";
+
+.header {
+
+  .property {
+    padding: $spacing;
+    cursor: pointer;
+    border-top: 4px solid transparent;
+
+    .label {
+      @include mat-typography-level-to-styles($config, body-1);
+      color: $theme-secondary-text;
+      padding-bottom: $spacing/4;
+    }
+
+    .value {
+      @include mat-typography-level-to-styles($config, headline);
+      font-weight: 300;
+    }
+
+    .gain {
+      @include mat-typography-level-to-styles($config, caption);
+
+      .icon {
+        font-size: 13px;
+        height: 13px;
+        width: 13px;
+        vertical-align: middle;
+      }
+
+      &.success {
+        color: $color-success;
+      }
+
+      &.warn {
+        color: $theme-color-warn;
+      }
+    }
+
+    .compared {
+      @include mat-typography-level-to-styles($config, caption);
+      color: $theme-secondary-text;
+      visibility: hidden;
+    }
+
+    &:hover {
+      background: $theme-background-hover;
+    }
+
+    &.active {
+      border-color: #4285f4;
+
+      .label {
+        color: $theme-text;
+        font-weight: 500;
+      }
+
+      .value {
+        font-weight: 400;
+      }
+
+      .compared {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.content {
+  max-width: 100%;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.actions {
+  .select {
+    width: auto;
+    max-width: 100px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,94 @@
+@import "fu/var";
+
+:host {
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+
+  @include mat-elevation($card-elevation);
+}
+
+.ngx-card {
+  background: white;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  position: relative;
+  max-width: 100%;
+
+  @include mat-elevation($card-elevation);
+}
+
+:host /deep/ {
+  .ngx-card-header {
+    padding: $spacing;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    align-content: flex-start;
+    white-space: nowrap;
+    overflow: hidden;
+    //border-bottom: 1px solid $theme-divider;
+    //background: $theme-app-bar;
+
+    .ngx-card-header-title-group {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      margin-right: $spacing;
+
+      .ngx-card-header-title {
+        white-space: nowrap;
+        @include mat-typography-level-to-styles($config, subheading-1);
+
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        align-content: center;
+      }
+
+      .ngx-card-header-sub-title {
+        white-space: nowrap;
+        font-size: 13px;
+        color: $theme-secondary-text;
+        @include mat-typography-level-to-styles($config, body-1);
+      }
+    }
+
+    .ngx-card-header-actions {
+      flex: 1;
+      display: flex;
+      justify-content: flex-end;
+      color: $theme-icon;
+    }
+  }
+
+  .ngx-card-content {
+    padding: 0 $spacing $spacing;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .ngx-card-actions {
+    padding: $spacing/3 $spacing/1.5;
+    border-top: 1px solid $theme-divider;
+    display: flex;
+    flex-direction: row;
+
+    button + button {
+      margin-left: $spacing/3;
+    }
+
+    &.ngx-card-actions-align-end {
+      justify-content: flex-end;
+    }
+  }
+}

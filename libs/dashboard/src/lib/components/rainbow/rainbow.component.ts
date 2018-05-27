@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'nxtk-rainbow',
+  selector: 'ngx-rainbow',
   templateUrl: './rainbow.component.html',
   styleUrls: ['./rainbow.component.scss']
 })

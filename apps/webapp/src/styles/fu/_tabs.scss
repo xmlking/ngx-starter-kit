@@ -1,0 +1,18 @@
+.ngx-tabs {
+
+  .mat-tab-labels {
+    background: $theme-app-bar;
+
+    .mat-tab-label {
+
+      &.mat-tab-label-active {
+        color: mat-color($theme-primary);
+        opacity: 1;
+      }
+    }
+  }
+
+  .mat-tab-body-wrapper {
+    flex: 1;
+  }
+}

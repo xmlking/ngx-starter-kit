@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, retry, catchError, finalize } from 'rxjs/operators';
-import { EntityService } from '@nx-starter-kit/shared';
+import { EntityService } from '@ngx-starter-kit/shared';
 import { Account } from './account.model';
 import { environment } from '@env/environment';
 

@@ -18,9 +18,15 @@ export class SocketioHandler {
     socket: SocketioSubject,
     @Inject(NGXS_SOCKETIO_OPTIONS) config: NgxsSocketioPluginOptions
   ) {
-    actions.pipe(ofActionDispatched(ConnectSocketio)).subscribe(event => socket.connect(event.payload));
-    actions.pipe(ofActionDispatched(DisconnectSocketio)).subscribe(event => socket.disconnect());
-    actions.pipe(ofActionDispatched(SendSocketioMessage)).subscribe(({ payload }) => socket.send(payload));
+    actions
+      .pipe(ofActionDispatched(ConnectSocketio))
+      .subscribe(event => socket.connect(event.payload));
+    actions
+      .pipe(ofActionDispatched(DisconnectSocketio))
+      .subscribe(event => socket.disconnect());
+    actions
+      .pipe(ofActionDispatched(SendSocketioMessage))
+      .subscribe(({ payload }) => socket.send(payload));
     socket.subscribe(
       msg => {
         const type = getValue(msg, config.typeKey);

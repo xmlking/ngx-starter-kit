@@ -1,0 +1,37 @@
+<ngx-card>
+  <div class="header" fxLayout="column" fxLayout.gt-xs="row">
+    <div class="property" *ngFor="let property of options" [class.active]="isActive(property)"
+         fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px"
+         fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="start stretch" fxLayoutGap.gt-xs="0"
+         (click)="setActiveOptions(property)">
+      <div class="label" fxFlex="grow">{{ property.label }}</div>
+      <div class="value" fxFlex="grow">{{ property.sum }}</div>
+      <div class="gain" fxFlex="grow" [class.success]="property.gain >= 0" [class.warn]="property.gain < 0">
+        <mat-icon class="icon" *ngIf="property.gain >= 0">trending_up</mat-icon>
+        <mat-icon class="icon" *ngIf="property.gain < 0">trending_down</mat-icon>
+        {{ property.gain }}%
+      </div>
+      <div class="compared" fxFlex="grow">vs last 7 days</div>
+    </div>
+  </div>
+
+  <ngx-card-content>
+    <div class="content">
+      <canvas #canvas></canvas>
+    </div>
+  </ngx-card-content>
+
+  <ngx-card-actions class="actions" fxLayout="row" fxLayoutAlign="space-between center">
+    <mat-select class="select" [formControl]="timeframe">
+      <mat-option value="last7">Last 7 Days</mat-option>
+      <mat-option value="last14">Last 14 Days</mat-option>
+      <mat-option value="lastMonth">Last Month</mat-option>
+      <mat-divider></mat-divider>
+      <mat-option value="custom">Custom</mat-option>
+    </mat-select>
+
+    <button type="button" mat-button color="primary">
+      AUDIENCE OVERVIEW
+    </button>
+  </ngx-card-actions>
+</ngx-card>

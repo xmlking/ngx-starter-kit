@@ -3,7 +3,7 @@ import Scrollbar from 'smooth-scrollbar';
 import { scrollbarOptions } from './scrollbar-options';
 
 @Component({
-  selector: 'nxtk-scrollbar',
+  selector: 'ngx-scrollbar',
   templateUrl: './scrollbar.component.html',
   styleUrls: ['./scrollbar.component.scss']
 })

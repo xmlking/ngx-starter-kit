@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
   MatBadgeModule,
   MatButtonModule,
@@ -16,19 +16,20 @@ import {
   MatToolbarModule
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { DraggableModule } from '@nx-starter-kit/draggable';
-import { LedModule } from '@nx-starter-kit/led';
+import { DraggableModule } from '@ngx-starter-kit/draggable';
+import { LedModule } from '@ngx-starter-kit/led';
 
+import { ChatBotService } from './chat-bot.service';
 import { ChatBotComponent } from './chat-bot.component';
 import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
-import { ChatBotService } from './chat-bot.service';
+
 
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DraggableModule,
     LedModule,
-    FormsModule,
     FlexLayoutModule,
     MatSelectModule,
     MatToolbarModule,

@@ -3,7 +3,7 @@ import { environment } from '@env/environment';
 const { version: appVersion } = require('../../../../../../package.json');
 
 @Component({
-  selector: 'app-footer',
+  selector: 'ngx-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

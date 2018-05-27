@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { StateDef } from '@nx-starter-kit/utils';
+import { StateDef } from '@ngx-starter-kit/utils';
 import { IResizeState } from './resizable.store';
 
 @Injectable()

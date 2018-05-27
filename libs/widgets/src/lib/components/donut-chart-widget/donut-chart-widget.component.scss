@@ -1,0 +1,26 @@
+@import "fu/var";
+
+.content {
+  max-width: 100%;
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.footer {
+  .section {
+    &:first-child {
+      border-right: 1px solid $theme-divider;
+    }
+
+    .value {
+      @include mat-typography-level-to-styles($config, display-1);
+    }
+
+    .label {
+      @include mat-typography-level-to-styles($config, body-1);
+      color: $theme-secondary-text;
+      text-transform: uppercase;
+    }
+  }
+}

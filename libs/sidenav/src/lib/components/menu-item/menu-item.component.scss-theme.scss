@@ -7,7 +7,7 @@
   padding: 1px 7px;
 }
 
-@mixin nxtk-menu-item-component-theme($theme, $icon-size) {
+@mixin ngx-menu-item-component-theme($theme, $icon-size) {
   .sidenav-dropdown-indicator {
     transition: transform 0.25s;
     &.indicateOpen {

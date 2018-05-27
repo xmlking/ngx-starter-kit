@@ -1,0 +1,80 @@
+@import "fu/var";
+
+.chart {
+  padding: $spacing/2 0;
+  width: 150px;
+}
+
+.legend {
+  margin-left: 16px;
+  color: $theme-secondary-text;
+  font-weight: 300;
+  width: calc(100% - 150px - 16px);
+
+  .total-value {
+    font-size: 36px;
+    line-height: normal;
+  }
+
+  .total-label {
+    font-size: 24px;
+    line-height: normal;
+  }
+
+  .legend-items {
+    margin-top: 16px;
+
+    .legend-item {
+      margin-right: 20px;
+      cursor: pointer;
+      min-width: 72px;
+      transition: color $swift-ease-in-duration $swift-ease-in-timing-function,
+      opacity $swift-ease-in-duration $swift-ease-in-timing-function;
+
+      &:hover {
+        color: $theme-text;
+
+        .item-label, .item-percent {
+          opacity: 1;
+        }
+      }
+
+      .item-color {
+        width: 4px;
+        height: 32px;
+        margin-top: 6px;
+      }
+
+      .item-value {
+        font-size: 24px;
+        margin-left: 10px;
+      }
+
+      .item-label {
+        font-size: 12px;
+        opacity: 0.7;
+        margin-left: 10px;
+        margin-top: 2px;
+      }
+
+      .item-percent {
+        font-size: 24px;
+        opacity: 0.7;
+        margin-left: 10px;
+        margin-top: 4px;
+      }
+
+    }
+  }
+
+  .fade-out-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 50px;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
+  }
+}
+
