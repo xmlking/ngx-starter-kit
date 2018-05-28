@@ -5,8 +5,7 @@ import { List } from 'immutable';
 import { MatButtonToggleGroup, MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
-import { Account, Address, Gender } from '../../models/account.model';
-import { AccountService } from '../../services/account.service';
+import { RandomAccount, RandomAccountService } from '../../services/random-account.service';
 
 @Component({
   selector: 'ngx-accounts-grid-list',
@@ -23,15 +22,15 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
     { name: 'Grid List' }
   ]);
 
-  accountDataSource: MatTableDataSource<Partial<Account>>;
-  renderData: BehaviorSubject<Partial<Account>[]>;
-  selection = new SelectionModel<Partial<Account>>(false, []);
+  accountDataSource: MatTableDataSource<Partial<RandomAccount>>;
+  renderData: BehaviorSubject<Partial<RandomAccount>[]>;
+  selection = new SelectionModel<Partial<RandomAccount>>(false, []);
 
-  constructor(private router: Router, private accountService: AccountService) {}
+  constructor(private router: Router, private accountService: RandomAccountService) {}
 
   ngOnInit() {
     this.accountService.getAll().toPromise().then( accounts => {
-      this.accountDataSource = new MatTableDataSource<Partial<Account>>(accounts);
+      this.accountDataSource = new MatTableDataSource<Partial<RandomAccount>>(accounts);
       this.accountDataSource.paginator = this.paginator;
       this.renderData = this.accountDataSource.connect();
     })
@@ -45,9 +44,9 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
     this.accountDataSource.filter = filterValue;
   }
 
-  async onClick(entity: Partial<Account>) {
-    this.selection.toggle(entity);
-    const account = await this.accountService.getById(entity.id).toPromise();
-    console.log(account)
+  async onClick(account: Partial<RandomAccount>) {
+    this.selection.toggle(account);
+    const _account = await this.accountService.getById(account.id.value).toPromise();
+    console.log(_account)
   }
 }

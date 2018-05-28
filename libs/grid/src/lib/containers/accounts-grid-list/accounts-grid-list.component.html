@@ -28,36 +28,56 @@
 </mat-card>
 
 <ng-template #grid>
-  <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
+  <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px">
     <mat-grid-tile *ngFor="let account of renderData | async">
+
+      <!--<mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">-->
+        <!--<mat-card-header>-->
+          <!--<img mat-card-avatar src="https://source.unsplash.com/random/200x200">-->
+          <!--<mat-card-title>{{ account.first_name }}</mat-card-title>-->
+          <!--<mat-card-subtitle>{{ account.last_name }}</mat-card-subtitle>-->
+        <!--</mat-card-header>-->
+        <!--&lt;!&ndash;<img mat-card-image src="https://source.unsplash.com/random/800x600">&ndash;&gt;-->
+        <!--&lt;!&ndash;<mat-card-content>&ndash;&gt;-->
+        <!--&lt;!&ndash;<p>Something pretty ... </p>&ndash;&gt;-->
+        <!--&lt;!&ndash;</mat-card-content>&ndash;&gt;-->
+      <!--</mat-card>-->
       <mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">
         <mat-card-header>
-          <img mat-card-avatar src="https://source.unsplash.com/random/200x200">
-          <mat-card-title>{{ account.first_name }}</mat-card-title>
-          <mat-card-subtitle>{{ account.last_name }}</mat-card-subtitle>
+          <!--<img mat-card-avatar src="https://source.unsplash.com/random/200x200">-->
+          <img mat-card-avatar src="{{account.picture.thumbnail}}">
+          <mat-card-title>{{ account.name.title }} {{ account.name.first }} {{ account.name.last }}</mat-card-title>
+          <mat-card-subtitle> {{ account.email }}</mat-card-subtitle>
         </mat-card-header>
-        <!--<img mat-card-image src="https://source.unsplash.com/random/800x600">-->
-        <!--<mat-card-content>-->
-        <!--<p>Something pretty ... </p>-->
-        <!--</mat-card-content>-->
+        <!--<img mat-card-image src="{{account.picture.medium}}">-->
+        <mat-card-content>
+          Address: {{account.location.street}}, {{account.location.city}}, {{account.location.state}}  {{account.location.zip}}<br>
+          Date of Birth:  {{account.dob | amCalendar}}<br>
+          email: {{account.email}}<br>
+          phone:  {{account.phone}}, cell:  {{account.cell}}<br>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
       </mat-card>
+
     </mat-grid-tile>
   </mat-grid-list>
 </ng-template>
 
 <ng-template #list>
   <mat-list>
-    <ng-container *ngFor="let apps of renderData | async | groupBy:'start'">
+    <ng-container *ngFor="let apps of renderData | async | groupBy:'gender'">
       <h3 matSubheader>{{apps.key}}</h3>
       <mat-list-item *ngFor="let app of apps.value" (click)="onClick(app)" [class.active]="selection.isSelected(app)">
         <!--<mat-icon matListIcon>folder_open</mat-icon>-->
-        <!--<mat-icon matListIcon>folder</mat-icon>-->
-        <!--<mat-icon svgIcon="optum-logo"></mat-icon>-->
-        <img mat-list-avatar src="https://source.unsplash.com/random/200x200">
-        <h3 matLine> {{app.last_name}} </h3>
+        <!--<img mat-list-avatar src="https://source.unsplash.com/random/200x200">-->
+        <img mat-card-avatar src="{{app.picture.thumbnail}}">
+        <h3 matLine> {{app.name.first}} {{app.name.last}} </h3>
         <p matLine>
-          <span> {{app.first_name}} </span>
-          <span class="subline">-- {{app.last_name}} </span>
+          <span> {{app.email}} </span>
+          <span class="subline">-- {{app.phone}} </span>
         </p>
       </mat-list-item>
       <mat-divider></mat-divider>
