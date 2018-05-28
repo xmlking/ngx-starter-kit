@@ -14,7 +14,7 @@ import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
   encapsulation: ViewEncapsulation.None
 })
 export class SidenavItemComponent implements OnInit {
-  @Input('item') item: MenuItem;
+  @Input() item: MenuItem;
 
   @HostBinding('class.open')
   get isOpen() {

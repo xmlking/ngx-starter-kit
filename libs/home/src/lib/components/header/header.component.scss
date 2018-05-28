@@ -1,10 +1,23 @@
 :host {
-  position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 2;
 }
+
+mat-toolbar {
+  height: 56px !important;
+  min-height: 56px !important;
+
+  mat-toolbar-row {
+    height: 56px !important;
+  }
+}
+
+mat-nav-list {
+  padding-top: 0;
+}
+
 
 .default-angular-logo {
   height: 26px;

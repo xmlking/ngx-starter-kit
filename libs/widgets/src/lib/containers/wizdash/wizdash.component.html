@@ -6,15 +6,15 @@
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
          fxLayout.gt-sm="row">
 
-      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1"
            fxFlex="auto" [fxFlex.gt-sm]="col(4)">
-        <ngx-bar-chart-widget furyAspectRatioContent class="widget" [data]="salesData$ | async"
+        <ngx-bar-chart-widget ngxAspectRatioContent class="widget" [data]="salesData$ | async"
                                [options]="totalSalesOptions"></ngx-bar-chart-widget>
       </div>
 
-      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1"
            fxFlex="auto" [fxFlex.gt-sm]="col(4)">
-        <ngx-line-chart-widget furyAspectRatioContent class="widget" [data]="visitsData$ | async"
+        <ngx-line-chart-widget ngxAspectRatioContent class="widget" [data]="visitsData$ | async"
                                 [options]="totalVisitsOptions"></ngx-line-chart-widget>
       </div>
 
@@ -23,15 +23,15 @@
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
          fxLayout.gt-sm="row">
 
-      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1"
            fxFlex="auto" [fxFlex.gt-sm]="col(4)">
-        <ngx-line-chart-widget furyAspectRatioContent [data]="clicksData$ | async"
+        <ngx-line-chart-widget ngxAspectRatioContent [data]="clicksData$ | async"
                                 [options]="totalClicksOptions"></ngx-line-chart-widget>
       </div>
 
-      <div furyAspectRatio="2:1" furyAspectRatio.sm="3:1"
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1"
            fxFlex="auto" [fxFlex.gt-sm]="col(4)">
-        <ngx-line-chart-widget furyAspectRatioContent [data]="conversionsData$ | async"
+        <ngx-line-chart-widget ngxAspectRatioContent [data]="conversionsData$ | async"
                                 [options]="conversionsOptions"></ngx-line-chart-widget>
       </div>
 
@@ -46,10 +46,10 @@
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)"
          fxLayout.gt-sm="row">
 
-      <div [furyAspectRatio.xs]="'1:2-' + gap" [furyAspectRatio]="'1.5:1-' + gap"
-           [furyAspectRatio.gt-md]="'2:1-' + gap" [furyAspectRatio.gt-lg]="'1.5:1-' + gap"
+      <div [ngxAspectRatio.xs]="'1:2-' + gap" [ngxAspectRatio]="'1.5:1-' + gap"
+           [ngxAspectRatio.gt-md]="'2:1-' + gap" [ngxAspectRatio.gt-lg]="'1.5:1-' + gap"
            fxFlex="grow">
-        <ngx-audience-overview-widget furyAspectRatioContent
+        <ngx-audience-overview-widget ngxAspectRatioContent
                                        [options]="audienceOverviewOptions"></ngx-audience-overview-widget>
       </div>
 
@@ -59,8 +59,8 @@
          fxLayout.gt-sm="row">
 
       <div fxLayout="column" [fxLayoutGap]="gap" fxFlex="grow">
-        <div furyAspectRatio="1:1" furyAspectRatio.sm="1.5:1" fxFlex="grow">
-          <ngx-sales-summary-widget furyAspectRatioContent [data]="salesSummaryData$ | async"
+        <div ngxAspectRatio="1:1" ngxAspectRatio.sm="1.5:1" fxFlex="grow">
+          <ngx-sales-summary-widget ngxAspectRatioContent [data]="salesSummaryData$ | async"
                                      [options]="salesSummaryOptions"></ngx-sales-summary-widget>
         </div>
 
@@ -69,8 +69,8 @@
       </div>
 
 
-      <div furyAspectRatio.xs="1:1.1" furyAspectRatio.sm="1.5:1" furyAspectRatio.gt-sm="1:1.32" fxFlex="grow">
-        <ngx-realtime-users-widget furyAspectRatioContent [data$]="realtimeUsersData$"
+      <div ngxAspectRatio.xs="1:1.1" ngxAspectRatio.sm="1.5:1" ngxAspectRatio.gt-sm="1:1.32" fxFlex="grow">
+        <ngx-realtime-users-widget ngxAspectRatioContent [data$]="realtimeUsersData$"
                                     [pages$]="realtimeUsersPages$"></ngx-realtime-users-widget>
       </div>
 
@@ -87,8 +87,8 @@
 
       <div fxLayout="column" [fxLayoutGap]="gap"
            fxLayout.gt-sm="row">
-        <div furyAspectRatio="1:1.3" furyAspectRatio.sm="1:1" fxFlex="grow">
-          <ngx-donut-chart-widget furyAspectRatioContent [data]="top5CategoriesData$ | async"
+        <div ngxAspectRatio="1:1.3" ngxAspectRatio.sm="1:1" fxFlex="grow">
+          <ngx-donut-chart-widget ngxAspectRatioContent [data]="top5CategoriesData$ | async"
                                    [options]="top5CategoriesOptions"></ngx-donut-chart-widget>
         </div>
 

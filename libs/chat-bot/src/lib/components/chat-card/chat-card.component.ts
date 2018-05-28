@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'lib-chat-card',
+  selector: 'ngx-chat-card',
   templateUrl: './chat-card.component.html',
   styleUrls: ['./chat-card.component.scss']
 })

@@ -3,6 +3,9 @@
     "node_modules/codelyzer",
     "node_modules/@nrwl/schematics/src/tslint"
   ],
+  "extends": [
+    "rxjs-tslint-rules"
+  ],
   "rules": {
     "arrow-return-shorthand": true,
     "callable-types": true,
@@ -100,6 +103,35 @@
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }
-    ]
+    ],
+    //-----------------------
+    // RxJs Rules
+    //-----------------------
+    "rxjs-no-subject-unsubscribe": {
+      "severity": "error"
+    },
+    "rxjs-no-unsafe-switchmap": true,
+    "rxjs-no-unsafe-takeuntil": true,
+    "rxjs-ban-observables": {
+      "options": [
+        {
+          "empty": "Use EMPTY",
+          "never": "Use NEVER"
+        }
+      ],
+      "severity": "error"
+    },
+    "rxjs-ban-operators": {
+      "options": [
+        {
+          "combineLatest": "Use the static combineLatest",
+          "concat": "Use the static concat",
+          "merge": "Use the static merge",
+          "race": "Use the static race",
+          "zip": "Use the static zip"
+        }
+      ],
+      "severity": "error"
+    }
   }
 }

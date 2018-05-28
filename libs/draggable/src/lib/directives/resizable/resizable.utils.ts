@@ -102,10 +102,10 @@ export const manageRatio = (
 ) => {
   let data: any;
   const bound = options.bound;
-  bound.x = parseInt(bound.x.toFixed());
-  bound.y = parseInt(bound.y.toFixed());
-  bound.width = parseInt(bound.width.toFixed());
-  bound.height = parseInt(bound.height.toFixed());
+  bound.x = parseInt(bound.x.toFixed(),10);
+  bound.y = parseInt(bound.y.toFixed(),10);
+  bound.width = parseInt(bound.width.toFixed(),10);
+  bound.height = parseInt(bound.height.toFixed(),10);
   switch (direction) {
     case 'left':
       nextHeight = resizeBottom(

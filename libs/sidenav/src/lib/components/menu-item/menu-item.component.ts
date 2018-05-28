@@ -7,7 +7,7 @@ import { MenuItem } from '@ngx-starter-kit/navigator';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent implements OnInit {
-  @Input('item') item: MenuItem;
+  @Input() item: MenuItem;
   @Input() iconOnly: boolean;
   @Input() secondaryMenu = false;
 

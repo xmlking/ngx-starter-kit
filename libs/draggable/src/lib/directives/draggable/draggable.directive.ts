@@ -2,6 +2,7 @@ import {
   AfterViewInit,
   Directive,
   ElementRef,
+  HostBinding,
   Input,
   NgZone,
   OnDestroy
@@ -13,6 +14,7 @@ import { map, switchMap, takeUntil } from 'rxjs/operators';
   selector: '[draggable]'
 })
 export class DraggableDirective implements AfterViewInit, OnDestroy {
+  @HostBinding('style.cursor') cursor = 'move';
   @Input() dragHandle: string;
   @Input() dragTarget: string;
 

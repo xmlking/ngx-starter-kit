@@ -5,10 +5,12 @@ import { AccountsComponent } from './containers/accounts/accounts.component';
 import { AccountFormComponent } from './containers/accounts/account-form.component';
 import { AccountService } from './containers/accounts/account.service';
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
+import { DraggableModule } from '@ngx-starter-kit/draggable';
 
 @NgModule({
   imports: [
     SharedModule,
+    DraggableModule,
     AppConfirmModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */

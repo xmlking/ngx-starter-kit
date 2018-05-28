@@ -89,6 +89,7 @@ export class MenuState implements OnDestroy {
 
   @Action(ToggleCurrentlyOpened)
   toggleCurrentlyOpened({ getState, patchState }: StateContext<MenuStateModel>, { payload }: ToggleCurrentlyOpened) {
+    // tslint:disable:prefer-const
     let { tree, currentlyOpened } = getState();
     const isOpen = currentlyOpened.indexOf(payload) !== -1;
 

@@ -63,7 +63,9 @@
       ]
     },
     "animations": {
-      "tags": []
+      "tags": [
+        "utils"
+      ]
     },
     "utils": {
       "tags": [

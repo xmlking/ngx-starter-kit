@@ -16,10 +16,10 @@ import { AspectRatioContentDirective } from './aspect-ratio-content.directive';
 
 @Directive({
   selector: `
-  [furyAspectRatio],
-  [furyAspectRatio.xs], [furyAspectRatio.sm], [furyAspectRatio.md], [furyAspectRatio.lg], [furyAspectRatio.xl],
-  [furyAspectRatio.lt-sm], [furyAspectRatio.lt-md], [furyAspectRatio.lt-lg], [furyAspectRatio.lt-xl],
-  [furyAspectRatio.gt-xs], [furyAspectRatio.gt-sm], [furyAspectRatio.gt-md], [furyAspectRatio.gt-lg],
+  [ngxAspectRatio],
+  [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
+  [ngxAspectRatio.lt-sm], [ngxAspectRatio.lt-md], [ngxAspectRatio.lt-lg], [ngxAspectRatio.lt-xl],
+  [ngxAspectRatio.gt-xs], [ngxAspectRatio.gt-sm], [ngxAspectRatio.gt-md], [ngxAspectRatio.gt-lg],
   `
 })
 export class AspectRatioDirective extends BaseFxDirective implements OnInit, AfterContentInit, OnChanges, OnDestroy {
@@ -41,61 +41,61 @@ export class AspectRatioDirective extends BaseFxDirective implements OnInit, Aft
   }
 
   /* tslint:disable */
-  @Input('furyAspectRatio') set aspectRatio(val) {
+  @Input('ngxAspectRatio') set aspectRatio(val) {
     this._cacheInput('aspectRatio', val);
   };
 
-  @Input('furyAspectRatio.xs') set aspectRatioXs(val) {
+  @Input('ngxAspectRatio.xs') set aspectRatioXs(val) {
     this._cacheInput('aspectRatioXs', val);
   };
 
-  @Input('furyAspectRatio.sm') set aspectRatioSm(val) {
+  @Input('ngxAspectRatio.sm') set aspectRatioSm(val) {
     this._cacheInput('aspectRatioSm', val);
   };
 
-  @Input('furyAspectRatio.md') set aspectRatioMd(val) {
+  @Input('ngxAspectRatio.md') set aspectRatioMd(val) {
     this._cacheInput('aspectRatioMd', val);
   };
 
-  @Input('furyAspectRatio.lg') set aspectRatioLg(val) {
+  @Input('ngxAspectRatio.lg') set aspectRatioLg(val) {
     this._cacheInput('aspectRatioLg', val);
   };
 
-  @Input('furyAspectRatio.xl') set aspectRatioXl(val) {
+  @Input('ngxAspectRatio.xl') set aspectRatioXl(val) {
     this._cacheInput('aspectRatioXl', val);
   };
 
-  @Input('furyAspectRatio.gt-xs') set aspectRatioGtXs(val) {
+  @Input('ngxAspectRatio.gt-xs') set aspectRatioGtXs(val) {
     this._cacheInput('aspectRatioGtXs', val);
   };
 
-  @Input('furyAspectRatio.gt-sm') set aspectRatioGtSm(val) {
+  @Input('ngxAspectRatio.gt-sm') set aspectRatioGtSm(val) {
     this._cacheInput('aspectRatioGtSm', val);
   };
 
-  @Input('furyAspectRatio.gt-md') set aspectRatioGtMd(val) {
+  @Input('ngxAspectRatio.gt-md') set aspectRatioGtMd(val) {
     this._cacheInput('aspectRatioGtMd', val);
   };
 
-  @Input('furyAspectRatio.gt-lg') set aspectRatioGtLg(val) {
+  @Input('ngxAspectRatio.gt-lg') set aspectRatioGtLg(val) {
     this._cacheInput('aspectRatioGtLg', val);
   };
 
-  @Input('furyAspectRatio.lt-sm') set aspectRatioLtSm(val) {
+  @Input('ngxAspectRatio.lt-sm') set aspectRatioLtSm(val) {
     this._cacheInput('aspectRatioLtSm', val);
   };
 
   /* tslint:enable */
 
-  @Input('furyAspectRatio.lt-md') set aspectRatioLtMd(val) {
+  @Input('ngxAspectRatio.lt-md') set aspectRatioLtMd(val) {
     this._cacheInput('aspectRatioLtMd', val);
   };
 
-  @Input('furyAspectRatio.lt-lg') set aspectRatioLtLg(val) {
+  @Input('ngxAspectRatio.lt-lg') set aspectRatioLtLg(val) {
     this._cacheInput('aspectRatioLtLg', val);
   };
 
-  @Input('furyAspectRatio.lt-xl') set aspectRatioLtXl(val) {
+  @Input('ngxAspectRatio.lt-xl') set aspectRatioLtXl(val) {
     this._cacheInput('aspectRatioLtXl', val);
   };
 
@@ -125,13 +125,13 @@ export class AspectRatioDirective extends BaseFxDirective implements OnInit, Aft
 
     } else {
       if (!this.hostElement) {
-        console.error('FuryAspectRatio: Host Element is not defined.');
+        console.error('ngxAspectRatio: Host Element is not defined.');
       }
       if (!this.pseudoElement) {
-        console.error('FuryAspectRatio: Pseudo Element is not defined.');
+        console.error('ngxAspectRatio: Pseudo Element is not defined.');
       }
       if (!this.contentElement) {
-        console.error('FuryAspectRatio: AspectRatioContent Element is not defined.');
+        console.error('ngxAspectRatio: AspectRatioContent Element is not defined.');
       }
     }
   }
