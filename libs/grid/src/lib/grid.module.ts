@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { MomentModule } from 'ngx-moment';
 
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
@@ -10,6 +11,7 @@ import { AccountsGridListComponent } from './containers/accounts-grid-list/accou
 import { AccountsTableComponent } from './containers/accounts-table/accounts-table.component';
 import { AccountComponent } from './components/account/account.component';
 import { AccountService } from './services/account.service';
+import { RandomAccountService } from './services/random-account.service';
 
 
 @NgModule({
@@ -18,6 +20,7 @@ import { AccountService } from './services/account.service';
     DraggableModule,
     AppConfirmModule,
     NgxPipesModule,
+    MomentModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', redirectTo: 'crud-table', pathMatch: 'full', data: { animation: 'grid' } },
@@ -27,6 +30,6 @@ import { AccountService } from './services/account.service';
   ],
   declarations: [AccountsTableComponent, AccountComponent, AccountsGridListComponent],
   entryComponents: [AccountComponent],
-  providers: [AccountService]
+  providers: [AccountService, RandomAccountService]
 })
 export class GridModule {}
