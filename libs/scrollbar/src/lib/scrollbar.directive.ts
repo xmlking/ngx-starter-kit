@@ -13,7 +13,7 @@ import { scrollbarOptions } from './scrollbar-options';
   selector: '[ngxScrollbar]'
 })
 export class ScrollbarDirective implements AfterContentInit {
-  @Input('ngxScrollbar') options: Partial<ScrollbarOptions>;
+  @Input() options: Partial<ScrollbarOptions>;
 
   scrollbarRef: Scrollbar;
 

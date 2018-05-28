@@ -6,7 +6,7 @@ import {
   ViewEncapsulation
 } from '@angular/core';
 
-// noinspection TsLint
+/* tslint:disable */
 @Component({
   selector: 'ngx-card',
   templateUrl: './card.component.html',
@@ -17,7 +17,6 @@ export class Card {
   @HostBinding('class.ngx-card') bodyClass = true;
 }
 
-// noinspection TsLint
 @Component({
   selector: 'ngx-card-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,7 +33,6 @@ export class CardHeader {
   @HostBinding('class.ngx-card-header') bodyClass = true;
 }
 
-// noinspection TsLint
 @Component({
   selector: 'ngx-card-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -45,7 +43,6 @@ export class CardContent {
   @HostBinding('class.ngx-card-content') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-card-header-title',
 })
@@ -53,7 +50,6 @@ export class CardHeaderTitle {
   @HostBinding('class.ngx-card-header-title') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-card-header-sub-title',
 })
@@ -61,7 +57,6 @@ export class CardHeaderSubTitle {
   @HostBinding('class.ngx-card-header-sub-title') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-card-header-actions',
 })
@@ -69,8 +64,6 @@ export class CardHeaderActions {
   @HostBinding('class.ngx-card-header-actions') bodyClass = true;
 }
 
-
-// noinspection TsLint
 @Directive({
   selector: 'ngx-card-actions',
 })

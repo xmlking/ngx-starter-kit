@@ -1,4 +1,13 @@
-import { Directive, HostListener, TemplateRef, Input, ViewContainerRef, ElementRef, OnDestroy } from '@angular/core';
+import {
+  Directive,
+  HostListener,
+  TemplateRef,
+  Input,
+  ViewContainerRef,
+  ElementRef,
+  OnDestroy,
+  HostBinding
+} from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject, fromEvent } from 'rxjs';
@@ -8,6 +17,7 @@ import { takeUntil } from 'rxjs/operators';
   selector: '[contextMenu]'
 })
 export class ContextMenuTriggerDirective implements OnDestroy {
+  @HostBinding('style.cursor') cursor = 'context-menu';
   @Input() contextMenu: TemplateRef<any>;
 
   private _destroy$: Subject<void>;

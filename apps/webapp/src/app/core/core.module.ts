@@ -5,6 +5,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
 import { NavigatorModule, MenuState } from '@ngx-starter-kit/navigator';
 import { NgxsSocketioPluginModule } from '@ngx-starter-kit/socketio-plugin';
@@ -12,7 +13,6 @@ import { environment } from '@env/environment';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { EventBus } from './state/eventbus';
 import { defaultMenu, demoMenu, adminMenu } from './menu-data';
-import { RouterState } from './state/router.state';
 import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 
@@ -27,7 +27,7 @@ export function noop() {
     HttpClientModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
-    NgxsModule.forRoot([AuthState, RouterState, MenuState, PreferenceState]),
+    NgxsModule.forRoot([AuthState, MenuState, PreferenceState]),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode
       maxAge: 10
@@ -35,8 +35,9 @@ export function noop() {
     NgxsSocketioPluginModule.forRoot({
       url: 'ws://localhost:8080/socket.io'
     }),
+    NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
-    environment.envName === 'mock'
+    environment.envName !== 'mock' //FIXME
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true
           // delay: 500,

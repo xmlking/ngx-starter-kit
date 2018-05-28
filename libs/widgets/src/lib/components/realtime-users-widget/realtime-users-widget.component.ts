@@ -63,7 +63,7 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
       }
     );
 
-    let first = true;
+    const first = true;
     this.data$.subscribe(newData => {
       const oldData = this.chart.data.datasets[0].data as any;
       this.addData(newData);

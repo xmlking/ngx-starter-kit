@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./loading-overlay.component.scss']
 })
 export class LoadingOverlayComponent implements OnInit {
-  @Input('isLoading') isLoading: boolean;
+  @Input() isLoading: boolean;
 
   constructor() {}
 

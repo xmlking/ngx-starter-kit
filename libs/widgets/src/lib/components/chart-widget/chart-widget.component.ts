@@ -1,6 +1,5 @@
 import {ChangeDetectionStrategy, Component, Directive, HostBinding, ViewEncapsulation} from '@angular/core';
-
-// noinspection TsLint
+/* tslint:disable */
 @Component({
   selector: 'ngx-chart-widget',
   templateUrl: './chart-widget.component.html',
@@ -11,7 +10,6 @@ export class ChartWidget {
   @HostBinding('class.ngx-chart-widget') bodyClass = true;
 }
 
-// noinspection TsLint
 @Component({
   selector: 'ngx-chart-widget-header',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,7 +25,6 @@ export class ChartWidgetHeader {
   @HostBinding('class.ngx-chart-widget-header') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-chart-widget-header-title',
 })
@@ -35,7 +32,6 @@ export class ChartWidgetHeaderTitle {
   @HostBinding('class.ngx-chart-widget-header-title') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-chart-widget-header-sub-title',
 })
@@ -43,7 +39,6 @@ export class ChartWidgetHeaderSubTitle {
   @HostBinding('class.ngx-chart-widget-header-sub-title') bodyClass = true;
 }
 
-// noinspection TsLint
 @Directive({
   selector: 'ngx-chart-widget-header-actions',
 })
@@ -51,7 +46,6 @@ export class ChartWidgetHeaderActions {
   @HostBinding('class.ngx-chart-widget-header-actions') bodyClass = true;
 }
 
-// noinspection TsLint
 @Component({
   selector: 'ngx-chart-widget-content',
   changeDetection: ChangeDetectionStrategy.OnPush,

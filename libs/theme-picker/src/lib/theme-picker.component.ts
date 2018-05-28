@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, HostBinding } from '@angular/core';
 import { StyleManagerService } from './style-manager.service';
 import { ThemeStorageService, DocsSiteTheme } from './theme-storage.service';
 
@@ -8,9 +8,10 @@ import { ThemeStorageService, DocsSiteTheme } from './theme-storage.service';
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
   encapsulation: ViewEncapsulation.None,
-  host: { 'aria-hidden': 'true' }
+  // host: { 'aria-hidden': 'true' }
 })
 export class ThemePickerComponent {
+  @HostBinding('attr.aria-hidden') ariaHidden = true;
   currentTheme;
 
   themes = [

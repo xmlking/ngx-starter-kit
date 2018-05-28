@@ -11,9 +11,9 @@ export class JsonDiffComponent implements OnInit, OnChanges {
   leftSide;
   rightSide;
 
-  @Input('leftSideObject') leftSideObject;
+  @Input() leftSideObject;
 
-  @Input('rightSideObject') rightSideObject;
+  @Input() rightSideObject;
 
   constructor() {}
   private generateNodeId() {

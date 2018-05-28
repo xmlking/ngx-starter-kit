@@ -2,13 +2,13 @@ export class RealtimeUsersWidgetOptions {
   data: { page: string; views: string }[];
 }
 
-export type RealtimeUsersWidgetPages = {
+export interface RealtimeUsersWidgetPages {
   id?: number;
   page: string;
   users: number;
-};
-export type RealtimeUsersWidgetData = {
+}
+export interface RealtimeUsersWidgetData {
   id?: number;
   label: string;
   value: number;
-};
+}

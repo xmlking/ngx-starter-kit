@@ -4,7 +4,6 @@
  * evaluated by the parent comparision tool.
  */
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { JsonDiffComponent } from '@ngx-starter-kit/json-diff/src/json-diff.component';
 
 @Component({
   selector: 'ngx-json-diff-tree',
@@ -14,16 +13,16 @@ import { JsonDiffComponent } from '@ngx-starter-kit/json-diff/src/json-diff.comp
 export class JsonDiffTreeComponent implements OnInit {
   depth: number;
 
-  @Output('onhover') onhover = new EventEmitter();
+  @Output() onhover = new EventEmitter();
 
-  @Input('children') children;
+  @Input() children;
 
-  @Input('side') side;
+  @Input() side;
 
-  @Input('level') level = '0';
+  @Input() level = '0';
 
   ngOnInit() {
-    this.depth = parseInt(this.level);
+    this.depth = parseInt(this.level, 10);
   }
 
   bubleup(event) {

@@ -3,7 +3,7 @@ import { Logout } from '@ngx-starter-kit/auth';
 import { Store } from '@ngxs/store';
 
 @Component({
-  selector: 'user-menu',
+  selector: 'ngx-user-menu',
   templateUrl: './user-menu.component.html',
   styleUrls: ['./user-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

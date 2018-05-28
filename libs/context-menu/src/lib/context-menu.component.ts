@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy, HostListener, HostBinding } from '@angular/core';
 
 @Component({
-  selector: 'df-context-menu',
+  selector: 'context-menu',
   templateUrl: './context-menu.component.html',
   styleUrls: ['./context-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

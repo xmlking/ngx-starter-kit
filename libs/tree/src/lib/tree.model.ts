@@ -123,6 +123,7 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
   findBFS(node: T) {
     const queue = [this.root];
     while (queue.length) {
+      // tslint:disable:no-non-null-assertion
       const _node = queue.shift()!;
       if (_node === node) {
         return _node;

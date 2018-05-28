@@ -110,6 +110,9 @@ filepond-plugin-image-preview
 npm i socket.io-client 
 npm i -D @types/socket.io-client
 
+# tslint rules
+npm i -D rxjs-tslint-rules
+
 # Add miscellaneous
 npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable
 
