@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
+import { List } from 'immutable';
 
 @Component({
   selector: 'ngx-file-upload',
@@ -7,6 +8,7 @@ import { MatDialog } from '@angular/material';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
+  crumbs = List([{ name: 'Dashboard', link: '/dashboard' }, { name: 'Experiments', link: '/dashboard/experiments' }, { name: 'File Upload' }]);
   @ViewChild('myPond') myPond: any;
   myFiles = [];
 

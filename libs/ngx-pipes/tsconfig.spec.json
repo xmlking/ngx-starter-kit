@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/nx-pipes",
+    "outDir": "../../dist/out-tsc/libs/ngx-pipes",
     "types": [
       "jasmine",
       "node"

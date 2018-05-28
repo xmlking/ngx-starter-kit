@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
+    "outDir": "../../dist/out-tsc/libs/grid",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

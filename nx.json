@@ -52,11 +52,6 @@
         "child-module"
       ]
     },
-    "crud": {
-      "tags": [
-        "child-module"
-      ]
-    },
     "material": {
       "tags": [
         "shared-module"
@@ -123,7 +118,7 @@
         "private-module"
       ]
     },
-    "nx-pipes": {
+    "ngx-pipes": {
       "tags": [
         "public-module"
       ]
@@ -161,6 +156,11 @@
     "loading-overlay": {
       "tags": [
         "public-module"
+      ]
+    },
+    "grid": {
+      "tags": [
+        "child-module"
       ]
     }
   }

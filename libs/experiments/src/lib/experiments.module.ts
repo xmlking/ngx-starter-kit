@@ -42,6 +42,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
       }
     ])
   ],
-  declarations: [AnimationsComponent, FileUploadComponent, HammertimeDirective, ContextMenuComponent]
+  declarations: [
+    AnimationsComponent,
+    FileUploadComponent,
+    HammertimeDirective,
+    ContextMenuComponent
+  ]
 })
 export class ExperimentsModule {}

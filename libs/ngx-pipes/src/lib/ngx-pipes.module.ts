@@ -14,4 +14,4 @@ export const PIPES = [CharactersPipe, WordsPipe, KeysPipe, SafeHtmlPipe, FilterP
   declarations: [PIPES],
   exports: [PIPES]
 })
-export class NxPipesModule {}
+export class NgxPipesModule {}

@@ -16,7 +16,7 @@
 
   , "../../libs/widgets/src/index.ts"
 
-  , "../../libs/crud/src/index.ts"
+  , "../../libs/grid/src/index.ts"
 
   , "../../libs/not-found/src/index.ts"
 

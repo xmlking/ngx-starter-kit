@@ -38,9 +38,9 @@ import { SidenavModule } from '@ngx-starter-kit/sidenav';
             data: { animation: 'overview' }
           },
           {
-            path: 'crud',
-            loadChildren: '@ngx-starter-kit/crud#CrudModule',
-            data: { animation: 'crud' }
+            path: 'grid',
+            loadChildren: '@ngx-starter-kit/grid#GridModule',
+            data: { animation: 'grid' }
           },
           {
             path: 'experiments',

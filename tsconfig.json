@@ -49,9 +49,6 @@
       "@ngx-starter-kit/widgets": [
         "libs/widgets/src/index.ts"
       ],
-      "@ngx-starter-kit/crud": [
-        "libs/crud/src/index.ts"
-      ],
       "@ngx-starter-kit/material": [
         "libs/material/src/index.ts"
       ],
@@ -91,8 +88,8 @@
       "@ngx-starter-kit/quickpanel": [
         "libs/quickpanel/src/index.ts"
       ],
-      "@ngx-starter-kit/nx-pipes": [
-        "libs/nx-pipes/src/index.ts"
+      "@ngx-starter-kit/ngx-pipes": [
+        "libs/ngx-pipes/src/index.ts"
       ],
       "@ngx-starter-kit/svg-viewer": [
         "libs/svg-viewer/src/index.ts"
@@ -114,6 +111,9 @@
       ],
       "@ngx-starter-kit/loading-overlay": [
         "libs/loading-overlay/src/index.ts"
+      ],
+      "@ngx-starter-kit/grid": [
+        "libs/grid/src/index.ts"
       ]
     }
   },

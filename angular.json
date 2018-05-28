@@ -427,34 +427,6 @@
         }
       }
     },
-    "crud": {
-      "root": "libs/crud",
-      "sourceRoot": "libs/crud/src",
-      "projectType": "library",
-      "prefix": "ngx",
-      "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/crud/src/test.ts",
-            "tsConfig": "libs/crud/tsconfig.spec.json",
-            "karmaConfig": "libs/crud/karma.conf.js"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/crud/tsconfig.lib.json",
-              "libs/crud/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        }
-      }
-    },
     "material": {
       "root": "libs/material",
       "sourceRoot": "libs/material/src",
@@ -903,38 +875,38 @@
         }
       }
     },
-    "nx-pipes": {
-      "root": "libs/nx-pipes",
-      "sourceRoot": "libs/nx-pipes/src",
+    "ngx-pipes": {
+      "root": "libs/ngx-pipes",
+      "sourceRoot": "libs/ngx-pipes/src",
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/nx-pipes/tsconfig.lib.json",
-            "project": "libs/nx-pipes/ng-package.json"
+            "tsConfig": "libs/ngx-pipes/tsconfig.lib.json",
+            "project": "libs/ngx-pipes/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "libs/nx-pipes/ng-package.prod.json"
+              "project": "libs/ngx-pipes/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/nx-pipes/src/test.ts",
-            "tsConfig": "libs/nx-pipes/tsconfig.spec.json",
-            "karmaConfig": "libs/nx-pipes/karma.conf.js"
+            "main": "libs/ngx-pipes/src/test.ts",
+            "tsConfig": "libs/ngx-pipes/tsconfig.spec.json",
+            "karmaConfig": "libs/ngx-pipes/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/nx-pipes/tsconfig.lib.json",
-              "libs/nx-pipes/tsconfig.spec.json"
+              "libs/ngx-pipes/tsconfig.lib.json",
+              "libs/ngx-pipes/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
@@ -1191,6 +1163,34 @@
             "tsConfig": [
               "libs/loading-overlay/tsconfig.lib.json",
               "libs/loading-overlay/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "grid": {
+      "root": "libs/grid",
+      "sourceRoot": "libs/grid/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/grid/src/test.ts",
+            "tsConfig": "libs/grid/tsconfig.spec.json",
+            "karmaConfig": "libs/grid/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/grid/tsconfig.lib.json",
+              "libs/grid/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
