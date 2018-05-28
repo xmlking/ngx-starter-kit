@@ -1,5 +1,5 @@
 <div class="notification-container" (ngxClickOutside)="onClickOutside()"
-     fxFlex="grow" fxLayout="row" fxLayoutAlign="start center" fxHide fxShow.gt-sm>
+     fxFlex="grow" fxLayout="row" fxLayoutAlign="start center">
 
   <button class="button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen" fxFlex="grow">
     <span *ngIf="unReadCount() > 0;then withBadge else withOutBadge"></span>
