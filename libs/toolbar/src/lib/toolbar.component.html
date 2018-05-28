@@ -12,15 +12,15 @@
 
   <div fxLayout="row">
 
-    <ngx-fullscreen-toggle class="button"></ngx-fullscreen-toggle>
+    <ngx-fullscreen-toggle class="button" fxHide fxShow.gt-sm></ngx-fullscreen-toggle>
 
-    <ngx-search class="button"></ngx-search>
+    <ngx-search class="button" fxHide fxShow.gt-sm></ngx-search>
 
-    <ngx-notifications class="button"></ngx-notifications>
+    <ngx-notifications class="button" fxHide fxShow.gt-sm></ngx-notifications>
 
-    <ngx-user-menu [currentUser]="profile$ | async" class="button"></ngx-user-menu>
+    <!--<theme-picker class="button" fxShow fxHide.lt-md></theme-picker>-->
 
-    <!--<theme-picker fxShow fxHide.lt-md></theme-picker>-->
+    <ngx-user-menu class="button" [currentUser]="profile$ | async"></ngx-user-menu>
 
     <ngx-quickpanel-toggle class="button" [quickpanel]="quickpanel"></ngx-quickpanel-toggle>
 
