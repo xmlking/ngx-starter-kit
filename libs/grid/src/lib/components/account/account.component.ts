@@ -3,18 +3,18 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormBuilder, Validators } from '@angular/forms';
 import { map, startWith } from 'rxjs/operators';
 
-import { Account, Gender } from './account.model';
+import { Account, Gender } from '../../models/account.model';
 import { states } from './states';
 import { Observable } from 'rxjs';
 import { EntityFormComponent } from '@ngx-starter-kit/shared';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'ngx-account-form',
-  templateUrl: './account-form.component.html',
-  styleUrls: ['./account-form.component.scss']
+  selector: 'ngx-account',
+  templateUrl: './account.component.html',
+  styleUrls: ['./account.component.scss']
 })
-export class AccountFormComponent extends EntityFormComponent<Account> {
+export class AccountComponent extends EntityFormComponent<Account> {
   readonly genderOptions = Object.keys(Gender);
   readonly states: string[] = states;
   filteredStates: Observable<string[]>;
@@ -24,7 +24,7 @@ export class AccountFormComponent extends EntityFormComponent<Account> {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string; payload: Account },
-    public dialogRef: MatDialogRef<AccountFormComponent>,
+    public dialogRef: MatDialogRef<AccountComponent>,
     private fb: FormBuilder
   ) {
     super(data, dialogRef);

@@ -16,14 +16,19 @@ export const defaultMenu: MenuItem[] = [
   //   type: SidenavItemType.Separator,
   // },
   {
-    name: 'Tables',
+    name: 'Grid',
     icon: 'insert_chart',
     disabled: false,
     children: [
       {
-        name: 'CRUD',
+        name: 'CRUD Table',
         icon: 'web_aaset',
-        link: '/dashboard/crud'
+        link: '/dashboard/grid/crud-table'
+      },
+      {
+        name: 'Grid List',
+        icon: 'grid_on',
+        link: '/dashboard/grid/grid-list'
       }
     ]
   },

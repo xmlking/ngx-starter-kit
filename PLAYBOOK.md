@@ -150,7 +150,7 @@ ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webap
 ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --tags=entry-module
 ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
-ng g lib crud           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
+ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
 
 
 ng g lib material --spec=false --tags=shared-module --dry-run
@@ -200,7 +200,6 @@ ng g lib ContextMenu --prefix=ngx --tags=public-module --publishable=true
 ng g component ContextMenu --project=context-menu --flat --dry-run
 ng g directive ContextMenuTrigger --project=context-menu --flat --dry-run
 
-
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker --prefix=ngx --tags=public-module --publishable=true
 ng g component ThemePicker --project=theme-picker --flat --dry-run
@@ -211,10 +210,10 @@ ng g service  StyleManager --project=theme-picker --module=theme-picker --dry-ru
 ng g lib Quickpanel --prefix=ngx --tags=private-module
 ng g component Quickpanel --project=quickpanel --flat --dry-run
 
-# generate components for `NxPipes` Module
-ng g lib NxPipes --prefix=ngx --tags=public-module --publishable=true
-ng g pipe truncate/Characters --project=nx-pipes   --dry-run
-ng g pipe truncate/Words --project=nx-pipes   --dry-run
+# generate components for `NgxPipes` Module
+ng g lib NgxPipes --prefix=ngx --tags=public-module --publishable=true
+ng g pipe truncate/Characters --project=ngx-pipes   --dry-run
+ng g pipe truncate/Words --project=ngx-pipes   --dry-run
 
 # generate components for `LoadingOverlay` Module
 ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true
@@ -292,15 +291,20 @@ ng g component containers/overview --project=dashboard --dry-run
 # generate containers, components for `widgets` Module
 ng g component containers/wizdash --project=widgets --dry-run
 
-# generate containers, components for `crud` Module
-ng g component containers/accounts --project=crud --module=crud --dry-run
+# generate containers, components for `grid` Module
+ng g component  containers/AccountsTable --project=grid --module=grid --dry-run
+ng g component  components/Account --project=grid --module=grid --dry-run
+ng g class      models/account --type=model --project=grid --module=grid --dry-run
+ng g service    services/account --project=grid --module=grid --dry-run
+ng g component  containers/AccountsGridList --project=grid --module=grid --dry-run
 
 # generate containers, components for `experiments` Module
-ng g component containers/experimentsLayout --project=experiments --dry-run
-ng g component containers/experiments --project=experiments --dry-run
+ng g component containers/animations --project=experiments --dry-run
+ng g component containers/ContextMenu --project=experiments --dry-run
+ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
-ng g component containers/ContextMenu --project=experiments --dry-run
+
 
 
 # scaffolding ngrx for root module i.e., app.module.ts

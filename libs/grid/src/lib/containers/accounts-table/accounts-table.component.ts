@@ -1,22 +1,29 @@
 import { Component } from '@angular/core';
 
-import { Account, Address, Gender } from './account.model';
-import { AccountService } from './account.service';
+import { Account, Address, Gender } from '../../models/account.model';
+import { AccountService } from '../../services/account.service';
 import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
 import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-import { AccountFormComponent } from './account-form.component';
+import { AccountComponent } from '../../components/account/account.component';
 import * as moment from 'moment';
+import { List } from 'immutable';
 
 @Component({
-  selector: 'ngx-accounts',
+  selector: 'ngx-accounts-table',
   templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
   styleUrls: ['../../../../../shared/src/lib/containers/entity/entity.component.scss']
 })
-export class AccountsComponent extends EntitiesComponent<Account, AccountService> {
+export class AccountsTableComponent extends EntitiesComponent<Account, AccountService> {
+  crumbs = List([
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Grid', link: '/dashboard/grid' },
+    { name: 'CRUD Table' }
+  ]);
+
   // readonly columns = [ { property: 'id'},{ property: 'name'},{ property: 'gender'},{ property: 'age'} ] as EntityColumnDef<Account>[]
   readonly columns = [
     // prettier-ignore
@@ -35,7 +42,7 @@ export class AccountsComponent extends EntitiesComponent<Account, AccountService
   readonly showColumnFilter = true;
   readonly showToolbar = true;
 
-  readonly formRef = AccountFormComponent;
+  readonly formRef = AccountComponent;
 
   constructor(
     accountService: AccountService,

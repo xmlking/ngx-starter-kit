@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/crud",
+    "outDir": "../../dist/out-tsc/libs/grid",
     "types": [
       "jasmine",
       "node"

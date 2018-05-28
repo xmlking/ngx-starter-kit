@@ -1,0 +1,67 @@
+<ngx-breadcrumbs title="Grid" [crumbs]="crumbs"></ngx-breadcrumbs>
+
+<mat-card class="mat-elevation-z8">
+  <mat-toolbar>
+    <!--<div>Accounts | </div> -->
+    <mat-form-field fxFlex>
+      <input matInput #filter (keyup)="applyFilter($event.target.value)">
+      <mat-placeholder>
+        <mat-icon>search</mat-icon>
+        Filter
+      </mat-placeholder>
+    </mat-form-field>
+    <mat-button-toggle-group #gridView="matButtonToggleGroup" style="margin-left: 16px">
+      <mat-button-toggle value='list'>
+        <mat-icon>view_list</mat-icon>
+      </mat-button-toggle>
+      <mat-button-toggle value='grid' checked>
+        <mat-icon>view_comfy</mat-icon>
+      </mat-button-toggle>
+    </mat-button-toggle-group>
+  </mat-toolbar>
+
+  <ng-container *ngIf="gridView.value === 'grid'; then grid; else list">
+  </ng-container>
+
+  <mat-paginator #paginator [pageSize]="9" [pageSizeOptions]="[9, 12, 18]"
+                 [showFirstLastButtons]="true"></mat-paginator>
+</mat-card>
+
+<ng-template #grid>
+  <mat-grid-list cols="3" rowHeight="100px" gutterSize="10px">
+    <mat-grid-tile *ngFor="let account of renderData | async">
+      <mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">
+        <mat-card-header>
+          <img mat-card-avatar src="https://source.unsplash.com/random/200x200">
+          <mat-card-title>{{ account.first_name }}</mat-card-title>
+          <mat-card-subtitle>{{ account.last_name }}</mat-card-subtitle>
+        </mat-card-header>
+        <!--<img mat-card-image src="https://source.unsplash.com/random/800x600">-->
+        <!--<mat-card-content>-->
+        <!--<p>Something pretty ... </p>-->
+        <!--</mat-card-content>-->
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+
+<ng-template #list>
+  <mat-list>
+    <ng-container *ngFor="let apps of renderData | async | groupBy:'start'">
+      <h3 matSubheader>{{apps.key}}</h3>
+      <mat-list-item *ngFor="let app of apps.value" (click)="onClick(app)" [class.active]="selection.isSelected(app)">
+        <!--<mat-icon matListIcon>folder_open</mat-icon>-->
+        <!--<mat-icon matListIcon>folder</mat-icon>-->
+        <!--<mat-icon svgIcon="optum-logo"></mat-icon>-->
+        <img mat-list-avatar src="https://source.unsplash.com/random/200x200">
+        <h3 matLine> {{app.last_name}} </h3>
+        <p matLine>
+          <span> {{app.first_name}} </span>
+          <span class="subline">-- {{app.last_name}} </span>
+        </p>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+    </ng-container>
+  </mat-list>
+</ng-template>
+
