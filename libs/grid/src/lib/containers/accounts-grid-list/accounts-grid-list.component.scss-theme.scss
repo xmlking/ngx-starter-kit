@@ -1,0 +1,25 @@
+@import "var";
+@import '~@angular/material/theming';
+
+@mixin ngx-accounts-grid-list-component-theme($app-theme) {
+  $primary: map-get($app-theme, primary);
+  $accent: map-get($app-theme, accent);
+
+  ngx-accounts-grid-list {
+    //.mat-toolbar {
+    //  background-color: $background-color__sidenav-list ;
+    //  color: mat-color($primary, default-contrast);
+    //}
+
+    .mat-button-toggle {
+      background-color: lighten($background-color__sidenav-list, 20);
+      color: mat-color($primary, default-contrast);
+    }
+
+    .mat-button-toggle-checked {
+      background-color: mat-color($accent);
+      color: mat-color($accent, default-contrast);
+    }
+  }
+
+}

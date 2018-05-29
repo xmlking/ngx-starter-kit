@@ -23,12 +23,12 @@
   <ng-container *ngIf="gridView.value === 'grid'; then grid; else list">
   </ng-container>
 
-  <mat-paginator #paginator [pageSize]="9" [pageSizeOptions]="[9, 12, 18]"
+  <mat-paginator #paginator [pageSize]="6" [pageSizeOptions]="[6, 9, 12, 18]"
                  [showFirstLastButtons]="true"></mat-paginator>
 </mat-card>
 
 <ng-template #grid>
-  <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px">
+  <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px" class="fix-height">
     <mat-grid-tile *ngFor="let account of renderData | async">
 
       <!--<mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">-->
@@ -67,7 +67,7 @@
 </ng-template>
 
 <ng-template #list>
-  <mat-list>
+  <mat-list class="fix-height">
     <ng-container *ngFor="let apps of renderData | async | groupBy:'gender'">
       <h3 matSubheader>{{apps.key}}</h3>
       <mat-list-item *ngFor="let app of apps.value" (click)="onClick(app)" [class.active]="selection.isSelected(app)">

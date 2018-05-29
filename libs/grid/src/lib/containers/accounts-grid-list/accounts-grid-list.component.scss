@@ -4,6 +4,15 @@
   position: relative;
 }
 
+.fix-height {
+  position: relative;
+  top: 0;
+  max-height: 52vh;
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+}
+
 @import '~@angular/material/theming';
 
 /* Toolbar
@@ -58,7 +67,6 @@ mat-card {
 
 /* List
 -------------------------------------------------- */
-
 mat-list-item {
   //position: relative; // For mdRipple
   &:hover {
