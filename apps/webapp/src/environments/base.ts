@@ -6,6 +6,7 @@ export default {
   apiToken: 'SECRET_TOKEN',
   dialogFlow: {
     apiToken: '37808bf14a19406cbe2a50cfd1332dd3',
+    // apiToken: '528e10cbdec04c78a0d0147de041dea4',
     sessionId: 'sumodemo'
   },
   versions: {
