@@ -1,37 +1,39 @@
-Dockerized
-==========
+Dockerize
+=========
 
-Dockerized Angular App (with Angular CLI)
+Dockerize Angular App (with Angular CLI)
 
-### Build and publish custom nginx image for OpenShift
+### Build and publish custom nginx image for OpenShift (One time only)
 ```bash
 docker build -t openshift-nginx -f .docker/nginx.dockerfile .
-docker tag openshift-nginx xmlking/openshift-nginx:1.13.9-alpine
+docker tag openshift-nginx xmlking/openshift-nginx:1.14-alpine
 docker push xmlking/openshift-nginx
 
 # also tag as `latest` and push
-docker tag xmlking/openshift-nginx:1.13.9-alpine  xmlking/openshift-nginx:latest
+docker tag xmlking/openshift-nginx:1.14-alpine xmlking/openshift-nginx:latest
 docker push xmlking/openshift-nginx:latest
 ```
 
-### Build app docker image
+### Build
 ```bash
+# build app docker image
 docker build --tag=ngx-starter-kit -f .docker/prod.dockerfile . 
 ```
 
-### Run the container
+### Run
 ```bash
 docker run -it --env AUTH_BASE_URL=http://keycloak:8080 -p 80:8080  ngx-starter-kit
 ```
 
 The app will be available at http://localhost:80
 
-You can easily tweak the nginx config in ```nginx/default.conf```
+You can tweak the nginx config  ```nginx.conf.tmpl``` for your specific needs.
 
-### SSH container
+### SSH
 ```bash
 # SSH to the running container (CONTAINER ID from `docker ps` command)
 docker exec -it <CONTAINER ID> sh
+# if you started via docker-compose
 docker-compose exec web sh
 ```
 

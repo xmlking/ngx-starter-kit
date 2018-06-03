@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
+import { ScrollingModule } from '@angular/cdk-experimental/scrolling';
 
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { ContextMenuModule } from '@ngx-starter-kit/context-menu';
@@ -14,6 +15,7 @@ import { ContextMenuComponent } from './containers/context-menu/context-menu.com
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -22,6 +24,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     SharedModule,
     FilePondModule,
     ContextMenuModule,
+    ScrollingModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
@@ -39,6 +42,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         path: 'context-menu',
         component: ContextMenuComponent,
         data: { animation: 'context-menu' }
+      },
+      {
+        path: 'virtual-scroll',
+        component: VirtualScrollComponent,
+        data: { animation: 'virtual-scroll' }
       }
     ])
   ],
@@ -46,7 +54,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     AnimationsComponent,
     FileUploadComponent,
     HammertimeDirective,
-    ContextMenuComponent
+    ContextMenuComponent,
+    VirtualScrollComponent
   ]
 })
 export class ExperimentsModule {}

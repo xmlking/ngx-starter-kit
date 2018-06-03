@@ -85,7 +85,7 @@ ng add @angular/pwa --project webapp
 ng add @angular/material
 npm i hammerjs
 npm i -D @types/hammerjs
-npm i ngx-moment
+npm i moment ngx-moment
 npm i @angular/material-moment-adapter 
 
 # Add Flex-Layout 
@@ -227,6 +227,10 @@ ng g component svgViewer --project=svg-viewer --flat --dry-run
 ng g lib led --prefix=ngx --tags=public-module --publishable=true
 ng g component led --project=led --flat --dry-run 
 
+# generate components for `deferLoad` Module
+ng g lib deferLoad --prefix=ngx --tags=public-module --publishable=true --dry-run 
+ng g directive DeferLoad --project=defer-load  --dry-run 
+
 # generate components for `chatBot` Module
 ng g lib chatBot --prefix=ngx --tags=public-module --publishable=true --dry-run 
 ng g component chatBot --project=chat-bot --flat --dry-run 
@@ -304,7 +308,7 @@ ng g component containers/ContextMenu --project=experiments --dry-run
 ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
-
+ng g component containers/virtualScroll --project=experiments --dry-run
 
 
 # scaffolding ngrx for root module i.e., app.module.ts

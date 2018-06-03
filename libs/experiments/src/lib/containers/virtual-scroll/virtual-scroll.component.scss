@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  padding: 1.5%;
+  position: relative;
+}
+
+.demo-viewport {
+  height: 500px;
+  width: 500px;
+  border: 1px solid black;
+
+  .cdk-virtual-scroll-content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+
+.demo-state-item {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.demo-state {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.demo-capital {
+  font-size: 14px;
+}
