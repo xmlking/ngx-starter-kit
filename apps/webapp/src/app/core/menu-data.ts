@@ -51,6 +51,11 @@ export const defaultMenu: MenuItem[] = [
         name: 'Context Menu',
         icon: 'web_aaset',
         link: '/dashboard/experiments/context-menu'
+      },
+      {
+        name: 'Virtual Scroll',
+        icon: 'view_list',
+        link: '/dashboard/experiments/virtual-scroll'
       }
     ]
   },

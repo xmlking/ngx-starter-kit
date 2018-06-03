@@ -1,26 +1,23 @@
 ### STAGE 1: Build ###
 
-# We label our stage as 'builder'
 FROM node:10 as builder
 #FROM node:10-alpine as builder
 
+WORKDIR /app
+
 COPY package.json package-lock.json ./
 
-RUN npm set progress=false && npm config set depth 0 && npm cache clean --force
-
-## Storing node modules on a separate layer will prevent unnecessary npm installs at each build
-RUN npm i && mkdir /ng-app && cp -R ./node_modules ./ng-app
-
-WORKDIR /ng-app
+RUN npm ci
 
 COPY . .
 
 ## Build the angular app in production mode and store the artifacts in dist folder
-RUN npm run build:prod
+RUN $(npm bin)/ng build --project=webapp -c=production
 
 ### STAGE 2: Setup ###
 
-FROM xmlking/openshift-nginx:1.13.9-alpine
+FROM xmlking/openshift-nginx:1.14-alpine
+LABEL maintainer="Sumanth <xmlking@gmail.com>"
 
 ## Copy our nginx config template
 COPY .docker/nginx.conf.tmpl /etc/nginx/conf.d/nginx.conf.tmpl
@@ -31,7 +28,7 @@ RUN set -x \
 	&& chmod go+w /etc/nginx/conf.d/default.conf
 
 ## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
-COPY --from=builder /ng-app/dist/apps/webapp  /usr/share/nginx/html
+COPY --from=builder /app/dist/apps/webapp  /usr/share/nginx/html
 
 EXPOSE 8080
 

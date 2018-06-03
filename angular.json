@@ -1198,6 +1198,46 @@
           }
         }
       }
+    },
+    "defer-load": {
+      "root": "libs/defer-load",
+      "sourceRoot": "libs/defer-load/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/defer-load/tsconfig.lib.json",
+            "project": "libs/defer-load/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/defer-load/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/defer-load/src/test.ts",
+            "tsConfig": "libs/defer-load/tsconfig.spec.json",
+            "karmaConfig": "libs/defer-load/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/defer-load/tsconfig.lib.json",
+              "libs/defer-load/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "schematics": {

@@ -1,6 +1,7 @@
-FROM nginx:1.13.9-alpine
+FROM nginx:1.14-alpine
 
-LABEL maintainer="NGINX for non-root platform: OpenShift"
+LABEL maintainer="Sumanth <xmlking@gmail.com>" \
+      description="ANGINX for non-root platform: OpenShift"
 
 RUN set -x \
 	&& chmod go+w /var/cache/nginx \

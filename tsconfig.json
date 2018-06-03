@@ -114,6 +114,12 @@
       ],
       "@ngx-starter-kit/grid": [
         "libs/grid/src/index.ts"
+      ],
+      "defer-load/*": [
+        "dist/defer-load/*"
+      ],
+      "@ngx-starter-kit/defer-load": [
+        "libs/defer-load/src/index.ts"
       ]
     }
   },

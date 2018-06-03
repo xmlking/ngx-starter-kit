@@ -162,6 +162,11 @@
       "tags": [
         "child-module"
       ]
+    },
+    "defer-load": {
+      "tags": [
+        "public-module"
+      ]
     }
   }
 }
