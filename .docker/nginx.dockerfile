@@ -14,6 +14,8 @@ RUN wget https://github.com/xmlking/dockerize/releases/download/$DOCKERIZE_VERSI
     && tar -C /usr/local/bin -xzvf dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz \
     && rm dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz
 
+#RUN curl -L https://github.com/xmlking/dockerize/releases/download/$DOCKERIZE_VERSION/dockerize-alpine-linux-amd64-$DOCKERIZE_VERSION.tar.gz | tar zx
+
 EXPOSE 8080
 
 CMD ["nginx", "-g", "daemon off;"]

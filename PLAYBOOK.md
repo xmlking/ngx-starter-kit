@@ -25,6 +25,8 @@ brew install node
 npm install -g npm
 ```
 
+Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
+
 #### Install Bazel
 For Mac, install via Brew. [Instructions](https://docs.bazel.build/versions/master/install-os-x.html#install-on-mac-os-x-homebrew)
 ```bash
@@ -386,6 +388,12 @@ npx standard-version
 "release": "standard-version && git push — follow-tags origin master && npm publish"
 ```
 
+### Analyze
+> Analyzing bundle size
+```bash
+npm run bundle-report
+ ```
+ 
 ### Production build and deployment
 The prod image serves the minified app (sources compiles with a minimal set of dependencies), via an Nginx server. 
 It is self-contained, and can therefore be pushed to a Docker registry to be deployed somewhere else easily.
