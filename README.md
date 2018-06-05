@@ -33,3 +33,5 @@ Run `npm run doc:serve` to serve docs.
 ## Deploy
 
 Run `npm run deploy:mock` to deploy demo app to gp-pages.
+
+Analyzing bundle size `npm run bundle-report`
