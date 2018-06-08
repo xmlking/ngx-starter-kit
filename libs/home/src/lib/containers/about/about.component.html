@@ -8,24 +8,24 @@
       <canvas #trianglify></canvas>
       <h1>Angular Nx Material Starter Kit</h1>
       <div class="actions">
-        <a [ngClass]="animateOnRouteEnter"
-           mat-raised-button color="primary" routerLink="../features">
+        <a [ngClass]="routeAnimationsElements"
+           mat-raised-button class="actions-main" color="primary" routerLink="../features">
           Check Features
         </a>
-        <a mat-raised-button color="accent" routerLink="/dashboard"
-           [ngClass]="animateOnRouteEnter">
+        <a mat-raised-button class="actions-main" color="accent" routerLink="/dashboard"
+           [ngClass]="routeAnimationsElements">
           Check Examples
         </a>
-        <a mat-raised-button routerLink="../settings"
-           [ngClass]="animateOnRouteEnter">
+        <a mat-raised-button class="actions-main" routerLink="../settings"
+           [ngClass]="routeAnimationsElements">
           Change Theme
         </a>
-        <a mat-raised-button (click)="color= 'random'; renderCanvas()"
-           [ngClass]="animateOnRouteEnter">
+        <a mat-raised-button class="actions-main" color="warn" (click)="color= 'random'; renderCanvas()"
+           [ngClass]="routeAnimationsElements">
           Refresh Background
         </a>
       </div>
-      <div class="get-started" [ngClass]="animateOnRouteEnter">
+      <div class="get-started" [ngClass]="routeAnimationsElements">
         <h2>Getting started</h2>
         <code>git clone
           https://github.com/xmlking/ngx-starter-kit.git
