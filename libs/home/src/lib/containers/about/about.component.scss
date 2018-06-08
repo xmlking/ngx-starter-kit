@@ -33,7 +33,17 @@ canvas {
     }
 
     a {
-      margin: 0 0 10px 0;
+      margin: 0 5px 10px 0;
+
+      &.actions-main {
+        text-transform: uppercase;
+        padding: 3px 24px;
+      }
+
+      mat-icon {
+        position: relative;
+        top: 4px;
+      }
     }
   }
 

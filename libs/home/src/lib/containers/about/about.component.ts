@@ -1,5 +1,5 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ANIMATE_ON_ROUTE_ENTER } from '@ngx-starter-kit/animations';
+import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 import { fromEvent, Subject, Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operato
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   private _destroyed = new Subject();
 
-  animateOnRouteEnter = ANIMATE_ON_ROUTE_ENTER;
+  routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   @ViewChild('trianglify') trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
   private _sub: Subscription;
