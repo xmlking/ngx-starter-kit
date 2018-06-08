@@ -3,7 +3,7 @@ import {NgModule} from '@angular/core';
 import * as Hammer from 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import {AppComponent} from './app.component';
-import {RouterModule} from '@angular/router';
+import { PreloadAllModules, RouterModule } from '@angular/router';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CoreModule} from './core/core.module';
@@ -33,6 +33,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       ],
       {
         initialNavigation: 'enabled',
+        preloadingStrategy: PreloadAllModules,
         paramsInheritanceStrategy: 'always'
         // onSameUrlNavigation: 'reload'
       }
