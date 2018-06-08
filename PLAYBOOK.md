@@ -9,10 +9,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.1.0  |          | 
-| NPM                           | v6.0.0   |          | 
-| Angular CLI                   | v6.0.6   |          | 
-| @nrwl/schematics              | v6.0.2   |          | 
+| Node                          | v10.4.0  |          | 
+| NPM                           | v6.1.0   |          |
+| Angular CLI                   | v6.0.8   |          |
+| @nrwl/schematics              | v6.0.4   |          |
 
 
 ### Install Prerequisites
@@ -21,7 +21,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 brew update
 brew install node
 #brew upgrade node
-# upgrade npm to at least 6.0.0
+# upgrade npm to at least 6.1.0
 npm install -g npm
 ```
 
@@ -44,7 +44,7 @@ bazel clean --expunge
 #### Install Global Packages
 ```bash
 npm remove -g @nrwl/schematics
-# you need at least 6.0.2
+# you need at least 6.0.4
 npm install -g @nrwl/schematics
 npm install -g @angular/cli
 

@@ -44,7 +44,8 @@ once you are conferable , then you can delete demo `default` app
 
 How to manage state in the front-end?
 
-* use [NgXs](https://amcdnl.gitbooks.io/ngxs/)
+> use [NGXS](https://amcdnl.gitbooks.io/ngxs/)
+> Read [Immer with NGXS](https://blog.angularindepth.com/simple-state-mutations-in-ngxs-with-immer-48b908874a5e)
 
 * How to implement route animations?
 
@@ -72,6 +73,9 @@ How to manage state in the front-end?
 
 * How to configure nginx?
 > Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+
+* How to build a library for Angular apps?
+> Read [build a library](https://medium.com/@tomsu/how-to-build-a-library-for-angular-apps-4f9b38b0ed11)
 
 * How to package the libs for publishing ?
 
