@@ -12,7 +12,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Node                          | v10.4.0  |          | 
 | NPM                           | v6.1.0   |          |
 | Angular CLI                   | v6.0.8   |          |
-| @nrwl/schematics              | v6.0.4   |          |
+| @nrwl/schematics              | v6.1.0   |          |
 
 
 ### Install Prerequisites
@@ -44,6 +44,7 @@ bazel clean --expunge
 #### Install Global Packages
 ```bash
 npm remove -g @nrwl/schematics
+npm remove -g @angular/cli
 # you need at least 6.0.4
 npm install -g @nrwl/schematics
 npm install -g @angular/cli
@@ -61,16 +62,23 @@ npm ls jasmine-marbles
 ### Scaffold Project
 > steps below are for setting up a new project from the scratch.
 
+for nx help `npm run help`
+
 #### Create Workspace
 ```bash
-create-nx-workspace ngx-starter-kit --prefix=ngx --style=scss --routing  --service-worker
+ng new ngx-starter-kit --collection=@nrwl/schematics ngx-starter-kit  --verbose
 # if you want *bazel* builds instead of *webpack*
-create-nx-workspace ngx-starter-kit --bazel --prefix=ngx --style=scss --routing  --service-worker
+ng new ngx-starter-kit --collection=@nrwl/schematics ngx-starter-kit --bazel  --verbose
 cd ngx-starter-kit
 # make sure we are up-to-date
-ng update @angular/core
+ng update
+# and update as suggested. e.g., 
+ng update @nrwl/schematics
+ng update --all
+# also run `npm outdated` and update versions in package.json then run `npm install`
+
 # generate webapp app
-ng g app webapp --routing --style=scss --service-worker --tags=app-module
+ng g app webapp --routing --style=scss --tags=app-module
 ```
 
 #### Dependencies
@@ -393,7 +401,16 @@ npx standard-version
 ```bash
 npm run bundle-report
  ```
- 
+
+### Check
+> check if you on current versions.
+```bash
+node -v 
+npm -v
+ng -v
+npx nx --version
+```
+
 ### Production build and deployment
 The prod image serves the minified app (sources compiles with a minimal set of dependencies), via an Nginx server. 
 It is self-contained, and can therefore be pushed to a Docker registry to be deployed somewhere else easily.
