@@ -25,7 +25,8 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
 @NgModule({
   imports: [
     CommonModule,
-    FlexLayoutModule.withConfig({ useColumnBasisZero: false }) //FIXME chat: input
+    // FIXME chatbot: input. depending  on https://github.com/angular/flex-layout/issues/778
+    FlexLayoutModule.withConfig({ useColumnBasisZero: false })
   ],
   declarations: [...DIRECTIVES],
   exports: [
