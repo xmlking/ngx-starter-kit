@@ -23,8 +23,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
 const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
 
 @NgModule({
-  // imports: [CommonModule, RouterModule, FlexLayoutModule, MaterialModule, PerfectScrollbarModule],
-  imports: [CommonModule, ],
+  imports: [
+    CommonModule,
+    FlexLayoutModule.withConfig({ useColumnBasisZero: false }) //FIXME chat: input
+  ],
   declarations: [...DIRECTIVES],
   exports: [
     CommonModule,
