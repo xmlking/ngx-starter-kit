@@ -1250,7 +1250,10 @@
     }
   },
   "cli": {
-    "typescriptMismatch": false,
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
     "defaultCollection": "@nrwl/schematics"
   },
   "defaultProject": "webapp"

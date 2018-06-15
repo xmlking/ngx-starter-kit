@@ -45,9 +45,11 @@ bazel clean --expunge
 ```bash
 npm remove -g @nrwl/schematics
 npm remove -g @angular/cli
+npm remove -g @nestjs/cli
 # you need at least 6.0.4
 npm install -g @nrwl/schematics
 npm install -g @angular/cli
+npm install -g @nestjs/cli
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -66,10 +68,16 @@ for nx help `npm run help`
 
 #### Create Workspace
 ```bash
-ng new ngx-starter-kit --collection=@nrwl/schematics ngx-starter-kit  --verbose
-# if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics ngx-starter-kit --bazel  --verbose
+# create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
+create-nx-workspace  ngx-starter-kit --prefix=ngx
+# or
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --verbose
+# or if you want *bazel* builds instead of *webpack*
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --bazel  --verbose
 cd ngx-starter-kit
+
+> remove all ngrx NPM pagages from package.json
+
 # make sure we are up-to-date
 ng update
 # and update as suggested. e.g., 
@@ -78,7 +86,7 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --tags=app-module
+ng g app webapp --routing --style=scss --prefix=ngx --tags=app-module
 ```
 
 #### Dependencies
@@ -106,7 +114,7 @@ npm i angular-in-memory-web-api
 npm i angular-oauth2-oidc 
 
 # Add ngxs
-npm i @ngxs/devtools-plugin @ngxs/store
+npm i @ngxs/devtools-plugin @ngxs/store @ngxs/router-plugin
     
 # Add Filepond
 npm i ngx-filepond \
@@ -191,7 +199,7 @@ ng g service AppConfirm --project=app-confirm --module=app-confirm --spec=false 
 
 # generate components for `Draggable` Module
 ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true
-ng g directive directives/Draggable --module=draggable --export=true --dry-run
+ng g directive directives/Draggable --project=draggable --module=draggable --export=true --dry-run
 
 # generate components for `Breadcrumbs` Module
 ng g lib Breadcrumbs --prefix=ngx --tags=public-module --publishable=true
@@ -319,12 +327,6 @@ ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
-
-
-# scaffolding ngrx for root module i.e., app.module.ts
-ng g ngrx app --app=webapp --module=apps/webapp/src/app/app.module.ts  --only-empty-root
-# add `account` state for `dashboard` Feature Module
-ng g ngrx account --directory=state/account --project=dashboard --module=libs/dashboard/src/dashboard.module.ts
 ```
 
 ### Install
