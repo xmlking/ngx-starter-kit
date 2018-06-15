@@ -1,5 +1,12 @@
 {
   "npmScope": "ngx-starter-kit",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
   "projects": {
     "webapp": {
       "tags": [
