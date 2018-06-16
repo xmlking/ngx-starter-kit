@@ -57,12 +57,19 @@ npm run api:start:prod
 ```bash
 # unit tests
 npm run api:test
+# for api project
+npx jest --projects=apps/api --roots=src
+
 
 # e2e tests
 npm run api:test:e2e
+# for api project
+npx jest --projects=apps/api --roots=e2e
 
 # test coverage
 npm run api:test:cov
+# for api project
+npx jest --projects=apps/api --coverage
 ```
 
 ## Support

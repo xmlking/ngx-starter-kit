@@ -1,7 +1,17 @@
 {
-  "extends": "tsconfig.api.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
-    "types": ["jest", "node"]
+    "outDir": "../../dist/out-tsc/apps/api",
+    "types": [
+      "jest",
+      "node"
+    ]
   },
-  "include": ["**/*.spec.ts", "**/*.d.ts"]
+  "include": [
+    "**/*.spec.ts",
+    "**/*.d.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
