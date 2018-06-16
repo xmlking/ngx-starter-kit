@@ -11,8 +11,7 @@
     "experimentalDecorators": true,
     "target": "es6",
     "sourceMap": true,
-//    "outDir": "../../dist/apps/api",
-    "outDir": "../../dist/out-tsc/apps/api",
+    "outDir": "../../dist/apps/api",
     "baseUrl": "./src"
   },
   "include": [
