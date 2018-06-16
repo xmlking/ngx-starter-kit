@@ -45,10 +45,10 @@
     "api:prestart:prod": "rm -rf dist && tsc -p ./apps/api/tsconfig.json",
     "api:webpack": "webpack --config ./apps/api/webpack.config.js",
     "// - API Test": "API Testing",
-    "api:test": "jest",
-    "api:test:watch": "jest --watch",
+    "api:test": "jest --roots=src",
+    "api:test:watch": "jest --roots=src --watch",
+    "api:test:e2e": "jest --roots=e2e",
     "api:test:cov": "jest --coverage",
-    "api:test:e2e": "jest --config ./apps/api/test/jest-e2e.json",
     "// - CI": "Ci Testing"
   },
   "private": true,
@@ -152,18 +152,5 @@
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.0.8",
     "webpack-node-externals": "^1.7.2"
-  },
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "ts"
-    ],
-    "rootDir": "apps/api/src",
-    "testRegex": ".spec.ts$",
-    "transform": {
-      "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "coverageDirectory": "../../../dist/api/coverage"
   }
 }
