@@ -1,0 +1,7 @@
+{
+  "extends": "tsconfig.api.json",
+  "compilerOptions": {
+    "types": ["jest", "node"]
+  },
+  "include": ["**/*.spec.ts", "**/*.d.ts"]
+}

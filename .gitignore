@@ -41,6 +41,7 @@ Thumbs.db
 # Environment variables
 .env
 
-# Sumo
+=======
+# Local
 todo
 backend
