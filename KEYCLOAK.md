@@ -31,8 +31,12 @@ Pre-configured KeyCloak OpenID Connect server for testing.
 ```bash
 # Start keycloak
 docker-compose up keycloak
+
 # Stop keycloak
 docker-compose stop keycloak
+# this will remove volume created by docker.
+docker-compose down
+
 # SSH into keycloak container
 docker-compose exec keycloak sh
 ```
