@@ -3,7 +3,7 @@ API
 
 ## Description
 
-Backend API build with [Nest](https://github.com/nestjs/nest) framework``.
+Backend API build with [Nest](https://github.com/nestjs/nest) Framework.
 
  
 ## Run
