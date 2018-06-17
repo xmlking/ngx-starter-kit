@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngx-starter-kit
+  labels:
+    run: ngx-starter-kit
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  - port: 443
+    protocol: TCP
+    name: https
+  selector:
+    run: ngx-starter-kit
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: ngx-starter-kit
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        run: ngx-starter-kit
+    spec:
+      containers:
+      - name: ngx-starter-kit
+        image: xmlking/ngx-starter-kit
+        ports:
+        - containerPort: 80
+        - containerPort: 443
