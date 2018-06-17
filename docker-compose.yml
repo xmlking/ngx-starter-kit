@@ -1,35 +1,20 @@
 version: '3'
 
 services:
-
-  postgres:
-    image: postgres:10.2
-    container_name: postgres
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: admin
-
   keycloak:
-    image: jboss/keycloak:3.4.3.Final
+    image: jboss/keycloak-openshift:4.0.0.Final
     container_name: keycloak
+    command: ["start-keycloak.sh", "-b", "0.0.0.0", "-Dkeycloak.migration.action=import", "-Dkeycloak.migration.provider=dir", "-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config", "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING", "-Djboss.socket.binding.port-offset=1000"]
+    volumes:
+    - $PWD/.docker/keycloak/realm-config:/opt/jboss/keycloak/realm-config
     environment:
-      POSTGRES_PORT_5432_TCP_ADDR: postgres
-      POSTGRES_DATABASE: keycloak
-      POSTGRES_USER: keycloak
-      POSTGRES_PASSWORD: admin
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin
-    volumes:
-      - keycloak_themes:/opt/jboss/keycloak/themes
-      - keycloak_deployments:/opt/jboss/keycloak/standalone/deployments
-      - keycloak_data:/opt/jboss/keycloak/standalone/data
+      DB_VENDOR: H2
     ports:
-      - 8080:8080
-    depends_on:
-      - postgres
+    - 9080:9080
+    - 9444:9443
+    - 10990:10990
 
   web:
     build:
@@ -45,14 +30,10 @@ services:
     volumes:
       - .docker/nginx.conf.tmpl:/etc/nginx/conf.d/nginx.conf.tmpl:ro
     ports:
-      - '80:8080'
+      - 80:8080
     depends_on:
       - keycloak
 
 volumes:
   uploads:
-  postgres_data:
-  keycloak_data:
-  keycloak_themes:
-  keycloak_deployments:
     driver: local
