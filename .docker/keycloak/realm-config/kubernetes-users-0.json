@@ -1,0 +1,159 @@
+{
+  "realm" : "kubernetes",
+  "users" : [ {
+    "id" : "d1da9a23-0113-4c17-a256-a0bd519a7a34",
+    "createdTimestamp" : 1529212640849,
+    "username" : "kubeadmin",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "kube",
+    "lastName" : "admin",
+    "email" : "kubeadmin@kube.com",
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "yygKi6+CxweFnF2vtiQ/Bxu7vgn4sBb8uPmEvxhS5uicXj0prve4ZajkJJHyWZbSJe4ZdktyLdpkNC0l1kLwWA==",
+      "salt" : "EIIpu7G/7ZNxesVKn6H35g==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1529212655304,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "kube-tenant" : [ "ROLE_ADMIN" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "8602c118-9778-4eda-98a0-673382934688",
+    "createdTimestamp" : 1529212501813,
+    "username" : "sumo",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "sumo",
+    "lastName" : "demo",
+    "email" : "sumo@demo.com",
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "H8VkjF1khTF7/6pSRC6wSEf9NcpQJk3xSd6xk9ID0LT17I05Z9oAiy/Y9OrnOZWwpT9Gvj+N7IsoVrwYiLx7qw==",
+      "salt" : "toJl+Qx0donj0JUxNhhDeA==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1529212548234,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "kube-tenant" : [ "ROLE_USER" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "0af884ad-5da6-4264-94e4-dc1b443d68cd",
+    "createdTimestamp" : 1529216119483,
+    "username" : "sumo1",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "sumo1",
+    "lastName" : "demo",
+    "email" : "sumo1@demo.com",
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "W4bdthFK9zGxs3+Iy3iP27SXqwHJqFWVlMxLRyMRpIdcftVkwTKbSXhQUeHydTTS7gpb2R/rECE6r70lfFftAg==",
+      "salt" : "Enyzq39gGnxmxdTxgM0Gcw==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1529216133093,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "kube-tenant" : [ "ROLE_USER" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "3e859844-e203-4eac-bd5e-5fb08e575857",
+    "createdTimestamp" : 1529216166437,
+    "username" : "sumo2",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "sumo2",
+    "lastName" : "demo",
+    "email" : "sumo2@demo.com",
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "wGKpbxwAywTPMIQrNQpiEfrM84P5+yqasHfkyp5aMf3nmF8i3mudeuC/sbHCL11FzTidHZQzJpBFeqhfl6BCAg==",
+      "salt" : "j+z7ytsnrM3eh/WnOZUunw==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1529216174547,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "kube-tenant" : [ "ROLE_USER" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  }, {
+    "id" : "f8e488ef-12cd-46ee-a781-b9865a98774c",
+    "createdTimestamp" : 1529216201694,
+    "username" : "sumo3",
+    "enabled" : true,
+    "totp" : false,
+    "emailVerified" : false,
+    "firstName" : "sumo3",
+    "lastName" : "demo",
+    "email" : "sumo3@demo.com",
+    "credentials" : [ {
+      "type" : "password",
+      "hashedSaltedValue" : "/BLGG5kNMyVaIVub/vd7Q4jlIYfQIFrq3elo0t47tPUw6CnNSXkripoZusMtNf1/UoFsOO7ot0fUZn2vWoaESw==",
+      "salt" : "CUIxv7lsooIlTuDu/TrweA==",
+      "hashIterations" : 27500,
+      "counter" : 0,
+      "algorithm" : "pbkdf2-sha256",
+      "digits" : 0,
+      "period" : 0,
+      "createdDate" : 1529216210103,
+      "config" : { }
+    } ],
+    "disableableCredentialTypes" : [ "password" ],
+    "requiredActions" : [ ],
+    "realmRoles" : [ "offline_access", "uma_authorization" ],
+    "clientRoles" : {
+      "kube-tenant" : [ "ROLE_USER" ],
+      "account" : [ "manage-account", "view-profile" ]
+    },
+    "notBefore" : 0,
+    "groups" : [ ]
+  } ]
+}
