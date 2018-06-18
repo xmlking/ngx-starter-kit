@@ -51,6 +51,10 @@ How to manage state in the front-end?
 
 > Refer [here](https://angularfirebase.com/snippets/router-transition-animations-with-angular-4/)
 
+Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
+
+> Refer [here](https://medium.com/@tomastrajan/total-guide-to-dynamic-angular-animations-that-can-be-toggled-at-runtime-be5bb6778a0a)
+
 * how to Deploy to GitHub Pages?
 
 > Refer [here](https://github.com/angular/angular-cli/wiki/stories-github-pages)
