@@ -27,7 +27,13 @@ npm install -g npm
 
 Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
 
-#### Install Bazel
+### Install Kubernetes (optional)
+follow instructions [here](https://gist.github.com/xmlking/62ab53753c0f0f5247d0e174b31dab21) to install kubernetes toolchain:
+1. Docker for Mac (edge version)
+2. Helm (optional)
+3. kubectx (optional)
+
+#### Install Bazel (optional)
 For Mac, install via Brew. [Instructions](https://docs.bazel.build/versions/master/install-os-x.html#install-on-mac-os-x-homebrew)
 ```bash
 brew install bazel
