@@ -22,13 +22,13 @@ export abstract class EntityService<T extends Entity> {
 
   constructor(protected httpClient: HttpClient) {}
 
-  getById(id: number) {
-    this.loadingSubject.next(true);
+  getById(id: number | string) {
+    // this.loadingSubject.next(true);
     return this.httpClient
       .get<T>(`${this.baseUrl}/${this.entityPath}/${id}`)
       .pipe(
         catchError(this.handleError),
-        finalize(() => this.loadingSubject.next(false))
+        // finalize(() => this.loadingSubject.next(false))
       );
   }
 
