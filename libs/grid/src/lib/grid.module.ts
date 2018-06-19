@@ -27,7 +27,7 @@ import { AccountEditComponent } from './components/account-edit/account-edit.com
       { path: '', redirectTo: 'crud-table', pathMatch: 'full', data: { animation: 'grid' } },
       { path: 'crud-table', component: AccountsTableComponent, data: { animation: 'accounts-table' },
         children: [
-          { path: ':id', component: AccountDetailComponent },
+          { path: ':id', component: AccountDetailComponent, data: { animation: 'account-detail' } },
         ],
       },
       { path: 'grid-list', component: AccountsGridListComponent, data: { animation: 'accounts-grid-list' } }

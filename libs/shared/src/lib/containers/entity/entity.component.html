@@ -85,4 +85,6 @@
 </div>
 
 <br/><br/>
-<router-outlet></router-outlet>
+<!--<div [@routerTransition]="getRouteAnimation(o)">-->
+  <router-outlet #o="outlet"></router-outlet>
+<!--</div>-->

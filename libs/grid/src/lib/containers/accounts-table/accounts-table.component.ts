@@ -61,7 +61,10 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     return this.confirmService.confirm('Confirm', `Delete ${item.first_name} ${item.last_name}?`).pipe(
       filter(confirmed => confirmed === true),
       mergeMap(_ => super.delete(item)),
-      tap(_ => this.snack.open('Member Deleted!', 'OK', { duration: 5000 })),
+      tap(_ => {
+        this.snack.open('Member Deleted!', 'OK', { duration: 5000 });
+        this.store.dispatch(new Navigate([`/dashboard/grid/crud-table`]));
+      }),
       catchError(error => {
         this.snack.open(error, 'OK', { duration: 10000 });
         return throwError('Ignore Me!');
@@ -116,7 +119,10 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
         concatMap((res: Account) => super.updateOrCreate(res, isNew))
       )
       .subscribe(
-        _ => this.snack.open(isNew ? 'Member Created!' : 'Member Updated!', 'OK', { duration: 5000 }),
+        _ => {
+          this.snack.open(isNew ? 'Member Created!' : 'Member Updated!', 'OK', { duration: 5000 })
+          this.store.dispatch(new Navigate([`/dashboard/grid/crud-table`]))
+        },
         error => this.snack.open(error, 'OK', { duration: 10000 })
       );
   }
