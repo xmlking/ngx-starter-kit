@@ -1,0 +1,16 @@
+<mat-card *ngIf="account">
+  <mat-card-header>
+    <mat-card-title><h3>Selected Account</h3></mat-card-title>
+  </mat-card-header>
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <mat-list role="list">
+      <mat-list-item *ngFor="let entry of account | keys" role="listitem">
+        <div>
+          <span>{{entry.key}}：</span><span>{{ entry.value | json }}</span>
+        </div>
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>
+

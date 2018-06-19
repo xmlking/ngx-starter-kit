@@ -37,7 +37,7 @@ export function noop() {
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
-    environment.envName === 'mock'
+    environment.envName !== 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true
           // delay: 500,

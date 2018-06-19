@@ -10,11 +10,11 @@ import { EntityFormComponent } from '@ngx-starter-kit/shared';
 import * as moment from 'moment';
 
 @Component({
-  selector: 'ngx-account',
-  templateUrl: './account.component.html',
-  styleUrls: ['./account.component.scss']
+  selector: 'ngx-account-edit',
+  templateUrl: './account-edit.component.html',
+  styleUrls: ['./account-edit.component.scss']
 })
-export class AccountComponent extends EntityFormComponent<Account> {
+export class AccountEditComponent extends EntityFormComponent<Account> {
   readonly genderOptions = Object.keys(Gender);
   readonly states: string[] = states;
   filteredStates: Observable<string[]>;
@@ -24,7 +24,7 @@ export class AccountComponent extends EntityFormComponent<Account> {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string; payload: Account },
-    public dialogRef: MatDialogRef<AccountComponent>,
+    public dialogRef: MatDialogRef<AccountEditComponent>,
     private fb: FormBuilder
   ) {
     super(data, dialogRef);

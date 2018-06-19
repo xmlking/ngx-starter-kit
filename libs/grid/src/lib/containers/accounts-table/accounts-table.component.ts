@@ -8,9 +8,11 @@ import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
-import { AccountComponent } from '../../components/account/account.component';
+import { AccountEditComponent } from '../../components/account-edit/account-edit.component';
 import * as moment from 'moment';
 import { List } from 'immutable';
+import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
 
 @Component({
   selector: 'ngx-accounts-table',
@@ -42,10 +44,11 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
   readonly showColumnFilter = true;
   readonly showToolbar = true;
 
-  readonly formRef = AccountComponent;
+  readonly formRef = AccountEditComponent;
 
   constructor(
     accountService: AccountService,
+    private store: Store,
     private dialog: MatDialog,
     private snack: MatSnackBar,
     private confirmService: AppConfirmService
@@ -71,6 +74,11 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     const entity = new Account();
     entity.address = new Address();
     return entity;
+  }
+
+  // optional
+  showDetails(entity: Account) {
+    this.store.dispatch(new Navigate([`/dashboard/grid/crud-table/${entity.id}`]))
   }
 
   // filterPredicate(entity: Account, _filter: string): boolean  {
