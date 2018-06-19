@@ -200,6 +200,11 @@ export abstract class EntitiesComponent<
     }
   }
 
+  getRouteAnimation(outlet) {
+    return outlet.activatedRouteData['animation'] || 'one';
+    //return outlet.isActivated ? outlet.activatedRoute : ''
+  }
+
   /**
    * will be called with entity or undefined
    * @param {TEntity} entity
