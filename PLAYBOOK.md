@@ -333,6 +333,7 @@ ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
+ng g component containers/StickyTable --project=experiments --module=experiments --dry-run
 ```
 
 ### Install
