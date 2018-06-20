@@ -56,6 +56,11 @@ export const defaultMenu: MenuItem[] = [
         name: 'Virtual Scroll',
         icon: 'view_list',
         link: '/dashboard/experiments/virtual-scroll'
+      },
+      {
+        name: 'Sticky Table',
+        icon: 'view_list',
+        link: '/dashboard/experiments/table'
       }
     ]
   },

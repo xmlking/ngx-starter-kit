@@ -1,0 +1,78 @@
+<div class="example-container mat-elevation-z8">
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Position Column -->
+    <ng-container matColumnDef="position" sticky>
+      <mat-header-cell *matHeaderCellDef> No. </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="weight">
+      <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="symbol" sticky>
+      <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="test">
+      <mat-header-cell *matHeaderCellDef> test </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="test1">
+      <mat-header-cell *matHeaderCellDef> test1 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test1}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test2">
+      <mat-header-cell *matHeaderCellDef> test2 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test2}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test3">
+      <mat-header-cell *matHeaderCellDef> test3 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test3}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test4">
+      <mat-header-cell *matHeaderCellDef> test4 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test4}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test5">
+      <mat-header-cell *matHeaderCellDef> test5 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test5}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test6">
+      <mat-header-cell *matHeaderCellDef> test6 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test6}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test7">
+      <mat-header-cell *matHeaderCellDef> test7 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test7}} </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="test8">
+      <mat-header-cell *matHeaderCellDef> test8 </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.test8}} </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns ; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+  <mat-paginator #paginator
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 20]"
+                 [showFirstLastButtons]="true">
+  </mat-paginator>
+</div>
+
+

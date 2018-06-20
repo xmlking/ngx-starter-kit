@@ -58,7 +58,7 @@
       <mat-cell *matCellDef="let row"> {{column.displayFn(row)}} </mat-cell>
     </ng-container>
 
-    <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn">
+    <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn" sticky>
       <mat-header-cell *matHeaderCellDef>{{actionColumn}}</mat-header-cell>
       <mat-cell *matCellDef="let entity">
         <button type="button" (click)="openPopUp(entity)" color="primary" mat-icon-button>
@@ -71,7 +71,7 @@
       </mat-cell>
     </ng-container>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"
              [class.selected]="selection.isSelected(row)"></mat-row>
     <!--<mat-row *matRowDef="let row; columns: displayedColumns;" class="row"-->

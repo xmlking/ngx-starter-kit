@@ -16,6 +16,7 @@ import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-t
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
+import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -47,6 +48,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         path: 'virtual-scroll',
         component: VirtualScrollComponent,
         data: { animation: 'virtual-scroll' }
+      },
+      {
+        path: 'table',
+        component: StickyTableComponent,
+        data: { animation: 'sticky-table' }
       }
     ])
   ],
@@ -55,7 +61,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     FileUploadComponent,
     HammertimeDirective,
     ContextMenuComponent,
-    VirtualScrollComponent
+    VirtualScrollComponent,
+    StickyTableComponent
   ]
 })
 export class ExperimentsModule {}
