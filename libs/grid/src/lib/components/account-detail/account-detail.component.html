@@ -5,7 +5,7 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item *ngFor="let entry of account | keys" role="listitem">
+      <mat-list-item *ngFor="let entry of account | keyvalue" role="listitem">
         <div>
           <span>{{entry.key}}：</span><span>{{ entry.value | json }}</span>
         </div>
