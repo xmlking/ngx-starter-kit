@@ -6,6 +6,8 @@ live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
 ## Development server
 
+> After you clone this project, run `npm install`
+
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 Run `npm run start:mock` for a mock server.

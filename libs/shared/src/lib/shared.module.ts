@@ -5,7 +5,7 @@ import { MaterialModule } from '@ngx-starter-kit/material';
 import { MaterialDateModule } from '@ngx-starter-kit/material';
 import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { BREAKPOINT, FlexLayoutModule, LAYOUT_CONFIG } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
 
@@ -26,7 +26,24 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
   imports: [
     CommonModule,
     // FIXME chatbot: input. depending  on https://github.com/angular/flex-layout/issues/778
-    FlexLayoutModule.withConfig({ useColumnBasisZero: false })
+    // FlexLayoutModule.withConfig({ useColumnBasisZero: false }),
+    // FIXME temp workaround
+    {
+      ngModule: FlexLayoutModule,
+      providers: [
+        {
+          provide: LAYOUT_CONFIG,
+          useValue: {
+            addFlexToParent: true,
+            addOrientationBps: false,
+            disableDefaultBps: false,
+            disableVendorPrefixes: false,
+            serverLoaded: false,
+            useColumnBasisZero: false
+          }
+        }
+      ]
+    },
   ],
   declarations: [...DIRECTIVES],
   exports: [
