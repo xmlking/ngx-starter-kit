@@ -5,7 +5,7 @@ import { MaterialModule } from '@ngx-starter-kit/material';
 import { MaterialDateModule } from '@ngx-starter-kit/material';
 import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BREAKPOINT, FlexLayoutModule, LAYOUT_CONFIG } from '@angular/flex-layout';
+import { FlexLayoutModule, LAYOUT_CONFIG } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
 

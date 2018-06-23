@@ -51,6 +51,7 @@ How to manage state in the front-end?
 
 > Refer [here](https://angularfirebase.com/snippets/router-transition-animations-with-angular-4/)
 > Refer [here](https://coryrylan.com/blog/introduction-to-angular-router-animations)
+> Refer [here](https://medium.com/frontend-coach/angular-router-animations-what-they-dont-tell-you-3d2737a7f20b)
 
 Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 

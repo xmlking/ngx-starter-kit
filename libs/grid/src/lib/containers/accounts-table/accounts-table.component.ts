@@ -81,7 +81,11 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
 
   // optional
   showDetails(entity: Account) {
-    this.store.dispatch(new Navigate([`/dashboard/grid/crud-table/${entity.id}`]))
+    if(entity) {
+      this.store.dispatch(new Navigate([`/dashboard/grid/crud-table/${entity.id}`]));
+    } else {
+      this.store.dispatch(new Navigate(['/dashboard/grid/crud-table']));
+    }
   }
 
   // filterPredicate(entity: Account, _filter: string): boolean  {
