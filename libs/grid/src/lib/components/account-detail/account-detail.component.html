@@ -1,4 +1,4 @@
-<mat-card *ngIf="account">
+<mat-card [@fadeAnimation]="animationTrigger$ | async">
   <mat-card-header>
     <mat-card-title><h3>Selected Account</h3></mat-card-title>
   </mat-card-header>

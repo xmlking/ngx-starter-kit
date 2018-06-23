@@ -1,13 +1,24 @@
-import {trigger, animate, transition, style, state} from '@angular/animations';
+import { trigger, animate, transition, style, state, query } from '@angular/animations';
 
 export const fadeAnimation = trigger('fadeAnimation', [
-  transition(':enter', [
-    style({ opacity: 0 }),
-    animate('.4s ease', style({ opacity: '*' }))
-  ]),
-  transition(':leave', [animate('.4s ease', style({ opacity: 0 }))])
+  transition('* => *', [
+    query(
+      ':enter',
+      [style({ opacity: 0 })],
+      { optional: true }
+    ),
+    query(
+      ':leave',
+      [style({ opacity: 1 }), animate('0.3s', style({ opacity: 0 }))],
+      { optional: true }
+    ),
+    query(
+      ':enter',
+      [style({ opacity: 0 }), animate('0.3s', style({ opacity: 1 }))],
+      { optional: true }
+    )
+  ])
 ]);
-
 
 export const fadeOutAnimation = trigger('fadeOutAnimation', [
   state('*', style({
