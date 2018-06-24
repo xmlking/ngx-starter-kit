@@ -9,11 +9,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.4.0  |          | 
+| Node                          | v10.5.0  |          | 
 | NPM                           | v6.1.0   |          |
 | Angular CLI                   | v6.0.8   |          |
 | @nrwl/schematics              | v6.1.0   |          |
-
+| @nestjs/cli                   | v5.3.0   |          |
 
 ### Install Prerequisites
 ```bash
@@ -52,7 +52,7 @@ bazel clean --expunge
 npm remove -g @nrwl/schematics
 npm remove -g @angular/cli
 npm remove -g @nestjs/cli
-# you need at least 6.0.4
+
 npm install -g @nrwl/schematics
 npm install -g @angular/cli
 npm install -g @nestjs/cli
@@ -62,7 +62,10 @@ npm list -g --depth=0
 # find out which packages need to be updated
 npm outdated -g --depth=0
 # set scss as default css processor
-ng config -g defaults.styleExt=scss
+ng config -g schematics.@nrwl/schematics:component.styleext scss
+ng config -g cli.packageManager npm
+# check your global defaults
+more cat ~/.angular-config.json
 # show dependency tree for specified package.
 npm ls jasmine-marbles
 ```
