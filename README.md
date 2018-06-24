@@ -4,9 +4,15 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
-## Development server
+## Install
 
-> After you clone this project, run `npm install`
+```bash
+git clone https://github.com/xmlking/ngx-starter-kit.git my-project
+cd my-project
+npm install
+```
+
+## Development server
 
 Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
