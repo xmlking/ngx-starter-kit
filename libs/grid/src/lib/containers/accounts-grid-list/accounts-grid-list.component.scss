@@ -27,41 +27,43 @@ mat-form-field {
 
 /* Card
 -------------------------------------------------- */
-mat-card {
-  width: calc(100% - 70px);
-  height: calc(100% - 70px);
+mat-grid-tile {
+  mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
 
-  @include mat-elevation-transition;
-  @include mat-elevation(2);
+    @include mat-elevation-transition;
+    @include mat-elevation(2);
 
-  &:hover {
-    cursor:pointer;
-    @include mat-elevation(6);
-  }
+    &:hover {
+      cursor: pointer;
+      @include mat-elevation(6);
+    }
 
-  &.active {
-    @include mat-elevation(8);
-  }
+    &.active {
+      @include mat-elevation(8);
+    }
 
-  .mat-card-title,
-  .mat-card-subtitle {
-    white-space: nowrap;
-    width: 30em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
+    .mat-card-title,
+    .mat-card-subtitle {
+      white-space: nowrap;
+      width: 30em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
 
-  &.mat-bg-primary {
-    background: #3f51b5!important;
-    color: #fff!important;
-  }
-  &.mat-bg-accent {
-    background-color: #ffc107;
-    color: #000;
-  }
-  &.mat-bg-warn {
-    background-color: #f44336;
-    color: #fff;
+    &.mat-bg-primary {
+      background: #3f51b5 !important;
+      color: #fff !important;
+    }
+    &.mat-bg-accent {
+      background-color: #ffc107;
+      color: #000;
+    }
+    &.mat-bg-warn {
+      background-color: #f44336;
+      color: #fff;
+    }
   }
 }
 
@@ -81,7 +83,6 @@ mat-list-item {
     color: #999999;
   }
 }
-
 
 //@mixin md-icon-size($size: 24px) {
 //  font-size: $size;
