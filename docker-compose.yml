@@ -52,6 +52,11 @@ services:
     container_name: api
     environment:
     - NODE_ENV=development
+    - TYPEORM_HOST=mongodb
+    - TYPEORM_PORT=27017
+    - TYPEORM_DATABASE=cockpit
+    - TYPEORM_USERNAME=mdbuser
+    - TYPEORM_PASSWORD=cockpit123
     ports:
     - 3000:3000
     depends_on:
