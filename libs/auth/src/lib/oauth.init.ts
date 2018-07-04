@@ -7,7 +7,6 @@ import { authConfigImplicit } from './oauth.config';
 export function initializeAuth(oauthService: OAuthService, store: Store) {
   // default: ImplicitFlow
   oauthService.configure(authConfigImplicit);
-  oauthService.tokenValidationHandler = new JwksValidationHandler();
   oauthService.setStorage(sessionStorage);
 
   return async () => {
