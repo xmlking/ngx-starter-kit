@@ -8,7 +8,8 @@ Deploying MongoDB on OpenShift Origin
 > Deploy KeyCloak-Proxy to OpenShift
 
 > first time deployment
-> add storage 50GB  with name: mongo-data
+
+> Add storage 50GB  with name: `mongodb-data` in  OpenShift UI Console 
 
 ```bash
 # login with ms id
