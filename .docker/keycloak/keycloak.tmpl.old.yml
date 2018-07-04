@@ -1,0 +1,178 @@
+apiVersion: v1
+kind: Template
+metadata:
+  name: ${APPNAME}
+  annotations:
+    tags: "oidc,keycloak,ldap"
+    description: keycloak with ms ldap
+
+objects:
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: ${APPNAME}-config
+  data:
+    kubernetes-realm.json: |
+
+    kubernetes-users-0.json: |
+
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    name: ${APPNAME}-standalone-config
+  data:
+    standalone.xml: |
+
+    standalone-ha.xml: |
+
+- kind: ConfigMap
+  apiVersion: v1
+  metadata:
+    labels:
+      app: ${APPNAME}
+    name: ${APPNAME}-env
+  data:
+    keycloak_user: admin
+    db_vendor: H2
+    keycloak_user_cache_enabled: "false"
+    keycloak_realm_cache_enabled: "false"
+
+- kind: Secret
+  apiVersion: v1
+  metadata:
+    labels:
+      app: ${APPNAME}
+    name: ${APPNAME}-secrets
+  stringData:
+    keycloak_password: admin123
+
+- kind: Route
+  apiVersion: v1
+  metadata:
+    name: ${APPNAME}
+    labels:
+      app: ${APPNAME}
+  spec:
+    to:
+      kind: Service
+      name: ${APPNAME}
+    tls:
+      termination: edge
+    port:
+      targetPort: ${APPNAME}-9080-http
+
+- kind: Service
+  apiVersion: v1
+  metadata:
+    name: ${APPNAME}
+    labels:
+      app: ${APPNAME}
+  spec:
+    ports:
+    - name: ${APPNAME}-9080-http
+      port: 9080
+      protocol: TCP
+      targetPort: 9080
+    selector:
+      app: ${APPNAME}
+
+- kind: DeploymentConfig
+  apiVersion: v1
+  metadata:
+    name: ${APPNAME}
+    labels:
+      app: ${APPNAME}
+  spec:
+    replicas: 1
+    strategy:
+      type: Rolling
+    triggers:
+    - type: ConfigChange
+    selector:
+      app: ${APPNAME}
+      deploymentconfig: ${APPNAME}
+    template:
+      metadata:
+        name: ${APPNAME}
+        labels:
+          app: ${APPNAME}
+          deploymentConfig: ${APPNAME}
+      spec:
+        volumes:
+        - name: ${APPNAME}-volume
+          configMap:
+            defaultMode: 420
+            name: ${APPNAME}-config
+        - name: ${APPNAME}-standalone-volume
+          configMap:
+            defaultMode: 420
+            name: ${APPNAME}-standalone-config
+        containers:
+        - name: ${APPNAME}
+          image: ${DOCKERIMAGE}
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 4G
+            requests:
+              memory: 2G
+          ports:
+          - containerPort: 9080
+            name: keycloak
+          - containerPort: 9443
+            name: keycloak-ssh
+          - containerPort: 10990
+            name: keycloak-other
+          command:
+          - start-keycloak.sh
+          - -b
+          - 0.0.0.0
+          args:
+          - -Dkeycloak.migration.action=import
+          - -Dkeycloak.migration.provider=dir
+          - -Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config
+          - -Dkeycloak.migration.strategy=OVERWRITE_EXISTING
+          - -Djboss.socket.binding.port-offset=1000
+          env:
+          - name: PROXY_ADDRESS_FORWARDING
+            value: "true"
+          - name: KEYCLOAK_USER_CACHE_ENABLED
+            valueFrom:
+              configMapKeyRef:
+                name: ${APPNAME}-env
+                key: keycloak_user_cache_enabled
+          - name: KEYCLOAK_REALM_CACHE_ENABLED
+            valueFrom:
+              configMapKeyRef:
+                name: ${APPNAME}-env
+                key: keycloak_realm_cache_enabled
+          - name: KEYCLOAK_USER
+            valueFrom:
+              configMapKeyRef:
+                name: ${APPNAME}-env
+                key: keycloak_user
+          - name: KEYCLOAK_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: ${APPNAME}-secrets
+                key: keycloak_password
+          - name: DB_VENDOR
+            valueFrom:
+              configMapKeyRef:
+                name: ${APPNAME}-env
+                key: db_vendor
+          securityContext:
+            privileged: false
+          volumeMounts:
+          - name: ${APPNAME}-volume
+            mountPath: /opt/jboss/keycloak/realm-config
+          - name: ${APPNAME}-standalone-volume
+            mountPath: /opt/jboss/keycloak/standalone/configuration/standalone.xml
+            subPath: standalone.xml
+
+
+parameters:
+- name: APPNAME
+  value: keycloak
+- name: DOCKERIMAGE
+  value: jboss/keycloak-openshift:4.0.0.Final
