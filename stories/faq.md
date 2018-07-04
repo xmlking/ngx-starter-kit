@@ -110,6 +110,7 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 switchMap cancels previous inner Observables when a new inner Observable appears
 > Ref [blog](https://blog.angularindepth.com/practical-rxjs-in-the-wild-requests-with-concatmap-vs-mergemap-vs-forkjoin-11e5b2efe293)
 > Ref [blog](https://blog.angularindepth.com/learn-to-combine-rxjs-sequences-with-super-intuitive-interactive-diagrams-20fce8e6511)
+> Ref [blog](https://netbasal.com/rxjs-eight-operators-worth-getting-to-know-2b6c18e601d)
 
 * Secure Angular App with KeyCloak?
 
