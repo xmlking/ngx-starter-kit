@@ -1,6 +1,6 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OAuthModule, OAuthService } from 'angular-oauth2-oidc';
+import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from 'angular-oauth2-oidc';
 import { Store } from '@ngxs/store';
 
 import { initializeAuth } from './oauth.init';
@@ -45,7 +45,9 @@ import { AuthGuard } from './auth.guard';
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
-  providers: [AuthState, ROPCService, AuthService, AuthGuard]
+  providers: [AuthState, ROPCService, AuthService, AuthGuard,
+    { provide: ValidationHandler, useClass: JwksValidationHandler },
+  ]
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
