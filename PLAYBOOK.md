@@ -254,10 +254,6 @@ ng g component svgViewer --project=svg-viewer --flat --dry-run
 ng g lib led --prefix=ngx --tags=public-module --publishable=true
 ng g component led --project=led --flat --dry-run 
 
-# generate components for `deferLoad` Module
-ng g lib deferLoad --prefix=ngx --tags=public-module --publishable=true --dry-run 
-ng g directive DeferLoad --project=defer-load  --dry-run 
-
 # generate components for `chatBot` Module
 ng g lib chatBot --prefix=ngx --tags=public-module --publishable=true --dry-run 
 ng g component chatBot --project=chat-bot --flat --dry-run 
