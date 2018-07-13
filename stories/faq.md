@@ -99,8 +99,8 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 * How to implement Server-side Pagination, Filtering, Sorting, with Angular Material Data Table 
 > Complete Examples
 > Refer [blog](https://blog.angular-university.io/angular-material-data-table/)
-[Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
-[Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
+> Refer [Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
+> Refer [Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
 
 * Shoud I use mergeMap or  concatMap or switchMap or forkJoin for my usecase? 
 
@@ -131,5 +131,8 @@ https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/src/app
 * How to i18n?
 https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package.json
 
+* how to link local npm projects when you o patch a npm module locally?
+> Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)
+ 
 ### Pattern
 1. https://tomastrajan.github.io/angular-model-pattern-example#/about
