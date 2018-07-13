@@ -11,6 +11,7 @@ import { AboutComponent } from './containers/about/about.component';
 import { ScrollToTopModule } from '@ngx-starter-kit/scroll-to-top';
 import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
 import { FeaturesComponent } from './containers/features/features.component';
+import { StickyHeaderDirective } from "./components/header/sticky-header.directive";
 
 @NgModule({
   imports: [
@@ -51,6 +52,7 @@ import { FeaturesComponent } from './containers/features/features.component';
   ],
   declarations: [
     HeaderComponent,
+    StickyHeaderDirective,
     FooterComponent,
     HomeLayoutComponent,
     LandingComponent,
