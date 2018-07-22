@@ -20,7 +20,6 @@ export class AuthService {
   private _refresher: Subscription;
   private _monitorer: Subscription;
   // @Select('auth.authMode') authMode$: Observable<AuthMode>;
-  // @Select(AuthState.authMode) authMode$: Observable<AuthMode>;
   authMode: AuthMode;
 
   constructor(
@@ -32,7 +31,6 @@ export class AuthService {
     private oauthService: OAuthService
   ) {
     // this.authMode$.subscribe(authMode => {
-    // this.store.select('auth.authMode').subscribe(authMode => {
     this.store.select(AuthState.authMode).subscribe(authMode => {
       console.log(`Auth Mode Changed: ${this.authMode} => ${authMode}`);
       this.authMode = authMode;
