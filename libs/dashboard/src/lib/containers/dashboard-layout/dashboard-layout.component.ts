@@ -11,9 +11,13 @@ import {
   HostBinding
 } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { Store } from '@ngxs/store';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Router, NavigationEnd } from '@angular/router';
 import { routeAnimation } from '@ngx-starter-kit/animations';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'ngx-dashboard-layout',
@@ -33,7 +37,10 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   sidenavMode = 'side';
   isMobile = false;
 
-  constructor(private router: Router, private media: ObservableMedia) {}
+  constructor(private router: Router,
+              private store: Store,
+              private media: ObservableMedia,
+              private oauthService: OAuthService) {}
 
   ngOnInit() {
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
@@ -53,10 +60,15 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       window.dispatchEvent(new Event('resize'));
     }, 2000);
+
+    const token = this.oauthService.getAccessToken();
+    // TODO: Enable when running backend
+    // this.store.dispatch(new ConnectWebSocket({url: environment.WS_EVENT_BUS_URL, connectOpts: {query: {token}}}));
   }
 
   ngOnDestroy() {
     this._mediaSubscription.unsubscribe();
+    // this.store.dispatch(new DisconnectWebSocket());
   }
 
   onActivate(e, scrollContainer) {
