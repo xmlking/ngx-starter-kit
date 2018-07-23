@@ -9,6 +9,7 @@ export const environment = {
   envName: 'dev',
 
   API_BASE_URL: 'http://localhost:3000/api',
+  WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
   auth: {
     // clientId: 'kube-tenant',
     // issuer: 'http://localhost:9080/auth/realms/kubernetes'

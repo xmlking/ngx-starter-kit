@@ -1,14 +1,15 @@
 import { InjectionToken } from '@angular/core';
+import ConnectOpts = SocketIOClient.ConnectOpts;
 
-export const NGXS_SOCKETIO_OPTIONS = new InjectionToken(
-  'NGXS_SOCKETIO_OPTIONS'
-);
+export const NGXS_WEBSOCKET_OPTIONS = new InjectionToken('NGXS_WEBSOCKET_OPTIONS');
 
-export interface NgxsSocketioPluginOptions {
+export interface NgxsWebsocketPluginOptions {
   /**
-   * URL of the socketio.
+   * URL of the websocket.
    */
   url?: string;
+
+  connectOpts?: ConnectOpts
 
   /**
    * The property name to distigunish this type for the store.
@@ -47,30 +48,30 @@ export function noop(arg) {
 /**
  * Action to connect to the websocket. Optionally pass a URL.
  */
-export class ConnectSocketio {
-  static readonly type = '[Socketio] Connect';
-  constructor(public payload?: string) {}
+export class ConnectWebSocket {
+  static readonly type = '[Websocket] Connect';
+  constructor(public payload?: NgxsWebsocketPluginOptions) {}
 }
 
 /**
  * Action triggered when a error ocurrs
  */
-export class SocketioMessageError {
-  static readonly type = '[Socketio] Message Error';
+export class WebsocketMessageError {
+  static readonly type = '[Websocket] Message Error';
   constructor(public payload: any) {}
 }
 
 /**
- * Action to disconnect the Socketio.
+ * Action to disconnect the websocket.
  */
-export class DisconnectSocketio {
-  static readonly type = '[Socketio] Disconnect';
+export class DisconnectWebSocket {
+  static readonly type = '[Websocket] Disconnect';
 }
 
 /**
  * Action to send to the server.
  */
-export class SendSocketioMessage {
-  static readonly type = '[Socketio] Send Message';
+export class SendWebSocketMessage {
+  static readonly type = '[Websocket] Send Message';
   constructor(public payload: any) {}
 }

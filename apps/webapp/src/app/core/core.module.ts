@@ -8,7 +8,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
 import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
 import { NavigatorModule, MenuState } from '@ngx-starter-kit/navigator';
-import { NgxsSocketioPluginModule } from '@ngx-starter-kit/socketio-plugin';
+import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { EventBus } from './state/eventbus';
@@ -32,8 +32,8 @@ export function noop() {
       disabled: environment.production, // Set to true for prod mode
       maxAge: 10
     }),
-    NgxsSocketioPluginModule.forRoot({
-      url: 'ws://localhost:8080/socket.io'
+    NgxsWebsocketPluginModule.forRoot({
+      url: environment.WS_EVENT_BUS_URL
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),

@@ -1,8 +1,9 @@
-export { NgxsSocketioPluginModule } from './lib/socketio-plugin.module';
+export { NgxsWebsocketPluginModule } from './lib/websocket.module';
 export {
-  NgxsSocketioPluginOptions,
-  ConnectSocketio,
-  SocketioMessageError,
-  DisconnectSocketio,
-  SendSocketioMessage
+  NgxsWebsocketPluginOptions,
+  NGXS_WEBSOCKET_OPTIONS,
+  ConnectWebSocket,
+  DisconnectWebSocket,
+  SendWebSocketMessage,
+  WebsocketMessageError
 } from './lib/symbols';
