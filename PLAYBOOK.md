@@ -233,6 +233,12 @@ ng g component ThemePicker --project=theme-picker --flat --dry-run
 ng g service  ThemeStorage --project=theme-picker --module=theme-picker --dry-run
 ng g service  StyleManager --project=theme-picker --module=theme-picker --dry-run
 
+
+# generate components for `Notifications` Module
+ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --dry-run
+ng g component notifications --project=notifications --flat --dry-run
+ng g service  notifications --project=notifications --module=notifications --dry-run
+
 # generate components for `Quickpanel` Module
 ng g lib Quickpanel --prefix=ngx --tags=private-module
 ng g component Quickpanel --project=quickpanel --flat --dry-run
