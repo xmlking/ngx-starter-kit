@@ -1,20 +1,5 @@
 version: '3'
-
 services:
-#  keycloak:
-#    image: jboss/keycloak-openshift:4.0.0.Final
-#    container_name: keycloak
-#    command: ["start-keycloak.sh", "-b", "0.0.0.0", "-Dkeycloak.migration.action=import", "-Dkeycloak.migration.provider=dir", "-Dkeycloak.migration.dir=/opt/jboss/keycloak/realm-config", "-Dkeycloak.migration.strategy=OVERWRITE_EXISTING", "-Djboss.socket.binding.port-offset=1000"]
-#    volumes:
-#    - $PWD/.docker/keycloak/realm-config:/opt/jboss/keycloak/realm-config
-#    environment:
-#      KEYCLOAK_USER: admin
-#      KEYCLOAK_PASSWORD: admin123
-#      DB_VENDOR: H2
-#    ports:
-#    - 9080:9080
-#    - 9444:9443
-#    - 10990:10990
   keycloak:
     image: xmlking/keycloak-openshift-stateless
     container_name: keycloak
@@ -30,7 +15,6 @@ services:
     - 9080:9080
     - 9444:9443
     - 10990:10990
-
   mongodb:
     image: centos/mongodb-36-centos7
     container_name: mongodb
@@ -43,25 +27,18 @@ services:
     - MONGODB_PASSWORD=cockpit123
     volumes:
     - /tmp/mongodb-data:/var/lib/mongodb/data
-
   api:
     build:
       context: .
-      dockerfile: .docker/api/prod.dockerfile
-    image: ngx-starter-kit-api:latest
+      dockerfile: .docker/api/dev.dockerfile
+    image: 'ngx-starter-kit-api:latest'
     container_name: api
-    environment:
-    - NODE_ENV=development
-    - TYPEORM_HOST=mongodb
-    - TYPEORM_PORT=27017
-    - TYPEORM_DATABASE=cockpit
-    - TYPEORM_USERNAME=mdbuser
-    - TYPEORM_PASSWORD=cockpit123
+    env_file:
+      - development.env
     ports:
     - 3000:3000
     depends_on:
     - mongodb
-
   web:
     build:
       context: .
@@ -76,7 +53,6 @@ services:
     depends_on:
     - keycloak
     - api
-
 volumes:
   uploads:
     driver: local

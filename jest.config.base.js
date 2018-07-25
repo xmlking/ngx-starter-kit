@@ -21,7 +21,7 @@ module.exports = {
   },
   "testRegex": ".spec.ts$",
   // "moduleNameMapper": {
-  //   "@kube-cockpit/(.*)": "<rootDir>/libs/$1"
+  //   "@ngx-starter-kit/(.*)": "<rootDir>/libs/$1"
   // }
   projects: [
     'apps/*',

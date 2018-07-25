@@ -1,5 +1,4 @@
-import { OnDestroy } from '@angular/core';
-import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
+import {Action, NgxsOnInit, Selector, State, StateContext, Store} from '@ngxs/store';
 import { MenuItem } from '../models/menu-item.model';
 import { MenuService } from '../services/menu.service';
 import { Tree } from '@ngx-starter-kit/tree';
@@ -38,7 +37,7 @@ export interface MenuStateModel {
     iconMode: false
   }
 })
-export class MenuState implements OnDestroy {
+export class MenuState implements NgxsOnInit {
   constructor(private menuService: MenuService) {}
 
   @Selector()
@@ -55,16 +54,12 @@ export class MenuState implements OnDestroy {
     }
   }
 
-  onInit({ setState, getState }: StateContext<MenuStateModel>) {
+  ngxsOnInit({ setState, getState }: StateContext<MenuStateModel>) {
     setState({
       tree: this.menuService.tree,
       currentlyOpened: [],
       iconMode: false
     });
-  }
-
-  ngOnDestroy() {
-    console.log('MenuState ngOnDestroy');
   }
 
   private getParents(tree, item: MenuItem): MenuItem[] {

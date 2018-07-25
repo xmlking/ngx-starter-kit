@@ -4,10 +4,11 @@ import { WebSocketSubject as RxWebSocketSubject, WebSocketSubjectConfig } from '
 import { NGXS_WEBSOCKET_OPTIONS, NgxsWebsocketPluginOptions } from './symbols';
 import {RxSocketioSubject, RxSocketioSubjectConfig} from "./RxSocketioSubject";
 
-/**
- * Websocket Subject
- * Heavily Inspired by: https://gearheart.io/blog/auto-websocket-reconnection-with-rxjs/
- */
+export interface SocketIOEvent<T = any> {
+  event: string;
+  data: T;
+}
+
 @Injectable()
 export class WebSocketSubject extends Subject<any> {
   /**
@@ -15,8 +16,8 @@ export class WebSocketSubject extends Subject<any> {
    */
   connectionStatus = new Subject<boolean>();
 
-  private _socket: RxSocketioSubject<any>;
-  private _internalConfig: RxSocketioSubjectConfig<any>;
+  private _socket: RxSocketioSubject<SocketIOEvent>;
+  private _internalConfig: RxSocketioSubjectConfig<SocketIOEvent>;
 
   constructor(@Inject(NGXS_WEBSOCKET_OPTIONS) private _config: NgxsWebsocketPluginOptions) {
     super();
@@ -27,7 +28,6 @@ export class WebSocketSubject extends Subject<any> {
       deserializer: this._config.deserializer,
       closeObserver: {
         next: (e: CloseEvent) => {
-          this._socket = null;
           this.connectionStatus.next(false);
         }
       },
@@ -60,9 +60,13 @@ export class WebSocketSubject extends Subject<any> {
       if (options.deserializer) {
         this._internalConfig.deserializer = options.deserializer;
       }
+
+      if (options.tokenFn && typeof options.tokenFn === "function") {
+        this._internalConfig.tokenFn = options.tokenFn;
+      }
     }
 
-    this._socket = new RxSocketioSubject(this._internalConfig);
+    this._socket = new RxSocketioSubject<SocketIOEvent>(this._internalConfig);
     this._socket.subscribe((message: any) => this.next(message));
   }
 
@@ -77,13 +81,23 @@ export class WebSocketSubject extends Subject<any> {
   }
 
   /**
-   * Send data to the websocket.
+   * Send auth request to the websocket.
+   */
+  auth(data: any): void {
+    if (!this._socket) {
+      throw new Error('You must connect before Authenticate');
+    }
+    this._socket.next({event: 'auth', data});
+  }
+
+  /**
+   * Send action to the websocket.
    */
   send(data: any): void {
     if (!this._socket) {
       throw new Error('You must connect before sending data');
     }
 
-    this._socket.next(data);
+    this._socket.next({event: 'actions', data});
   }
 }

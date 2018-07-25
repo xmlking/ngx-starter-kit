@@ -10,11 +10,12 @@ import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
 import { NavigatorModule, MenuState } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
-import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { EventBus } from './state/eventbus';
 import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { ErrorInterceptor } from './interceptors/error.interceptor';
+import { JwtInterceptor } from './interceptors/jwt.interceptor';
 
 // Noop handler for factory function
 export function noop() {
@@ -51,11 +52,11 @@ export function noop() {
       useClass: ErrorInterceptor,
       multi: true
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: JwtInterceptor,
-    //   multi: true
-    // },
+     {
+       provide: HTTP_INTERCEPTORS,
+       useClass: JwtInterceptor,
+       multi: true
+     },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,

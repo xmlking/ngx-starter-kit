@@ -101,7 +101,7 @@
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1000kb",
+                  "baseline": "1200kb",
                   "warning": "100kb",
                   "error": "200kb"
                 }
@@ -1221,6 +1221,46 @@
             "tsConfig": [
               "libs/grid/tsconfig.lib.json",
               "libs/grid/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "notifications": {
+      "root": "libs/notifications",
+      "sourceRoot": "libs/notifications/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/notifications/tsconfig.lib.json",
+            "project": "libs/notifications/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/notifications/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/notifications/src/test.ts",
+            "tsConfig": "libs/notifications/tsconfig.spec.json",
+            "karmaConfig": "libs/notifications/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/notifications/tsconfig.lib.json",
+              "libs/notifications/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
