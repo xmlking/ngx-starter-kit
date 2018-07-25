@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { MomentModule } from 'ngx-moment';
 import { MaterialModule } from '@ngx-starter-kit/material';
 import { MaterialDateModule } from '@ngx-starter-kit/material';
 import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
@@ -8,7 +8,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule, LAYOUT_CONFIG } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
 import { NgLetDirective } from './directives/ng-let.directive';
-
+import { ClickOutsideDirective } from './directives/click-outside/click-outside.directive';
 import {
   PerfectScrollbarModule,
   PerfectScrollbarConfigInterface,
@@ -20,7 +20,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   wheelPropagation: true
 };
 
-const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
+const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective];
 
 @NgModule({
   imports: [
@@ -53,6 +53,7 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective];
     BreadcrumbsModule,
     MaterialModule,
     MaterialDateModule,
+    MomentModule,
     PerfectScrollbarModule,
     ...DIRECTIVES
   ],

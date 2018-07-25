@@ -57,6 +57,8 @@ npm install -g @nrwl/schematics
 npm install -g @angular/cli
 npm install -g @nestjs/cli
 
+npm install -g ndb
+
 # verify globally installed packages
 npm list -g --depth=0
 # find out which packages need to be updated
@@ -191,6 +193,7 @@ ng g lib shared --prefix=ngx --tags=shared-module
 # generate containers, components for `shared` Module
 ng g service containers/entity/entity --project=shared --module=shared
 ng g directive directives/min  --project=shared --module=shared --export=true
+ng g directive components/ClickOutside  --project=shared --module=shared --export=true
 ng g component components/entityTable --project=shared --module=shared --export=true
 ng g component containers/entity --project=shared --module=shared --skip-import
 ng g component containers/entityForm  --project=shared --module=shared --skip-import
@@ -233,10 +236,10 @@ ng g component ThemePicker --project=theme-picker --flat --dry-run
 ng g service  ThemeStorage --project=theme-picker --module=theme-picker --dry-run
 ng g service  StyleManager --project=theme-picker --module=theme-picker --dry-run
 
-
 # generate components for `Notifications` Module
 ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --dry-run
 ng g component notifications --project=notifications --flat --dry-run
+ng g class    notification --type=model --project=notifications --module=notifications --dry-run
 ng g service  notifications --project=notifications --module=notifications --dry-run
 
 # generate components for `Quickpanel` Module
@@ -285,9 +288,7 @@ ng g lib toolbar --prefix=ngx --tags=private-module --dry-run
 ng g component toolbar --project=toolbar --flat --dry-run 
 ng g component components/search --project=toolbar  --dry-run 
 ng g component components/searchBar --project=toolbar
-ng g component components/Notifications --project=toolbar
 ng g component components/UserMenu --project=toolbar
-ng g directive components/ClickOutside  --project=toolbar --dry-run 
 ng g component components/FullscreenToggle --project=toolbar --dry-run
 ng g component components/SidenavMobileToggle --project=toolbar --dry-run
 ng g component components/QuickpanelToggle --project=toolbar --dry-run
@@ -326,7 +327,8 @@ ng g component containers/wizdash --project=widgets --dry-run
 
 # generate containers, components for `grid` Module
 ng g component  containers/AccountsTable --project=grid --module=grid --dry-run
-ng g component  components/Account --project=grid --module=grid --dry-run
+ng g component  components/AccountDetail --project=grid --module=grid --dry-run
+ng g component  components/AccountEdit --project=grid --module=grid --dry-run
 ng g class      models/account --type=model --project=grid --module=grid --dry-run
 ng g service    services/account --project=grid --module=grid --dry-run
 ng g component  containers/AccountsGridList --project=grid --module=grid --dry-run

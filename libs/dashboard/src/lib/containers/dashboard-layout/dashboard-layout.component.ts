@@ -1,29 +1,18 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  ViewEncapsulation,
-  AfterViewInit,
-  ViewChildren,
-  QueryList,
-  ElementRef,
-  OnDestroy,
-  HostBinding
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { Store } from '@ngxs/store';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
-import { Router, NavigationEnd } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { routeAnimation } from '@ngx-starter-kit/animations';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '@env/environment';
 
 @Component({
   selector: 'ngx-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
-  animations: [routeAnimation]
+  animations: [routeAnimation],
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
@@ -37,10 +26,13 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   sidenavMode = 'side';
   isMobile = false;
 
-  constructor(private router: Router,
-              private store: Store,
-              private media: ObservableMedia,
-              private oauthService: OAuthService) {}
+  constructor(
+    private router: Router,
+    private store: Store,
+    private actions$: Actions,
+    private media: ObservableMedia,
+    private oauthService: OAuthService,
+  ) {}
 
   ngOnInit() {
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
@@ -61,16 +53,20 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
       window.dispatchEvent(new Event('resize'));
     }, 2000);
 
-    const token = this.oauthService.getAccessToken();
-    // TODO: Enable when running backend
-    // this.store.dispatch(new ConnectWebSocket({url: environment.WS_EVENT_BUS_URL, connectOpts: {query: {token}}}));
+    this.store.dispatch(
+      new ConnectWebSocket({
+        url: environment.WS_EVENT_BUS_URL,
+        tokenFn: () => this.oauthService.getAccessToken(),
+      }),
+    );
   }
 
   ngOnDestroy() {
     this._mediaSubscription.unsubscribe();
-    // this.store.dispatch(new DisconnectWebSocket());
+    this.store.dispatch(new DisconnectWebSocket());
   }
 
+  // FIXME: do we still need scroll fix for angular 6.1.x?
   onActivate(e, scrollContainer) {
     scrollContainer.scrollTop = 0;
   }

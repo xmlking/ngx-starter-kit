@@ -16,14 +16,14 @@ export function websocketOptionsFactory(options: NgxsWebsocketPluginOptions) {
     serializer(value: any) {
       return JSON.stringify(value);
     },
-    ...options
+    ...options,
   };
 }
 
 export const USER_OPTIONS = new InjectionToken('USER_OPTIONS');
 
 @NgModule({
-  imports: [NgxsModule]
+  imports: [NgxsModule],
 })
 export class NgxsWebsocketPluginModule {
   static forRoot(options?: NgxsWebsocketPluginOptions): ModuleWithProviders {
@@ -34,20 +34,20 @@ export class NgxsWebsocketPluginModule {
         WebSocketHandler,
         {
           provide: USER_OPTIONS,
-          useValue: options
+          useValue: options,
         },
         {
           provide: NGXS_WEBSOCKET_OPTIONS,
           useFactory: websocketOptionsFactory,
-          deps: [USER_OPTIONS]
+          deps: [USER_OPTIONS],
         },
         {
           provide: APP_INITIALIZER,
           useFactory: noop,
           deps: [WebSocketHandler],
-          multi: true
-        }
-      ]
+          multi: true,
+        },
+      ],
     };
   }
 }

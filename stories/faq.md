@@ -36,8 +36,9 @@ once you are conferable , then you can delete demo `default` app
   2. Component styles
   3. Theme styles
 
-* what is new angular 5.2?
-> Refer [here](http://blog.ninja-squad.com/)
+* Here can I learn Nx Workspace/monoreops? 
+> Refer [here](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
+> Refer [here](https://www.youtube.com/watch?v=0N589xX2ZQw)
 
 * internationalization ?
 > i18n coming soon

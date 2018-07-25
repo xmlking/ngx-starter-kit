@@ -1,0 +1,60 @@
+<div class="notification-container" (ngxClickOutside)="onClickOutside()"
+     fxFlex="grow" fxLayout="row" fxLayoutAlign="start center">
+
+  <button class="button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen" fxFlex="grow">
+    <span *ngIf="(unReadCount$ | async) > 0;then withBadge else withOutBadge"></span>
+    <ng-template #withBadge>
+      <mat-icon matBadge="{{ unReadCount$ | async }}" matBadgePosition="above after" matBadgeColor="accent">notifications_active</mat-icon>
+    </ng-template>
+    <ng-template #withOutBadge><mat-icon>notifications_none</mat-icon></ng-template>
+  </button>
+
+  <div class="dropdown mat-elevation-z1" [class.open]="isOpen">
+    <div class="card">
+      <div class="header" fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="title">
+          <div class="name">Notifications</div>
+          <div class="extra">You have {{ unReadCount$ | async }} new notifications.</div>
+        </div>
+        <button type="button" mat-icon-button>
+          <mat-icon class="icon">settings</mat-icon>
+        </button>
+      </div>
+
+      <ng-container *ngLet="(notifications$ | async) as notifications">
+      <ng-container *ngIf="notifications?.length !== 0; then thenBlock else elseBlock;"></ng-container>
+      <ng-template #thenBlock>
+        <perfect-scrollbar class="content">
+          <ng-container *ngFor="let notification of notifications; last as isLast">
+            <div class="notification"
+                 (click)="markAsRead(notification)"
+                 [ngClass]="notification.color" [class.read]="notification.read"
+                 fxLayout="row" fxLayoutAlign="start center"
+                 matRipple [@listFade]>
+              <mat-icon class="icon">{{ notification.icon }}</mat-icon>
+              <div class="title" fxLayout="column">
+                <div class="name">{{ notification.message }}</div>
+                <div class="time">{{ notification.createdAt | amTimeAgo }}</div>
+              </div>
+              <span fxFlex></span>
+              <button (click)="dismiss(notification, $event)" type="button" mat-icon-button>
+                <mat-icon class="close">close</mat-icon>
+              </button>
+            </div>
+            <div class="divider" *ngIf="!isLast"></div>
+          </ng-container>
+        </perfect-scrollbar>
+      </ng-template>
+      <ng-template #elseBlock>
+        <div class="empty" fxLayout="row" fxLayoutAlign="center center" [@listFade]>
+          All fine! No notifications right now.
+        </div>
+      </ng-template>
+
+      <div class="footer" fxLayout="row" fxLayoutAlign="center center">
+        <div class="action" (click)="markAllAsRead()">Mark all as read</div>
+      </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

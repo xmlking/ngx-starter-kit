@@ -9,7 +9,9 @@ export interface NgxsWebsocketPluginOptions {
    */
   url?: string;
 
-  connectOpts?: ConnectOpts
+  connectOpts?: ConnectOpts;
+
+  tokenFn?: () => string;
 
   /**
    * The property name to distigunish this type for the store.
@@ -71,7 +73,19 @@ export class DisconnectWebSocket {
 /**
  * Action to send to the server.
  */
-export class SendWebSocketMessage {
-  static readonly type = '[Websocket] Send Message';
+export class SendWebSocketAction {
+  static readonly type = '[Websocket] Send Action';
   constructor(public payload: any) {}
+}
+
+export class WebSocketConnected {
+  static readonly type = '[Websocket] Connected';
+}
+
+export class WebSocketDisconnected {
+  static readonly type = '[Websocket] Disconnected';
+}
+
+export class AuthenticateWebSocket {
+  static readonly type = '[Websocket] authenticate';
 }

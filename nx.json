@@ -169,6 +169,11 @@
       "tags": [
         "child-module"
       ]
+    },
+    "notifications": {
+      "tags": [
+        "public-module"
+      ]
     }
   }
 }

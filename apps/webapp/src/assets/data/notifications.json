@@ -1,0 +1,45 @@
+[
+  [
+    {
+      "id": "abc1",
+      "icon": "notifications",
+      "message": "This is a notification",
+      "createdAt": "2017-12-01T23:44:28+00:00",
+      "read": false,
+      "color": "warn"
+    },
+    {
+      "id": "abc2",
+      "icon": "shopping_basket",
+      "message": "User bought your template",
+      "createdAt": "2018-07-22T23:44:28+00:00",
+      "read": false,
+      "color": "primary"
+    },
+    {
+      "id": "abc3",
+      "icon": "eject",
+      "message": "Server Crashed",
+      "createdAt": "2018-07-20T23:44:28+00:00",
+      "read": false,
+      "color": "accent"
+    },
+    {
+      "id": "abc4",
+      "icon": "cached",
+      "message": "New user registered",
+      "createdAt": "2018-07-11T23:44:28+00:00",
+      "read": true,
+      "color": ""
+    },
+    {
+      "id": "abc5",
+      "icon": "code",
+      "message": "John added you as friend",
+      "createdAt": "2018-07-07T23:44:28+00:00",
+      "read": true,
+      "color": ""
+    }
+  ],
+  5
+]

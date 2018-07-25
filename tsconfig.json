@@ -114,6 +114,12 @@
       ],
       "@ngx-starter-kit/grid": [
         "libs/grid/src/index.ts"
+      ],
+      "notifications/*": [
+        "dist/notifications/*"
+      ],
+      "@ngx-starter-kit/notifications": [
+        "libs/notifications/src/index.ts"
       ]
     }
   },

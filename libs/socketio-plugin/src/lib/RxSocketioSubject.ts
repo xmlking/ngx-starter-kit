@@ -1,13 +1,19 @@
-import {NextObserver, Observable, Observer, Subscriber} from 'rxjs';
-import {AnonymousSubject} from 'rxjs/internal/Subject';
+import { NextObserver, Observable, Observer, Subscriber, Subscription } from 'rxjs';
+import { AnonymousSubject } from 'rxjs/internal/Subject';
 import * as io from 'socket.io-client';
 import ConnectOpts = SocketIOClient.ConnectOpts;
+import { Subject } from 'rxjs';
+import { ReplaySubject } from 'rxjs/src/internal/ReplaySubject';
+
+// TODO https://github.com/arjitkhullar/ocr/blob/master/src/app/socket.service.ts
 
 export interface RxSocketioSubjectConfig<T> {
   /** The url of the socket server to connect to */
   url: string;
-
+  /** connect options for Socket.io */
   connectOpts?: ConnectOpts;
+  /** auth token access callback function */
+  tokenFn?: () => string;
   /** The protocol to use to connect */
   protocol?: string | Array<string>;
   /** @deprecated use {@link deserializer} */
@@ -40,7 +46,7 @@ export interface RxSocketioSubjectConfig<T> {
    * WebSocket impl in Node (WebSocket is a DOM API), or for mocking a WebSocket
    * for testing purposes
    */
-  WebSocketCtor?: { new(url: string, protocols?: string|string[]): WebSocket };
+  WebSocketCtor?: { new (url: string, protocols?: string | string[]): WebSocket };
   /** Sets the `binaryType` property of the underlying WebSocket. */
   binaryType?: 'blob' | 'arraybuffer';
 }
@@ -54,13 +60,15 @@ const DEFAULT_WEBSOCKET_CONFIG: RxSocketioSubjectConfig<any> = {
 export type WebSocketMessage = string | ArrayBuffer | Blob | ArrayBufferView;
 
 export class RxSocketioSubject<T> extends AnonymousSubject<T> {
+  private _output: Subject<T>;
   private _config: RxSocketioSubjectConfig<T>;
   private _socket: SocketIOClient.Socket;
 
   constructor(urlConfigOrSource: string | RxSocketioSubjectConfig<T> | Observable<T>, destination?: Observer<T>) {
     super();
 
-    const config = (this._config = {...DEFAULT_WEBSOCKET_CONFIG});
+    const config = (this._config = { ...DEFAULT_WEBSOCKET_CONFIG });
+
     if (typeof urlConfigOrSource === 'string') {
       config.url = urlConfigOrSource;
     } else {
@@ -71,21 +79,38 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
       }
     }
 
-    this._socket = config.connectOpts? io(config.url, config.connectOpts) : io(config.url);
+    if (config.tokenFn && typeof config.tokenFn === 'function') {
+      if (!config.connectOpts) {
+        config.connectOpts = { query: {} };
+      }
+      (config.connectOpts.query as any).token = config.tokenFn();
+    }
+
+    this._output = new Subject<T>();
+
+    this._socket = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
 
     this._socket.on('connect', event => config.openObserver.next(event));
 
     this._socket.on('disconnect', event => config.closeObserver.next(event));
 
+    this._socket.on('actions', data => this._output.next(data));
+
+    this._socket.on('reconnect_attempt', () => {
+      if (config.tokenFn && typeof config.tokenFn === 'function') {
+        (this._socket.io.opts.query as any).token = config.tokenFn();
+      }
+    });
+
     this.destination = Subscriber.create(
       (message: T) => {
-        this._socket.send(message);
+        this._socket.emit((message as any).event, (message as any).data);
       },
       error => {
         this._socket.close();
         const errorEvent = new ErrorEvent('', {
           message: 'Error in data stream.',
-          error: error
+          error: error,
         });
         super.error.call(this, errorEvent);
       },
@@ -94,10 +119,10 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
         const closeEvent = new CloseEvent('cloased', {
           code: 1000,
           reason: 'Connection closed by client.',
-          wasClean: true
+          wasClean: true,
         });
         config.closeObserver.next(closeEvent);
-      }
+      },
     );
   }
 
@@ -111,5 +136,15 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
   complete() {
     this.destination.complete.call(this.destination);
+  }
+
+  _subscribe(subscriber: Subscriber<T>): Subscription {
+    const subscription = new Subscription();
+    subscription.add(this._output.subscribe(subscriber));
+    return subscription;
+  }
+
+  unsubscribe() {
+    super.unsubscribe();
   }
 }
