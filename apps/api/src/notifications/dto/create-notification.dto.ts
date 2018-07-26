@@ -1,6 +1,6 @@
 import { ApiModelProperty } from '@xmlking/swagger';
-import {IsAscii, IsBoolean, IsEnum, IsIn, IsNotEmpty, IsString, MaxLength, MinLength} from 'class-validator';
-import {NotificationColor, NotificationIcon} from '../notification.entity';
+import { IsAscii, IsBoolean, IsEnum, IsIn, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
+import { NotificationColor, NotificationIcon } from '../notification.entity';
 
 export class CreateNotificationDto {
   @ApiModelProperty({ type: String, enum: NotificationIcon, default: 'notifications' })

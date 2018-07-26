@@ -1,16 +1,17 @@
-import {Injectable, NotFoundException} from '@nestjs/common';
-import {AuditMongoRepository, CrudService} from '../core';
-import {InjectRepository} from '@nestjs/typeorm';
-import {Notification} from './notification.entity';
-import {User} from '../auth';
-import {EventBusGateway} from '../shared';
-import {AddNotification, DeleteNotification} from './index';
+import { Injectable } from '@nestjs/common';
+import { CrudService } from '../core';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Notification } from './notification.entity';
+import { User } from '../auth';
+import { EventBusGateway } from '../shared';
+import { AddNotification, DeleteNotification } from './index';
+import { NotificationsRepository } from './notifications.repository';
 
 @Injectable()
 export class NotificationsService extends CrudService<Notification> {
   constructor(
     private readonly eventBus: EventBusGateway,
-    @InjectRepository(Notification) private readonly notificationsRepository: AuditMongoRepository<Notification>,
+    @InjectRepository(NotificationsRepository) private readonly notificationsRepository: NotificationsRepository,
   ) {
     super(notificationsRepository);
   }
@@ -25,9 +26,9 @@ export class NotificationsService extends CrudService<Notification> {
   }
 
   public async getUserNotifications(user: User): Promise<[Notification[], number]> {
-    const cursor = this.repository.createEntityCursor({userId: {$in: [user.userId, 'all']}});
+    const cursor = this.repository.createEntityCursor({ userId: { $in: [user.userId, 'all'] } });
     const count = await cursor.count(false);
-    return [await cursor.limit(50).toArray(), count] ;
+    return [await cursor.limit(50).toArray(), count];
 
     // const records =  await this.repository.findAndCount({ userId: user.userId });
     // if (records[1] === 0) {
