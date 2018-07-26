@@ -4,7 +4,7 @@ import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@xmlking/s
 import { Notification } from './notification.entity';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { NotificationsService } from './notifications.service';
-import {CurrentUser, Roles, RolesEnum} from '../auth';
+import { CurrentUser, Roles, RolesEnum } from '../auth';
 import { AddNotification } from './interfaces/notification.actions';
 import * as uuid from 'uuid';
 
