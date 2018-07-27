@@ -32,6 +32,8 @@ export class MyHammerConfig extends HammerGestureConfig {
         {path: '**', redirectTo: '404', pathMatch: 'full'}
       ],
       {
+        scrollPositionRestoration: 'enabled',
+        anchorScrolling: 'enabled',
         initialNavigation: 'enabled',
         preloadingStrategy: PreloadAllModules,
         paramsInheritanceStrategy: 'always'

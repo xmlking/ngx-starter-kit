@@ -2,6 +2,11 @@ HOW TO
 ======
 
 
+* What is new in Angular 6.1?
+
+> Refer [here](https://blog.ninja-squad.com/2018/07/26/what-is-new-angular-6.1/)
+> Refer [here](https://blog.ninja-squad.com/2018/07/27/angular-cli-6.1/)
+
 * How do I use this template projects?
 > Add your own app along with `default` app and use shared modules in `libs`. 
 once you are conferable , then you can delete demo `default` app
