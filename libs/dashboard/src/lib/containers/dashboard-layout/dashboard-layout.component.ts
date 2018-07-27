@@ -66,11 +66,6 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     this.store.dispatch(new DisconnectWebSocket());
   }
 
-  // FIXME: do we still need scroll fix for angular 6.1.x?
-  onActivate(e, scrollContainer) {
-    scrollContainer.scrollTop = 0;
-  }
-
   getRouteAnimation(outlet) {
     return outlet.activatedRouteData['animation'] || 'one';
     //return outlet.isActivated ? outlet.activatedRoute : ''
