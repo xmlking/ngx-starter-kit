@@ -13,13 +13,10 @@
     <ngx-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></ngx-toolbar>
 
     <perfect-scrollbar>
-        <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)" #scrollContainer>
-          <router-outlet #dashboardOutlet="outlet" (activate)="onActivate($event, scrollContainer)"></router-outlet>
+        <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)">
+          <router-outlet #dashboardOutlet="outlet"></router-outlet>
           <ngx-chatbot></ngx-chatbot>
         </div>
-        <!--<div class="main-container" #scrollContainer>-->
-          <!--<router-outlet (activate)="onActivate($event, scrollContainer)"></router-outlet>-->
-        <!--</div>-->
     </perfect-scrollbar>
   </mat-sidenav-content>
 
