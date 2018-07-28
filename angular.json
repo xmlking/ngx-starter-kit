@@ -67,6 +67,7 @@
                 }
               ],
               "optimization": true,
+              // FIXME: with angular-cli  6.1.1, "outputHashing": "all" should generate lazy css without hash
               "outputHashing": "media",
               "sourceMap": false,
               "extractCss": true,
@@ -116,6 +117,7 @@
               ],
               "baseHref": "/ngx-starter-kit/",
               "optimization": true,
+              // FIXME: with angular-cli  6.1.1, "outputHashing": "all" should generate lazy css without hash
               "outputHashing": "media",
               "sourceMap": false,
               "extractCss": true,
@@ -196,6 +198,11 @@
           "options": {
             "protractorConfig": "apps/webapp-e2e/protractor.conf.js",
             "devServerTarget": "webapp:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-project:serve:production"
+            }
           }
         },
         "lint": {
