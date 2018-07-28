@@ -25,25 +25,7 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective
 @NgModule({
   imports: [
     CommonModule,
-    // FIXME chatbot: input. depending  on https://github.com/angular/flex-layout/issues/778
-    // FlexLayoutModule.withConfig({ useColumnBasisZero: false }),
-    // FIXME temp workaround
-    {
-      ngModule: FlexLayoutModule,
-      providers: [
-        {
-          provide: LAYOUT_CONFIG,
-          useValue: {
-            addFlexToParent: true,
-            addOrientationBps: false,
-            disableDefaultBps: false,
-            disableVendorPrefixes: false,
-            serverLoaded: false,
-            useColumnBasisZero: false
-          }
-        }
-      ]
-    },
+    FlexLayoutModule.withConfig({ useColumnBasisZero: false }),
   ],
   declarations: [...DIRECTIVES],
   exports: [
