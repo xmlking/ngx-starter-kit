@@ -67,7 +67,6 @@
                 }
               ],
               "optimization": true,
-              // FIXME: with angular-cli  6.1.1, "outputHashing": "all" should generate lazy css without hash
               "outputHashing": "media",
               "sourceMap": false,
               "extractCss": true,
@@ -117,7 +116,6 @@
               ],
               "baseHref": "/ngx-starter-kit/",
               "optimization": true,
-              // FIXME: with angular-cli  6.1.1, "outputHashing": "all" should generate lazy css without hash
               "outputHashing": "media",
               "sourceMap": false,
               "extractCss": true,
