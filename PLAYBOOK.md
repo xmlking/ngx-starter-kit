@@ -9,10 +9,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.5.0  |          | 
-| NPM                           | v6.1.0   |          |
+| Node                          | v10.7.0  |          | 
+| NPM                           | v6.3.0   |          |
 | Angular CLI                   | v6.0.8   |          |
-| @nrwl/schematics              | v6.1.0   |          |
+| @nrwl/schematics              | v6.2.0   |          |
 | @nestjs/cli                   | v5.3.0   |          |
 
 ### Install Prerequisites
