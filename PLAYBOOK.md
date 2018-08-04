@@ -21,7 +21,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 brew update
 brew install node
 #brew upgrade node
-# upgrade npm to at least 6.1.0
+# upgrade npm to at least 6.3.0
 npm install -g npm
 ```
 
