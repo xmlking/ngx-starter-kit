@@ -10,6 +10,9 @@
       <mat-placeholder>
         <mat-icon>search</mat-icon>Filter
       </mat-placeholder>
+      <button mat-button *ngIf="filter.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="filter.value= ''">
+        <mat-icon>close</mat-icon>
+      </button>
     </mat-form-field>
 
     <button  *ngIf="showColumnFilter" mat-icon-button style="margin-left: 16px" type="button" [matMenuTriggerFor]="columnFilter">
