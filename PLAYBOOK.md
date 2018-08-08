@@ -49,12 +49,12 @@ bazel clean --expunge
 
 #### Install Global Packages
 ```bash
-npm remove -g @nrwl/schematics
 npm remove -g @angular/cli
+npm remove -g @nrwl/schematics
 npm remove -g @nestjs/cli
 
-npm install -g @nrwl/schematics
 npm install -g @angular/cli
+npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 
 npm install -g ndb
