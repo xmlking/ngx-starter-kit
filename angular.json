@@ -199,7 +199,7 @@
           },
           "configurations": {
             "production": {
-              "devServerTarget": "my-project:serve:production"
+              "devServerTarget": "webapp:serve:production"
             }
           }
         },
