@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
+    "outDir": "../../dist/out-tsc/libs/utils",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",
@@ -28,6 +28,7 @@
   },
   "exclude": [
     "src/test.ts",
-    "**/*.spec.ts"
+    "**/*.spec.ts",
+    "karma.conf.ts"
   ]
 }
