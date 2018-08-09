@@ -118,7 +118,6 @@
     "smooth-scrollbar": "^8.2.7",
     "socket.io-client": "^2.1.1",
     "typeorm": "^0.2.7",
-    "typescript": "2.7.2",
     "uuid": "^3.3.2",
     "zone.js": "^0.8.26"
   },
@@ -129,7 +128,7 @@
     "ng-packagr": "^4.0.1",
     "tsickle": ">=0.32.1",
     "tslib": "^1.9.3",
-    "typescript": "2.9.2",
+    "typescript": "2.7.2",
     "@angular/cli": "^6.1.2",
     "@angular/http": "^6.1.2",
     "@angular/language-service": "^6.1.2",
