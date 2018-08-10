@@ -40,10 +40,10 @@ export function noop() {
     AuthModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-          passThruUnknownUrl: true
-          // delay: 500,
-          // apiBase: 'api'
-        })
+        passThruUnknownUrl: true
+        // delay: 500,
+        // apiBase: 'api'
+      })
       : []
   ],
   providers: [
@@ -52,11 +52,11 @@ export function noop() {
       useClass: ErrorInterceptor,
       multi: true
     },
-     {
-       provide: HTTP_INTERCEPTORS,
-       useClass: JwtInterceptor,
-       multi: true
-     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterceptor,
+      multi: true
+    },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
@@ -69,7 +69,7 @@ export class CoreModule {
   constructor(
     @Optional()
     @SkipSelf()
-    parentModule: CoreModule
+      parentModule: CoreModule
   ) {
     if (parentModule) {
       throw new Error(

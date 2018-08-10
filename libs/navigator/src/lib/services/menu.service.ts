@@ -4,9 +4,10 @@ import { MenuItem } from '../models/menu-item.model';
 
 import { Tree } from '@ngx-starter-kit/tree';
 import { NavigationEnd, Router } from '@angular/router';
-import { MediaQueryService } from '@default/core';
 import { SidenavState } from './sidenav-state.enum';
 import { MENU_ITEMS } from '../symbols';
+import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class MenuService {
@@ -67,7 +68,7 @@ export class MenuService {
   constructor(
     @Inject(MENU_ITEMS) private menuItems: MenuItem[],
     private router: Router,
-    private mediaQueryService: MediaQueryService
+    private media: ObservableMedia,
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -80,20 +81,24 @@ export class MenuService {
       }
     });
 
-    this.mediaQueryService.isLowerThanLarge$.subscribe(isLowerThanLarge => {
-      this.isLowerThanLarge = isLowerThanLarge;
-      if (
-        isLowerThanLarge &&
-        !(this.sidenavState === SidenavState.Mobile || this.sidenavState === SidenavState.MobileOpen)
-      ) {
-        this.sidenavState = SidenavState.Mobile;
-      } else if (!isLowerThanLarge) {
-        this.sidenavState = SidenavState.Expanded;
-      }
-    });
+    media
+      .asObservable().pipe(
+        map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md')
+      )
+      .subscribe(isLowerThanLarge => {
+        this.isLowerThanLarge = isLowerThanLarge;
+        if (
+          isLowerThanLarge &&
+          !(this.sidenavState === SidenavState.Mobile || this.sidenavState === SidenavState.MobileOpen)
+        ) {
+          this.sidenavState = SidenavState.Mobile;
+        } else if (!isLowerThanLarge) {
+          this.sidenavState = SidenavState.Expanded;
+        }
+      });
 
     // sets defaultMenu as default;
-    //this.publishMenuChange('default-menu');
+    // this.publishMenuChange('default-menu');
     this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
     this._items.next(this._tree.root.children);
   }

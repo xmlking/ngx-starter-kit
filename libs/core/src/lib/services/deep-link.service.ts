@@ -1,5 +1,4 @@
 import { FormGroup } from '@angular/forms';
-import { QueryParams } from './deeplink.service';
 import { Injectable } from '@angular/core';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 
@@ -10,7 +9,7 @@ export interface QueryParams {
 @Injectable({
   providedIn: 'root'
 })
-export class DeeplinkService {
+export class DeepLinkService {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   /**

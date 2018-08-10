@@ -14,7 +14,6 @@ import { Observable, Subject } from 'rxjs';
 import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
-import { DeeplinkService } from '@default/core/services/deeplink.service';
 
 export abstract class EntitiesComponent<
   TEntity extends Entity,

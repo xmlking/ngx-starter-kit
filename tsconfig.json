@@ -21,11 +21,14 @@
       "@ngx-starter-kit/*": [
         "libs/*"
       ],
-      "@default/*": [
-        "apps/webapp/src/app/*"
-      ],
       "@env/*": [
         "apps/webapp/src/environments/*"
+      ],
+      "@ngx-starter-kit/core": [
+        "libs/core/src/index.ts"
+      ],
+      "@ngx-starter-kit/shared": [
+        "libs/shared/src/index.ts"
       ],
       "@ngx-starter-kit/navigator": [
         "libs/navigator/src/index.ts"
@@ -62,9 +65,6 @@
       ],
       "@ngx-starter-kit/auth": [
         "libs/auth/src/index.ts"
-      ],
-      "@ngx-starter-kit/shared": [
-        "libs/shared/src/index.ts"
       ],
       "@ngx-starter-kit/app-confirm": [
         "libs/app-confirm/src/index.ts"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PageTitleService } from '@default/core';
+import { PageTitleService } from '@ngx-starter-kit/core';
 
 @Component({
   selector: 'ngx-landing',

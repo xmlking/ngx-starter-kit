@@ -6,7 +6,7 @@ import {AppComponent} from './app.component';
 import { PreloadAllModules, RouterModule } from '@angular/router';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {CoreModule} from './core/core.module';
+import { CoreModule } from '@ngx-starter-kit/core';
 
 import {environment} from '@env/environment';
 

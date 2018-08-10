@@ -165,13 +165,6 @@ npm install trianglify --no-save --no-lock
 #### Generate Artifacts
 > Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
 ```bash
-# add `core` module to `webapp` app
-ng g module core --app=webapp --module=app --spec=false  --dry-run
-# add shared services for `core` Module
-ng g service core/services/InMemoryData --app=webapp --module=core --spec=false --dry-run
-ng g service core/services/PageTitle --app=webapp --module=core --dry-run
-ng g service core/services/ServiceWorker --app=webapp --module=core --dry-run
-ng g service core/services/MediaQuery --app=webapp --module=core --dry-run
 
 # generate `Lazy-loaded Feature Modules`
 ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --tags=layout,entry-module
@@ -182,21 +175,32 @@ ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts   --tags=child-module
 
 
-ng g lib material --spec=false --tags=shared-module --dry-run
+
 ng g lib animations --nomodule -tags=utils --dry-run 
 ng g lib Tree --nomodule  --publishable=true --tags=utils --dry-run
 ng g lib utils --nomodule --tags=utils --dry-run
 
+# add `core` module which will be only inported into root/app module.
+ng g lib core --prefix=ngx --tags=core-module
+# add  global services for `core` Module
+ng g service services/InMemoryData   --project=core   --spec=false --dry-run
+ng g service services/PageTitle      --project=core   --dry-run
+ng g service services/ServiceWorker  --project=core   --dry-run
+ng g service services/MediaQuery     --project=core   --dry-run
+ng g service services/DeepLink       --project=core   --dry-run
+
+# `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components 
+ng g lib material --spec=false --tags=shared-module --dry-run
+
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 ng g lib shared --prefix=ngx --tags=shared-module 
-
 # generate containers, components for `shared` Module
-ng g service containers/entity/entity --project=shared --module=shared
-ng g directive directives/min  --project=shared --module=shared --export=true
-ng g directive components/ClickOutside  --project=shared --module=shared --export=true
-ng g component components/entityTable --project=shared --module=shared --export=true
-ng g component containers/entity --project=shared --module=shared --skip-import
-ng g component containers/entityForm  --project=shared --module=shared --skip-import
+ng g service containers/entity/entity --project=shared
+ng g directive directives/min  --project=shared  --export=true
+ng g directive components/ClickOutside  --project=shared  --export=true
+ng g component components/entityTable --project=shared  --export=true
+ng g component containers/entity --project=shared  --skip-import
+ng g component containers/entityForm  --project=shared  --skip-import
 
 # generate containers for `NotFound` Module
 ng g component containers/NotFound --project=not-found --dry-run
@@ -207,16 +211,16 @@ ng g component containers/NotFound --project=not-found --dry-run
 # generate components for `AppConfirm` Module
 ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --dry-run
 ng g component AppConfirm --project=app-confirm  --flat  --dry-run
-ng g service AppConfirm --project=app-confirm --module=app-confirm --spec=false --dry-run
+ng g service AppConfirm --project=app-confirm --spec=false --dry-run
 
 # generate components for `Draggable` Module
 ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true
-ng g directive directives/Draggable --project=draggable --module=draggable --export=true --dry-run
+ng g directive directives/Draggable --project=draggable --export=true --dry-run
 
 # generate components for `Breadcrumbs` Module
 ng g lib Breadcrumbs --prefix=ngx --tags=public-module --publishable=true
 ng g component breadcrumbs --project=breadcrumbs --flat --dry-run
-ng g service  breadcrumbs --project=breadcrumbs --module=breadcrumbs --dry-run
+ng g service  breadcrumbs --project=breadcrumbs --dry-run
 
 # generate components for `ScrollToTop` Module
 ng g lib ScrollToTop --prefix=ngx --tags=public-module --publishable=true
@@ -233,14 +237,14 @@ ng g directive ContextMenuTrigger --project=context-menu --flat --dry-run
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker --prefix=ngx --tags=public-module --publishable=true
 ng g component ThemePicker --project=theme-picker --flat --dry-run
-ng g service  ThemeStorage --project=theme-picker --module=theme-picker --dry-run
-ng g service  StyleManager --project=theme-picker --module=theme-picker --dry-run
+ng g service  ThemeStorage --project=theme-picker --dry-run
+ng g service  StyleManager --project=theme-picker --dry-run
 
 # generate components for `Notifications` Module
 ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --dry-run
 ng g component notifications --project=notifications --flat --dry-run
-ng g class    notification --type=model --project=notifications --module=notifications --dry-run
-ng g service  notifications --project=notifications --module=notifications --dry-run
+ng g class    notification --type=model --project=notifications --dry-run
+ng g service  notifications --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
 ng g lib Quickpanel --prefix=ngx --tags=private-module
@@ -297,7 +301,7 @@ ng g component components/QuickpanelToggle --project=toolbar --dry-run
 ng g lib sidenav --prefix=ngx --tags=private-module --dry-run 
 ng g component sidenav --project=sidenav --flat --dry-run 
 ng g component components/sidenavItem --project=sidenav  --dry-run 
-ng g directive  IconSidenav --project=sidenav --module=sidenav --dry-run 
+ng g directive  IconSidenav --project=sidenav --dry-run 
 
 # generate components for `auth` Module
 ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --dry-run 
@@ -326,12 +330,12 @@ ng g component containers/overview --project=dashboard --dry-run
 ng g component containers/wizdash --project=widgets --dry-run
 
 # generate containers, components for `grid` Module
-ng g component  containers/AccountsTable --project=grid --module=grid --dry-run
-ng g component  components/AccountDetail --project=grid --module=grid --dry-run
-ng g component  components/AccountEdit --project=grid --module=grid --dry-run
-ng g class      models/account --type=model --project=grid --module=grid --dry-run
-ng g service    services/account --project=grid --module=grid --dry-run
-ng g component  containers/AccountsGridList --project=grid --module=grid --dry-run
+ng g component  containers/AccountsTable --project=grid --dry-run
+ng g component  components/AccountDetail --project=grid  --dry-run
+ng g component  components/AccountEdit --project=grid  --dry-run
+ng g class      models/account --type=model --project=grid  --dry-run
+ng g service    services/account --project=grid  --dry-run
+ng g component  containers/AccountsGridList --project=grid  --dry-run
 
 # generate containers, components for `experiments` Module
 ng g component containers/animations --project=experiments --dry-run
@@ -340,7 +344,7 @@ ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
-ng g component containers/StickyTable --project=experiments --module=experiments --dry-run
+ng g component containers/StickyTable --project=experiments --dry-run
 ```
 
 ### Install
