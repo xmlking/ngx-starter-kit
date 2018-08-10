@@ -54,7 +54,10 @@ once you are conferable , then you can delete demo `default` app
 
 *  Creating Reusable Animations in Angular 
 > Read [Reusable Animations](https://netbasal.com/creating-reusable-animations-in-angular-6a2350d6191a)
+
+*  Micro-Interactions
 > Read [medium-clap](https://medium.com/@yonatandoron/how-i-implemented-the-medium-clap-from-scratch-4a16ac90ad3b)
+> Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
 
 *  Why I Prefer NGXS over NGRX 
 > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
