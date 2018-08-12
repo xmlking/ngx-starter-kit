@@ -6,8 +6,7 @@
   "exclude": [
     "src/test.ts",
     "**/*.spec.ts",
-    "karma.conf.ts",
-    "../../node_modules/api-ai-javascript/ts/Request/TTSRequest.ts"
+    "karma.conf.ts"
   ],
   "include": [
     "**/*.ts"
@@ -23,8 +22,5 @@
   , "../../libs/grid/src/index.ts"
 
   , "../../libs/not-found/src/index.ts"
-
-  ,"../../node_modules/api-ai-javascript/index.ts"
-  ,"../../node_modules/api-ai-javascript/ts/**/*.ts"
   ]
 }
