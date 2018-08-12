@@ -19,8 +19,9 @@ import { environment } from '@env/environment';
     SidenavModule,
     ToolbarModule,
     QuickpanelModule,
+    // FIXME: AOT not working with environment.xyz
     ChatBoxModule.forRoot({
-      accessToken: environment.dialogFlow.apiToken
+      accessToken: '37808bf14a19406cbe2a50cfd1332dd3' // environment.dialogFlow.apiToken
     }),
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
