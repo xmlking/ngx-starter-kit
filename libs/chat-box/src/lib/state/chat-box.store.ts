@@ -52,7 +52,6 @@ export class ChatBoxState implements NgxsOnInit {
     this.actions$
       .pipe(ofActionDispatched(AddMessage))
       .subscribe( (action: AddMessage) => {
-        console.log('ChatBoxState action.......', action);
         switch (action.payload.message.to.type) {
           case SubjectType.BOT:
             return this.nlp.process(action.payload.message.content).then(speech => {
