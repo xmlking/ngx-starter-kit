@@ -61,6 +61,11 @@ export const defaultMenu: MenuItem[] = [
         name: 'Sticky Table',
         icon: 'view_list',
         link: '/dashboard/experiments/table'
+      },
+      {
+        name: 'Clap',
+        icon: 'directions',
+        link: '/dashboard/experiments/clap'
       }
     ]
   },

@@ -122,6 +122,9 @@
       ],
       "@ngx-starter-kit/notifications": [
         "libs/notifications/src/index.ts"
+      ],
+      "@ngx-starter-kit/clap": [
+        "libs/clap/src/index.ts"
       ]
     }
   },

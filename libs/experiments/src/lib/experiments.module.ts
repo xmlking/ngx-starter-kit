@@ -17,6 +17,8 @@ import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-s
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
 import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
+import { ClapModule } from '@ngx-starter-kit/clap';
+import { ClapButtonComponent } from './containers/clap-button/clap-button.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -26,6 +28,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     FilePondModule,
     ContextMenuModule,
     ScrollingModule,
+    ClapModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
@@ -53,6 +56,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         path: 'table',
         component: StickyTableComponent,
         data: { animation: 'sticky-table' }
+      },
+      {
+        path: 'clap',
+        component: ClapButtonComponent,
+        data: { animation: 'clap' }
       }
     ])
   ],
@@ -62,7 +70,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     HammertimeDirective,
     ContextMenuComponent,
     VirtualScrollComponent,
-    StickyTableComponent
+    StickyTableComponent,
+    ClapButtonComponent
   ]
 })
 export class ExperimentsModule {}

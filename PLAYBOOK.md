@@ -291,6 +291,13 @@ ng g lib jsonDiff --prefix=ngx --tags=public-module --publishable=true
 ng g component jsonDiff --project=json-diff --flat --dry-run 
 ng g component jsonDiffTree --project=json-diff --flat --dry-run 
 
+# generate components for `clap` Module
+ng g lib clap  --prefix=ngx --tags=public-module --spec=false --publishable=true
+ng g component clap --project=clap  -s  -t --spec=false --export --flat --dry-run 
+ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  --dry-run 
+ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  --dry-run 
+ng g component components/fab --project=clap  -s  -t --spec=false --flat  --dry-run 
+
 # generate components for `toolbar` Module
 ng g lib toolbar --prefix=ngx --tags=private-module --dry-run 
 ng g component toolbar --project=toolbar --flat --dry-run 
@@ -349,6 +356,7 @@ ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
 ng g component containers/StickyTable --project=experiments --dry-run
+ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ```
 
 ### Install
