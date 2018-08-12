@@ -1,7 +1,7 @@
 // src/environments/base.ts
 const packageJson = require('../../../../package.json');
 export default {
-  appName: 'Nx Starter Kit',
+  appName: 'Ngx Starter Kit',
   secret: 'SECRET',
   apiToken: 'SECRET_TOKEN',
   dialogFlow: {
