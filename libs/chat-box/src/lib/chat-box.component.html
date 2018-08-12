@@ -9,7 +9,7 @@
   <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
                class="header mat-elevation-z2" color="primary"
                [draggable] dragTarget=".chat-box">
-    <span fxFlex>ChatBot</span>
+    <span fxFlex>ChatBox</span>
     <span fxFlex="grow"><!-- fill space --></span>
     <ngx-led color="orange" size="10px" [blink]=true></ngx-led>
     <button mat-icon-button>
@@ -18,10 +18,10 @@
   </mat-toolbar>
 
   <div fxFlex="grow" class="body">
-    <div *ngFor="let message of messages | async"
+    <div *ngFor="let message of (selectedConversation$ | async).messages"
          class="message"
-         [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
-      {{ message.content }}
+         [ngClass]="{ 'from': message.isIncoming, 'to': message.isOutgoing }">
+      {{ message.render() }}
     </div>
     <div style="position: fixed; bottom: 60px;">
       <typing-indicator *ngIf="typing"></typing-indicator>

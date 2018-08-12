@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@ngx-starter-kit/shared';
 
 import { AuthGuard } from '@ngx-starter-kit/auth';
-import { ChatBotModule } from '@ngx-starter-kit/chat-bot';
+import { ChatBoxModule } from '@ngx-starter-kit/chat-box';
 
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { OverviewComponent } from './containers/overview/overview.component';
@@ -11,6 +11,7 @@ import { RainbowComponent } from './components/rainbow/rainbow.component';
 import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
 import { ToolbarModule } from '@ngx-starter-kit/toolbar';
 import { SidenavModule } from '@ngx-starter-kit/sidenav';
+import { environment } from '@env/environment';
 
 @NgModule({
   imports: [
@@ -18,7 +19,9 @@ import { SidenavModule } from '@ngx-starter-kit/sidenav';
     SidenavModule,
     ToolbarModule,
     QuickpanelModule,
-    ChatBotModule,
+    ChatBoxModule.forRoot({
+      accessToken: environment.dialogFlow.apiToken
+    }),
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       {

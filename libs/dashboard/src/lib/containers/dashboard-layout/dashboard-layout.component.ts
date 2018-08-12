@@ -53,12 +53,15 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
       window.dispatchEvent(new Event('resize'));
     }, 2000);
 
-    this.store.dispatch(
-      new ConnectWebSocket({
-        url: environment.WS_EVENT_BUS_URL,
-        tokenFn: () => this.oauthService.getAccessToken(),
-      }),
-    );
+    // Disable WebSocket in mock mode
+    if (environment.envName !== 'mock') {
+      this.store.dispatch(
+        new ConnectWebSocket({
+          url: environment.WS_EVENT_BUS_URL,
+          tokenFn: () => this.oauthService.getAccessToken(),
+        }),
+      );
+    }
   }
 
   ngOnDestroy() {
@@ -68,6 +71,6 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 
   getRouteAnimation(outlet) {
     return outlet.activatedRouteData['animation'] || 'one';
-    //return outlet.isActivated ? outlet.activatedRoute : ''
+    // return outlet.isActivated ? outlet.activatedRoute : ''
   }
 }

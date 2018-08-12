@@ -1,7 +1,6 @@
 {
   "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/libs/chat-bot",
-  "deleteDestPath": false,
+  "dest": "../../dist/libs/chat-box",
   "lib": {
     "entryFile": "src/index.ts"
   }
