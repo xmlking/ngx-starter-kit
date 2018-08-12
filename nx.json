@@ -179,6 +179,11 @@
       "tags": [
         "core-module"
       ]
+    },
+    "clap": {
+      "tags": [
+        "public-module"
+      ]
     }
   }
 }

@@ -1301,6 +1301,46 @@
           }
         }
       }
+    },
+    "clap": {
+      "root": "libs/clap",
+      "sourceRoot": "libs/clap/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/clap/tsconfig.lib.json",
+            "project": "libs/clap/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/clap/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "libs/clap/src/test.ts",
+            "tsConfig": "libs/clap/tsconfig.spec.json",
+            "karmaConfig": "libs/clap/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/clap/tsconfig.lib.json",
+              "libs/clap/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "schematics": {
