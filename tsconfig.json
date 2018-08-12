@@ -99,8 +99,8 @@
       "@ngx-starter-kit/led": [
         "libs/led/src/index.ts"
       ],
-      "@ngx-starter-kit/chat-bot": [
-        "libs/chat-bot/src/index.ts"
+      "@ngx-starter-kit/chat-box": [
+        "libs/chat-box/src/index.ts"
       ],
       "@ngx-starter-kit/json-diff": [
         "libs/json-diff/src/index.ts"

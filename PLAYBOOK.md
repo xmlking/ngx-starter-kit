@@ -267,11 +267,15 @@ ng g component svgViewer --project=svg-viewer --flat --dry-run
 ng g lib led --prefix=ngx --tags=public-module --publishable=true
 ng g component led --project=led --flat --dry-run 
 
-# generate components for `chatBot` Module
-ng g lib chatBot --prefix=ngx --tags=public-module --publishable=true --dry-run 
-ng g component chatBot --project=chat-bot --flat --dry-run 
-ng g component components/typingIndicator --project=chat-bot --dry-run 
-ng g component components/chatCard --project=chat-bot --dry-run 
+# generate components for `chatBox` Module
+ng g lib chatBox --prefix=ngx --tags=public-module --publishable=true --dry-run 
+ng g component chatBox --project=chat-box --flat --dry-run 
+ng g component components/typingIndicator --project=chat-box --dry-run 
+ng g component components/chatCard --project=chat-box --dry-run 
+ng g service services/nlp --project=chat-box --dry-run 
+ng g service services/SpeechToText --project=chat-box --dry-run 
+ng g service services/TextToSpeech --project=chat-box --dry-run 
+ng g service services/chat --project=chat-box --dry-run 
 
 # generate components for `socketioPlugin` Module
 ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --dry-run

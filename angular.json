@@ -1030,38 +1030,38 @@
         }
       }
     },
-    "chat-bot": {
-      "root": "libs/chat-bot",
-      "sourceRoot": "libs/chat-bot/src",
+    "chat-box": {
+      "root": "libs/chat-box",
+      "sourceRoot": "libs/chat-box/src",
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/chat-bot/tsconfig.lib.json",
-            "project": "libs/chat-bot/ng-package.json"
+            "tsConfig": "libs/chat-box/tsconfig.lib.json",
+            "project": "libs/chat-box/ng-package.json"
           },
           "configurations": {
             "production": {
-              "project": "libs/chat-bot/ng-package.prod.json"
+              "project": "libs/chat-box/ng-package.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "libs/chat-bot/src/test.ts",
-            "tsConfig": "libs/chat-bot/tsconfig.spec.json",
-            "karmaConfig": "libs/chat-bot/karma.conf.js"
+            "main": "libs/chat-box/src/test.ts",
+            "tsConfig": "libs/chat-box/tsconfig.spec.json",
+            "karmaConfig": "libs/chat-box/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "libs/chat-bot/tsconfig.lib.json",
-              "libs/chat-bot/tsconfig.spec.json"
+              "libs/chat-box/tsconfig.lib.json",
+              "libs/chat-box/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
