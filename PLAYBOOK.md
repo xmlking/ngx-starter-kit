@@ -357,6 +357,7 @@ ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
 ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
+ng g component containers/knobDemo --project=experiments --dry-run
 ```
 
 ### Install

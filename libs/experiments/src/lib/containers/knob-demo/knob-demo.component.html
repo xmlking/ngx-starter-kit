@@ -1,0 +1,133 @@
+<div fxLayout="row wrap" fxLayout.sm="column"  fxLayoutGap="0.5%" fxLayoutAlign="center">
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl1">
+        <div class="panel-heading">
+          <div class="panel-title">Skin Tron + scale <span class="badge pull-right label-warning">{{value1}}</span></div>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value1" [options]="options1"></div>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl3">
+        <div class="panel-heading">
+          <div class="panel-title">With subtext, unit and read only <span class="badge pull-right label-warning">{{value2}}</span></div>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value2" [options]="options2"></div>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </div>
+
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl4">
+        <div class="panel-heading">
+          <div class="panel-title">Bar cap and display previous value<span class="badge pull-right label-warning">{{value3}}</span></div>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value3" [options]="options3"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl10">
+        <div class="panel-heading">
+          <div class="panel-title">Default Knob <span class="badge pull-right label-warning">{{value4}}</span></div>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value4" [options]="options4"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl2">
+        <div class="panel-heading">
+          <div class="panel-title">Skin Tron <span class="badge pull-right label-warning">{{value5}}</span></div>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value5" [options]="options5"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl5">
+        <div class="panel-heading">
+          <h3 class="panel-title">Lines scale and step <span class="badge pull-right label-warning">{{value6}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value6" [options]="options6"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl6">
+        <div class="panel-heading">
+          <h3 class="panel-title">Min, max value <span class="badge pull-right label-warning">{{value7}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value7" [options]="options7"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl12">
+        <div class="panel-heading">
+          <h3 class="panel-title">Angles <span class="badge pull-right label-warning">{{value8}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value8" [options]="options8"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl7">
+        <div class="panel-heading">
+          <h3 class="panel-title">Dots scale + Dynamic options<span class="badge pull-right label-warning">{{value9}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value9" [options]="options9"></div>
+          <button ng-click="changeOptions()">Change options</button>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl8">
+        <div class="panel-heading">
+          <h3 class="panel-title">Animate and disabled input <span class="badge pull-right label-warning">{{value10}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value10"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl9">
+        <div class="panel-heading">
+          <h3 class="panel-title">Background color <span class="badge pull-right label-warning">{{value11}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value11" [options]="options11"></div>
+        </div>
+      </div>
+    </div>
+    <div fxFlex="24%">
+      <div class="panel panel-primary" ng-controller="knobCtrl11">
+        <div class="panel-heading">
+          <h3 class="panel-title">Angles + Tron + Scale <span class="badge pull-right label-warning">{{value12}}</span></h3>
+        </div>
+        <div class="panel-body text-center">
+          <div ngxKnob [value]="value12" [options]="options12"></div>
+        </div>
+        <div class="panel-footer">
+        </div>
+      </div>
+    </div>
+  </div>
+
+
