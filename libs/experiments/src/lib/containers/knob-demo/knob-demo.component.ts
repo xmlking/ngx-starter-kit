@@ -7,56 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class KnobDemoComponent implements OnInit {
 
-  myKnobValue = 5;
-  myKnobOptions = {size: 300};
-  knOptions = {
-    readOnly: true,
-    size: 140,
-    unit: '%',
-    textColor: '#000000',
-    fontSize: '32',
-    fontWeigth: '700',
-    fontFamily: 'Roboto',
-    valueFormat: 'percent',
-    value: 0,
-    max: 100,
-    trackWidth: 19,
-    barWidth: 20,
-    trackColor: '#D8D8D8',
-    barColor: '#FF6F17',
-    subText: {
-      enabled: true,
-      fontFamily: 'Verdana',
-      font: '14',
-      fontWeight: 'bold',
-      text: 'Overall',
-      color: '#000000',
-      offset: 7
-    },
-  };
-  value = 45;
-
-  value1 = 65;
+  value1 = 256;
   options1 = {
-    skin: {
-      type: 'tron'
-    },
-    size: 300,
-    unit: '%',
-    barWidth: 40,
-    trackColor: 'rgba(255,0,0,.1)',
-    prevBarColor: 'rgba(0,0,0,.2)',
+    startAngle: 30,
+    endAngle: 330,
+    unit: 'MB',
+    trackColor: 'rgba(162,121,143,1)',
+    barColor: 'rgba(102,0,204,.5)',
+    trackWidth: 15,
+    barWidth: 15,
     subText: {
       enabled: true,
-      text: 'CPU used'
+      text: 'RAM used'
     },
-    scale: {
-      enabled: true,
-      type: 'lines',
-      width: 3
-    },
-    step: 5,
-    displayPrevious: true
+    max: 1024
   };
 
   value2 = 5.4;
@@ -193,23 +157,28 @@ options11 = {
     }
   };
 
-
-value12 = 256;
-options12 = {
-    startAngle: 30,
-    endAngle: 330,
-    unit: 'MB',
-    trackColor: 'rgba(162,121,143,1)',
-    barColor: 'rgba(102,0,204,.5)',
-    trackWidth: 15,
-    barWidth: 15,
+  value12 = 65;
+  options12 = {
+    skin: {
+      type: 'tron'
+    },
+    size: 300,
+    unit: '%',
+    barWidth: 40,
+    trackColor: 'rgba(255,0,0,.1)',
+    prevBarColor: 'rgba(0,0,0,.2)',
     subText: {
       enabled: true,
-      text: 'RAM used'
+      text: 'CPU used'
     },
-    max: 1024
+    scale: {
+      enabled: true,
+      type: 'lines',
+      width: 3
+    },
+    step: 5,
+    displayPrevious: true
   };
-
 
   constructor() { }
 
@@ -217,6 +186,7 @@ options12 = {
   }
 
   changeOptions7() {
+    this.value7 = 75;
     this.options7 = {
       trackColor: '#988CE0',
       barColor: 'rgba(18,7,101,.5)'
