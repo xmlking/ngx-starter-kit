@@ -17,7 +17,7 @@ export class KnobDemoComponent implements OnInit {
     fontSize: '32',
     fontWeigth: '700',
     fontFamily: 'Roboto',
-    valueformat: 'percent',
+    valueFormat: 'percent',
     value: 0,
     max: 100,
     trackWidth: 19,
@@ -33,7 +33,7 @@ export class KnobDemoComponent implements OnInit {
       color: '#000000',
       offset: 7
     },
-  }
+  };
   value = 45;
 
   value1 = 65;
