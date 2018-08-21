@@ -1,5 +1,5 @@
 import {IsEmail, IsNotEmpty, IsString} from 'class-validator';
-import { ApiModelProperty } from '@xmlking/swagger';
+import { ApiModelProperty } from '@nestjs/swagger';
 
 export class UpdateUserDto {
 

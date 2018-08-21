@@ -1,7 +1,7 @@
 import { UpdateDateColumn, CreateDateColumn, ManyToOne, VersionColumn, ObjectIdColumn, ObjectID } from 'typeorm';
 import { Exclude, Transform } from 'class-transformer';
 import toHexString from './toHexString';
-import {ApiModelProperty} from '@xmlking/swagger';
+import {ApiModelProperty} from '@nestjs/swagger';
 // FIXME: we need to import User like this to avoid Circular denpendence problem
 import {User} from '../../auth/user.entity';
 

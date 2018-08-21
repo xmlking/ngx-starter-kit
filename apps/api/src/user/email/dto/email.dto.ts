@@ -1,5 +1,5 @@
 import { IsString, IsEmail, IsNotEmpty, Length } from 'class-validator';
-import { ApiModelProperty, ApiModelPropertyOptional } from '@xmlking/swagger';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 
 export class EmailDto {
 

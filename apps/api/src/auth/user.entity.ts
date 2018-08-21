@@ -1,5 +1,5 @@
 import {Column, CreateDateColumn, Entity, Index, OneToMany, UpdateDateColumn, VersionColumn} from 'typeorm';
-import {ApiModelProperty} from '@xmlking/swagger';
+import {ApiModelProperty} from '@nestjs/swagger';
 import {IsAscii, IsEmail, IsNotEmpty, IsString, MaxLength, MinLength} from 'class-validator';
 import {Base} from '../core';
 
