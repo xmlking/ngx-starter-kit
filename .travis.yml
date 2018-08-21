@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+- "stable"
+cache:
+  directories:
+  - node_modules
+script:
+- npm test
+before_deploy:
+- npm run build --project=webapp -c=mock --base-href /ngx-starter-kit/
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  github_token: $github_token
+  target-branch: gh-pages
+  local_dir: dist/apps/webapp
+  on:
+    branch: master
