@@ -5,7 +5,8 @@ cache:
   directories:
   - node_modules
 script:
-- npm test
+#- npm test
+- ng -v
 before_deploy:
 - npm run build --project=webapp -c=mock --base-href /ngx-starter-kit/
 deploy:
