@@ -54,7 +54,7 @@ export const defaultMenu: MenuItem[] = [
       },
       {
         name: 'Virtual Scroll',
-        icon: 'view_list',
+        icon: 'reorder',
         link: '/dashboard/experiments/virtual-scroll'
       },
       {
@@ -63,13 +63,21 @@ export const defaultMenu: MenuItem[] = [
         link: '/dashboard/experiments/table'
       },
       {
-        name: 'Clap',
-        icon: 'directions',
-        link: '/dashboard/experiments/clap'
-      },      {
-        name: 'Knob Demo',
+        name: 'Knob',
         icon: 'directions',
         link: '/dashboard/experiments/knob'
+      },
+      {
+        name: 'Microinteractions',
+        icon: 'casino',
+        disabled: false,
+        children: [
+          {
+            name: 'Clap',
+            icon: 'pan_tool',
+            link: '/dashboard/experiments/clap'
+          }
+        ]
       },
     ]
   },

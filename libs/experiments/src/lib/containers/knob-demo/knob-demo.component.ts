@@ -95,9 +95,6 @@ options6 = {
     barWidth: 30
   };
 
-
-
-
 value7 = 65;
 options7: any = {
     scale: {
