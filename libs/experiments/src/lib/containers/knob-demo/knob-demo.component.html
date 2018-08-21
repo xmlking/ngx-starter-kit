@@ -1,127 +1,99 @@
-<div fxLayout="row wrap" fxLayout.sm="column"  fxLayoutGap="0.5%" fxLayoutAlign="center">
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Skin Tron + scale <span class="badge pull-right label-warning">{{value1}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value1" [options]="options1"></ngx-knob>
-        </div>
-      </div>
-    </div>
+<div fxLayout="row wrap" fxLayout.md="column wrap" fxLayoutGap="0.5%" fxLayoutAlign="center">
 
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">With subtext, unit and read only <span class="badge pull-right label-warning">{{value2}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value2" [options]="options2"></ngx-knob>
-        </div>
-      </div>
-    </div>
-
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Bar cap and display previous value<span class="badge pull-right label-warning">{{value3}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value3" [options]="options3"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Default Knob <span class="badge pull-right label-warning">{{value4}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value4" [options]="options4"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Skin Tron <span class="badge pull-right label-warning">{{value5}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value5" [options]="options5"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Lines scale and step <span class="badge pull-right label-warning">{{value6}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value6" [options]="options6"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Min, max value <span class="badge pull-right label-warning">{{value7}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [(value)]="value7" [(options)]="options7"></ngx-knob>
-          <button (click)="changeOptions7()">Change options</button>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Angles <span class="badge pull-right label-warning">{{value8}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value8" [options]="options8"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Dots scale + Dynamic options<span class="badge pull-right label-warning">{{value9}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value9" [options]="options9"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Animate and disabled input <span class="badge pull-right label-warning">{{value10}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value10"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Background color <span class="badge pull-right label-warning">{{value11}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value11" [options]="options11"></ngx-knob>
-        </div>
-      </div>
-    </div>
-    <div fxFlex="24%">
-      <div class="panel panel-primary">
-        <div class="panel-heading">
-          <div class="panel-title">Angles + Tron + Scale <span class="badge pull-right label-warning">{{value12}}</span></div>
-        </div>
-        <div class="panel-body text-center">
-          <ngx-knob [value]="value12" [options]="options12"></ngx-knob>
-        </div>
-      </div>
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Skin Tron + scale <span class="badge pull-right">{{value1}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value1" [options]="options1"></ngx-knob>
     </div>
   </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">With subtext, unit and read only <span class="badge pull-right">{{value2}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value2" [options]="options2"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Bar cap and display previous value <span class="badge pull-right">{{value3}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value3" [options]="options3"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Default Knob <span class="badge pull-right">{{value4}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value4" [options]="options4"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Skin Tron <span class="badge pull-right">{{value5}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value5" [options]="options5"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Lines scale and step <span class="badge pull-right">{{value6}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value6" [options]="options6"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Min, max value <span class="badge pull-right">{{value7}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value7" [options]="options7"></ngx-knob>
+      <button (click)="changeOptions7()">Change options</button>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Angles <span class="badge pull-right">{{value8}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value8" [options]="options8"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Dots scale + Dynamic options <span class="badge pull-right">{{value9}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value9" [options]="options9"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Lines scale and step <span class="badge pull-right">{{value6}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value6" [options]="options6"></ngx-knob>
+    </div>
+  </div>
+
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Animate and disabled input <span class="badge pull-right">{{value10}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value10"></ngx-knob>
+    </div>
+  </div>
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Background color <span class="badge pull-right">{{value11}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value11" [options]="options11"></ngx-knob>
+    </div>
+  </div>
+
+
+  <div fxFlex="24%" class="card">
+    <div class="card-header">Angles + Tron + Scale <span class="badge pull-right">{{value12}}</span></div>
+    <div class="card-body">
+      <ngx-knob [value]="value12" [options]="options12"></ngx-knob>
+    </div>
+  </div>
+
+</div>
 
 
