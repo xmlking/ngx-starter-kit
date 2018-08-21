@@ -6,7 +6,7 @@ import {
   Body,
   Param, HttpStatus,
 } from '@nestjs/common';
-import {ApiOperation, ApiResponse} from '@xmlking/swagger';
+import {ApiOperation, ApiResponse} from '@nestjs/swagger';
 import { ICrudService } from './crud.service';
 import {Base} from '../entities/base.entity';
 import {DeepPartial} from 'typeorm';

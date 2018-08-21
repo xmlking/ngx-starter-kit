@@ -1,5 +1,5 @@
 import {Body, Controller, HttpStatus, Param, Post, Put} from '@nestjs/common';
-import {ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags} from '@xmlking/swagger';
+import {ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags} from '@nestjs/swagger';
 import { User } from './user.entity';
 import { AuthService } from './auth.service';
 import { CrudController } from '../core';

@@ -1,7 +1,7 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { EmailService } from '../../email';
 import { EmailDto } from './dto/email.dto';
-import { ApiOAuth2Auth, ApiUseTags } from '@xmlking/swagger';
+import { ApiOAuth2Auth, ApiUseTags } from '@nestjs/swagger';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Sumo', 'Email')

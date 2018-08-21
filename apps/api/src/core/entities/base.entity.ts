@@ -2,7 +2,7 @@ import {ObjectID, ObjectIdColumn} from 'typeorm';
 
 import {Transform} from 'class-transformer';
 import toHexString from './toHexString';
-import {ApiModelPropertyOptional} from '@xmlking/swagger';
+import {ApiModelPropertyOptional} from '@nestjs/swagger';
 
 export abstract class Base {
 

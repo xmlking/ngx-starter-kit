@@ -1,4 +1,4 @@
-import { ApiModelProperty } from '@xmlking/swagger';
+import { ApiModelProperty } from '@nestjs/swagger';
 import { IsAscii, IsBoolean, IsEnum, IsIn, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { NotificationColor, NotificationIcon } from '../notification.entity';
 

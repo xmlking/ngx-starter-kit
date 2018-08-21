@@ -1,6 +1,6 @@
 import { FastifyAdapter, NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@xmlking/swagger';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { ConfigService } from './config';
 import * as helmet from 'helmet';

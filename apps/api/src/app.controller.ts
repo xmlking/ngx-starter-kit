@@ -1,5 +1,5 @@
 import { Get, Controller } from '@nestjs/common';
-import { ApiOperation } from '@xmlking/swagger';
+import { ApiOperation } from '@nestjs/swagger';
 import {ConfigService} from './config';
 import {Allow} from './auth';
 

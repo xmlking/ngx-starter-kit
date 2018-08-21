@@ -1,5 +1,5 @@
 import {IsAscii, IsEmail, IsNotEmpty, IsString, MaxLength, MinLength} from 'class-validator';
-import {ApiModelProperty} from '@xmlking/swagger';
+import {ApiModelProperty} from '@nestjs/swagger';
 
 export class CreateUserDto {
 
