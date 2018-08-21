@@ -8,7 +8,7 @@ script:
 #- npm test
 - ng -v
 before_deploy:
-- npm run build --project=webapp -c=mock --base-href /ngx-starter-kit/
+- npm run build:mock
 deploy:
   provider: pages
   skip-cleanup: true
