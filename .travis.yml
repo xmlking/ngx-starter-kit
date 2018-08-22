@@ -1,29 +1,31 @@
 language: node_js
 node_js:
-- "stable"
+  - "stable"
 cache:
   directories:
-  - node_modules
+    - node_modules
 script:
-#- npm test
-- echo "npm test temporarily disabled"
+# - npm test
+  - echo "npm test temporarily disabled"
 before_deploy:
-- npm run build:mock
-- tar czvf webapp.tar.gz -C dist/apps/webapp .
+  - npm run build:mock
+  - tar czvf webapp.tar.gz -C dist/apps/webapp .
 deploy:
-- provider: releases
-  api_key: $GITHUB_TOKEN
-  file: "./webapp.tar.gz"
-  skip_cleanup: true
-  on:
-    tags: true
-    branch: master
-- provider: pages
-  skip-cleanup: true
-  keep-history: true
-  github_token: $GITHUB_TOKEN
-  target-branch: gh-pages
-  local_dir: dist/apps/webapp
-  on:
-    tags: true
-    branch: master
+  # GitHub Releases
+  - provider: releases
+    api_key: $GITHUB_TOKEN
+    file: "./webapp.tar.gz"
+    skip_cleanup: true
+    on:
+      tags: true
+      branch: master
+  # GitHub Pages
+  - provider: pages
+    skip-cleanup: true
+    keep-history: true
+    github_token: $GITHUB_TOKEN
+    target-branch: gh-pages
+    local_dir: dist/apps/webapp
+    on:
+      tags: true
+      branch: master
