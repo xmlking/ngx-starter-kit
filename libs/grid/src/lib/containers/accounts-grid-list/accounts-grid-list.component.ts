@@ -33,7 +33,7 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
       this.accountDataSource = new MatTableDataSource<Partial<RandomAccount>>(accounts);
       this.accountDataSource.paginator = this.paginator;
       this.renderData = this.accountDataSource.connect();
-    })
+    });
   }
 
   ngOnDestroy() {}
@@ -47,6 +47,6 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
   async onClick(account: Partial<RandomAccount>) {
     this.selection.toggle(account);
     const _account = await this.accountService.getById(account.id.value).toPromise();
-    console.log(_account)
+    console.log(_account);
   }
 }
