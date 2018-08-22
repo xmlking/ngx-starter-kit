@@ -14,7 +14,8 @@
       ]
     },
     "webapp-e2e": {
-      "tags": []
+      "tags": [],
+      "implicitDependencies": ["webapp"]
     },
     "navigator": {
       "tags": [
