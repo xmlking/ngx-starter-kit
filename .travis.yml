@@ -9,11 +9,19 @@ script:
 - echo "npm test temporarily disabled"
 before_deploy:
 - npm run build:mock
+- tar czvf webapp.tar.gz -C dist/apps/webapp .
 deploy:
-  provider: pages
+- provider: releases
+  api_key: $GITHUB_TOKEN
+  file: "./webapp.tar.gz"
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master
+- provider: pages
   skip-cleanup: true
   keep-history: true
-  github_token: $github_token
+  github_token: $GITHUB_TOKEN
   target-branch: gh-pages
   local_dir: dist/apps/webapp
   on:
