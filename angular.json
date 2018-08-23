@@ -67,7 +67,7 @@
                 }
               ],
               "optimization": true,
-              "outputHashing": "media",
+              "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
@@ -116,7 +116,7 @@
               ],
               "baseHref": "/ngx-starter-kit/",
               "optimization": true,
-              "outputHashing": "media",
+              "outputHashing": "all",
               "sourceMap": false,
               "extractCss": true,
               "namedChunks": false,
