@@ -10,9 +10,9 @@ import { throwError } from 'rxjs';
 
 import { AccountEditComponent } from '../../components/account-edit/account-edit.component';
 import * as moment from 'moment';
-import { List } from 'immutable';
 import { Navigate } from '@ngxs/router-plugin';
 import { Store } from '@ngxs/store';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 @Component({
   selector: 'ngx-accounts-table',
@@ -20,11 +20,11 @@ import { Store } from '@ngxs/store';
   styleUrls: ['../../../../../shared/src/lib/containers/entity/entity.component.scss']
 })
 export class AccountsTableComponent extends EntitiesComponent<Account, AccountService> {
-  crumbs = List([
+  crumbs: ReadonlyArray<Crumb> = [
     { name: 'Dashboard', link: '/dashboard' },
     { name: 'Grid', link: '/dashboard/grid' },
     { name: 'CRUD Table' }
-  ]);
+  ];
 
   // readonly columns = [ { property: 'id'},{ property: 'name'},{ property: 'gender'},{ property: 'age'} ] as EntityColumnDef<Account>[]
   readonly columns = [

@@ -1,15 +1,20 @@
 import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { List } from 'immutable';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 @Component({
   selector: 'ngx-file-upload',
   templateUrl: './file-upload.component.html',
-  styleUrls: ['./file-upload.component.scss']
+  styleUrls: ['./file-upload.component.scss'],
 })
 export class FileUploadComponent {
-  crumbs = List([{ name: 'Dashboard', link: '/dashboard' }, { name: 'Experiments', link: '/dashboard/experiments' }, { name: 'File Upload' }]);
-  @ViewChild('myPond') myPond: any;
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'File Upload' },
+  ];
+  @ViewChild('myPond')
+  myPond: any;
   myFiles = [];
 
   // Ref: https://pqina.nl/filepond/docs/patterns/api/server/
@@ -38,7 +43,7 @@ export class FileUploadComponent {
 
           // updates FilePond interface
           abort();
-        }
+        },
       };
     },
 
@@ -78,23 +83,23 @@ export class FileUploadComponent {
 
           // Let FilePond know the request has been cancelled
           abort();
-        }
+        },
       };
     },
 
     fetch: (url, load, error, progress, abort, headers) => {},
 
-    restore: (uniqueFileId, load, error, progress, abort, headers) => {}
+    restore: (uniqueFileId, load, error, progress, abort, headers) => {},
   };
 
   pondOptions = {
     name: 'filepond',
     multiple: true,
     maxFiles: 3,
-    maxFileSize: "1MB",
+    maxFileSize: '1MB',
     instantUpload: false,
     server: this.uploadToServer,
-    acceptedFileTypes: 'image/*, application/pdf, application/*, text/plain, text/csv, .vsd'
+    acceptedFileTypes: 'image/*, application/pdf, application/*, text/plain, text/csv, .vsd',
   };
 
   constructor(public dialog: MatDialog) {}
@@ -107,5 +112,4 @@ export class FileUploadComponent {
   pondHandleAddFile(event: any) {
     console.log('A file was added', event);
   }
-
 }
