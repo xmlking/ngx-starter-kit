@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { cardAnimation } from '@ngx-starter-kit/animations';
-import { List } from 'immutable';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 @Component({
   selector: 'ngx-animations',
   templateUrl: './animations.component.html',
   styleUrls: ['./animations.component.scss'],
-  animations: [cardAnimation]
+  animations: [cardAnimation],
 })
 export class AnimationsComponent implements OnInit {
-  crumbs = List([{ name: 'Dashboard', link: '/dashboard' }, { name: 'Experiments', link: '/dashboard/experiments' }, { name: 'Animations' }]);
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'Animations' },
+  ];
   animationState: string;
 
   constructor() {}
