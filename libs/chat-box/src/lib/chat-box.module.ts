@@ -1,6 +1,8 @@
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import {
   MatBadgeModule,
   MatButtonModule,
@@ -12,8 +14,11 @@ import {
   MatListModule,
   MatRippleModule,
   MatSelectModule,
+  MatSidenavModule,
   MatTabsModule,
+  MatSliderModule,
   MatToolbarModule,
+  MatExpansionModule,
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DraggableModule } from '@ngx-starter-kit/draggable';
@@ -25,6 +30,7 @@ import { TextToSpeechService } from './services/text-to-speech.service';
 import { SpeechToTextService } from './services/speech-to-text.service';
 import { ChatBoxComponent } from './chat-box.component';
 import { TypingIndicatorComponent } from './components/typing-indicator/typing-indicator.component';
+import { TextToSpeechPreferencesComponent } from './components/text-to-speech-preferences/text-to-speech-preferences.component';
 import { ChatCardComponent } from './components/chat-card/chat-card.component';
 
 import { DIALOGFLOW_TOKEN } from './services/inject-tokens';
@@ -38,6 +44,7 @@ export interface DialogFlowTokenInterface {
 @NgModule({
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     DraggableModule,
     LedModule,
     FlexLayoutModule,
@@ -51,11 +58,15 @@ export interface DialogFlowTokenInterface {
     MatCardModule,
     MatTabsModule,
     MatIconModule,
+    MatSidenavModule,
+    MatSliderModule,
     MatDividerModule,
     MatFormFieldModule,
+    MatExpansionModule,
     NgxsModule.forFeature([ChatBoxState]),
+    NgxsFormPluginModule,
   ],
-  declarations: [ChatBoxComponent, TypingIndicatorComponent, ChatCardComponent],
+  declarations: [ChatBoxComponent, TypingIndicatorComponent, ChatCardComponent, TextToSpeechPreferencesComponent],
   exports: [ChatBoxComponent],
   providers: [ChatService, NlpService, TextToSpeechService, SpeechToTextService],
 })

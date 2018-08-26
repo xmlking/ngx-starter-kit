@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { scrollFabAnimation } from '@ngx-starter-kit/animations';
 import { fromEvent, Observable } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -27,7 +27,6 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
 
   @Select(ChatBoxState.getConversations) conversations$: Observable<Conversation[]>;
-  @Select(ChatBoxState.getSelectedVoice) selectedVoice$: Observable<SpeechSynthesisVoice>;
   @Select(ChatBoxState.getSelectedConversation) selectedConversation$: Observable<Conversation>;
   voices: SpeechSynthesisVoice[];
   canUseSpeechRecognition = false;
@@ -54,7 +53,7 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.input.nativeElement.focus();
       if (this.bottom !== undefined) {
-        this.bottom.nativeElement.scrollIntoView();
+        this.bottom.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
       }
       this.checkTyping();
     }, 100);

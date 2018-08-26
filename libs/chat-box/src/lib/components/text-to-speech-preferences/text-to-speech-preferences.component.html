@@ -1,0 +1,31 @@
+<mat-card>
+  <form [formGroup]="voiceForm" ngxsForm="chatbox.voiceForm" fxLayout="column">
+    <mat-card-content>
+    <div>
+      <mat-form-field>
+        <mat-select placeholder="Favorite Voice" formControlName="voice">
+          <mat-option *ngFor="let voice of voices" [value]="voice">
+            {{voice.name}}[{{voice.lang}}]
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div>
+      <mat-label>Volume</mat-label>
+      <mat-slider matTooltip="Volume" formControlName="volume" min="0" max="1" step="0.1" thumbLabel></mat-slider>
+    </div>
+    <div>
+      <mat-label style="margin-right: 20px">Rate</mat-label>
+      <mat-slider formControlName="rate" min="0.1" max="10" step="0.1" thumbLabel></mat-slider>
+    </div>
+    <div>
+      <mat-label style="margin-right: 16px">Pitch</mat-label>
+      <mat-slider formControlName="pitch" min="0" max="2" step="0.1" thumbLabel></mat-slider>
+    </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button color="warn" (click)="reset()">Reset</button>
+    </mat-card-actions>
+  </form>
+</mat-card>
+

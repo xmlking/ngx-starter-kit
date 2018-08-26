@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { SynthesisVoice } from '../state/chat-box.actions';
 
 @Injectable()
 export class TextToSpeechService {
@@ -11,13 +12,13 @@ export class TextToSpeechService {
     }
   }
 
-  public synthesisVoice(text: string, voice: SpeechSynthesisVoice): void {
+  public synthesisVoice(text: string, voice: SynthesisVoice): void {
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.voice = voice;
+    utterance.voice = voice.voice;
     utterance.text = text;
-    // utterance.volume = 1; // 0 to 1
-    // utterance.rate = 1; // 0.1 to 10
-    // utterance.pitch = 0; // 0 to 2
+    utterance.volume = voice.volume; // 0 to 1
+    utterance.rate = voice.rate; // 0.1 to 10
+    utterance.pitch = voice.pitch; // 0 to 2
     this.speechSynthesis.speak(utterance);
   }
 
