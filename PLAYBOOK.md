@@ -272,6 +272,7 @@ ng g lib chatBox --prefix=ngx --tags=public-module --publishable=true --dry-run
 ng g component chatBox --project=chat-box --flat --dry-run 
 ng g component components/typingIndicator --project=chat-box --dry-run 
 ng g component components/chatCard --project=chat-box --dry-run 
+ng g component components/TextToSpeechPreferences  --project=chat-box --dry-run
 ng g service services/nlp --project=chat-box --dry-run 
 ng g service services/SpeechToText --project=chat-box --dry-run 
 ng g service services/TextToSpeech --project=chat-box --dry-run 
@@ -358,6 +359,7 @@ ng g component containers/virtualScroll --project=experiments --dry-run
 ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
+ng g component containers/ledDemo --project=experiments  --dry-run
 ```
 
 ### Install
