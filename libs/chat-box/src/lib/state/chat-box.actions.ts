@@ -1,11 +1,13 @@
 import { ChatMessage, Subject } from '../chat-message.model';
 
-// Actions
-export class SwitchVoice {
-  static readonly type = '[ChatBox] SwitchVoice';
-  constructor(public readonly payload: SpeechSynthesisVoice) {}
+export interface SynthesisVoice {
+  voice: SpeechSynthesisVoice;
+  volume: number;
+  rate: number;
+  pitch: number;
 }
 
+// Actions
 export class FetchConversations {
   static readonly type = '[ChatBox] FetchConversations';
 }
