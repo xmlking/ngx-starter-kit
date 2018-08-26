@@ -76,7 +76,12 @@ export const defaultMenu: MenuItem[] = [
             name: 'Clap',
             icon: 'pan_tool',
             link: '/dashboard/experiments/clap'
-          }
+          },
+          {
+            name: 'Led',
+            icon: 'highlight',
+            link: '/dashboard/experiments/led'
+          },
         ]
       },
     ]

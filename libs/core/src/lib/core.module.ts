@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
@@ -33,6 +34,7 @@ export function noop() {
       disabled: environment.production, // Set to true for prod mode
       maxAge: 10
     }),
+    NgxsFormPluginModule.forRoot(),
     NgxsWebsocketPluginModule.forRoot({
       url: environment.WS_EVENT_BUS_URL
     }),
