@@ -5,6 +5,7 @@ import { ScrollingModule } from '@angular/cdk-experimental/scrolling';
 import { KnobModule } from '@xmlking/ngx-knob';
 
 import { ClapModule } from '@ngx-starter-kit/clap';
+import { LedModule } from '@ngx-starter-kit/led';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { ContextMenuModule } from '@ngx-starter-kit/context-menu';
 import { AnimationsComponent } from './containers/animations/animations.component';
@@ -13,14 +14,15 @@ import { HammertimeDirective } from './components/hammertime/hammertime.directiv
 import { ContextMenuComponent } from './containers/context-menu/context-menu.component';
 import { ClapButtonComponent } from './containers/clap-button/clap-button.component';
 import { KnobDemoComponent } from './containers/knob-demo/knob-demo.component';
-
+import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
+import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
+import { LedDemoComponent } from './containers/led-demo/led-demo.component';
 
 // Registering plugins
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
-import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
-import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
+
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -31,6 +33,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ContextMenuModule,
     ScrollingModule,
     ClapModule,
+    LedModule,
     KnobModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
@@ -66,6 +69,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         data: { animation: 'clap' },
       },
       {
+        path: 'led',
+        component: LedDemoComponent,
+        data: { animation: 'led' },
+      },
+      {
         path: 'knob',
         component: KnobDemoComponent,
         data: { animation: 'Knob' },
@@ -81,6 +89,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     StickyTableComponent,
     ClapButtonComponent,
     KnobDemoComponent,
+    LedDemoComponent,
   ],
 })
 export class ExperimentsModule {}
