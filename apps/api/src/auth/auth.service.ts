@@ -15,8 +15,8 @@ export class AuthService extends CrudService<User>{
 
   async getLoggedUserOrCreate(token: JwtToken): Promise<User> {
     const { email, preferred_username } = token;
-    // const user = await this.userRepository.findOne({userId : preferred_username});
-    const user = await this.userRepository.findOne({email});
+    // const user = await this.userRepository.findOne({email});
+    const user = await this.userRepository.findOne({userId : preferred_username});
     if (user) {
       return user;
     } else {
