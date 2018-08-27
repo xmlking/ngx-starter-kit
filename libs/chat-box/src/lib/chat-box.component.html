@@ -12,7 +12,7 @@
     <span fxFlex>ChatBox</span>
     <span fxFlex="grow"><!-- fill space --></span>
     <!--<ngx-led color="orange" size="10px" [blink]=true></ngx-led>-->
-    <button mat-icon-button>
+    <button *ngIf="canUseSpeechSynthesis" mat-icon-button>
       <mat-icon (click)="drawer.toggle()">settings</mat-icon>
     </button>
     <button mat-icon-button>
