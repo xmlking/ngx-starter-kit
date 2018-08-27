@@ -8,10 +8,10 @@ Deploying KeyCloak on OpenShift Origin
 cd .deploy/keycloak
 docker build --tag=keycloak-openshift-stateless . 
 # Tag
-docker tag xmlking/keycloak-openshift-stateless:4.0.0.Final
-docker tag xmlking/keycloak-openshift-stateless:4.0.0.Final  xmlking/keycloak-openshift-stateless:latest
+docker tag xmlking/keycloak-openshift-stateless:4.3.0.Final
+docker tag xmlking/keycloak-openshift-stateless:4.3.0.Final  xmlking/keycloak-openshift-stateless:latest
 # Push
-docker push xmlking/keycloak-openshift-stateless:4.0.0.Final
+docker push xmlking/keycloak-openshift-stateless:4.3.0.Final
 docker push xmlking/keycloak-openshift-stateless:latest
 ```
 

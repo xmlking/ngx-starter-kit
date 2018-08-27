@@ -4,29 +4,31 @@ services:
     image: xmlking/keycloak-openshift-stateless
     container_name: keycloak
     volumes:
-    - $PWD/.deploy/keycloak/realm-config:/opt/jboss/keycloak/realm-config
+      - '$PWD/.deploy/keycloak/realm-config:/opt/jboss/keycloak/realm-config'
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin123
       DB_VENDOR: H2
-      KEYCLOAK_USER_CACHE_ENABLED: "false"
-      KEYCLOAK_REALM_CACHE_ENABLED: "false"
+      KEYCLOAK_USER_CACHE_ENABLED: 'false'
+      KEYCLOAK_REALM_CACHE_ENABLED: 'false'
     ports:
-    - 9080:9080
-    - 9444:9443
-    - 10990:10990
+      - '9080:9080'
+      - '9444:9443'
+      - '10990:10990'
   mongodb:
-    image: centos/mongodb-36-centos7
+    image: bitnami/mongodb:latest
     container_name: mongodb
     ports:
-    - 27017:27017
+      - '27017:27017'
     environment:
-    - MONGODB_ADMIN_PASSWORD=cockpit321
-    - MONGODB_DATABASE=cockpit
-    - MONGODB_USER=mdbuser
-    - MONGODB_PASSWORD=cockpit123
+      - MONGODB_REPLICA_SET_MODE=primary
+      - MONGODB_ROOT_PASSWORD=cockpit321
+      - MONGODB_DATABASE=cockpit
+      - MONGODB_USERNAME=mdbuser
+      - MONGODB_PASSWORD=cockpit123
+      - MONGODB_REPLICA_SET_KEY=replicasetkey123
     volumes:
-    - /tmp/mongodb-data:/var/lib/mongodb/data
+      - 'mongodb_primary_data:/bitnami'
   api:
     build:
       context: .
@@ -36,23 +38,67 @@ services:
     env_file:
       - development.env
     ports:
-    - 3000:3000
+      - '3000:3000'
     depends_on:
-    - mongodb
+      - mongodb
   web:
     build:
       context: .
       dockerfile: .deploy/webapp/prod.dockerfile
     image: ngx-starter-kit:latest
     container_name: web
-    command: nginx -g 'daemon off;'
+    command: nginx-debug -g 'daemon off;'
     volumes:
-    - .deploy/webapp/nginx.dev.conf:/etc/nginx/conf.d/nginx.conf:ro
+      - .deploy/webapp/nginx.dev.conf:/etc/nginx/conf.d/nginx.conf:ro
     ports:
-    - 4200:8080
+      - '4200:8080'
     depends_on:
-    - keycloak
-    - api
+      - keycloak
+      - api
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+    container_name: elasticsearch
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#    volumes:
+#    - esdata1:/usr/share/elasticsearch/data
+    environment:
+    - discovery.type=single-node
+    ports:
+    - '9200:9200'
+    links:
+    - 'mongodb'
+  kibana:
+    image: docker.elastic.co/kibana/kibana:6.4.0
+    container_name: kibana
+#    volumes:
+#    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    links:
+    - 'elasticsearch'
+    ports:
+    - '5601:5601'
+  transporter:
+    image: xmlking/mongo-to-es-transporter:latest
+    container_name: transporter
+    environment:
+      DB_NAME: cockpit
+      MONGODB_URI: "mongodb://root:cockpit321@mongodb:27017"
+      ELASTICSEARCH_URI: "http://elasticsearch:9200"
+    links:
+    - 'mongodb'
+    - 'elasticsearch'
+
 volumes:
   uploads:
+    driver: local
+  mongodb_primary_data:
+    driver: local
+  mongodb_secondary_data:
+    driver: local
+  esdata1:
+    driver: local
+  esdata2:
     driver: local
