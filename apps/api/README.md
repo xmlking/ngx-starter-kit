@@ -35,12 +35,13 @@ docker-compose down
 
 #### Run Dev Mode
 ```bash
+# start in watch mode
+npm run api:start:dev
+
+# start
 npm run api:start
 # if you want run with `development` config
 NODE_ENV=development npm run api:start
-
-# watch mode
-npm run api:start:dev
 ```
 
 #### Run HMR Mode

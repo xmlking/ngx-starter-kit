@@ -32,27 +32,28 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
   }
 
   public handleConnection(client: ISocket) {
-    this.logger.log(`Client connected => ${client.id}  ${client.handshake.query.token}`);
+    // this.logger.log(`Client connected => ${client.id}  ${client.handshake.query.token}`);
     // TODO do auth here
     this.clients.push(client);
   }
 
   public handleDisconnect(client: ISocket) {
-    this.logger.log(`Client disconnected => ${client.id}`);
-    this.clients = this.clients.filter(c => c.id !== client.id);
+    // this.logger.log(`Client disconnected => ${client.id}`);
+    // FIXME: remove any. only needed for docker build
+    this.clients = this.clients.filter(c => (c as any).id !== (client as any).id);
   }
 
   @UseGuards(WsAuthGuard)
   @SubscribeMessage('auth')
   onAuthenticate(client: ISocket, data: any) {
-    this.logger.log(`auth  => ${client.id}  ${client.user.userId}`);
+    // this.logger.log(`auth  => ${client.id}  ${client.user.userId}`);
     const event = 'auth';
     return {event, status: 'success'};
   }
 
   @SubscribeMessage('test')
   onTest(client: ISocket, data: any): Observable<WsResponse<any>> {
-    this.logger.log(`test  => ${client.id}  ${client.user.userId}`);
+    // this.logger.log(`test  => ${client.id}  ${client.user.userId}`);
     const event = 'test';
     // client.broadcast.emit({event, data});
     return of({event, data}).pipe(delay(1000));
@@ -60,19 +61,21 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
 
   @SubscribeMessage('actions')
   onActions(client: ISocket, action: any) {
-    this.logger.log(`actions  => ${client.id}  ${client.user.userId} ${action.type} ${action.payload}`);
+    // this.logger.log(`actions  => ${client.id}  ${client.user.userId} ${action.type} ${action.payload}`);
     this.emit(action.type, action);
   }
 
   public sendActionToUser<T>(user: User, action: any): void {
     const clients = this.getSocketsForUser(user);
     const type = getActionTypeFromInstance(action);
-    clients.forEach(socket => socket.emit(EventBusGateway.ACTIONS, { ...action, type }));
+    // FIXME: remove any. only needed for docker build
+    clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
   }
 
   public sendActionToAll<T>(action: any): void {
     const type = getActionTypeFromInstance(action);
-    this.clients.forEach(socket => socket.emit(EventBusGateway.ACTIONS, { ...action, type }));
+    // FIXME: remove any. only needed for docker build
+    this.clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
   }
 
   private getSocketsForUser(user: User): ISocket[] {

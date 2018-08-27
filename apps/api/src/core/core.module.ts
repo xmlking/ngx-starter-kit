@@ -30,15 +30,16 @@ import { RequestContextMiddleware } from './context';
       entities: [process.env.TYPEORM_ENTITIES],
       keepConnectionAlive: true,
       logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
-      synchronize: true,
+      synchronize: process.env.TYPEORM_SYNCHRONIZE ? JSON.parse(process.env.TYPEORM_SYNCHRONIZE) : false,
     }),
   ],
   controllers: [],
   providers: [
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: LoggingInterceptor,
-    },
+    // Enable for debugging in Dev env.
+    // {
+    //   provide: APP_INTERCEPTOR,
+    //   useClass: LoggingInterceptor,
+    // },
     {
       provide: APP_INTERCEPTOR,
       useClass: TransformInterceptor,
