@@ -89,6 +89,10 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Refer [stories](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories)
 
+* Publishing Angular Library?
+
+> Refer [stories](https://blog.angularindepth.com/the-angular-library-series-publishing-ce24bb673275)
+
 * How to customize material design typography?
 
 > Refer [stories](https://github.com/angular/material2/blob/master/guides/typography.md)
