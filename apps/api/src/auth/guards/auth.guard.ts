@@ -15,6 +15,7 @@ export const defaultOptions = {
   },
 };
 
+// TODO like https://github.com/nestjs/nest/blob/master/sample/19-auth/src/auth/guards/jwt-auth.guard.ts
 @Injectable()
 export class AuthGuard implements CanActivate {
   constructor() {}
