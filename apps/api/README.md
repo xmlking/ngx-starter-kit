@@ -26,10 +26,15 @@ Code Style        | [Prettier](https://github.com/prettier/prettier) & [TS-Lint]
 #### MongoDB
 > start mongodb 
 ```bash
-# or start local mongodb
-docker-compose up mongodb
+# start local mongodb
+docker-compose up -V mongodb
 # stop local mongodb before restart again
-docker-compose down
+docker-compose down -v
+```
+> if error `The container name "/mongodb" is already in use by container`, remove orphan container.
+```bash
+docker ps -a
+docker rm 82be5234c94a
 ```
 
 
