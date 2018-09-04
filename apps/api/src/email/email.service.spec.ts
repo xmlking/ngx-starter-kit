@@ -5,7 +5,12 @@ describe('EmailService', () => {
   let service: EmailService;
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [EmailService],
+      providers: [
+        {
+          provide: EmailService,
+          useValue: {}, // TODO: Mock
+        },
+      ],
     }).compile();
     service = module.get<EmailService>(EmailService);
   });
