@@ -1351,6 +1351,9 @@
     },
     "@nrwl/angular:directive": {
       "prefix": "ngx"
+    },
+    "@nrwl/schematics:library": {
+      "unitTestRunner": "jest"
     }
   },
   "cli": {
