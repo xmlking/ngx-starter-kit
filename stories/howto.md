@@ -22,3 +22,14 @@ git tag --delete tag-test-release-production
 git push --delete origin tag-test-release-production
 ```
 
+
+how to upgrade an old module to use jest instead of Karma?
+
+delete `karma.conf.js`, `test.ts`, and `tsconfig.spec.json` and remove the `test` target for this module from `angular.json`
+> [refer](https://blog.nrwl.io/nrwl-nx-6-3-faster-testing-with-jest-20a8ddb5064)
+```bash
+ng generate jest-project --project app-confirm
+# test upgraded module 
+ng test app-confirm
+```
+

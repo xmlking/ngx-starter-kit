@@ -620,24 +620,25 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/app-confirm/src/test.ts",
-            "tsConfig": "libs/app-confirm/tsconfig.spec.json",
-            "karmaConfig": "libs/app-confirm/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
               "libs/app-confirm/tsconfig.lib.json",
+              "libs/app-confirm/tsconfig.spec.json",
               "libs/app-confirm/tsconfig.spec.json"
             ],
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/app-confirm/jest.config.js",
+            "tsConfig": "libs/app-confirm/tsconfig.spec.json",
+            "setupFile": "libs/app-confirm/src/test-setup.ts"
           }
         }
       }
