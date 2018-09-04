@@ -129,7 +129,10 @@ npm i angular-oauth2-oidc
 
 # Add ngxs
 npm i @ngxs/devtools-plugin @ngxs/store @ngxs/router-plugin
-    
+
+# Add formly
+ng add @ngx-formly/schematics --ui-theme=material
+
 # Add Filepond
 npm i ngx-filepond \
 filepond-plugin-file-encode \
