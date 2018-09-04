@@ -4,7 +4,7 @@
     "outDir": "../../dist/out-tsc/apps/webapp",
     "module": "commonjs",
     "types": [
-      "jasmine",
+      "jest",
       "node"
     ]
   },

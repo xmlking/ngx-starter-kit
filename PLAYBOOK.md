@@ -176,7 +176,7 @@ ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
 
-
+ng g lib aaa  --dry-run 
 ng g lib animations --nomodule -tags=utils --unit-test-runner=jest --dry-run 
 ng g lib Tree --nomodule  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
 ng g lib utils --nomodule --tags=utils --unit-test-runner=jest --dry-run

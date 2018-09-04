@@ -220,14 +220,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/navigator/src/test.ts",
-            "tsConfig": "libs/navigator/tsconfig.spec.json",
-            "karmaConfig": "libs/navigator/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -238,6 +230,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/navigator/jest.config.js",
+            "tsConfig": "libs/navigator/tsconfig.spec.json",
+            "setupFile": "libs/navigator/src/test-setup.ts"
           }
         }
       }
@@ -260,14 +260,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/socketio-plugin/src/test.ts",
-            "tsConfig": "libs/socketio-plugin/tsconfig.spec.json",
-            "karmaConfig": "libs/socketio-plugin/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -278,6 +270,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/socketio-plugin/jest.config.js",
+            "tsConfig": "libs/socketio-plugin/tsconfig.spec.json",
+            "setupFile": "libs/socketio-plugin/src/test-setup.ts"
           }
         }
       }
@@ -300,14 +300,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/tree/src/test.ts",
-            "tsConfig": "libs/tree/tsconfig.spec.json",
-            "karmaConfig": "libs/tree/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -319,6 +311,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/tree/jest.config.js",
+            "tsConfig": "libs/tree/tsconfig.spec.json",
+            "setupFile": "libs/tree/src/test-setup.ts"
+          }
         }
       }
     },
@@ -328,14 +328,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/home/src/test.ts",
-            "tsConfig": "libs/home/tsconfig.spec.json",
-            "karmaConfig": "libs/home/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -347,6 +339,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/home/jest.config.js",
+            "tsConfig": "libs/home/tsconfig.spec.json",
+            "setupFile": "libs/home/src/test-setup.ts"
+          }
         }
       }
     },
@@ -356,14 +356,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/dashboard/src/test.ts",
-            "tsConfig": "libs/dashboard/tsconfig.spec.json",
-            "karmaConfig": "libs/dashboard/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -375,6 +367,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/dashboard/jest.config.js",
+            "tsConfig": "libs/dashboard/tsconfig.spec.json",
+            "setupFile": "libs/dashboard/src/test-setup.ts"
+          }
         }
       }
     },
@@ -384,14 +384,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/not-found/src/test.ts",
-            "tsConfig": "libs/not-found/tsconfig.spec.json",
-            "karmaConfig": "libs/not-found/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -403,6 +395,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/not-found/jest.config.js",
+            "tsConfig": "libs/not-found/tsconfig.spec.json",
+            "setupFile": "libs/not-found/src/test-setup.ts"
+          }
         }
       }
     },
@@ -412,14 +412,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/experiments/src/test.ts",
-            "tsConfig": "libs/experiments/tsconfig.spec.json",
-            "karmaConfig": "libs/experiments/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -431,6 +423,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/experiments/jest.config.js",
+            "tsConfig": "libs/experiments/tsconfig.spec.json",
+            "setupFile": "libs/experiments/src/test-setup.ts"
+          }
         }
       }
     },
@@ -440,14 +440,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/widgets/src/test.ts",
-            "tsConfig": "libs/widgets/tsconfig.spec.json",
-            "karmaConfig": "libs/widgets/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -459,6 +451,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/widgets/jest.config.js",
+            "tsConfig": "libs/widgets/tsconfig.spec.json",
+            "setupFile": "libs/widgets/src/test-setup.ts"
+          }
         }
       }
     },
@@ -468,14 +468,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/material/src/test.ts",
-            "tsConfig": "libs/material/tsconfig.spec.json",
-            "karmaConfig": "libs/material/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -487,6 +479,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/material/jest.config.js",
+            "tsConfig": "libs/material/tsconfig.spec.json",
+            "setupFile": "libs/material/src/test-setup.ts"
+          }
         }
       }
     },
@@ -496,14 +496,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/animations/src/test.ts",
-            "tsConfig": "libs/animations/tsconfig.spec.json",
-            "karmaConfig": "libs/animations/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -515,6 +507,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/animations/jest.config.js",
+            "tsConfig": "libs/animations/tsconfig.spec.json",
+            "setupFile": "libs/animations/src/test-setup.ts"
+          }
         }
       }
     },
@@ -524,14 +524,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/utils/src/test.ts",
-            "tsConfig": "libs/utils/tsconfig.spec.json",
-            "karmaConfig": "libs/utils/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -543,6 +535,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "tsConfig": "libs/utils/tsconfig.spec.json",
+            "setupFile": "libs/utils/src/test-setup.ts"
+          }
         }
       }
     },
@@ -552,14 +552,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/auth/src/test.ts",
-            "tsConfig": "libs/auth/tsconfig.spec.json",
-            "karmaConfig": "libs/auth/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -571,6 +563,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/auth/jest.config.js",
+            "tsConfig": "libs/auth/tsconfig.spec.json",
+            "setupFile": "libs/auth/src/test-setup.ts"
+          }
         }
       }
     },
@@ -580,14 +580,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/shared/src/test.ts",
-            "tsConfig": "libs/shared/tsconfig.spec.json",
-            "karmaConfig": "libs/shared/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -598,6 +590,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/shared/jest.config.js",
+            "tsConfig": "libs/shared/tsconfig.spec.json",
+            "setupFile": "libs/shared/src/test-setup.ts"
           }
         }
       }
@@ -625,7 +625,6 @@
           "options": {
             "tsConfig": [
               "libs/app-confirm/tsconfig.lib.json",
-              "libs/app-confirm/tsconfig.spec.json",
               "libs/app-confirm/tsconfig.spec.json"
             ],
             "exclude": [
@@ -661,14 +660,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/draggable/src/test.ts",
-            "tsConfig": "libs/draggable/tsconfig.spec.json",
-            "karmaConfig": "libs/draggable/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -679,6 +670,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/draggable/jest.config.js",
+            "tsConfig": "libs/draggable/tsconfig.spec.json",
+            "setupFile": "libs/draggable/src/test-setup.ts"
           }
         }
       }
@@ -701,14 +700,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/breadcrumbs/src/test.ts",
-            "tsConfig": "libs/breadcrumbs/tsconfig.spec.json",
-            "karmaConfig": "libs/breadcrumbs/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -719,6 +710,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/breadcrumbs/jest.config.js",
+            "tsConfig": "libs/breadcrumbs/tsconfig.spec.json",
+            "setupFile": "libs/breadcrumbs/src/test-setup.ts"
           }
         }
       }
@@ -741,14 +740,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/scroll-to-top/src/test.ts",
-            "tsConfig": "libs/scroll-to-top/tsconfig.spec.json",
-            "karmaConfig": "libs/scroll-to-top/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -759,6 +750,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/scroll-to-top/jest.config.js",
+            "tsConfig": "libs/scroll-to-top/tsconfig.spec.json",
+            "setupFile": "libs/scroll-to-top/src/test-setup.ts"
           }
         }
       }
@@ -781,14 +780,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/scrollbar/src/test.ts",
-            "tsConfig": "libs/scrollbar/tsconfig.spec.json",
-            "karmaConfig": "libs/scrollbar/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -799,6 +790,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/scrollbar/jest.config.js",
+            "tsConfig": "libs/scrollbar/tsconfig.spec.json",
+            "setupFile": "libs/scrollbar/src/test-setup.ts"
           }
         }
       }
@@ -821,14 +820,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/context-menu/src/test.ts",
-            "tsConfig": "libs/context-menu/tsconfig.spec.json",
-            "karmaConfig": "libs/context-menu/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -839,6 +830,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/context-menu/jest.config.js",
+            "tsConfig": "libs/context-menu/tsconfig.spec.json",
+            "setupFile": "libs/context-menu/src/test-setup.ts"
           }
         }
       }
@@ -861,14 +860,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/theme-picker/src/test.ts",
-            "tsConfig": "libs/theme-picker/tsconfig.spec.json",
-            "karmaConfig": "libs/theme-picker/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -880,6 +871,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/theme-picker/jest.config.js",
+            "tsConfig": "libs/theme-picker/tsconfig.spec.json",
+            "setupFile": "libs/theme-picker/src/test-setup.ts"
+          }
         }
       }
     },
@@ -889,14 +888,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/quickpanel/src/test.ts",
-            "tsConfig": "libs/quickpanel/tsconfig.spec.json",
-            "karmaConfig": "libs/quickpanel/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -907,6 +898,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/quickpanel/jest.config.js",
+            "tsConfig": "libs/quickpanel/tsconfig.spec.json",
+            "setupFile": "libs/quickpanel/src/test-setup.ts"
           }
         }
       }
@@ -929,14 +928,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/ngx-pipes/src/test.ts",
-            "tsConfig": "libs/ngx-pipes/tsconfig.spec.json",
-            "karmaConfig": "libs/ngx-pipes/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -947,6 +938,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ngx-pipes/jest.config.js",
+            "tsConfig": "libs/ngx-pipes/tsconfig.spec.json",
+            "setupFile": "libs/ngx-pipes/src/test-setup.ts"
           }
         }
       }
@@ -969,14 +968,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/svg-viewer/src/test.ts",
-            "tsConfig": "libs/svg-viewer/tsconfig.spec.json",
-            "karmaConfig": "libs/svg-viewer/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -987,6 +978,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/svg-viewer/jest.config.js",
+            "tsConfig": "libs/svg-viewer/tsconfig.spec.json",
+            "setupFile": "libs/svg-viewer/src/test-setup.ts"
           }
         }
       }
@@ -1009,14 +1008,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/led/src/test.ts",
-            "tsConfig": "libs/led/tsconfig.spec.json",
-            "karmaConfig": "libs/led/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1027,6 +1018,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/led/jest.config.js",
+            "tsConfig": "libs/led/tsconfig.spec.json",
+            "setupFile": "libs/led/src/test-setup.ts"
           }
         }
       }
@@ -1049,14 +1048,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/chat-box/src/test.ts",
-            "tsConfig": "libs/chat-box/tsconfig.spec.json",
-            "karmaConfig": "libs/chat-box/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1067,6 +1058,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/chat-box/jest.config.js",
+            "tsConfig": "libs/chat-box/tsconfig.spec.json",
+            "setupFile": "libs/chat-box/src/test-setup.ts"
           }
         }
       }
@@ -1089,14 +1088,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/json-diff/src/test.ts",
-            "tsConfig": "libs/json-diff/tsconfig.spec.json",
-            "karmaConfig": "libs/json-diff/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1108,6 +1099,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/json-diff/jest.config.js",
+            "tsConfig": "libs/json-diff/tsconfig.spec.json",
+            "setupFile": "libs/json-diff/src/test-setup.ts"
+          }
         }
       }
     },
@@ -1117,14 +1116,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/toolbar/src/test.ts",
-            "tsConfig": "libs/toolbar/tsconfig.spec.json",
-            "karmaConfig": "libs/toolbar/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1136,6 +1127,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/toolbar/jest.config.js",
+            "tsConfig": "libs/toolbar/tsconfig.spec.json",
+            "setupFile": "libs/toolbar/src/test-setup.ts"
+          }
         }
       }
     },
@@ -1145,14 +1144,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/sidenav/src/test.ts",
-            "tsConfig": "libs/sidenav/tsconfig.spec.json",
-            "karmaConfig": "libs/sidenav/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1163,6 +1154,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/sidenav/jest.config.js",
+            "tsConfig": "libs/sidenav/tsconfig.spec.json",
+            "setupFile": "libs/sidenav/src/test-setup.ts"
           }
         }
       }
@@ -1185,14 +1184,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/loading-overlay/src/test.ts",
-            "tsConfig": "libs/loading-overlay/tsconfig.spec.json",
-            "karmaConfig": "libs/loading-overlay/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1204,6 +1195,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/loading-overlay/jest.config.js",
+            "tsConfig": "libs/loading-overlay/tsconfig.spec.json",
+            "setupFile": "libs/loading-overlay/src/test-setup.ts"
+          }
         }
       }
     },
@@ -1213,14 +1212,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/grid/src/test.ts",
-            "tsConfig": "libs/grid/tsconfig.spec.json",
-            "karmaConfig": "libs/grid/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1231,6 +1222,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/grid/jest.config.js",
+            "tsConfig": "libs/grid/tsconfig.spec.json",
+            "setupFile": "libs/grid/src/test-setup.ts"
           }
         }
       }
@@ -1253,14 +1252,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/notifications/src/test.ts",
-            "tsConfig": "libs/notifications/tsconfig.spec.json",
-            "karmaConfig": "libs/notifications/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1272,6 +1263,14 @@
               "**/node_modules/**"
             ]
           }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/notifications/jest.config.js",
+            "tsConfig": "libs/notifications/tsconfig.spec.json",
+            "setupFile": "libs/notifications/src/test-setup.ts"
+          }
         }
       }
     },
@@ -1281,14 +1280,6 @@
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/core/src/test.ts",
-            "tsConfig": "libs/core/tsconfig.spec.json",
-            "karmaConfig": "libs/core/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1299,6 +1290,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/core/jest.config.js",
+            "tsConfig": "libs/core/tsconfig.spec.json",
+            "setupFile": "libs/core/src/test-setup.ts"
           }
         }
       }
@@ -1321,14 +1320,6 @@
             }
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "libs/clap/src/test.ts",
-            "tsConfig": "libs/clap/tsconfig.spec.json",
-            "karmaConfig": "libs/clap/karma.conf.js"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -1339,6 +1330,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/clap/jest.config.js",
+            "tsConfig": "libs/clap/tsconfig.spec.json",
+            "setupFile": "libs/clap/src/test-setup.ts"
           }
         }
       }
