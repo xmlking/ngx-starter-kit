@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { FormlyModule } from '@ngx-formly/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
@@ -40,6 +41,7 @@ export function noop() {
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
+    FormlyModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
         passThruUnknownUrl: true

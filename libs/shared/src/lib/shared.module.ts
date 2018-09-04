@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MomentModule } from 'ngx-moment';
+import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MaterialModule } from '@ngx-starter-kit/material';
 import { MaterialDateModule } from '@ngx-starter-kit/material';
 import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
@@ -36,6 +37,7 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective
     MaterialModule,
     MaterialDateModule,
     MomentModule,
+    FormlyMaterialModule,
     PerfectScrollbarModule,
     ...DIRECTIVES
   ],
