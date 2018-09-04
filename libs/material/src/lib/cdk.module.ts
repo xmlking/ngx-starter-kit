@@ -9,8 +9,9 @@ import { PlatformModule } from '@angular/cdk/platform';
 import { ObserversModule } from '@angular/cdk/observers';
 import { PortalModule } from '@angular/cdk/portal';
 import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
-const CDK_MODULES = [CdkTableModule, PortalModule, ScrollDispatchModule];
+const CDK_MODULES = [CdkTableModule, PortalModule, ScrollDispatchModule, DragDropModule];
 
 @NgModule({
   exports: CDK_MODULES

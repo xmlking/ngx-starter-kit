@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
 import { DraggableModule } from '@ngx-starter-kit/draggable';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { NgxPipesModule } from '@ngx-starter-kit/ngx-pipes';
 import { AccountsGridListComponent } from './containers/accounts-grid-list/accounts-grid-list.component';
 import { AccountsTableComponent } from './containers/accounts-table/accounts-table.component';
@@ -15,6 +16,7 @@ import { AccountEditComponent } from './components/account-edit/account-edit.com
   imports: [
     SharedModule,
     DraggableModule,
+    DragDropModule,
     AppConfirmModule,
     NgxPipesModule,
     RouterModule.forChild([

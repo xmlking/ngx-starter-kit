@@ -22,6 +22,7 @@ import {
 } from '@angular/material';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { DraggableModule } from '@ngx-starter-kit/draggable';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { LedModule } from '@ngx-starter-kit/led';
 
 import { NlpService } from './services/nlp.service';
@@ -46,6 +47,7 @@ export interface DialogFlowTokenInterface {
     CommonModule,
     ReactiveFormsModule,
     DraggableModule,
+    DragDropModule,
     LedModule,
     FlexLayoutModule,
     MatSelectModule,

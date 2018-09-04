@@ -2,13 +2,13 @@
   <mat-icon>chat_bubble</mat-icon>
 </button>
 
-<div fxLayout='column' class="chat-box"
+<div cdkDrag fxLayout='column' class="chat-box"
      resizable [directions]="['bottom', 'top', 'left', 'right', 'top-left', 'bottom-left', 'top-right', 'bottom-right']"
      [@scrollAnimation]="showChatBox? 'show' : 'hide'">
 
   <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
                class="header mat-elevation-z2" color="primary"
-               [draggable] dragTarget=".chat-box">
+               cdkDragHandle>
     <span fxFlex>ChatBox</span>
     <span fxFlex="grow"><!-- fill space --></span>
     <!--<ngx-led color="orange" size="10px" [blink]=true></ngx-led>-->

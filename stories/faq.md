@@ -62,6 +62,9 @@ once you are conferable , then you can delete demo `default` app
 *  Why I Prefer NGXS over NGRX 
 > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
 
+* How to preload modules? 
+> Read Angular Router: [Preloading Modules](https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb)
+
 *  How to manage state in the front-end?
 
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)

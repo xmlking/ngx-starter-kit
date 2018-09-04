@@ -39,12 +39,12 @@ import { environment } from '@env/environment';
           {
             path: '',
             loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview' }
+            data: { animation: 'overview', preload: true }
           },
           {
             path: 'grid',
             loadChildren: '@ngx-starter-kit/grid#GridModule',
-            data: { animation: 'grid' }
+            data: { animation: 'grid', preload: true }
           },
           {
             path: 'experiments',
