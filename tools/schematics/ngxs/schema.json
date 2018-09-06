@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "id": "ngxs",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Class name"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}
