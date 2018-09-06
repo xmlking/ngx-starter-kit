@@ -33,3 +33,7 @@ ng generate jest-project --project app-confirm
 ng test app-confirm
 ```
 
+
+How to migrate project to newer versions?
+
+> [refer](https://update.angular.io/)
