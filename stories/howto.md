@@ -26,7 +26,7 @@ git tag tag-test-release-production
 git push --tags origin master
 ```
 
-Once it’s done, **you can clean the tag locally (and remotly)** like that (if you wish):1
+Once it’s done, **you can clean the tag locally (and remotly)** like that (if you wish):
 ```bash
 git tag --delete tag-test-release-production
 git push --delete origin tag-test-release-production
