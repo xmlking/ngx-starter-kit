@@ -56,7 +56,7 @@ jobs:
     - stage: release # github release
       if: branch = master AND tag IS present
       install: skip
-      script: ignore
+      script: skip
       before_deploy:
         - tar czvf webapp.tar.gz -C dist/apps/webapp .
       deploy:
@@ -67,7 +67,7 @@ jobs:
 
     - stage: deploy
       install: skip
-      script: ignore
+      script: skip
       deploy:
         provider: pages
         skip-cleanup: true
