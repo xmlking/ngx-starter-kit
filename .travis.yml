@@ -5,7 +5,8 @@ addons:
   chrome: stable
 cache: # global caching
   directories:
-    - node_modules
+#    - node_modules
+    - $HOME/.npm
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
