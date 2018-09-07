@@ -164,6 +164,12 @@ npm i -D @angular/http
 
 # install without saving
 npm install trianglify --no-save --no-lock
+
+# install testCafe for e2e testing and remove protractor
+npm i testcafe testcafe-angular-selectors testcafe-live
+
+# for CI/CD automation and release
+npm i -D commitizen cz-conventional-changelog semantic-release
 ```
 
 #### Generate Artifacts
@@ -471,6 +477,9 @@ Now open your browser at http://localhost:80
 
 Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.
 Right click on `apps/webapp/src` in project vie --> Make Directory as --> Resources Root.
+Right click on `docs` in project view --> Make Directory as --> Excluded.
+Right click on `dist` in project view --> Make Directory as --> Excluded.
+Right click on `coverage` in project view --> Make Directory as --> Excluded.
 
 ###  Reference 
 
