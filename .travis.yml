@@ -51,13 +51,13 @@ jobs:
       script: skip
       deploy:
         provider: script
-        skip-cleanup: true
         script: npm run release
+        skip-cleanup: true
 
     - stage: release # github release
       if: branch = master AND tag IS present
       install: skip
-      script: skip
+      script: npm run build:mock
       before_deploy:
         - tar czvf webapp.tar.gz -C dist/apps/webapp .
       deploy:
@@ -68,14 +68,14 @@ jobs:
 
     - stage: deploy
       install: skip
-      script: skip
+      script: npm run build:mock
       deploy:
         provider: pages
-        skip-cleanup: true
-        keep-history: true
         github_token: $GITHUB_TOKEN
         target-branch: gh-pages
         local_dir: dist/apps/webapp
+        skip-cleanup: true
+        keep-history: true
 
     - stage: docs
       if: branch = master AND tag IS present
@@ -83,8 +83,8 @@ jobs:
       script: npm run doc:build
       deploy:
         provider: pages
-        skip-cleanup: true
-        keep-history: true
         github_token: $GITHUB_TOKEN
         target-branch: docs
         local_dir: docs
+        skip-cleanup: true
+        keep-history: true
