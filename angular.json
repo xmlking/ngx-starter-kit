@@ -4,7 +4,7 @@
   "newProjectRoot": "",
   "projects": {
     "webapp": {
-      "root": "apps/webapp/",
+      "root": "apps/webapp",
       "sourceRoot": "apps/webapp/src",
       "projectType": "application",
       "prefix": "app",
@@ -153,12 +153,11 @@
           }
         },
         "test": {
-          "builder": "@angular-devkit/build-angular:karma",
+          "builder": "@nrwl/builders:jest",
           "options": {
-            "main": "apps/webapp/src/test.ts",
-            "polyfills": "apps/webapp/src/polyfills.ts",
+            "jestConfig": "apps/webapp/jest.config.js",
             "tsConfig": "apps/webapp/tsconfig.spec.json",
-            "karmaConfig": "apps/webapp/karma.conf.js",
+            "setupFile": "apps/webapp/src/test-setup.ts",
             "styles": [
               {
                 "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"

@@ -1,31 +1,89 @@
 language: node_js
-node_js:
-  - "stable"
-cache:
+node_js: # will use latest stable node
+  - 'stable'
+addons:
+  chrome: stable
+cache: # global caching
   directories:
     - node_modules
-script:
-# - npm test
-  - echo "npm test temporarily disabled"
-before_deploy:
-  - npm run build:mock
-  - tar czvf webapp.tar.gz -C dist/apps/webapp .
-deploy:
-  # GitHub Pages
-  - provider: pages
-    skip-cleanup: true
-    keep-history: true
-    github_token: $GITHUB_TOKEN
-    target-branch: gh-pages
-    local_dir: dist/apps/webapp
-    on:
-      tags: true
-      branch: master
-  # GitHub Releases
-  - provider: releases
-    api_key: $GITHUB_TOKEN
-    file: "./webapp.tar.gz"
-    skip_cleanup: true
-    on:
-      tags: true
-      branch: master
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
+notifications:
+  email: # only receive email when the build status changes (someone broke the build!)
+    on_failure: change
+    on_success: change
+env:
+  - NODE_ENV=mock
+
+stages:
+  #  - lint
+  #  - test
+  - build
+  - name: release
+    if: branch = master AND type IN (push)
+  - name: deploy
+    if: branch = master AND type != pull_request
+  - name: docs
+    if: branch = master AND type != pull_request
+
+jobs:
+  include:
+    - stage: lint
+      script: npm run lint
+
+    - stage: test # unit test
+      script:
+        - npm run test:ci
+#        - "npm testcafe 'path:`/usr/bin/google-chrome-stable` --headless --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0' apps/webapp-e2e/**/*.e2e-spec.ts --app 'npm run start' --skip-js-errors --app-init-delay 4000"
+
+    - stage: test # e2e test
+      script:
+        - npm run e2e:ci
+
+    - stage: build
+      before_script: npm run prebuild
+      script:
+        - npm run build:mock
+
+    - stage: release # semantic release - create changelog
+      script: skip
+      deploy:
+        provider: script
+        skip-cleanup: true
+        script: npm run release
+
+    - stage: release # github release
+      if: branch = master AND tag IS present
+      install: skip
+      script: ignore
+      before_deploy:
+        - tar czvf webapp.tar.gz -C dist/apps/webapp .
+      deploy:
+        - provider: releases
+          api_key: $GITHUB_TOKEN
+          file: './webapp.tar.gz'
+          skip_cleanup: true
+
+    - stage: deploy
+      install: skip
+      script: ignore
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        keep-history: true
+        github_token: $GITHUB_TOKEN
+        target-branch: gh-pages
+        local_dir: dist/apps/webapp
+
+    - stage: docs
+      if: branch = master AND tag IS present
+      install: skip
+      script: npm run doc:build
+      deploy:
+        provider: pages
+        skip-cleanup: true
+        keep-history: true
+        github_token: $GITHUB_TOKEN
+        target-branch: docs
+        local_dir: docs
