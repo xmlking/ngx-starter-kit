@@ -31,6 +31,8 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 
      ```shell
      git commit -a
+     # or use this git-cz commit interactive helper tool 
+     npm run commit
      ```
   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 
