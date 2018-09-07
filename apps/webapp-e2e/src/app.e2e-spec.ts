@@ -1,14 +1,16 @@
-import { AppPage } from './app.po';
+import { waitForAngular } from 'testcafe-angular-selectors';
+import { AppPage } from './po/app.po';
 
-describe('workspace-project App', () => {
-  let page: AppPage;
+const page = new AppPage();
 
-  beforeEach(() => {
-    page = new AppPage();
-  });
+fixture('ngx-starter-kit WebApp').beforeEach(async (t) => {
+  // await waitForAngular();
+});
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Welcome to app!');
-  });
+test('should display welcome message', async (t) => {
+  await page.navigateTo();
+
+  const paragraphText = await page.getParagraphText();
+
+  await t.expect(paragraphText).contains('Sumo App');
 });
