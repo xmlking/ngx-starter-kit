@@ -22,11 +22,12 @@ stages:
 #  - test
 #  - build
   - name: release
-    if: branch = master AND type IN (push)
+#    if: branch = master AND type IN (push)
+    if: branch = master AND tag IS present
   - name: deploy
     if: branch = master AND type != pull_request
   - name: docs
-    if: branch = master AND type != pull_request
+    if: branch = master AND tag IS present
 
 jobs:
   include:
@@ -48,6 +49,7 @@ jobs:
 #        - npm run build:mock
 
     - stage: release # semantic release - create changelog
+      if: branch = master AND tag IS present
       script: skip
       deploy:
         provider: script
@@ -56,7 +58,6 @@ jobs:
 
     - stage: release # github release
       if: branch = master AND tag IS present
-      install: skip
       script: npm run build:mock
       before_deploy:
         - tar czvf webapp.tar.gz -C dist/apps/webapp .
@@ -67,7 +68,6 @@ jobs:
           skip_cleanup: true
 
     - stage: deploy
-      install: skip
       script: npm run build:mock
       deploy:
         provider: pages
@@ -78,8 +78,6 @@ jobs:
         keep-history: true
 
     - stage: docs
-      if: branch = master AND tag IS present
-      install: skip
       script: npm run doc:build
       deploy:
         provider: pages
