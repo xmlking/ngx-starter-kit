@@ -1,8 +1,8 @@
 language: node_js
 node_js: # will use latest stable node
   - 'stable'
-addons:
-  chrome: stable
+#addons:
+#  chrome: stable
 cache: # global caching
   directories:
 #    - node_modules
@@ -18,9 +18,9 @@ env:
   - NODE_ENV=mock
 
 stages:
-  #  - lint
-  #  - test
-  - build
+#  - lint
+#  - test
+#  - build
   - name: release
     if: branch = master AND type IN (push)
   - name: deploy
@@ -30,24 +30,25 @@ stages:
 
 jobs:
   include:
-    - stage: lint
-      script: npm run lint
+#    - stage: lint
+#      script: npm run lint
 
-    - stage: test # unit test
-      script:
-        - npm run test:ci
-#        - "npm testcafe 'path:`/usr/bin/google-chrome-stable` --headless --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0' apps/webapp-e2e/**/*.e2e-spec.ts --app 'npm run start' --skip-js-errors --app-init-delay 4000"
+#    - stage: test # unit test
+#      script:
+#        - npm run test:ci
+##        - "npm testcafe 'path:`/usr/bin/google-chrome-stable` --headless --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0' apps/webapp-e2e/**/*.e2e-spec.ts --app 'npm run start' --skip-js-errors --app-init-delay 4000"
 
-    - stage: test # e2e test
-      script:
-        - npm run e2e:ci
+#    - stage: test # e2e test
+#      script:
+#        - npm run e2e:ci
 
-    - stage: build
-      before_script: npm run prebuild
-      script:
-        - npm run build:mock
+#    - stage: build
+#      before_script: npm run prebuild
+#      script:
+#        - npm run build:mock
 
     - stage: release # semantic release - create changelog
+      install: skip
       script: skip
       deploy:
         provider: script
