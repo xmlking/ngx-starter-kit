@@ -48,7 +48,6 @@ jobs:
 #        - npm run build:mock
 
     - stage: release # semantic release - create changelog
-      install: skip
       script: skip
       deploy:
         provider: script
