@@ -96,6 +96,9 @@ ng lint  home  --fix
 npm run format:check -- --uncommitted
 npx nx format:check --uncommitted
 
+npm run format:write -- --uncommitted
+npx nx format:write --uncommitted
+
 # And you want to do the following in the CI:
 npm run format:check --base=master --head=HEAD
 npx nx format:check --base=master --head=HEAD
