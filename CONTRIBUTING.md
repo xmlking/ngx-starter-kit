@@ -28,12 +28,13 @@ Before you submit your Pull Request (PR) consider the following guidelines:
 * Commit your changes using a descriptive commit message that follows our
   [commit message conventions](#commit-message-guidelines). Adherence to these conventions
   is necessary because release notes are automatically generated from these messages.
-by running  followed by npm run commit.
      ```shell
      # stage your changes 
      git add .
      # use git-cz interactive helper tool to commit
      npm run commit
+     # or use following command if you install commitizen globally   
+     git cz
      ```
   Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
 

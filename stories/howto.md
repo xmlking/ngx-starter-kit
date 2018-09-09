@@ -37,13 +37,19 @@ How to migrate project to newer versions?
 
 How to commit code?
 
-```bash
-git status
-# if all is good
-git add .
-# now commit
-`git cz` # or npm run commit
-```
+ ```bash
+ git status
+ # stage your changes 
+ git add .
+ # use git-cz interactive helper tool to commit
+ npm run commit
+ # or use following command if you install commitizen globally   
+ git cz
+ ```
+
+> Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
+
+
 
 How to Cut a Release?
 
@@ -56,7 +62,7 @@ https://adrianperez.codes/enforcing-commit-conventions/
 https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
 
 ```bash
-export GH_TOKEN=<my_guthyb_token>
+export GH_TOKEN=<my_github_token>
 export CI=true
 npm run semantic-release
 ```
