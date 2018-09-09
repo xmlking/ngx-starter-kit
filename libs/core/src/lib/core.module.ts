@@ -33,52 +33,50 @@ export function noop() {
     NgxsModule.forRoot([AuthState, MenuState, PreferenceState]),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode
-      maxAge: 10
+      maxAge: 10,
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsWebsocketPluginModule.forRoot({
-      url: environment.WS_EVENT_BUS_URL
+      url: environment.WS_EVENT_BUS_URL,
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
     FormlyModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
-        passThruUnknownUrl: true
-        // delay: 500,
-        // apiBase: 'api'
-      })
-      : []
+          passThruUnknownUrl: true,
+          // delay: 500,
+          // apiBase: 'api'
+        })
+      : [],
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: JwtInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
       deps: [EventBus],
-      multi: true
-    }
-  ]
+      multi: true,
+    },
+  ],
 })
 export class CoreModule {
   constructor(
     @Optional()
     @SkipSelf()
-      parentModule: CoreModule
+    parentModule: CoreModule,
   ) {
     if (parentModule) {
-      throw new Error(
-        'CoreModule is already loaded. Import it in the AppModule only'
-      );
+      throw new Error('CoreModule is already loaded. Import it in the AppModule only');
     }
   }
 }

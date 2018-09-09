@@ -7,7 +7,7 @@ export default {
   dialogFlow: {
     apiToken: '37808bf14a19406cbe2a50cfd1332dd3',
     // apiToken: '528e10cbdec04c78a0d0147de041dea4',
-    sessionId: 'sumodemo'
+    sessionId: 'sumodemo',
   },
   versions: {
     app: packageJson.version,
@@ -17,6 +17,6 @@ export default {
     flexLayout: packageJson.dependencies['@angular/flex-layout'],
     rxjs: packageJson.dependencies.rxjs,
     angularCli: packageJson.devDependencies['@angular/cli'],
-    typescript: packageJson.devDependencies['typescript']
-  }
+    typescript: packageJson.devDependencies['typescript'],
+  },
 };

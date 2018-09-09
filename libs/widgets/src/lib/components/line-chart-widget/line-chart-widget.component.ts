@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData, ChartDataSets } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
@@ -14,11 +8,13 @@ import { LineChartWidgetOptions } from './line-chart-widget-options.interface';
 @Component({
   selector: 'ngx-line-chart-widget',
   templateUrl: './line-chart-widget.component.html',
-  styleUrls: ['./line-chart-widget.component.scss']
+  styleUrls: ['./line-chart-widget.component.scss'],
 })
 export class LineChartWidgetComponent implements AfterViewInit {
-  @Input() data: ChartData;
-  @Input() options: LineChartWidgetOptions;
+  @Input()
+  data: ChartData;
+  @Input()
+  options: LineChartWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
@@ -59,19 +55,19 @@ export class LineChartWidgetComponent implements AfterViewInit {
               left: 24,
               right: 24,
               top: 16,
-              bottom: 24
-            }
+              bottom: 24,
+            },
           },
           tooltips: {
             mode: 'index',
-            intersect: false
+            intersect: false,
           },
           hover: {
-            intersect: true
-          }
+            intersect: true,
+          },
         },
-        defaultChartOptions
-      )
+        defaultChartOptions,
+      ),
     });
   }
 

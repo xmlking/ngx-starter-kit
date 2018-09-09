@@ -1,15 +1,5 @@
-import {
-  BadRequestException,
-  NotFoundException,
-} from '@nestjs/common';
-import {
-  DeepPartial,
-  FindManyOptions,
-  FindOneOptions,
-  MongoRepository,
-  UpdateResult,
-  DeleteResult,
-} from 'typeorm';
+import { BadRequestException, NotFoundException } from '@nestjs/common';
+import { DeepPartial, FindManyOptions, FindOneOptions, MongoRepository, UpdateResult, DeleteResult } from 'typeorm';
 import { Base } from '../entities/base.entity';
 
 export interface ICrudService<T> {
@@ -21,19 +11,17 @@ export interface ICrudService<T> {
 }
 
 export abstract class CrudService<T extends Base> implements ICrudService<T> {
-
-  protected constructor(protected readonly repository: MongoRepository<T>) {
-  }
+  protected constructor(protected readonly repository: MongoRepository<T>) {}
 
   public async getAll(filter?: FindManyOptions<T>): Promise<[T[], number]> {
-    const records =  await this.repository.findAndCount(filter);
+    const records = await this.repository.findAndCount(filter);
     if (records[1] === 0) {
       throw new NotFoundException(`The requested records were not found`);
     }
     return records;
   }
 
-  public async getOne(filter: string | FindOneOptions<T> ): Promise<T> {
+  public async getOne(filter: string | FindOneOptions<T>): Promise<T> {
     const record = await this.repository.findOne(filter);
     if (!record) {
       throw new NotFoundException(`The requested record was not found`);
@@ -46,7 +34,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     const obj = this.repository.create(entity as any);
     try {
       return await this.repository.save(obj as any);
-    } catch (err/*: WriteError*/) {
+    } catch (err /*: WriteError*/) {
       throw new BadRequestException(err);
     }
   }
@@ -82,7 +70,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
   public async update(id: string, entity: DeepPartial<T>): Promise<UpdateResult> {
     try {
       return await this.repository.update(id, entity);
-    } catch (err/*: WriteError*/) {
+    } catch (err /*: WriteError*/) {
       throw new BadRequestException(err);
     }
   }

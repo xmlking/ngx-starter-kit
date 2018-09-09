@@ -1,5 +1,5 @@
-@import "var";
-@import "constants";
+@import 'var';
+@import 'constants';
 @import '~@angular/material/theming';
 
 .user-container {
@@ -25,11 +25,11 @@
       height: 16px;
       font-size: 16px;
       transform: rotate(0);
-      transition: transform .25s cubic-bezier(.25,.8,.25,1);
+      transition: transform 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
     }
 
     &.open {
-      background: rgba(0, 0, 0, .05);
+      background: rgba(0, 0, 0, 0.05);
 
       .icon {
         transform: rotate(-180deg);
@@ -47,7 +47,7 @@
     z-index: -1;
     transform: translateY(-110%);
     visibility: hidden;
-    transition: transform .4s cubic-bezier(.25,.8,.25,1), visibility .4s cubic-bezier(.25,.8,.25,1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
     @media ($mat-xsmall) {
       top: $mat-toolbar-height-mobile-portrait;

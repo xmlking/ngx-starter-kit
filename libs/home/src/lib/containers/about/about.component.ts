@@ -9,13 +9,14 @@ import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operato
 @Component({
   selector: 'ngx-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   private _destroyed = new Subject();
 
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  @ViewChild('trianglify') trianglifyCanvasRef: ElementRef;
+  @ViewChild('trianglify')
+  trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
   private _sub: Subscription;
   constructor(private elementRef: ElementRef) {}
@@ -23,10 +24,10 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   ngOnInit() {
     fromEvent<Event>(window, 'resize')
       .pipe(
-        takeUntil(this._destroyed),
         debounceTime(100),
         map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
-        distinctUntilChanged()
+        distinctUntilChanged(),
+        takeUntil(this._destroyed),
       )
       .subscribe(res => {
         // setTimeout(() => {this.renderCanvas() }, 1000)
@@ -45,7 +46,9 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   renderCanvas() {
-    if (!this.elementRef.nativeElement.parentNode) return;
+    if (!this.elementRef.nativeElement.parentNode) {
+      return;
+    }
     const width = this.elementRef.nativeElement.children[0].offsetWidth;
     // const height = this.elementRef.nativeElement.children[0].offsetHeight;
     const height = this.elementRef.nativeElement.parentNode.offsetHeight;
@@ -62,7 +65,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
       stroke_width: 1.51,
       width: width,
       height: height,
-      seed: Math.random()
+      seed: Math.random(),
     });
     pattern.canvas(this.trianglifyCanvasRef.nativeElement);
   }

@@ -11,12 +11,13 @@ interface EmailTemplate {
 
 @Injectable()
 export class EmailService {
-
   private transporter: Transporter;
 
   constructor(@Inject('EMAIL_CONFIG') private readonly mailerConfig: EmailModuleOptions) {
-    if ((!mailerConfig.transport) || (Object.keys(mailerConfig.transport).length < 1)) {
-      throw new Error('Make sure to provide a nodemailer transport configuration object, connection url or a transport plugin instance');
+    if (!mailerConfig.transport || Object.keys(mailerConfig.transport).length < 1) {
+      throw new Error(
+        'Make sure to provide a nodemailer transport configuration object, connection url or a transport plugin instance',
+      );
     }
 
     this.setupTransporter(mailerConfig.transport, mailerConfig.defaults, mailerConfig.templateDir);
@@ -37,16 +38,19 @@ export class EmailService {
         return callback();
       }
 
-      renderFile(join(process.cwd(), templateDir || './public/templates', mail.data.template + '.pug'), mail.data.context, (err, body) => {
-        if (err) {
-          return callback(err);
-        }
+      renderFile(
+        join(process.cwd(), templateDir || './public/templates', mail.data.template + '.pug'),
+        mail.data.context,
+        (err, body) => {
+          if (err) {
+            return callback(err);
+          }
 
-        mail.data.html = body;
+          mail.data.html = body;
 
-        return callback();
-      });
+          return callback();
+        },
+      );
     };
   }
-
 }

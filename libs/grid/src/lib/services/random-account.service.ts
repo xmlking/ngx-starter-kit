@@ -55,7 +55,7 @@ export interface Picture {
 //   providedIn: 'root'
 // })
 @Injectable()
-export class RandomAccountService  {
+export class RandomAccountService {
   // public url = 'https://randomuser.me/api/?nat=us&results=100&exc=login,registered&seed=sumo';
   public baseUrl = 'https://randomuser.me/api/';
   params = new HttpParams()
@@ -63,22 +63,19 @@ export class RandomAccountService  {
     .append('nat', 'us')
     .append('exc', 'login,registered');
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
-  getAll(pageSize : number = 100) {
-    const params = this.params.append('results', ''+ pageSize);
-    return this.httpClient.get<ResponseObject>(this.baseUrl, { params }).pipe(
-      map((response: ResponseObject) => response.results)
-    )
+  getAll(pageSize: number = 100) {
+    const params = this.params.append('results', '' + pageSize);
+    return this.httpClient
+      .get<ResponseObject>(this.baseUrl, { params })
+      .pipe(map((response: ResponseObject) => response.results));
   }
 
   getById(id: string) {
-      const params = this.params
-        .append('id', id)
-        .append('results', '1');
-    return this.httpClient.get<ResponseObject>(this.baseUrl, { params }).pipe(
-      map((response: ResponseObject) => response.results[0])
-    )
+    const params = this.params.append('id', id).append('results', '1');
+    return this.httpClient
+      .get<ResponseObject>(this.baseUrl, { params })
+      .pipe(map((response: ResponseObject) => response.results[0]));
   }
 }

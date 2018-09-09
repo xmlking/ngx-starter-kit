@@ -14,8 +14,8 @@ export const environment = {
     // clientId: 'kube-tenant',
     // issuer: 'http://localhost:9080/auth/realms/kubernetes'
     clientId: 'is360ui',
-    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360'
-  }
+    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+  },
 };
 
 /*

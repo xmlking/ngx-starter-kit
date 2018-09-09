@@ -6,6 +6,6 @@ import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/mater
 @NgModule({
   imports: [MatButtonModule, MatIconModule, MatTooltipModule, CommonModule],
   exports: [ScrollToTopComponent],
-  declarations: [ScrollToTopComponent]
+  declarations: [ScrollToTopComponent],
 })
 export class ScrollToTopModule {}

@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
@@ -14,11 +8,13 @@ import { BarChartWidgetOptions } from './bar-chart-widget-options.interface';
 @Component({
   selector: 'ngx-bar-chart-widget',
   templateUrl: './bar-chart-widget.component.html',
-  styleUrls: ['./bar-chart-widget.component.scss']
+  styleUrls: ['./bar-chart-widget.component.scss'],
 })
 export class BarChartWidgetComponent implements AfterViewInit {
-  @Input() data: ChartData;
-  @Input() options: BarChartWidgetOptions;
+  @Input()
+  data: ChartData;
+  @Input()
+  options: BarChartWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
@@ -30,40 +26,37 @@ export class BarChartWidgetComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
-    this.chart = new Chart(
-      this.canvas.nativeElement.getContext('2d'),
-      <ChartConfiguration>{
-        type: 'bar',
-        data: this.data,
-        options: defaultsDeep(
-          {
-            layout: {
-              padding: {
-                left: 24,
-                right: 24,
-                top: 16,
-                bottom: 24
-              }
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+      type: 'bar',
+      data: this.data,
+      options: defaultsDeep(
+        {
+          layout: {
+            padding: {
+              left: 24,
+              right: 24,
+              top: 16,
+              bottom: 24,
             },
-            scales: {
-              xAxes: [
-                {
-                  barPercentage: 0.5
-                }
-              ]
-            },
-            tooltips: {
-              mode: 'index',
-              intersect: false
-            },
-            hover: {
-              intersect: true
-            }
           },
-          defaultChartOptions
-        )
-      }
-    );
+          scales: {
+            xAxes: [
+              {
+                barPercentage: 0.5,
+              },
+            ],
+          },
+          tooltips: {
+            mode: 'index',
+            intersect: false,
+          },
+          hover: {
+            intersect: true,
+          },
+        },
+        defaultChartOptions,
+      ),
+    });
   }
 
   reload() {

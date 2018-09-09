@@ -3,33 +3,34 @@ import {
   OnGatewayDisconnect,
   OnGatewayInit,
   SubscribeMessage,
-  WebSocketGateway, WebSocketServer,
+  WebSocketGateway,
+  WebSocketServer,
   WsResponse,
 } from '@nestjs/websockets';
 import { Observable, of } from 'rxjs';
-import {EventEmitter} from 'events';
-import {Logger, UseGuards} from '@nestjs/common';
-import {delay} from 'rxjs/operators';
+import { EventEmitter } from 'events';
+import { Logger, UseGuards } from '@nestjs/common';
+import { delay } from 'rxjs/operators';
 import { ISocket } from './interfaces/socket.interface';
 import { Server } from 'socket.io';
-import {getActionTypeFromInstance, actionMatcher} from '@ngxs/store';
-import {AuthService, User, WsAuthGuard} from '../auth';
+import { getActionTypeFromInstance, actionMatcher } from '@ngxs/store';
+import { AuthService, User, WsAuthGuard } from '../auth';
 
-@WebSocketGateway({ namespace: 'eventbus'})
+@WebSocketGateway({ namespace: 'eventbus' })
 export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   private readonly logger = new Logger(EventBusGateway.name);
   static EVENTS = 'events';
   static ACTIONS = 'actions';
 
-  @WebSocketServer() server: Server;
+  @WebSocketServer()
+  server: Server;
   clients: ISocket[] = [];
 
   constructor(/*private authService: AuthService*/) {
     super();
   }
 
-  public afterInit(server) {
-  }
+  public afterInit(server) {}
 
   public handleConnection(client: ISocket) {
     // this.logger.log(`Client connected => ${client.id}  ${client.handshake.query.token}`);
@@ -48,7 +49,7 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
   onAuthenticate(client: ISocket, data: any) {
     // this.logger.log(`auth  => ${client.id}  ${client.user.userId}`);
     const event = 'auth';
-    return {event, status: 'success'};
+    return { event, status: 'success' };
   }
 
   @SubscribeMessage('test')
@@ -56,7 +57,7 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
     // this.logger.log(`test  => ${client.id}  ${client.user.userId}`);
     const event = 'test';
     // client.broadcast.emit({event, data});
-    return of({event, data}).pipe(delay(1000));
+    return of({ event, data }).pipe(delay(1000));
   }
 
   @SubscribeMessage('actions')

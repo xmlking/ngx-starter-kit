@@ -1,15 +1,6 @@
 import { transition, trigger, useAnimation } from '@angular/animations';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  HostBinding,
-  Input
-} from '@angular/core';
-import {
-  pulseAnimation,
-  slideInAnimation,
-  slideOutAnimation
-} from '../animations';
+import { ChangeDetectionStrategy, Component, HostBinding, Input } from '@angular/core';
+import { pulseAnimation, slideInAnimation, slideOutAnimation } from '../animations';
 
 @Component({
   selector: 'ngx-counter-bubble',
@@ -30,21 +21,21 @@ import {
         justify-content: center;
         align-items: center;
       }
-    `
+    `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   animations: [
     trigger('visibilityChange', [
       transition(':enter', [
         useAnimation(slideInAnimation, {
-          params: { from: '20%', timings: '200ms ease-in' }
-        })
+          params: { from: '20%', timings: '200ms ease-in' },
+        }),
       ]),
       transition(':leave', [
         useAnimation(slideOutAnimation, {
-          params: { to: '-200%', timings: '200ms ease-in' }
-        })
-      ])
+          params: { to: '-200%', timings: '200ms ease-in' },
+        }),
+      ]),
     ]),
     trigger('counterChange', [
       transition(
@@ -52,12 +43,12 @@ import {
         useAnimation(pulseAnimation, {
           params: {
             timings: '200ms',
-            scale: 1.2
-          }
-        })
-      )
-    ])
-  ]
+            scale: 1.2,
+          },
+        }),
+      ),
+    ]),
+  ],
 })
 export class CounterBubbleComponent {
   @HostBinding('@counterChange')

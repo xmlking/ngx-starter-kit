@@ -69,7 +69,7 @@
       text-transform: none;
       text-align: center;
       font-size: 16px;
-      letter-spacing: .5px;
+      letter-spacing: 0.5px;
       margin: 0 0 2px 0;
       max-width: 65%;
       float: none;
@@ -109,10 +109,10 @@
         -webkit-animation-delay: -3s;
       }
 
-      &.to + &.to, &.from + &.from {
+      &.to + &.to,
+      &.from + &.from {
         margin-top: -10px;
       }
-
     }
   }
 
@@ -135,5 +135,3 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
-
-

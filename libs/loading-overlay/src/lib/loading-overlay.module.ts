@@ -6,6 +6,6 @@ import { MatProgressBarModule } from '@angular/material';
 @NgModule({
   imports: [MatProgressBarModule, CommonModule],
   exports: [LoadingOverlayComponent],
-  declarations: [LoadingOverlayComponent]
+  declarations: [LoadingOverlayComponent],
 })
 export class LoadingOverlayModule {}

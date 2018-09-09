@@ -14,7 +14,7 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
     await oauthService.loadDiscoveryDocumentAndTryLogin({
       onLoginError: (err: AuthorizationErrorResponse) => {
         console.log(`Error Code: ${err.error}, Error Description: ${err.error_description}`);
-      }
+      },
     });
     // (<any>window).loginTryed = true;
 
@@ -24,6 +24,6 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
       const profile: any = oauthService.getIdentityClaims();
       store.dispatch(new LoginSuccess(profile));
     }
-    return true; //need to return.
+    return true; // need to return.
   };
 }

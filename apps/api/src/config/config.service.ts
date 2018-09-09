@@ -5,12 +5,11 @@ const packageJson = require('../../../../package.json');
 
 @Injectable()
 export class ConfigService {
-
   private readonly envConfig: { [prop: string]: string };
 
   constructor(filePath: string) {
     this.envConfig = parse(fs.readFileSync(filePath));
-    config({path: filePath});
+    config({ path: filePath });
   }
 
   get(key: string, defaultVal?: any): string {
@@ -33,15 +32,15 @@ export class ConfigService {
   }
 
   public isProd(): boolean {
-    return (process.env.NODE_ENV && process.env.NODE_ENV === 'production');
+    return process.env.NODE_ENV && process.env.NODE_ENV === 'production';
   }
 
   public getAllowWhitelist(): string[] {
-      const allowWhitelist = this.get('ALLOW_WHITE_LIST');
-      if (allowWhitelist) {
-        return allowWhitelist.split(',');
-      } else {
-        return [];
-      }
+    const allowWhitelist = this.get('ALLOW_WHITE_LIST');
+    if (allowWhitelist) {
+      return allowWhitelist.split(',');
+    } else {
+      return [];
+    }
   }
 }

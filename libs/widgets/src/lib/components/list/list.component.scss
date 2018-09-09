@@ -1,7 +1,6 @@
-@import "fu/var";
+@import 'fu/var';
 
 :host /deep/ {
-
   .ngx-list-table {
     display: flex;
     flex-direction: column;
@@ -51,7 +50,7 @@
     }
 
     .mat-header-row {
-      background: #F5F5F5;
+      background: #f5f5f5;
 
       .mat-header-cell .mat-sort-header-button {
         text-transform: uppercase;
@@ -59,13 +58,13 @@
     }
 
     .mat-row {
-
       &:hover {
         background: rgba(black, 0.04);
       }
     }
 
-    .mat-cell.image-cell, .mat-header-cell.image-cell {
+    .mat-cell.image-cell,
+    .mat-header-cell.image-cell {
       flex: 0;
       min-width: 35px + $spacing;
 
@@ -78,7 +77,8 @@
       }
     }
 
-    .mat-cell.actions-cell, .mat-header-cell.actions-cell {
+    .mat-cell.actions-cell,
+    .mat-header-cell.actions-cell {
       flex: 0;
       min-width: 40px;
       overflow: visible;
@@ -90,7 +90,7 @@
 
     .paginator {
       display: block;
-      background: #F5F5F5;
+      background: #f5f5f5;
     }
 
     /**

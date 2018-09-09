@@ -4,8 +4,7 @@ import { Directive, HostBinding } from '@angular/core';
   selector: '[ngxAspectRatioContent]',
 })
 export class AspectRatioContentDirective {
-  @HostBinding('class.ngx-aspect-ratio-content-element') bodyClass = true;
-  constructor() {
-  }
-
+  @HostBinding('class.ngx-aspect-ratio-content-element')
+  bodyClass = true;
+  constructor() {}
 }

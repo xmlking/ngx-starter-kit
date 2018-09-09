@@ -11,7 +11,7 @@ import {
   MatListModule,
   MatRippleModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import { RouterModule } from '@angular/router';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
@@ -31,9 +31,9 @@ import { ScrollbarModule } from '@ngx-starter-kit/scrollbar';
     PerfectScrollbarModule,
     FlexLayoutModule,
     ScrollbarModule,
-    CommonModule
+    CommonModule,
   ],
   exports: [SidenavComponent, IconSidenavDirective],
-  declarations: [SidenavItemComponent, MenuItemComponent, SidenavComponent, IconSidenavDirective]
+  declarations: [SidenavItemComponent, MenuItemComponent, SidenavComponent, IconSidenavDirective],
 })
 export class SidenavModule {}

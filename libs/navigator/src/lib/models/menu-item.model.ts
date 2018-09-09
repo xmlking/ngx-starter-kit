@@ -5,7 +5,7 @@ export enum MenuItemType {
   DropDown = 'dropDown',
   Icon = 'icon',
   Separator = 'separator',
-  ExtLink = 'extLink'
+  ExtLink = 'extLink',
 }
 
 export interface MenuItem extends TreeNode<MenuItem> {

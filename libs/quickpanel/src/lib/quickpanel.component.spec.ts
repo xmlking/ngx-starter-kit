@@ -8,7 +8,7 @@ describe('QuickpanelComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [QuickpanelComponent]
+      declarations: [QuickpanelComponent],
     }).compileComponents();
   }));
 

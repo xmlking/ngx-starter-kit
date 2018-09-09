@@ -6,6 +6,6 @@ import { JsonDiffComponent } from './json-diff.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [JsonDiffComponent, JsonDiffTreeComponent],
-  exports: [JsonDiffComponent]
+  exports: [JsonDiffComponent],
 })
 export class JsonDiffModule {}

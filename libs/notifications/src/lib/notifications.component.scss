@@ -1,7 +1,7 @@
-@import "var";
-@import "constants";
+@import 'var';
+@import 'constants';
 @import '~@angular/material/theming';
-@import "fu/var";
+@import 'fu/var';
 
 $config: mat-typography-config();
 
@@ -31,7 +31,7 @@ $config: mat-typography-config();
   transform: translateY(0) scale(0);
   transform-origin: top right;
   visibility: hidden;
-  transition: transform .4s cubic-bezier(.25, .8, .25, 1), visibility .4s cubic-bezier(.25, .8, .25, 1);
+  transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   @include mat-typography-level-to-styles($config, subheading-1);
 
   @media ($mat-xsmall) {
@@ -40,7 +40,7 @@ $config: mat-typography-config();
     right: 5px;
     transform: translateY(0);
     visibility: hidden;
-    transition: transform .4s cubic-bezier(.25,.8,.25,1), visibility .4s cubic-bezier(.25,.8,.25,1);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
 
   &.open {
@@ -49,9 +49,8 @@ $config: mat-typography-config();
   }
 
   .card {
-
     .header {
-      background: #EEEEEE;
+      background: #eeeeee;
       min-height: 54px;
       padding-left: 16px;
       padding-right: 8px;
@@ -87,9 +86,9 @@ $config: mat-typography-config();
           margin-right: 13px;
           text-align: center;
           border-radius: 50%;
-          background: #FFF;
+          background: #fff;
           color: #888;
-          border: 1px solid #EEE;
+          border: 1px solid #eee;
         }
 
         .title {
@@ -151,11 +150,11 @@ $config: mat-typography-config();
 
     .footer {
       min-height: 42px;
-      border-top: 1px solid #EEE;
+      border-top: 1px solid #eee;
 
       .action {
         cursor: pointer;
-        color: #AAA;
+        color: #aaa;
         text-align: center;
         font-size: 13px;
       }
@@ -164,10 +163,8 @@ $config: mat-typography-config();
     .divider {
       width: calc(100% - 30px);
       height: 1px;
-      background: #EEE;
+      background: #eee;
       margin: 0 16px 0 14px;
     }
   }
 }
-
-

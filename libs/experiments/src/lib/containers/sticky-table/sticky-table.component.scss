@@ -4,37 +4,36 @@
   position: relative;
 }
 
-
 .example-container {
   display: flex;
   flex-direction: column;
   max-height: 500px;
   min-width: 300px;
 }
-.container{
+.container {
   background-color: white;
   border: 1.5px solid black;
   border-radius: 10px;
   text-align: center;
 }
 .mat-table {
-  position:relative;
+  position: relative;
   overflow: auto;
   max-height: 500px;
-  width:100%;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0.959);
-  height : 100vh;
+  height: 100vh;
 }
-.container{
+.container {
   background-color: white;
   border: 1.5px solid black;
   border-radius: 10px;
   text-align: center;
 }
-.mat-form-field-underline{
-  background-color:transparent;
+.mat-form-field-underline {
+  background-color: transparent;
 }
-.mat-form-field-flex{
+.mat-form-field-flex {
   font-size: 14px;
   line-height: 1em;
   color: #555;
@@ -44,17 +43,18 @@
   margin-top: 8px;
   padding: 2px;
 }
-.mat-form-field-wrapper{
+.mat-form-field-wrapper {
   padding-bottom: 1.25em;
   padding-top: 1.25em;
 }
-.mat-form-field-infix{
-  border:0px;
+.mat-form-field-infix {
+  border: 0px;
 }
-.mat-paginator{
+.mat-paginator {
   background-color: white;
 }
-.mat-row, .mat-header-row {
+.mat-row,
+.mat-header-row {
   min-width: 1123px;
-  width:100%;
+  width: 100%;
 }

@@ -9,7 +9,7 @@ describe('FeaturesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [SharedModule],
-      declarations: [FeaturesComponent]
+      declarations: [FeaturesComponent],
     }).compileComponents();
   }));
 

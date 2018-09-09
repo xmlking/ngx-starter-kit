@@ -12,9 +12,9 @@ import { MatButtonModule, MatIconModule } from '@angular/material';
 
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
-      { path: '', component: NotFoundComponent }
-    ])
+      { path: '', component: NotFoundComponent },
+    ]),
   ],
-  declarations: [NotFoundComponent]
+  declarations: [NotFoundComponent],
 })
 export class NotFoundModule {}

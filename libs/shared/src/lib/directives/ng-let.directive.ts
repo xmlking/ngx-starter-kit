@@ -1,10 +1,4 @@
-import {
-  NgModule,
-  Directive,
-  Input,
-  TemplateRef,
-  ViewContainerRef
-} from '@angular/core';
+import { NgModule, Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
 export class NgLetContext {
   $implicit: any = null;
@@ -12,7 +6,7 @@ export class NgLetContext {
 }
 
 @Directive({
-  selector: '[ngLet]'
+  selector: '[ngLet]',
 })
 export class NgLetDirective {
   private _context = new NgLetContext();

@@ -7,7 +7,6 @@
   $foreground: map-get($theme, foreground);
 
   ngx-chat-box {
-
     .chat-input {
       color: mat-color($foreground, text);
       background-color: mat-color($background, background);

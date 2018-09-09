@@ -5,14 +5,10 @@ import { EmailService } from './email.service';
 
 @Module({})
 export class EmailModule {
-
   static forRoot(config?: EmailModuleOptions): DynamicModule {
     return {
       module: EmailModule,
-      imports: [
-        EmailCoreModule.forRoot(config),
-      ],
+      imports: [EmailCoreModule.forRoot(config)],
     };
   }
-
 }

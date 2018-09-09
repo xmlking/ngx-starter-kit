@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import * as ChartJSPieceLabelPlugin from 'chart.piecelabel.js';
@@ -15,11 +9,13 @@ import { LineChartWidgetOptions } from '../line-chart-widget/line-chart-widget-o
 @Component({
   selector: 'ngx-donut-chart-widget',
   templateUrl: './donut-chart-widget.component.html',
-  styleUrls: ['./donut-chart-widget.component.scss']
+  styleUrls: ['./donut-chart-widget.component.scss'],
 })
 export class DonutChartWidgetComponent implements AfterViewInit {
-  @Input() data: ChartData;
-  @Input() options: LineChartWidgetOptions;
+  @Input()
+  data: ChartData;
+  @Input()
+  options: LineChartWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
@@ -31,32 +27,29 @@ export class DonutChartWidgetComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
-    this.chart = new Chart(
-      this.canvas.nativeElement.getContext('2d'),
-      <ChartConfiguration>{
-        type: 'pie',
-        data: this.data,
-        options: defaultsDeep(
-          {
-            layout: {
-              padding: {
-                left: 5,
-                right: 5,
-                top: 5
-              }
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+      type: 'pie',
+      data: this.data,
+      options: defaultsDeep(
+        {
+          layout: {
+            padding: {
+              left: 5,
+              right: 5,
+              top: 5,
             },
-            plugins: [ChartJSPieceLabelPlugin],
-            pieceLabel: {
-              render: 'label',
-              arc: true,
-              position: 'border',
-              fontColor: '#FFFFFF'
-            }
           },
-          defaultChartOptions
-        )
-      }
-    );
+          plugins: [ChartJSPieceLabelPlugin],
+          pieceLabel: {
+            render: 'label',
+            arc: true,
+            position: 'border',
+            fontColor: '#FFFFFF',
+          },
+        },
+        defaultChartOptions,
+      ),
+    });
   }
 
   reload() {

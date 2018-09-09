@@ -1,16 +1,15 @@
-import {ExtractJwt, Strategy} from 'passport-jwt';
-import {PassportStrategy} from '@nestjs/passport';
-import {Injectable, UnauthorizedException} from '@nestjs/common';
-import {passportJwtSecret, SigningKeyNotFoundError} from '@xmlking/jwks-rsa';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { PassportStrategy } from '@nestjs/passport';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
 import { JwtToken } from '../interfaces/jwt-token.interface';
-import {ConfigService} from '../../config';
+import { ConfigService } from '../../config';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly config: ConfigService,
-              private readonly authService: AuthService) {
+  constructor(private readonly config: ConfigService, private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       // secretOrKey: process.env.OIDC_PUBLIC_KEY,
@@ -42,6 +41,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       return done(new UnauthorizedException('user not found and cannot create new user in database'), false);
     }
     token = token as JwtToken;
-    done(null, user, {token});
+    done(null, user, { token });
   }
 }

@@ -28,7 +28,7 @@ export class AuthService {
     private router: Router,
     private dialog: MatDialog,
     private ropcService: ROPCService,
-    private oauthService: OAuthService
+    private oauthService: OAuthService,
   ) {
     // this.authMode$.subscribe(authMode => {
     this.store.select(AuthState.authMode).subscribe(authMode => {
@@ -47,8 +47,8 @@ export class AuthService {
           break;
         case 'token_received':
           console.log('received token_received event', e);
-          //this.store.dispatch(new LoadProfile());
-          //this.oauthService.loadUserProfile();
+          // this.store.dispatch(new LoadProfile());
+          // this.oauthService.loadUserProfile();
           break;
         case 'token_expires':
           console.log('received token_expires event', e);
@@ -84,12 +84,18 @@ export class AuthService {
   }
 
   stopAutoRefreshToken() {
-    if (this._refresher && !this._refresher.closed) this._refresher.unsubscribe();
+    if (this._refresher && !this._refresher.closed) {
+      this._refresher.unsubscribe();
+    }
   }
 
   startAutoRefreshToken() {
-    if (this._refresher && !this._refresher.closed) this._refresher.unsubscribe();
-    if (this._monitorer && !this._monitorer.closed) this._monitorer.unsubscribe();
+    if (this._refresher && !this._refresher.closed) {
+      this._refresher.unsubscribe();
+    }
+    if (this._monitorer && !this._monitorer.closed) {
+      this._monitorer.unsubscribe();
+    }
 
     if (this.authMode === AuthMode.PasswordFlow) {
       // for Password Flow
@@ -101,7 +107,7 @@ export class AuthService {
             console.log('Auto token refresh failed. Logging Out...', error.error);
             this.store.dispatch(new Logout());
             return throwError(error.error);
-          })
+          }),
         )
         .subscribe();
     } else {

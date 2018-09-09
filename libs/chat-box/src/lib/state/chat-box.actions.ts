@@ -18,22 +18,22 @@ export class CreateNewConversation {
 
 export class SwitchConversation {
   static readonly type = '[ChatBox] SwitchConversation';
-  constructor(public readonly payload: {conversationId: string}) {}
+  constructor(public readonly payload: { conversationId: string }) {}
 }
 
 export class SaveConversation {
   static readonly type = '[ChatBox] SaveConversation';
-  constructor(public readonly payload: {conversationId: string}) {}
+  constructor(public readonly payload: { conversationId: string }) {}
 }
 
 export class CloseConversation {
   static readonly type = '[ChatBox] CloseConversation';
-  constructor(public readonly payload: {conversationId: string}) {}
+  constructor(public readonly payload: { conversationId: string }) {}
 }
 
 export class AddMessage {
   static readonly type = '[ChatBox] AddMessage';
-  constructor(public readonly payload: {conversationId: string, message: ChatMessage<string>}) {}
+  constructor(public readonly payload: { conversationId: string; message: ChatMessage<string> }) {}
 }
 
 export class StartVoiceCommand {
@@ -41,16 +41,13 @@ export class StartVoiceCommand {
 }
 export class SendMessage {
   static readonly type = '[ChatBox] SendMessage';
-  constructor(public readonly payload: {message: string}) {}
+  constructor(public readonly payload: { message: string }) {}
 }
 export class SendTyping {
   static readonly type = '[ChatBox] Typing';
   constructor(public readonly payload: Subject) {}
 }
 
-
 export class MarkAsRead {
   static readonly type = '[ChatBox] MarkAsRead';
 }
-
-

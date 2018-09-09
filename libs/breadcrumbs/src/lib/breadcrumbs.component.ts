@@ -8,11 +8,13 @@ export interface Crumb {
   selector: 'ngx-breadcrumbs',
   templateUrl: './breadcrumbs.component.html',
   styleUrls: ['./breadcrumbs.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BreadcrumbsComponent implements OnInit {
-  @Input() readonly title: string;
-  @Input() crumbs: ReadonlyArray<Crumb>;
+  @Input()
+  readonly title: string;
+  @Input()
+  crumbs: ReadonlyArray<Crumb>;
 
   constructor() {}
 

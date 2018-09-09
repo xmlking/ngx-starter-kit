@@ -17,7 +17,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatToolbarModule
+  MatToolbarModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
@@ -39,21 +39,25 @@ import { AuthGuard } from './auth.guard';
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: ['http://localhost:8080/auth'],
-        sendAccessToken: true
-      }
-    })
+        sendAccessToken: true,
+      },
+    }),
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
-  providers: [AuthState, ROPCService, AuthService, AuthGuard,
+  providers: [
+    AuthState,
+    ROPCService,
+    AuthService,
+    AuthGuard,
     { provide: ValidationHandler, useClass: JwksValidationHandler },
-  ]
+  ],
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {
     return {
       ngModule: AuthModule,
-      providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Store], multi: true }]
+      providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Store], multi: true }],
     };
   }
 }

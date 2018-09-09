@@ -4,7 +4,7 @@ import { GridModule } from './grid.module';
 describe('GridModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [GridModule]
+      imports: [GridModule],
     }).compileComponents();
   }));
 

@@ -8,6 +8,6 @@ import { ResizableState } from './directives/resizable/resizable.state';
   imports: [CommonModule],
   declarations: [DraggableDirective, ResizableComponent],
   exports: [DraggableDirective, ResizableComponent],
-  providers: [ResizableState]
+  providers: [ResizableState],
 })
 export class DraggableModule {}

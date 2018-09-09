@@ -13,21 +13,18 @@ import { ClickOutsideDirective } from './directives/click-outside/click-outside.
 import {
   PerfectScrollbarModule,
   PerfectScrollbarConfigInterface,
-  PERFECT_SCROLLBAR_CONFIG
+  PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
-  wheelPropagation: true
+  wheelPropagation: true,
 };
 
 const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective];
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FlexLayoutModule.withConfig({ useColumnBasisZero: false }),
-  ],
+  imports: [CommonModule, FlexLayoutModule.withConfig({ useColumnBasisZero: false })],
   declarations: [...DIRECTIVES],
   exports: [
     CommonModule,
@@ -39,8 +36,8 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective
     MomentModule,
     FormlyMaterialModule,
     PerfectScrollbarModule,
-    ...DIRECTIVES
+    ...DIRECTIVES,
   ],
-  providers: [{ provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }]
+  providers: [{ provide: PERFECT_SCROLLBAR_CONFIG, useValue: DEFAULT_PERFECT_SCROLLBAR_CONFIG }],
 })
 export class SharedModule {}

@@ -1,18 +1,11 @@
-import {
-  Directive,
-  HostBinding,
-  HostListener,
-  Inject,
-  OnInit,
-  OnDestroy
-} from '@angular/core';
+import { Directive, HostBinding, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 import { Store } from '@ngxs/store';
 
 @Directive({
-  selector: '[ngxIconSidenav]'
+  selector: '[ngxIconSidenav]',
 })
 export class IconSidenavDirective implements OnInit, OnDestroy {
   private _mediaSubscription: Subscription;
@@ -23,7 +16,8 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
     return this.menuService.isIconSidenav;
   }
 
-  @HostBinding('class.collapsed') collapsed: boolean;
+  @HostBinding('class.collapsed')
+  collapsed: boolean;
 
   currentlyOpen: MenuItem[];
 
@@ -33,8 +27,8 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
       this.collapsed = false;
 
       this.menuService.currentlyOpen = this.currentlyOpen;
-      //this.store.dispatch(new NextCurrentlyOpened(this.currentlyOpen));
-      //this.store.dispatch(new SetIconMode(false));
+      // this.store.dispatch(new NextCurrentlyOpened(this.currentlyOpen));
+      // this.store.dispatch(new SetIconMode(false));
     }
   }
 
@@ -45,16 +39,12 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
 
       this.currentlyOpen = this.menuService.currentlyOpen;
       this.menuService.currentlyOpen = [];
-      //this.store.dispatch(new NextCurrentlyOpened([]));
-      //this.store.dispatch(new SetIconMode(true));
+      // this.store.dispatch(new NextCurrentlyOpened([]));
+      // this.store.dispatch(new SetIconMode(true));
     }
   }
 
-  constructor(
-    private store: Store,
-    private menuService: MenuService,
-    private media: ObservableMedia
-  ) {}
+  constructor(private store: Store, private menuService: MenuService, private media: ObservableMedia) {}
 
   ngOnInit() {
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {

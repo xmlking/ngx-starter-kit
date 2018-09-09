@@ -9,6 +9,6 @@ export const environment = {
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
   auth: {
     clientId: 'is360ui',
-    issuer: 'http://localhost:8080/auth/realms/is360'
-  }
+    issuer: 'http://localhost:8080/auth/realms/is360',
+  },
 };

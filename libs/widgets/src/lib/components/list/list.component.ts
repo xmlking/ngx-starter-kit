@@ -6,7 +6,7 @@ import {
   Input,
   Output,
   ViewChild,
-  ViewEncapsulation
+  ViewEncapsulation,
 } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
@@ -19,20 +19,28 @@ import { ListColumn } from './list-column.model';
   // encapsulation: ViewEncapsulation.None
 })
 export class ListComponent implements AfterViewInit {
-  @Input() name: string;
-  @Input() columns: ListColumn[];
+  @Input()
+  name: string;
+  @Input()
+  columns: ListColumn[];
 
-  @ViewChild('filter') filter: ElementRef;
-  @Output() filterChange = new EventEmitter<string>();
+  @ViewChild('filter')
+  filter: ElementRef;
+  @Output()
+  filterChange = new EventEmitter<string>();
 
-  @Input() hideHeader: boolean;
+  @Input()
+  hideHeader: boolean;
 
   constructor() {}
 
   ngAfterViewInit() {
     if (!this.hideHeader) {
       fromEvent(this.filter.nativeElement, 'keyup')
-        .pipe(distinctUntilChanged(), debounceTime(150))
+        .pipe(
+          distinctUntilChanged(),
+          debounceTime(150),
+        )
         .subscribe(() => {
           this.filterChange.emit(this.filter.nativeElement.value);
         });

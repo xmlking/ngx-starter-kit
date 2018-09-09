@@ -10,7 +10,7 @@ interface State {
   selector: 'ngx-virtual-scroll',
   templateUrl: './virtual-scroll.component.html',
   styleUrls: ['./virtual-scroll.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class VirtualScrollComponent implements OnInit {
   observableData = new BehaviorSubject<number[]>([]);
@@ -64,7 +64,7 @@ export class VirtualScrollComponent implements OnInit {
     { name: 'Washington', capital: 'Olympia' },
     { name: 'West Virginia', capital: 'Charleston' },
     { name: 'Wisconsin', capital: 'Madison' },
-    { name: 'Wyoming', capital: 'Cheyenne' }
+    { name: 'Wyoming', capital: 'Cheyenne' },
   ];
   statesObservable = new BehaviorSubject(this.states);
   indexTrackFn = (index: number) => index;
@@ -92,7 +92,7 @@ export class VirtualScrollComponent implements OnInit {
           return 1;
         }
         return 0;
-      })
+      }),
     );
   }
 }

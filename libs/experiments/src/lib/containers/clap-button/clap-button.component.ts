@@ -18,8 +18,8 @@ import { Component, OnInit } from '@angular/core';
         justify-content: center;
         align-items: center;
       }
-    `
-  ]
+    `,
+  ],
 })
 export class ClapButtonComponent {
   userCounter = 0;

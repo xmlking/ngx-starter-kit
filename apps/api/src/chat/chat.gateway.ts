@@ -1,5 +1,6 @@
 import {
-  OnGatewayConnection, OnGatewayDisconnect,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
   OnGatewayInit,
   SubscribeMessage,
   WebSocketGateway,
@@ -19,17 +20,18 @@ export enum ChatEvents {
   IS_NOT_WRITING = 'isNotWriting',
 }
 // https://github.com/djjorik/angular-chat/blob/master/server/events.gateway.ts
-@WebSocketGateway({ namespace: 'chat'})
+@WebSocketGateway({ namespace: 'chat' })
 export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  @WebSocketServer() server;
+  @WebSocketServer()
+  server;
 
   constructor(private chatService: ChatService) {}
 
-  public afterInit(server) { }
+  public afterInit(server) {}
 
   public handleConnection(client) {
     const event = 'connected';
-    client.emit(event, {message: 'Hello...'});
+    client.emit(event, { message: 'Hello...' });
     client.broadcast.emit(event, {
       message: `${client.client.conn.id} connected`,
     });
@@ -46,20 +48,20 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
   @SubscribeMessage('messages')
   onMessage(client: any, data: Message): Observable<WsResponse<Message>> {
     const event = 'newMessage';
-    client.broadcast.emit({event, data});
-    return of({event, data});
+    client.broadcast.emit({ event, data });
+    return of({ event, data });
   }
 
   @SubscribeMessage('isWriting')
   handleIsWriting(client, data: User) {
     const event = 'isWriting';
-    client.broadcast.emit({event, data});
+    client.broadcast.emit({ event, data });
   }
 
   @SubscribeMessage('isNotWriting')
   handleIsNotWriting(client) {
     const event = 'isNotWriting';
-    client.broadcast.emit({event});
+    client.broadcast.emit({ event });
   }
 }
 

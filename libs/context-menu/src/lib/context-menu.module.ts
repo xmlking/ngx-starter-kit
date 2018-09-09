@@ -10,6 +10,6 @@ import { ContextMenuComponent } from './context-menu.component';
 @NgModule({
   imports: [CommonModule, PortalModule, OverlayModule, MatButtonModule],
   declarations: [ContextMenuTriggerDirective, ContextMenuComponent],
-  exports: [ContextMenuTriggerDirective, ContextMenuComponent]
+  exports: [ContextMenuTriggerDirective, ContextMenuComponent],
 })
 export class ContextMenuModule {}

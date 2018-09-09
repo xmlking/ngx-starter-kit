@@ -4,12 +4,12 @@ export const defaultMenu: MenuItem[] = [
   {
     name: 'Home',
     icon: 'home',
-    link: '/home'
+    link: '/home',
   },
   {
     name: 'Dashboard',
     icon: 'dashboard',
-    link: '/dashboard'
+    link: '/dashboard',
   },
   // {
   //   name: 'Custom components',
@@ -23,14 +23,14 @@ export const defaultMenu: MenuItem[] = [
       {
         name: 'CRUD Table',
         icon: 'web_aaset',
-        link: '/dashboard/grid/crud-table'
+        link: '/dashboard/grid/crud-table',
       },
       {
         name: 'Grid List',
         icon: 'grid_on',
-        link: '/dashboard/grid/grid-list'
-      }
-    ]
+        link: '/dashboard/grid/grid-list',
+      },
+    ],
   },
   {
     name: 'Experiments',
@@ -40,32 +40,32 @@ export const defaultMenu: MenuItem[] = [
       {
         name: 'Animations',
         icon: 'view_list',
-        link: '/dashboard/experiments/animations'
+        link: '/dashboard/experiments/animations',
       },
       {
         name: 'Upload',
         icon: 'directions',
-        link: '/dashboard/experiments/file-upload'
+        link: '/dashboard/experiments/file-upload',
       },
       {
         name: 'Context Menu',
         icon: 'web_aaset',
-        link: '/dashboard/experiments/context-menu'
+        link: '/dashboard/experiments/context-menu',
       },
       {
         name: 'Virtual Scroll',
         icon: 'reorder',
-        link: '/dashboard/experiments/virtual-scroll'
+        link: '/dashboard/experiments/virtual-scroll',
       },
       {
         name: 'Sticky Table',
         icon: 'view_list',
-        link: '/dashboard/experiments/table'
+        link: '/dashboard/experiments/table',
       },
       {
         name: 'Knob',
         icon: 'directions',
-        link: '/dashboard/experiments/knob'
+        link: '/dashboard/experiments/knob',
       },
       {
         name: 'Microinteractions',
@@ -75,16 +75,16 @@ export const defaultMenu: MenuItem[] = [
           {
             name: 'Clap',
             icon: 'pan_tool',
-            link: '/dashboard/experiments/clap'
+            link: '/dashboard/experiments/clap',
           },
           {
             name: 'Led',
             icon: 'highlight',
-            link: '/dashboard/experiments/led'
+            link: '/dashboard/experiments/led',
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   {
     name: 'Multi-Level Menu',
@@ -109,18 +109,18 @@ export const defaultMenu: MenuItem[] = [
                     children: [
                       {
                         name: 'Level 5',
-                        link: '/level1/level2/level3/level4/level5'
-                      }
-                    ]
-                  }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+                        link: '/level1/level2/level3/level4/level5',
+                      },
+                    ],
+                  },
+                ],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
 ];
 
 export const adminMenu: MenuItem[] = [
@@ -134,24 +134,24 @@ export const adminMenu: MenuItem[] = [
       {
         name: 'Dashboard',
         link: '/dashboard',
-        icon: 'dashboard'
+        icon: 'dashboard',
       },
       {
         name: 'Products',
         link: '/dashboard/products',
-        icon: 'dashboard'
+        icon: 'dashboard',
       },
       {
         name: 'Orders',
         link: '/dashboard/orders',
-        icon: 'dashboard'
-      }
-    ]
+        icon: 'dashboard',
+      },
+    ],
   },
   {
     name: 'Custom components',
-    type: MenuItemType.Separator
-  }
+    type: MenuItemType.Separator,
+  },
 ];
 
 export const demoMenu: MenuItem[] = [
@@ -165,22 +165,22 @@ export const demoMenu: MenuItem[] = [
       {
         name: 'Dashboard',
         link: '/dashboard',
-        icon: 'dashboard'
+        icon: 'dashboard',
       },
       {
         name: 'Products',
         link: '/dashboard/products',
-        icon: 'dashboard'
+        icon: 'dashboard',
       },
       {
         name: 'Orders',
         link: '/dashboard/orders',
-        icon: 'dashboard'
-      }
-    ]
+        icon: 'dashboard',
+      },
+    ],
   },
   {
     name: 'Custom components',
-    type: MenuItemType.Separator
-  }
+    type: MenuItemType.Separator,
+  },
 ];

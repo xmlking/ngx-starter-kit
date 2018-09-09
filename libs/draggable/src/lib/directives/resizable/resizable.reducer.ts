@@ -17,7 +17,7 @@ export const resizeReducer = (
   startPosition: IPoint,
   options: IOptions,
   initialSize?: ISize,
-  initialResizeDir?: string
+  initialResizeDir?: string,
 ): IResizeState => {
   if (options.disabled) {
     return currentState;
@@ -52,36 +52,23 @@ export const resizeReducer = (
       let nextTop = currentPos.y;
 
       if (/right/.test(currentState.direction)) {
-        nextWidth = resizeRight(
-          mousePosition.x - startPos.x + startSize.width,
-          options,
-          currentState.currentPosition
-        ).nextWidth;
+        nextWidth = resizeRight(mousePosition.x - startPos.x + startSize.width, options, currentState.currentPosition)
+          .nextWidth;
       }
       if (/bottom/.test(currentState.direction)) {
         nextHeight = resizeBottom(
           mousePosition.y - startPos.y + startSize.height,
           options,
-          currentState.currentPosition
+          currentState.currentPosition,
         ).nextHeight;
       }
       if (/top/.test(currentState.direction)) {
-        const data = resizeTop(
-          startPos.y - mousePosition.y + startSize.height,
-          currentPos,
-          currentSize,
-          options
-        );
+        const data = resizeTop(startPos.y - mousePosition.y + startSize.height, currentPos, currentSize, options);
         nextTop = data.nextTop;
         nextHeight = data.nextHeight;
       }
       if (/left/.test(currentState.direction)) {
-        const data = resizeLeft(
-          startPos.x - mousePosition.x + startSize.width,
-          currentPos,
-          currentSize,
-          options
-        );
+        const data = resizeLeft(startPos.x - mousePosition.x + startSize.width, currentPos, currentSize, options);
         nextLeft = data.nextLeft;
         nextWidth = data.nextWidth;
       }
@@ -92,21 +79,17 @@ export const resizeReducer = (
           currentPos,
           currentSize,
           currentState.direction,
-          currentState.currentPosition
+          currentState.currentPosition,
         );
         nextLeft = fixedSize.nextLeft;
         nextTop = fixedSize.nextTop;
         nextWidth = fixedSize.nextWidth;
         nextHeight = fixedSize.nextHeight;
       }
-      currentPos.x =
-        Math.round(nextLeft / options.grid.width) * options.grid.width;
-      currentPos.y =
-        Math.round(nextTop / options.grid.height) * options.grid.height;
-      currentSize.width =
-        Math.round(nextWidth / options.grid.width) * options.grid.width;
-      currentSize.height =
-        Math.round(nextHeight / options.grid.height) * options.grid.height;
+      currentPos.x = Math.round(nextLeft / options.grid.width) * options.grid.width;
+      currentPos.y = Math.round(nextTop / options.grid.height) * options.grid.height;
+      currentSize.width = Math.round(nextWidth / options.grid.width) * options.grid.width;
+      currentSize.height = Math.round(nextHeight / options.grid.height) * options.grid.height;
       break;
     case RESIZE_STOP:
       currentState.isResizing = false;

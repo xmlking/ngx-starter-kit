@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
-import { SharedModule } from "@ngx-starter-kit/shared";
+import { SharedModule } from '@ngx-starter-kit/shared';
 import { ThemePickerModule } from '@ngx-starter-kit/theme-picker';
 import { NotificationsModule } from '@ngx-starter-kit/notifications';
 
@@ -13,14 +13,8 @@ import { FullscreenToggleComponent } from './components/fullscreen-toggle/fullsc
 import { SidenavToggleComponent } from './components/sidenav-toggle/sidenav-toggle.component';
 import { QuickpanelToggleComponent } from './components/quickpanel-toggle/quickpanel-toggle.component';
 
-
 @NgModule({
-  imports: [
-    SharedModule,
-    ThemePickerModule,
-    RouterModule,
-    NotificationsModule,
-  ],
+  imports: [SharedModule, ThemePickerModule, RouterModule, NotificationsModule],
   exports: [ToolbarComponent],
   declarations: [
     ToolbarComponent,
@@ -29,7 +23,7 @@ import { QuickpanelToggleComponent } from './components/quickpanel-toggle/quickp
     UserMenuComponent,
     FullscreenToggleComponent,
     SidenavToggleComponent,
-    QuickpanelToggleComponent
+    QuickpanelToggleComponent,
   ],
 })
 export class ToolbarModule {}

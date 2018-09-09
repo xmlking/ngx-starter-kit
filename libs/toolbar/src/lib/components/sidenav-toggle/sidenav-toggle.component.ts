@@ -1,19 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import { MatSidenav } from "@angular/material";
+import { Component, Input, OnInit } from '@angular/core';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'ngx-sidenav-toggle',
   templateUrl: './sidenav-toggle.component.html',
-  styleUrls: ['./sidenav-toggle.component.scss']
+  styleUrls: ['./sidenav-toggle.component.scss'],
 })
 export class SidenavToggleComponent implements OnInit {
+  @Input()
+  sidenav: MatSidenav;
 
-  @Input() sidenav: MatSidenav;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openSidenav() {
     this.sidenav.open();

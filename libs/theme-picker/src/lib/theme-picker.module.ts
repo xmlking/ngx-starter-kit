@@ -9,6 +9,6 @@ import { MatButtonModule, MatGridListModule, MatIconModule, MatMenuModule, MatTo
   imports: [MatButtonModule, MatIconModule, MatMenuModule, MatGridListModule, MatTooltipModule, CommonModule],
   exports: [ThemePickerComponent],
   declarations: [ThemePickerComponent],
-  providers: [StyleManagerService, ThemeStorageService]
+  providers: [StyleManagerService, ThemeStorageService],
 })
 export class ThemePickerModule {}

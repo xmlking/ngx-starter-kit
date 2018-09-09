@@ -5,7 +5,7 @@ import { Title } from '@angular/platform-browser';
  * Service responsible for setting the title that appears above the home and dashboard pages.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PageTitleService {
   _title = '';

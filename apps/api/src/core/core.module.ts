@@ -1,4 +1,4 @@
-import {MiddlewareConsumer, Module, NestModule} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { EmailModule } from '../email';
 import { ConfigModule } from '../config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -48,8 +48,6 @@ import { RequestContextMiddleware } from './context';
 })
 export class CoreModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(RequestContextMiddleware)
-      .forRoutes('*');
+    consumer.apply(RequestContextMiddleware).forRoutes('*');
   }
 }

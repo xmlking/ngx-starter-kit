@@ -1,74 +1,71 @@
-@import "fu/var";
+@import 'fu/var';
 
-  .gain {
-    margin-left: $spacing/3;
-    @include mat-typography-level-to-styles($config, caption);
+.gain {
+  margin-left: $spacing/3;
+  @include mat-typography-level-to-styles($config, caption);
 
-    .mat-icon {
-      font-size: 18px;
-      height: 18px;
-      width: 18px;
-      line-height: 18px;
-    }
-
-    &.increase {
-      color: $color-success;
-    }
-
-    &.decrease {
-      color: $theme-color-warn;
-    }
+  .mat-icon {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+    line-height: 18px;
   }
 
-  .card-content {
-    padding: 0 !important;
+  &.increase {
+    color: $color-success;
+  }
 
-    .sections {
-      padding: 0 $spacing $spacing;
+  &.decrease {
+    color: $theme-color-warn;
+  }
+}
 
-      .section {
+.card-content {
+  padding: 0 !important;
 
-        .label {
-          @include mat-typography-level-to-styles($config, body-1);
-          color: $theme-secondary-text;
-          text-transform: uppercase;
-        }
+  .sections {
+    padding: 0 $spacing $spacing;
 
-        .value {
-          @include mat-typography-level-to-styles($config, display-1);
+    .section {
+      .label {
+        @include mat-typography-level-to-styles($config, body-1);
+        color: $theme-secondary-text;
+        text-transform: uppercase;
+      }
 
-          .indicator {
-            margin-left: $spacing/8;
-            font-size: 32px;
-            height: 32px;
-            width: 32px;
+      .value {
+        @include mat-typography-level-to-styles($config, display-1);
 
-            &.success {
-              color: $color-success;
-            }
+        .indicator {
+          margin-left: $spacing/8;
+          font-size: 32px;
+          height: 32px;
+          width: 32px;
 
-            &.primary {
-              color: $theme-color-primary;
-            }
+          &.success {
+            color: $color-success;
+          }
 
-            &.accent {
-              color: $theme-color-accent;
-            }
+          &.primary {
+            color: $theme-color-primary;
+          }
 
-            &.warn {
-              color: $theme-color-warn;
-            }
+          &.accent {
+            color: $theme-color-accent;
+          }
+
+          &.warn {
+            color: $theme-color-warn;
           }
         }
       }
     }
-
-    .content {
-      max-width: 100%;
-      display: flex;
-      flex: 1;
-      position: relative;
-    }
-
   }
 
+  .content {
+    max-width: 100%;
+    display: flex;
+    flex: 1;
+    position: relative;
+  }
+}

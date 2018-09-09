@@ -1,7 +1,7 @@
-@import "fu/var";
+@import 'fu/var';
 
 .market-widget {
-  padding: $spacing*2 $spacing;
+  padding: $spacing * 2 $spacing;
   border: 3px dashed #888;
 
   .title {

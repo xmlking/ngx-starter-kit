@@ -1,10 +1,18 @@
-@import "animation-helper";
-@mixin blink0($color: #F00, $duration: $global-duration, $function: $global-function, $delay: $global-delay, $count: $global-count, $fill: $global-fill, $visibility: $global-visibility) {
-  @include animation(blink+'_'+$color $duration $function $delay $count $fill);
+@import 'animation-helper';
+@mixin blink0(
+  $color: #f00,
+  $duration: $global-duration,
+  $function: $global-function,
+  $delay: $global-delay,
+  $count: $global-count,
+  $fill: $global-fill,
+  $visibility: $global-visibility
+) {
+  @include animation(blink + '_' + $color $duration $function $delay $count $fill);
   @include visibility($visibility);
 
   @at-root {
-    @include keyframes(blink+'_'+$color) {
+    @include keyframes(blink + '_' + $color) {
       0% {
         background-color: $color;
         box-shadow: #000 0 -1px 6px 1px, inset darken($color, 30%) 0 -1px 8px, $color 0 3px 11px;
@@ -21,18 +29,26 @@
   }
 }
 
-@mixin blink($color: #FF0, $duration: $global-duration, $function: $global-function, $delay: $global-delay, $count: $global-count, $fill: $global-fill, $visibility: $global-visibility) {
-  @include animation(blink+'_'+$color $duration $function $delay $count $fill);
+@mixin blink(
+  $color: #ff0,
+  $duration: $global-duration,
+  $function: $global-function,
+  $delay: $global-delay,
+  $count: $global-count,
+  $fill: $global-fill,
+  $visibility: $global-visibility
+) {
+  @include animation(blink + '_' + $color $duration $function $delay $count $fill);
   @include visibility($visibility);
 
   @at-root {
-    @include keyframes(blink+'_'+$color) {
+    @include keyframes(blink + '_' + $color) {
       from {
         background-color: $color;
       }
       50% {
         background-color: darken($color, 20%);
-        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset  darken($color, 5%) 0 -1px 9px, $color 0 2px 0;
+        box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset darken($color, 5%) 0 -1px 9px, $color 0 2px 0;
       }
       to {
         background-color: $color;
@@ -53,8 +69,8 @@
   box-shadow: #000 0 -1px 6px 1px;
 
   &.red {
-    background-color: #F00;
-    box-shadow: #000 0 -1px 6px 1px, inset #600 0 -1px 8px, #F00 0 3px 11px;
+    background-color: #f00;
+    box-shadow: #000 0 -1px 6px 1px, inset #600 0 -1px 8px, #f00 0 3px 11px;
 
     &.blink {
       animation: blinkRed 1s infinite;
@@ -63,8 +79,8 @@
   }
 
   &.yellow {
-    background-color: #FF0;
-    box-shadow: #000 0 -1px 6px 1px, inset #660 0 -1px 8px, #FF0 0 3px 11px;
+    background-color: #ff0;
+    box-shadow: #000 0 -1px 6px 1px, inset #660 0 -1px 8px, #ff0 0 3px 11px;
     &.blink {
       animation: blinkYellow 1s infinite;
       //@include blink($color: yellow, $duration: 1000ms, $count:infinite);
@@ -97,28 +113,27 @@
 
   @keyframes blinkRed {
     from {
-      background-color: #F00;
+      background-color: #f00;
     }
     50% {
-      background-color: #A00;
+      background-color: #a00;
       box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #441313 0 -1px 9px, rgba(255, 0, 0, 0.5) 0 2px 0;
     }
     to {
-      background-color: #F00;
+      background-color: #f00;
     }
   }
 
   @keyframes blinkYellow {
     from {
-      background-color: #FF0;
+      background-color: #ff0;
     }
     50% {
-      background-color: #AA0;
-      box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #FF0 0 2px 0;
+      background-color: #aa0;
+      box-shadow: rgba(0, 0, 0, 0.2) 0 -1px 7px 1px, inset #808002 0 -1px 9px, #ff0 0 2px 0;
     }
     to {
-      background-color: #FF0;
+      background-color: #ff0;
     }
   }
 }
-

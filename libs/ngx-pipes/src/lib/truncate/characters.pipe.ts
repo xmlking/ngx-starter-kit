@@ -2,7 +2,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
   pure: true,
-  name: 'characters'
+  name: 'characters',
 })
 export class CharactersPipe implements PipeTransform {
   transform(value: string, limit: number = 40, trail: String = '…'): string {

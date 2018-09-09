@@ -8,7 +8,7 @@ describe('WizdashComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [WizdashComponent]
+      declarations: [WizdashComponent],
     }).compileComponents();
   }));
 

@@ -1,12 +1,10 @@
 .cal-month-view {
-
   .cal-header .cal-cell {
     padding-top: $spacing/2;
     padding-bottom: $spacing/2;
   }
 
   .cal-open-day-events {
-
     > div {
       background: $theme-card;
       color: $theme-text;
@@ -47,8 +45,8 @@
   }
 }
 
-.cal-week-view, .cal-day-view {
-
+.cal-week-view,
+.cal-day-view {
   .cal-event {
     display: flex;
     flex-direction: row;
@@ -91,7 +89,6 @@
       }
     }
   }
-
 }
 
 .cal-event-title {

@@ -1,4 +1,4 @@
-import {Entity, Column, PrimaryGeneratedColumn, ObjectID, ObjectIdColumn} from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, ObjectID, ObjectIdColumn } from 'typeorm';
 
 // TODO: https://github.com/nicolaspearson/salespal/blob/master/backend/src/controllers/StockImageController.ts
 // TODO: https://github.com/mkatrenik/assignar
@@ -6,7 +6,8 @@ import {Entity, Column, PrimaryGeneratedColumn, ObjectID, ObjectIdColumn} from '
 
 @Entity()
 export class Image {
-  @ObjectIdColumn() id: ObjectID;
+  @ObjectIdColumn()
+  id: ObjectID;
 
   @Column({ length: 200 })
   title: string;

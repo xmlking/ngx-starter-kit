@@ -8,16 +8,13 @@ describe('PageTitleService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [{ provide: PageTitleService, useValue: pageTitleService }]
+      providers: [{ provide: PageTitleService, useValue: pageTitleService }],
     });
   });
 
-  it(
-    'should initialize title to empty string',
-    inject([PageTitleService], (service: PageTitleService) => {
-      expect(service).toBeTruthy();
-      expect(service._title).toEqual('');
-      expect(service.title).toEqual('');
-    })
-  );
+  it('should initialize title to empty string', inject([PageTitleService], (service: PageTitleService) => {
+    expect(service).toBeTruthy();
+    expect(service._title).toEqual('');
+    expect(service.title).toEqual('');
+  }));
 });

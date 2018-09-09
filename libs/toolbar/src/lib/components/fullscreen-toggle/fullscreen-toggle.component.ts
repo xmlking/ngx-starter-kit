@@ -1,20 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as screenfull from 'screenfull';
 
 @Component({
   selector: 'ngx-fullscreen-toggle',
   templateUrl: './fullscreen-toggle.component.html',
-  styleUrls: ['./fullscreen-toggle.component.scss']
+  styleUrls: ['./fullscreen-toggle.component.scss'],
 })
 export class FullscreenToggleComponent implements OnInit {
-
   isFullscreen: boolean;
 
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleFullscreen() {
     if (screenfull.enabled) {

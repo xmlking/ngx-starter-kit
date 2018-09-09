@@ -1,4 +1,4 @@
-@import "fu/var";
+@import 'fu/var';
 
 .card {
   background: #4285f4;
@@ -36,7 +36,6 @@
       padding-top: $spacing/2;
 
       .page {
-
         & + .page {
           padding-top: $spacing/3;
         }

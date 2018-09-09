@@ -8,7 +8,7 @@ describe('Auth', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NgxsModule.forRoot([AuthState])]
+      imports: [NgxsModule.forRoot([AuthState])],
     }).compileComponents();
     store = TestBed.get(Store);
   }));

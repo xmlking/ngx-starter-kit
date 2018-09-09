@@ -6,20 +6,20 @@
 // in each mixin.
 //-----------------------------------------------------------------------//
 
-$global-duration: 		1s 		!default;
-$global-function: 		ease 	!default;
-$global-delay: 			  .2s 	!default;
-$global-count:			  1 		!default;
-$global-fill: 			  both 	!default;
-$global-visibility: 	hidden 	!default;
+$global-duration: 1s !default;
+$global-function: ease !default;
+$global-delay: 0.2s !default;
+$global-count: 1 !default;
+$global-fill: both !default;
+$global-visibility: hidden !default;
 
 $prefixes: (webkit moz ms o spec);
 
-$prefix-for-webkit:		  true !default;
-$prefix-for-mozilla:	  true !default;
-$prefix-for-microsoft:	true !default;
-$prefix-for-opera:		  true !default;
-$prefix-for-spec:		    true !default; // required for keyframe mixin
+$prefix-for-webkit: true !default;
+$prefix-for-mozilla: true !default;
+$prefix-for-microsoft: true !default;
+$prefix-for-opera: true !default;
+$prefix-for-spec: true !default; // required for keyframe mixin
 
 //-----------------------------------------------------------------------//
 // HELPERS
@@ -53,7 +53,7 @@ $prefix-for-spec:		    true !default; // required for keyframe mixin
 //-----------------------------------------------------------------------//
 // @delay				Specifies when the animation will start. Default 0
 //-----------------------------------------------------------------------//
-@mixin delay($delay: .2s) {
+@mixin delay($delay: 0.2s) {
   @include prefixer(animation-delay, $delay, $prefixes);
 }
 
@@ -116,11 +116,11 @@ $prefix-for-spec:		    true !default; // required for keyframe mixin
 //-----------------------------------------------------------------------//
 
 @mixin keyframes($name) {
-  $original-prefix-for-webkit:		$prefix-for-webkit;
-  $original-prefix-for-mozilla:		$prefix-for-mozilla;
-  $original-prefix-for-microsoft:	$prefix-for-microsoft;
-  $original-prefix-for-opera:			$prefix-for-opera;
-  $original-prefix-for-spec:			$prefix-for-spec;
+  $original-prefix-for-webkit: $prefix-for-webkit;
+  $original-prefix-for-mozilla: $prefix-for-mozilla;
+  $original-prefix-for-microsoft: $prefix-for-microsoft;
+  $original-prefix-for-opera: $prefix-for-opera;
+  $original-prefix-for-spec: $prefix-for-spec;
 
   @if $original-prefix-for-webkit {
     @include disable-prefix-for-all();
@@ -154,50 +154,45 @@ $prefix-for-spec:		    true !default; // required for keyframe mixin
     }
   }
 
-  $prefix-for-webkit:			$original-prefix-for-webkit !global;
-  $prefix-for-mozilla:		$original-prefix-for-mozilla !global;
-  $prefix-for-microsoft:	$original-prefix-for-microsoft !global;
-  $prefix-for-opera:			$original-prefix-for-opera !global;
-  $prefix-for-spec:				$original-prefix-for-spec !global;
+  $prefix-for-webkit: $original-prefix-for-webkit !global;
+  $prefix-for-mozilla: $original-prefix-for-mozilla !global;
+  $prefix-for-microsoft: $original-prefix-for-microsoft !global;
+  $prefix-for-opera: $original-prefix-for-opera !global;
+  $prefix-for-spec: $original-prefix-for-spec !global;
 }
 
-@mixin prefixer ($property, $value, $prefixes) {
+@mixin prefixer($property, $value, $prefixes) {
   @each $prefix in $prefixes {
     @if $prefix == webkit {
       @if $prefix-for-webkit {
         -webkit-#{$property}: $value;
       }
-    }
-    @else if $prefix == moz {
+    } @else if $prefix == moz {
       @if $prefix-for-mozilla {
         -moz-#{$property}: $value;
       }
-    }
-    @else if $prefix == ms {
+    } @else if $prefix == ms {
       @if $prefix-for-microsoft {
         -ms-#{$property}: $value;
       }
-    }
-    @else if $prefix == o {
+    } @else if $prefix == o {
       @if $prefix-for-opera {
         -o-#{$property}: $value;
       }
-    }
-    @else if $prefix == spec {
+    } @else if $prefix == spec {
       @if $prefix-for-spec {
         #{$property}: $value;
       }
-    }
-    @else  {
+    } @else {
       @warn "Unrecognized prefix: #{$prefix}";
     }
   }
 }
 
 @mixin disable-prefix-for-all() {
-  $prefix-for-webkit:    false !global;
-  $prefix-for-mozilla:   false !global;
+  $prefix-for-webkit: false !global;
+  $prefix-for-mozilla: false !global;
   $prefix-for-microsoft: false !global;
-  $prefix-for-opera:     false !global;
-  $prefix-for-spec:      false !global;
+  $prefix-for-opera: false !global;
+  $prefix-for-spec: false !global;
 }

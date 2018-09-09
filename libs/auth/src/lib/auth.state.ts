@@ -7,7 +7,7 @@ import {
   LogoutSuccess,
   LoginSuccess,
   Logout,
-  AuthModeChanged
+  AuthModeChanged,
 } from './auth.actions';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
@@ -26,8 +26,8 @@ export interface AuthStateModel {
   defaults: {
     isLoggedIn: false,
     profile: {},
-    authMode: AuthMode.ImplicitFLow
-  }
+    authMode: AuthMode.ImplicitFLow,
+  },
 })
 export class AuthState {
   constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {}
@@ -51,7 +51,7 @@ export class AuthState {
   loginSuccess({ getState, patchState }: StateContext<AuthStateModel>, { payload }: LoginSuccess) {
     patchState({
       isLoggedIn: true,
-      profile: payload
+      profile: payload,
     });
     this.authService.startAutoRefreshToken();
     this.router.navigate(['/dashboard']);
@@ -62,7 +62,7 @@ export class AuthState {
     setState({
       isLoggedIn: false,
       profile: {},
-      authMode: getState().authMode
+      authMode: getState().authMode,
     });
     this.authService.stopAutoRefreshToken();
     this.router.navigate(['/home']);
@@ -71,7 +71,7 @@ export class AuthState {
   @Action(AuthModeChanged)
   authModeChanged({ getState, patchState }: StateContext<AuthStateModel>, { payload }: AuthModeChanged) {
     patchState({
-      authMode: payload
+      authMode: payload,
     });
   }
 
@@ -105,7 +105,7 @@ export class AuthState {
         } else {
           dispatch(new LoginSuccess(profile));
         }
-      })
+      }),
     );
   }
 }

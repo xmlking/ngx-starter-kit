@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation,
-  HostBinding
-} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, HostBinding } from '@angular/core';
 import { Input } from '@angular/core';
 import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 
@@ -11,17 +6,19 @@ import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
   selector: 'ngx-sidenav-item',
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SidenavItemComponent implements OnInit {
-  @Input() item: MenuItem;
+  @Input()
+  item: MenuItem;
 
   @HostBinding('class.open')
   get isOpen() {
     return this.menuService.isOpen(this.item);
   }
 
-  @HostBinding('class.sidenav-item') sidenavItemClass = true;
+  @HostBinding('class.sidenav-item')
+  sidenavItemClass = true;
 
   constructor(private menuService: MenuService) {}
 
@@ -42,11 +39,7 @@ export class SidenavItemComponent implements OnInit {
   private getOpenSubItemsCount(item: MenuItem): number {
     let count = 0;
 
-    if (
-      item.children &&
-      item.children.length > 0 &&
-      this.menuService.isOpen(item)
-    ) {
+    if (item.children && item.children.length > 0 && this.menuService.isOpen(item)) {
       count += item.children.length;
 
       item.children.forEach(subItem => {

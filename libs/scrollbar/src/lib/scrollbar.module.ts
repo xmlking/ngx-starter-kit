@@ -6,6 +6,6 @@ import { ScrollbarDirective } from './scrollbar.directive';
 @NgModule({
   imports: [CommonModule],
   declarations: [ScrollbarComponent, ScrollbarDirective],
-  exports: [ScrollbarComponent, ScrollbarDirective]
+  exports: [ScrollbarComponent, ScrollbarDirective],
 })
 export class ScrollbarModule {}

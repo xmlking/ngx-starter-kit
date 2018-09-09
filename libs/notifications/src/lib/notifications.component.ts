@@ -16,8 +16,10 @@ import { SendWebSocketAction } from '@ngx-starter-kit/socketio-plugin';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationsComponent implements OnInit {
-  @Select(NotificationsState) notifications$: Observable<Notification>;
-  @Select(NotificationsState.unReadCount) unReadCount$: Observable<number>;
+  @Select(NotificationsState)
+  notifications$: Observable<Notification>;
+  @Select(NotificationsState.unReadCount)
+  unReadCount$: Observable<number>;
   isOpen: boolean;
 
   constructor(private store: Store) {}

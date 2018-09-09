@@ -5,7 +5,7 @@ import { scrollbarOptions } from './scrollbar-options';
 @Component({
   selector: 'ngx-scrollbar',
   templateUrl: './scrollbar.component.html',
-  styleUrls: ['./scrollbar.component.scss']
+  styleUrls: ['./scrollbar.component.scss'],
 })
 export class ScrollbarComponent implements OnInit {
   scrollbarRef: Scrollbar;

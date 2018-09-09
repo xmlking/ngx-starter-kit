@@ -24,7 +24,6 @@ import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-t
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 
-
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
 @NgModule({

@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { EntityService } from './entity.service';
@@ -15,17 +9,18 @@ import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 
-export abstract class EntitiesComponent<
-  TEntity extends Entity,
-  TService extends EntityService<TEntity>
-> implements OnInit, OnDestroy, AfterViewInit {
+export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
+  implements OnInit, OnDestroy, AfterViewInit {
   protected _destroy$ = new Subject<void>();
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
-  @ViewChild(MatPaginator) paginator: MatPaginator;
-  @ViewChild(MatSort) sort: MatSort;
-  @ViewChild('filter') filterRef: ElementRef;
+  @ViewChild(MatPaginator)
+  paginator: MatPaginator;
+  @ViewChild(MatSort)
+  sort: MatSort;
+  @ViewChild('filter')
+  filterRef: ElementRef;
 
   readonly loading$;
   readonly columns: Array<EntityColumnDef<TEntity>>;
@@ -57,16 +52,14 @@ export abstract class EntitiesComponent<
     // remove first selected entity if more then max selected.
     if (this.maxSelectable > 1) {
       // is multi select mode?
-      this.selection.onChange
+      this.selection.changed
         .pipe(
-          takeUntil(this._destroy$),
           // tap(console.log),
           filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
-          filter(_ => this.selection.selected.length > this.maxSelectable)
+          filter(_ => this.selection.selected.length > this.maxSelectable),
+          takeUntil(this._destroy$),
         )
-        .subscribe(_ =>
-          this.selection.deselect(this.selection.selected.shift())
-        );
+        .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
     }
 
     // fromEvent(this.filterRef.nativeElement, 'keyup')
@@ -96,16 +89,12 @@ export abstract class EntitiesComponent<
   }
 
   delete(item: TEntity) {
-    return this.entityService
-      .delete(item.id)
-      .pipe(concatMap(_ => this.update()));
+    return this.entityService.delete(item.id).pipe(concatMap(_ => this.update()));
   }
 
   updateOrCreate(entity: TEntity, isNew: boolean) {
     if (isNew) {
-      return this.entityService
-        .post(entity)
-        .pipe(concatMap(_ => this.update()));
+      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
     } else {
       return this.entityService.put(entity).pipe(concatMap(_ => this.update()));
     }
@@ -127,15 +116,13 @@ export abstract class EntitiesComponent<
         this.dataSource.paginator = this.paginator;
         // return nothing as we don't need.
         // return result
-      })
+      }),
     );
   }
 
   /** Whether all filtered rows are selected. */
   isAllFilteredRowsSelected() {
-    return this.dataSource.filteredData.every(data =>
-      this.selection.isSelected(data)
-    );
+    return this.dataSource.filteredData.every(data => this.selection.isSelected(data));
   }
 
   /** Whether the selection it totally matches the filtered rows. */
@@ -152,11 +139,7 @@ export abstract class EntitiesComponent<
    * filtered rows there are no filtered rows displayed.
    */
   isMasterToggleIndeterminate() {
-    return (
-      this.selection.hasValue() &&
-      (!this.isAllFilteredRowsSelected() ||
-        !this.dataSource.filteredData.length)
-    );
+    return this.selection.hasValue() && (!this.isAllFilteredRowsSelected() || !this.dataSource.filteredData.length);
   }
 
   /** Selects all filtered rows if they are not all selected; otherwise clear selection. */

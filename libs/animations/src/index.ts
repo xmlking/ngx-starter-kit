@@ -12,5 +12,3 @@ export * from './lib/scroll.animation';
 export * from './lib/scroll-fab.animation';
 export * from './lib/router.transition';
 export * from './lib/sidenav.animation';
-
-

@@ -13,7 +13,7 @@ export class AppConfirmService {
     dialogRef = this.dialog.open(AppConfirmComponent, {
       width: '380px',
       disableClose: true,
-      data: { title, message }
+      data: { title, message },
     });
     return <Observable<boolean>>dialogRef.afterClosed();
   }

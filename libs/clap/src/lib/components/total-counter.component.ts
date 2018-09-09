@@ -1,4 +1,3 @@
-
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
@@ -17,9 +16,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
         font-size: 14px;
         text-align: center;
       }
-    `
+    `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TotalCounterComponent {
   @Input()

@@ -7,5 +7,5 @@ export const scrollbarOptions = {
   alwaysShowTracks: false,
   continuousScrolling: true,
   overscrollEffect: 'bounce',
-  overscrollDamping: 0.2
+  overscrollDamping: 0.2,
 };

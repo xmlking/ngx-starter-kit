@@ -31,7 +31,7 @@ export { Comparator } from './merge-sort';
 
 export enum TraversalStrategy {
   PreOrder,
-  PostOrder
+  PostOrder,
 }
 
 export interface TreeNode<T> {
@@ -55,12 +55,9 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
 
   private addParentLinks(parent: T): T {
     if (parent.children) {
-      //mergeSort children
+      // mergeSort children
       if (this.config && this.config.nodeComparatorFn) {
-        parent.children = mergeSort<any>(
-          parent.children,
-          this.config.nodeComparatorFn
-        );
+        parent.children = mergeSort<any>(parent.children, this.config.nodeComparatorFn);
       }
 
       // add a parent link to a child structure
@@ -149,11 +146,8 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     return null;
   }
 
-  findByPredicateDFS(
-    predicate: (node: T) => boolean,
-    strategy: TraversalStrategy = TraversalStrategy.PreOrder
-  ): T {
-    //TODO
+  findByPredicateDFS(predicate: (node: T) => boolean, strategy: TraversalStrategy = TraversalStrategy.PreOrder): T {
+    // TODO
     return null;
   }
 
@@ -179,10 +173,7 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     }
   }
 
-  traverseDFS(
-    fn: (node: T) => any,
-    method: TraversalStrategy = TraversalStrategy.PreOrder
-  ) {
+  traverseDFS(fn: (node: T) => any, method: TraversalStrategy = TraversalStrategy.PreOrder) {
     const current = this.root;
     if ((method = TraversalStrategy.PreOrder)) {
       this._postOrder(current, fn);

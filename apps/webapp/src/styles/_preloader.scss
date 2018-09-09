@@ -1,10 +1,9 @@
-@import "constants";
+@import 'constants';
 
 /* PRE LOADER
 -------------------------------------------------- */
 @import '~loaders.css/src/animations/line-scale';
 @import '~loaders.css/src/animations/line-scale-pulse-out';
-
 
 .loader {
   //background: $auxiliary;

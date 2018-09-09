@@ -16,12 +16,12 @@ export class EmailController {
       to: 'sumo@demo.com',
       subject: email.title,
       template: 'welcome', // The `.pug` extension is appended automatically.
-      context: {  // Data to be sent to PugJS template files.
+      context: {
+        // Data to be sent to PugJS template files.
         title: email.title,
         comments: email.comments,
         name: email.name,
       },
     });
   }
-
 }

@@ -13,8 +13,7 @@ export abstract class AuditMongoRepository<Entity> extends MongoRepository<Entit
     return super.save(entity, options);
   }
 
-  async update(
-    criteria: string, partialEntity: DeepPartial<Entity>, options?: SaveOptions): Promise<UpdateResult> {
+  async update(criteria: string, partialEntity: DeepPartial<Entity>, options?: SaveOptions): Promise<UpdateResult> {
     const updatedCol = this.metadata.updateDateColumn ? this.metadata.updateDateColumn.propertyPath : null;
     const versionCol = this.metadata.versionColumn ? this.metadata.versionColumn.propertyPath : null;
     if (updatedCol) {

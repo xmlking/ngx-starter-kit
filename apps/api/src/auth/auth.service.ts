@@ -1,4 +1,4 @@
-import {Injectable} from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { MongoRepository } from 'typeorm';
 import { CrudService } from '../core';
@@ -6,17 +6,15 @@ import { User } from './user.entity';
 import { JwtToken } from './interfaces/jwt-token.interface';
 
 @Injectable()
-export class AuthService extends CrudService<User>{
-  constructor(
-    @InjectRepository(User)
-    private readonly userRepository: MongoRepository<User>) {
+export class AuthService extends CrudService<User> {
+  constructor(@InjectRepository(User) private readonly userRepository: MongoRepository<User>) {
     super(userRepository);
   }
 
   async getLoggedUserOrCreate(token: JwtToken): Promise<User> {
     const { email, preferred_username } = token;
     // const user = await this.userRepository.findOne({email});
-    const user = await this.userRepository.findOne({userId : preferred_username});
+    const user = await this.userRepository.findOne({ userId: preferred_username });
     if (user) {
       return user;
     } else {

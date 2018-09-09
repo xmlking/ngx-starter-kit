@@ -7,7 +7,7 @@ import { BehaviorSubject, fromEvent, Subject } from 'rxjs';
 
 enum ShowStatus {
   show = 'show',
-  hide = 'hide'
+  hide = 'hide',
 }
 
 @Component({
@@ -24,13 +24,11 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
 
   pageScrollInstance: PageScrollInstance;
 
-  constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any) {
-  }
+  constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any) {}
 
   ngAfterViewInit() {
     this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
     const scroll$ = fromEvent(window, 'scroll').pipe(
-      takeUntil(this._destroyed$),
       throttleTime(10),
       map(() => window.pageYOffset),
       map(y => {
@@ -43,6 +41,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
       distinctUntilChanged(),
       share(),
       tap(state => this._stateSubject.next(state)),
+      takeUntil(this._destroyed$),
     );
     scroll$.subscribe();
   }

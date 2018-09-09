@@ -4,13 +4,16 @@ import { ChartData } from 'chart.js';
 import * as moment from 'moment';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
-import { fadeOutAnimation } from "@ngx-starter-kit/animations";
+import { fadeOutAnimation } from '@ngx-starter-kit/animations';
 import { AdvancedPieChartWidgetOptions } from '../../components/advanced-pie-chart-widget/advanced-pie-chart-widget-options.interface';
 import { AudienceOverviewWidgetOptions } from '../../components/audience-overview-widget/audience-overview-widget-options.interface';
 import { BarChartWidgetOptions } from '../../components/bar-chart-widget/bar-chart-widget-options.interface';
 import { DonutChartWidgetOptions } from '../../components/donut-chart-widget/donut-chart-widget-options.interface';
 import { LineChartWidgetOptions } from '../../components/line-chart-widget/line-chart-widget-options.interface';
-import { RealtimeUsersWidgetData, RealtimeUsersWidgetPages } from '../../components/realtime-users-widget/realtime-users-widget.interface';
+import {
+  RealtimeUsersWidgetData,
+  RealtimeUsersWidgetPages,
+} from '../../components/realtime-users-widget/realtime-users-widget.interface';
 import { RecentSalesWidgetOptions } from '../../components/recent-sales-widget/recent-sales-widget-options.interface';
 import { SalesSummaryWidgetOptions } from '../../components/sales-summary-widget/sales-summary-widget-options.interface';
 import { WizdashService } from './wizdash.service';
@@ -31,7 +34,7 @@ export class WizdashComponent implements OnInit {
     gain: 16.3,
     subTitle: 'compared to last month',
     background: '#5C6BC0',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   };
 
   visitsData$: Observable<ChartData>;
@@ -40,7 +43,7 @@ export class WizdashComponent implements OnInit {
     gain: 42.5,
     subTitle: 'compared to last month',
     background: '#00BCD4',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   };
 
   clicksData$: Observable<ChartData>;
@@ -49,7 +52,7 @@ export class WizdashComponent implements OnInit {
     gain: -6.1,
     subTitle: 'compared to last month',
     background: '#66BB6A',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   };
 
   conversionsData$: Observable<ChartData>;
@@ -58,20 +61,20 @@ export class WizdashComponent implements OnInit {
     gain: 10.4,
     subTitle: 'compared to last month',
     background: '#009688',
-    color: '#FFFFFF'
+    color: '#FFFFFF',
   };
 
   salesSummaryData$: Observable<ChartData>;
   salesSummaryOptions: SalesSummaryWidgetOptions = {
     title: 'Sales Summary',
     subTitle: 'Compare Sales by Time',
-    gain: 37.2
+    gain: 37.2,
   };
 
   top5CategoriesData$: Observable<ChartData>;
   top5CategoriesOptions: DonutChartWidgetOptions = {
     title: 'Top Categories',
-    subTitle: 'Compare Sales by Category'
+    subTitle: 'Compare Sales by Category',
   };
 
   audienceOverviewOptions: AudienceOverviewWidgetOptions[] = [];
@@ -84,7 +87,7 @@ export class WizdashComponent implements OnInit {
   recentSalesData$: Observable<ChartData>;
   recentSalesOptions: RecentSalesWidgetOptions = {
     title: 'Recent Sales',
-    subTitle: 'See who bought what in realtime'
+    subTitle: 'See who bought what in realtime',
   };
   recentSalesTableOptions = {
     pageSize: 5,
@@ -92,19 +95,17 @@ export class WizdashComponent implements OnInit {
       { name: 'Product', property: 'name', visible: true, isModelProperty: true },
       { name: '$ Price', property: 'price', visible: true, isModelProperty: true },
       { name: 'Time ago', property: 'timestamp', visible: true, isModelProperty: true },
-    ]
+    ],
   };
   recentSalesTableData$: Observable<any[]>;
 
   advancedPieChartOptions: AdvancedPieChartWidgetOptions = {
     title: 'Sales by country',
-    subTitle: 'Top 3 countries sold 34% more items this month\n'
+    subTitle: 'Top 3 countries sold 34% more items this month\n',
   };
   advancedPieChartData$: Observable<ChartData>;
 
-
-  constructor(private wizdashService: WizdashService,
-              private router: Router) {
+  constructor(private wizdashService: WizdashService, private router: Router) {
     /**
      * Edge wrong drawing fix
      * Navigate anywhere and on Promise right back
@@ -118,7 +119,6 @@ export class WizdashComponent implements OnInit {
         WizdashComponent.isInitialLoad = false;
       }
     }
-
   }
 
   /**
@@ -128,7 +128,7 @@ export class WizdashComponent implements OnInit {
   gap = `${this._gap}px`;
 
   col(colAmount: number) {
-    return `1 1 calc(${100 / colAmount}% - ${this._gap - (this._gap / colAmount)}px)`;
+    return `1 1 calc(${100 / colAmount}% - ${this._gap - this._gap / colAmount}px)`;
   }
 
   /**
@@ -146,19 +146,19 @@ export class WizdashComponent implements OnInit {
     this.wizdashService.getAudienceOverviewUsers().subscribe(response => {
       this.audienceOverviewOptions.push({
         label: 'Users',
-        data: response
+        data: response,
       } as AudienceOverviewWidgetOptions);
     });
     this.wizdashService.getAudienceOverviewSessions().subscribe(response => {
       this.audienceOverviewOptions.push({
         label: 'Sessions',
-        data: response
+        data: response,
       } as AudienceOverviewWidgetOptions);
     });
     this.wizdashService.getAudienceOverviewBounceRate().subscribe(response => {
       const property: AudienceOverviewWidgetOptions = {
         label: 'Bounce Rate',
-        data: response
+        data: response,
       };
 
       // Calculate Bounce Rate Average
@@ -171,7 +171,7 @@ export class WizdashComponent implements OnInit {
     this.wizdashService.getAudienceOverviewSessionDuration().subscribe(response => {
       const property: AudienceOverviewWidgetOptions = {
         label: 'Session Duration',
-        data: response
+        data: response,
       };
 
       // Calculate Average Session Duration and Format to Human Readable Format
@@ -184,39 +184,51 @@ export class WizdashComponent implements OnInit {
 
     // Prefill realtimeUsersData with 30 random values
     for (let i = 0; i < 30; i++) {
-      this._realtimeUsersDataSubject.next(
-        {
-          label: moment().fromNow(),
-          value: Math.round(Math.random() * (100 - 10) + 10)
-        } as RealtimeUsersWidgetData);
+      this._realtimeUsersDataSubject.next({
+        label: moment().fromNow(),
+        value: Math.round(Math.random() * (100 - 10) + 10),
+      } as RealtimeUsersWidgetData);
     }
 
     // Simulate incoming values for Realtime Users Widget
     setInterval(() => {
-      this._realtimeUsersDataSubject.next(
-        {
-          label: moment().fromNow(),
-          value: Math.round(Math.random() * (100 - 10) + 10)
-        } as RealtimeUsersWidgetData);
+      this._realtimeUsersDataSubject.next({
+        label: moment().fromNow(),
+        value: Math.round(Math.random() * (100 - 10) + 10),
+      } as RealtimeUsersWidgetData);
     }, 5000);
 
     // Prefill realtimeUsersPages with 3 random values
     const demoPages = [];
-    const demoPagesPossibleValues = ['/components', '/tables/all-in-one-table', '/apps/inbox', '/apps/chat', '/dashboard', '/login', '/register', '/apps/calendar', '/forms/form-elements'];
+    const demoPagesPossibleValues = [
+      '/components',
+      '/tables/all-in-one-table',
+      '/apps/inbox',
+      '/apps/chat',
+      '/dashboard',
+      '/login',
+      '/register',
+      '/apps/calendar',
+      '/forms/form-elements',
+    ];
     for (let i = 0; i < 3; i++) {
-      const nextPossibleValue = demoPagesPossibleValues[+Math.round(Math.random() * (demoPagesPossibleValues.length - 1))];
+      const nextPossibleValue =
+        demoPagesPossibleValues[+Math.round(Math.random() * (demoPagesPossibleValues.length - 1))];
       if (demoPages.indexOf(nextPossibleValue) === -1) {
         demoPages.push(nextPossibleValue);
       }
 
-      this._realtimeUsersPagesSubject.next(demoPages.map(pages => {
-        return { 'page': pages } as RealtimeUsersWidgetPages;
-      }));
+      this._realtimeUsersPagesSubject.next(
+        demoPages.map(pages => {
+          return { page: pages } as RealtimeUsersWidgetPages;
+        }),
+      );
     }
 
     // Simulate incoming values for Realtime Users Widget
     setInterval(() => {
-      const nextPossibleValue = demoPagesPossibleValues[+Math.round(Math.random() * (demoPagesPossibleValues.length - 1))];
+      const nextPossibleValue =
+        demoPagesPossibleValues[+Math.round(Math.random() * (demoPagesPossibleValues.length - 1))];
       if (demoPages.indexOf(nextPossibleValue) === -1) {
         demoPages.push(nextPossibleValue);
       }
@@ -225,9 +237,11 @@ export class WizdashComponent implements OnInit {
         demoPages.splice(Math.round(Math.random() * demoPages.length), 1);
       }
 
-      this._realtimeUsersPagesSubject.next(demoPages.map(pages => {
-        return { 'page': pages } as RealtimeUsersWidgetPages;
-      }));
+      this._realtimeUsersPagesSubject.next(
+        demoPages.map(pages => {
+          return { page: pages } as RealtimeUsersWidgetPages;
+        }),
+      );
     }, 5000);
 
     this.recentSalesTableData$ = this.wizdashService.getRecentSalesTableData();
@@ -235,5 +249,4 @@ export class WizdashComponent implements OnInit {
 
     this.advancedPieChartData$ = this.wizdashService.getAdvancedPieChartData();
   }
-
 }

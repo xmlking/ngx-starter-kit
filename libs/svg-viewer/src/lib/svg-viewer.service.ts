@@ -21,10 +21,7 @@ export class SvgViewerService {
     }
 
     if (!SvgViewerService._inProgressReqs) {
-      SvgViewerService._inProgressReqs = new Map<
-        string,
-        Observable<SVGElement>
-      >();
+      SvgViewerService._inProgressReqs = new Map<string, Observable<SVGElement>>();
     }
   }
 
@@ -50,7 +47,7 @@ export class SvgViewerService {
         const svgEl = this._svgElementFromString(svgText);
         SvgViewerService._cache.set(absUrl, svgEl);
         return this._cloneSVG(svgEl);
-      })
+      }),
     );
 
     SvgViewerService._inProgressReqs.set(absUrl, req);

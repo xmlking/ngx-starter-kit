@@ -10,7 +10,7 @@ export class SvgViewerDefaultConfig extends SvgViewerConfig {
     @Optional()
     @Inject(APP_BASE_HREF)
     appBase: string,
-    @Optional() location: PlatformLocation
+    @Optional() location: PlatformLocation,
   ) {
     super();
 

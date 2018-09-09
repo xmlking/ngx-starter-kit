@@ -5,7 +5,7 @@ import { ChatService } from './chat.service';
 describe('ChatService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ChatService]
+      providers: [ChatService],
     });
   });
 

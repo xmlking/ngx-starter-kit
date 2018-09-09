@@ -8,7 +8,7 @@ import {
   OnInit,
   OnChanges,
   AfterViewInit,
-  HostBinding
+  HostBinding,
 } from '@angular/core';
 
 import {
@@ -19,7 +19,7 @@ import {
   IResizeState,
   IResizeEvent,
   IRectangle,
-  defaultBound
+  defaultBound,
 } from './resizable.store';
 import { resizeReducer } from './resizable.reducer';
 import { MOUSE_DOWN, RESIZE_STOP, RESIZE } from './resizable.actions';
@@ -43,50 +43,66 @@ import { ResizableState } from './resizable.state';
     '(document: mouseup)': 'onMouseUp($event)',
     '(document: touchend)': 'onMouseUp($event)',
     '(document: mousemove)': 'onMouseMove($event)',
-    '(document: touchmove)': 'onMouseMove($event)'
-  }
+    '(document: touchmove)': 'onMouseMove($event)',
+  },
 })
 export class ResizableComponent implements OnInit, OnChanges {
   // Resize start event.
-  @Output() resizeStart = new EventEmitter<IResizeEvent>();
+  @Output()
+  resizeStart = new EventEmitter<IResizeEvent>();
   // Resizing event.
-  @Output() resizing = new EventEmitter<IResizeEvent>();
+  @Output()
+  resizing = new EventEmitter<IResizeEvent>();
   // Resize end event.
-  @Output() resizeEnd = new EventEmitter<IResizeEvent>();
+  @Output()
+  resizeEnd = new EventEmitter<IResizeEvent>();
 
   // x coordinate of the element.
-  @Input() x: number;
+  @Input()
+  x: number;
   // y coordinate of the element.
-  @Input() y: number;
+  @Input()
+  y: number;
   // Width of the element.
-  @Input() width?: number;
+  @Input()
+  width?: number;
   // Height of the element.
-  @Input() height?: number;
+  @Input()
+  height?: number;
   // Minimum width.
-  @Input() minWidth? = 350;
+  @Input()
+  minWidth = 350;
   // Minimum height.
-  @Input() minHeight? = 400;
+  @Input()
+  minHeight = 400;
   // Maximum width.
-  @Input() maxWidth? = Infinity;
+  @Input()
+  maxWidth = Infinity;
   // Maximum height.
-  @Input() maxHeight? = Infinity;
+  @Input()
+  maxHeight = Infinity;
 
   // Disable the resize.
-  @Input() disableResize = false;
+  @Input()
+  disableResize = false;
   // An array which contains the resize directions.
-  @Input() directions: string[] = ['bottom', 'right'];
+  @Input()
+  directions: string[] = ['bottom', 'right'];
   // Resize in a grid.
-  @Input() grid: ISize = { width: 1, height: 1 };
+  @Input()
+  grid: ISize = { width: 1, height: 1 };
   // Bound the resize.
-  @Input() bound: IRectangle = null;
+  @Input()
+  bound: IRectangle = null;
   // Resize ratio.
-  @Input() ratio: number = null;
+  @Input()
+  ratio: number = null;
 
   constructor(
     private _el: ElementRef,
     private _store: Store,
     private _renderer: Renderer2,
-    private rState: ResizableState
+    private rState: ResizableState,
   ) {}
 
   ngOnInit() {
@@ -120,7 +136,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     if (this._state.isResizing) {
       this.emitAction(RESIZE, {
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
       });
       const csize = this._state.currentSize;
       const cpos = this._state.currentPosition;
@@ -137,17 +153,17 @@ export class ResizableComponent implements OnInit, OnChanges {
       MOUSE_DOWN,
       {
         x: e.clientX,
-        y: e.clientY
+        y: e.clientY,
       },
       {
         x: this._el.nativeElement.offsetLeft,
-        y: this._el.nativeElement.offsetTop
+        y: this._el.nativeElement.offsetTop,
       },
       {
         width: this._el.nativeElement.offsetWidth,
-        height: this._el.nativeElement.offsetHeight
+        height: this._el.nativeElement.offsetHeight,
       },
-      dir
+      dir,
     );
     this.emitEvent(this.resizeStart);
   }
@@ -162,7 +178,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     mousePosition: IPoint,
     startPosition?: IPoint,
     startSize?: ISize,
-    startDirection?: string
+    startDirection?: string,
   ) {
     const options: IOptions = {
       minSize: { width: this.minWidth, height: this.minHeight },
@@ -171,7 +187,7 @@ export class ResizableComponent implements OnInit, OnChanges {
       ratio: this.ratio,
       disabled: this.disableResize,
       directions: this.directions,
-      bound: this.bound || defaultBound
+      bound: this.bound || defaultBound,
     };
     this._store.emitAction(action, mousePosition, startPosition, options, startSize, startDirection);
   }
@@ -180,7 +196,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     output.next({
       position: this._state.currentPosition,
       size: this._state.currentSize,
-      direction: this._state.direction
+      direction: this._state.direction,
     });
   }
 

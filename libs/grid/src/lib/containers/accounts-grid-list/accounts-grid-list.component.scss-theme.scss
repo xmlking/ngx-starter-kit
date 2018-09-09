@@ -1,4 +1,4 @@
-@import "var";
+@import 'var';
 @import '~@angular/material/theming';
 
 @mixin ngx-accounts-grid-list-component-theme($app-theme) {
@@ -21,5 +21,4 @@
       color: mat-color($accent, default-contrast);
     }
   }
-
 }

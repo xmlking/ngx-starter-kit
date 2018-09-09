@@ -8,9 +8,8 @@ describe('StickyTableComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StickyTableComponent ]
-    })
-    .compileComponents();
+      declarations: [StickyTableComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

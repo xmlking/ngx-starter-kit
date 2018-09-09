@@ -11,7 +11,7 @@ import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   public infoMsg: String;
@@ -25,7 +25,7 @@ export class LoginComponent {
     private ropcService: ROPCService,
     private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: { infoMsg: string },
-    public dialogRef: MatDialogRef<LoginComponent>
+    public dialogRef: MatDialogRef<LoginComponent>,
   ) {
     if (data) {
       this.infoMsg = data.infoMsg;
@@ -33,7 +33,7 @@ export class LoginComponent {
     this.loginForm = fb.group({
       username: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       password: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
-      rememberMe: false
+      rememberMe: false,
     });
   }
 
@@ -45,7 +45,9 @@ export class LoginComponent {
   }
 
   onSubmit(values) {
-    if (this.loginForm.invalid) return;
+    if (this.loginForm.invalid) {
+      return;
+    }
 
     this.store.dispatch(new ChangeAuthMode(AuthMode.PasswordFlow)).subscribe(async () => {
       try {
@@ -53,7 +55,7 @@ export class LoginComponent {
         this.dialogRef.close(profile);
       } catch (error /*: HttpErrorResponse*/) {
         if (error.error && error.error.error_description !== undefined) {
-          this.errorMsg = error.error.error_description; //'The user credentials is incorrect';
+          this.errorMsg = error.error.error_description; // 'The user credentials is incorrect';
         } else {
           this.errorMsg = 'Login Failed';
         }

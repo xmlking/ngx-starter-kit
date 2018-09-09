@@ -5,7 +5,7 @@ import {
   OnDestroy,
   HostBinding,
   ChangeDetectorRef,
-  HostListener
+  HostListener,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
@@ -20,7 +20,7 @@ import { takeUntil } from 'rxjs/operators';
   templateUrl: './sidenav.component.html',
   styleUrls: ['./sidenav.component.scss'],
   // animations: [sidenavAnimation]
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None,
 })
 export class SidenavComponent implements OnInit, OnDestroy {
   private _destroyed$ = new Subject<void>();
@@ -31,7 +31,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private router: Router,
     private menuService: MenuService,
     private snackBar: MatSnackBar,
-    private cd: ChangeDetectorRef
+    private cd: ChangeDetectorRef,
   ) {}
 
   ngOnInit() {
@@ -64,14 +64,14 @@ export class SidenavComponent implements OnInit, OnDestroy {
     this.menuService.isIconSidenav = !this.menuService.isIconSidenav;
 
     const snackBarConfig: MatSnackBarConfig = <MatSnackBarConfig>{
-      duration: 10000
+      duration: 10000,
     };
 
     if (this.menuService.isIconSidenav) {
       this.snackBar.open(
         'You activated Icon-Sidenav, move your mouse to the content and see what happens!',
         '',
-        snackBarConfig
+        snackBarConfig,
       );
     }
   }

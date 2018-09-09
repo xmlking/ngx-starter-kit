@@ -4,27 +4,28 @@ export const defaultChartOptions: ChartOptions = {
   responsive: true,
   responsiveAnimationDuration: 1000,
   animation: {
-    duration: 1000
+    duration: 1000,
   },
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: false,
   },
   scales: {
     xAxes: [
       {
-        display: false
-      }
+        display: false,
+      },
     ],
     yAxes: [
       {
-        display: false
-      }
-    ]
+        display: false,
+      },
+    ],
   },
   tooltips: {
+    /* tslint:disable */
     titleFontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
     bodyFontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
-    footerFontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif"
-  }
+    footerFontFamily: "Roboto, 'Helvetica Neue', Arial, sans-serif",
+  },
 };
