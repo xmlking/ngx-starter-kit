@@ -48,8 +48,36 @@ How to migrate project to newer versions?
 
 > [refer](https://update.angular.io/)
 
-How to do semantic release?
+How to Cut a Release?
 
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
 > [refer](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+
+https://adrianperez.codes/enforcing-commit-conventions/
+
+https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
+
+```bash
+git status
+# if all is good
+git add .
+npm run commit
+```
+
+
+How to cleanup git tags?
+
+```bash
+# Delete all local tags and get the list of remote tags:
+
+git tag -l | xargs git tag -d
+git fetch
+
+#Remove all remote tags
+
+git tag -l | xargs -n 1 git push --delete origin
+
+# Clean up local tags
+git tag -l | xargs git tag -d
+```
