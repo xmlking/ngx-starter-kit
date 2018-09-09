@@ -111,6 +111,15 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 * How to build a library for Angular apps?
 > Read [build a library](https://medium.com/@tomsu/how-to-build-a-library-for-angular-apps-4f9b38b0ed11)
 
+* how do adopt semantic-release process?
+
+semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
+
+> [refer](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+> Watch Automating Releases with [semantic-release](https://egghead.io/lessons/javascript-automating-releases-with-semantic-release)
+> Read [enforcing commit conventions](https://adrianperez.codes/enforcing-commit-conventions/)
+> Read [automate package releases](https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f)
+
 * How to package the libs for publishing ?
 
 > Use[ng-packagr](https://github.com/dherges/ng-packagr)
