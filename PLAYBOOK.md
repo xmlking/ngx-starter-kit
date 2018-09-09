@@ -169,7 +169,9 @@ npm install trianglify --no-save --no-lock
 npm i testcafe testcafe-angular-selectors testcafe-live
 
 # for CI/CD automation and release
-npm i -D commitizen cz-conventional-changelog semantic-release
+npm i -D semantic-release @semantic-release/{changelog,git,github,npm}
+npm i -D commitizen cz-conventional-changelog 
+npm i -D @commitlint/{config-conventional,cli} husky lint-staged
 ```
 
 #### Generate Artifacts

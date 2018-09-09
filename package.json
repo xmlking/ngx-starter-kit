@@ -1,6 +1,6 @@
 {
   "name": "ngx-starter-kit",
-  "version": "0.0.0-development",
+  "version": "0.0.0-semantically-released",
   "description": "Angular-NestJS Starter Kit Monorepo",
   "author": "Sumanth Chinthagunta <xmlking@gmail.com>",
   "license": "MIT",
@@ -25,8 +25,9 @@
     "deploy:mock": "npm run build:mock && ngh --dir dist/apps/webapp",
     "bundle-report": "ng build -c=production --stats-json && webpack-bundle-analyzer dist/apps/webapp/stats.json",
     "// - RELEASE": "release Apps and Libs",
-    "commit": "npx git-cz",
-    "release": "semantic-release",
+    "commit": "git-cz",
+    "commitmsg": "commitlint -E $HUSKY_GIT_PARAMS",
+    "semantic-release": "semantic-release",
     "// - DOCS": "Generate and serve docs",
     "doc:build": "compodoc -p tsconfig.json -d docs",
     "doc:serve": "compodoc -s -d docs",
@@ -62,6 +63,48 @@
     "api:test:e2e": "jest --roots=e2e",
     "api:test:cov": "jest --coverage",
     "api:test:ci": "jest --runInBand"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git",
+      "@semantic-release/github"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/git"
+    ],
+    "publish": [
+      "@semantic-release/github"
+    ],
+    "generateNotes": {
+      "preset": "angular"
+    },
+    "npmPublish": false
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{apps,libs}/**/*.{ts,json,md,scss}": [
+      "ng lint --fix",
+      "prettier --write",
+      "git add"
+    ]
   },
   "private": true,
   "dependencies": {
@@ -144,37 +187,45 @@
     "@angular/compiler-cli": "^6.1.7",
     "@angular/http": "^6.1.7",
     "@angular/language-service": "^6.1.7",
+    "@commitlint/cli": "^7.1.2",
+    "@commitlint/config-conventional": "^7.1.2",
     "@compodoc/compodoc": "^1.1.5",
     "@nestjs/testing": "^5.3.1",
     "@ngx-formly/schematics": "5.0.0-beta.5",
     "@nrwl/builders": "6.3.0",
     "@nrwl/schematics": "^6.3.0",
+    "@semantic-release/changelog": "^3.0.0",
+    "@semantic-release/git": "^7.0.3",
+    "@semantic-release/github": "^5.0.4",
+    "@semantic-release/npm": "^5.0.4",
     "@types/dotenv": "^4.0.3",
     "@types/hammerjs": "^2.0.35",
     "@types/helmet": "0.0.40",
-    "@types/jest": "^23.0.0",
+    "@types/jest": "^23.3.2",
     "@types/node": "^10.9.4",
     "@types/nodemailer": "^4.6.2",
     "@types/passport": "0.4.6",
     "@types/passport-jwt": "^3.0.1",
     "@types/socket.io": "^1.4.38",
     "@types/socket.io-client": "^1.4.32",
-    "@types/supertest": "^2.0.5",
+    "@types/supertest": "^2.0.6",
     "angular-cli-ghpages": "^0.5.3",
     "api-ai-javascript": "^2.0.0-beta.21",
     "codelyzer": "^4.4.4",
     "commitizen": "^2.10.1",
     "cz-conventional-changelog": "^2.1.0",
+    "husky": "^0.14.3",
     "jest": "^23.5.0",
     "jest-preset-angular": "6.0.0",
+    "lint-staged": "^7.2.2",
     "loaders.css": "^0.1.2",
     "ng-packagr": "^4.1.1",
     "nodemon": "^1.18.4",
     "prettier": "^1.14.2",
     "rimraf": "^2.6.2",
     "rxjs-tslint-rules": "^4.8.0",
-    "semantic-release": "^15.9.12",
-    "supertest": "^3.2.0",
+    "semantic-release": "^15.9.14",
+    "supertest": "^3.3.0",
     "ts-jest": "^23.1.4",
     "ts-loader": "^5.0.0",
     "ts-node": "^7.0.1",
