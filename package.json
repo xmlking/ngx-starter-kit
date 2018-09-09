@@ -1,6 +1,6 @@
 {
   "name": "ngx-starter-kit",
-  "version": "0.0.0-semantically-released",
+  "version": "1.0.1",
   "description": "Angular-NestJS Starter Kit Monorepo",
   "author": "Sumanth Chinthagunta <xmlking@gmail.com>",
   "license": "MIT",
@@ -97,7 +97,10 @@
     "prepare": [
       "@semantic-release/changelog",
       "@semantic-release/npm",
-      "@semantic-release/git"
+      {
+        "path": "@semantic-release/git",
+        "message": "chore(release): version ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
     ],
     "publish": [
       "@semantic-release/github"
