@@ -62,7 +62,10 @@ https://medium.com/@schalkneethling/automate-package-releases-with-semantic-rele
 git status
 # if all is good
 git add .
-npm run commit
+npm run commit # or `git cz`
+
+# testing
+git commit -m "foo: this will fail"
 ```
 
 
@@ -81,3 +84,25 @@ git tag -l | xargs -n 1 git push --delete origin
 # Clean up local tags
 git tag -l | xargs git tag -d
 ```
+
+
+linting:
+```bash
+npm run affected:lint  -- --base=origin/master --base=HEAD 
+npm run affected:lint  -- --uncommitted --fix
+npm run affected:lint -- --untracked 
+npm run affected:lint -- --untracked   --fix
+ng lint  home  --fix
+```
+
+```bash
+npm run format:check -- --uncommitted
+npx nx format:check --uncommitted
+
+# And you want to do the following in the CI:
+npm run format:check --base=master --head=HEAD
+npx nx format:check --base=master --head=HEAD
+```
+
+
+ echo $?

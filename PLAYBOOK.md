@@ -58,6 +58,8 @@ npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 
 npm install -g ndb
+npm i -g semantic-release-cli
+npm i -g commitizen
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -66,6 +68,8 @@ npm outdated -g --depth=0
 # set scss as default css processor
 ng config -g schematics.@nrwl/schematics:component.styleext scss
 ng config -g cli.packageManager npm
+@ set jest as default TestRunner
+ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 # check your global defaults
 more cat ~/.angular-config.json
 # show dependency tree for specified package.
@@ -165,13 +169,23 @@ npm i -D @angular/http
 # install without saving
 npm install trianglify --no-save --no-lock
 
+# Do you want to use tslint and prettier without conflicts?
+npm i -D tslint-config-prettier
+# to check any conflects
+npx tslint-config-prettier-check ./tslint.json
+
 # install testCafe for e2e testing and remove protractor
 npm i testcafe testcafe-angular-selectors testcafe-live
 
 # for CI/CD automation and release
+# first time semantic-release setup
+semantic-release-cli setup
+
 npm i -D semantic-release @semantic-release/{changelog,git,github,npm}
 npm i -D commitizen cz-conventional-changelog 
-npm i -D @commitlint/{config-conventional,cli} husky lint-staged
+npm i -D @commitlint/{config-conventional,cli} 
+npm i -D husky@next 
+npm i -D lint-staged
 ```
 
 #### Generate Artifacts

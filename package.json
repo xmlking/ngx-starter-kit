@@ -26,7 +26,7 @@
     "bundle-report": "ng build -c=production --stats-json && webpack-bundle-analyzer dist/apps/webapp/stats.json",
     "// - RELEASE": "release Apps and Libs",
     "commit": "git-cz",
-    "commit:lint": "commitlint -E $HUSKY_GIT_PARAMS",
+    "commit:lint": "commitlint -E HUSKY_GIT_PARAMS",
     "semantic-release": "semantic-release",
     "// - DOCS": "Generate and serve docs",
     "doc:build": "compodoc -p tsconfig.json -d docs",
@@ -74,6 +74,18 @@
       "@commitlint/config-conventional"
     ]
   },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "{apps,libs}/**/*.{ts,json,md,scss}": [
+      "npm run affected:lint  -- --uncommitted --fix",
+      "git add"
+    ]
+  },
   "release": {
     "verifyConditions": [
       "@semantic-release/changelog",
@@ -92,19 +104,6 @@
       "preset": "angular"
     },
     "npmPublish": false
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E $HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "{apps,libs}/**/*.{ts,json,md,scss}": [
-      "ng lint --fix",
-      "prettier --write",
-      "git add"
-    ]
   },
   "private": true,
   "dependencies": {
@@ -192,7 +191,7 @@
     "@compodoc/compodoc": "^1.1.5",
     "@nestjs/testing": "^5.3.1",
     "@ngx-formly/schematics": "5.0.0-beta.5",
-    "@nrwl/builders": "6.3.0",
+    "@nrwl/builders": "^6.3.0",
     "@nrwl/schematics": "^6.3.0",
     "@semantic-release/changelog": "^3.0.0",
     "@semantic-release/git": "^7.0.3",
@@ -233,6 +232,7 @@
     "tsickle": ">=0.32.1",
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "^2.9.2",
     "webpack-bundle-analyzer": "^2.13.1",
     "webpack-cli": "^3.1.0",
