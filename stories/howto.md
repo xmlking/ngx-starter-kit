@@ -20,19 +20,6 @@ using  travis CI/CD
 > [refer](http://dev.topheman.com/continuous-deployment-with-travis-ci/)
 
 
-tag and push to git.
-```bash
-git tag tag-test-release-production
-git push --tags origin master
-```
-
-Once it’s done, **you can clean the tag locally (and remotly)** like that (if you wish):
-```bash
-git tag --delete tag-test-release-production
-git push --delete origin tag-test-release-production
-```
-
-
 how to upgrade an old module to use jest instead of Karma?
 
 delete `karma.conf.js`, `test.ts`, and `tsconfig.spec.json` and remove the `test` target for this module from `angular.json`
@@ -48,6 +35,16 @@ How to migrate project to newer versions?
 
 > [refer](https://update.angular.io/)
 
+How to commit code?
+
+```bash
+git status
+# if all is good
+git add .
+# now commit
+`git cz` # or npm run commit
+```
+
 How to Cut a Release?
 
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
@@ -59,12 +56,10 @@ https://adrianperez.codes/enforcing-commit-conventions/
 https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
 
 ```bash
-git status
-# if all is good
-git add .
-npm run commit # or `git cz`
+export GH_TOKEN=<my_guthyb_token>
+export CI=true
+npm run semantic-release
 ```
-
 
 How to cleanup git tags?
 
@@ -83,7 +78,7 @@ git tag -l | xargs git tag -d
 ```
 
 
-linting:
+linting affected?
 ```bash
 npm run affected:lint  -- --base=origin/master --base=HEAD 
 npm run affected:lint  -- --uncommitted --fix
@@ -94,15 +89,10 @@ ng lint  home  --fix
 
 ```bash
 npm run format:check -- --uncommitted
-npx nx format:check --uncommitted
-
 npm run format:write -- --uncommitted
-npx nx format:write --uncommitted
 
 # And you want to do the following in the CI:
 npm run format:check --base=master --head=HEAD
 npx nx format:check --base=master --head=HEAD
 ```
 
-
- echo $?
