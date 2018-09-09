@@ -21,9 +21,9 @@ stages:
 #  - lint
 #  - test
 #  - build
-  - name: release
-#    if: branch = master AND type IN (push)
-    if: branch = master AND tag IS present
+#  - name: release
+##    if: branch = master AND type IN (push)
+#    if: branch = master AND tag IS present
   - name: deploy
     if: branch = master AND type != pull_request
   - name: docs
@@ -48,24 +48,24 @@ jobs:
 #      script:
 #        - npm run build:mock
 
-    - stage: release # semantic release - create changelog
-      if: branch = master AND tag IS present
-      script: skip
-      deploy:
-        provider: script
-        script: npm run release
-        skip-cleanup: true
+#    - stage: release # semantic release - create changelog
+#      if: branch = master AND tag IS present
+#      script: skip
+#      deploy:
+#        provider: script
+#        script: npm run release
+#        skip-cleanup: true
 
-    - stage: release # github release
-      if: branch = master AND tag IS present
-      script: npm run build:mock
-      before_deploy:
-        - tar czvf webapp.tar.gz -C dist/apps/webapp .
-      deploy:
-        - provider: releases
-          api_key: $GITHUB_TOKEN
-          file: './webapp.tar.gz'
-          skip_cleanup: true
+#    - stage: release # github release
+#      if: branch = master AND tag IS present
+#      script: npm run build:mock
+#      before_deploy:
+#        - tar czvf webapp.tar.gz -C dist/apps/webapp .
+#      deploy:
+#        - provider: releases
+#          api_key: $GITHUB_TOKEN
+#          file: './webapp.tar.gz'
+#          skip_cleanup: true
 
     - stage: deploy
       script: npm run build:mock
