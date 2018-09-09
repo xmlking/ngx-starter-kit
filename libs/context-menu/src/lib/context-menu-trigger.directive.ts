@@ -6,7 +6,7 @@ import {
   ViewContainerRef,
   ElementRef,
   OnDestroy,
-  HostBinding
+  HostBinding,
 } from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
@@ -14,11 +14,13 @@ import { Subject, fromEvent } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 
 @Directive({
-  selector: '[contextMenu]'
+  selector: '[contextMenu]',
 })
 export class ContextMenuTriggerDirective implements OnDestroy {
-  @HostBinding('style.cursor') cursor = 'context-menu';
-  @Input() contextMenu: TemplateRef<any>;
+  @HostBinding('style.cursor')
+  cursor = 'context-menu';
+  @Input()
+  contextMenu: TemplateRef<any>;
 
   private _destroy$: Subject<void>;
 
@@ -44,8 +46,8 @@ export class ContextMenuTriggerDirective implements OnDestroy {
           overlayX: 'start',
           overlayY: 'top',
           originX: 'start',
-          originY: 'bottom'
-        }
+          originY: 'bottom',
+        },
       ]);
 
     const overlayRef = this._overlay.create({ positionStrategy });

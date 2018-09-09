@@ -14,7 +14,8 @@
       font-weight: 400;
     }
 
-    .crumb, .link {
+    .crumb,
+    .link {
       color: $theme-secondary-text;
       text-decoration: none;
       transition: color $swift-ease-out-duration $swift-ease-out-timing-function;
@@ -39,7 +40,8 @@
       margin-right: $spacing/4;
     }
 
-    .crumb.current, .crumb.current .link {
+    .crumb.current,
+    .crumb.current .link {
       color: $theme-text;
     }
   }

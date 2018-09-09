@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import * as cls from 'cls-hooked';
 import uuid from 'uuid';
-import {User} from '../../auth';
+import { User } from '../../auth';
 
 export class RequestContext {
   public readonly id: number;

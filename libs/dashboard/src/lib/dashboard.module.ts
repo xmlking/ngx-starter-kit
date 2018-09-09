@@ -21,7 +21,7 @@ import { environment } from '@env/environment';
     QuickpanelModule,
     // FIXME: AOT not working with environment.xyz
     ChatBoxModule.forRoot({
-      accessToken: '37808bf14a19406cbe2a50cfd1332dd3' // environment.dialogFlow.apiToken
+      accessToken: '37808bf14a19406cbe2a50cfd1332dd3', // environment.dialogFlow.apiToken
     }),
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
@@ -34,27 +34,27 @@ import { environment } from '@env/environment';
           {
             path: 'overview',
             component: OverviewComponent,
-            data: { animation: 'overview' }
+            data: { animation: 'overview' },
           },
           {
             path: '',
             loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview', preload: true }
+            data: { animation: 'overview', preload: true },
           },
           {
             path: 'grid',
             loadChildren: '@ngx-starter-kit/grid#GridModule',
-            data: { animation: 'grid', preload: true }
+            data: { animation: 'grid', preload: true },
           },
           {
             path: 'experiments',
             loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
-            data: { animation: 'experiments' }
-          }
-        ]
-      }
-    ])
+            data: { animation: 'experiments' },
+          },
+        ],
+      },
+    ]),
   ],
-  declarations: [DashboardLayoutComponent, OverviewComponent, RainbowComponent]
+  declarations: [DashboardLayoutComponent, OverviewComponent, RainbowComponent],
 })
 export class DashboardModule {}

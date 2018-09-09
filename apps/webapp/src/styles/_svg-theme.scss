@@ -30,8 +30,8 @@
   // Use sass's `lighten` and `darken` to create gradient colors for the docs SVGs.
   // This is specifically tailored to the SVGs in this app and is not a general approach.
   $base: mat-color($primary);
-  @include _svgColorProperties(primary-dark-30,  scale_color($base, $lightness: -30%));
-  @include _svgColorProperties(primary-dark-40,  scale_color($base, $lightness: -40%));
+  @include _svgColorProperties(primary-dark-30, scale_color($base, $lightness: -30%));
+  @include _svgColorProperties(primary-dark-40, scale_color($base, $lightness: -40%));
   @include _svgColorProperties(primary-light-20, scale_color($base, $lightness: +20%));
   @include _svgColorProperties(primary-light-30, scale_color($base, $lightness: +30%));
   @include _svgColorProperties(primary-light-40, scale_color($base, $lightness: +40%));

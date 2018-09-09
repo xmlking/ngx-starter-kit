@@ -8,9 +8,8 @@ describe('TypingIndicatorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TypingIndicatorComponent ]
-    })
-    .compileComponents();
+      declarations: [TypingIndicatorComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

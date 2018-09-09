@@ -10,10 +10,10 @@ import {
   MatMenuModule,
   MatSidenavModule,
   MatProgressBarModule,
-  MatTabsModule
+  MatTabsModule,
 } from '@angular/material';
 import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-import {ScrollbarModule} from "@ngx-starter-kit/scrollbar";
+import { ScrollbarModule } from '@ngx-starter-kit/scrollbar';
 
 @NgModule({
   imports: [
@@ -25,9 +25,9 @@ import {ScrollbarModule} from "@ngx-starter-kit/scrollbar";
     PerfectScrollbarModule,
     FlexLayoutModule,
     ScrollbarModule,
-    CommonModule
+    CommonModule,
   ],
   exports: [QuickpanelComponent],
-  declarations: [QuickpanelComponent]
+  declarations: [QuickpanelComponent],
 })
 export class QuickpanelModule {}

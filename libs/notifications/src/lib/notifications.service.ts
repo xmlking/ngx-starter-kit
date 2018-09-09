@@ -3,8 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Notification } from './notification.model';
 import { EntityService } from '@ngx-starter-kit/shared';
-import {Observable} from "rxjs";
-import {catchError, finalize, map, retry} from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { catchError, finalize, map, retry } from 'rxjs/operators';
 
 @Injectable()
 export class NotificationsService extends EntityService<Notification> {
@@ -22,7 +22,7 @@ export class NotificationsService extends EntityService<Notification> {
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
       // return without count
-      map(data => data[0])
+      map(data => data[0]),
     );
   }
 }

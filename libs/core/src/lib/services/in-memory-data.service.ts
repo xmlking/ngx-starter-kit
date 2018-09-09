@@ -3,7 +3,7 @@ import {
   ParsedRequestUrl,
   RequestInfo,
   RequestInfoUtilities,
-  ResponseOptions
+  ResponseOptions,
 } from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
 
@@ -24,18 +24,18 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 1,
         code: 'MSFT',
-        entity: 'Microsoft'
+        entity: 'Microsoft',
       },
       {
         id: 2,
         code: 'AAPL',
-        entity: 'Apple'
+        entity: 'Apple',
       },
       {
         id: 3,
         code: 'GOOG',
-        entity: 'Google'
-      }
+        entity: 'Google',
+      },
     ];
 
     return { accounts, symbols, notifications };

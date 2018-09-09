@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {User} from './interfaces/user';
+import { User } from './interfaces/user';
 
 @Injectable()
 export class ChatService {
@@ -13,5 +13,4 @@ export class ChatService {
   removeConnectedUser(user: User): void {
     this.connectedUsers = this.connectedUsers.filter(obj => obj !== user);
   }
-
 }

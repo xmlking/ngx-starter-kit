@@ -5,7 +5,7 @@ import { DeepLinkService } from './deep-link.service';
 describe('DeepLinkService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [DeepLinkService]
+      providers: [DeepLinkService],
     });
   });
 

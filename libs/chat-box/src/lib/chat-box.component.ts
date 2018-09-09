@@ -1,4 +1,13 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  QueryList,
+  ViewChild,
+  ViewChildren,
+} from '@angular/core';
 import { scrollFabAnimation } from '@ngx-starter-kit/animations';
 import { fromEvent, Observable } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
@@ -6,12 +15,7 @@ import { Select, Store } from '@ngxs/store';
 
 import { ChatMessage, Conversation, ModeType } from './chat-message.model';
 import { ChatBoxState } from './state/chat-box.store';
-import {
-  AddMessage,
-  CreateNewConversation,
-  FetchConversations,
-  StartVoiceCommand,
-} from './state/chat-box.actions';
+import { AddMessage, CreateNewConversation, FetchConversations, StartVoiceCommand } from './state/chat-box.actions';
 import { SendMessage } from './state/chat-box.actions';
 
 @Component({
@@ -23,11 +27,15 @@ import { SendMessage } from './state/chat-box.actions';
 export class ChatBoxComponent implements OnInit, OnDestroy {
   showChatBox = false;
   typing = false;
-  @ViewChild('bottom') bottom: ElementRef;
-  @ViewChild('input') input: ElementRef<HTMLInputElement>;
+  @ViewChild('bottom')
+  bottom: ElementRef;
+  @ViewChild('input')
+  input: ElementRef<HTMLInputElement>;
 
-  @Select(ChatBoxState.getConversations) conversations$: Observable<Conversation[]>;
-  @Select(ChatBoxState.getSelectedConversation) selectedConversation$: Observable<Conversation>;
+  @Select(ChatBoxState.getConversations)
+  conversations$: Observable<Conversation[]>;
+  @Select(ChatBoxState.getSelectedConversation)
+  selectedConversation$: Observable<Conversation>;
   voices: SpeechSynthesisVoice[];
   canUseSpeechRecognition = false;
   canUseSpeechSynthesis = false;
@@ -46,14 +54,13 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   private focus() {
     setTimeout(() => {
       this.input.nativeElement.focus();
       if (this.bottom !== undefined) {
-        this.bottom.nativeElement.scrollIntoView({behavior: 'smooth', block: 'start', inline: 'nearest'});
+        this.bottom.nativeElement.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
       }
       this.checkTyping();
     }, 100);
@@ -61,7 +68,7 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
 
   async sendMessageToBot() {
     const selectedConversation = this.store.selectSnapshot(ChatBoxState.getSelectedConversation);
-    this.store.dispatch(new SendMessage({ message:  this.input.nativeElement.value }));
+    this.store.dispatch(new SendMessage({ message: this.input.nativeElement.value }));
     this.input.nativeElement.value = '';
     this.focus();
   }
@@ -82,16 +89,14 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
     const keyDowns = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keydown');
     const enterUp = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keyup').pipe(
       filter((x: any) => x.key === 'Enter'),
-      take(1)
+      take(1),
     );
 
-    const typing = keyDowns.pipe(
-      // map(true),
-      takeUntil(enterUp)
-    ).subscribe(
-      () => this.typing = true,
-      () => this.typing = false,
-      () => this.typing = false
-    );
+    const typing = keyDowns
+      .pipe(
+        // map(true),
+        takeUntil(enterUp),
+      )
+      .subscribe(() => (this.typing = true), () => (this.typing = false), () => (this.typing = false));
   }
 }

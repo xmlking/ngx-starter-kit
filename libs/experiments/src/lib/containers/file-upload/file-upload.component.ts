@@ -52,7 +52,7 @@ export class FileUploadComponent {
       // ...
 
       // Can call the error method if something is wrong, should exit after
-      //error('oh my goodness');
+      // error('oh my goodness');
 
       // Should call the load method when done, no parameters required
       load();
@@ -67,14 +67,14 @@ export class FileUploadComponent {
 
       // Can call the header method to supply FilePond with early response header string
       // https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest/getAllResponseHeaders
-      //headers(headersString);
+      // headers(headersString);
 
       // Should call the progress method to update the progress to 100% before calling load
       // (endlessMode, loadedSize, totalSize)
       progress(true, 0, 1024);
 
       // Should call the load method with a file object or blob when done
-      //load(file);
+      // load(file);
 
       // Should expose an abort method so the request can be cancelled
       return {

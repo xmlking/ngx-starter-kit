@@ -3,7 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { environment } from '@env/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServiceWorkerService {
   constructor(private swUpdate: SwUpdate /*private modalService: NgbModal*/) {}

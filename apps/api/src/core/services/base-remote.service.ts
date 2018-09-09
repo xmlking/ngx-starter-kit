@@ -32,7 +32,7 @@ export abstract class BaseRemoteService {
       if (error.response.status === HttpStatus.NOT_FOUND) {
         return throwError(new NotFoundException(error.response.data));
       } else if (error.response.status === HttpStatus.BAD_REQUEST) {
-        return throwError( new BadRequestException(error.response.data));
+        return throwError(new BadRequestException(error.response.data));
       } else {
         return throwError(new HttpException(error.response.data, error.response.status));
       }

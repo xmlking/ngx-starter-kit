@@ -11,7 +11,7 @@ import { AboutComponent } from './containers/about/about.component';
 import { ScrollToTopModule } from '@ngx-starter-kit/scroll-to-top';
 import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
 import { FeaturesComponent } from './containers/features/features.component';
-import { StickyHeaderDirective } from "./components/header/sticky-header.directive";
+import { StickyHeaderDirective } from './components/header/sticky-header.directive';
 
 @NgModule({
   imports: [
@@ -29,26 +29,26 @@ import { StickyHeaderDirective } from "./components/header/sticky-header.directi
           {
             path: '',
             component: LandingComponent,
-            data: { animation: 'home' }
+            data: { animation: 'home' },
           },
           {
             path: 'blog',
             component: BlogComponent,
-            data: { animation: 'blog' }
+            data: { animation: 'blog' },
           },
           {
             path: 'about',
             component: AboutComponent,
-            data: { animation: 'about' }
+            data: { animation: 'about' },
           },
           {
             path: 'features',
             component: FeaturesComponent,
-            data: { animation: 'features' }
-          }
-        ]
-      }
-    ])
+            data: { animation: 'features' },
+          },
+        ],
+      },
+    ]),
   ],
   declarations: [
     HeaderComponent,
@@ -58,7 +58,7 @@ import { StickyHeaderDirective } from "./components/header/sticky-header.directi
     LandingComponent,
     BlogComponent,
     AboutComponent,
-    FeaturesComponent
-  ]
+    FeaturesComponent,
+  ],
 })
 export class HomeModule {}

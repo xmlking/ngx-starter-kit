@@ -17,7 +17,7 @@ ul {
   width: 100%;
 
   li {
-    .hover{
+    .hover {
       background-color: #ddd;
     }
   }
@@ -40,8 +40,9 @@ ul {
       display: table;
       width: 100%;
 
-      &.added {        
-        .name, .value {
+      &.added {
+        .name,
+        .value {
           opacity: 0.2;
           font-style: italic;
         }
@@ -53,7 +54,7 @@ ul {
           box-sizing: border-box;
           height: 50%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           width: 50%;
           top: 0;
           right: 0;
@@ -66,13 +67,13 @@ ul {
           box-sizing: border-box;
           height: 50%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           width: 50%;
           bottom: 0;
           right: 0;
         }
       }
-      &.removed {   
+      &.removed {
         .upper {
           box-sizing: border-box;
           height: 100%;
@@ -80,7 +81,7 @@ ul {
           width: 66px;
           top: 0;
           right: 0;
-          pointer-events:none;
+          pointer-events: none;
 
           &:after {
             content: ' - ';
@@ -115,7 +116,7 @@ ul {
           width: 66px;
           top: 0;
           right: 0;
-          pointer-events:none;
+          pointer-events: none;
 
           &:after {
             content: ' ~ ';
@@ -138,7 +139,7 @@ ul {
           box-sizing: border-box;
           height: 100%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           width: 66px;
           top: 0;
           right: 0;
@@ -159,7 +160,7 @@ ul {
           }
         }
       }
-    }   
+    }
   }
   &.right-side {
     border-left: 1px solid #444;
@@ -172,12 +173,11 @@ ul {
       width: 100%;
 
       &.added {
-        
         .upper {
           box-sizing: border-box;
           height: 100%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           width: 90%;
           top: 0;
           left: 0;
@@ -201,9 +201,10 @@ ul {
         }
       }
       &.removed {
-        .name, .value {
+        .name,
+        .value {
           text-decoration-line: line-through;
-          text-decoration-color:  #ff0600;
+          text-decoration-color: #ff0600;
         }
         .upper {
           border: 1px solid #f00;
@@ -214,7 +215,7 @@ ul {
           height: 50%;
           width: 10%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           top: 0;
         }
         .lower {
@@ -226,7 +227,7 @@ ul {
           height: 50%;
           width: 10%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           bottom: 0;
         }
       }
@@ -242,7 +243,7 @@ ul {
           box-sizing: border-box;
           height: 100%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           top: 0;
           left: 0;
 
@@ -267,7 +268,7 @@ ul {
           box-sizing: border-box;
           height: 100%;
           position: absolute;
-          pointer-events:none;
+          pointer-events: none;
           top: 0;
           left: 0;
 
@@ -287,9 +288,9 @@ ul {
           }
         }
       }
-    }    
+    }
   }
-  
+
   .tree-node {
     box-sizing: border-box;
     color: #7c9eb2;
@@ -332,13 +333,13 @@ ul {
     &.depth-10 {
       padding-left: 200px;
     }
-    
+
     .name {
       color: #444;
       font-weight: bold;
 
       &:after {
-        content: ':'
+        content: ':';
       }
     }
     .value {

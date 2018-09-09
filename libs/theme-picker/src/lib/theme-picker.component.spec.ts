@@ -5,7 +5,7 @@ import { ThemePickerModule } from './theme-picker.module';
 describe('ThemePickerComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ThemePickerModule]
+      imports: [ThemePickerModule],
     }).compileComponents();
   }));
 
@@ -17,7 +17,7 @@ describe('ThemePickerComponent', () => {
     component.installTheme({
       primary: '#E91E63',
       accent: '#607D8B',
-      href
+      href,
     });
     expect(component.styleManager.setStyle).toHaveBeenCalled();
     expect(component.styleManager.setStyle).toHaveBeenCalledWith('theme', `assets/${href}`);

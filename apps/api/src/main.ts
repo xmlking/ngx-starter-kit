@@ -11,12 +11,14 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
   const config: ConfigService = app.get(ConfigService);
   app.use(helmet());
-  app.useGlobalPipes(new ValidationPipe({
-    transform: true,
-    whitelist: true,
-    forbidNonWhitelisted: true,
-    skipMissingProperties: false,
-    forbidUnknownValues: true }),
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+      skipMissingProperties: false,
+      forbidUnknownValues: true,
+    }),
   );
 
   // app.useStaticAssets(join(__dirname + './../public')); // for uploaded images
@@ -29,8 +31,11 @@ async function bootstrap() {
     .addTag('Sumo')
     .addTag('External')
     .setSchemes(config.isProd() ? 'https' : 'http')
-    .addOAuth2('implicit', `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/auth`,
-      `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/token`)
+    .addOAuth2(
+      'implicit',
+      `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/auth`,
+      `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/token`,
+    )
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document, {

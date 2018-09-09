@@ -2,8 +2,7 @@
 
 $config: mat-typography-config();
 
-
-@import "fu/var";
+@import 'fu/var';
 
 :host {
   z-index: $toolbar-z-index;

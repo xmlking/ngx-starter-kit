@@ -8,6 +8,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 @NgModule({
   imports: [MatIconModule, FlexLayoutModule, RouterModule, CommonModule],
   exports: [BreadcrumbsComponent],
-  declarations: [BreadcrumbsComponent]
+  declarations: [BreadcrumbsComponent],
 })
 export class BreadcrumbsModule {}

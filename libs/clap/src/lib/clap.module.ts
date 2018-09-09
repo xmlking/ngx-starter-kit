@@ -7,6 +7,6 @@ import { FabComponent } from './components/fab.component';
 @NgModule({
   imports: [CommonModule],
   declarations: [ClapComponent, CounterBubbleComponent, TotalCounterComponent, FabComponent],
-  exports: [ClapComponent]
+  exports: [ClapComponent],
 })
 export class ClapModule {}

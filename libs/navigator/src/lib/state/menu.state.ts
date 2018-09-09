@@ -1,4 +1,4 @@
-import {Action, NgxsOnInit, Selector, State, StateContext, Store} from '@ngxs/store';
+import { Action, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
 import { MenuItem } from '../models/menu-item.model';
 import { MenuService } from '../services/menu.service';
 import { Tree } from '@ngx-starter-kit/tree';
@@ -34,8 +34,8 @@ export interface MenuStateModel {
   defaults: {
     tree: null,
     currentlyOpened: [],
-    iconMode: false
-  }
+    iconMode: false,
+  },
 })
 export class MenuState implements NgxsOnInit {
   constructor(private menuService: MenuService) {}
@@ -58,7 +58,7 @@ export class MenuState implements NgxsOnInit {
     setState({
       tree: this.menuService.tree,
       currentlyOpened: [],
-      iconMode: false
+      iconMode: false,
     });
   }
 
@@ -71,14 +71,14 @@ export class MenuState implements NgxsOnInit {
   @Action(SetIconMode)
   setIconMode({ getState, patchState }: StateContext<MenuStateModel>, { payload }: SetIconMode) {
     patchState({
-      iconMode: payload
+      iconMode: payload,
     });
   }
 
   @Action(NextCurrentlyOpened)
   nextCurrentlyOpened({ getState, patchState }: StateContext<MenuStateModel>, { payload }: NextCurrentlyOpened) {
     patchState({
-      currentlyOpened: payload
+      currentlyOpened: payload,
     });
   }
 
@@ -99,14 +99,14 @@ export class MenuState implements NgxsOnInit {
     }
 
     patchState({
-      currentlyOpened: currentlyOpened
+      currentlyOpened: currentlyOpened,
     });
   }
 
   @Action(ToggleCurrentlyOpenedByRoute)
   toggleCurrentlyOpenedByRoute(
     { getState, patchState }: StateContext<MenuStateModel>,
-    { payload }: ToggleCurrentlyOpenedByRoute
+    { payload }: ToggleCurrentlyOpenedByRoute,
   ) {
     const { tree } = getState();
     let currentlyOpened: MenuItem[] = [];
@@ -122,7 +122,7 @@ export class MenuState implements NgxsOnInit {
     }
 
     patchState({
-      currentlyOpened: currentlyOpened
+      currentlyOpened: currentlyOpened,
     });
   }
 }

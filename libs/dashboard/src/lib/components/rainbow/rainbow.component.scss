@@ -1,9 +1,15 @@
-@import "constants";
+@import 'constants';
 
 @keyframes rainbow {
-  0%{background-position:0% 82%}
-  50%{background-position:100% 19%}
-  100%{background-position:0% 82%}
+  0% {
+    background-position: 0% 82%;
+  }
+  50% {
+    background-position: 100% 19%;
+  }
+  100% {
+    background-position: 0% 82%;
+  }
 }
 
 .sw-update-toolbar {
@@ -18,12 +24,23 @@
   .rainbow {
     height: 100%;
     width: 100%;
-    left:0;
+    left: 0;
     right: 0;
     top: 0;
     bottom: 0;
     position: absolute;
-    background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
+    background: linear-gradient(
+      124deg,
+      #ff2400,
+      #e81d1d,
+      #e8b71d,
+      #e3e81d,
+      #1de840,
+      #1ddde8,
+      #2b1de8,
+      #dd00f3,
+      #dd00f3
+    );
     background-size: 1800% 1800%;
     animation: rainbow 18s ease infinite;
     padding: 0 24px;
@@ -51,5 +68,4 @@
       text-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
     }
   }
-
 }

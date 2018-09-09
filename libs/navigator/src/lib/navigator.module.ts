@@ -5,13 +5,13 @@ import { MenuItem } from './models/menu-item.model';
 import { MENU_ITEMS } from './symbols';
 
 @NgModule({
-  imports: [CommonModule]
+  imports: [CommonModule],
 })
 export class NavigatorModule {
   static forRoot(menuItems: MenuItem[]): ModuleWithProviders {
     return {
       ngModule: NavigatorModule,
-      providers: [MenuService, { provide: MENU_ITEMS, useValue: menuItems }]
+      providers: [MenuService, { provide: MENU_ITEMS, useValue: menuItems }],
     };
   }
 }

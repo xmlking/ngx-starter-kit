@@ -1,4 +1,4 @@
-@import "fu/var";
+@import 'fu/var';
 
 .chart {
   padding: $spacing/2 0;
@@ -29,12 +29,13 @@
       cursor: pointer;
       min-width: 72px;
       transition: color $swift-ease-in-duration $swift-ease-in-timing-function,
-      opacity $swift-ease-in-duration $swift-ease-in-timing-function;
+        opacity $swift-ease-in-duration $swift-ease-in-timing-function;
 
       &:hover {
         color: $theme-text;
 
-        .item-label, .item-percent {
+        .item-label,
+        .item-percent {
           opacity: 1;
         }
       }
@@ -63,7 +64,6 @@
         margin-left: 10px;
         margin-top: 4px;
       }
-
     }
   }
 
@@ -77,4 +77,3 @@
     background: linear-gradient(to right, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 1) 100%);
   }
 }
-

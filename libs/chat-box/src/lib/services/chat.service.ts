@@ -9,9 +9,7 @@ export class ChatService {
   public apiBaseUrl = environment.API_BASE_URL;
   readonly entityPath = 'conversations';
 
-  constructor(private httpClient: HttpClient) {
-  }
+  constructor(private httpClient: HttpClient) {}
 
-  saveConversation(conversation: Conversation) {
-  }
+  saveConversation(conversation: Conversation) {}
 }

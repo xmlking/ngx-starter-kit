@@ -8,7 +8,7 @@ describe('RainbowComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [RainbowComponent]
+      declarations: [RainbowComponent],
     }).compileComponents();
   }));
 

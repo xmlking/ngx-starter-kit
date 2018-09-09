@@ -1,13 +1,13 @@
 import { Get, Controller } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
-import {ConfigService} from './config';
-import {Allow} from './auth';
+import { ConfigService } from './config';
+import { Allow } from './auth';
 
 @Controller()
 export class AppController {
   constructor(private readonly config: ConfigService) {}
 
-  @ApiOperation({title: 'Welcome'})
+  @ApiOperation({ title: 'Welcome' })
   @Allow()
   @Get()
   root(): string {

@@ -8,5 +8,5 @@ export {
   WebSocketDisconnected,
   AuthenticateWebSocket,
   SendWebSocketAction,
-  WebsocketMessageError
+  WebsocketMessageError,
 } from './lib/symbols';

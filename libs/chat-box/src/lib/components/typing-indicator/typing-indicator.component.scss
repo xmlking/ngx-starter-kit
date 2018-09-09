@@ -1,7 +1,7 @@
 /* TYPING
 -------------------------------------------------- */
 .typing-indicator {
-  $ti-color-bg: #E6E7ED;
+  $ti-color-bg: #e6e7ed;
   background-color: $ti-color-bg;
   will-change: transform;
   width: auto;
@@ -12,7 +12,8 @@
   top: -10px;
   position: relative;
   animation: 2s bulge infinite ease-out;
-  &::before, &::after {
+  &::before,
+  &::after {
     content: '';
     position: absolute;
     bottom: -2px;
@@ -33,13 +34,13 @@
     width: 6px;
     float: left;
     margin: 0 1px;
-    background-color: #9E9EA1;
+    background-color: #9e9ea1;
     display: block;
     border-radius: 50%;
     opacity: 0.4;
     @for $i from 1 through 3 {
       &:nth-of-type(#{$i}) {
-        animation: 1s blink infinite ($i * .3333s);
+        animation: 1s blink infinite ($i * 0.3333s);
       }
     }
   }

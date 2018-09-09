@@ -1,12 +1,11 @@
-import {CanActivate, ExecutionContext, Injectable, UnauthorizedException} from '@nestjs/common';
-import {Reflector} from '@nestjs/core';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
+import { Reflector } from '@nestjs/core';
 import { AllowEnum } from '../decorators';
-import {ConfigService} from '../../config';
+import { ConfigService } from '../../config';
 
 @Injectable()
 export class AllowGuard implements CanActivate {
-  constructor(private reflector: Reflector, private config: ConfigService) {
-  }
+  constructor(private reflector: Reflector, private config: ConfigService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const endpointAllow = this.reflector.get<string[]>('allow', context.getHandler());

@@ -1,7 +1,7 @@
 export enum AuthMode {
   ImplicitFLow = 'ImplicitFLow',
   PasswordFlow = 'ROPCFlow',
-  AuthorizationCodeFLow = 'AuthorizationCodeFLow'
+  AuthorizationCodeFLow = 'AuthorizationCodeFLow',
 }
 
 //  Actions

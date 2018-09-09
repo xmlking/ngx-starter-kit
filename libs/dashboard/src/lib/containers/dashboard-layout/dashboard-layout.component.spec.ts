@@ -8,7 +8,7 @@ describe('AdminLayoutComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [DashboardLayoutComponent]
+      declarations: [DashboardLayoutComponent],
     }).compileComponents();
   }));
 

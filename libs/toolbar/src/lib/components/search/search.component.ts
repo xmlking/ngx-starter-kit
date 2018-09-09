@@ -3,15 +3,15 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 @Component({
   selector: 'ngx-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
   isOpen: boolean;
 
-  @ViewChild('input', { read: ElementRef }) input: ElementRef;
+  @ViewChild('input', { read: ElementRef })
+  input: ElementRef;
 
-  constructor() {
-  }
+  constructor() {}
 
   ngOnInit() {}
 
@@ -21,7 +21,6 @@ export class SearchComponent implements OnInit {
     setTimeout(() => {
       this.input.nativeElement.focus();
     }, 100);
-
   }
 
   close() {

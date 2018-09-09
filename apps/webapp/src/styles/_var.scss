@@ -1,9 +1,9 @@
 // Sidenav
-$color__sidenav-list: #A7A9AE;
+$color__sidenav-list: #a7a9ae;
 
-$background-color__sidenav-toolbar: #272B35;
+$background-color__sidenav-toolbar: #272b35;
 
-$background-color__sidenav-list: #2B303B;
+$background-color__sidenav-list: #2b303b;
 $background-color__sidenav-list__hover: darken($background-color__sidenav-list, 2);
 $background-color__sidenav-list__active: $background-color__sidenav-list__hover;
 
@@ -53,18 +53,18 @@ $height__main-toolbar: 64px;
 
 // Mixins
 
-@mixin mdShadow-z3 () {
-  box-shadow: 0 3px 3px -2px rgba(0,0,0,.2), 0 3px 4px 0 rgba(0,0,0,.14), 0 1px 8px 0 rgba(0,0,0,.12);
+@mixin mdShadow-z3() {
+  box-shadow: 0 3px 3px -2px rgba(0, 0, 0, 0.2), 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12);
 }
 
 // Notifications
-$color__primary: #4CAF50;
-$color__accent: #E91E63;
+$color__primary: #4caf50;
+$color__accent: #e91e63;
 $color__warn: #f44336;
 
-$color__primary-contrast: #FFF;
-$color__accent-contrast: #FFF;
-$color__warn-contrast: #FFF;
+$color__primary-contrast: #fff;
+$color__accent-contrast: #fff;
+$color__warn-contrast: #fff;
 
 // Misc
 

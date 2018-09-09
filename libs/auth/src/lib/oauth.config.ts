@@ -22,25 +22,25 @@ const authConfig: AuthConfig = {
   // The first three are defined by OIDC. The 4th is a usecase-specific one
   scope: 'openid profile email voucher',
 
-  showDebugInformation: true
+  showDebugInformation: true,
 };
 
 export const authConfigImplicit: AuthConfig = {
   ...authConfig,
 
-  //`oidc` should be `true`(default) for ImplicitFlow, `false` for Resource Owner Password Credentials (ROPC) Flow
+  // `oidc` should be `true`(default) for ImplicitFlow, `false` for Resource Owner Password Credentials (ROPC) Flow
   oidc: true,
 
   // Activate Session Checks: (use only for non-ROPC Flow)
   sessionChecksEnabled: true,
   useIdTokenHintForSilentRefresh: true,
   // FIXME: use it for debugging only.
-  timeoutFactor: environment.production ? 0.75 : 0.01
+  timeoutFactor: environment.production ? 0.75 : 0.01,
 };
 
 export const authConfigPassword: AuthConfig = {
   ...authConfig,
 
-  //`oidc` should be `true`(default) for ImplicitFlow, `false` for Resource Owner Password Credentials (ROPC) Flow
-  oidc: false
+  // `oidc` should be `true`(default) for ImplicitFlow, `false` for Resource Owner Password Credentials (ROPC) Flow
+  oidc: false,
 };

@@ -1,11 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  EventEmitter,
-  Input,
-  OnInit,
-  Output
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { merge, Observable } from 'rxjs';
 import { debounceTime, mapTo } from 'rxjs/operators';
 
@@ -30,9 +23,9 @@ import { debounceTime, mapTo } from 'rxjs/operators';
       :host {
         position: relative;
       }
-    `
+    `,
   ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ClapComponent implements OnInit {
   @Input()
@@ -52,7 +45,7 @@ export class ClapComponent implements OnInit {
     const showBubble$ = change$.pipe(mapTo(true));
     const hideBubble$ = change$.pipe(
       debounceTime(400),
-      mapTo(false)
+      mapTo(false),
     );
 
     this.showBubble$ = merge(showBubble$, hideBubble$);

@@ -5,7 +5,7 @@ import { routerTransition } from '@ngx-starter-kit/animations';
   selector: 'ngx-home-layout',
   templateUrl: './home-layout.component.html',
   styleUrls: ['./home-layout.component.scss'],
-  animations: [routerTransition]
+  animations: [routerTransition],
 })
 export class HomeLayoutComponent implements OnInit {
   constructor() {}

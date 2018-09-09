@@ -8,9 +8,8 @@ describe('AccountsGridListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AccountsGridListComponent ]
-    })
-    .compileComponents();
+      declarations: [AccountsGridListComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

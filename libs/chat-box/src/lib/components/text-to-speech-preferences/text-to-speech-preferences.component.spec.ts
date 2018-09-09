@@ -8,9 +8,8 @@ describe('TextToSpeechPreferencesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TextToSpeechPreferencesComponent ]
-    })
-    .compileComponents();
+      declarations: [TextToSpeechPreferencesComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

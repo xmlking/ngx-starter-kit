@@ -8,9 +8,8 @@ describe('FullscreenToggleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FullscreenToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [FullscreenToggleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

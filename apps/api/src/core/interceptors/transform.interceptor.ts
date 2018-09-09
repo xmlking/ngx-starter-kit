@@ -10,6 +10,6 @@ export interface Response<T> {
 @Injectable()
 export class TransformInterceptor<T> implements NestInterceptor<T, Response<T>> {
   intercept(context: ExecutionContext, call$: Observable<T>): Observable<Response<T>> {
-    return call$.pipe(map((data: Observable<T>) => (classToPlain(data, { excludePrefixes: ['_id'] }))));
+    return call$.pipe(map((data: Observable<T>) => classToPlain(data, { excludePrefixes: ['_id'] })));
   }
 }

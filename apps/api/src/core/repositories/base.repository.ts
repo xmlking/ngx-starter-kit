@@ -1,6 +1,6 @@
 // https://github.com/nicolaspearson/salespal/blob/master/backend/src/repositories/BaseRepository.ts
 
-import {FindOneOptions, FindManyOptions} from 'typeorm';
+import { FindOneOptions, FindManyOptions } from 'typeorm';
 
 export default abstract class BaseRepository<T> {
   private entityName: string;

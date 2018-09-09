@@ -9,8 +9,8 @@ export interface PreferenceStateModel {
   name: 'preference',
   defaults: {
     language: 'en',
-    theme: 'deeppurple-amber'
-  }
+    theme: 'deeppurple-amber',
+  },
 })
 export class PreferenceState {
   constructor(private store: Store) {}

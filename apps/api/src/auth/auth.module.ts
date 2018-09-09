@@ -9,14 +9,12 @@ import { JwtStrategy } from './passport/jwt.strategy';
 import { AuthGuard } from './guards/auth.guard';
 import { AllowGuard } from './guards/allow.guard';
 import { RoleGuard } from './guards/role.guard';
-import {ComposeGuard} from './guards/compose.guard';
-import {WsAuthGuard} from './guards/ws-auth.guard';
-import {WsJwtStrategy} from './passport/ws-jwt.strategy';
+import { ComposeGuard } from './guards/compose.guard';
+import { WsAuthGuard } from './guards/ws-auth.guard';
+import { WsJwtStrategy } from './passport/ws-jwt.strategy';
 
 @Module({
-  imports: [
-    TypeOrmModule.forFeature([User]),
-  ],
+  imports: [TypeOrmModule.forFeature([User])],
   providers: [
     AuthService,
     JwtStrategy,
@@ -43,10 +41,6 @@ import {WsJwtStrategy} from './passport/ws-jwt.strategy';
     },
   ],
   controllers: [AuthController],
-  exports: [
-    AuthService,
-    AuthGuard,
-    WsAuthGuard,
-  ],
+  exports: [AuthService, AuthGuard, WsAuthGuard],
 })
 export class AuthModule {}

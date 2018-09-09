@@ -2,20 +2,19 @@
 
 // Variables
 // ---------------------
-$table-header-font-weight:      400;
-$table-header-font-color:       #757575;
+$table-header-font-weight: 400;
+$table-header-font-color: #757575;
 
 //$table-cell-padding:            1.6rem;
-$table-cell-padding:            16px;
-$table-condensed-cell-padding:  $table-cell-padding/2;
+$table-cell-padding: 16px;
+$table-condensed-cell-padding: $table-cell-padding/2;
 
-
-$table-bg:                      #fff;
-$table-bg-accent:               #f5f5f5;
-$table-bg-hover:                rgba(0,0,0,.12);
-$table-bg-active:               $table-bg-hover;
-$table-border-color:            #e0e0e0;
-$table-grey-header-color:       #FAFAFA;
+$table-bg: #fff;
+$table-bg-accent: #f5f5f5;
+$table-bg-hover: rgba(0, 0, 0, 0.12);
+$table-bg-active: $table-bg-hover;
+$table-border-color: #e0e0e0;
+$table-grey-header-color: #fafafa;
 
 // Tables
 //
@@ -32,14 +31,14 @@ $table-grey-header-color:       #FAFAFA;
   > tbody,
   > tfoot {
     > tr {
-      transition: all .3s ease;
+      transition: all 0.3s ease;
       > th,
       > td {
         text-align: left;
         padding: $table-cell-padding;
         vertical-align: middle;
         border-top: 0;
-        transition: all .3s ease;
+        transition: all 0.3s ease;
       }
     }
   }
@@ -47,7 +46,7 @@ $table-grey-header-color:       #FAFAFA;
     font-weight: $table-header-font-weight;
     color: $table-header-font-color;
     vertical-align: bottom;
-    border-bottom: 1px solid rgba(0,0,0,.12);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
     font-size: 14px;
   }
   > caption + thead,
@@ -61,7 +60,7 @@ $table-grey-header-color:       #FAFAFA;
     }
   }
   > tbody + tbody {
-    border-top: 1px solid rgba(0,0,0,.12);
+    border-top: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   // Nesting
@@ -89,7 +88,6 @@ $table-grey-header-color:       #FAFAFA;
   }
 }
 
-
 // Bordered version
 //
 // Add horizontal borders between columns.
@@ -113,7 +111,6 @@ $table-grey-header-color:       #FAFAFA;
     }
   }
 }
-
 
 // Zebra-striping
 //
@@ -142,7 +139,6 @@ $table-grey-header-color:       #FAFAFA;
 //
 // --------------------------------
 
-
 .table-striped.table-mc-red > tbody > tr:nth-child(odd) > td,
 .table-striped.table-mc-red > tbody > tr:nth-child(odd) > th {
   background-color: #fde0dc;
@@ -170,6 +166,6 @@ $table-grey-header-color:       #FAFAFA;
 
 .table-grey-header {
   thead {
-    background-color: #EEEEEE;
+    background-color: #eeeeee;
   }
 }

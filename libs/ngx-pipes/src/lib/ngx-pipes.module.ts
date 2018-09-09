@@ -11,6 +11,6 @@ export const PIPES = [CharactersPipe, WordsPipe, SafeHtmlPipe, FilterPipe, Group
 @NgModule({
   imports: [CommonModule],
   declarations: [PIPES],
-  exports: [PIPES]
+  exports: [PIPES],
 })
 export class NgxPipesModule {}

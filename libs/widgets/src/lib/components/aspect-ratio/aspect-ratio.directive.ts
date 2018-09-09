@@ -9,9 +9,9 @@ import {
   OnDestroy,
   OnInit,
   Renderer2,
-  SimpleChanges
+  SimpleChanges,
 } from '@angular/core';
-import { BaseFxDirective, MediaChange, MediaMonitor, StyleUtils } from '@angular/flex-layout';
+import { BaseDirective, MediaChange, MediaMonitor, StyleUtils } from '@angular/flex-layout';
 import { AspectRatioContentDirective } from './aspect-ratio-content.directive';
 
 @Directive({
@@ -20,18 +20,20 @@ import { AspectRatioContentDirective } from './aspect-ratio-content.directive';
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
   [ngxAspectRatio.lt-sm], [ngxAspectRatio.lt-md], [ngxAspectRatio.lt-lg], [ngxAspectRatio.lt-xl],
   [ngxAspectRatio.gt-xs], [ngxAspectRatio.gt-sm], [ngxAspectRatio.gt-md], [ngxAspectRatio.gt-lg],
-  `
+  `,
 })
-export class AspectRatioDirective extends BaseFxDirective implements OnInit, AfterContentInit, OnChanges, OnDestroy {
-
-  @ContentChild(AspectRatioContentDirective, { read: ElementRef }) contentElement: ElementRef;
+export class AspectRatioDirective extends BaseDirective implements OnInit, AfterContentInit, OnChanges, OnDestroy {
+  @ContentChild(AspectRatioContentDirective, { read: ElementRef })
+  contentElement: ElementRef;
   pseudoElement: any;
 
-  constructor(monitor: MediaMonitor,
-              private styleUtils: StyleUtils,
-              private renderer: Renderer2,
-              private hostElement: ElementRef,
-              private cd: ChangeDetectorRef) {
+  constructor(
+    monitor: MediaMonitor,
+    private styleUtils: StyleUtils,
+    private renderer: Renderer2,
+    private hostElement: ElementRef,
+    private cd: ChangeDetectorRef,
+  ) {
     super(monitor, hostElement, styleUtils);
 
     this.pseudoElement = this.renderer.createElement('div');
@@ -41,63 +43,77 @@ export class AspectRatioDirective extends BaseFxDirective implements OnInit, Aft
   }
 
   /* tslint:disable */
-  @Input('ngxAspectRatio') set aspectRatio(val) {
+  @Input('ngxAspectRatio')
+  set aspectRatio(val) {
     this._cacheInput('aspectRatio', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.xs') set aspectRatioXs(val) {
+  @Input('ngxAspectRatio.xs')
+  set aspectRatioXs(val) {
     this._cacheInput('aspectRatioXs', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.sm') set aspectRatioSm(val) {
+  @Input('ngxAspectRatio.sm')
+  set aspectRatioSm(val) {
     this._cacheInput('aspectRatioSm', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.md') set aspectRatioMd(val) {
+  @Input('ngxAspectRatio.md')
+  set aspectRatioMd(val) {
     this._cacheInput('aspectRatioMd', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.lg') set aspectRatioLg(val) {
+  @Input('ngxAspectRatio.lg')
+  set aspectRatioLg(val) {
     this._cacheInput('aspectRatioLg', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.xl') set aspectRatioXl(val) {
+  @Input('ngxAspectRatio.xl')
+  set aspectRatioXl(val) {
     this._cacheInput('aspectRatioXl', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.gt-xs') set aspectRatioGtXs(val) {
+  @Input('ngxAspectRatio.gt-xs')
+  set aspectRatioGtXs(val) {
     this._cacheInput('aspectRatioGtXs', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.gt-sm') set aspectRatioGtSm(val) {
+  @Input('ngxAspectRatio.gt-sm')
+  set aspectRatioGtSm(val) {
     this._cacheInput('aspectRatioGtSm', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.gt-md') set aspectRatioGtMd(val) {
+  @Input('ngxAspectRatio.gt-md')
+  set aspectRatioGtMd(val) {
     this._cacheInput('aspectRatioGtMd', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.gt-lg') set aspectRatioGtLg(val) {
+  @Input('ngxAspectRatio.gt-lg')
+  set aspectRatioGtLg(val) {
     this._cacheInput('aspectRatioGtLg', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.lt-sm') set aspectRatioLtSm(val) {
+  @Input('ngxAspectRatio.lt-sm')
+  set aspectRatioLtSm(val) {
     this._cacheInput('aspectRatioLtSm', val);
-  };
+  }
 
   /* tslint:enable */
 
-  @Input('ngxAspectRatio.lt-md') set aspectRatioLtMd(val) {
+  @Input('ngxAspectRatio.lt-md')
+  set aspectRatioLtMd(val) {
     this._cacheInput('aspectRatioLtMd', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.lt-lg') set aspectRatioLtLg(val) {
+  @Input('ngxAspectRatio.lt-lg')
+  set aspectRatioLtLg(val) {
     this._cacheInput('aspectRatioLtLg', val);
-  };
+  }
 
-  @Input('ngxAspectRatio.lt-xl') set aspectRatioLtXl(val) {
+  @Input('ngxAspectRatio.lt-xl')
+  set aspectRatioLtXl(val) {
     this._cacheInput('aspectRatioLtXl', val);
-  };
+  }
 
   /**
    * For @Input changes on the current mq activation property, see onMediaQueryChanges()
@@ -122,7 +138,6 @@ export class AspectRatioDirective extends BaseFxDirective implements OnInit, Aft
       this.renderer.addClass(this.hostElement.nativeElement, 'ngx-aspect-ratio-host-element');
 
       this.renderer.insertBefore(this.hostElement.nativeElement, this.pseudoElement, this.contentElement.nativeElement);
-
     } else {
       if (!this.hostElement) {
         console.error('ngxAspectRatio: Host Element is not defined.');

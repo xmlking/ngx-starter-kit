@@ -8,9 +8,8 @@ describe('QuickpanelToggleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuickpanelToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [QuickpanelToggleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

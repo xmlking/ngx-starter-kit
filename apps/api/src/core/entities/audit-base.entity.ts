@@ -1,17 +1,17 @@
 import { UpdateDateColumn, CreateDateColumn, ManyToOne, VersionColumn, ObjectIdColumn, ObjectID } from 'typeorm';
 import { Exclude, Transform } from 'class-transformer';
 import toHexString from './toHexString';
-import {ApiModelProperty} from '@nestjs/swagger';
+import { ApiModelProperty } from '@nestjs/swagger';
 // FIXME: we need to import User like this to avoid Circular denpendence problem
-import {User} from '../../auth/user.entity';
+import { User } from '../../auth/user.entity';
 
 // TODO: Implement Soft Delete
 
 export abstract class AuditBase {
-
   @ApiModelProperty()
-  @Transform(toHexString, {toPlainOnly: true})
-  @ObjectIdColumn() id: ObjectID;
+  @Transform(toHexString, { toPlainOnly: true })
+  @ObjectIdColumn()
+  id: ObjectID;
 
   // @Exclude()
   @CreateDateColumn()

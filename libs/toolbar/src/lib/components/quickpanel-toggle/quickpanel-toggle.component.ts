@@ -1,19 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'ngx-quickpanel-toggle',
   templateUrl: './quickpanel-toggle.component.html',
-  styleUrls: ['./quickpanel-toggle.component.scss']
+  styleUrls: ['./quickpanel-toggle.component.scss'],
 })
 export class QuickpanelToggleComponent implements OnInit {
+  @Input()
+  quickpanel: MatSidenav;
 
-  @Input() quickpanel: MatSidenav;
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   openQuickpanel() {
     this.quickpanel.open();

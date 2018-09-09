@@ -4,20 +4,20 @@ import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MediaQueryService {
-
   constructor(media: ObservableMedia) {
-    media.asObservable()
+    media
+      .asObservable()
       .subscribe(res => this._changes$.next(res), err => this._changes$.error(err), () => this._changes$.complete());
 
-    this._changes$.subscribe((change) => {
-      this._lowerThanMedium.next((change.mqAlias === 'xs') || (change.mqAlias === 'sm'));
+    this._changes$.subscribe(change => {
+      this._lowerThanMedium.next(change.mqAlias === 'xs' || change.mqAlias === 'sm');
     });
 
-    this._changes$.subscribe((change) => {
-      this._lowerThanLarge.next((change.mqAlias === 'xs') || (change.mqAlias === 'sm') || (change.mqAlias === 'md'));
+    this._changes$.subscribe(change => {
+      this._lowerThanLarge.next(change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md');
     });
   }
 

@@ -1,11 +1,11 @@
 @import '~@angular/material/theming';
-@import "fu/var";
+@import 'fu/var';
 
 :host /deep/ {
-  @import "fu/calendar";
-  @import "fu/cards";
-  @import "fu/inbox";
-  @import "fu/misc";
-  @import "fu/tables";
-  @import "fu/tabs";
+  @import 'fu/calendar';
+  @import 'fu/cards';
+  @import 'fu/inbox';
+  @import 'fu/misc';
+  @import 'fu/tables';
+  @import 'fu/tabs';
 }

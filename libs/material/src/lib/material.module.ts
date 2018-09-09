@@ -34,7 +34,7 @@ import {
   MatTabsModule,
   MatToolbarModule,
   MatTooltipModule,
-  MatStepperModule
+  MatStepperModule,
 } from '@angular/material';
 
 const MATERIAL_MODULES = [
@@ -71,10 +71,10 @@ const MATERIAL_MODULES = [
   MatTooltipModule,
   MatSortModule,
   MatTableModule,
-  MatStepperModule
+  MatStepperModule,
 ];
 
 @NgModule({
-  exports: MATERIAL_MODULES
+  exports: MATERIAL_MODULES,
 })
 export class MaterialModule {}

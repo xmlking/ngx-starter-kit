@@ -5,7 +5,7 @@ import { EmailService } from './email.service';
 import { EmailModuleOptions } from './interfaces/email-options.interface';
 
 const defaultConfig = {
-  transport : {
+  transport: {
     host: undefined,
     port: 25,
     secure: false,
@@ -20,15 +20,13 @@ const defaultConfig = {
 @Global()
 @Module({})
 export class EmailCoreModule {
-
   static forRoot(userConfig: EmailModuleOptions): DynamicModule {
-
     const config: EmailModuleOptions = { ...defaultConfig, ...userConfig };
 
     const EmailConfig: CustomValue = {
       name: 'EMAIL_CONFIG',
       provide: 'EMAIL_CONFIG',
-      useValue:  {
+      useValue: {
         transport: config.transport,
         defaults: config.defaults,
         templateDir: config.templateDir,
@@ -37,14 +35,8 @@ export class EmailCoreModule {
 
     return {
       module: EmailCoreModule,
-      providers: [
-        EmailService,
-        EmailConfig,
-      ],
-      exports: [
-        EmailService,
-      ],
+      providers: [EmailService, EmailConfig],
+      exports: [EmailService],
     };
   }
-
 }

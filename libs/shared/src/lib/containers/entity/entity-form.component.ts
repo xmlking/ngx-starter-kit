@@ -3,16 +3,14 @@ import { Entity } from './entity.model';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormGroup } from '@angular/forms';
 
-export abstract class EntityFormComponent<TEntity extends Entity>
-  implements OnInit {
+export abstract class EntityFormComponent<TEntity extends Entity> implements OnInit {
   title: string;
   entity: TEntity;
   entityForm: FormGroup;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA)
-    protected data: { title: string; payload: TEntity },
-    protected dialogRef: MatDialogRef<EntityFormComponent<TEntity>>
+    @Inject(MAT_DIALOG_DATA) protected data: { title: string; payload: TEntity },
+    protected dialogRef: MatDialogRef<EntityFormComponent<TEntity>>,
   ) {
     this.title = data.title;
     this.entity = data.payload;

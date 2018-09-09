@@ -1,14 +1,14 @@
-import {ExtractJwt, Strategy} from 'passport-jwt';
-import {PassportStrategy} from '@nestjs/passport';
-import {Injectable, UnauthorizedException} from '@nestjs/common';
-import {passportJwtSecret, SigningKeyNotFoundError} from '@xmlking/jwks-rsa';
+import { ExtractJwt, Strategy } from 'passport-jwt';
+import { PassportStrategy } from '@nestjs/passport';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
+import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 
-import {AuthService} from '../auth.service';
+import { AuthService } from '../auth.service';
 import { JwtToken } from '../interfaces/jwt-token.interface';
-import {ConfigService} from '../../config';
-import {WsException} from '@nestjs/websockets';
+import { ConfigService } from '../../config';
+import { WsException } from '@nestjs/websockets';
 
-const extractJwtFromWsQuery = (req) => {
+const extractJwtFromWsQuery = req => {
   let token = null;
   if (req.handshake.query && req.handshake.query.token) {
     {
@@ -16,12 +16,11 @@ const extractJwtFromWsQuery = (req) => {
     }
     return token;
   }
-}
+};
 
 @Injectable()
 export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
-  constructor(private readonly config: ConfigService,
-              private readonly authService: AuthService) {
+  constructor(private readonly config: ConfigService, private readonly authService: AuthService) {
     super({
       jwtFromRequest: extractJwtFromWsQuery, // ExtractJwt.fromUrlQueryParameter('token'),
       // secretOrKey: process.env.OIDC_PUBLIC_KEY,
@@ -53,6 +52,6 @@ export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
       return done(new WsException('user not found and cannot create new user in database'), false);
     }
     token = token as JwtToken;
-    done(null, user, {token});
+    done(null, user, { token });
   }
 }

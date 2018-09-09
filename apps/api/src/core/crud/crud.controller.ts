@@ -1,20 +1,13 @@
-import {
-  Get,
-  Post,
-  Put,
-  Delete,
-  Body,
-  Param, HttpStatus,
-} from '@nestjs/common';
-import {ApiOperation, ApiResponse} from '@nestjs/swagger';
+import { Get, Post, Put, Delete, Body, Param, HttpStatus } from '@nestjs/common';
+import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { ICrudService } from './crud.service';
-import {Base} from '../entities/base.entity';
-import {DeepPartial} from 'typeorm';
+import { Base } from '../entities/base.entity';
+import { DeepPartial } from 'typeorm';
 
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
 export abstract class CrudController<T extends Base> {
-  protected constructor(private readonly crudService: ICrudService<T>) { }
+  protected constructor(private readonly crudService: ICrudService<T>) {}
 
   @ApiOperation({ title: 'find all' })
   @ApiResponse({ status: HttpStatus.OK, description: 'All records', /* type: T, */ isArray: true })
@@ -24,7 +17,7 @@ export abstract class CrudController<T extends Base> {
   }
 
   @ApiOperation({ title: 'Find by id' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'Found one record'/*, type: T*/ })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Found one record' /*, type: T*/ })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
   @Get(':id')
   async findById(@Param('id') id: string): Promise<T> {
@@ -32,8 +25,11 @@ export abstract class CrudController<T extends Base> {
   }
 
   @ApiOperation({ title: 'Create new record' })
-  @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully created.'/*, type: T*/ })
-  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Invalid input, The response body may contain clues as to what went wrong' })
+  @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully created.' /*, type: T*/ })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Invalid input, The response body may contain clues as to what went wrong',
+  })
   @Post()
   async create(@Body() entity: DeepPartial<T>): Promise<T> {
     return this.crudService.create(entity);
@@ -42,10 +38,13 @@ export abstract class CrudController<T extends Base> {
   @ApiOperation({ title: 'Update an existing record' })
   @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully edited.' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Invalid input, The response body may contain clues as to what went wrong' })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Invalid input, The response body may contain clues as to what went wrong',
+  })
   @Put(':id')
   async update(@Param('id') id: string, @Body() entity: DeepPartial<T>): Promise<any> {
-    return this.crudService.update(id, entity as any);  // FIXME: https://github.com/typeorm/typeorm/issues/1544
+    return this.crudService.update(id, entity as any); // FIXME: https://github.com/typeorm/typeorm/issues/1544
   }
 
   @ApiOperation({ title: 'Delete record' })

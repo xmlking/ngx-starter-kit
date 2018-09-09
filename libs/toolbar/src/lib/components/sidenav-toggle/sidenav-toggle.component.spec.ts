@@ -8,9 +8,8 @@ describe('SidenavToggleComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SidenavToggleComponent ]
-    })
-    .compileComponents();
+      declarations: [SidenavToggleComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

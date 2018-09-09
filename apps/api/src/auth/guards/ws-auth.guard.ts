@@ -1,6 +1,6 @@
-import {CanActivate, ExecutionContext, Injectable, UnauthorizedException} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import * as passport from 'passport';
-import {WsAuthException} from '../auth.exception';
+import { WsAuthException } from '../auth.exception';
 
 export const defaultWsOptions = {
   session: false,
@@ -11,17 +11,15 @@ export const defaultWsOptions = {
       // When Error occur, info is the error.
       throw new WsAuthException(info.message, info.name);
     }
-    return {user, info};
+    return { user, info };
   },
 };
 
 @Injectable()
 export class WsAuthGuard implements CanActivate {
-  constructor() {
-  }
+  constructor() {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-
     const httpContext = context.switchToWs();
     const request = httpContext.getClient();
 

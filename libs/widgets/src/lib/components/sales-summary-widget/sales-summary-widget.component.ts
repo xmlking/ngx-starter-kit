@@ -1,10 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
@@ -14,11 +8,13 @@ import { SalesSummaryWidgetOptions } from './sales-summary-widget-options.interf
 @Component({
   selector: 'ngx-sales-summary-widget',
   templateUrl: './sales-summary-widget.component.html',
-  styleUrls: ['./sales-summary-widget.component.scss']
+  styleUrls: ['./sales-summary-widget.component.scss'],
 })
 export class SalesSummaryWidgetComponent implements AfterViewInit {
-  @Input() data: ChartData;
-  @Input() options: SalesSummaryWidgetOptions;
+  @Input()
+  data: ChartData;
+  @Input()
+  options: SalesSummaryWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
@@ -38,27 +34,27 @@ export class SalesSummaryWidgetComponent implements AfterViewInit {
           scales: {
             xAxes: [
               {
-                stacked: true
-              }
+                stacked: true,
+              },
             ],
             yAxes: [
               {
-                stacked: true
-              }
-            ]
+                stacked: true,
+              },
+            ],
           },
           tooltips: {
             mode: 'index',
-            intersect: false
+            intersect: false,
           },
           elements: {
             point: {
-              radius: 0
-            }
-          }
+              radius: 0,
+            },
+          },
         },
-        defaultChartOptions
-      )
+        defaultChartOptions,
+      ),
     });
   }
 

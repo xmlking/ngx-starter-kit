@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
@@ -16,7 +9,7 @@ import { RecentSalesWidgetOptions } from './recent-sales-widget-options.interfac
 @Component({
   selector: 'ngx-recent-sales-widget',
   templateUrl: './recent-sales-widget.component.html',
-  styleUrls: ['./recent-sales-widget.component.scss']
+  styleUrls: ['./recent-sales-widget.component.scss'],
 })
 export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
   @Input()
@@ -24,9 +17,12 @@ export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
     pageSize: number;
     columns: ListColumn[];
   };
-  @Input() tableData: any[];
-  @Input() chartData: ChartData;
-  @Input() options: RecentSalesWidgetOptions;
+  @Input()
+  tableData: any[];
+  @Input()
+  chartData: ChartData;
+  @Input()
+  options: RecentSalesWidgetOptions;
 
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
@@ -47,16 +43,16 @@ export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
         {
           tooltips: {
             mode: 'index',
-            intersect: false
+            intersect: false,
           },
           elements: {
             point: {
-              radius: 0
-            }
-          }
+              radius: 0,
+            },
+          },
         },
-        defaultChartOptions
-      )
+        defaultChartOptions,
+      ),
     });
   }
 

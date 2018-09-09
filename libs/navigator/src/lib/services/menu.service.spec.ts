@@ -5,14 +5,11 @@ import { MenuService } from './menu.service';
 describe('MenuService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [MenuService]
+      providers: [MenuService],
     });
   });
 
-  it(
-    'should be created',
-    inject([MenuService], (service: MenuService) => {
-      expect(service).toBeTruthy();
-    })
-  );
+  it('should be created', inject([MenuService], (service: MenuService) => {
+    expect(service).toBeTruthy();
+  }));
 });

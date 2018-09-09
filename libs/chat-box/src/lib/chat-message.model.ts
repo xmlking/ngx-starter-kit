@@ -13,13 +13,13 @@ export enum DirectionType {
 
 export enum ModeType {
   SPEAK,
-  TYPE
+  TYPE,
 }
 export class Subject {
   public readonly type: SubjectType;
   public readonly who?: string; // | User with AvatarUrl?
   constructor(type: SubjectType, who?: string) {
-   this.type = type;
+    this.type = type;
     if (who) {
       this.who = who;
     }
@@ -56,7 +56,7 @@ export class ChatMessage<T extends UiAction | string> {
       to: new Subject(SubjectType.USER),
       content: content,
       timestamp: new Date(),
-      isRead: false
+      isRead: false,
     });
   }
 
@@ -68,7 +68,7 @@ export class ChatMessage<T extends UiAction | string> {
       content: content,
       timestamp: new Date(),
       isRead: true,
-      mode: mode
+      mode: mode,
     });
   }
 
@@ -81,14 +81,13 @@ export class ChatMessage<T extends UiAction | string> {
   }
 
   public render(): string {
-    if ( this.content instanceof UiAction) {
+    if (this.content instanceof UiAction) {
       return this.content.render();
     } else {
       return this.content as string; // FIXME
     }
   }
 }
-
 
 export class Conversation {
   public id: string; // It could be generated string or room name.

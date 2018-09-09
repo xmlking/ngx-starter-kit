@@ -4,7 +4,7 @@ import { PageTitleService } from '@ngx-starter-kit/core';
 @Component({
   selector: 'ngx-landing',
   templateUrl: './landing.component.html',
-  styleUrls: ['./landing.component.scss']
+  styleUrls: ['./landing.component.scss'],
 })
 export class LandingComponent implements OnInit {
   constructor(public _pageTitleService: PageTitleService) {}

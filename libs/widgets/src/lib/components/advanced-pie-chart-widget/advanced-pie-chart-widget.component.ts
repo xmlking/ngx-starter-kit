@@ -1,11 +1,4 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  Input,
-  OnInit,
-  ViewChild
-} from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import * as Chart from 'chart.js';
 import { ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
@@ -15,10 +8,11 @@ import { AdvancedPieChartWidgetOptions } from './advanced-pie-chart-widget-optio
 @Component({
   selector: 'ngx-advanced-pie-chart-widget',
   templateUrl: './advanced-pie-chart-widget.component.html',
-  styleUrls: ['./advanced-pie-chart-widget.component.scss']
+  styleUrls: ['./advanced-pie-chart-widget.component.scss'],
 })
 export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
-  @Input() options: AdvancedPieChartWidgetOptions;
+  @Input()
+  options: AdvancedPieChartWidgetOptions;
   @ViewChild('canvas', { read: ElementRef })
   canvas: ElementRef;
   chart: Chart;
@@ -50,16 +44,11 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
   }
 
   getLegendLabel(index: number) {
-    return this._data && this._data.labels.length > 0
-      ? this._data.labels[index]
-      : null;
+    return this._data && this._data.labels.length > 0 ? this._data.labels[index] : null;
   }
 
   getLegendBackground(index: number) {
-    return this._data &&
-      this._data.datasets &&
-      this._data.datasets[0] &&
-      this._data.datasets[0].backgroundColor
+    return this._data && this._data.datasets && this._data.datasets[0] && this._data.datasets[0].backgroundColor
       ? this._data.datasets[0].backgroundColor[index]
       : null;
   }
@@ -81,16 +70,16 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
         {
           cutoutPercentage: 70,
           legend: {
-            display: false
-          }
+            display: false,
+          },
         },
-        defaultChartOptions
-      )
+        defaultChartOptions,
+      ),
     } as ChartConfiguration);
   }
 
   getPercentageValue(value) {
-    return `${Math.round(value / this.total * 100)}%`;
+    return `${Math.round((value / this.total) * 100)}%`;
   }
 
   reload() {

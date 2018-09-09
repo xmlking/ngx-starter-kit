@@ -4,16 +4,18 @@ import { SvgViewerService } from './svg-viewer.service';
 @Component({
   selector: 'svg-viewer',
   template: '<div class="svg-viewer" aria-hidden="true"></div>',
-  providers: [SvgViewerService]
+  providers: [SvgViewerService],
 })
 export class SvgViewerComponent implements OnInit {
-  @Input() src: string;
-  @Input() scaleToContainer: boolean;
+  @Input()
+  src: string;
+  @Input()
+  scaleToContainer: boolean;
 
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private svgViewerService: SvgViewerService
+    private svgViewerService: SvgViewerService,
   ) {}
 
   ngOnInit() {

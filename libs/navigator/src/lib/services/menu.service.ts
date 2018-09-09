@@ -82,9 +82,8 @@ export class MenuService {
     });
 
     media
-      .asObservable().pipe(
-        map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md')
-      )
+      .asObservable()
+      .pipe(map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'))
       .subscribe(isLowerThanLarge => {
         this.isLowerThanLarge = isLowerThanLarge;
         if (

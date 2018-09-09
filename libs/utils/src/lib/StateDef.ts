@@ -9,7 +9,10 @@ export class StateDef<T> extends BehaviorSubject<T> {
   }
 
   select<R>(selector: (state?: T) => R) {
-    return this.pipe(map(selector), distinctUntilChanged());
+    return this.pipe(
+      map(selector),
+      distinctUntilChanged(),
+    );
   }
 
   selectOne<R>(selector: (state?: T) => R) {

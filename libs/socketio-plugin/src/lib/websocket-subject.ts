@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { WebSocketSubject as RxWebSocketSubject, WebSocketSubjectConfig } from 'rxjs/webSocket';
 import { NGXS_WEBSOCKET_OPTIONS, NgxsWebsocketPluginOptions } from './symbols';
-import {RxSocketioSubject, RxSocketioSubjectConfig} from "./RxSocketioSubject";
+import { RxSocketioSubject, RxSocketioSubjectConfig } from './RxSocketioSubject';
 
 export interface SocketIOEvent<T = any> {
   event: string;
@@ -29,11 +29,11 @@ export class WebSocketSubject extends Subject<any> {
       closeObserver: {
         next: (e: CloseEvent) => {
           this.connectionStatus.next(false);
-        }
+        },
       },
       openObserver: {
-        next: (e: Event) => this.connectionStatus.next(true)
-      }
+        next: (e: Event) => this.connectionStatus.next(true),
+      },
     };
   }
 
@@ -61,7 +61,7 @@ export class WebSocketSubject extends Subject<any> {
         this._internalConfig.deserializer = options.deserializer;
       }
 
-      if (options.tokenFn && typeof options.tokenFn === "function") {
+      if (options.tokenFn && typeof options.tokenFn === 'function') {
         this._internalConfig.tokenFn = options.tokenFn;
       }
     }
@@ -87,7 +87,7 @@ export class WebSocketSubject extends Subject<any> {
     if (!this._socket) {
       throw new Error('You must connect before Authenticate');
     }
-    this._socket.next({event: 'auth', data});
+    this._socket.next({ event: 'auth', data });
   }
 
   /**
@@ -98,6 +98,6 @@ export class WebSocketSubject extends Subject<any> {
       throw new Error('You must connect before sending data');
     }
 
-    this._socket.next({event: 'actions', data});
+    this._socket.next({ event: 'actions', data });
   }
 }

@@ -2,14 +2,12 @@
 
 $config: mat-typography-config();
 
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
-  height:100%;
+  height: 100%;
 }
-body{
+body {
   font-family: mat-font-family($config);
 }
-
-
-

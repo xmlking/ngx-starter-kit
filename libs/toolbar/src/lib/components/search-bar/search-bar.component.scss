@@ -1,4 +1,4 @@
-@import "var";
+@import 'var';
 @import '~@angular/material/theming';
 
 $config: mat-typography-config();
@@ -7,10 +7,10 @@ $config: mat-typography-config();
   display: block;
   width: 100%;
   //@include mat-typography-level-to-styles($config, subheading-1);
-  font: 400 16px/16px Roboto, "Helvetica Neue", sans-serif;
+  font: 400 16px/16px Roboto, 'Helvetica Neue', sans-serif;
 }
 
-input[type="search"] {
+input[type='search'] {
   -webkit-appearance: none;
 }
 
@@ -29,7 +29,7 @@ input[type="search"] {
   input.search-input {
     display: block;
     padding: 8px 8px 8px 72px;
-    box-shadow: 0 1px 1.5px rgba(0,0,0,0.06),0 1px 1px rgba(0,0,0,0.12);
+    box-shadow: 0 1px 1.5px rgba(0, 0, 0, 0.06), 0 1px 1px rgba(0, 0, 0, 0.12);
     height: 36px;
     transition: all 0.2s ease;
     border: none;
@@ -47,10 +47,20 @@ input[type="search"] {
       background: rgba(48, 52, 65, 0.1);
     }
 
-    &::-webkit-input-placeholder {  color: currentColor;  }
-    &:-moz-placeholder {  opacity: 1;  color: currentColor;  }
-    &::-moz-placeholder {  opacity: 1;  color: currentColor;  }
-    &:-ms-input-placeholder {  color: currentColor;  }
+    &::-webkit-input-placeholder {
+      color: currentColor;
+    }
+    &:-moz-placeholder {
+      opacity: 1;
+      color: currentColor;
+    }
+    &::-moz-placeholder {
+      opacity: 1;
+      color: currentColor;
+    }
+    &:-ms-input-placeholder {
+      color: currentColor;
+    }
   }
 
   &.focus {
@@ -62,10 +72,20 @@ input[type="search"] {
       background: white;
       background: rgba(48, 52, 65, 0.1);
 
-      &::-webkit-input-placeholder {  color: rgba(0, 0, 0, 0.87);  }
-      &:-moz-placeholder {  opacity: 1;  color: rgba(0, 0, 0, 0.87);  }
-      &::-moz-placeholder {  opacity: 1;  color: rgba(0, 0, 0, 0.87);  }
-      &:-ms-input-placeholder {  color: rgba(0, 0, 0, 0.87);  }
+      &::-webkit-input-placeholder {
+        color: rgba(0, 0, 0, 0.87);
+      }
+      &:-moz-placeholder {
+        opacity: 1;
+        color: rgba(0, 0, 0, 0.87);
+      }
+      &::-moz-placeholder {
+        opacity: 1;
+        color: rgba(0, 0, 0, 0.87);
+      }
+      &:-ms-input-placeholder {
+        color: rgba(0, 0, 0, 0.87);
+      }
     }
 
     .search-dropdown {
@@ -73,7 +93,6 @@ input[type="search"] {
       visibility: visible;
     }
   }
-
 
   .search-dropdown {
     background: white;
@@ -83,9 +102,7 @@ input[type="search"] {
     z-index: -1;
     transform: translateY(-110%);
     visibility: hidden;
-    transition: transform .4s cubic-bezier(.25,.8,.25,1), visibility .4s cubic-bezier(.25,.8,.25,1);
-
-
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
 
     .content {
       padding: 16px;
@@ -111,33 +128,25 @@ input[type="search"] {
           padding: 8px 0 6px 26px;
           margin: 2px 0;
           cursor: pointer;
-          transition: background .1s;
+          transition: background 0.1s;
           outline: none;
 
           &:hover {
-            background: #EFEFEF;
+            background: #efefef;
           }
         }
       }
 
       &.recents {
         .recently {
-
         }
 
         .frequently {
-
         }
-
-
       }
 
       &.results {
-
       }
     }
   }
 }
-
-
-

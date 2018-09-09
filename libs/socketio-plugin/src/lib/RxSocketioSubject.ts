@@ -145,6 +145,7 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
   }
 
   unsubscribe() {
+    // tslint:disable
     super.unsubscribe();
   }
 }

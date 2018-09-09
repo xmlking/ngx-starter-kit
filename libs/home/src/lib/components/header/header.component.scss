@@ -19,7 +19,6 @@ mat-nav-list {
   padding-top: 0;
 }
 
-
 .default-angular-logo {
   height: 26px;
   margin: 0 4px 3px 0;
@@ -27,11 +26,11 @@ mat-nav-list {
 }
 
 .default-menu-icon {
-  font-size:36px;
+  font-size: 36px;
 }
 
 :host ::ng-deep theme-picker {
   .mat-icon-button {
-    margin-left:50px;
+    margin-left: 50px;
   }
 }

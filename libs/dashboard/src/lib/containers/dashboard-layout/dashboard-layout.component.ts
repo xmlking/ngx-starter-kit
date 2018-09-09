@@ -16,7 +16,8 @@ import { environment } from '@env/environment';
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav') sidenav;
+  @ViewChild('sidenav')
+  sidenav;
 
   private _mediaSubscription: Subscription;
   private _routerEventsSubscription: Subscription;

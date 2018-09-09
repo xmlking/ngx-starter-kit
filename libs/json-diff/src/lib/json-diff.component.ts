@@ -5,15 +5,17 @@ import { JsonDiffNode, JsonDiffNodeType, JsonDiffNodeStatus } from './json-diff.
 @Component({
   selector: 'ngx-json-diff',
   templateUrl: './json-diff.component.html',
-  styleUrls: ['./json-diff.component.scss']
+  styleUrls: ['./json-diff.component.scss'],
 })
 export class JsonDiffComponent implements OnInit, OnChanges {
   leftSide;
   rightSide;
 
-  @Input() leftSideObject;
+  @Input()
+  leftSideObject;
 
-  @Input() rightSideObject;
+  @Input()
+  rightSideObject;
 
   constructor() {}
   private generateNodeId() {
@@ -36,7 +38,7 @@ export class JsonDiffComponent implements OnInit, OnChanges {
             parent: JsonDiffNodeType.array,
             type: JsonDiffNodeType.array,
             status: JsonDiffNodeStatus.default,
-            children: jsonValue
+            children: jsonValue,
           });
         } else {
           children.push({
@@ -47,7 +49,7 @@ export class JsonDiffComponent implements OnInit, OnChanges {
             parent: JsonDiffNodeType.array,
             type: JsonDiffNodeType.literal,
             status: JsonDiffNodeStatus.default,
-            children: []
+            children: [],
           });
         }
       });
@@ -66,7 +68,7 @@ export class JsonDiffComponent implements OnInit, OnChanges {
             parent: JsonDiffNodeType.json,
             type: JsonDiffNodeType.array,
             status: JsonDiffNodeStatus.default,
-            children: jsonValue
+            children: jsonValue,
           });
         } else {
           children.push({
@@ -77,7 +79,7 @@ export class JsonDiffComponent implements OnInit, OnChanges {
             parent: JsonDiffNodeType.json,
             type: JsonDiffNodeType.pair,
             status: JsonDiffNodeStatus.default,
-            children: []
+            children: [],
           });
         }
       });
@@ -262,7 +264,7 @@ export class JsonDiffComponent implements OnInit, OnChanges {
   private toInternalStruction(leftNode, rightNode) {
     const result = {
       leftSide: this.transformNodeToInternalStruction(leftNode),
-      rightSide: this.transformNodeToInternalStruction(rightNode)
+      rightSide: this.transformNodeToInternalStruction(rightNode),
     };
     this.unify(result.leftSide, result.rightSide);
 
@@ -290,8 +292,8 @@ export class JsonDiffComponent implements OnInit, OnChanges {
           type: JsonDiffNodeType.array,
           expanded: true,
           isRoot: true,
-          children: comparision.leftSide
-        }
+          children: comparision.leftSide,
+        },
       ];
       this.rightSide = [
         {
@@ -302,8 +304,8 @@ export class JsonDiffComponent implements OnInit, OnChanges {
           type: JsonDiffNodeType.array,
           expanded: true,
           isRoot: true,
-          children: comparision.rightSide
-        }
+          children: comparision.rightSide,
+        },
       ];
     }
   }

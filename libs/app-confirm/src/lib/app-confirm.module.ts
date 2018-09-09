@@ -9,6 +9,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
   imports: [CommonModule, MatDialogModule, MatButtonModule, FlexLayoutModule],
   declarations: [AppConfirmComponent],
   providers: [AppConfirmService],
-  entryComponents: [AppConfirmComponent]
+  entryComponents: [AppConfirmComponent],
 })
 export class AppConfirmModule {}

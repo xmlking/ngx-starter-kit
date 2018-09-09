@@ -5,7 +5,6 @@ import { ConfigService } from './config.service';
 @Global()
 @Module({})
 export class ConfigModule {
-
   static forRoot(filePath?: string): DynamicModule {
     return {
       module: ConfigModule,
@@ -15,9 +14,7 @@ export class ConfigModule {
           useValue: new ConfigService(filePath || `${process.env.NODE_ENV || 'development'}.env`),
         },
       ],
-      exports: [
-        ConfigService,
-      ],
+      exports: [ConfigService],
     };
   }
 }

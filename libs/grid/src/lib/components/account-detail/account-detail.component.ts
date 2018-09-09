@@ -10,16 +10,14 @@ import { fadeAnimation } from '@ngx-starter-kit/animations';
   selector: 'ngx-account-detail',
   templateUrl: './account-detail.component.html',
   styleUrls: ['./account-detail.component.scss'],
-  animations: [fadeAnimation]
+  animations: [fadeAnimation],
 })
 export class AccountDetailComponent implements OnInit, OnDestroy {
   account: Account;
   sub: Subscription;
   animationTrigger$ = new BehaviorSubject<string>('');
 
-  constructor(private accountService: AccountService,
-              private route: ActivatedRoute) {
-  }
+  constructor(private accountService: AccountService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {

@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Directive, HostBinding, ViewEncapsulation} from '@angular/core';
+import { ChangeDetectionStrategy, Component, Directive, HostBinding, ViewEncapsulation } from '@angular/core';
 /* tslint:disable */
 @Component({
   selector: 'ngx-chart-widget',
@@ -7,7 +7,8 @@ import {ChangeDetectionStrategy, Component, Directive, HostBinding, ViewEncapsul
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ChartWidget {
-  @HostBinding('class.ngx-chart-widget') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget')
+  bodyClass = true;
 }
 
 @Component({
@@ -19,39 +20,44 @@ export class ChartWidget {
       <ng-content select="ngx-chart-widget-header-sub-title"></ng-content>
     </div>
     <ng-content select="ngx-chart-widget-header-actions"></ng-content>
-  `
+  `,
 })
 export class ChartWidgetHeader {
-  @HostBinding('class.ngx-chart-widget-header') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget-header')
+  bodyClass = true;
 }
 
 @Directive({
   selector: 'ngx-chart-widget-header-title',
 })
 export class ChartWidgetHeaderTitle {
-  @HostBinding('class.ngx-chart-widget-header-title') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget-header-title')
+  bodyClass = true;
 }
 
 @Directive({
   selector: 'ngx-chart-widget-header-sub-title',
 })
 export class ChartWidgetHeaderSubTitle {
-  @HostBinding('class.ngx-chart-widget-header-sub-title') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget-header-sub-title')
+  bodyClass = true;
 }
 
 @Directive({
   selector: 'ngx-chart-widget-header-actions',
 })
 export class ChartWidgetHeaderActions {
-  @HostBinding('class.ngx-chart-widget-header-actions') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget-header-actions')
+  bodyClass = true;
 }
 
 @Component({
   selector: 'ngx-chart-widget-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-content></ng-content>`
+    <ng-content></ng-content>`,
 })
 export class ChartWidgetContent {
-  @HostBinding('class.ngx-chart-widget-content') bodyClass = true;
+  @HostBinding('class.ngx-chart-widget-content')
+  bodyClass = true;
 }

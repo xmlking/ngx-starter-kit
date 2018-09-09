@@ -42,14 +42,14 @@ export interface IOptions {
 
 export const defaultGrid: ISize = {
   width: 1,
-  height: 1
+  height: 1,
 };
 
 export const defaultBound: IRectangle = {
   x: -Infinity,
   y: -Infinity,
   width: Infinity,
-  height: Infinity
+  height: Infinity,
 };
 
 export class Store {
@@ -59,7 +59,7 @@ export class Store {
     currentPosition: { x: 0, y: 0 },
     startPosition: { x: 0, y: 0 },
     isResizing: false,
-    direction: null
+    direction: null,
   };
 
   private reducers: any[] = [];

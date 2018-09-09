@@ -3,5 +3,5 @@ export enum SidenavState {
   Collapsed = 'collapsed',
   CollapsedHover = 'collapsedHover',
   Mobile = 'mobile',
-  MobileOpen = 'mobileOpen'
+  MobileOpen = 'mobileOpen',
 }

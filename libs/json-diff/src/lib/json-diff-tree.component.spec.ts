@@ -8,7 +8,7 @@ describe('JsonDiffTreeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [JsonDiffTreeComponent]
+      declarations: [JsonDiffTreeComponent],
     }).compileComponents();
   }));
 

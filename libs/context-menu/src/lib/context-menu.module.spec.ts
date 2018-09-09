@@ -4,7 +4,7 @@ import { ContextMenuModule } from './context-menu.module';
 describe('ContextMenuModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ContextMenuModule]
+      imports: [ContextMenuModule],
     }).compileComponents();
   }));
 
