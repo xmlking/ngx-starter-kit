@@ -63,9 +63,6 @@ git status
 # if all is good
 git add .
 npm run commit # or `git cz`
-
-# testing
-git commit -m "foo: this will fail"
 ```
 
 

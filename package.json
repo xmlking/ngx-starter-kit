@@ -83,6 +83,7 @@
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,scss}": [
       "npm run affected:lint  -- --uncommitted --fix",
+      "prettier --write",
       "git add"
     ]
   },
