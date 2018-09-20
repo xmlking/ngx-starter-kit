@@ -101,7 +101,7 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --tags=app-module
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
 
 # add Jest to replace karma as testing framework
 ng generate jest

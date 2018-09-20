@@ -59,6 +59,7 @@ once you are conferable , then you can delete demo `default` app
 > Read [medium-clap](https://medium.com/@yonatandoron/how-i-implemented-the-medium-clap-from-scratch-4a16ac90ad3b)
 > Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
 > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
+> Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
 
 *  Why I Prefer NGXS over NGRX 
 > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
@@ -150,6 +151,10 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > Refer [blog](https://blog.angular-university.io/angular-material-data-table/)
 > Refer [Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
 > Refer [Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
+
+* How to setup NestJS Project?
+
+> Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
 
 * Shoud I use mergeMap or  concatMap or switchMap or forkJoin for my usecase? 
 
