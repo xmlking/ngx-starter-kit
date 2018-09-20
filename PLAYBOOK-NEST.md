@@ -3,6 +3,8 @@ DIY NestJS Playbook
 
 creating NestJS project and generate nest artifacts with-in monorepo.
 
+> An Introduction to [NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
+
 ### Prerequisites  
 
 #### Install Global Packages
