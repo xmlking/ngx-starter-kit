@@ -13,13 +13,6 @@
 
 * **build:** now updating version ([2d913ea](https://github.com/xmlking/ngx-starter-kit/commit/2d913ea))
 
-## [1.0.1](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.0...v1.0.1) (2018-09-09)
-
-
-### Bug Fixes
-
-* **build:** now updating version ([2d913ea](https://github.com/xmlking/ngx-starter-kit/commit/2d913ea))
-
 # 1.0.0 (2018-09-09)
 
 
