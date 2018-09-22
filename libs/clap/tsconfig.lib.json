@@ -28,7 +28,6 @@
   },
   "exclude": [
     "src/test.ts",
-    "**/*.spec.ts",
-    "karma.conf.ts"
+    "**/*.spec.ts"
   ]
 }

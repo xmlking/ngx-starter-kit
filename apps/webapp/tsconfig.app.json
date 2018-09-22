@@ -4,9 +4,8 @@
     "outDir": "../../dist/out-tsc/apps/webapp"
   },
   "exclude": [
-    "src/test.ts",
-    "**/*.spec.ts",
-    "karma.conf.ts"
+    "src/test-setup.ts",
+    "**/*.spec.ts"
   ],
   "include": [
     "**/*.ts"

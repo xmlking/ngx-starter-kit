@@ -40,7 +40,10 @@ How to commit code?
  ```bash
  git status
  # stage your changes 
- git add .
+ #  if you want to stage the modified and deleted files only.
+ git add -u
+ # or stage all modified/deleted/ newly added files
+ git add .  
  # use git-cz interactive helper tool to commit
  npm run commit
  # or use following command if you install commitizen globally   

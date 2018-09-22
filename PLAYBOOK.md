@@ -12,7 +12,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Node                          | v10.7.0  |          | 
 | NPM                           | v6.4.0   |          |
 | Angular CLI                   | v6.0.8   |          |
-| @nrwl/schematics              | v6.3.0   |          |
+| @nrwl/schematics              | v6.4.0   |          |
 | @nestjs/cli                   | v5.3.0   |          |
 
 ### Install Prerequisites
@@ -54,7 +54,7 @@ npm remove -g @nrwl/schematics
 npm remove -g @nestjs/cli
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics
+npm install -g @nrwl/schematics@6.4.0-beta.1
 npm install -g @nestjs/cli
 
 npm install -g ndb
@@ -93,6 +93,10 @@ cd ngx-starter-kit
 
 > remove all ngrx NPM pagages from package.json
 
+# setup your workspace to run tests with jest.
+ng generate jest
+# you may have to manually remove karma files (karma.conf.js) and dependencies from package.json
+
 # make sure we are up-to-date
 ng update
 # and update as suggested. e.g., 
@@ -102,9 +106,6 @@ ng update --all
 
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
-
-# add Jest to replace karma as testing framework
-ng generate jest
 ```
 
 #### Dependencies
@@ -200,8 +201,6 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-
-ng g lib aaa  --dry-run 
 ng g lib animations --nomodule -tags=utils --unit-test-runner=jest --dry-run 
 ng g lib Tree --nomodule  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
 ng g lib utils --nomodule --tags=utils --unit-test-runner=jest --dry-run
@@ -489,7 +488,7 @@ $ docker-compose up web   # optional: --build, see below
 Now open your browser at http://localhost:80
 
 
-### IntelliJ
+### IntelliJ/WebStorm
 
 Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.
 Right click on `apps/webapp/src` in project vie --> Make Directory as --> Resources Root.

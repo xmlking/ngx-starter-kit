@@ -190,3 +190,9 @@ https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package
  
 ### Pattern
 1. https://tomastrajan.github.io/angular-model-pattern-example#/about
+
+
+### Awesome links
+
+* Angular Articles
+  * https://angular-guru.com/blog
