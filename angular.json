@@ -152,26 +152,6 @@
             "browserTarget": "webapp:build"
           }
         },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "apps/webapp/jest.config.js",
-            "tsConfig": "apps/webapp/tsconfig.spec.json",
-            "setupFile": "apps/webapp/src/test-setup.ts",
-            "styles": [
-              {
-                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
-              },
-              "apps/webapp/src/styles.scss"
-            ],
-            "scripts": [],
-            "assets": [
-              "apps/webapp/src/favicon.ico",
-              "apps/webapp/src/assets",
-              "apps/webapp/src/manifest.json"
-            ]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
@@ -182,6 +162,14 @@
             "exclude": [
               "**/node_modules/**"
             ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/webapp/jest.config.js",
+            "tsConfig": "apps/webapp/tsconfig.spec.json",
+            "setupFile": "apps/webapp/src/test-setup.ts"
           }
         }
       }

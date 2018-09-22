@@ -9,20 +9,20 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
     }).compileComponents();
   }));
-  it('should create the app', async(() => {
+  it('should create the webapp', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   }));
-  xit(`should have as title 'app'`, async(() => {
+  xit(`should have as title 'webapp'`, async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('app');
+    expect(app.title).toEqual('webapp');
   }));
   xit('should render title in a h1 tag', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to app!');
+    expect(compiled.querySelector('h1').textContent).toContain('Welcome to webapp!');
   }));
 });
