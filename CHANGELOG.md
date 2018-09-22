@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.1...v1.0.2) (2018-09-22)
+
+
+### Bug Fixes
+
+* **nestjs:** fix typescript types ([97f855a](https://github.com/xmlking/ngx-starter-kit/commit/97f855a))
+* **test:** nrwl/nx -> 6.4.0-beta.1 ([b032276](https://github.com/xmlking/ngx-starter-kit/commit/b032276))
+
 ## [1.0.1](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.0...v1.0.1) (2018-09-09)
 
 
