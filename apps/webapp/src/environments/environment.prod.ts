@@ -9,6 +9,7 @@ export const environment = {
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
   auth: {
     clientId: 'is360ui',
-    issuer: 'http://localhost:8080/auth/realms/is360',
+    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+    // issuer: 'https://keycloak-is360.7e14.starter-us-west-2.openshiftapps.com/auth/realms/is360'
   },
 };

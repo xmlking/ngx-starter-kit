@@ -21,6 +21,11 @@ once you are conferable , then you can delete demo `default` app
 
 * How do I design Landing page?
 
+* How to Profile Change Detection?
+
+> Refer [here](https://angular-guru.com/blog/angular-unknown-features)
+type `ng.profiler.timeChangeDetection();` in console.
+
 * How do I theme SPA App?
 > Refer [here](https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html)
 > Refer [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1)
