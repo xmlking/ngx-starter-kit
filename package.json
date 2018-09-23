@@ -14,6 +14,7 @@
     "build": "ng build",
     "test": "ng test webapp",
     "test:ci": "ng test webapp --ci --max-workers=4",
+    "test:affected": "nx affected:test --uncommitted",
     "lint": "./node_modules/.bin/nx lint && ng lint",
     "e2e": "testcafe-live chrome apps/webapp-e2e/**/*.e2e-spec.ts -s \"dist/eyes/screenshots\"",
     "e2e:ci": "testcafe 'chrome:headless' apps/webapp-e2e/**/*.e2e-spec.ts --app 'npm run start' --app-init-delay 4000",

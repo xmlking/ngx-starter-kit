@@ -1,28 +1,30 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { DOCUMENT } from '@angular/common';
 describe('AppComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+
+  beforeEach(async(async () => {
+    await TestBed.configureTestingModule({
       imports: [RouterTestingModule, ServiceWorkerModule.register('', { enabled: false })],
       declarations: [AppComponent],
     }).compileComponents();
+
+    // create component and test fixture
+    fixture = TestBed.createComponent(AppComponent);
+
+    // get test component from the fixture
+    component = fixture.componentInstance;
   }));
+
   it('should create the webapp', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
+    expect(component).toBeTruthy();
   }));
-  xit(`should have as title 'webapp'`, async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('webapp');
-  }));
-  xit('should render title in a h1 tag', async(() => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to webapp!');
+
+  it(`should have as charset 'UTF-8'`, async(() => {
+    expect(component.meta.getTag('charset').getAttribute('charset')).toBe('UTF-8');
   }));
 });
