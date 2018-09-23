@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.2...v1.0.3) (2018-09-23)
+
+
+### Performance Improvements
+
+* **login:** enhanced login UX ([f2f4865](https://github.com/xmlking/ngx-starter-kit/commit/f2f4865))
+
 ## [1.0.2](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.1...v1.0.2) (2018-09-22)
 
 
