@@ -8,7 +8,8 @@ import { Title } from '@angular/platform-browser';
   providedIn: 'root',
 })
 export class PageTitleService {
-  _title = '';
+  private readonly defaultTitle;
+  private _title = '';
 
   get title(): string {
     return this._title;
@@ -17,10 +18,12 @@ export class PageTitleService {
   set title(title: string) {
     this._title = title;
     if (title !== '') {
-      title = `${title} | `;
+      title = `${title} |`;
     }
-    this.bodyTitle.setTitle(`${title}IS360`);
+    this.bodyTitle.setTitle(`${title} ${this.defaultTitle}`);
   }
 
-  constructor(private bodyTitle: Title) {}
+  constructor(private bodyTitle: Title) {
+    this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
+  }
 }

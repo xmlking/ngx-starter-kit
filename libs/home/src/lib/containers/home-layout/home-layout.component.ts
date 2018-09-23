@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '@ngx-starter-kit/animations';
+import { PageTitleService } from '@ngx-starter-kit/core';
 
 @Component({
   selector: 'ngx-home-layout',
@@ -8,7 +9,9 @@ import { routerTransition } from '@ngx-starter-kit/animations';
   animations: [routerTransition],
 })
 export class HomeLayoutComponent implements OnInit {
-  constructor() {}
+  constructor(private pageTitleService: PageTitleService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.pageTitleService.title = 'Home';
+  }
 }
