@@ -80,31 +80,55 @@
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "150kb",
-                  "warning": "50kb",
-                  "error": "100kb"
+                  "baseline": "60kb",
+                  "maximumError": "20%",
+                  "maximumWarning": "10%",
+                  "minimumError": "20%",
+                  "minimumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "vendor",
                   "baseline": "1000kb",
-                  "warning": "100kb",
-                  "error": "200kb"
+                  "maximumError": "20%",
+                  "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "styles",
                   "baseline": "250kb",
-                  "warning": "50kb",
-                  "error": "100kb"
+                  "maximumError": "20%",
+                  "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1200kb",
-                  "warning": "100kb",
-                  "error": "200kb"
-                }
+                  "baseline": "1300kb",
+                  "maximumError": "20%",
+                  "maximumWarning": "10%"
+                },
+                {
+                  "type": "initial",
+                  "baseline": "1.8mb",
+                  "maximumError": "20%",
+                  "maximumWarning": "10%",
+                  "minimumError": "20%",
+                  "minimumWarning": "10%"
+                },
+                {
+                  "type": "allScript",
+                  "baseline": "4.5mb",
+                  "maximumError": "20%",
+                  "maximumWarning": "10%",
+                  "minimumError": "20%",
+                  "minimumWarning": "10%"
+                },
+                {
+                  "type": "all",
+                  "baseline": "10mb",
+                  "maximumError": "20%",
+                  "maximumWarning": "10%"
+                },
               ]
             },
             "mock": {
