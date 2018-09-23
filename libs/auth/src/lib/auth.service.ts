@@ -16,7 +16,7 @@ import { OAuthEvent } from 'angular-oauth2-oidc/events';
 
 @Injectable()
 export class AuthService {
-  static loginDefaultConf = { width: '400px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
+  static loginDefaultConf = { width: '380px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
   private _refresher: Subscription;
   private _monitorer: Subscription;
   // @Select('auth.authMode') authMode$: Observable<AuthMode>;

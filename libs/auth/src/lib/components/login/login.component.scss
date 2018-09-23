@@ -1,32 +1,19 @@
-.login-container {
-  height: 100%;
-  width: 100%;
-  align-items: center;
-  display: flex;
+.card {
+  width: 380px;
+  border-radius: 3px;
+  background: #fff;
+
+  .padding {
+    padding: 24px;
+  }
 }
 
-form {
-  width: 100%;
-}
-
-.login-content {
-  width: 100%;
-}
-
-.login-toolbar {
-  justify-content: center;
-}
-
-.mat-form-field {
-  width: 100%;
-  display: block;
-}
-
-.mat-dialog-actions {
-  margin-top: 15px;
-}
-
-.center {
-  margin-top: -20px;
+.text-center {
   text-align: center;
+}
+
+.login-angular-logo {
+  height: 96px;
+  margin: 0 4px 3px 0;
+  vertical-align: middle;
 }

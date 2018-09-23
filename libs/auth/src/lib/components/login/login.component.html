@@ -1,35 +1,79 @@
-<div class="login-container">
-  <div class="login-content">
-    <mat-toolbar  color="primary">
-      <mat-toolbar-row class="login-toolbar">
-        <span>Login</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <mat-card>
-      <mat-card-header>
-        <mat-card-subtitle *ngIf="infoMsg">{{infoMsg}}</mat-card-subtitle>
-        <mat-error class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
-      </mat-card-header>
+<div class="card border-radius elevation">
+  <mat-toolbar color="primary">
+    <mat-toolbar-row style="margin-bottom: -50px;" fxLayout="column" fxLayoutAlign="start end">
+      <button mat-icon-button [mat-dialog-close]="false" style="margin-right: -15px">
+        <mat-icon aria-label="Close">close</mat-icon>
+      </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row style="min-height:120px;" fxLayout="column" fxLayoutAlign="center center">
+      <img class="login-angular-logo" src="assets/img/homepage/angular-white-transparent.svg">
+    </mat-toolbar-row>
+  </mat-toolbar>
 
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)" novalidate>
-        <mat-form-field>
-          <mat-icon matPrefix>person_outline</mat-icon>
-          <input autofocus type="text" matInput placeholder="Usernames:  sumo, sumo1, sumo2, sumo3" formControlName="username">
-        </mat-form-field>
 
-        <mat-form-field>
-          <mat-icon matPrefix>lock_outline</mat-icon>
-          <input type="password" autocomplete="false" matInput placeholder="Password: demo" formControlName="password">
-        </mat-form-field>
+  <form class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="loginForm">
 
-        <div mat-dialog-actions fxLayout="row" fxLayoutAlign="space-around center">
-          <button mat-button color="warn" type="button" [mat-dialog-close]="false">Cancel</button>
-          <span fxFlex></span>
-          <button mat-raised-button type="button" (click)="initSSO()">SSO</button>
-          <!--<button mat-raised-button color="primary" type="submit" cdkFocusInitial>Login</button>-->
-          <button mat-raised-button color="primary" type="submit" >Login</button>
-        </div>
-      </form>
-    </mat-card>
-  </div>
+      <span fxLayout="row" fxLayoutAlign="space-between center">
+        <mat-hint align="start" *ngIf="infoMsg">{{infoMsg}}</mat-hint>
+        <mat-error align="end" class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
+      </span>
+
+    <mat-form-field fxFlex="grow" appearance="fill">
+      <mat-label>Username</mat-label>
+      <!--<mat-icon matPrefix>person_outline</mat-icon>-->
+      <input autofocus matInput required placeholder="Usernames:  sumo, sumo1, sumo2, sumo3" formControlName="username">
+      <mat-hint>Usernames: sumo, sumo1, sumo2, sumo3</mat-hint>
+      <mat-error *ngIf="loginForm.get('username').hasError('required')">We need an username to log you in</mat-error>
+    </mat-form-field>
+
+    <mat-form-field fxFlex="grow" appearance="fill">
+      <mat-label>Password</mat-label>
+      <!--<mat-icon matPrefix>lock_outline</mat-icon>-->
+      <input matInput required [type]="inputType" autocomplete="false" placeholder="Password: demo"
+             formControlName="password">
+      <button type="button" mat-icon-button matSuffix (click)="toggleInputType()" matTooltip="Toggle Visibility">
+        <mat-icon *ngIf="visible">visibility</mat-icon>
+        <mat-icon *ngIf="!visible">visibility_off</mat-icon>
+      </button>
+      <mat-hint>Password: demo</mat-hint>
+      <mat-hint align="end">Click the eye to toggle visibility</mat-hint>
+      <mat-error *ngIf="loginForm.get('password').hasError('required')">We need a password to log you in</mat-error>
+    </mat-form-field>
+
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-checkbox class="mat-caption">Remember Me</mat-checkbox>
+      <a class="mat-caption" [routerLink]="['/forgot-password']">Forgot Password?</a>
+    </div>
+    <button type="submit" color="primary" mat-raised-button [disabled]="!loginForm.valid"
+            (click)="onSubmit(loginForm.value)">
+      SIGN IN
+    </button>
+
+    <mat-hint class="text-center mat-caption">
+      <p>Not a member?
+        <a [routerLink]="['/register']">Register</a>
+      </p>
+    </mat-hint>
+    <!--
+    <mat-hint class="text-center mat-caption">
+      <p>or sign in with:</p>
+    </mat-hint>
+    -->
+    <span fxLayout="row" fxLayoutAlign="space-evenly center">
+      <button mat-mini-fab (click)="initSSO()" matTooltip="Login with KeyCloak" matTooltipPosition="above">
+        <mat-icon>security</mat-icon>
+      </button>
+      <button mat-mini-fab matTooltip="Login with Google" matTooltipPosition="above">
+        <i class="icon ion-logo-google"></i>
+      </button>
+      <button mat-mini-fab>
+        <i class="icon ion-logo-twitter" matTooltip="Login with Twitter" matTooltipPosition="above"></i>
+      </button>
+      <button mat-mini-fab>
+        <i class="icon ion-logo-github" matTooltip="Login with GitHub" matTooltipPosition="above"></i>
+      </button>
+    </span>
+
+  </form>
 </div>
+

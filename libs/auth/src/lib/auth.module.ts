@@ -1,5 +1,6 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from 'angular-oauth2-oidc';
 import { Store } from '@ngxs/store';
 
@@ -17,6 +18,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatTooltipModule,
   MatToolbarModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -26,12 +28,14 @@ import { AuthGuard } from './auth.guard';
 @NgModule({
   imports: [
     CommonModule,
+    RouterModule,
     MatButtonModule,
     MatCardModule,
     MatCheckboxModule,
     MatDialogModule,
     MatFormFieldModule,
     MatIconModule,
+    MatTooltipModule,
     MatInputModule,
     MatToolbarModule,
     FlexLayoutModule,

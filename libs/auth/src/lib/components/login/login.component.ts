@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ROPCService } from '../../ropc.service';
 import { Router } from '@angular/router';
@@ -16,11 +16,14 @@ import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 export class LoginComponent {
   public infoMsg: String;
   public errorMsg: String;
+  inputType = 'password';
+  visible = false;
   loginForm: FormGroup;
 
   constructor(
     fb: FormBuilder,
     private store: Store,
+    private cd: ChangeDetectorRef,
     private oauthService: OAuthService,
     private ropcService: ROPCService,
     private router: Router,
@@ -35,6 +38,18 @@ export class LoginComponent {
       password: ['', Validators.compose([Validators.required, Validators.minLength(4)])],
       rememberMe: false,
     });
+  }
+
+  toggleInputType() {
+    if (this.visible) {
+      this.inputType = 'password';
+      this.visible = false;
+      this.cd.markForCheck();
+    } else {
+      this.inputType = 'text';
+      this.visible = true;
+      this.cd.markForCheck();
+    }
   }
 
   initSSO() {
