@@ -1,4 +1,4 @@
-import { Component, HostBinding, Input, OnInit } from '@angular/core';
+import { Attribute, Component, HostBinding, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'ngx-led',
@@ -12,12 +12,15 @@ export class LedComponent implements OnInit {
   blink = false;
   @Input()
   speed = 1000;
-  @Input()
-  size = '24px';
+  public size = '24px';
   // @HostBinding('class.active') @Input() active: boolean = false;
-  constructor() {}
+  constructor(@Attribute('size') public readonly _size: string) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    if (this._size) {
+      this.size = this._size;
+    }
+  }
 
   onClick() {
     this.blink = !this.blink;
