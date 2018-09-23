@@ -7,6 +7,7 @@ import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '@env/environment';
+import { PageTitleService } from '@ngx-starter-kit/core';
 
 @Component({
   selector: 'ngx-dashboard-layout',
@@ -33,9 +34,12 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private actions$: Actions,
     private media: ObservableMedia,
     private oauthService: OAuthService,
+    private pageTitleService: PageTitleService,
   ) {}
 
   ngOnInit() {
+    this.pageTitleService.title = 'Dashboard';
+
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
       const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
 
