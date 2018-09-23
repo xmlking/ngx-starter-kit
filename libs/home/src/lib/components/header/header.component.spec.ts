@@ -1,6 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HeaderComponent } from './header.component';
+import { SharedModule } from '@ngx-starter-kit/shared';
+import { ThemePickerModule } from '@ngx-starter-kit/theme-picker';
+import { RouterTestingModule } from '@angular/router/testing';
+import { CoreModule } from '@ngx-starter-kit/core';
 
 describe('HeaderComponent', () => {
   let component: HeaderComponent;
@@ -8,6 +12,7 @@ describe('HeaderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [SharedModule, CoreModule, ThemePickerModule, RouterTestingModule],
       declarations: [HeaderComponent],
     }).compileComponents();
   }));

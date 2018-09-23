@@ -30,6 +30,9 @@ ng generate jest-project --project app-confirm
 ng test app-confirm
 ```
 
+How to implement test spec using Angular Test Bed(ATB)?
+>  https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/
+>  https://codecraft.tv/courses/angular/unit-testing/asynchronous/
 
 How to migrate project to newer versions?
 
@@ -48,6 +51,8 @@ How to commit code?
  npm run commit
  # or use following command if you install commitizen globally   
  git cz
+ # or skip git hooks with 
+ git cz --no-verify
  ```
 
 > Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
