@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.3...v1.0.4) (2018-09-24)
+
+
+### Performance Improvements
+
+* **led:** using Attribute for data binding ([5bce243](https://github.com/xmlking/ngx-starter-kit/commit/5bce243))
+
 ## [1.0.3](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.2...v1.0.3) (2018-09-23)
 
 
