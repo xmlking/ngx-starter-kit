@@ -86,7 +86,6 @@ npm run api:webpack -- -p
 # check of nest installed
 nest info
 
-cd apps/api
 # scaffold project module
 nest generate module project --dry-run
 nest generate controller project --dry-run
@@ -100,23 +99,16 @@ nest g exception auth --dry-run
 ```
 
 ### Test
-> coverage will be generate in dist/api/coverage
+> coverage will be generate in coverage/apps/api
 ```bash
 # unit tests
 npm run api:test
-# for api project
-npx jest --projects=apps/api --roots=src
-
-
-# e2e tests
-npm run api:test:e2e
-# for api project
-npx jest --projects=apps/api --roots=e2e
 
 # test coverage
 npm run api:test:cov
-# for api project
-npx jest --projects=apps/api --coverage
+
+# e2e tests
+npm run api:e2e
 ```
 
 

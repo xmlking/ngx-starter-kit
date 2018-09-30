@@ -21,4 +21,8 @@ describe('AppController (e2e)', () => {
       .expect(200)
       .expect(/Welcome to Sumo API/);
   });
+
+  afterAll(async () => {
+    await app.close();
+  });
 });

@@ -1,4 +1,4 @@
-export default function(value) {
+export default function toHexString(value) {
   const hexTable = [];
   for (let i = 0; i < 256; i++) {
     hexTable[i] = (i <= 15 ? '0' : '') + i.toString(16);

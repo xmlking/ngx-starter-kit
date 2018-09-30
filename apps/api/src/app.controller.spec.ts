@@ -1,7 +1,7 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppController } from './app.controller';
-import { CoreModule } from './core';
+import { ConfigModule } from './config';
 
 describe('AppController', () => {
   let app: TestingModule;
@@ -9,7 +9,7 @@ describe('AppController', () => {
   beforeAll(async () => {
     app = await Test.createTestingModule({
       controllers: [AppController],
-      imports: [CoreModule],
+      imports: [ConfigModule.forRoot()],
     }).compile();
   });
 
