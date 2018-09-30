@@ -1,0 +1,1926 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>ngx-starter-kit documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">ngx-starter-kit documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search">
+</div>
+            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content class">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li>Classes</li>
+  <li>ChatBoxState</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>libs/chat-box/src/lib/state/chat-box.store.ts</code>
+        </p>
+
+
+
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code>NgxsOnInit</code>
+            </p>
+
+
+            <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#addMessage">addMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#canUseSpeechRecognition">canUseSpeechRecognition</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#canUseSpeechSynthesis">canUseSpeechSynthesis</a>
+                            </li>
+                            <li>
+                                <a href="#closeConversation">closeConversation</a>
+                            </li>
+                            <li>
+                                <a href="#createConversation">createConversation</a>
+                            </li>
+                            <li>
+                                <a href="#fetchConversations">fetchConversations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getConversationById">getConversationById</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getConversations">getConversations</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getSelectedConversation">getSelectedConversation</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getVoicePreference">getVoicePreference</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#getVoices">getVoices</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Static</span>
+                                <a href="#loading">loading</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#ngxsOnInit">ngxsOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#saveConversation">saveConversation</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#sendMessage">sendMessage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#startVoiceCommand">startVoiceCommand</a>
+                            </li>
+                            <li>
+                                <a href="#switchConversation">switchConversation</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(nlp: <a href="../injectables/NlpService.html">NlpService</a>, stt: <a href="../injectables/SpeechToTextService.html">SpeechToTextService</a>, tts: <a href="../injectables/TextToSpeechService.html">TextToSpeechService</a>, chat: <a href="../injectables/ChatService.html">ChatService</a>, store: <a href="../classes/Store.html">Store</a>, actions$: Actions)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:70</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>nlp</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/NlpService.html" target="_self" >NlpService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>stt</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/SpeechToTextService.html" target="_self" >SpeechToTextService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>tts</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/TextToSpeechService.html" target="_self" >TextToSpeechService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>chat</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../injectables/ChatService.html" target="_self" >ChatService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>store</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../classes/Store.html" target="_self" >Store</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>actions$</td>
+                                                  
+                                                        <td>
+                                                                    <code>Actions</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="addMessage"></a>
+                        <span class="name">
+                            <b>
+                            addMessage
+                            </b>
+                            <a href="#addMessage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>addMessage(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>, undefined: <a href="../classes/Message.html">AddMessage</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="226" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:226</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../classes/Message.html" target="_self" >AddMessage</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canUseSpeechRecognition"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            canUseSpeechRecognition
+                            </b>
+                            <a href="#canUseSpeechRecognition"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>canUseSpeechRecognition(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:105</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="canUseSpeechSynthesis"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            canUseSpeechSynthesis
+                            </b>
+                            <a href="#canUseSpeechSynthesis"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>canUseSpeechSynthesis(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:110</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="closeConversation"></a>
+                        <span class="name">
+                            <b>
+                            closeConversation
+                            </b>
+                            <a href="#closeConversation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>closeConversation(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>, undefined: <a href="../classes/Conversation.html">CloseConversation</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="206" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:206</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../classes/Conversation.html" target="_self" >CloseConversation</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="createConversation"></a>
+                        <span class="name">
+                            <b>
+                            createConversation
+                            </b>
+                            <a href="#createConversation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>createConversation(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:177</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fetchConversations"></a>
+                        <span class="name">
+                            <b>
+                            fetchConversations
+                            </b>
+                            <a href="#fetchConversations"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>fetchConversations(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:171</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getConversationById"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            getConversationById
+                            </b>
+                            <a href="#getConversationById"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getConversationById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="130" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:130</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>id</td>
+                                                        <td>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getConversations"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            getConversations
+                            </b>
+                            <a href="#getConversations"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getConversations(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="120" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:120</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getSelectedConversation"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            getSelectedConversation
+                            </b>
+                            <a href="#getSelectedConversation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getSelectedConversation(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="125" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:125</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getVoicePreference"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            getVoicePreference
+                            </b>
+                            <a href="#getVoicePreference"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getVoicePreference(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="142" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:142</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="getVoices"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            getVoices
+                            </b>
+                            <a href="#getVoices"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>getVoices(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="137" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:137</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code>{}</code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loading"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Static</span>
+                            loading
+                            </b>
+                            <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>loading(state: <a href="../interfaces/State.html">ChatBoxStateModel</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Selector() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:115</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>state</td>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >ChatBoxStateModel</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngxsOnInit"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            ngxsOnInit
+                            </b>
+                            <a href="#ngxsOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>ngxsOnInit(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>)</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="146" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:146</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="saveConversation"></a>
+                        <span class="name">
+                            <b>
+                            saveConversation
+                            </b>
+                            <a href="#saveConversation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>saveConversation(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>, undefined: <a href="../classes/SaveConversation.html">SaveConversation</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="199" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:199</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../classes/SaveConversation.html" target="_self" >SaveConversation</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sendMessage"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            sendMessage
+                            </b>
+                            <a href="#sendMessage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>sendMessage(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>, undefined: <a href="../classes/SendMessage.html">SendMessage</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="235" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:235</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../classes/SendMessage.html" target="_self" >SendMessage</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="startVoiceCommand"></a>
+                        <span class="name">
+                            <b>
+                                <span class="modifier">Async</span>
+                            startVoiceCommand
+                            </b>
+                            <a href="#startVoiceCommand"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                            <span class="modifier-icon icon ion-ios-reset"></span>
+                        <code>startVoiceCommand(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="248" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:248</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="switchConversation"></a>
+                        <span class="name">
+                            <b>
+                            switchConversation
+                            </b>
+                            <a href="#switchConversation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>switchConversation(undefined: <a href="../interfaces/State.html">StateContext<ChatBoxStateModel></a>, undefined: <a href="../classes/SwitchConversation.html">SwitchConversation</a>)</code>
+                    </td>
+                </tr>
+
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b><code>@Action() </code>
+                        </td>
+                    </tr>
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="186" class="link-to-prism">libs/chat-box/src/lib/state/chat-box.store.ts:186</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../interfaces/State.html" target="_self" >StateContext&lt;ChatBoxStateModel&gt;</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>
+                                                                    <code><a href="../classes/SwitchConversation.html" target="_self" >SwitchConversation</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                            <div>
+                            </div>
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                                <div class="io-description">
+                                    
+                                </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import {
+  Action,
+  Actions,
+  createSelector,
+  NgxsOnInit,
+  ofActionDispatched,
+  Selector,
+  State,
+  StateContext,
+  Store,
+} from &#x27;@ngxs/store&#x27;;
+import { NlpService } from &#x27;../services/nlp.service&#x27;;
+import { ChatService } from &#x27;../services/chat.service&#x27;;
+import { TextToSpeechService } from &#x27;../services/text-to-speech.service&#x27;;
+import { SpeechToTextService } from &#x27;../services/speech-to-text.service&#x27;;
+
+import { tap } from &#x27;rxjs/operators&#x27;;
+import { ChatMessage, Conversation, ModeType, SubjectType } from &#x27;../chat-message.model&#x27;;
+import {
+  AddMessage,
+  CloseConversation,
+  CreateNewConversation,
+  FetchConversations,
+  SaveConversation,
+  SendMessage,
+  StartVoiceCommand,
+  SwitchConversation,
+  SynthesisVoice,
+} from &#x27;./chat-box.actions&#x27;;
+
+export class ChatBoxStateModel {
+  conversations: Conversation[];
+  selectedConversation: Conversation;
+  canUseSpeechRecognition: boolean;
+  canUseSpeechSynthesis: boolean;
+  voices: SpeechSynthesisVoice[];
+  voiceForm: {
+    model: SynthesisVoice;
+    dirty: boolean;
+    status: string;
+    errors: any;
+  };
+  activeUsersBots: any[];
+  loading: boolean;
+}
+
+@State&lt;ChatBoxStateModel&gt;({
+  name: &#x27;chatbox&#x27;,
+  defaults: {
+    conversations: [],
+    selectedConversation: null,
+    canUseSpeechRecognition: false,
+    canUseSpeechSynthesis: false,
+    voices: [],
+    voiceForm: {
+      model: {
+        voice: null,
+        volume: 1, // 0 to 1
+        rate: 1, // 0.1 to 10
+        pitch: 1, // 0 to 2
+      },
+      dirty: false,
+      status: &#x27;VALID&#x27;,
+      errors: {},
+    },
+    activeUsersBots: [],
+    loading: false,
+  },
+})
+export class ChatBoxState implements NgxsOnInit {
+  constructor(
+    private nlp: NlpService,
+    private stt: SpeechToTextService,
+    private tts: TextToSpeechService,
+    private chat: ChatService,
+    private store: Store,
+    private actions$: Actions,
+  ) {
+    this.actions$.pipe(ofActionDispatched(AddMessage)).subscribe((action: AddMessage) &#x3D;&gt; {
+      switch (action.payload.message.to.type) {
+        case SubjectType.BOT:
+          return this.nlp.process(action.payload.message.content).then(speech &#x3D;&gt; {
+            store.dispatch(
+              new AddMessage({
+                conversationId: action.payload.conversationId,
+                message: ChatMessage.fromBotMessage(speech),
+              }),
+            );
+            if (action.payload.message.mode &#x3D;&#x3D;&#x3D; ModeType.SPEAK) {
+              this.tts.synthesisVoice(speech, this.store.selectSnapshot(ChatBoxState.getVoicePreference));
+            }
+          });
+        case SubjectType.USER:
+        case SubjectType.ADMIN:
+        case SubjectType.GROUP:
+        case SubjectType.ALL:
+          break;
+        default:
+          break;
+      }
+    });
+  }
+
+  @Selector()
+  public static canUseSpeechRecognition(state: ChatBoxStateModel) {
+    return state.canUseSpeechRecognition;
+  }
+
+  @Selector()
+  public static canUseSpeechSynthesis(state: ChatBoxStateModel) {
+    return state.canUseSpeechSynthesis;
+  }
+
+  @Selector()
+  public static loading(state: ChatBoxStateModel) {
+    return state.loading;
+  }
+
+  @Selector()
+  static getConversations(state: ChatBoxStateModel) {
+    return state.conversations;
+  }
+
+  @Selector()
+  static getSelectedConversation(state: ChatBoxStateModel) {
+    return state.selectedConversation;
+  }
+
+  @Selector()
+  static getConversationById(id: string) {
+    return createSelector([ChatBoxState], (state: ChatBoxStateModel) &#x3D;&gt; {
+      return state.conversations.find(con &#x3D;&gt; con.id &#x3D;&#x3D;&#x3D; id);
+    });
+  }
+
+  @Selector()
+  static getVoices(state: ChatBoxStateModel) {
+    return state.voices;
+  }
+
+  @Selector()
+  static getVoicePreference(state: ChatBoxStateModel) {
+    return state.voiceForm.model;
+  }
+
+  async ngxsOnInit({ getState, setState, patchState, dispatch }: StateContext&lt;ChatBoxStateModel&gt;) {
+    console.log(&#x27;ChatBoxState initialized, setting defaults&#x27;);
+    if (this.tts.canUseSpeechSynthesis) {
+      const voices &#x3D; await this.tts.getVoiceList();
+      patchState({
+        canUseSpeechRecognition: this.stt.canUseSpeechRecognition,
+        canUseSpeechSynthesis: this.tts.canUseSpeechSynthesis,
+        voices,
+        voiceForm: {
+          model: {
+            voice: voices[48],
+            volume: 1,
+            rate: 1,
+            pitch: 1,
+          },
+          dirty: false,
+          status: &#x27;VALID&#x27;,
+          errors: {},
+        },
+      });
+    }
+    dispatch(new FetchConversations());
+  }
+
+  @Action(FetchConversations)
+  fetchConversations({ getState, patchState, setState }: StateContext&lt;ChatBoxStateModel&gt;) {
+    console.log(&#x27;fetching open conversations&#x27;);
+    // return this.chat.fetchInFlightConversations().pipe(tap(res &#x3D;&gt; patchState({ conversations: res })));
+  }
+
+  @Action(CreateNewConversation)
+  createConversation({ getState, patchState, setState }: StateContext&lt;ChatBoxStateModel&gt;) {
+    const newConversation &#x3D; new Conversation(&#x27;payload.conversationId&#x27;);
+    patchState({
+      conversations: [...getState().conversations, newConversation],
+      selectedConversation: newConversation,
+    });
+  }
+
+  @Action(SwitchConversation)
+  switchConversation(
+    { getState, patchState, setState }: StateContext&lt;ChatBoxStateModel&gt;,
+    { payload }: SwitchConversation,
+  ) {
+    const switchedConversation &#x3D; getState().conversations.find(con &#x3D;&gt; con.id &#x3D;&#x3D;&#x3D; payload.conversationId);
+    if (switchedConversation) {
+      patchState({
+        selectedConversation: switchedConversation,
+      });
+    }
+  }
+
+  @Action(SaveConversation)
+  saveConversation({ getState, patchState, setState }: StateContext&lt;ChatBoxStateModel&gt;, { payload }: SaveConversation) {
+    console.log(&#x60;saving conversation ${payload.conversationId}&#x60;);
+    // const conversation &#x3D; getState().conversations.find( con &#x3D;&gt; con.id &#x3D;&#x3D;&#x3D; payload.conversationId);
+    // return this.chat.saveConversation(conversation);
+  }
+
+  @Action(CloseConversation)
+  closeConversation(
+    { getState, patchState, setState, dispatch }: StateContext&lt;ChatBoxStateModel&gt;,
+    { payload }: CloseConversation,
+  ) {
+    console.log(&#x60;close conversation ${payload.conversationId}&#x60;);
+    const closingConversation &#x3D; getState().conversations.find(con &#x3D;&gt; con.id &#x3D;&#x3D;&#x3D; payload.conversationId);
+    dispatch(new SaveConversation({ conversationId: payload.conversationId })).pipe(
+      tap(_ &#x3D;&gt; {
+        const remainingCons &#x3D; getState().conversations.filter(
+          conversation &#x3D;&gt; conversation.id !&#x3D;&#x3D; payload.conversationId,
+        );
+        patchState({
+          conversations: remainingCons,
+          selectedConversation: remainingCons[remainingCons.length - 1],
+        });
+      }),
+    );
+  }
+
+  @Action(AddMessage, { cancelUncompleted: true })
+  addMessage({ getState, patchState, setState }: StateContext&lt;ChatBoxStateModel&gt;, { payload }: AddMessage) {
+    const conversation &#x3D; getState().conversations.find(con &#x3D;&gt; con.id &#x3D;&#x3D;&#x3D; payload.conversationId);
+    conversation.messages.push(payload.message);
+    // patchState({
+    //   // conversations: [...getState().conversations]
+    // });
+  }
+
+  @Action(SendMessage, { cancelUncompleted: true })
+  async sendMessage(
+    { getState, patchState, setState, dispatch }: StateContext&lt;ChatBoxStateModel&gt;,
+    { payload }: SendMessage,
+  ) {
+    dispatch(
+      new AddMessage({
+        conversationId: getState().selectedConversation.id,
+        message: ChatMessage.fromUserMessage(payload.message, ModeType.TYPE),
+      }),
+    );
+  }
+
+  @Action(StartVoiceCommand, { cancelUncompleted: true })
+  async startVoiceCommand({ getState, patchState, setState, dispatch }: StateContext&lt;ChatBoxStateModel&gt;) {
+    const message &#x3D; await this.stt.getVoiceMessage();
+    dispatch(
+      new AddMessage({
+        conversationId: getState().selectedConversation.id,
+        message: ChatMessage.fromUserMessage(message, ModeType.SPEAK),
+      }),
+    );
+  }
+}
+</code></pre>
+    </div>
+</div>
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
+            var COMPODOC_CURRENT_PAGE_URL = 'ChatBoxState.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <script src="../js/menu-wc.js"></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
