@@ -3,7 +3,6 @@ import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 import { fromEvent, Subject, Subscription } from 'rxjs';
-import 'rxjs/add/observable/fromEvent';
 import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 @Component({

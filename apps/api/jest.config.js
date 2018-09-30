@@ -1,5 +1,5 @@
-const jestBase = require('../../jest.config.base.js');
 module.exports = {
-  ...jestBase,
-  "coverageDirectory": "../../dist/apps/api/coverage",
+  name: 'api',
+  preset: '../../jest.config.nest.js',
+  "coverageDirectory": "../../coverage/apps/api",
 };

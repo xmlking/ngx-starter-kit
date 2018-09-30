@@ -37,6 +37,7 @@ export class RequestContext {
     const requestContext = RequestContext.currentRequestContext();
 
     if (requestContext) {
+      // tslint:disable-next-line
       const user: any = requestContext.request['user'];
       if (user) {
         return user;
@@ -54,6 +55,7 @@ export class RequestContext {
     const requestContext = RequestContext.currentRequestContext();
 
     if (requestContext) {
+      // tslint:disable-next-line
       return requestContext.request['token'];
     }
 

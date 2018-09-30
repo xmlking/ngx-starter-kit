@@ -59,8 +59,6 @@ npm i -D @types/helmet
  
 #### Generate Artifacts
 ```bash
-cd apps/api
-
 # scaffold core module
 nest g module core --dry-run
 nest g guard auth core --dry-run

@@ -19,6 +19,11 @@
         "webapp"
       ]
     },
+    "api": {
+      "tags": [
+        "api-module"
+      ]
+    },
     "navigator": {
       "tags": [
         "private-module",

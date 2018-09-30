@@ -1,6 +1,7 @@
 import { parse, config } from 'dotenv';
 import * as fs from 'fs';
 import { Injectable } from '@nestjs/common';
+// tslint:disable-next-line
 const packageJson = require('../../../../package.json');
 
 @Injectable()
