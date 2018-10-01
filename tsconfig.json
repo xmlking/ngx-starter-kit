@@ -130,6 +130,9 @@
   },
   "exclude": [
     "node_modules",
-    "tmp"
+    "tmp",
+    "dist/**/*",
+    "coverage/**/*",
+    "tools/**/_*files/**/*"
   ]
 }
