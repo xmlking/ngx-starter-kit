@@ -385,11 +385,14 @@ ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
 ng g component containers/ledDemo --project=experiments  --dry-run
+```
 
+#### Workspace Schematics
+```bash
 # generate workspace-schematic `ngxs`
 ng g workspace-schematic ngxs
-# run 
-npm run workspace-schematic ngxs models/sumo --type=model --project=grid  --dry-run
+# run workspace-schematic `ngxs`
+npm run workspace-schematic ngxs models/sumo -- --type=model --project=grid  --dry-run
 ```
 
 ### Install
