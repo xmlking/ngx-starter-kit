@@ -392,7 +392,8 @@ ng g component containers/ledDemo --project=experiments  --dry-run
 # generate workspace-schematic `store`
 ng g workspace-schematic store
 # run workspace-schematic `store`
-npm run workspace-schematic store models/sumo -- --type=model --project=grid  --dry-run
+# *** always delete ./dist folder when you change schematic implementation ***
+npm run workspace-schematic store models/sumoDemo -- --project=grid  --dry-run
 ```
 
 ### Install
