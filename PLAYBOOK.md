@@ -389,10 +389,10 @@ ng g component containers/ledDemo --project=experiments  --dry-run
 
 #### Workspace Schematics
 ```bash
-# generate workspace-schematic `ngxs`
-ng g workspace-schematic ngxs
-# run workspace-schematic `ngxs`
-npm run workspace-schematic ngxs models/sumo -- --type=model --project=grid  --dry-run
+# generate workspace-schematic `store`
+ng g workspace-schematic store
+# run workspace-schematic `store`
+npm run workspace-schematic store models/sumo -- --type=model --project=grid  --dry-run
 ```
 
 ### Install
