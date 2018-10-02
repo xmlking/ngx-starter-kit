@@ -7,6 +7,7 @@ import { KnobModule } from '@xmlking/ngx-knob';
 
 import { ClapModule } from '@ngx-starter-kit/clap';
 import { LedModule } from '@ngx-starter-kit/led';
+import { ImageComparisonModule } from '@ngx-starter-kit/image-comparison';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { ContextMenuModule } from '@ngx-starter-kit/context-menu';
 import { AnimationsComponent } from './containers/animations/animations.component';
@@ -18,6 +19,7 @@ import { KnobDemoComponent } from './containers/knob-demo/knob-demo.component';
 import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scroll.component';
 import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
 import { LedDemoComponent } from './containers/led-demo/led-demo.component';
+import { ImageCompComponent } from './containers/image-comp/image-comp.component';
 
 // Registering plugins
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
@@ -36,6 +38,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ClapModule,
     LedModule,
     KnobModule,
+    ImageComparisonModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
       { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
@@ -79,6 +82,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         component: KnobDemoComponent,
         data: { animation: 'Knob' },
       },
+      {
+        path: 'image-comp',
+        component: ImageCompComponent,
+        data: { animation: 'imagecomp' },
+      },
     ]),
   ],
   declarations: [
@@ -91,6 +99,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ClapButtonComponent,
     KnobDemoComponent,
     LedDemoComponent,
+    ImageCompComponent,
   ],
 })
 export class ExperimentsModule {}

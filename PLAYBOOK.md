@@ -385,6 +385,11 @@ ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
 ng g component containers/ledDemo --project=experiments  --dry-run
+ng g component containers/ImageComp --project=experiments  --dry-run
+
+# generate components for `ImageComparison` Module
+ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true --dry-run
+ng g component ImageComparison --project=image-comparison --export --flat --dry-run 
 ```
 
 #### Workspace Schematics
