@@ -1,0 +1,144 @@
+.comparison-widget {
+  display: inline-block;
+  max-width: 100%;
+  max-height: 100%;
+  position: relative;
+  overflow: hidden;
+  vertical-align: top;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  &:hover {
+    .comparison-separator {
+      opacity: 1;
+    }
+    .comparison-control {
+      opacity: 1;
+      &:before,
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+}
+
+.comparison-widget--hidden {
+  opacity: 0;
+}
+
+.comparison-item {
+  height: 100%;
+  width: 100%;
+  background: #fff;
+}
+
+.comparison-item--first {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+}
+
+.comparison-item__content {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  &:hover .comparison-item__label {
+    background: #fff;
+  }
+}
+
+.comparison-item--first .comparison-image {
+  width: auto;
+  max-width: none;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.comparison-item__image {
+  display: block;
+  max-width: 100%;
+  -webkit-user-drag: none;
+}
+
+.comparison-item--first .comparison-item__label {
+  left: 0;
+  right: inherit;
+}
+
+.comparison-item__label {
+  padding: 7px 10px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-transform: uppercase;
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+  color: #222;
+  background: rgba(255, 255, 255, 0.65);
+  z-index: 1;
+  -webkit-transition: background-color 300ms linear;
+  -moz-transition: background-color 300ms linear;
+  transition: background-color 300ms linear;
+}
+
+.comparison-separator {
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  right: -1px;
+  top: 0;
+  z-index: 10;
+  background: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.comparison-control {
+  width: 12px;
+  height: 12px;
+  margin-top: -6px;
+  margin-left: -6px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  background: #fff;
+  border-radius: 100%;
+  opacity: 0.7;
+  &:before,
+  &:after {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 20px;
+    margin-top: -10px;
+    position: absolute;
+    top: 50%;
+    background: url('arrow.png') 0 0 no-repeat;
+  }
+  &:before {
+    left: -15px;
+  }
+  &:after {
+    right: -15px;
+    background-position: -12px 0px;
+  }
+}
+
+.comparison-control__mask {
+  width: 50px;
+  height: 40px;
+  position: absolute;
+  top: -15px;
+  left: -18px;
+  background: #fff;
+  opacity: 0;
+}

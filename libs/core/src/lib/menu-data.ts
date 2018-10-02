@@ -67,22 +67,49 @@ export const defaultMenu: MenuItem[] = [
         icon: 'directions',
         link: '/dashboard/experiments/knob',
       },
+      // {
+      //   name: 'Microinteractions',
+      //   icon: 'casino',
+      //   disabled: false,
+      //   children: [
+      //     {
+      //       name: 'Clap',
+      //       icon: 'pan_tool',
+      //       link: '/dashboard/experiments/clap',
+      //     },
+      //     {
+      //       name: 'Led',
+      //       icon: 'highlight',
+      //       link: '/dashboard/experiments/led',
+      //     },
+      //     {
+      //       name: 'Image Comp',
+      //       icon: 'tonality',
+      //       link: '/dashboard/experiments/image-comp',
+      //     },
+      //   ],
+      // },
+    ],
+  },
+  {
+    name: 'Micro Interactions',
+    icon: 'casino',
+    disabled: false,
+    children: [
       {
-        name: 'Microinteractions',
-        icon: 'casino',
-        disabled: false,
-        children: [
-          {
-            name: 'Clap',
-            icon: 'pan_tool',
-            link: '/dashboard/experiments/clap',
-          },
-          {
-            name: 'Led',
-            icon: 'highlight',
-            link: '/dashboard/experiments/led',
-          },
-        ],
+        name: 'Clap',
+        icon: 'pan_tool',
+        link: '/dashboard/experiments/clap',
+      },
+      {
+        name: 'Led',
+        icon: 'highlight',
+        link: '/dashboard/experiments/led',
+      },
+      {
+        name: 'Image Comp',
+        icon: 'tonality',
+        link: '/dashboard/experiments/image-comp',
       },
     ],
   },

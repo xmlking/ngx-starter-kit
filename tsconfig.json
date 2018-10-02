@@ -123,8 +123,17 @@
       "@ngx-starter-kit/notifications": [
         "libs/notifications/src/index.ts"
       ],
+      "clap/*": [
+        "dist/clap/*"
+      ],
       "@ngx-starter-kit/clap": [
         "libs/clap/src/index.ts"
+      ],
+      "image-comparison/*": [
+        "dist/image-comparison/*"
+      ],
+      "@ngx-starter-kit/image-comparison": [
+        "libs/image-comparison/src/index.ts"
       ]
     }
   },
