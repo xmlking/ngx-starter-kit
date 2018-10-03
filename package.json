@@ -182,6 +182,7 @@
     "smooth-scrollbar": "^8.3.1",
     "socket.io-client": "^2.1.1",
     "typeorm": "^0.2.7",
+    "typescript": "^2.9.2",
     "uuid": "^3.3.2",
     "zone.js": "^0.8.26"
   },
@@ -242,7 +243,6 @@
     "tslib": "^1.9.3",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
-    "typescript": "^2.9.2",
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-cli": "^3.1.2",
     "webpack-node-externals": "^1.7.2"
