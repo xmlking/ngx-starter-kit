@@ -21,7 +21,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 brew update
 brew install node
 #brew upgrade node
-# upgrade npm to at least 6.3.0
+# upgrade npm to at least 6.x.x
 npm install -g npm
 ```
 
@@ -52,14 +52,14 @@ bazel clean --expunge
 npm remove -g @angular/cli
 npm remove -g @nrwl/schematics
 npm remove -g @nestjs/cli
+npm remove -g semantic-release-cli
+npm remove -g commitizen
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics@6.4.0-beta.1
+npm install -g @nrwl/schematics@6.4.0-beta.2
 npm install -g @nestjs/cli
-
-npm install -g ndb
-npm i -g semantic-release-cli
-npm i -g commitizen
+npm install -g semantic-release-cli
+npm install -g commitizen
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -176,7 +176,7 @@ npm i -D tslint-config-prettier
 npx tslint-config-prettier-check ./tslint.json
 
 # install testCafe for e2e testing and remove protractor
-npm i testcafe testcafe-angular-selectors testcafe-live
+npm i -D testcafe testcafe-angular-selectors testcafe-live
 
 # for CI/CD automation and release
 # first time semantic-release setup
