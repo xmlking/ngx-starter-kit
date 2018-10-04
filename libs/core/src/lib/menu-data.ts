@@ -92,7 +92,7 @@ export const defaultMenu: MenuItem[] = [
     ],
   },
   {
-    name: 'Micro Interactions',
+    name: 'Micro-Interactions',
     icon: 'casino',
     disabled: false,
     children: [
