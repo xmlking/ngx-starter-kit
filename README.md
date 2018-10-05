@@ -50,5 +50,7 @@ Run `npm run doc:serve` to serve docs.
 Run `npm run deploy:mock` to deploy demo app to gp-pages.
 
 Analyzing bundle size `npm run bundle-report`
+ 
+Analyzing and Visualizing the Dependency Graph (affected modules by uncommitted changes)
 
-Analyzing and Visualizing the Dependency Graph `npm run dep-graph`
+`npm run affected:dep-graph -- --uncommitted`
