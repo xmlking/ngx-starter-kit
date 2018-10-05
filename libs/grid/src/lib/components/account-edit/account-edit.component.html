@@ -1,4 +1,4 @@
-<h1 mat-dialog-title [draggable] dragTarget=".mat-dialog-container">{{title}}</h1>
+<h1 mat-dialog-title cdkDrag cdkDragHandle  cdkDragRootElement=".mat-dialog-container" style="cursor: move">{{title}}</h1>
 
 <form [formGroup]="entityForm" (ngSubmit)="submit()">
   <mat-dialog-content>

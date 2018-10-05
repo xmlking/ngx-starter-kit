@@ -8,6 +8,10 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faTwitter, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+
 import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
 import { NavigatorModule, MenuState } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
@@ -24,10 +28,18 @@ export function noop() {
   return function() {};
 }
 
+/**
+ * add icons that are needed during app boot up here.
+ * if more icons are needed, load them in respective modules and add FontAwesomeModule to it.
+ * for convenience, we also added FontAwesomeModule to SharedModule.
+ */
+library.add(faTwitter, faGithub, faGoogle);
+
 @NgModule({
   imports: [
     CommonModule,
     HttpClientModule,
+    FontAwesomeModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
     NgxsModule.forRoot([AuthState, MenuState, PreferenceState]),

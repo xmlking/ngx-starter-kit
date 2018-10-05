@@ -1378,6 +1378,46 @@
           }
         }
       }
+    },
+    "image-comparison": {
+      "root": "libs/image-comparison",
+      "sourceRoot": "libs/image-comparison/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/image-comparison/tsconfig.lib.json",
+            "project": "libs/image-comparison/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "libs/image-comparison/ng-package.prod.json"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/image-comparison/tsconfig.lib.json",
+              "libs/image-comparison/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/image-comparison/jest.config.js",
+            "tsConfig": "libs/image-comparison/tsconfig.spec.json",
+            "setupFile": "libs/image-comparison/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "schematics": {
