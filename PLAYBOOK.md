@@ -56,7 +56,7 @@ npm remove -g semantic-release-cli
 npm remove -g commitizen
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics@6.4.0-beta.2
+npm install -g @nrwl/schematics@6.4.0-beta.3
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
 npm install -g commitizen
