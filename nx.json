@@ -192,6 +192,11 @@
       "tags": [
         "public-module"
       ]
+    },
+    "image-comparison": {
+      "tags": [
+        "public-module"
+      ]
     }
   }
 }

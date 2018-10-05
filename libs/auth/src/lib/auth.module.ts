@@ -9,6 +9,7 @@ import { AuthState } from './auth.state';
 import { LoginComponent } from './components/login/login.component';
 import { ROPCService } from './ropc.service';
 import { AuthService } from './auth.service';
+import { AuthGuard } from './auth.guard';
 
 import {
   MatButtonModule,
@@ -23,7 +24,7 @@ import {
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { AuthGuard } from './auth.guard';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   imports: [
@@ -40,6 +41,7 @@ import { AuthGuard } from './auth.guard';
     MatToolbarModule,
     FlexLayoutModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
     OAuthModule.forRoot({
       resourceServer: {
         allowedUrls: ['http://localhost:8080/auth'],

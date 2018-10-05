@@ -15,6 +15,7 @@ import {
   PerfectScrollbarConfigInterface,
   PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -34,6 +35,7 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective
     MaterialModule,
     MaterialDateModule,
     MomentModule,
+    FontAwesomeModule,
     FormlyMaterialModule,
     PerfectScrollbarModule,
     ...DIRECTIVES,

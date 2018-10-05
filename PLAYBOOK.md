@@ -21,7 +21,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 brew update
 brew install node
 #brew upgrade node
-# upgrade npm to at least 6.3.0
+# upgrade npm to at least 6.x.x
 npm install -g npm
 ```
 
@@ -52,14 +52,14 @@ bazel clean --expunge
 npm remove -g @angular/cli
 npm remove -g @nrwl/schematics
 npm remove -g @nestjs/cli
+npm remove -g semantic-release-cli
+npm remove -g commitizen
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics@6.4.0-beta.1
+npm install -g @nrwl/schematics@6.4.0-beta.3
 npm install -g @nestjs/cli
-
-npm install -g ndb
-npm i -g semantic-release-cli
-npm i -g commitizen
+npm install -g semantic-release-cli
+npm install -g commitizen
 
 # verify globally installed packages
 npm list -g --depth=0
@@ -176,7 +176,7 @@ npm i -D tslint-config-prettier
 npx tslint-config-prettier-check ./tslint.json
 
 # install testCafe for e2e testing and remove protractor
-npm i testcafe testcafe-angular-selectors testcafe-live
+npm i -D testcafe testcafe-angular-selectors testcafe-live
 
 # for CI/CD automation and release
 # first time semantic-release setup
@@ -194,9 +194,9 @@ npm i -D lint-staged
 ```bash
 
 # generate `Lazy-loaded Feature Modules`
-ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --unit-test-runner=jest  --tags=layout,entry-module
-ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts       --unit-test-runner=jest  --tags=layout,entry-module
-ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts        --unit-test-runner=jest --tags=entry-module
+ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
+ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
+ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest --tags=entry-module
 ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
@@ -385,6 +385,11 @@ ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
 ng g component containers/ledDemo --project=experiments  --dry-run
+ng g component containers/ImageComp --project=experiments  --dry-run
+
+# generate components for `ImageComparison` Module
+ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true --dry-run
+ng g component ImageComparison --project=image-comparison --export --flat --dry-run 
 ```
 
 #### Workspace Schematics
@@ -392,7 +397,8 @@ ng g component containers/ledDemo --project=experiments  --dry-run
 # generate workspace-schematic `store`
 ng g workspace-schematic store
 # run workspace-schematic `store`
-npm run workspace-schematic store models/sumo -- --type=model --project=grid  --dry-run
+# *** always delete ./dist folder when you change schematic implementation ***
+npm run workspace-schematic store models/sumoDemo -- --project=grid  --dry-run
 ```
 
 ### Install
