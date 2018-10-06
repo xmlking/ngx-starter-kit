@@ -1,3 +1,19 @@
+# [1.1.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.4...v1.1.0) (2018-10-06)
+
+
+### Bug Fixes
+
+* **docs:** excluded some folders for compodoc builds ([013710c](https://github.com/xmlking/ngx-starter-kit/commit/013710c))
+* **docs:** fix compodoc build ([5ff3107](https://github.com/xmlking/ngx-starter-kit/commit/5ff3107))
+* **draggable:** replaced DraggableModule in favor of CDK DragDropModule ([41f729a](https://github.com/xmlking/ngx-starter-kit/commit/41f729a))
+* **schematics:** added Store workspace schematics ([c8bba51](https://github.com/xmlking/ngx-starter-kit/commit/c8bba51))
+* **tools:** fix workspace-schematic ngxs ([1603246](https://github.com/xmlking/ngx-starter-kit/commit/1603246))
+
+
+### Features
+
+* **components:** added image comparison component ([4454e1d](https://github.com/xmlking/ngx-starter-kit/commit/4454e1d))
+
 ## [1.0.4](https://github.com/xmlking/ngx-starter-kit/compare/v1.0.3...v1.0.4) (2018-09-24)
 
 
