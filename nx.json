@@ -24,6 +24,12 @@
         "api-module"
       ]
     },
+    "api-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "api"
+      ]
+    },
     "navigator": {
       "tags": [
         "private-module",

@@ -8,27 +8,41 @@ services:
     environment:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin123
-      DB_VENDOR: H2
       KEYCLOAK_USER_CACHE_ENABLED: 'false'
       KEYCLOAK_REALM_CACHE_ENABLED: 'false'
+      DB_VENDOR: POSTGRES
+      DB_ADDR: postgres
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: keycloak123
     ports:
       - '9080:9080'
       - '9444:9443'
       - '10990:10990'
-  mongodb:
-    image: bitnami/mongodb:latest
-    container_name: mongodb
-    ports:
-      - '27017:27017'
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
     environment:
-      - MONGODB_REPLICA_SET_MODE=primary
-      - MONGODB_ROOT_PASSWORD=cockpit321
-      - MONGODB_DATABASE=cockpit
-      - MONGODB_USERNAME=mdbuser
-      - MONGODB_PASSWORD=cockpit123
-      - MONGODB_REPLICA_SET_KEY=replicasetkey123
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres321
+      COCKPIT_POSTGRES_DB: cockpit
+      COCKPIT_POSTGRES_USER: cockpit
+      COCKPIT_POSTGRES_PASSWORD: cockpit123
+      KEYCLOAK_POSTGRES_DB: keycloak
+      KEYCLOAK_POSTGRES_USER: keycloak
+      KEYCLOAK_POSTGRES_PASSWORD: keycloak123
+    ports:
+      - '5432:5432'
+    healthcheck:
+      test: ['CMD-SHELL', 'psql postgres://$${POSTGRES_USER}:$${POSTGRES_PASSWORD}@localhost:5432/$${POSTGRES_DB} || exit 1']
     volumes:
-      - 'mongodb_primary_data:/bitnami'
+      - postgres_data:/var/lib/postgresql/data
+      - .deploy/postgres/scripts/create_databases.sh:/docker-entrypoint-initdb.d/10-create_databases.sh:ro
+
   api:
     build:
       context: .
@@ -40,7 +54,8 @@ services:
     ports:
       - '3000:3000'
     depends_on:
-      - mongodb
+      - postgres
+
   web:
     build:
       context: .
@@ -59,46 +74,42 @@ services:
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
     container_name: elasticsearch
-#    ulimits:
-#      memlock:
-#        soft: -1
-#        hard: -1
-#    volumes:
-#    - esdata1:/usr/share/elasticsearch/data
+    #    ulimits:
+    #      memlock:
+    #        soft: -1
+    #        hard: -1
+    #    volumes:
+    #    - esdata1:/usr/share/elasticsearch/data
     environment:
-    - discovery.type=single-node
+      discovery.type: single-node
     ports:
-    - '9200:9200'
+      - '9200:9200'
     links:
-    - 'mongodb'
+      - 'postgres'
   kibana:
     image: docker.elastic.co/kibana/kibana:6.4.0
     container_name: kibana
-#    volumes:
-#    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
+    #    volumes:
+    #    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
-    - 'elasticsearch'
+      - 'elasticsearch'
     ports:
-    - '5601:5601'
+      - '5601:5601'
   transporter:
-    image: xmlking/mongo-to-es-transporter:latest
+    image: xmlking/postgres-to-es-transporter:latest
     container_name: transporter
     environment:
       DB_NAME: cockpit
-      MONGODB_URI: "mongodb://root:cockpit321@mongodb:27017"
-      ELASTICSEARCH_URI: "http://elasticsearch:9200"
+      MONGODB_URI: 'postgres://postgres:postgres321@postgres:5432'
+      ELASTICSEARCH_URI: 'http://elasticsearch:9200'
     links:
-    - 'mongodb'
-    - 'elasticsearch'
+      - 'postgres'
+      - 'elasticsearch'
 
 volumes:
   uploads:
-    driver: local
+  postgres_data:
   mongodb_primary_data:
-    driver: local
   mongodb_secondary_data:
-    driver: local
   esdata1:
-    driver: local
   esdata2:
-    driver: local

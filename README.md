@@ -9,7 +9,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
-**MANT** (*MongoDB* - *Angular* - *NestJS* - *TypeScript*) Stack
+**PANT** (*PostgreSQL* - *Angular* - *NestJS* - *TypeScript*) Stack
 
 ## Install
 

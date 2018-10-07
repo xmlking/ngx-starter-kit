@@ -16,8 +16,7 @@ npm install -g @nestjs/cli
 ### Scaffold Project
 > adding code dependencies
 ```bash
-nest new api
-nest new api "my api" "0.1.0-SNAPSHOT" "Sumanth Chinthagunta <xmlking@gmail.com>" -d
+nest new apps/api "my api" "0.1.0-SNAPSHOT" "Sumanth Chinthagunta <xmlking@gmail.com>" -d
 
 npm i @nestjs/core @nestjs/common 
 npm i @nestjs/microservices @nestjs/websockets @nestjs/testing @nestjs/typeorm typeorm  mongodb
