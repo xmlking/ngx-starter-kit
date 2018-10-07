@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
+console.log(__dirname + "/src")
 module.exports = {
   context: __dirname + "/src",
   entry: ['webpack/hot/poll?1000', './main.hmr.ts'],

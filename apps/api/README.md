@@ -26,17 +26,22 @@ Code Style        | [Prettier](https://github.com/prettier/prettier) & [TS-Lint]
 #### MongoDB
 > start mongodb 
 ```bash
-# start local mongodb
-docker-compose up -V mongodb
-# stop local mongodb before restart again
-docker-compose down -v
+# start local postgres
+docker-compose up postgres
+docker-compose up -V postgres #remove volumes
+
+# stop local postgres before restart again
+docker-compose down
+docker-compose down -v #remove volumes
 ```
-> if error `The container name "/mongodb" is already in use by container`, remove orphan container.
+> if error `The container name "/postgres" is already in use by container`, remove orphan container.
 ```bash
 docker ps -a
 docker rm 82be5234c94a
 ```
 
+> make sure to delete **dist/apps/api**  before running any of the following commands.
+> other wish old .js **entity** classes my conflict and cause unexpected bugs.
 
 #### Run Dev Mode
 ```bash
@@ -102,13 +107,10 @@ nest g exception auth --dry-run
 > coverage will be generate in coverage/apps/api
 ```bash
 # unit tests
-npm run api:test
-
-# test coverage
-npm run api:test:cov
+ng test api
 
 # e2e tests
-npm run api:e2e
+ng test api-e2e
 ```
 
 

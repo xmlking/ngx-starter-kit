@@ -3,7 +3,9 @@ API Testing
 
 ### Database
 ```bash
-mongo -u "mdbuser" -p "cockpit123" --authenticationDatabase "cockpit"
+psql -h <host> -p <port> -u <database>
+psql -h <host> -p <port> -U <username> -W <password> <database>
+
 ```
 
 ### REST API 
