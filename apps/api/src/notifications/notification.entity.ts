@@ -18,7 +18,7 @@ export enum NotificationIcon {
   code = 'code',
 }
 
-@Entity()
+@Entity('notification')
 export class Notification extends Base {
   @ApiModelProperty({ type: String })
   @IsString()

@@ -1,13 +1,14 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { SharedModule } from '../shared';
+import { Notification } from './notification.entity';
 
 import { NotificationsService } from './notifications.service';
 import { NotificationsController } from './notifications.controller';
-import { NotificationsRepository } from './notifications.repository';
 
 @Module({
-  imports: [SharedModule, TypeOrmModule.forFeature([NotificationsRepository])],
+  // imports: [SharedModule, TypeOrmModule.forFeature([NotificationsRepository])],
+  imports: [SharedModule, TypeOrmModule.forFeature([Notification])],
   providers: [NotificationsService],
   controllers: [NotificationsController],
 })

@@ -1,4 +1,4 @@
-import { UpdateDateColumn, CreateDateColumn, ManyToOne, VersionColumn, ObjectIdColumn, ObjectID } from 'typeorm';
+import { UpdateDateColumn, CreateDateColumn, ManyToOne, VersionColumn, PrimaryGeneratedColumn } from 'typeorm';
 import { Exclude, Transform } from 'class-transformer';
 import toHexString from './toHexString';
 import { ApiModelProperty } from '@nestjs/swagger';
@@ -9,9 +9,8 @@ import { User } from '../../auth/user.entity';
 
 export abstract class AuditBase {
   @ApiModelProperty()
-  @Transform(toHexString, { toPlainOnly: true })
-  @ObjectIdColumn()
-  id: ObjectID;
+  @PrimaryGeneratedColumn()
+  id: number;
 
   // @Exclude()
   @CreateDateColumn()

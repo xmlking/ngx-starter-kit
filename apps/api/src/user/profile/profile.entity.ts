@@ -1,10 +1,11 @@
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
 import { AuditBase } from '../../core';
 import { Image } from './Image.entity';
 
-@Entity()
+@Entity('profile')
 export class Profile extends AuditBase {
-  @Column()
+  @OneToOne(type => Image)
+  @JoinColumn()
   profileImage: Image;
 
   @Column()
