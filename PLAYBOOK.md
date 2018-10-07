@@ -9,11 +9,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.7.0  |          | 
+| Node                          | v10.11.0 |          | 
 | NPM                           | v6.4.0   |          |
-| Angular CLI                   | v6.0.8   |          |
+| Angular CLI                   | v6.2.4   |          |
 | @nrwl/schematics              | v6.4.0   |          |
-| @nestjs/cli                   | v5.3.0   |          |
+| @nestjs/cli                   | v5.5.0   |          |
 
 ### Install Prerequisites
 ```bash
@@ -56,7 +56,7 @@ npm remove -g semantic-release-cli
 npm remove -g commitizen
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics@6.4.0-beta.3
+npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
 npm install -g commitizen
@@ -95,6 +95,7 @@ cd ngx-starter-kit
 
 # setup your workspace to run tests with jest.
 ng generate jest
+# Ref: https://nrwl.io/nx/unit-testing-with-jest
 # you may have to manually remove karma files (karma.conf.js) and dependencies from package.json
 
 # make sure we are up-to-date
@@ -106,6 +107,9 @@ ng update --all
 
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
+
+# generate api app
+ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run 
 ```
 
 #### Dependencies
@@ -201,9 +205,9 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-ng g lib animations --nomodule -tags=utils --unit-test-runner=jest --dry-run 
-ng g lib Tree --nomodule  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
-ng g lib utils --nomodule --tags=utils --unit-test-runner=jest --dry-run
+ng g lib animations --module false -tags=utils --unit-test-runner=jest --dry-run 
+ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
+ng g lib utils --module false --tags=utils --unit-test-runner=jest --dry-run
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest --dry-run

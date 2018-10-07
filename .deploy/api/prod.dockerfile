@@ -18,7 +18,7 @@ RUN npm ci
 
 COPY . .
 
-RUN $(npm bin)/tsc -p ./apps/api/tsconfig.json
+RUN $(npm bin)/tsc -p ./apps/api/tsconfig.app.json
 
 EXPOSE 3000
 

@@ -199,14 +199,15 @@
       }
     },
     "webapp-e2e": {
-      "root": "apps/webapp-e2e/",
+      "root": "apps/webapp-e2e",
+      "sourceRoot": "apps/webapp-e2e/src",
       "projectType": "application",
       "architect": {
         "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
+          "builder": "@nrwl/builders:jest",
           "options": {
-            "protractorConfig": "apps/webapp-e2e/protractor.conf.js",
-            "devServerTarget": "webapp:serve"
+            "jestConfig": "",
+            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json"
           },
           "configurations": {
             "production": {
@@ -229,12 +230,41 @@
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
       "architect": {
+        "build": {
+          "builder": "@nrwl/builders:node-build",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "main": "apps/api/src/main.ts",
+            "tsConfig": "apps/api/tsconfig.app.json",
+            "showCircularDependencies": false
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/builders:node-execute",
+          "options": {
+            "buildTarget": "api:build"
+          }
+        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "apps/api/tsconfig.json",
+              "apps/api/tsconfig.app.json",
               "apps/api/tsconfig.spec.json"
             ],
             "exclude": [
@@ -247,6 +277,29 @@
           "options": {
             "jestConfig": "apps/api/jest.config.js",
             "tsConfig": "apps/api/tsconfig.spec.json"
+          }
+        }
+      }
+    },
+    "api-e2e": {
+      "root": "apps/api-e2e",
+      "sourceRoot": "apps/api-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api-e2e/jest.config.js",
+            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/api-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         }
       }
