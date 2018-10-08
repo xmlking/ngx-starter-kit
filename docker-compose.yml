@@ -1,24 +1,21 @@
 version: '3'
 services:
   keycloak:
-    image: xmlking/keycloak-openshift-stateless
+    image: jboss/keycloak:4.5.0.Final
     container_name: keycloak
-    volumes:
-      - '$PWD/.deploy/keycloak/realm-config:/opt/jboss/keycloak/realm-config'
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin123
-      KEYCLOAK_USER_CACHE_ENABLED: 'false'
-      KEYCLOAK_REALM_CACHE_ENABLED: 'false'
       DB_VENDOR: POSTGRES
       DB_ADDR: postgres
       DB_DATABASE: keycloak
       DB_USER: keycloak
       DB_PASSWORD: keycloak123
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin123
+      KEYCLOAK_LOGLEVEL: INFO
+      # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
+      #JDBC_PARAMS: "ssl=true"
     ports:
-      - '9080:9080'
-      - '9444:9443'
-      - '10990:10990'
+      - 8080:8080
     depends_on:
       - postgres
 

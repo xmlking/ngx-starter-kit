@@ -66,4 +66,46 @@ oc delete all,configmap,secret -l app=ngx-starter-kit-api -n ngx-starter-kit
 Applications > Deployments > ngx-starter-kit > Deploy 
 ```
  
+#### Kubernetes Deployment
+> assume you already setup `ngx-starter-kit` context
+
+> make sure  `Env`, docker image `Version` are correct in `api.yml`
+
+```bash
+## view all preset contexts
+kubectl config get-contexts
+# switch to `ngx-starter-kit` contexts
+kubectl config use-context ngx-starter-kit
+
+## create (first time deployment)
+kubectl create -f ./api.yml
+kubectl describe deployment api
+
+## checking
+# see logs
+kubectl logs -f my-pod
+# Once you’ve created a Service of type NodePort, you can use this command to find the NodePort
+kubectl get service api --watch
+# to get <NODE> names 
+kubectl get pod  -o wide
+
+## delete
+kubectl delete -f ./api.yml
+
+## redeploy (new image)
+update tag in api.yml and delete and create again.
+```
+
+#### Kubernetes Commands 
+```bash
+kubectl get deployment -o wide
+kubectl get pods -o wide
+kubectl get service -o wide
+
+kubectl exec -it my-pod  -- /bin/bash
+kubectl logs -f my-pod
+kubectl logs my-pod --previous 
+kubectl logs my-pod -c my-container
+```
+
 
