@@ -2,9 +2,8 @@ const webpack = require('webpack');
 const path = require('path');
 const nodeExternals = require('webpack-node-externals');
 
-console.log(__dirname + "/src")
 module.exports = {
-  context: __dirname + "/src",
+  context: __dirname + '/src',
   entry: ['webpack/hot/poll?1000', './main.hmr.ts'],
   watch: true,
   target: 'node',
@@ -17,18 +16,19 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        loader: 'ts-loader',
+        options: {
+          configFile: 'tsconfig.app.json',
+        },
         exclude: /node_modules/,
       },
     ],
   },
-  mode: "development",
+  mode: 'development',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-  ],
+  plugins: [new webpack.HotModuleReplacementPlugin()],
   output: {
     path: path.join(__dirname, '../../dist/apps/api'),
     filename: 'server.js',

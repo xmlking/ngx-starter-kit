@@ -24,6 +24,9 @@
       "@env/*": [
         "apps/webapp/src/environments/*"
       ],
+      "@api-env/*": [
+        "apps/api/src/environments/*"
+      ],
       "@ngx-starter-kit/core": [
         "libs/core/src/index.ts"
       ],
