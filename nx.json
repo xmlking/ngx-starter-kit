@@ -30,6 +30,11 @@
         "api"
       ]
     },
+    "backend": {
+      "tags": [
+        "api-module"
+      ]
+    },
     "navigator": {
       "tags": [
         "private-module",
@@ -202,6 +207,11 @@
     "image-comparison": {
       "tags": [
         "public-module"
+      ]
+    },
+    "models": {
+      "tags": [
+        "utils"
       ]
     }
   }
