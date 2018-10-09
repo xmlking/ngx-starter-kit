@@ -27,6 +27,9 @@
       "@api-env/*": [
         "apps/api/src/environments/*"
       ],
+      "@ngx-starter-kit/models": [
+        "libs/models/src/index.ts"
+      ],
       "@ngx-starter-kit/core": [
         "libs/core/src/index.ts"
       ],

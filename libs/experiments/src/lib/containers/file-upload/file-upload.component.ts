@@ -1,11 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatSnackBar } from '@angular/material';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
+import { FileUploadService } from './file-upload.service';
 
 @Component({
   selector: 'ngx-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
+  providers: [
+    FileUploadService
+  ]
 })
 export class FileUploadComponent {
   crumbs: ReadonlyArray<Crumb> = [
@@ -24,6 +28,21 @@ export class FileUploadComponent {
       const formData = new FormData();
       formData.append(fieldName, file, file.name);
       formData.append(fieldName, JSON.stringify(metadata));
+      this.uploadService.uploadFile(file, {}, 'tenant1').subscribe(
+        data => {
+          this.myPond.removeFiles();
+          this.snackBar.open(`Uploaded Successfully`, '', {
+            duration: 3000
+          });
+        },
+        err => {
+          console.error(`File Upload Error: ${err.message}`);
+          this.snackBar.open(`File Upload Error: ${err.message}`, '', {
+            duration: 3000
+          });
+        }
+      );
+
 
       // Progress indicator supported, set progress to 25% of 1
       progress(true, 0.25, 1);
@@ -102,7 +121,7 @@ export class FileUploadComponent {
     acceptedFileTypes: 'image/*, application/pdf, application/*, text/plain, text/csv, .vsd',
   };
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public snackBar: MatSnackBar, private uploadService: FileUploadService) {}
 
   pondHandleInit() {
     console.log('FilePond has initialised', this.myPond);

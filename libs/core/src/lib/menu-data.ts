@@ -67,6 +67,11 @@ export const defaultMenu: MenuItem[] = [
         icon: 'directions',
         link: '/dashboard/experiments/knob',
       },
+      {
+        name: 'Layout',
+        icon: 'apps',
+        link: '/dashboard/experiments/layout',
+      },
       // {
       //   name: 'Microinteractions',
       //   icon: 'casino',

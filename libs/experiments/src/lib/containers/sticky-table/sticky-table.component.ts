@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 /* tslint:disable:max-line-length */
 const ELEMENT_DATA: Element[] = [
@@ -266,6 +267,12 @@ const ELEMENT_DATA: Element[] = [
   styleUrls: ['./sticky-table.component.scss'],
 })
 export class StickyTableComponent implements AfterViewInit {
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'Sticky Table' },
+  ];
+
   displayedColumns = [
     'position',
     'name',

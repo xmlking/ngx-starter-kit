@@ -1,4 +1,10 @@
 :host {
+  display: block;
+  padding: 1.5%;
+  position: relative;
+}
+
+.container {
   min-height: 100vh;
   display: flex;
   justify-content: center;

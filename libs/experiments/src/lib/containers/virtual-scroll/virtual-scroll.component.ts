@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 interface State {
   name: string;
@@ -9,10 +10,14 @@ interface State {
 @Component({
   selector: 'ngx-virtual-scroll',
   templateUrl: './virtual-scroll.component.html',
-  styleUrls: ['./virtual-scroll.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  styleUrls: ['./virtual-scroll.component.scss']
 })
 export class VirtualScrollComponent implements OnInit {
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'Virtual Scroll' },
+  ];
   observableData = new BehaviorSubject<number[]>([]);
   states = [
     { name: 'Alabama', capital: 'Montgomery' },

@@ -1,4 +1,5 @@
-<mat-card>
+<ngx-breadcrumbs title="Experiments" [crumbs]="crumbs"></ngx-breadcrumbs>
+
 <button mat-button (click)="sortBy('name')">Sort by state name</button>
 <button mat-button (click)="sortBy('capital')">Sort by state capital</button>
 <cdk-virtual-scroll-viewport class="demo-viewport" [itemSize]="60">
@@ -8,4 +9,3 @@
     <div class="demo-capital">{{state.capital}}</div>
   </div>
 </cdk-virtual-scroll-viewport>
-</mat-card>
