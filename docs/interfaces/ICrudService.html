@@ -64,7 +64,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>apps/api/src/core/crud/crud.service.ts</code>
+            <code>apps/api/src/core/crud/icube.service.ts</code>
         </p>
 
 
@@ -130,7 +130,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">apps/api/src/core/crud/icube.service.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -199,7 +199,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:10</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">apps/api/src/core/crud/icube.service.ts:8</a></div>
                             </td>
                         </tr>
 
@@ -268,7 +268,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:6</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">apps/api/src/core/crud/icube.service.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -337,7 +337,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:7</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">apps/api/src/core/crud/icube.service.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -406,7 +406,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">apps/api/src/core/crud/icube.service.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -472,9 +472,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BadRequestException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { DeepPartial, FindManyOptions, FindOneOptions, MongoRepository, UpdateResult, DeleteResult } from &#x27;typeorm&#x27;;
-import { Base } from &#x27;../entities/base.entity&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { DeepPartial, FindManyOptions, FindOneOptions } from &#x27;typeorm&#x27;;
 
 export interface ICrudService&lt;T&gt; {
   getAll(filter?: FindManyOptions&lt;T&gt;): Promise&lt;[T[], number]&gt;;
@@ -482,82 +480,6 @@ export interface ICrudService&lt;T&gt; {
   create(entity: DeepPartial&lt;T&gt;): Promise&lt;T&gt;;
   update(id: any, entity: DeepPartial&lt;T&gt;): Promise&lt;any&gt;;
   delete(id: any): Promise&lt;any&gt;;
-}
-
-export abstract class CrudService&lt;T extends Base&gt; implements ICrudService&lt;T&gt; {
-  protected constructor(protected readonly repository: MongoRepository&lt;T&gt;) {}
-
-  public async getAll(filter?: FindManyOptions&lt;T&gt;): Promise&lt;[T[], number]&gt; {
-    const records &#x3D; await this.repository.findAndCount(filter);
-    if (records[1] &#x3D;&#x3D;&#x3D; 0) {
-      throw new NotFoundException(&#x60;The requested records were not found&#x60;);
-    }
-    return records;
-  }
-
-  public async getOne(filter: string | FindOneOptions&lt;T&gt;): Promise&lt;T&gt; {
-    const record &#x3D; await this.repository.findOne(filter);
-    if (!record) {
-      throw new NotFoundException(&#x60;The requested record was not found&#x60;);
-    }
-    return record;
-  }
-
-  public async create(entity: DeepPartial&lt;T&gt;): Promise&lt;T&gt; {
-    // FIXME: https://github.com/typeorm/typeorm/issues/1544
-    const obj &#x3D; this.repository.create(entity as any);
-    try {
-      return await this.repository.save(obj as any);
-    } catch (err /*: WriteError*/) {
-      throw new BadRequestException(err);
-    }
-  }
-
-  // public async update(id: string, entity: DeepPartial&lt;T&gt;): Promise&lt;FindAndModifyWriteOpResultObject&gt; {
-  //   try {
-  //     return await this.repository.findOneAndUpdate({ id }, {$set: classToPlain(entity)});
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new BadRequestException(err.message);
-  //   }
-  // }
-  //
-  // public async replace(id: string, entity: DeepPartial&lt;T&gt;): Promise&lt;FindAndModifyWriteOpResultObject&gt; {
-  //   const obj &#x3D; this.repository.create(entity);
-  //   try {
-  //     return await this.repository.findOneAndReplace({ id },  obj);
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new BadRequestException(err.message);
-  //   }
-  // }
-  //
-  // public async delete(id: string): Promise&lt;FindAndModifyWriteOpResultObject&gt; {
-  //   try {
-  //     return await this.repository.findOneAndDelete({ id });
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new NotFoundException(&#x60;The record was not found&#x60;);
-  //   }
-  // }
-
-  public async update(id: string, entity: DeepPartial&lt;T&gt;): Promise&lt;UpdateResult&gt; {
-    try {
-      return await this.repository.update(id, entity);
-    } catch (err /*: WriteError*/) {
-      throw new BadRequestException(err);
-    }
-  }
-
-  public async delete(id: string): Promise&lt;DeleteResult&gt; {
-    const obj &#x3D; await this.repository.findOne(id);
-    if (obj) {
-      // FIXME: https://github.com/typeorm/typeorm/issues/1544
-      return this.repository.delete(obj as any);
-    } else {
-      throw new NotFoundException(&#x60;The record was not found&#x60;);
-    }
-  }
 }
 </code></pre>
     </div>

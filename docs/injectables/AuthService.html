@@ -99,7 +99,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(userRepository: <a href="../classes/User.html">MongoRepository<User></a>)</code>
+<code>constructor(userRepository: <a href="../classes/User.html">Repository<User></a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -125,7 +125,7 @@
                                                         <td>userRepository</td>
                                                   
                                                         <td>
-                                                                    <code><a href="../classes/User.html" target="_self" >MongoRepository&lt;User&gt;</a></code>
+                                                                    <code><a href="../classes/User.html" target="_self" >Repository&lt;User&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -227,14 +227,14 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
-import { MongoRepository } from &#x27;typeorm&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
 import { CrudService } from &#x27;../core&#x27;;
 import { User } from &#x27;./user.entity&#x27;;
 import { JwtToken } from &#x27;./interfaces/jwt-token.interface&#x27;;
 
 @Injectable()
 export class AuthService extends CrudService&lt;User&gt; {
-  constructor(@InjectRepository(User) private readonly userRepository: MongoRepository&lt;User&gt;) {
+  constructor(@InjectRepository(User) private readonly userRepository: Repository&lt;User&gt;) {
     super(userRepository);
   }
 

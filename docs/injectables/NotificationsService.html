@@ -119,7 +119,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(eventBus: <a href="../injectables/EventBus.html">EventBusGateway</a>, notificationsRepository: <a href="../classes/NotificationsRepository.html">NotificationsRepository</a>)</code>
+<code>constructor(eventBus: <a href="../injectables/EventBus.html">EventBusGateway</a>, notificationsRepository: <a href="../classes/Notification.html">Repository<Notification></a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -157,7 +157,7 @@
                                                         <td>notificationsRepository</td>
                                                   
                                                         <td>
-                                                                    <code><a href="../classes/NotificationsRepository.html" target="_self" >NotificationsRepository</a></code>
+                                                                    <code><a href="../classes/Notification.html" target="_self" >Repository&lt;Notification&gt;</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -273,7 +273,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:36</a></div>
                             </td>
                         </tr>
 
@@ -354,7 +354,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:39</a></div>
                             </td>
                         </tr>
 
@@ -423,7 +423,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:47</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -492,7 +492,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:52</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">apps/api/src/notifications/notifications.service.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -624,20 +624,20 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@nestjs/common&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable, NotFoundException } from &#x27;@nestjs/common&#x27;;
 import { CrudService } from &#x27;../core&#x27;;
 import { InjectRepository } from &#x27;@nestjs/typeorm&#x27;;
 import { Notification } from &#x27;./notification.entity&#x27;;
 import { User } from &#x27;../auth&#x27;;
 import { EventBusGateway } from &#x27;../shared&#x27;;
 import { AddNotification, DeleteNotification } from &#x27;./index&#x27;;
-import { NotificationsRepository } from &#x27;./notifications.repository&#x27;;
+import { Repository } from &#x27;typeorm&#x27;;
 
 @Injectable()
 export class NotificationsService extends CrudService&lt;Notification&gt; {
   constructor(
     private readonly eventBus: EventBusGateway,
-    @InjectRepository(NotificationsRepository) private readonly notificationsRepository: NotificationsRepository,
+    @InjectRepository(Notification) private readonly notificationsRepository: Repository&lt;Notification&gt;,
   ) {
     super(notificationsRepository);
   }
@@ -652,15 +652,11 @@ export class NotificationsService extends CrudService&lt;Notification&gt; {
   }
 
   public async getUserNotifications(user: User): Promise&lt;[Notification[], number]&gt; {
-    const cursor &#x3D; this.repository.createEntityCursor({ userId: { $in: [user.userId, &#x27;all&#x27;] } });
-    const count &#x3D; await cursor.count(false);
-    return [await cursor.limit(50).toArray(), count];
-
-    // const records &#x3D;  await this.repository.findAndCount({ userId: user.userId });
-    // if (records[1] &#x3D;&#x3D;&#x3D; 0) {
-    //   throw new NotFoundException(&#x60;The requested records were not found&#x60;);
-    // }
-    // return records[0];
+    const records &#x3D; await this.repository.findAndCount({ userId: user.userId });
+    if (records[1] &#x3D;&#x3D;&#x3D; 0) {
+      throw new NotFoundException(&#x60;The requested records were not found&#x60;);
+    }
+    return records;
   }
 
   notify(user: User, action: any) {
