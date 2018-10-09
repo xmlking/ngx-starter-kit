@@ -576,9 +576,9 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Get, Post, Put, Delete, Body, Param, HttpStatus } from &#x27;@nestjs/common&#x27;;
 import { ApiOperation, ApiResponse } from &#x27;@nestjs/swagger&#x27;;
-import { ICrudService } from &#x27;./crud.service&#x27;;
 import { Base } from &#x27;../entities/base.entity&#x27;;
 import { DeepPartial } from &#x27;typeorm&#x27;;
+import { ICrudService } from &#x27;./icube.service&#x27;;
 
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: &#x27;Unauthorized&#x27; })
 @ApiResponse({ status: HttpStatus.FORBIDDEN, description: &#x27;Forbidden&#x27; })

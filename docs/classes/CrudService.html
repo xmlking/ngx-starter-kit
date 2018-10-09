@@ -133,12 +133,12 @@
                 <tr>
                     <td class="col-md-4">
                                 <span class="modifier">Protected</span>
-                        <code>constructor(repository: MongoRepository<T>)</code>
+                        <code>constructor(repository: Repository<T>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:6</a></div>
                             </td>
                         </tr>
 
@@ -159,7 +159,7 @@
                                                         <td>repository</td>
                                                   
                                                         <td>
-                                                                    <code>MongoRepository&lt;T&gt;</code>
+                                                                    <code>Repository&lt;T&gt;</code>
                                                         </td>
                                                   
                                                     <td>
@@ -207,7 +207,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -279,7 +279,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="78" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:78</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="71" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:71</a></div>
                             </td>
                         </tr>
 
@@ -351,7 +351,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:9</a></div>
                             </td>
                         </tr>
 
@@ -416,14 +416,14 @@
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>getOne(filter: string | FindOneOptions<T>)</code>
+                        <code>getOne(filter: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -445,7 +445,7 @@
                                                 <tr>
                                                         <td>filter</td>
                                                         <td>
-                                                                    <code>string | FindOneOptions&lt;T&gt;</code>
+                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                                         </td>
                                                     
                                                     <td>
@@ -495,7 +495,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">apps/api/src/core/crud/crud.service.ts:63</a></div>
                             </td>
                         </tr>
 
@@ -566,19 +566,12 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { BadRequestException, NotFoundException } from &#x27;@nestjs/common&#x27;;
-import { DeepPartial, FindManyOptions, FindOneOptions, MongoRepository, UpdateResult, DeleteResult } from &#x27;typeorm&#x27;;
+import { DeepPartial, FindManyOptions, FindOneOptions, Repository, UpdateResult, DeleteResult } from &#x27;typeorm&#x27;;
 import { Base } from &#x27;../entities/base.entity&#x27;;
-
-export interface ICrudService&lt;T&gt; {
-  getAll(filter?: FindManyOptions&lt;T&gt;): Promise&lt;[T[], number]&gt;;
-  getOne(id: any | FindOneOptions&lt;T&gt;): Promise&lt;T&gt;;
-  create(entity: DeepPartial&lt;T&gt;): Promise&lt;T&gt;;
-  update(id: any, entity: DeepPartial&lt;T&gt;): Promise&lt;any&gt;;
-  delete(id: any): Promise&lt;any&gt;;
-}
+import { ICrudService } from &#x27;./icube.service&#x27;;
 
 export abstract class CrudService&lt;T extends Base&gt; implements ICrudService&lt;T&gt; {
-  protected constructor(protected readonly repository: MongoRepository&lt;T&gt;) {}
+  protected constructor(protected readonly repository: Repository&lt;T&gt;) {}
 
   public async getAll(filter?: FindManyOptions&lt;T&gt;): Promise&lt;[T[], number]&gt; {
     const records &#x3D; await this.repository.findAndCount(filter);
@@ -588,7 +581,7 @@ export abstract class CrudService&lt;T extends Base&gt; implements ICrudService&
     return records;
   }
 
-  public async getOne(filter: string | FindOneOptions&lt;T&gt;): Promise&lt;T&gt; {
+  public async getOne(filter: string ): Promise&lt;T&gt; {
     const record &#x3D; await this.repository.findOne(filter);
     if (!record) {
       throw new NotFoundException(&#x60;The requested record was not found&#x60;);
