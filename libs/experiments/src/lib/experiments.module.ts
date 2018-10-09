@@ -25,6 +25,8 @@ import { ImageCompComponent } from './containers/image-comp/image-comp.component
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+import { LayoutComponent } from './containers/layout/layout.component';
+import { CardComponent } from './components/card/card.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -87,6 +89,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         component: ImageCompComponent,
         data: { animation: 'imagecomp' },
       },
+      {
+        path: 'layout',
+        component: LayoutComponent,
+        data: { animation: 'layout' },
+      },
     ]),
   ],
   declarations: [
@@ -100,6 +107,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     KnobDemoComponent,
     LedDemoComponent,
     ImageCompComponent,
+    LayoutComponent,
+    CardComponent,
   ],
 })
 export class ExperimentsModule {}

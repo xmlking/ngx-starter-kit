@@ -34,6 +34,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Refer [here](https://github.com/angular/flex-layout/wiki/Responsive-API)
 > Refer [here](https://medium.com/@nima_ap/creating-a-responsive-dashboard-in-angular-5-from-scratch-147f6a493d9e)
 
+* How to use flex grid? 
+> Refer [Flexbox and Grid Layout for Angular Component](https://blog.angularindepth.com/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63)
+
 * How implement Progressive Web Applications (PWA) with Service Workers?
 > Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
 

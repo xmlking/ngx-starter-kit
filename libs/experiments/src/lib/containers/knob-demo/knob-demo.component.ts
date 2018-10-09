@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 @Component({
   selector: 'ngx-knob-demo',
@@ -6,6 +7,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./knob-demo.component.scss'],
 })
 export class KnobDemoComponent implements OnInit {
+
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'Knob Demo' },
+  ];
+
   value1 = 256;
   options1 = {
     startAngle: 30,

@@ -108,8 +108,10 @@ ng update --all
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
 
-# generate api app
-ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run 
+# generate api app with nestjs
+ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
+# generate backend app with express
+ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module --dry-run
 ```
 
 #### Dependencies
@@ -208,6 +210,8 @@ ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib animations --module false -tags=utils --unit-test-runner=jest --dry-run 
 ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
 ng g lib utils --module false --tags=utils --unit-test-runner=jest --dry-run
+# system wide models
+ng g lib models --module false --tags=utils --unit-test-runner=jest --dry-run
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest --dry-run
@@ -380,16 +384,19 @@ ng g component  containers/AccountsGridList --project=grid  --dry-run
 
 # generate containers, components for `experiments` Module
 ng g component containers/animations --project=experiments --dry-run
-ng g component containers/ContextMenu --project=experiments --dry-run
-ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
+ng g component containers/ContextMenu --project=experiments --dry-run
+ng g component containers/FileUpload --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
 ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
 ng g component containers/ledDemo --project=experiments  --dry-run
 ng g component containers/ImageComp --project=experiments  --dry-run
+ng g component containers/layout --project=experiments --dry-run
+ng g component components/card --project=experiments --dry-run
+
 
 # generate components for `ImageComparison` Module
 ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true --dry-run

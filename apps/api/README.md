@@ -47,6 +47,9 @@ docker rm 82be5234c94a
 ```bash
 # start in watch mode
 npm run api:start:dev
+# to turn on logging for `request`
+NODE_DEBUG=request npm run api:start:dev
+DEBUG=typeorm:* npm run api:start:dev
 
 # start
 npm run api:start
