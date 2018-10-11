@@ -17,6 +17,7 @@ export default {
     flexLayout: packageJson.dependencies['@angular/flex-layout'],
     rxjs: packageJson.dependencies.rxjs,
     angularCli: packageJson.devDependencies['@angular/cli'],
-    typescript: packageJson.devDependencies['typescript'],
+    // typescript: packageJson.devDependencies['typescript'],
+    typescript: packageJson.dependencies['typescript'],
   },
 };
