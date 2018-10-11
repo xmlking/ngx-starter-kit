@@ -103,13 +103,13 @@
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1300kb",
+                  "baseline": "1200kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "initial",
-                  "baseline": "1.8mb",
+                  "baseline": "1600kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "minimumError": "20%",
@@ -117,7 +117,7 @@
                 },
                 {
                   "type": "allScript",
-                  "baseline": "4.5mb",
+                  "baseline": "4500kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "minimumError": "20%",
@@ -125,7 +125,7 @@
                 },
                 {
                   "type": "all",
-                  "baseline": "10mb",
+                  "baseline": "10000kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 }
