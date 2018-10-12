@@ -55,7 +55,7 @@ npm remove -g @nestjs/cli
 npm remove -g semantic-release-cli
 npm remove -g commitizen
 
-npm install -g @angular/cli
+npm install -g @angular/cli@next
 npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
@@ -106,7 +106,9 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module 
+# or with ivy renderer
+ng g app webapp1 --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module --experimental-ivy --dry-run
 
 # generate api app with nestjs
 ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
@@ -280,7 +282,7 @@ ng g class    notification --type=model --project=notifications --dry-run
 ng g service  notifications --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
+ng g lib Quickpanel1 --prefix=ngx --tags=private-module --unit-test-runner=jest
 ng g component Quickpanel --project=quickpanel --flat --dry-run
 
 # generate components for `NgxPipes` Module
