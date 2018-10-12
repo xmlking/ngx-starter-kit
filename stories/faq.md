@@ -98,6 +98,10 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Refer [here](https://material.io/guidelines/style/color.html#color-usability)
 
+* how to implement search experience with facets and sort options?
+
+> Refer [here](https://github.com/sfeir-open-source/angular-search-experience)
+
 * What I get from angular-cli?
 
 > Refer [stories](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories)
@@ -113,6 +117,13 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 * How to cache backed-end API?
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
+
+* Angular Performance 
+
+> Refer [here](https://blog.ninja-squad.com/)
+
+* Angular universal aks SSR
+> Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5)
 
 * How to configure nginx?
 > Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
