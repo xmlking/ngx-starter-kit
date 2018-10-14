@@ -80,6 +80,12 @@ type `ng.profiler.timeChangeDetection();` in console.
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)
 > Read [Immer with NGXS](https://blog.angularindepth.com/simple-state-mutations-in-ngxs-with-immer-48b908874a5e)
 
+* Best practices for NgRx Action?
+
+> Types of Actions: User Actions, Backend Actions, Device Actions
+
+> Watch [Good Action Hygiene with NgRx Mike Ryan](https://www.youtube.com/watch?v=JmnsEvoy-gY)
+
 * How to implement route animations?
 
 > Refer [here](https://angularfirebase.com/snippets/router-transition-animations-with-angular-4/)

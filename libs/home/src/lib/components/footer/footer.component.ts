@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
-const { version: appVersion } = require('../../../../../../package.json');
+import { version as appVersion } from '../../../../../../package.json';
 
 @Component({
   selector: 'ngx-footer',
