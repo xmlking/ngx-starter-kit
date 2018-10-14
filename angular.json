@@ -184,7 +184,8 @@
               "apps/webapp/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "**/*.json"
             ]
           }
         },
@@ -220,7 +221,8 @@
           "options": {
             "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "**/*.json"
             ]
           }
         }
@@ -268,7 +270,8 @@
               "apps/api/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "**/*.json"
             ]
           }
         },
@@ -508,7 +511,8 @@
               "libs/home/tsconfig.spec.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "**/node_modules/**",
+              "**/*.json"
             ]
           }
         },
