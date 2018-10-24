@@ -55,7 +55,7 @@ npm remove -g @nestjs/cli
 npm remove -g semantic-release-cli
 npm remove -g commitizen
 
-npm install -g @angular/cli@next
+npm install -g @angular/cli
 npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
@@ -68,7 +68,7 @@ npm outdated -g --depth=0
 # set scss as default css processor
 ng config -g schematics.@nrwl/schematics:component.styleext scss
 ng config -g cli.packageManager npm
-@ set jest as default TestRunner
+# set jest as default TestRunner
 ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 # check your global defaults
 more cat ~/.angular-config.json
