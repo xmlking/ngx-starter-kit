@@ -68,11 +68,11 @@ library.add(faTwitter, faGithub, faGoogle);
       useClass: ErrorInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: JwtInterceptor,
+    //   multi: true,
+    // },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,

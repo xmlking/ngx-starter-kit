@@ -200,6 +200,7 @@ in this project, we are demonstrating how to secure UI and backend APIs using fo
 
 https://github.com/manfredsteyer/angular-oauth2-oidc
 https://github.com/damienbod/angular-auth-oidc-client
+https://github.com/jeroenheijmans/sample-auth0-angular-oauth2-oidc
 https://github.com/mauriciovigolo/keycloak-angular
 https://github.com/ssilvert/keycloak-schematic/wiki
 https://symbiotics.co.za/integrating-keycloak-with-an-angular-4-web-application-part-2/
