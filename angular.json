@@ -80,16 +80,14 @@
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "60kb",
+                  "baseline": "40kb",
                   "maximumError": "20%",
-                  "maximumWarning": "10%",
-                  "minimumError": "20%",
-                  "minimumWarning": "10%"
+                  "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "vendor",
-                  "baseline": "1000kb",
+                  "baseline": "1mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
@@ -103,21 +101,18 @@
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1200kb",
+                  "baseline": "1.2mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "initial",
-                  "baseline": "1600kb",
-                  "maximumError": "20%",
-                  "maximumWarning": "10%",
-                  "minimumError": "20%",
-                  "minimumWarning": "10%"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "allScript",
-                  "baseline": "4500kb",
+                  "baseline": "4.5mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "minimumError": "20%",
@@ -125,7 +120,7 @@
                 },
                 {
                   "type": "all",
-                  "baseline": "10000kb",
+                  "baseline": "10mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 }
