@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
-import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { KnobModule } from '@xmlking/ngx-knob';
 
@@ -35,7 +34,6 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     SharedModule,
     FilePondModule,
     ContextMenuModule,
-    ExperimentalScrollingModule,
     ScrollingModule,
     ClapModule,
     LedModule,
