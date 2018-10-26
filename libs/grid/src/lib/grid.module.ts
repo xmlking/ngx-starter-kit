@@ -23,10 +23,10 @@ import { AccountEditComponent } from './components/account-edit/account-edit.com
       {
         path: 'crud-table',
         component: AccountsTableComponent,
-        data: { animation: 'accounts-table' },
-        children: [{ path: ':id', component: AccountDetailComponent, data: { animation: 'account-detail' } }],
+        data: { title: 'Accounts Table', animation: 'accounts-table' },
+        children: [{ path: ':id', component: AccountDetailComponent, data: { title: 'Account Detail', animation: 'account-detail' } }],
       },
-      { path: 'grid-list', component: AccountsGridListComponent, data: { animation: 'accounts-grid-list' } },
+      { path: 'grid-list', component: AccountsGridListComponent, data: { title: 'Accounts Grid List', animation: 'accounts-grid-list' } },
     ]),
   ],
   declarations: [AccountsTableComponent, AccountsGridListComponent, AccountDetailComponent, AccountEditComponent],
