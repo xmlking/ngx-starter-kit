@@ -1,12 +1,6 @@
 HOW TO
 ======
 
-
-* What is new in Angular 6.1?
-
-> Refer [here](https://blog.ninja-squad.com/2018/07/26/what-is-new-angular-6.1/)
-> Refer [here](https://blog.ninja-squad.com/2018/07/27/angular-cli-6.1/)
-
 * How do I use this template projects?
 > Add your own app along with `default` app and use shared modules in `libs`. 
 once you are conferable , then you can delete demo `default` app
@@ -49,7 +43,8 @@ type `ng.profiler.timeChangeDetection();` in console.
   2. Component styles
   3. Theme styles
 
-* Here can I learn Nx Workspace/monoreops? 
+* WTF is monorepo? 
+> Read [Advantages of monorepos](https://danluu.com/monorepo/)
 > Refer [here](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
 > Refer [here](https://www.youtube.com/watch?v=0N589xX2ZQw)
 > Refer [here](https://github.com/nrwl/nx-examples)
@@ -68,6 +63,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
 > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
 > Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
+
+* Animations 
+> Read [Hierarchical Route Animations](https://fluin.io/blog/hierarchical-route-animations) 
 
 *  Why I Prefer NGXS over NGRX 
 > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)

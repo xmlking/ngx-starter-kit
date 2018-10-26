@@ -7,7 +7,6 @@ import { Crumb } from '@ngx-starter-kit/breadcrumbs';
   styleUrls: ['./knob-demo.component.scss'],
 })
 export class KnobDemoComponent implements OnInit {
-
   crumbs: ReadonlyArray<Crumb> = [
     { name: 'Dashboard', link: '/dashboard' },
     { name: 'Experiments', link: '/dashboard/experiments' },

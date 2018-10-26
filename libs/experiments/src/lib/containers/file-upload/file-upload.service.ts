@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '@env/environment';
 
-
 @Injectable()
 export class FileUploadService {
   baseUrl = environment.DOCS_BASE_URL;

@@ -1,4 +1,4 @@
-import { NextObserver, Observable, Observer, Subscriber, Subscription ,  Subject } from 'rxjs';
+import { NextObserver, Observable, Observer, Subscriber, Subscription, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import * as io from 'socket.io-client';
 import ConnectOpts = SocketIOClient.ConnectOpts;

@@ -54,8 +54,7 @@ $config: mat-typography-config(
   $body-1: mat-typography-level(14px, 22px, 400),
   $caption: mat-typography-level(13px, 22px, 400),
   $button: mat-typography-level(14px, 14px, 500),
-    // Line-height must be unit-less fraction of the font-size.
-  $input: mat-typography-level(16px, 1.125, 400)
+  // Line-height must be unit-less fraction of the font-size. $input: mat-typography-level(16px, 1.125, 400),
 );
 
 /**
@@ -130,15 +129,15 @@ $footer-z-index: 700;
 
 // Sidenav Toolbar
 
-$sidenav-toolbar-background: #272B35;
+$sidenav-toolbar-background: #272b35;
 $sidenav-toolbar-height: $toolbar-height;
 $sidenav-toolbar-elevation: $elevation;
 
 // Sidenav
 
-$sidenav-color: #A7A9AE;
+$sidenav-color: #a7a9ae;
 
-$sidenav-background: #2B303B;
+$sidenav-background: #2b303b;
 $sidenav-background-hover: darken($sidenav-background, 4);
 $sidenav-background-active: $sidenav-background-hover;
 
@@ -185,7 +184,9 @@ $sidenav-item-padding-left-level5: $sidenav-item-padding-left-level4 + 8px;
 $sidenav-item-padding-left-level6: $sidenav-item-padding-left-level5 + 8px;
 
 $sidenav-width: 270px; // If you change this, you also need to adjust the animations in sidenav.component.ts
-$sidenav-collapsed-width: ($sidenav-item-padding-left + $sidenav-item-padding-right + $sidenav-item-icon-font-size); // If you change this, you also need to adjust the animations in sidenav.component.ts
+$sidenav-collapsed-width: (
+  $sidenav-item-padding-left + $sidenav-item-padding-right + $sidenav-item-icon-font-size
+); // If you change this, you also need to adjust the animations in sidenav.component.ts
 $sidenav-z-index: 1000;
 
 /**

@@ -31,10 +31,10 @@ export default function upload(req, res) {
   });
 
   form.on('end', () => {
-    res.status(204).json({'message' : 'success' });
+    res.status(204).json({ message: 'success' });
   });
 
-  form.on('error',  (err) => {
+  form.on('error', err => {
     console.log('An error has occured: \n' + err);
   });
 

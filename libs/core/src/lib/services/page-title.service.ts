@@ -18,24 +18,24 @@ export class PageTitleService {
     this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
 
     // Automatically set pageTitle from route data
-    router.events
-      .pipe(filter((event: any) => event instanceof NavigationEnd))
-      .subscribe((n: NavigationEnd) => {
-        const titleSet = new Set();
-        let root = this.router.routerState.snapshot.root;
-        do {
-          root = root.children[0];
-          if (root.data['title']) {
-            titleSet.add(root.data['title']);
-          }
-        } while (root.children.length > 0);
+    router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe((n: NavigationEnd) => {
+      const titleSet = new Set();
+      let root = this.router.routerState.snapshot.root;
+      do {
+        root = root.children[0];
+        if (root.data['title']) {
+          titleSet.add(root.data['title']);
+        }
+      } while (root.children.length > 0);
 
-        this.titleSet = titleSet;
-        bodyTitle.setTitle(`${Array.from(titleSet).reverse().join(' | ')} | ${this.defaultTitle}`);
+      this.titleSet = titleSet;
+      bodyTitle.setTitle(
+        `${Array.from(titleSet)
+          .reverse()
+          .join(' | ')} | ${this.defaultTitle}`,
+      );
 
-        ga('send', 'pageview', n.urlAfterRedirects);
+      ga('send', 'pageview', n.urlAfterRedirects);
     });
   }
-
 }
-

@@ -10,7 +10,7 @@ interface State {
 @Component({
   selector: 'ngx-virtual-scroll',
   templateUrl: './virtual-scroll.component.html',
-  styleUrls: ['./virtual-scroll.component.scss']
+  styleUrls: ['./virtual-scroll.component.scss'],
 })
 export class VirtualScrollComponent implements OnInit {
   crumbs: ReadonlyArray<Crumb> = [

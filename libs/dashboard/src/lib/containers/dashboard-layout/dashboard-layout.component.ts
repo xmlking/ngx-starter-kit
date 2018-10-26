@@ -32,11 +32,10 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private store: Store,
     private actions$: Actions,
     private media: ObservableMedia,
-    private oauthService: OAuthService
+    private oauthService: OAuthService,
   ) {}
 
   ngOnInit() {
-
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
       const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
 

@@ -14,7 +14,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     return records;
   }
 
-  public async getOne(filter: string ): Promise<T> {
+  public async getOne(filter: string): Promise<T> {
     const record = await this.repository.findOne(filter);
     if (!record) {
       throw new NotFoundException(`The requested record was not found`);

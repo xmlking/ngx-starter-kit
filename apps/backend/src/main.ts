@@ -6,7 +6,7 @@ const app = express();
 
 const corsOptions = {
   origin: '*',
-  optionsSuccessStatus: 200
+  optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));
@@ -18,7 +18,7 @@ app.get('/', (req, res) => {
 });
 
 const port = 8000;
-app.listen(port, (err) => {
+app.listen(port, err => {
   if (err) {
     console.error(err);
   }
