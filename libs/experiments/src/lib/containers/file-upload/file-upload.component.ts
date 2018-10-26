@@ -7,9 +7,7 @@ import { FileUploadService } from './file-upload.service';
   selector: 'ngx-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss'],
-  providers: [
-    FileUploadService
-  ]
+  providers: [FileUploadService],
 })
 export class FileUploadComponent {
   crumbs: ReadonlyArray<Crumb> = [
@@ -32,17 +30,16 @@ export class FileUploadComponent {
         data => {
           this.myPond.removeFiles();
           this.snackBar.open(`Uploaded Successfully`, '', {
-            duration: 3000
+            duration: 3000,
           });
         },
         err => {
           console.error(`File Upload Error: ${err.message}`);
           this.snackBar.open(`File Upload Error: ${err.message}`, '', {
-            duration: 3000
+            duration: 3000,
           });
-        }
+        },
       );
-
 
       // Progress indicator supported, set progress to 25% of 1
       progress(true, 0.25, 1);
