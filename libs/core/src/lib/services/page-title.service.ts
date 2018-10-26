@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterState } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
+declare var ga: any;
 /**
  * Service responsible for setting the title that appears above the home and dashboard pages.
  */
@@ -9,21 +12,30 @@ import { Title } from '@angular/platform-browser';
 })
 export class PageTitleService {
   private readonly defaultTitle;
-  private _title = '';
+  public titleSet: Set<string>;
 
-  get title(): string {
-    return this._title;
-  }
-
-  set title(title: string) {
-    this._title = title;
-    if (title !== '') {
-      title = `${title} |`;
-    }
-    this.bodyTitle.setTitle(`${title} ${this.defaultTitle}`);
-  }
-
-  constructor(private bodyTitle: Title) {
+  constructor(private router: Router, private bodyTitle: Title) {
     this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
+
+    // Automatically set pageTitle from route data
+    router.events
+      .pipe(filter((event: any) => event instanceof NavigationEnd))
+      .subscribe((n: NavigationEnd) => {
+        const titleSet = new Set();
+        let root = this.router.routerState.snapshot.root;
+        do {
+          root = root.children[0];
+          if (root.data['title']) {
+            titleSet.add(root.data['title']);
+          }
+        } while (root.children.length > 0);
+
+        this.titleSet = titleSet;
+        bodyTitle.setTitle(`${Array.from(titleSet).reverse().join(' | ')} | ${this.defaultTitle}`);
+
+        ga('send', 'pageview', n.urlAfterRedirects);
+    });
   }
+
 }
+

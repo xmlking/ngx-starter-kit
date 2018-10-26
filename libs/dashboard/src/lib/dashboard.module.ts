@@ -29,7 +29,7 @@ import { environment } from '@env/environment';
         path: '',
         component: DashboardLayoutComponent,
         canActivate: [AuthGuard],
-        data: { animation: 'dashboard' },
+        data: { title: 'Dashboard', animation: 'dashboard' },
         children: [
           {
             path: 'overview',
@@ -39,17 +39,17 @@ import { environment } from '@env/environment';
           {
             path: '',
             loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
-            data: { animation: 'overview', preload: true },
+            data: { title: 'Widgets', animation: 'overview', preload: true },
           },
           {
             path: 'grid',
             loadChildren: '@ngx-starter-kit/grid#GridModule',
-            data: { animation: 'grid', preload: true },
+            data: { title: 'Grid', animation: 'grid', preload: true },
           },
           {
             path: 'experiments',
             loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
-            data: { animation: 'experiments' },
+            data: { title: 'Experiments', animation: 'experiments' },
           },
         ],
       },

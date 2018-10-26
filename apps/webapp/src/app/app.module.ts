@@ -28,7 +28,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', loadChildren: '@ngx-starter-kit/home#HomeModule', data: { preload: true } },
         { path: 'dashboard', loadChildren: '@ngx-starter-kit/dashboard#DashboardModule', data: { preload: true } },
-        { path: '404', loadChildren: '@ngx-starter-kit/not-found#NotFoundModule' },
+        { path: '404', loadChildren: '@ngx-starter-kit/not-found#NotFoundModule', data: { title: '404' } },
         // 404 should be last
         { path: '**', redirectTo: '404', pathMatch: 'full' },
       ],
