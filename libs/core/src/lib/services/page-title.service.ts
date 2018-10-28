@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { ActivatedRouteSnapshot, NavigationEnd, Router, RouterState } from '@angular/router';
-import { filter } from 'rxjs/operators';
+import { Store } from '@ngxs/store';
+import { RouterState } from '@ngxs/router-plugin';
+import { RouterStateData } from '../state/custom-router-state.serializer';
 
 declare var ga: any;
 /**
@@ -12,30 +13,20 @@ declare var ga: any;
 })
 export class PageTitleService {
   private readonly defaultTitle;
-  public titleSet: Set<string>;
 
-  constructor(private router: Router, private bodyTitle: Title) {
+  constructor(private store: Store, private bodyTitle: Title) {
     this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
 
-    // Automatically set pageTitle from route data
-    router.events.pipe(filter((event: any) => event instanceof NavigationEnd)).subscribe((n: NavigationEnd) => {
-      const titleSet = new Set();
-      let root = this.router.routerState.snapshot.root;
-      do {
-        root = root.children[0];
-        if (root.data['title']) {
-          titleSet.add(root.data['title']);
-        }
-      } while (root.children.length > 0);
-
-      this.titleSet = titleSet;
+    // Automatically set pageTitle from router state data
+    store.select<any>(RouterState.state).subscribe((routerStateData: RouterStateData) => {
+      console.log(routerStateData);
       bodyTitle.setTitle(
-        `${Array.from(titleSet)
+        `${Array.from(routerStateData.breadcrumbs.keys())
           .reverse()
           .join(' | ')} | ${this.defaultTitle}`,
       );
 
-      ga('send', 'pageview', n.urlAfterRedirects);
+      ga('send', 'pageview', routerStateData.url);
     });
   }
 }
