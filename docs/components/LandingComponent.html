@@ -66,12 +66,6 @@
 
 
 
-    <p class="comment">
-        <h3>Implements</h3>
-    </p>
-    <p class="comment">
-                <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
-    </p>
 
 
 <section>
@@ -111,33 +105,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit">ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
-
-
-
-
-
-        </tbody>
-    </table>
-</section>
 
     <section>
     <h3 id="constructor">Constructor</h3>
@@ -145,45 +112,15 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(pageTitleService: <a href="../injectables/PageTitleService.html">PageTitleService</a>)</code>
+<code>constructor()</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">libs/home/src/lib/containers/landing/landing.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">libs/home/src/lib/containers/landing/landing.component.ts:8</a></div>
                             </td>
                         </tr>
 
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>pageTitleService</td>
-                                                  
-                                                        <td>
-                                                                    <code><a href="../injectables/PageTitleService.html" target="_self" >PageTitleService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
             </tbody>
         </table>
 </section>
@@ -192,50 +129,6 @@
 
 
 
-    <section>
-    
-        <h3 id="methods">
-            Methods
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="ngOnInit"></a>
-                        <span class="name">
-                            <b>
-                            ngOnInit
-                            </b>
-                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-<code>ngOnInit()</code>
-                    </td>
-                </tr>
-
-
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/home/src/lib/containers/landing/landing.component.ts:12</a></div>
-                            </td>
-                        </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 </div>
@@ -243,19 +136,14 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
-import { PageTitleService } from &#x27;@ngx-starter-kit/core&#x27;;
 
 @Component({
   selector: &#x27;ngx-landing&#x27;,
   templateUrl: &#x27;./landing.component.html&#x27;,
   styleUrls: [&#x27;./landing.component.scss&#x27;],
 })
-export class LandingComponent implements OnInit {
-  constructor(private pageTitleService: PageTitleService) {}
-
-  ngOnInit(): void {
-    this.pageTitleService.title &#x3D; &#x27;Landing Page&#x27;;
-  }
+export class LandingComponent {
+  constructor() {}
 }
 </code></pre>
     </div>
@@ -354,13 +242,13 @@ export class LandingComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><header class="default-header-background">  <div class="default-header-section">    <div class="default-header-headline">      <h1 class="mat-h1 cursive">Sumo App</h1>      <h2>360 view of Sumo App</h2>    </div>    <div class="default-header-start">      <a mat-raised-button class="default-button" routerLink="/dashboard">Get started</a>    </div>  </div></header><div class="default-homepage-promo">  <div class="default-homepage-row">    <div class="default-homepage-promo-img">      <svg-viewer        src="../assets/img/homepage/sprintzerotoapp.svg"        scaleToContainer="true"></svg-viewer>    </div>    <div class="default-homepage-promo-desc">      <h2>Sprint from Zero to App</h2>      <p>Hit the ground running with comprehensive, modern UI components that work across        the web, mobile and desktop.</p>    </div>  </div>  <div class="default-homepage-row default-homepage-reverse-row">    <div class="default-homepage-promo-img">      <svg-viewer        src="../assets/img/homepage/fastandconsistent.svg"        scaleToContainer="true"></svg-viewer>    </div>    <div class="default-homepage-promo-desc">      <h2>Fast and Consistent</h2>      <p>Finely tuned performance, because every millisecond counts. Fully tested across        modern browsers.</p>    </div>  </div>  <div class="default-homepage-row">    <div class="default-homepage-promo-img">      <svg-viewer        src="../assets/img/homepage/versatile.svg"        scaleToContainer="true"></svg-viewer>    </div>    <div class="default-homepage-promo-desc">      <h2>Versatile</h2>      <p>Themable, for when you need to stay on brand or just have a favorite color.        Accessible and internationalized so that all users are welcome.</p>    </div>  </div>  <div class="default-homepage-row default-homepage-reverse-row">    <div class="default-homepage-promo-img">      <svg-viewer        src="../assets/img/homepage/optimized.svg"        scaleToContainer="true"></svg-viewer>    </div>    <div class="default-homepage-promo-desc">      <h2>Optimized for Angular</h2>      <p>Built by the Angular team to integrate seamlessly with Angular.</p>    </div>  </div>  <div class="default-homepage-bottom-start">    <a mat-raised-button class="default-button" routerLink="/dashboard">Get started</a>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
   [ngxAspectRatio.lt-sm], [ngxAspectRatio.lt-md], [ngxAspectRatio.lt-lg], [ngxAspectRatio.lt-xl],
   [ngxAspectRatio.gt-xs], [ngxAspectRatio.gt-sm], [ngxAspectRatio.gt-md], [ngxAspectRatio.gt-lg],
-  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
+  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'RouterLinkMatchDirective', 'selector': '[routerLinkMatch]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
     var ACTUAL_COMPONENT = {'name': 'LandingComponent'};
 </script>
 <script src="../js/tree.js"></script>

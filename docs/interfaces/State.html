@@ -163,6 +163,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewEncapsulation } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
+import { Crumb } from &#x27;@ngx-starter-kit/breadcrumbs&#x27;;
 
 interface State {
   name: string;
@@ -173,9 +174,13 @@ interface State {
   selector: &#x27;ngx-virtual-scroll&#x27;,
   templateUrl: &#x27;./virtual-scroll.component.html&#x27;,
   styleUrls: [&#x27;./virtual-scroll.component.scss&#x27;],
-  encapsulation: ViewEncapsulation.None,
 })
 export class VirtualScrollComponent implements OnInit {
+  crumbs: ReadonlyArray&lt;Crumb&gt; &#x3D; [
+    { name: &#x27;Dashboard&#x27;, link: &#x27;/dashboard&#x27; },
+    { name: &#x27;Experiments&#x27;, link: &#x27;/dashboard/experiments&#x27; },
+    { name: &#x27;Virtual Scroll&#x27; },
+  ];
   observableData &#x3D; new BehaviorSubject&lt;number[]&gt;([]);
   states &#x3D; [
     { name: &#x27;Alabama&#x27;, capital: &#x27;Montgomery&#x27; },

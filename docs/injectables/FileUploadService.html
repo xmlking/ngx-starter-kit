@@ -30,7 +30,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content class">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -39,13 +39,9 @@
 
 
 
-
-
-
-
 <ol class="breadcrumb">
-  <li>Classes</li>
-  <li>NotificationsRepository</li>
+  <li>Injectables</li>
+  <li>FileUploadService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -63,16 +59,8 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>apps/api/src/notifications/notifications.repository.ts</code>
+            <code>libs/experiments/src/lib/containers/file-upload/file-upload.service.ts</code>
         </p>
-
-
-            <p class="comment">
-                <h3>Extends</h3>
-            </p>
-            <p class="comment">
-                    <code><a href="../classes/AuditMongoRepository.html" target="_self" >AuditMongoRepository</a></code>
-            </p>
 
 
 
@@ -80,6 +68,20 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#baseUrl">baseUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -90,11 +92,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#save">save</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Async</span>
-                                <a href="#update">update</a>
+                                <a href="#uploadFile">uploadFile</a>
                             </li>
                         </ul>
                     </td>
@@ -108,7 +106,54 @@
     </table>
 </section>
 
+            <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(httpClient: <a href="../s/Client.html">HttpClient</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">libs/experiments/src/lib/containers/file-upload/file-upload.service.ts:7</a></div>
+                            </td>
+                        </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>httpClient</td>
+                                                  
+                                                        <td>
+                                                                    <code><a href="../miscellaneous/variables.html#Client" target="_self" >HttpClient</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -119,128 +164,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="save"></a>
+                        <a name="uploadFile"></a>
                         <span class="name">
                             <b>
-                            save
+                            uploadFile
                             </b>
-                            <a href="#save"><span class="icon ion-ios-link"></span></a>
+                            <a href="#uploadFile"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>save(entity: T, options?: SaveOptions)</code>
+<code>uploadFile(file: , user: , tenantId: )</code>
                     </td>
                 </tr>
 
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from     <code><a href="../classes/AuditMongoRepository.html" target="_self" >AuditMongoRepository</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in AuditMongoRepository:4</div>
-                            </td>
-                        </tr>
 
                         <tr>
                             <td class="col-md-4">
-                                <b>Type parameters :</b>
-                                <ul class="type-parameters">
-                                        <li>T</li>
-                                </ul>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-
-                            <div class="io-description">
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>entity</td>
-                                                        <td>
-                                                                    <code>T</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                                <tr>
-                                                        <td>options</td>
-                                                        <td>
-                                                                    <code>SaveOptions</code>
-                                                        </td>
-                                                    
-                                                    <td>
-                                                            Yes
-                                                    </td>
-                                                    
-
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                            <div>
-                            </div>
-                            <div class="io-description">
-                                <b>Returns : </b>    <code>Promise&lt;T&gt;</code>
-
-                            </div>
-                                <div class="io-description">
-                                    
-                                </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="update"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Async</span>
-                            update
-                            </b>
-                            <a href="#update"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                            <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>update(criteria: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, partialEntity: <a href="../classes/Entity.html">DeepPartial<Entity></a>, options?: SaveOptions)</code>
-                    </td>
-                </tr>
-
-
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Inherited from     <code><a href="../classes/AuditMongoRepository.html" target="_self" >AuditMongoRepository</a></code>
-</div>
-                                </td>
-                            </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in AuditMongoRepository:16</div>
+                                    <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">libs/experiments/src/lib/containers/file-upload/file-upload.service.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -254,16 +196,12 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
-                                                    <td>Type</td>
                                                 <td>Optional</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>criteria</td>
-                                                        <td>
-                                                                    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
-                                                        </td>
+                                                        <td>file</td>
                                                     
                                                     <td>
                                                             No
@@ -272,10 +210,7 @@
 
                                                 </tr>
                                                 <tr>
-                                                        <td>partialEntity</td>
-                                                        <td>
-                                                                    <code><a href="../classes/Entity.html" target="_self" >DeepPartial&lt;Entity&gt;</a></code>
-                                                        </td>
+                                                        <td>user</td>
                                                     
                                                     <td>
                                                             No
@@ -284,13 +219,10 @@
 
                                                 </tr>
                                                 <tr>
-                                                        <td>options</td>
-                                                        <td>
-                                                                    <code>SaveOptions</code>
-                                                        </td>
+                                                        <td>tenantId</td>
                                                     
                                                     <td>
-                                                            Yes
+                                                            No
                                                     </td>
                                                     
 
@@ -301,7 +233,7 @@
                             <div>
                             </div>
                             <div class="io-description">
-                                <b>Returns : </b>    <code>Promise&lt;UpdateResult&gt;</code>
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                             </div>
                                 <div class="io-description">
@@ -313,24 +245,76 @@
         </table>
 </section>
 
+            <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="baseUrl"></a>
+                        <span class="name">
+                            <b>
+                            baseUrl
+                            </b>
+                            <a href="#baseUrl"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>baseUrl:     <code></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>environment.DOCS_BASE_URL</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">libs/experiments/src/lib/containers/file-upload/file-upload.service.ts:7</a></div>
+                            </td>
+                        </tr>
 
 
-
-
+            </tbody>
+        </table>
+</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AuditMongoRepository } from &#x27;../core&#x27;;
-import { Notification } from &#x27;./notification.entity&#x27;;
-import { EntityRepository } from &#x27;typeorm&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { environment } from &#x27;@env/environment&#x27;;
 
-@EntityRepository(Notification)
-export class NotificationsRepository extends AuditMongoRepository&lt;Notification&gt; {}
+@Injectable()
+export class FileUploadService {
+  baseUrl &#x3D; environment.DOCS_BASE_URL;
+  constructor(private httpClient: HttpClient) {}
+
+  uploadFile(file, user, tenantId) {
+    const formData &#x3D; new FormData();
+    formData.append(&#x27;file&#x27;, file);
+    formData.append(&#x27;tenant&#x27;, tenantId);
+    formData.append(&#x27;user&#x27;, user);
+    const headers &#x3D; new HttpHeaders();
+    return this.httpClient.post(&#x60;${this.baseUrl}/upload&#x60;, formData, { headers, responseType: &#x27;text&#x27; });
+  }
+}
 </code></pre>
     </div>
+
 </div>
+
+
+
+
 
 
 
@@ -354,8 +338,8 @@ export class NotificationsRepository extends AuditMongoRepository&lt;Notificatio
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'class';
-            var COMPODOC_CURRENT_PAGE_URL = 'NotificationsRepository.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'FileUploadService.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

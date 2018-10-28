@@ -287,7 +287,7 @@ import { environment } from &#x27;@env/environment&#x27;;
         path: &#x27;&#x27;,
         component: DashboardLayoutComponent,
         canActivate: [AuthGuard],
-        data: { animation: &#x27;dashboard&#x27; },
+        data: { title: &#x27;Dashboard&#x27;, depth: 1 },
         children: [
           {
             path: &#x27;overview&#x27;,
@@ -297,17 +297,17 @@ import { environment } from &#x27;@env/environment&#x27;;
           {
             path: &#x27;&#x27;,
             loadChildren: &#x27;@ngx-starter-kit/widgets#WidgetsModule&#x27;,
-            data: { animation: &#x27;overview&#x27;, preload: true },
+            data: { title: &#x27;Widgets&#x27;, preload: true },
           },
           {
             path: &#x27;grid&#x27;,
             loadChildren: &#x27;@ngx-starter-kit/grid#GridModule&#x27;,
-            data: { animation: &#x27;grid&#x27;, preload: true },
+            data: { title: &#x27;Grid&#x27;, depth: 2, preload: false },
           },
           {
             path: &#x27;experiments&#x27;,
             loadChildren: &#x27;@ngx-starter-kit/experiments#ExperimentsModule&#x27;,
-            data: { animation: &#x27;experiments&#x27; },
+            data: { title: &#x27;Experiments&#x27;, depth: 2,  preload: false },
           },
         ],
       },

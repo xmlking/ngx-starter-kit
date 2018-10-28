@@ -189,7 +189,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         { path: &#x27;&#x27;, redirectTo: &#x27;home&#x27;, pathMatch: &#x27;full&#x27; },
         { path: &#x27;home&#x27;, loadChildren: &#x27;@ngx-starter-kit/home#HomeModule&#x27;, data: { preload: true } },
         { path: &#x27;dashboard&#x27;, loadChildren: &#x27;@ngx-starter-kit/dashboard#DashboardModule&#x27;, data: { preload: true } },
-        { path: &#x27;404&#x27;, loadChildren: &#x27;@ngx-starter-kit/not-found#NotFoundModule&#x27; },
+        { path: &#x27;404&#x27;, loadChildren: &#x27;@ngx-starter-kit/not-found#NotFoundModule&#x27;, data: { title: &#x27;404&#x27;, preload: false } },
         // 404 should be last
         { path: &#x27;**&#x27;, redirectTo: &#x27;404&#x27;, pathMatch: &#x27;full&#x27; },
       ],

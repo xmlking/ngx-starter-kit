@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/ngx-pipes/src/lib/helper/saft-html.pipe.ts</code>
+            <code>libs/ngx-utils/src/lib/pipes/helper/safe-html.pipe.ts</code>
         </p>
 
 
@@ -100,14 +100,14 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>transform(style: )</code>
+<code>transform(value: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>, args?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">libs/ngx-pipes/src/lib/helper/saft-html.pipe.ts:7</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">libs/ngx-utils/src/lib/pipes/helper/safe-html.pipe.ts:7</a></div>
                             </td>
                         </tr>
 
@@ -121,15 +121,31 @@
                                         <thead>
                                             <tr>
                                                 <td>Name</td>
+                                                    <td>Type</td>
                                                 <td>Optional</td>
                                             </tr>
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>style</td>
+                                                        <td>value</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
                                                     
                                                     <td>
                                                             No
+                                                    </td>
+                                                    
+
+                                                </tr>
+                                                <tr>
+                                                        <td>args</td>
+                                                        <td>
+                                                                    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                    
+                                                    <td>
+                                                            Yes
                                                     </td>
                                                     
 
@@ -163,8 +179,8 @@ import { DomSanitizer } from &#x27;@angular/platform-browser&#x27;;
 @Pipe({ name: &#x27;safeHtml&#x27; })
 export class SafeHtmlPipe implements PipeTransform {
   constructor(private sanitizer: DomSanitizer) {}
-  transform(style) {
-    return this.sanitizer.bypassSecurityTrustHtml(style);
+  transform(value: any, args?: any) {
+    return this.sanitizer.bypassSecurityTrustHtml(value);
   }
 }
 </code></pre>

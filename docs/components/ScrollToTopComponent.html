@@ -126,10 +126,6 @@
                         <ul class="index-list">
                             <li>
                                     <span class="modifier">Private</span>
-                                <a href="#_destroyed$">_destroyed$</a>
-                            </li>
-                            <li>
-                                    <span class="modifier">Private</span>
                                 <a href="#_stateSubject">_stateSubject</a>
                             </li>
                             <li>
@@ -182,7 +178,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -263,7 +259,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -301,7 +297,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:49</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -339,7 +335,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:54</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:50</a></div>
                             </td>
                         </tr>
 
@@ -362,40 +358,6 @@
         <h3 id="inputs">
             Properties
         </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_destroyed$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            _destroyed$
-                            </b>
-                            <a href="#_destroyed$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>_destroyed$:     <code></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new Subject&lt;void&gt;()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:20</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
@@ -423,7 +385,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:22</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -457,7 +419,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:25</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:24</a></div>
                             </td>
                         </tr>
 
@@ -490,7 +452,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">libs/scroll-to-top/src/lib/scroll-to-top.component.ts:22</a></div>
                             </td>
                         </tr>
 
@@ -506,9 +468,10 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, Inject, OnDestroy } from &#x27;@angular/core&#x27;;
 import { DOCUMENT } from &#x27;@angular/common&#x27;;
 import { scrollFabAnimation } from &#x27;@ngx-starter-kit/animations&#x27;;
-import { PageScrollConfig, PageScrollService, PageScrollInstance } from &#x27;ngx-page-scroll&#x27;;
-import { map, tap, distinctUntilChanged, throttleTime, takeUntil, share } from &#x27;rxjs/operators&#x27;;
-import { BehaviorSubject, fromEvent, Subject } from &#x27;rxjs&#x27;;
+import { PageScrollInstance, PageScrollService } from &#x27;ngx-page-scroll&#x27;;
+import { distinctUntilChanged, map, share, tap, throttleTime } from &#x27;rxjs/operators&#x27;;
+import { BehaviorSubject, fromEvent } from &#x27;rxjs&#x27;;
+import { untilDestroy } from &#x27;@ngx-starter-kit/ngx-utils&#x27;;
 
 enum ShowStatus {
   show &#x3D; &#x27;show&#x27;,
@@ -522,8 +485,6 @@ enum ShowStatus {
   animations: [scrollFabAnimation],
 })
 export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
-  private _destroyed$ &#x3D; new Subject&lt;void&gt;();
-
   private _stateSubject &#x3D; new BehaviorSubject&lt;string&gt;(ShowStatus.hide);
   state$ &#x3D; this._stateSubject.asObservable();
 
@@ -546,15 +507,12 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
       distinctUntilChanged(),
       share(),
       tap(state &#x3D;&gt; this._stateSubject.next(state)),
-      takeUntil(this._destroyed$),
+      untilDestroy(this),
     );
     scroll$.subscribe();
   }
 
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
-  }
+  ngOnDestroy() {}
 
   scrollToTop() {
     this.pageScrollService.start(this.pageScrollInstance);
@@ -605,13 +563,13 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><button mat-fab class="scroll-to-top"  (click)="scrollToTop()" [@scrollAnimation]="state$ | async">  <mat-icon>keyboard_arrow_up</mat-icon></button></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
   [ngxAspectRatio.lt-sm], [ngxAspectRatio.lt-md], [ngxAspectRatio.lt-lg], [ngxAspectRatio.lt-xl],
   [ngxAspectRatio.gt-xs], [ngxAspectRatio.gt-sm], [ngxAspectRatio.gt-md], [ngxAspectRatio.gt-lg],
-  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
+  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'RouterLinkMatchDirective', 'selector': '[routerLinkMatch]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
     var ACTUAL_COMPONENT = {'name': 'ScrollToTopComponent'};
 </script>
 <script src="../js/tree.js"></script>

@@ -254,7 +254,7 @@ import { Store } from &#x27;@ngxs/store&#x27;;
 import { environment } from &#x27;@env/environment&#x27;;
 import { OAuthService } from &#x27;angular-oauth2-oidc&#x27;;
 
-const allowedUrls &#x3D; [environment.API_BASE_URL];
+const allowedUrls &#x3D; [environment.API_BASE_URL, environment.DOCS_BASE_URL];
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
