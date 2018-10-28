@@ -19,7 +19,6 @@ export class PageTitleService {
 
     // Automatically set pageTitle from router state data
     store.select<any>(RouterState.state).subscribe((routerStateData: RouterStateData) => {
-      console.log(routerStateData);
       bodyTitle.setTitle(
         `${Array.from(routerStateData.breadcrumbs.keys())
           .reverse()
