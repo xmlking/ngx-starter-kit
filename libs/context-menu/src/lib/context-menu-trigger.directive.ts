@@ -11,7 +11,7 @@ import {
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { Subject, fromEvent } from 'rxjs';
-import { takeUntil } from 'rxjs/operators';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
 @Directive({
   selector: '[contextMenu]',
@@ -22,16 +22,7 @@ export class ContextMenuTriggerDirective implements OnDestroy {
   @Input()
   contextMenu: TemplateRef<any>;
 
-  private _destroy$: Subject<void>;
-
   constructor(private _overlay: Overlay, private _elementRef: ElementRef, private _vcr: ViewContainerRef) {}
-
-  ngOnDestroy() {
-    if (this._destroy$) {
-      this._destroy$.next();
-      this._destroy$.complete();
-    }
-  }
 
   @HostListener('contextmenu', ['$event'])
   onContextMenu(event: MouseEvent) {
@@ -54,10 +45,12 @@ export class ContextMenuTriggerDirective implements OnDestroy {
     const templatePortal = new TemplatePortal(this.contextMenu, this._vcr);
     overlayRef.attach(templatePortal);
 
-    this._destroy$ = new Subject();
-
     fromEvent(document, 'click')
-      .pipe(takeUntil(this._destroy$))
+      /** Automatically unsubscribe on destroy */
+      .pipe(untilDestroy(this))
       .subscribe(() => overlayRef.detach());
   }
+
+  /** Must have */
+  ngOnDestroy() {}
 }

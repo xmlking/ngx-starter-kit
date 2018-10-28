@@ -12,8 +12,8 @@ import { Observable, Subject, Subscription } from 'rxjs';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { MenuItem, MenuService, SidenavState } from '@ngx-starter-kit/navigator';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 // import { sidenavAnimation } from '@ngx-starter-kit/animations';
-import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-sidenav',
@@ -35,11 +35,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.menuService.items$.pipe(takeUntil(this._destroyed$)).subscribe((items: MenuItem[]) => {
+    this.menuService.items$.pipe(untilDestroy(this)).subscribe((items: MenuItem[]) => {
       this.items = items;
     });
 
-    // this.router.events.pipe(takeUntil(this._destroyed$))
+    // this.router.events.pipe(untilDestroy(this))
     //   .subscribe(event => {
     //   if (event instanceof NavigationEnd) {
     //     this.menuService.setCurrentlyOpenByRoute(event.url);
@@ -51,10 +51,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     // });
   }
 
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
-  }
+  ngOnDestroy() {}
 
   toggleIconSidenav() {
     setTimeout(() => {
