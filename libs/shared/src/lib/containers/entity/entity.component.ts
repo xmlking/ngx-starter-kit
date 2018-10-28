@@ -3,15 +3,15 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 
 import { EntityService } from './entity.service';
 import { Entity, EntityColumnDef } from './entity.model';
-import { concatMap, filter, map, takeUntil } from 'rxjs/operators';
-import { Observable, Subject } from 'rxjs';
+import { concatMap, filter, map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
-  protected _destroy$ = new Subject<void>();
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
@@ -57,7 +57,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
           // tap(console.log),
           filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
           filter(_ => this.selection.selected.length > this.maxSelectable),
-          takeUntil(this._destroy$),
+          untilDestroy(this),
         )
         .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
     }
@@ -72,10 +72,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     // });
   }
 
-  ngOnDestroy() {
-    this._destroy$.next();
-    this._destroy$.complete();
-  }
+  ngOnDestroy() {}
 
   ngAfterViewInit() {
     // Needs to be set up after the view is initialized since the data source will look at the sort
@@ -184,7 +181,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   getRouteAnimation(outlet) {
-    return outlet.activatedRouteData['animation'] || 'one';
+    return outlet.activatedRouteData['depth'] || 5;
     // return outlet.isActivated ? outlet.activatedRoute : ''
   }
 
