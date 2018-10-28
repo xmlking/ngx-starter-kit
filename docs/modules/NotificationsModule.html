@@ -177,13 +177,14 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Module } from &#x27;@nestjs/common&#x27;;
 import { TypeOrmModule } from &#x27;@nestjs/typeorm&#x27;;
 import { SharedModule } from &#x27;../shared&#x27;;
+import { Notification } from &#x27;./notification.entity&#x27;;
 
 import { NotificationsService } from &#x27;./notifications.service&#x27;;
 import { NotificationsController } from &#x27;./notifications.controller&#x27;;
-import { NotificationsRepository } from &#x27;./notifications.repository&#x27;;
 
 @Module({
-  imports: [SharedModule, TypeOrmModule.forFeature([NotificationsRepository])],
+  // imports: [SharedModule, TypeOrmModule.forFeature([NotificationsRepository])],
+  imports: [SharedModule, TypeOrmModule.forFeature([Notification])],
   providers: [NotificationsService],
   controllers: [NotificationsController],
 })

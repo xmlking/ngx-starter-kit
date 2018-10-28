@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../dist/out-tsc/apps/api-e2e",
+    "module": "commonjs",
+    "target": "es6",
+    "types": ["jest", "node"]
+  },
+  "include": ["**/*.ts"]
+}

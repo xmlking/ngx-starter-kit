@@ -2,18 +2,20 @@ import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { NavigationEnd, Router } from '@angular/router';
-import { routeAnimation } from '@ngx-starter-kit/animations';
+import { routeAnimation, hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '@env/environment';
-import { PageTitleService } from '@ngx-starter-kit/core';
+import { RouterState } from '@ngxs/router-plugin';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
   animations: [routeAnimation],
+  // animations: [hierarchicalRouteAnimation],
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
@@ -27,6 +29,8 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   sidenavOpen = true;
   sidenavMode = 'side';
   isMobile = false;
+  crumbs$;
+  depth$;
 
   constructor(
     private router: Router,
@@ -34,11 +38,14 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private actions$: Actions,
     private media: ObservableMedia,
     private oauthService: OAuthService,
-    private pageTitleService: PageTitleService,
   ) {}
 
   ngOnInit() {
-    this.pageTitleService.title = 'Dashboard';
+    this.crumbs$ = this.store
+      .select<any>(RouterState.state)
+      .pipe(map(state => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
+
+    this.depth$ = this.store.select<any>(RouterState.state).pipe(map(state => state.data.depth));
 
     this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
       const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
@@ -74,8 +81,8 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     this.store.dispatch(new DisconnectWebSocket());
   }
 
-  getRouteAnimation(outlet) {
-    return outlet.activatedRouteData['animation'] || 'one';
+  getRouteDepth(outlet) {
+    return outlet.activatedRouteData['depth'] || 1;
     // return outlet.isActivated ? outlet.activatedRoute : ''
   }
 }

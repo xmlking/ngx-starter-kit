@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
-import { ScrollingModule as ExperimentalScrollingModule } from '@angular/cdk-experimental/scrolling';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { KnobModule } from '@xmlking/ngx-knob';
 
@@ -25,6 +24,8 @@ import { ImageCompComponent } from './containers/image-comp/image-comp.component
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+import { LayoutComponent } from './containers/layout/layout.component';
+import { CardComponent } from './components/card/card.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -33,7 +34,6 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     SharedModule,
     FilePondModule,
     ContextMenuModule,
-    ExperimentalScrollingModule,
     ScrollingModule,
     ClapModule,
     LedModule,
@@ -41,51 +41,56 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ImageComparisonModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
-      { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
+      { path: '', redirectTo: 'animations', pathMatch: 'full' },
       {
         path: 'animations',
         component: AnimationsComponent,
-        data: { animations: 'animations' },
+        data: { title: 'Animations', depth: 2 },
       },
       {
         path: 'file-upload',
         component: FileUploadComponent,
-        data: { animation: 'file-upload' },
+        data: { title: 'File Upload', depth: 3 },
       },
       {
         path: 'context-menu',
         component: ContextMenuComponent,
-        data: { animation: 'context-menu' },
+        data: { title: 'Context Menu', depth: 3 },
       },
       {
         path: 'virtual-scroll',
         component: VirtualScrollComponent,
-        data: { animation: 'virtual-scroll' },
+        data: { title: 'Virtual Scroll', depth: 3 },
       },
       {
         path: 'table',
         component: StickyTableComponent,
-        data: { animation: 'sticky-table' },
+        data: { title: 'Sticky Table', depth: 3 },
       },
       {
         path: 'clap',
         component: ClapButtonComponent,
-        data: { animation: 'clap' },
+        data: { title: 'Clap', depth: 3 },
       },
       {
         path: 'led',
         component: LedDemoComponent,
-        data: { animation: 'led' },
+        data: { title: 'Led', depth: 3 },
       },
       {
         path: 'knob',
         component: KnobDemoComponent,
-        data: { animation: 'Knob' },
+        data: { title: 'Knob', depth: 3 },
       },
       {
         path: 'image-comp',
         component: ImageCompComponent,
-        data: { animation: 'imagecomp' },
+        data: { title: 'ImageComp', depth: 3 },
+      },
+      {
+        path: 'layout',
+        component: LayoutComponent,
+        data: { title: 'Layout', depth: 3 },
       },
     ]),
   ],
@@ -100,6 +105,8 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     KnobDemoComponent,
     LedDemoComponent,
     ImageCompComponent,
+    LayoutComponent,
+    CardComponent,
   ],
 })
 export class ExperimentsModule {}

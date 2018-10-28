@@ -381,19 +381,19 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <code>id:     <code>ObjectID</code>
+                        <code>id:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 </code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Type : </i>    <code>ObjectID</code>
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
 
                         </td>
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyOptionalTransformObjectIdColumn</code>
+                            <i>Decorators : </i><code>ApiModelPropertyOptionalPrimaryGeneratedColumn</code>
                         </td>
                     </tr>
                             <tr>
@@ -404,7 +404,7 @@
                             </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in Base:11</div>
+                                    <div class="io-line">Defined in Base:7</div>
                             </td>
                         </tr>
 
@@ -443,7 +443,7 @@ export enum NotificationIcon {
   code &#x3D; &#x27;code&#x27;,
 }
 
-@Entity()
+@Entity(&#x27;notification&#x27;)
 export class Notification extends Base {
   @ApiModelProperty({ type: String })
   @IsString()

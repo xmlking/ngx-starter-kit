@@ -7,8 +7,6 @@
 }
 
 mat-card {
-  margin: 0 0 20px 0;
-
   mat-card-title {
     position: relative;
 
@@ -21,6 +19,7 @@ mat-card {
     }
   }
   mat-card-subtitle {
+    padding-top: 8px;
     min-height: 60px;
   }
 

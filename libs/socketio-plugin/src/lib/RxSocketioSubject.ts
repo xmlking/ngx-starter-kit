@@ -1,9 +1,7 @@
-import { NextObserver, Observable, Observer, Subscriber, Subscription } from 'rxjs';
+import { NextObserver, Observable, Observer, Subscriber, Subscription, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import * as io from 'socket.io-client';
 import ConnectOpts = SocketIOClient.ConnectOpts;
-import { Subject } from 'rxjs';
-import { ReplaySubject } from 'rxjs/src/internal/ReplaySubject';
 
 // TODO https://github.com/arjitkhullar/ocr/blob/master/src/app/socket.service.ts
 

@@ -24,6 +24,17 @@
         "api-module"
       ]
     },
+    "api-e2e": {
+      "tags": [],
+      "implicitDependencies": [
+        "api"
+      ]
+    },
+    "backend": {
+      "tags": [
+        "api-module"
+      ]
+    },
     "navigator": {
       "tags": [
         "private-module",
@@ -133,11 +144,6 @@
         "private-module"
       ]
     },
-    "ngx-pipes": {
-      "tags": [
-        "public-module"
-      ]
-    },
     "svg-viewer": {
       "tags": [
         "public-module"
@@ -196,6 +202,17 @@
     "image-comparison": {
       "tags": [
         "public-module"
+      ]
+    },
+    "models": {
+      "tags": [
+        "utils"
+      ]
+    },
+    "ngx-utils": {
+      "tags": [
+        "public-module",
+        "utils"
       ]
     }
   }

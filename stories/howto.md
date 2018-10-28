@@ -110,3 +110,8 @@ npm run format:check --base=master --head=HEAD
 npx nx format:check --base=master --head=HEAD
 ```
 
+How to enable debug for node?
+```bash
+NODE_DEBUG=request  npm run api:start:dev
+```
+

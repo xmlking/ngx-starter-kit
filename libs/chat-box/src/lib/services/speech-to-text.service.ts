@@ -51,7 +51,7 @@ export class SpeechToTextService {
 
         this.speechRecognition.onnomatch = (err: any): void => {
           console.log('No Match');
-          reject('I didn\'t recognise your question.');
+          reject("I didn't recognise your question.");
         };
 
         this.speechRecognition.onerror = (err: any): void => {

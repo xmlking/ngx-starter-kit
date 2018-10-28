@@ -8,7 +8,6 @@ import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule, LAYOUT_CONFIG } from '@angular/flex-layout';
 import { MinValidatorDirective } from './directives/min/min.directive';
-import { NgLetDirective } from './directives/ng-let.directive';
 import { ClickOutsideDirective } from './directives/click-outside/click-outside.directive';
 import {
   PerfectScrollbarModule,
@@ -16,13 +15,14 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { NgLetModule, RouterLinkMatchModule } from '@ngx-starter-kit/ngx-utils';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
   wheelPropagation: true,
 };
 
-const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective];
+const DIRECTIVES = [MinValidatorDirective, ClickOutsideDirective];
 
 @NgModule({
   imports: [CommonModule, FlexLayoutModule.withConfig({ useColumnBasisZero: false })],
@@ -35,6 +35,8 @@ const DIRECTIVES = [MinValidatorDirective, NgLetDirective, ClickOutsideDirective
     MaterialModule,
     MaterialDateModule,
     MomentModule,
+    NgLetModule,
+    RouterLinkMatchModule,
     FontAwesomeModule,
     FormlyMaterialModule,
     PerfectScrollbarModule,

@@ -9,7 +9,7 @@ describe('AccountService', () => {
     });
   });
 
-  it('should be created', inject([Account1Service], (service: Account1Service) => {
+  it('should be created', inject([AccountService], (service: AccountService) => {
     expect(service).toBeTruthy();
   }));
 });

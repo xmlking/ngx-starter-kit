@@ -3,11 +3,11 @@ KeyCloak
 
 Pre-configured KeyCloak OpenID Connect server for testing.
 
-* **Realm**: kubernetes
-* **Client ID**: kube-tenant 
+* **Realm**: ngx
+* **Client ID**: cockpit
 * **Accounts**:
   * *ROLE_ADMIN*
-    1. kubeadmin : kubeadmin
+    1. ngxadmin : ngxadmin
   * *ROLE_USER*
     1. sumo: demo
     2. sumo1: demo
@@ -21,8 +21,8 @@ Pre-configured KeyCloak OpenID Connect server for testing.
 
 ```json
   auth: {
-    clientId: 'kube-tenant',
-    issuer: 'http://localhost:9080/auth/realms/kubernetes'
+    clientId: 'cockpit',
+    issuer: 'http://localhost:9080/auth/realms/ngx'
   }
 ```
 
@@ -44,30 +44,38 @@ docker-compose exec keycloak sh
 
 ### Use
 
-http://localhost:9080/
+http://localhost:m080/
 > admin: admin
+
+### Setup
+
+> Do import config. (first time only...)
+1. login to keycloak admin console
+2. create new realm `ngx`
+3. import pre-set [config](../.deploy/keycloak/realm-manual-import.json)
+
 
 ### Test
 
 ```bash
 # Environment variable. change as per your server setup
-OIDC_BASE_URL=http://localhost:9080/auth/realms/kubernetes
-CLIENT_ID=kube-tenant
+OIDC_ISSUER_URL=http://localhost:8080/auth/realms/ngx
+OIDC_CLIENT=cockpit
 
 USERNAME=sumo
 PASSWORD=demo
 
 # get URLs
-curl $OIDC_BASE_URL/.well-known/openid-configuration | jq .
+curl $OIDC_ISSUER_URL/.well-known/openid-configuration | jq .
 #get certs
-curl $OIDC_BASE_URL/protocol/openid-connect/certs | jq .
+curl $OIDC_ISSUER_URL/protocol/openid-connect/certs | jq .
 
 # Get tokens
-response=$(curl -X POST $OIDC_BASE_URL/protocol/openid-connect/token \
+response=$(curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/token \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d username=$USERNAME \
  -d password=$PASSWORD \
- -d client_id=$CLIENT_ID \
+ -d client_id=$OIDC_CLIENT \
  -d 'grant_type=password' \
  -d 'scope=openid')
 
@@ -81,14 +89,14 @@ echo $id_token
 echo $refresh_token
 
 # Get User Profile
-curl -X POST $OIDC_BASE_URL/protocol/openid-connect/userinfo \
+curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/userinfo \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d "access_token=$access_token" | jq .
  
 # Logout
-curl -X POST  $OIDC_BASE_URL/protocol/openid-connect/logout \
+curl -X POST  $OIDC_ISSUER_URL/protocol/openid-connect/logout \
  -H "Content-Type: application/x-www-form-urlencoded" \
- -d client_id=$CLIENT_ID \
+ -d client_id=$OIDC_CLIENT \
  -d "refresh_token=$refresh_token" | jq .
  ```
 

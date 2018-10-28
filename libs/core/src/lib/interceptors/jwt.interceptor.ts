@@ -5,7 +5,7 @@ import { Store } from '@ngxs/store';
 import { environment } from '@env/environment';
 import { OAuthService } from 'angular-oauth2-oidc';
 
-const allowedUrls = [environment.API_BASE_URL];
+const allowedUrls = [environment.API_BASE_URL, environment.DOCS_BASE_URL];
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {

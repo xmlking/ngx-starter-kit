@@ -1,8 +1,8 @@
 import { Get, Post, Put, Delete, Body, Param, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
-import { ICrudService } from './crud.service';
 import { Base } from '../entities/base.entity';
 import { DeepPartial } from 'typeorm';
+import { ICrudService } from './icube.service';
 
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })

@@ -7,7 +7,7 @@ import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule } from '@ngxs/router-plugin';
+import { NgxsRouterPluginModule, RouterStateSerializer } from '@ngxs/router-plugin';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -22,6 +22,7 @@ import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
+import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
 
 // Noop handler for factory function
 export function noop() {
@@ -68,16 +69,20 @@ library.add(faTwitter, faGithub, faGoogle);
       useClass: ErrorInterceptor,
       multi: true,
     },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: JwtInterceptor,
-      multi: true,
-    },
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: JwtInterceptor,
+    //   multi: true,
+    // },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
       deps: [EventBus],
       multi: true,
+    },
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomRouterStateSerializer,
     },
   ],
 })

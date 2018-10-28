@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
+import { fromEvent, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
-import { fromEvent, Subject, Subscription } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'ngx-about',
@@ -11,8 +12,6 @@ import { map, debounceTime, distinctUntilChanged, takeUntil } from 'rxjs/operato
   styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
-  private _destroyed = new Subject();
-
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   @ViewChild('trianglify')
   trianglifyCanvasRef: ElementRef;
@@ -26,7 +25,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
         debounceTime(100),
         map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
         distinctUntilChanged(),
-        takeUntil(this._destroyed),
+        untilDestroy(this),
       )
       .subscribe(res => {
         // setTimeout(() => {this.renderCanvas() }, 1000)
@@ -34,9 +33,7 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
       });
   }
 
-  ngOnDestroy() {
-    this._destroyed.next();
-  }
+  ngOnDestroy() {}
 
   ngAfterViewInit() {
     setTimeout(() => {

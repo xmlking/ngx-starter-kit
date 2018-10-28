@@ -1,17 +1,10 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { DeepPartial, FindManyOptions, FindOneOptions, MongoRepository, UpdateResult, DeleteResult } from 'typeorm';
+import { DeepPartial, FindManyOptions, FindOneOptions, Repository, UpdateResult, DeleteResult } from 'typeorm';
 import { Base } from '../entities/base.entity';
-
-export interface ICrudService<T> {
-  getAll(filter?: FindManyOptions<T>): Promise<[T[], number]>;
-  getOne(id: any | FindOneOptions<T>): Promise<T>;
-  create(entity: DeepPartial<T>): Promise<T>;
-  update(id: any, entity: DeepPartial<T>): Promise<any>;
-  delete(id: any): Promise<any>;
-}
+import { ICrudService } from './icube.service';
 
 export abstract class CrudService<T extends Base> implements ICrudService<T> {
-  protected constructor(protected readonly repository: MongoRepository<T>) {}
+  protected constructor(protected readonly repository: Repository<T>) {}
 
   public async getAll(filter?: FindManyOptions<T>): Promise<[T[], number]> {
     const records = await this.repository.findAndCount(filter);
@@ -21,7 +14,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     return records;
   }
 
-  public async getOne(filter: string | FindOneOptions<T>): Promise<T> {
+  public async getOne(filter: string): Promise<T> {
     const record = await this.repository.findOne(filter);
     if (!record) {
       throw new NotFoundException(`The requested record was not found`);

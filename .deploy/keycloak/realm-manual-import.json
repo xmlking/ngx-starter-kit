@@ -1,17 +1,17 @@
 {
-  "realm": "kubernetes",
+  "realm": "ngx",
   "enabled": true,
   "users": [
     {
-      "username": "kubeadmin",
+      "username": "ngxadmin",
       "enabled": true,
-      "firstName" : "kube",
+      "firstName" : "ngx",
       "lastName" : "admin",
-      "email" : "kubeadmin@kube.com",
+      "email" : "ngxadmin@kube.com",
       "credentials": [
         {
           "type": "password",
-          "value": "kubeadmin"
+          "value": "ngxadmin"
         }
       ],
       "realmRoles": [
@@ -24,6 +24,54 @@
       "firstName" : "sumo",
       "lastName" : "demo",
       "email" : "sumo@demo.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo"
+        }
+      ],
+      "realmRoles": [
+        "ROLE_USER"
+      ]
+    },
+    {
+      "username": "sumo1",
+      "enabled": true,
+      "firstName" : "sumo1",
+      "lastName" : "demo",
+      "email" : "sumo1@demo.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo"
+        }
+      ],
+      "realmRoles": [
+        "ROLE_USER"
+      ]
+    },
+    {
+      "username": "sumo2",
+      "enabled": true,
+      "firstName" : "sumo2",
+      "lastName" : "demo",
+      "email" : "sumo2@demo.com",
+      "credentials": [
+        {
+          "type": "password",
+          "value": "demo"
+        }
+      ],
+      "realmRoles": [
+        "ROLE_USER"
+      ]
+    },
+    {
+      "username": "sumo3",
+      "enabled": true,
+      "firstName" : "sumo3",
+      "lastName" : "demo",
+      "email" : "sumo3@demo.com",
       "credentials": [
         {
           "type": "password",

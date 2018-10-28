@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
-import { Observable, Subscription } from 'rxjs';
-import { catchError, filter, mergeMap } from 'rxjs/operators';
+import { Observable, Subscription, throwError } from 'rxjs';
+import { catchError, filter, mergeMap, tap } from 'rxjs/operators';
 import { AuthMode, Logout, LogoutSuccess } from './auth.actions';
 import { Store, Select } from '@ngxs/store';
 import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { throwError } from 'rxjs';
 import { AuthState, AuthStateModel } from './auth.state';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
 import { OAuthEvent } from 'angular-oauth2-oidc/events';
@@ -101,6 +100,9 @@ export class AuthService {
       // for Password Flow
       this._refresher = this.oauthService.events
         .pipe(
+          tap(e => {
+            console.log(`sumo: type: $e.type, `, e);
+          }),
           filter((e: OAuthEvent) => e.type === 'token_expires'),
           mergeMap(_ => fromPromise(this.oauthService.refreshToken())),
           catchError((error: HttpErrorResponse) => {
