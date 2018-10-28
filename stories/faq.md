@@ -33,6 +33,7 @@ type `ng.profiler.timeChangeDetection();` in console.
 
 * How implement Progressive Web Applications (PWA) with Service Workers?
 > Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
+> Read [Building a Search-Engine Optimized PWA with Angular](https://blog.bitsrc.io/building-an-search-engine-optimized-pwa-with-angular-part-2-4473aed90c14)
 
 * How to keep footers at the bottom of the page?
 > Refer [here](http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page)
@@ -140,6 +141,7 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
 > [refer](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+> Refer [Angular DevOps](https://blog.angularindepth.com/the-angular-devops-series-semantically-release-your-angular-library-7d78afb4c845)
 > Watch Automating Releases with [semantic-release](https://egghead.io/lessons/javascript-automating-releases-with-semantic-release)
 > Read [enforcing commit conventions](https://adrianperez.codes/enforcing-commit-conventions/)
 > Read [automate package releases](https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f)

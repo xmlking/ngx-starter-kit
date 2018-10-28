@@ -16,7 +16,8 @@
     ],
     "lib": [
       "es2017",
-      "dom"
+      "dom",
+      "esnext.array"
     ],
     "paths": {
       "@ngx-starter-kit/*": [
@@ -97,9 +98,6 @@
       "@ngx-starter-kit/quickpanel": [
         "libs/quickpanel/src/index.ts"
       ],
-      "@ngx-starter-kit/ngx-pipes": [
-        "libs/ngx-pipes/src/index.ts"
-      ],
       "@ngx-starter-kit/svg-viewer": [
         "libs/svg-viewer/src/index.ts"
       ],
@@ -141,6 +139,9 @@
       ],
       "@ngx-starter-kit/image-comparison": [
         "libs/image-comparison/src/index.ts"
+      ],
+      "@ngx-starter-kit/ngx-utils": [
+        "libs/ngx-utils/src/index.ts"
       ]
     }
   },

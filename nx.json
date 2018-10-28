@@ -144,11 +144,6 @@
         "private-module"
       ]
     },
-    "ngx-pipes": {
-      "tags": [
-        "public-module"
-      ]
-    },
     "svg-viewer": {
       "tags": [
         "public-module"
@@ -211,6 +206,12 @@
     },
     "models": {
       "tags": [
+        "utils"
+      ]
+    },
+    "ngx-utils": {
+      "tags": [
+        "public-module",
         "utils"
       ]
     }

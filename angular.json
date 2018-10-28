@@ -1081,46 +1081,6 @@
         }
       }
     },
-    "ngx-pipes": {
-      "root": "libs/ngx-pipes",
-      "sourceRoot": "libs/ngx-pipes/src",
-      "projectType": "library",
-      "prefix": "ngx",
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "tsConfig": "libs/ngx-pipes/tsconfig.lib.json",
-            "project": "libs/ngx-pipes/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/ngx-pipes/ng-package.prod.json"
-            }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "libs/ngx-pipes/tsconfig.lib.json",
-              "libs/ngx-pipes/tsconfig.spec.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/ngx-pipes/jest.config.js",
-            "tsConfig": "libs/ngx-pipes/tsconfig.spec.json",
-            "setupFile": "libs/ngx-pipes/src/test-setup.ts"
-          }
-        }
-      }
-    },
     "svg-viewer": {
       "root": "libs/svg-viewer",
       "sourceRoot": "libs/svg-viewer/src",
@@ -1549,6 +1509,41 @@
             "jestConfig": "libs/image-comparison/jest.config.js",
             "tsConfig": "libs/image-comparison/tsconfig.spec.json",
             "setupFile": "libs/image-comparison/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "ngx-utils": {
+      "root": "libs/ngx-utils",
+      "sourceRoot": "libs/ngx-utils/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/ngx-utils/tsconfig.lib.json",
+            "project": "libs/ngx-utils/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/ngx-utils/tsconfig.lib.json",
+              "libs/ngx-utils/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/ngx-utils/jest.config.js",
+            "tsConfig": "libs/ngx-utils/tsconfig.spec.json",
+            "setupFile": "libs/ngx-utils/src/test-setup.ts"
           }
         }
       }
