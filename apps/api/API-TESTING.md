@@ -3,7 +3,9 @@ API Testing
 
 ### Database
 ```bash
-mongo -u "mdbuser" -p "cockpit123" --authenticationDatabase "cockpit"
+psql -h <host> -p <port> -u <database>
+psql -h <host> -p <port> -U <username> -W <password> <database>
+
 ```
 
 ### REST API 
@@ -100,26 +102,49 @@ curl -v -X POST \
 
 ### token
 ```bash
+OIDC_ISSUER_URL=https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360
+OIDC_CLIENT=is360ui
+
 USERNAME=sumo
 PASSWORD=demo
-OIDC_BASE_URL=https://keycloak-is360.7e14.starter-us-west-2.openshiftapps.com/auth/realms/is360
-CLIENT_ID=cockpit
+
+# get URLs
+curl $OIDC_ISSUER_URL/.well-known/openid-configuration | jq .
+#get certs
+curl $OIDC_ISSUER_URL/protocol/openid-connect/certs | jq .
 
 # Get tokens
-response=$(curl -X POST $OIDC_BASE_URL/protocol/openid-connect/token \
+response=$(curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/token \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d username=$USERNAME \
  -d password=$PASSWORD \
- -d client_id=$CLIENT_ID \
+ -d client_id=$OIDC_CLIENT \
  -d 'grant_type=password' \
  -d 'scope=openid')
-
+ 
 access_token=$(echo $response | jq  -r '.access_token')
 
 echo $access_token
 
 curl -X GET \
-  http://localhost:3000/api \
-  -H "Authorization: Bearer $access_token" \
-| jq .
+  http://localhost:3000 \
+    -H "Authorization: Bearer $access_token"
+
+curl -X GET \
+  http://localhost:3000/api/notifications \
+    -H "accept: application/json" \
+    -H "Authorization: Bearer $access_token" \
+  | jq .
+  
+
+# Get User Profile
+curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/userinfo \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -d "access_token=$access_token" | jq .
+ 
+# Logout
+curl -X POST  $OIDC_ISSUER_URL/protocol/openid-connect/logout \
+ -H "Content-Type: application/x-www-form-urlencoded" \
+ -d client_id=$CLIENT_ID \
+ -d "refresh_token=$refresh_token" | jq .
 ```

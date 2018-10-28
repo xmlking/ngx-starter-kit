@@ -21,7 +21,7 @@ import { RequestContextMiddleware } from './context';
       templateDir: process.env.EMAIL_TEMPLATE_DIR,
     }),
     TypeOrmModule.forRoot({
-      type: 'mongodb',
+      type: 'postgres',
       host: process.env.TYPEORM_HOST,
       port: Number(process.env.TYPEORM_PORT),
       database: process.env.TYPEORM_DATABASE,

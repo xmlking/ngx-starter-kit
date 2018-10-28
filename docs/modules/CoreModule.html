@@ -180,7 +180,7 @@ import { RequestContextMiddleware } from &#x27;./context&#x27;;
       templateDir: process.env.EMAIL_TEMPLATE_DIR,
     }),
     TypeOrmModule.forRoot({
-      type: &#x27;mongodb&#x27;,
+      type: &#x27;postgres&#x27;,
       host: process.env.TYPEORM_HOST,
       port: Number(process.env.TYPEORM_PORT),
       database: process.env.TYPEORM_DATABASE,

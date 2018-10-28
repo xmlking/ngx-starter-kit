@@ -1,12 +1,6 @@
 HOW TO
 ======
 
-
-* What is new in Angular 6.1?
-
-> Refer [here](https://blog.ninja-squad.com/2018/07/26/what-is-new-angular-6.1/)
-> Refer [here](https://blog.ninja-squad.com/2018/07/27/angular-cli-6.1/)
-
 * How do I use this template projects?
 > Add your own app along with `default` app and use shared modules in `libs`. 
 once you are conferable , then you can delete demo `default` app
@@ -34,8 +28,12 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Refer [here](https://github.com/angular/flex-layout/wiki/Responsive-API)
 > Refer [here](https://medium.com/@nima_ap/creating-a-responsive-dashboard-in-angular-5-from-scratch-147f6a493d9e)
 
+* How to use flex grid? 
+> Refer [Flexbox and Grid Layout for Angular Component](https://blog.angularindepth.com/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63)
+
 * How implement Progressive Web Applications (PWA) with Service Workers?
 > Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
+> Read [Building a Search-Engine Optimized PWA with Angular](https://blog.bitsrc.io/building-an-search-engine-optimized-pwa-with-angular-part-2-4473aed90c14)
 
 * How to keep footers at the bottom of the page?
 > Refer [here](http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page)
@@ -46,7 +44,8 @@ type `ng.profiler.timeChangeDetection();` in console.
   2. Component styles
   3. Theme styles
 
-* Here can I learn Nx Workspace/monoreops? 
+* WTF is monorepo? 
+> Read [Advantages of monorepos](https://danluu.com/monorepo/)
 > Refer [here](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
 > Refer [here](https://www.youtube.com/watch?v=0N589xX2ZQw)
 > Refer [here](https://github.com/nrwl/nx-examples)
@@ -66,6 +65,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
 > Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
 
+* Animations 
+> Read [Hierarchical Route Animations](https://fluin.io/blog/hierarchical-route-animations) 
+
 *  Why I Prefer NGXS over NGRX 
 > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
 
@@ -76,6 +78,12 @@ type `ng.profiler.timeChangeDetection();` in console.
 
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)
 > Read [Immer with NGXS](https://blog.angularindepth.com/simple-state-mutations-in-ngxs-with-immer-48b908874a5e)
+
+* Best practices for NgRx Action?
+
+> Types of Actions: User Actions, Backend Actions, Device Actions
+
+> Watch [Good Action Hygiene with NgRx Mike Ryan](https://www.youtube.com/watch?v=JmnsEvoy-gY)
 
 * How to implement route animations?
 
@@ -95,6 +103,10 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Refer [here](https://material.io/guidelines/style/color.html#color-usability)
 
+* how to implement search experience with facets and sort options?
+
+> Refer [here](https://github.com/sfeir-open-source/angular-search-experience)
+
 * What I get from angular-cli?
 
 > Refer [stories](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories)
@@ -111,6 +123,13 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
 
+* Angular Performance 
+
+> Refer [here](https://blog.ninja-squad.com/)
+
+* Angular universal aks SSR
+> Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5)
+
 * How to configure nginx?
 > Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
 
@@ -122,6 +141,7 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
 > [refer](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+> Refer [Angular DevOps](https://blog.angularindepth.com/the-angular-devops-series-semantically-release-your-angular-library-7d78afb4c845)
 > Watch Automating Releases with [semantic-release](https://egghead.io/lessons/javascript-automating-releases-with-semantic-release)
 > Read [enforcing commit conventions](https://adrianperez.codes/enforcing-commit-conventions/)
 > Read [automate package releases](https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f)
@@ -180,6 +200,7 @@ in this project, we are demonstrating how to secure UI and backend APIs using fo
 
 https://github.com/manfredsteyer/angular-oauth2-oidc
 https://github.com/damienbod/angular-auth-oidc-client
+https://github.com/jeroenheijmans/sample-auth0-angular-oauth2-oidc
 https://github.com/mauriciovigolo/keycloak-angular
 https://github.com/ssilvert/keycloak-schematic/wiki
 https://symbiotics.co.za/integrating-keycloak-with-an-angular-4-web-application-part-2/

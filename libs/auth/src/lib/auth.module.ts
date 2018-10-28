@@ -25,6 +25,7 @@ import {
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { environment } from '@env/environment';
 
 @NgModule({
   imports: [
@@ -44,7 +45,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     FontAwesomeModule,
     OAuthModule.forRoot({
       resourceServer: {
-        allowedUrls: ['http://localhost:8080/auth'],
+        allowedUrls: [environment.API_BASE_URL, environment.DOCS_BASE_URL],
         sendAccessToken: true,
       },
     }),

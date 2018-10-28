@@ -9,11 +9,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.7.0  |          | 
+| Node                          | v10.11.0 |          | 
 | NPM                           | v6.4.0   |          |
-| Angular CLI                   | v6.0.8   |          |
+| Angular CLI                   | v6.2.4   |          |
 | @nrwl/schematics              | v6.4.0   |          |
-| @nestjs/cli                   | v5.3.0   |          |
+| @nestjs/cli                   | v5.5.0   |          |
 
 ### Install Prerequisites
 ```bash
@@ -56,7 +56,7 @@ npm remove -g semantic-release-cli
 npm remove -g commitizen
 
 npm install -g @angular/cli
-npm install -g @nrwl/schematics@6.4.0-beta.3
+npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
 npm install -g commitizen
@@ -68,7 +68,7 @@ npm outdated -g --depth=0
 # set scss as default css processor
 ng config -g schematics.@nrwl/schematics:component.styleext scss
 ng config -g cli.packageManager npm
-@ set jest as default TestRunner
+# set jest as default TestRunner
 ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 # check your global defaults
 more cat ~/.angular-config.json
@@ -95,6 +95,7 @@ cd ngx-starter-kit
 
 # setup your workspace to run tests with jest.
 ng generate jest
+# Ref: https://nrwl.io/nx/unit-testing-with-jest
 # you may have to manually remove karma files (karma.conf.js) and dependencies from package.json
 
 # make sure we are up-to-date
@@ -105,7 +106,14 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module 
+# or with ivy renderer
+ng g app webapp1 --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module --experimental-ivy --dry-run
+
+# generate api app with nestjs
+ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
+# generate backend app with express
+ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module --dry-run
 ```
 
 #### Dependencies
@@ -189,6 +197,14 @@ npm i -D husky@next
 npm i -D lint-staged
 ```
 
+> update 3rd party modules/schematics
+```bash
+ng update @angular/core
+ng update @angular/material --force
+ng update @angular/pwa
+ng update @ngx-formly/schematics --ui-theme=material
+```
+
 #### Generate Artifacts
 > Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
 ```bash
@@ -201,9 +217,11 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-ng g lib animations --nomodule -tags=utils --unit-test-runner=jest --dry-run 
-ng g lib Tree --nomodule  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
-ng g lib utils --nomodule --tags=utils --unit-test-runner=jest --dry-run
+ng g lib animations --module false -tags=utils --unit-test-runner=jest --dry-run 
+ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
+ng g lib utils --module false --tags=utils --unit-test-runner=jest --dry-run
+# system wide models
+ng g lib models --module false --tags=utils --unit-test-runner=jest --dry-run
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest --dry-run
@@ -272,13 +290,8 @@ ng g class    notification --type=model --project=notifications --dry-run
 ng g service  notifications --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
+ng g lib Quickpanel1 --prefix=ngx --tags=private-module --unit-test-runner=jest
 ng g component Quickpanel --project=quickpanel --flat --dry-run
-
-# generate components for `NgxPipes` Module
-ng g lib NgxPipes --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g pipe truncate/Characters --project=ngx-pipes   --dry-run
-ng g pipe truncate/Words --project=ngx-pipes   --dry-run
 
 # generate components for `LoadingOverlay` Module
 ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
@@ -323,6 +336,21 @@ ng g component clap --project=clap  -s  -t --spec=false --export --flat --dry-ru
 ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  --dry-run 
 ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  --dry-run 
 ng g component components/fab --project=clap  -s  -t --spec=false --flat  --dry-run 
+
+# generate components for `ngx-utils` Module
+ng g lib ngxUtils  --prefix=ngx --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
+ng g module pipes/truncate --project=ngx-utils --spec=false --dry-run
+ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export --dry-run
+ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export --dry-run
+ng g module pipes/helper --project=ngx-utils --spec=false --dry-run
+ng g pipe pipes/helper/filter --project=ngx-utils --module=helper --export --dry-run
+ng g pipe pipes/helper/groupBy --project=ngx-utils --module=helper --export --dry-run
+ng g pipe pipes/helper/safeHtml --project=ngx-utils --module=helper --export --dry-run
+ng g module directives/ngLet --project=ngx-utils --spec=false --dry-run
+ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export --dry-run
+ng g module directives/routerLinkMatch --project=ngx-utils --spec=false --dry-run
+ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export --dry-run
+
 
 # generate components for `toolbar` Module
 ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest --dry-run 
@@ -376,16 +404,19 @@ ng g component  containers/AccountsGridList --project=grid  --dry-run
 
 # generate containers, components for `experiments` Module
 ng g component containers/animations --project=experiments --dry-run
-ng g component containers/ContextMenu --project=experiments --dry-run
-ng g component containers/FileUpload --project=experiments --dry-run
 ng g component components/hammerCard --project=experiments --dry-run
 ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
+ng g component containers/ContextMenu --project=experiments --dry-run
+ng g component containers/FileUpload --project=experiments --dry-run
 ng g component containers/virtualScroll --project=experiments --dry-run
 ng g component containers/StickyTable --project=experiments --dry-run
 ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
 ng g component containers/knobDemo --project=experiments --dry-run
 ng g component containers/ledDemo --project=experiments  --dry-run
 ng g component containers/ImageComp --project=experiments  --dry-run
+ng g component containers/layout --project=experiments --dry-run
+ng g component components/card --project=experiments --dry-run
+
 
 # generate components for `ImageComparison` Module
 ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true --dry-run

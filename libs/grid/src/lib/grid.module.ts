@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { NgxPipesModule } from '@ngx-starter-kit/ngx-pipes';
+import { TruncateModule, HelperModule } from '@ngx-starter-kit/ngx-utils';
 import { AccountsGridListComponent } from './containers/accounts-grid-list/accounts-grid-list.component';
 import { AccountsTableComponent } from './containers/accounts-table/accounts-table.component';
 import { AccountService } from './services/account.service';
@@ -16,17 +16,28 @@ import { AccountEditComponent } from './components/account-edit/account-edit.com
     SharedModule,
     DragDropModule,
     AppConfirmModule,
-    NgxPipesModule,
+    TruncateModule,
+    HelperModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
-      { path: '', redirectTo: 'crud-table', pathMatch: 'full', data: { animation: 'grid' } },
+      { path: '', redirectTo: 'crud-table', pathMatch: 'full' },
       {
         path: 'crud-table',
         component: AccountsTableComponent,
-        data: { animation: 'accounts-table' },
-        children: [{ path: ':id', component: AccountDetailComponent, data: { animation: 'account-detail' } }],
+        data: { title: 'Accounts', depth: 2  },
+        children: [
+          {
+            path: ':id',
+            component: AccountDetailComponent,
+            data: { title: 'Account Detail'},
+          },
+        ],
       },
-      { path: 'grid-list', component: AccountsGridListComponent, data: { animation: 'accounts-grid-list' } },
+      {
+        path: 'grid-list',
+        component: AccountsGridListComponent,
+        data: { title: 'Accounts Grid-List', depth: 3 },
+      },
     ]),
   ],
   declarations: [AccountsTableComponent, AccountsGridListComponent, AccountDetailComponent, AccountEditComponent],

@@ -1,4 +1,4 @@
-import { ApiAiClient, IServerResponse } from 'api-ai-javascript/index.js';
+import { ApiAiClient, IServerResponse } from '@xmlking/api-ai-javascript/index.js';
 import { Injectable, Inject } from '@angular/core';
 import { DIALOGFLOW_TOKEN } from './inject-tokens';
 

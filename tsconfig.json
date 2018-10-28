@@ -10,12 +10,14 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "target": "es5",
+    "resolveJsonModule": true,
     "typeRoots": [
       "node_modules/@types"
     ],
     "lib": [
       "es2017",
-      "dom"
+      "dom",
+      "esnext.array"
     ],
     "paths": {
       "@ngx-starter-kit/*": [
@@ -23,6 +25,12 @@
       ],
       "@env/*": [
         "apps/webapp/src/environments/*"
+      ],
+      "@api-env/*": [
+        "apps/api/src/environments/*"
+      ],
+      "@ngx-starter-kit/models": [
+        "libs/models/src/index.ts"
       ],
       "@ngx-starter-kit/core": [
         "libs/core/src/index.ts"
@@ -90,9 +98,6 @@
       "@ngx-starter-kit/quickpanel": [
         "libs/quickpanel/src/index.ts"
       ],
-      "@ngx-starter-kit/ngx-pipes": [
-        "libs/ngx-pipes/src/index.ts"
-      ],
       "@ngx-starter-kit/svg-viewer": [
         "libs/svg-viewer/src/index.ts"
       ],
@@ -134,6 +139,9 @@
       ],
       "@ngx-starter-kit/image-comparison": [
         "libs/image-comparison/src/index.ts"
+      ],
+      "@ngx-starter-kit/ngx-utils": [
+        "libs/ngx-utils/src/index.ts"
       ]
     }
   },

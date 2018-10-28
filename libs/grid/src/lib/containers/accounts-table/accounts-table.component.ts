@@ -14,6 +14,8 @@ import { Navigate } from '@ngxs/router-plugin';
 import { Store } from '@ngxs/store';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
+// TODO: search with facets https://github.com/sfeir-open-source/angular-search-experience
+// https://ngx.tools/#/search?q=Go
 @Component({
   selector: 'ngx-accounts-table',
   templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',

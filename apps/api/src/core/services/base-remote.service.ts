@@ -1,5 +1,5 @@
 import { HttpService } from '@nestjs/common/http';
-import { AxiosError, AxiosResponse } from '@nestjs/common/http/interfaces/axios.interfaces';
+import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import {
   BadRequestException,

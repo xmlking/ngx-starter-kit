@@ -24,27 +24,27 @@ import { StickyHeaderDirective } from './components/header/sticky-header.directi
       {
         path: '',
         component: HomeLayoutComponent,
-        data: { animation: 'home' },
+        data: { title: 'Home', animation: 'home' },
         children: [
           {
             path: '',
             component: LandingComponent,
-            data: { animation: 'home' },
+            data: { title: 'Landing', animation: 'home' },
           },
           {
             path: 'blog',
             component: BlogComponent,
-            data: { animation: 'blog' },
+            data: { title: 'Blog', animation: 'blog' },
           },
           {
             path: 'about',
             component: AboutComponent,
-            data: { animation: 'about' },
+            data: { title: 'About', animation: 'about' },
           },
           {
             path: 'features',
             component: FeaturesComponent,
-            data: { animation: 'features' },
+            data: { title: 'Features', animation: 'features' },
           },
         ],
       },

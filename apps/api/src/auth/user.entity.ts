@@ -9,7 +9,7 @@ export enum AccountSourceType {
   gitHub,
 }
 
-@Entity()
+@Entity('user')
 export class User extends Base {
   @ApiModelProperty({ type: String })
   @IsString()
@@ -28,7 +28,7 @@ export class User extends Base {
   @ApiModelProperty({ type: String, minLength: 10, maxLength: 100 })
   @IsEmail()
   @IsNotEmpty()
-  @Index({ unique: true })
+  @Index()
   @Column()
   email: string;
 

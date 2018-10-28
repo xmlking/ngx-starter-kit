@@ -1,6 +1,7 @@
 import { AfterViewInit, Directive, ElementRef, HostBinding, Input, NgZone, OnDestroy } from '@angular/core';
-import { fromEvent, merge, Subject } from 'rxjs';
+import { fromEvent, merge } from 'rxjs';
 import { map, switchMap, takeUntil } from 'rxjs/operators';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
 @Directive({
   selector: '[draggable]',
@@ -20,8 +21,6 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
   private delta = { x: 0, y: 0 };
   private offset = { x: 0, y: 0 };
 
-  private destroy$ = new Subject<void>();
-
   constructor(private elementRef: ElementRef, private zone: NgZone) {}
 
   public ngAfterViewInit(): void {
@@ -32,9 +31,7 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
     this.setupEvents();
   }
 
-  public ngOnDestroy(): void {
-    this.destroy$.next();
-  }
+  ngOnDestroy() {}
 
   private setupEvents() {
     this.zone.runOutsideAngular(() => {
@@ -80,7 +77,7 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
             takeUntil(end$),
           );
         }),
-        takeUntil(this.destroy$),
+        untilDestroy(this),
       );
 
       drag$.subscribe(() => {
@@ -91,7 +88,7 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
         this.translate();
       });
 
-      end$.pipe(takeUntil(this.destroy$)).subscribe(() => {
+      end$.pipe(untilDestroy(this)).subscribe(() => {
         this.offset.x += this.delta.x;
         this.offset.y += this.delta.y;
         this.delta = { x: 0, y: 0 };

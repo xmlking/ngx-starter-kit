@@ -54,7 +54,7 @@ $config: mat-typography-config(
   $body-1: mat-typography-level(14px, 22px, 400),
   $caption: mat-typography-level(13px, 22px, 400),
   $button: mat-typography-level(14px, 14px, 500),
-    // Line-height must be unit-less fraction of the font-size.
+  // Line-height must be unit-less fraction of the font-size.
   $input: mat-typography-level(16px, 1.125, 400)
 );
 
@@ -130,15 +130,15 @@ $footer-z-index: 700;
 
 // Sidenav Toolbar
 
-$sidenav-toolbar-background: #272B35;
+$sidenav-toolbar-background: #272b35;
 $sidenav-toolbar-height: $toolbar-height;
 $sidenav-toolbar-elevation: $elevation;
 
 // Sidenav
 
-$sidenav-color: #A7A9AE;
+$sidenav-color: #a7a9ae;
 
-$sidenav-background: #2B303B;
+$sidenav-background: #2b303b;
 $sidenav-background-hover: darken($sidenav-background, 4);
 $sidenav-background-active: $sidenav-background-hover;
 

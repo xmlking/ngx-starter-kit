@@ -1,8 +1,9 @@
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
 
 import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
-import { fromEvent, Subject } from 'rxjs';
-import { distinctUntilChanged, filter, map, pairwise, share, takeUntil, throttleTime } from 'rxjs/operators';
+import { fromEvent } from 'rxjs';
+import { distinctUntilChanged, filter, map, pairwise, share, throttleTime } from 'rxjs/operators';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
 enum Direction {
   Up = 'Up',
@@ -13,7 +14,7 @@ enum Direction {
   selector: '[stickyHeader]',
 })
 export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
-  private _destroyed$ = new Subject<void>();
+
   player: AnimationPlayer;
 
   set show(show: boolean) {
@@ -55,7 +56,7 @@ export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
       map(([y1, y2]): Direction => (y2 < y1 ? Direction.Up : Direction.Down)),
       distinctUntilChanged(),
       share(),
-      takeUntil(this._destroyed$),
+      untilDestroy(this),
     );
 
     const goingUp$ = scroll$.pipe(filter(direction => direction === Direction.Up));
@@ -66,8 +67,5 @@ export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
     goingDown$.subscribe(() => (this.show = false));
   }
 
-  ngOnDestroy() {
-    this._destroyed$.next();
-    this._destroyed$.complete();
-  }
+  ngOnDestroy() {}
 }

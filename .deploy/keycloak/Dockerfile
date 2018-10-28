@@ -1,4 +1,4 @@
-FROM jboss/keycloak-openshift:4.3.0.Final
+FROM jboss/keycloak-openshift:4.5.0.Final
 LABEL maintainer="Sumanth <xmlking@gmail.com>"
 
 COPY configuration/* $JBOSS_HOME/standalone/configuration/
