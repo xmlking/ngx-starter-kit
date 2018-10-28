@@ -197,6 +197,14 @@ npm i -D husky@next
 npm i -D lint-staged
 ```
 
+> update 3rd party modules/schematics
+```bash
+ng update @angular/core
+ng update @angular/material --force
+ng update @angular/pwa
+ng update @ngx-formly/schematics --ui-theme=material
+```
+
 #### Generate Artifacts
 > Add  `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
 ```bash
@@ -285,11 +293,6 @@ ng g service  notifications --project=notifications --dry-run
 ng g lib Quickpanel1 --prefix=ngx --tags=private-module --unit-test-runner=jest
 ng g component Quickpanel --project=quickpanel --flat --dry-run
 
-# generate components for `NgxPipes` Module
-ng g lib NgxPipes --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g pipe truncate/Characters --project=ngx-pipes   --dry-run
-ng g pipe truncate/Words --project=ngx-pipes   --dry-run
-
 # generate components for `LoadingOverlay` Module
 ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component LoadingOverlay --project=loading-overlay --flat --dry-run
@@ -333,6 +336,21 @@ ng g component clap --project=clap  -s  -t --spec=false --export --flat --dry-ru
 ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  --dry-run 
 ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  --dry-run 
 ng g component components/fab --project=clap  -s  -t --spec=false --flat  --dry-run 
+
+# generate components for `ngx-utils` Module
+ng g lib ngxUtils  --prefix=ngx --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
+ng g module pipes/truncate --project=ngx-utils --spec=false --dry-run
+ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export --dry-run
+ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export --dry-run
+ng g module pipes/helper --project=ngx-utils --spec=false --dry-run
+ng g pipe pipes/helper/filter --project=ngx-utils --module=helper --export --dry-run
+ng g pipe pipes/helper/groupBy --project=ngx-utils --module=helper --export --dry-run
+ng g pipe pipes/helper/safeHtml --project=ngx-utils --module=helper --export --dry-run
+ng g module directives/ngLet --project=ngx-utils --spec=false --dry-run
+ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export --dry-run
+ng g module directives/routerLinkMatch --project=ngx-utils --spec=false --dry-run
+ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export --dry-run
+
 
 # generate components for `toolbar` Module
 ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest --dry-run 
