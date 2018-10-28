@@ -4,7 +4,7 @@
     "outDir": "../../dist/apps/api",
     "module": "commonjs",
     "target": "es6",
-    "types": []
+    "types": ["node"]
   },
   "exclude": ["**/*.spec.ts"],
   "include": ["**/*.ts"]

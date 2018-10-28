@@ -41,56 +41,56 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ImageComparisonModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
-      { path: '', redirectTo: 'animations', pathMatch: 'full', data: { animation: 'experiments' } },
+      { path: '', redirectTo: 'animations', pathMatch: 'full' },
       {
         path: 'animations',
         component: AnimationsComponent,
-        data: { title: 'Animations', animations: 'animations' },
+        data: { title: 'Animations', depth: 2 },
       },
       {
         path: 'file-upload',
         component: FileUploadComponent,
-        data: { title: 'File Upload', animation: 'file-upload' },
+        data: { title: 'File Upload', depth: 3 },
       },
       {
         path: 'context-menu',
         component: ContextMenuComponent,
-        data: { title: 'Context Menu', animation: 'context-menu' },
+        data: { title: 'Context Menu', depth: 3 },
       },
       {
         path: 'virtual-scroll',
         component: VirtualScrollComponent,
-        data: { title: 'Virtual Scroll', animation: 'virtual-scroll' },
+        data: { title: 'Virtual Scroll', depth: 3 },
       },
       {
         path: 'table',
         component: StickyTableComponent,
-        data: { title: 'Sticky Table', animation: 'sticky-table' },
+        data: { title: 'Sticky Table', depth: 3 },
       },
       {
         path: 'clap',
         component: ClapButtonComponent,
-        data: { title: 'Clap', animation: 'clap' },
+        data: { title: 'Clap', depth: 3 },
       },
       {
         path: 'led',
         component: LedDemoComponent,
-        data: { title: 'Led', animation: 'led' },
+        data: { title: 'Led', depth: 3 },
       },
       {
         path: 'knob',
         component: KnobDemoComponent,
-        data: { title: 'Knob', animation: 'Knob' },
+        data: { title: 'Knob', depth: 3 },
       },
       {
         path: 'image-comp',
         component: ImageCompComponent,
-        data: { title: 'ImageComp', animation: 'imagecomp' },
+        data: { title: 'ImageComp', depth: 3 },
       },
       {
         path: 'layout',
         component: LayoutComponent,
-        data: { title: 'Layout', animation: 'layout' },
+        data: { title: 'Layout', depth: 3 },
       },
     ]),
   ],

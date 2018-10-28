@@ -13,8 +13,9 @@
     <ngx-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></ngx-toolbar>
 
     <perfect-scrollbar>
-        <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)">
-          <router-outlet #dashboardOutlet="outlet"></router-outlet>
+        <div class="route-container" [@routeAnimation]="depth$ | async">
+          <!--<ngx-breadcrumbs title="Dashboard" [crumbs]="crumbs$ | async"></ngx-breadcrumbs>-->
+          <router-outlet></router-outlet>
           <ngx-chat-box></ngx-chat-box>
         </div>
     </perfect-scrollbar>
