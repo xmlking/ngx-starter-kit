@@ -30,7 +30,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content injectable">
+               <div class="content interface">
                    <div class="content-data">
 
 
@@ -39,9 +39,14 @@
 
 
 
+
+
+
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>BreadcrumbsService</li>
+  <li>Interfaces</li>
+  <li>MatchExp</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -59,54 +64,122 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/breadcrumbs/src/lib/breadcrumbs.service.ts</code>
+            <code>libs/ngx-utils/src/lib/directives/router-link-match/router-link-match.directive.ts</code>
         </p>
 
 
 
 
+
             <section>
-    <h3 id="constructor">Constructor</h3>
+    <h3 id="inputs">Indexable</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor()</code>
+                        <code>[classes: string]:    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">libs/breadcrumbs/src/lib/breadcrumbs.service.ts:6</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">libs/ngx-utils/src/lib/directives/router-link-match/router-link-match.directive.ts:8</a></div>
                             </td>
                         </tr>
-
             </tbody>
         </table>
 </section>
-
-
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, ElementRef, Input, OnChanges, OnDestroy, Renderer2, SimpleChanges } from &#x27;@angular/core&#x27;;
+import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
+import { combineLatest, Subject } from &#x27;rxjs&#x27;;
+import { filter, map } from &#x27;rxjs/operators&#x27;;
 
-@Injectable({
-  providedIn: &#x27;root&#x27;,
+import { untilDestroy } from &#x27;../../operators&#x27;;
+
+export interface MatchExp {
+  [classes: string]: string;
+}
+
+@Directive({
+  selector: &#x27;[routerLinkMatch]&#x27;,
 })
-export class BreadcrumbsService {
-  constructor() {}
+export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
+  private _curRoute: string;
+  private _matchExp: MatchExp;
+  private _onChangesHook &#x3D; new Subject&lt;MatchExp&gt;();
+
+  @Input(&#x27;routerLinkMatch&#x27;)
+  set routerLinkMatch(v: MatchExp) {
+    if (v &amp;&amp; typeof v &#x3D;&#x3D;&#x3D; &#x27;object&#x27;) {
+      this._matchExp &#x3D; v;
+    } else {
+      throw new TypeError(
+        &#x60;Unexpected type &#x27;${typeof v}&#x27; of value for &#x60; + &#x60;input of routerLinkMatch directive, expected &#x27;object&#x27;&#x60;,
+      );
+    }
+  }
+
+  constructor(router: Router, private _renderer: Renderer2, private _ngEl: ElementRef) {
+    combineLatest(router.events, this._onChangesHook)
+      .pipe(
+        map(([e]) &#x3D;&gt; e),
+        filter(e &#x3D;&gt; e instanceof NavigationEnd),
+        untilDestroy(this),
+      )
+      .subscribe(e &#x3D;&gt; {
+        this._curRoute &#x3D; (e as NavigationEnd).urlAfterRedirects;
+
+        this._updateClass(this._matchExp);
+      });
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes[&#x27;routerLinkMatch&#x27;]) {
+      this._onChangesHook.next(changes[&#x27;routerLinkMatch&#x27;].currentValue);
+    }
+  }
+
+  private _updateClass(v: MatchExp): void {
+    Object.keys(v).forEach(cls &#x3D;&gt; {
+      if (v[cls] &amp;&amp; typeof v[cls] &#x3D;&#x3D;&#x3D; &#x27;string&#x27;) {
+        const regexp &#x3D; new RegExp(v[cls]);
+        if (this._curRoute.match(regexp)) {
+          this._toggleClass(cls, true);
+        } else {
+          this._toggleClass(cls, false);
+        }
+      } else {
+        throw new TypeError(
+          &#x60;Could not convert match value to Regular Expression. &#x60; +
+            &#x60;Unexpected type &#x27;${typeof v[cls]}&#x27; for value of key &#x27;${cls}&#x27; &#x60; +
+            &#x60;in routerLinkMatch directive match expression, expected &#x27;non-empty string&#x27;&#x60;,
+        );
+      }
+    });
+  }
+
+  private _toggleClass(classes: string, enabled: boolean): void {
+    classes &#x3D; classes.trim();
+
+    classes.split(/\s+/g).forEach(cls &#x3D;&gt; {
+      if (enabled) {
+        this._renderer.addClass(this._ngEl.nativeElement, cls);
+      } else {
+        this._renderer.removeClass(this._ngEl.nativeElement, cls);
+      }
+    });
+  }
+
+  ngOnDestroy() {}
 }
 </code></pre>
     </div>
-
 </div>
-
-
-
-
-
 
 
 
@@ -129,8 +202,8 @@ export class BreadcrumbsService {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
-            var COMPODOC_CURRENT_PAGE_URL = 'BreadcrumbsService.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'interface';
+            var COMPODOC_CURRENT_PAGE_URL = 'MatchExp.html';
        </script>
 
        <script src="../js/libs/custom-elements.min.js"></script>

@@ -88,21 +88,6 @@
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Properties</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                    <span class="modifier">Private</span>
-                                <a href="#_destroy$">_destroy$</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -180,7 +165,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -331,7 +316,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -367,13 +352,15 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:55</a></div>
                             </td>
                         </tr>
 
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Must have </p>
+</div>
 
                             <div class="io-description">
                                 <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -385,47 +372,6 @@
         </table>
 </section>
 
-            <section>
-    
-        <h3 id="inputs">
-            Properties
-        </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="_destroy$"></a>
-                        <span class="name">
-                            <b>
-                                <span class="modifier">Private</span>
-                            _destroy$
-                            </b>
-                            <a href="#_destroy$"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <span class="modifier-icon icon ion-ios-reset"></span><code>_destroy$:     <code><a href="../classes/Subject.html" target="_self" >Subject&lt;void&gt;</a></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="../classes/Subject.html" target="_self" >Subject&lt;void&gt;</a></code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/context-menu/src/lib/context-menu-trigger.directive.ts:25</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-</section>
 
 
     </div>
@@ -445,7 +391,7 @@
 import { Overlay } from &#x27;@angular/cdk/overlay&#x27;;
 import { TemplatePortal } from &#x27;@angular/cdk/portal&#x27;;
 import { Subject, fromEvent } from &#x27;rxjs&#x27;;
-import { takeUntil } from &#x27;rxjs/operators&#x27;;
+import { untilDestroy } from &#x27;@ngx-starter-kit/ngx-utils&#x27;;
 
 @Directive({
   selector: &#x27;[contextMenu]&#x27;,
@@ -456,16 +402,7 @@ export class ContextMenuTriggerDirective implements OnDestroy {
   @Input()
   contextMenu: TemplateRef&lt;any&gt;;
 
-  private _destroy$: Subject&lt;void&gt;;
-
   constructor(private _overlay: Overlay, private _elementRef: ElementRef, private _vcr: ViewContainerRef) {}
-
-  ngOnDestroy() {
-    if (this._destroy$) {
-      this._destroy$.next();
-      this._destroy$.complete();
-    }
-  }
 
   @HostListener(&#x27;contextmenu&#x27;, [&#x27;$event&#x27;])
   onContextMenu(event: MouseEvent) {
@@ -488,12 +425,14 @@ export class ContextMenuTriggerDirective implements OnDestroy {
     const templatePortal &#x3D; new TemplatePortal(this.contextMenu, this._vcr);
     overlayRef.attach(templatePortal);
 
-    this._destroy$ &#x3D; new Subject();
-
     fromEvent(document, &#x27;click&#x27;)
-      .pipe(takeUntil(this._destroy$))
+      /** Automatically unsubscribe on destroy */
+      .pipe(untilDestroy(this))
       .subscribe(() &#x3D;&gt; overlayRef.detach());
   }
+
+  /** Must have */
+  ngOnDestroy() {}
 }
 </code></pre>
     </div>

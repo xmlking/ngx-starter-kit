@@ -133,6 +133,12 @@
                                 <a href="#_routerEventsSubscription">_routerEventsSubscription</a>
                             </li>
                             <li>
+                                <a href="#crumbs$">crumbs$</a>
+                            </li>
+                            <li>
+                                <a href="#depth$">depth$</a>
+                            </li>
+                            <li>
                                 <a href="#isMobile">isMobile</a>
                             </li>
                             <li>
@@ -160,7 +166,7 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#getRouteAnimation">getRouteAnimation</a>
+                                <a href="#getRouteDepth">getRouteDepth</a>
                             </li>
                             <li>
                                 <a href="#ngOnDestroy">ngOnDestroy</a>
@@ -186,12 +192,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, store: <a href="../classes/Store.html">Store</a>, actions$: Actions, media: ObservableMedia, oauthService: <a href="../injectables/AuthService.html">OAuthService</a>, pageTitleService: <a href="../injectables/PageTitleService.html">PageTitleService</a>)</code>
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, store: <a href="../classes/Store.html">Store</a>, actions$: Actions, media: ObservableMedia, oauthService: <a href="../injectables/AuthService.html">OAuthService</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:29</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -268,18 +274,6 @@
                                                     </td>
                                                     
                                                 </tr>
-                                                <tr>
-                                                        <td>pageTitleService</td>
-                                                  
-                                                        <td>
-                                                                    <code><a href="../injectables/PageTitleService.html" target="_self" >PageTitleService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
                                         </tbody>
                                     </table>
                             </div>
@@ -302,25 +296,25 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="getRouteAnimation"></a>
+                        <a name="getRouteDepth"></a>
                         <span class="name">
                             <b>
-                            getRouteAnimation
+                            getRouteDepth
                             </b>
-                            <a href="#getRouteAnimation"><span class="icon ion-ios-link"></span></a>
+                            <a href="#getRouteDepth"><span class="icon ion-ios-link"></span></a>
                         </span>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>getRouteAnimation(outlet: )</code>
+<code>getRouteDepth(outlet: )</code>
                     </td>
                 </tr>
 
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="77" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:77</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:84</a></div>
                             </td>
                         </tr>
 
@@ -385,7 +379,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="72" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:72</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:79</a></div>
                             </td>
                         </tr>
 
@@ -423,7 +417,7 @@
 
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:40</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:43</a></div>
                             </td>
                         </tr>
 
@@ -474,7 +468,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:23</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:25</a></div>
                             </td>
                         </tr>
 
@@ -509,7 +503,63 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="crumbs$"></a>
+                        <span class="name">
+                            <b>
+                            crumbs$
+                            </b>
+                            <a href="#crumbs$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>crumbs$:     <code></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="depth$"></a>
+                        <span class="name">
+                            <b>
+                            depth$
+                            </b>
+                            <a href="#depth$"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>depth$:     <code></code>
+</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -542,7 +592,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:31</a></div>
                             </td>
                         </tr>
 
@@ -575,7 +625,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:26</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:28</a></div>
                             </td>
                         </tr>
 
@@ -608,7 +658,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:21</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:23</a></div>
                             </td>
                         </tr>
 
@@ -647,7 +697,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:30</a></div>
                             </td>
                         </tr>
 
@@ -680,7 +730,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:27</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">libs/dashboard/src/lib/containers/dashboard-layout/dashboard-layout.component.ts:29</a></div>
                             </td>
                         </tr>
 
@@ -697,18 +747,20 @@
 import { Subscription } from &#x27;rxjs&#x27;;
 import { MediaChange, ObservableMedia } from &#x27;@angular/flex-layout&#x27;;
 import { NavigationEnd, Router } from &#x27;@angular/router&#x27;;
-import { routeAnimation } from &#x27;@ngx-starter-kit/animations&#x27;;
+import { routeAnimation, hierarchicalRouteAnimation } from &#x27;@ngx-starter-kit/animations&#x27;;
 import { Actions, Store } from &#x27;@ngxs/store&#x27;;
 import { ConnectWebSocket, DisconnectWebSocket } from &#x27;@ngx-starter-kit/socketio-plugin&#x27;;
 import { OAuthService } from &#x27;angular-oauth2-oidc&#x27;;
 import { environment } from &#x27;@env/environment&#x27;;
-import { PageTitleService } from &#x27;@ngx-starter-kit/core&#x27;;
+import { RouterState } from &#x27;@ngxs/router-plugin&#x27;;
+import { map } from &#x27;rxjs/operators&#x27;;
 
 @Component({
   selector: &#x27;ngx-dashboard-layout&#x27;,
   templateUrl: &#x27;./dashboard-layout.component.html&#x27;,
   styleUrls: [&#x27;./dashboard-layout.component.scss&#x27;],
   animations: [routeAnimation],
+  // animations: [hierarchicalRouteAnimation],
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
@@ -722,6 +774,8 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
   sidenavOpen &#x3D; true;
   sidenavMode &#x3D; &#x27;side&#x27;;
   isMobile &#x3D; false;
+  crumbs$;
+  depth$;
 
   constructor(
     private router: Router,
@@ -729,11 +783,14 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private actions$: Actions,
     private media: ObservableMedia,
     private oauthService: OAuthService,
-    private pageTitleService: PageTitleService,
   ) {}
 
   ngOnInit() {
-    this.pageTitleService.title &#x3D; &#x27;Dashboard&#x27;;
+    this.crumbs$ &#x3D; this.store
+      .select&lt;any&gt;(RouterState.state)
+      .pipe(map(state &#x3D;&gt; Array.from(state.breadcrumbs, ([key, value]) &#x3D;&gt; ({ name: key, link: &#x27;/&#x27; + value }))));
+
+    this.depth$ &#x3D; this.store.select&lt;any&gt;(RouterState.state).pipe(map(state &#x3D;&gt; state.data.depth));
 
     this._mediaSubscription &#x3D; this.media.subscribe((change: MediaChange) &#x3D;&gt; {
       const isMobile &#x3D; change.mqAlias &#x3D;&#x3D;&#x3D; &#x27;xs&#x27; || change.mqAlias &#x3D;&#x3D;&#x3D; &#x27;sm&#x27;;
@@ -769,8 +826,8 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     this.store.dispatch(new DisconnectWebSocket());
   }
 
-  getRouteAnimation(outlet) {
-    return outlet.activatedRouteData[&#x27;animation&#x27;] || &#x27;one&#x27;;
+  getRouteDepth(outlet) {
+    return outlet.activatedRouteData[&#x27;depth&#x27;] || 1;
     // return outlet.isActivated ? outlet.activatedRoute : &#x27;&#x27;
   }
 }
@@ -793,8 +850,9 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     &lt;ngx-toolbar [quickpanel]&#x3D;&quot;quickpanel&quot; [sidenav]&#x3D;&quot;sidenav&quot;&gt;&lt;/ngx-toolbar&gt;
 
     &lt;perfect-scrollbar&gt;
-        &lt;div class&#x3D;&quot;main-container&quot; [@routeAnimation]&#x3D;&quot;getRouteAnimation(dashboardOutlet)&quot;&gt;
-          &lt;router-outlet #dashboardOutlet&#x3D;&quot;outlet&quot;&gt;&lt;/router-outlet&gt;
+        &lt;div class&#x3D;&quot;route-container&quot; [@routeAnimation]&#x3D;&quot;depth$ | async&quot;&gt;
+          &lt;!--&lt;ngx-breadcrumbs title&#x3D;&quot;Dashboard&quot; [crumbs]&#x3D;&quot;crumbs$ | async&quot;&gt;&lt;/ngx-breadcrumbs&gt;--&gt;
+          &lt;router-outlet&gt;&lt;/router-outlet&gt;
           &lt;ngx-chat-box&gt;&lt;/ngx-chat-box&gt;
         &lt;/div&gt;
     &lt;/perfect-scrollbar&gt;
@@ -830,14 +888,14 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><!--<ngx-rainbow></ngx-rainbow>--><mat-sidenav-container class="dashboard-container">  <mat-sidenav class="quickpanel" [opened]="quickpanelOpen" position="end" align="end" mode="over" #quickpanel>    <ngx-quickpanel></ngx-quickpanel>  </mat-sidenav>  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" role="navigation" [mode]="sidenavMode" ngxIconSidenav #sidenav>    <ngx-sidenav></ngx-sidenav>  </mat-sidenav>  <mat-sidenav-content class="content-container" fxLayout="column">    <ngx-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></ngx-toolbar>    <perfect-scrollbar>        <div class="main-container" [@routeAnimation]="getRouteAnimation(dashboardOutlet)">          <router-outlet #dashboardOutlet="outlet"></router-outlet>          <ngx-chat-box></ngx-chat-box>        </div>    </perfect-scrollbar>  </mat-sidenav-content></mat-sidenav-container></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+        var COMPONENT_TEMPLATE = '<div><!--<ngx-rainbow></ngx-rainbow>--><mat-sidenav-container class="dashboard-container">  <mat-sidenav class="quickpanel" [opened]="quickpanelOpen" position="end" align="end" mode="over" #quickpanel>    <ngx-quickpanel></ngx-quickpanel>  </mat-sidenav>  <mat-sidenav class="sidenav" [opened]="sidenavOpen" align="start" role="navigation" [mode]="sidenavMode" ngxIconSidenav #sidenav>    <ngx-sidenav></ngx-sidenav>  </mat-sidenav>  <mat-sidenav-content class="content-container" fxLayout="column">    <ngx-toolbar [quickpanel]="quickpanel" [sidenav]="sidenav"></ngx-toolbar>    <perfect-scrollbar>        <div class="route-container" [@routeAnimation]="depth$ | async">          <!--<ngx-breadcrumbs title="Dashboard" [crumbs]="crumbs$ | async"></ngx-breadcrumbs>-->          <router-outlet></router-outlet>          <ngx-chat-box></ngx-chat-box>        </div>    </perfect-scrollbar>  </mat-sidenav-content></mat-sidenav-container></div>'
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
   [ngxAspectRatio.lt-sm], [ngxAspectRatio.lt-md], [ngxAspectRatio.lt-lg], [ngxAspectRatio.lt-xl],
   [ngxAspectRatio.gt-xs], [ngxAspectRatio.gt-sm], [ngxAspectRatio.gt-md], [ngxAspectRatio.gt-lg],
-  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
+  '},{'name': 'CardActions', 'selector': 'ngx-card-actions'},{'name': 'CardHeaderActions', 'selector': 'ngx-card-header-actions'},{'name': 'CardHeaderSubTitle', 'selector': 'ngx-card-header-sub-title'},{'name': 'CardHeaderTitle', 'selector': 'ngx-card-header-title'},{'name': 'ChartWidgetHeaderActions', 'selector': 'ngx-chart-widget-header-actions'},{'name': 'ChartWidgetHeaderSubTitle', 'selector': 'ngx-chart-widget-header-sub-title'},{'name': 'ChartWidgetHeaderTitle', 'selector': 'ngx-chart-widget-header-title'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ClickOutsideDirective', 'selector': '[ngxClickOutside]'},{'name': 'ContextMenuTriggerDirective', 'selector': '[contextMenu]'},{'name': 'DraggableDirective', 'selector': '[draggable]'},{'name': 'HammertimeDirective', 'selector': '[hammertime]'},{'name': 'IconSidenavDirective', 'selector': '[ngxIconSidenav]'},{'name': 'MinValidatorDirective', 'selector': '[appMin],[formControlName],[formControl],[ngModel]'},{'name': 'NgLetDirective', 'selector': '[ngLet]'},{'name': 'PageDirective', 'selector': '[ngxPage]'},{'name': 'PagePaddingDirective', 'selector': '[ngxPagePadding]'},{'name': 'RouterLinkMatchDirective', 'selector': '[routerLinkMatch]'},{'name': 'ScrollbarDirective', 'selector': '[ngxScrollbar]'},{'name': 'StickyHeaderDirective', 'selector': '[stickyHeader]'}];
     var ACTUAL_COMPONENT = {'name': 'DashboardLayoutComponent'};
 </script>
 <script src="../js/tree.js"></script>

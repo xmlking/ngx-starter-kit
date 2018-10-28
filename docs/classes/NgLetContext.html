@@ -63,7 +63,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/shared/src/lib/directives/ng-let.directive.ts</code>
+            <code>libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts</code>
         </p>
 
 
@@ -139,7 +139,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:4</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:4</a></div>
                             </td>
                         </tr>
 
@@ -178,7 +178,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:5</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:5</a></div>
                             </td>
                         </tr>
 
@@ -197,7 +197,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, Directive, Input, TemplateRef, ViewContainerRef } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, Directive, Input, TemplateRef, ViewContainerRef, OnInit } from &#x27;@angular/core&#x27;;
 
 export class NgLetContext {
   $implicit: any &#x3D; null;
@@ -207,7 +207,7 @@ export class NgLetContext {
 @Directive({
   selector: &#x27;[ngLet]&#x27;,
 })
-export class NgLetDirective {
+export class NgLetDirective implements OnInit {
   private _context &#x3D; new NgLetContext();
 
   @Input()
@@ -215,8 +215,10 @@ export class NgLetDirective {
     this._context.$implicit &#x3D; this._context.ngLet &#x3D; value;
   }
 
-  constructor(_vcr: ViewContainerRef, _templateRef: TemplateRef&lt;NgLetContext&gt;) {
-    _vcr.createEmbeddedView(_templateRef, this._context);
+  constructor(private _vcr: ViewContainerRef, private _templateRef: TemplateRef&lt;NgLetContext&gt;) {}
+
+  ngOnInit() {
+    this._vcr.createEmbeddedView(this._templateRef, this._context);
   }
 }
 </code></pre>

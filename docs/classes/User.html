@@ -167,7 +167,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">apps/api/src/auth/user.entity.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">apps/api/src/auth/user.entity.ts:45</a></div>
                             </td>
                         </tr>
 
@@ -206,7 +206,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">apps/api/src/auth/user.entity.ts:24</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">apps/api/src/auth/user.entity.ts:33</a></div>
                             </td>
                         </tr>
 
@@ -245,7 +245,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">apps/api/src/auth/user.entity.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">apps/api/src/auth/user.entity.ts:19</a></div>
                             </td>
                         </tr>
 
@@ -284,7 +284,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">apps/api/src/auth/user.entity.ts:20</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">apps/api/src/auth/user.entity.ts:26</a></div>
                             </td>
                         </tr>
 
@@ -324,7 +324,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">apps/api/src/auth/user.entity.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">apps/api/src/auth/user.entity.ts:48</a></div>
                             </td>
                         </tr>
 
@@ -363,7 +363,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">apps/api/src/auth/user.entity.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">apps/api/src/auth/user.entity.ts:42</a></div>
                             </td>
                         </tr>
 
@@ -403,7 +403,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">apps/api/src/auth/user.entity.ts:37</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">apps/api/src/auth/user.entity.ts:51</a></div>
                             </td>
                         </tr>
 
@@ -481,20 +481,34 @@ export enum AccountSourceType {
 @Entity(&#x27;user&#x27;)
 export class User extends Base {
   @ApiModelProperty({ type: String })
-  @IsString() @IsNotEmpty()
-  @Index() @Column() firstName: string;
+  @IsString()
+  @IsNotEmpty()
+  @Index()
+  @Column()
+  firstName: string;
 
   @ApiModelProperty({ type: String })
-  @IsString() @IsNotEmpty()
-  @Index() @Column() lastName: string;
+  @IsString()
+  @IsNotEmpty()
+  @Index()
+  @Column()
+  lastName: string;
 
   @ApiModelProperty({ type: String, minLength: 10, maxLength: 100 })
-  @IsEmail() @IsNotEmpty()
-  @Index() @Column() email: string;
+  @IsEmail()
+  @IsNotEmpty()
+  @Index()
+  @Column()
+  email: string;
 
   @ApiModelProperty({ type: String, minLength: 8, maxLength: 20 })
-  @IsAscii() @IsNotEmpty() @MinLength(8) @MaxLength(20)
-  @Index({ unique: true }) @Column() userId: string;
+  @IsAscii()
+  @IsNotEmpty()
+  @MinLength(8)
+  @MaxLength(20)
+  @Index({ unique: true })
+  @Column()
+  userId: string;
 
   @CreateDateColumn()
   createdAt?: Date;

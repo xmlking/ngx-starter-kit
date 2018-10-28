@@ -311,7 +311,7 @@ export class SpeechToTextService {
 
         this.speechRecognition.onnomatch &#x3D; (err: any): void &#x3D;&gt; {
           console.log(&#x27;No Match&#x27;);
-          reject(&#x27;I didn\&#x27;t recognise your question.&#x27;);
+          reject(&quot;I didn&#x27;t recognise your question.&quot;);
         };
 
         this.speechRecognition.onerror &#x3D; (err: any): void &#x3D;&gt; {

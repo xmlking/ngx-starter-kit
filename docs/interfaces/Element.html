@@ -515,6 +515,7 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { AfterViewInit, Component, ViewChild } from &#x27;@angular/core&#x27;;
 import { MatPaginator, MatTableDataSource } from &#x27;@angular/material&#x27;;
+import { Crumb } from &#x27;@ngx-starter-kit/breadcrumbs&#x27;;
 
 /* tslint:disable:max-line-length */
 const ELEMENT_DATA: Element[] &#x3D; [
@@ -781,6 +782,12 @@ const ELEMENT_DATA: Element[] &#x3D; [
   styleUrls: [&#x27;./sticky-table.component.scss&#x27;],
 })
 export class StickyTableComponent implements AfterViewInit {
+  crumbs: ReadonlyArray&lt;Crumb&gt; &#x3D; [
+    { name: &#x27;Dashboard&#x27;, link: &#x27;/dashboard&#x27; },
+    { name: &#x27;Experiments&#x27;, link: &#x27;/dashboard/experiments&#x27; },
+    { name: &#x27;Sticky Table&#x27; },
+  ];
+
   displayedColumns &#x3D; [
     &#x27;position&#x27;,
     &#x27;name&#x27;,

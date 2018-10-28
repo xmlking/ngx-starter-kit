@@ -58,10 +58,16 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>libs/shared/src/lib/directives/ng-let.directive.ts</code>
+            <code>libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts</code>
         </p>
 
 
+            <p class="comment">
+                <h3>Implements</h3>
+            </p>
+            <p class="comment">
+                        <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+            </p>
 
 
         <section>
@@ -98,6 +104,20 @@
                     </td>
                 </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
 
                 <tr>
                     <td class="col-md-4">
@@ -146,7 +166,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:17</a></div>
                             </td>
                         </tr>
 
@@ -214,7 +234,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:15</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -223,6 +243,50 @@
 
 
 
+            <section>
+    
+        <h3 id="methods">
+            Methods
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="ngOnInit"></a>
+                        <span class="name">
+                            <b>
+                            ngOnInit
+                            </b>
+                            <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+<code>ngOnInit()</code>
+                    </td>
+                </tr>
+
+
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
 
             <section>
     
@@ -256,7 +320,7 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:12</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -286,7 +350,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/shared/src/lib/directives/ng-let.directive.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">libs/ngx-utils/src/lib/directives/ng-let/ng-let.directive.ts:15</a></div>
                                 </td>
                             </tr>
                     <tr>
@@ -334,7 +398,7 @@
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, Directive, Input, TemplateRef, ViewContainerRef } from &#x27;@angular/core&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { NgModule, Directive, Input, TemplateRef, ViewContainerRef, OnInit } from &#x27;@angular/core&#x27;;
 
 export class NgLetContext {
   $implicit: any &#x3D; null;
@@ -344,7 +408,7 @@ export class NgLetContext {
 @Directive({
   selector: &#x27;[ngLet]&#x27;,
 })
-export class NgLetDirective {
+export class NgLetDirective implements OnInit {
   private _context &#x3D; new NgLetContext();
 
   @Input()
@@ -352,8 +416,10 @@ export class NgLetDirective {
     this._context.$implicit &#x3D; this._context.ngLet &#x3D; value;
   }
 
-  constructor(_vcr: ViewContainerRef, _templateRef: TemplateRef&lt;NgLetContext&gt;) {
-    _vcr.createEmbeddedView(_templateRef, this._context);
+  constructor(private _vcr: ViewContainerRef, private _templateRef: TemplateRef&lt;NgLetContext&gt;) {}
+
+  ngOnInit() {
+    this._vcr.createEmbeddedView(this._templateRef, this._context);
   }
 }
 </code></pre>
