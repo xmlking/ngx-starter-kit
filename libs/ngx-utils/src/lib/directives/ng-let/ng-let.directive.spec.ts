@@ -8,10 +8,11 @@ import { NgLetModule } from './ng-let.module';
 
 @Component({
   template: '',
-  selector: 'sand-test'
+  selector: 'sand-test',
 })
 class TestComponent {
-  @ViewChild(NgLetDirective) ngLetDirective: NgLetDirective;
+  @ViewChild(NgLetDirective)
+  ngLetDirective: NgLetDirective;
   test$: Observable<number>;
   test = 10;
   nestedTest = 20;
@@ -21,7 +22,7 @@ class TestComponent {
 @NgModule({
   declarations: [TestComponent],
   imports: [NgLetModule, CommonModule],
-  exports: [NgLetModule, TestComponent]
+  exports: [NgLetModule, TestComponent],
 })
 class TestModule {}
 
@@ -33,11 +34,12 @@ describe('ngLet directive', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [TestModule]
+      imports: [TestModule],
     });
   });
 
   afterEach(() => {
+    // tslint:disable-next-line
     fixture = null!;
   });
 
@@ -63,8 +65,7 @@ describe('ngLet directive', () => {
   }));
 
   it('should handle nested ngLet correctly', async(() => {
-    const template =
-      '<div *ngLet="test as i"><span *ngLet="nestedTest as k">hello{{ i + k }}</span></div>';
+    const template = '<div *ngLet="test as i"><span *ngLet="nestedTest as k">hello{{ i + k }}</span></div>';
 
     fixture = createTestComponent(template);
 
@@ -113,7 +114,5 @@ describe('ngLet directive', () => {
 });
 
 function createTestComponent(template: string): ComponentFixture<TestComponent> {
-  return TestBed.overrideComponent(TestComponent, { set: { template } }).createComponent(
-    TestComponent
-  );
+  return TestBed.overrideComponent(TestComponent, { set: { template } }).createComponent(TestComponent);
 }
