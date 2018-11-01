@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -50,6 +47,9 @@
         </li>
         <li >
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -96,7 +96,7 @@
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>json-diff-tree.component.scss</code></td>
+                <td class="col-md-9"><code>./json-diff-tree.component.scss</code></td>
             </tr>
 
 
@@ -105,6 +105,12 @@
                 <td class="col-md-3">templateUrl</td>
                 <td class="col-md-9"><code>./json-diff-tree.component.html</code></td>
             </tr>
+
+
+
+
+
+
 
 
         </tbody>
@@ -295,7 +301,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>bubleup(event: )</code>
+<code>bubleup(event)</code>
                     </td>
                 </tr>
 
@@ -360,7 +366,7 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>mouseOvered(flag: , i: )</code>
+<code>mouseOvered(flag, i)</code>
                     </td>
                 </tr>
 
@@ -585,6 +591,367 @@ export class JsonDiffTreeComponent implements OnInit {
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./json-diff-tree.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 100%;
+}
+:host.root {
+  float: left;
+  width: 50%;
+}
+:host.child-node {
+  float: left;
+}
+ul {
+  box-sizing: border-box;
+  list-style: none;
+  padding: 0;
+  width: 100%;
+
+  li {
+    .hover {
+      background-color: #ddd;
+    }
+  }
+
+  &amp;.undefined {
+    li {
+      &amp;:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  &amp;.left-side {
+    border-right: 1px solid #444;
+    display: inline-block;
+    margin: 0;
+
+    li {
+      position: relative;
+      display: table;
+      width: 100%;
+
+      &amp;.added {
+        .name,
+        .value {
+          opacity: 0.2;
+          font-style: italic;
+        }
+        .upper {
+          border: 1px solid #4a4;
+          border-top-width: 0;
+          border-left-width: 0;
+          border-radius: 0 0 100% 0;
+          box-sizing: border-box;
+          height: 50%;
+          position: absolute;
+          pointer-events: none;
+          width: 50%;
+          top: 0;
+          right: 0;
+        }
+        .lower {
+          border: 1px solid #4a4;
+          border-bottom-width: 0;
+          border-left-width: 0;
+          border-radius: 0 100% 0 0;
+          box-sizing: border-box;
+          height: 50%;
+          position: absolute;
+          pointer-events: none;
+          width: 50%;
+          bottom: 0;
+          right: 0;
+        }
+      }
+      &amp;.removed {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          width: 66px;
+          top: 0;
+          right: 0;
+          pointer-events: none;
+
+          &amp;:after {
+            content: &#x27; - &#x27;;
+            color: #f00;
+            float: right;
+            padding-right: 10px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .lower {
+          display: none;
+        }
+        .tree-node {
+          span {
+            color: #f00;
+          }
+        }
+      }
+      &amp;.type-changed {
+        .tree-node {
+          span {
+            color: #f00;
+          }
+        }
+      }
+      &amp;.name-changed {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          width: 66px;
+          top: 0;
+          right: 0;
+          pointer-events: none;
+
+          &amp;:after {
+            content: &#x27; ~ &#x27;;
+            color: #00f;
+            font-weight: bold;
+            float: right;
+            padding-right: 10px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .tree-node {
+          .name {
+            color: #00f;
+          }
+        }
+      }
+      &amp;.value-changed {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          pointer-events: none;
+          width: 66px;
+          top: 0;
+          right: 0;
+
+          &amp;:after {
+            content: &#x27; ~ &#x27;;
+            color: #00f;
+            font-weight: bold;
+            float: right;
+            padding-right: 10px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .tree-node {
+          .value {
+            color: #00f;
+          }
+        }
+      }
+    }
+  }
+  &amp;.right-side {
+    border-left: 1px solid #444;
+    display: inline-block;
+    margin: 0;
+
+    li {
+      position: relative;
+      display: table;
+      width: 100%;
+
+      &amp;.added {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          pointer-events: none;
+          width: 90%;
+          top: 0;
+          left: 0;
+
+          &amp;:after {
+            content: &#x27;+&#x27;;
+            color: #4a4;
+            font-weight: bold;
+            padding-left: 5px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .lower {
+          display: none;
+        }
+        .tree-node {
+          span {
+            color: #4a4;
+          }
+        }
+      }
+      &amp;.removed {
+        .name,
+        .value {
+          text-decoration-line: line-through;
+          text-decoration-color: #ff0600;
+        }
+        .upper {
+          border: 1px solid #f00;
+          border-top-width: 0;
+          border-right-width: 0;
+          border-radius: 0 0 0 100%;
+          box-sizing: border-box;
+          height: 50%;
+          width: 10%;
+          position: absolute;
+          pointer-events: none;
+          top: 0;
+        }
+        .lower {
+          border: 1px solid #f00;
+          border-bottom-width: 0;
+          border-right-width: 0;
+          border-radius: 100% 0 0 0;
+          box-sizing: border-box;
+          height: 50%;
+          width: 10%;
+          position: absolute;
+          pointer-events: none;
+          bottom: 0;
+        }
+      }
+      &amp;.type-changed {
+        .tree-node {
+          span {
+            color: #f00;
+          }
+        }
+      }
+      &amp;.name-changed {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          pointer-events: none;
+          top: 0;
+          left: 0;
+
+          &amp;:before {
+            content: &#x27; ~ &#x27;;
+            color: #00f;
+            font-weight: bold;
+            float: right;
+            padding-left: 5px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .tree-node {
+          .name {
+            color: #00f;
+          }
+        }
+      }
+      &amp;.value-changed {
+        .upper {
+          box-sizing: border-box;
+          height: 100%;
+          position: absolute;
+          pointer-events: none;
+          top: 0;
+          left: 0;
+
+          &amp;:before {
+            content: &#x27; ~ &#x27;;
+            color: #00f;
+            font-weight: bold;
+            float: right;
+            padding-left: 5px;
+            font-size: 20px;
+            line-height: 16px;
+          }
+        }
+        .tree-node {
+          .value {
+            color: #00f;
+          }
+        }
+      }
+    }
+  }
+
+  .tree-node {
+    box-sizing: border-box;
+    color: #7c9eb2;
+    display: table;
+    padding: 0;
+    position: relative;
+    margin: 0;
+    width: 100%;
+
+    &amp;.depth-0 {
+      padding-left: 5px;
+    }
+    &amp;.depth-1 {
+      padding-left: 20px;
+    }
+    &amp;.depth-2 {
+      padding-left: 40px;
+    }
+    &amp;.depth-3 {
+      padding-left: 60px;
+    }
+    &amp;.depth-4 {
+      padding-left: 80px;
+    }
+    &amp;.depth-5 {
+      padding-left: 100px;
+    }
+    &amp;.depth-6 {
+      padding-left: 120px;
+    }
+    &amp;.depth-7 {
+      padding-left: 140px;
+    }
+    &amp;.depth-8 {
+      padding-left: 160px;
+    }
+    &amp;.depth-9 {
+      padding-left: 180px;
+    }
+    &amp;.depth-10 {
+      padding-left: 200px;
+    }
+
+    .name {
+      color: #444;
+      font-weight: bold;
+
+      &amp;:after {
+        content: &#x27;:&#x27;;
+      }
+    }
+    .value {
+      &amp;.string:before {
+        content: &#x27;&quot;&#x27;;
+      }
+      &amp;.string:after {
+        content: &#x27;&quot;&#x27;;
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
@@ -611,7 +978,7 @@ export class JsonDiffTreeComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ul [class]="side">  <li  *ngFor="let child of children"    (mouseout)="mouseOvered(false, child.index)"    (mouseover)="mouseOvered(true, child.index)"    [class.hover]="child.hover"    [class.added]="child.status === 5"    [class.removed]="child.status === 6"    [class.type-changed]="child.status === 2"    [class.name-changed]="child.status === 3"    [class.value-changed]="child.status === 4">    <div class=\'tree-node\'        [ngClass]="\'depth-\' + depth"        [id] = "child.id">      <span *ngIf=\'child.name && child.name!=null\'        class=\'name\'        [innerHTML]="child.name.length ? child.name : \'&nbsp;\'">      </span>      <span *ngIf=\'child.value && child.value!=null\'        class=\'value\'        [class.string]="depth > 0 && child.value && child.value.length"        [innerHTML]="child.value ? child.value : \'&nbsp;\'">      </span>    </div>    <ngx-json-diff-tree *ngIf="child.children.length"        [level]="depth+1"        (onhover)="bubleup($event)"        [class.child-node]="child.parent != 4"        [children]=\'child.children\'></ngx-json-diff-tree>    <div class="upper" *ngIf="child.status > 2"></div>    <div class="lower" *ngIf="child.status > 2"></div>  </li></ul></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
@@ -657,7 +1024,9 @@ export class JsonDiffTreeComponent implements OnInit {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -51,33 +48,33 @@
     </ol>
     <ul class="dependencies-list">
         <li>
-            <b>@angular/animations</b> : ^7.0.1</li>
+            <b>@angular/animations</b> : ^7.0.2</li>
         <li>
             <b>@angular/cdk</b> : ^7.0.2</li>
         <li>
-            <b>@angular/common</b> : ^7.0.1</li>
+            <b>@angular/common</b> : ^7.0.2</li>
         <li>
-            <b>@angular/compiler</b> : ^7.0.1</li>
+            <b>@angular/compiler</b> : ^7.0.2</li>
         <li>
-            <b>@angular/core</b> : ^7.0.1</li>
+            <b>@angular/core</b> : ^7.0.2</li>
         <li>
             <b>@angular/flex-layout</b> : ^7.0.0-beta.19</li>
         <li>
-            <b>@angular/forms</b> : ^7.0.1</li>
+            <b>@angular/forms</b> : ^7.0.2</li>
         <li>
             <b>@angular/material</b> : ^7.0.2</li>
         <li>
             <b>@angular/material-moment-adapter</b> : ^7.0.2</li>
         <li>
-            <b>@angular/platform-browser</b> : ^7.0.1</li>
+            <b>@angular/platform-browser</b> : ^7.0.2</li>
         <li>
-            <b>@angular/platform-browser-dynamic</b> : ^7.0.1</li>
+            <b>@angular/platform-browser-dynamic</b> : ^7.0.2</li>
         <li>
             <b>@angular/pwa</b> : 0.10.3</li>
         <li>
-            <b>@angular/router</b> : ^7.0.1</li>
+            <b>@angular/router</b> : ^7.0.2</li>
         <li>
-            <b>@angular/service-worker</b> : ^7.0.1</li>
+            <b>@angular/service-worker</b> : ^7.0.2</li>
         <li>
             <b>@fortawesome/angular-fontawesome</b> : ^0.3.0</li>
         <li>
@@ -123,9 +120,9 @@
         <li>
             <b>@xmlking/jwks-rsa</b> : ^1.4.3</li>
         <li>
-            <b>@xmlking/ngx-knob</b> : 0.0.6</li>
+            <b>@xmlking/ngx-knob</b> : 0.0.8</li>
         <li>
-            <b>angular-in-memory-web-api</b> : ^0.6.1</li>
+            <b>angular-in-memory-web-api</b> : ^0.7.0</li>
         <li>
             <b>angular-oauth2-oidc</b> : ^5.0.2</li>
         <li>
@@ -141,7 +138,7 @@
         <li>
             <b>core-js</b> : ^2.5.7</li>
         <li>
-            <b>d3</b> : ^5.7.0</li>
+            <b>d3</b> : ^4.13.0</li>
         <li>
             <b>d3-selection-multi</b> : ^1.0.1</li>
         <li>
@@ -155,7 +152,7 @@
         <li>
             <b>filepond-plugin-image-crop</b> : ^2.0.0</li>
         <li>
-            <b>filepond-plugin-image-preview</b> : ^3.1.1</li>
+            <b>filepond-plugin-image-preview</b> : ^3.1.3</li>
         <li>
             <b>formidable</b> : ^1.2.1</li>
         <li>
@@ -165,9 +162,9 @@
         <li>
             <b>nest-router</b> : ^1.0.7</li>
         <li>
-            <b>ngx-filepond</b> : ^4.0.0</li>
+            <b>ngx-filepond</b> : ^4.0.1</li>
         <li>
-            <b>ngx-moment</b> : ^3.1.0</li>
+            <b>ngx-moment</b> : ^3.2.0</li>
         <li>
             <b>ngx-page-scroll</b> : ^5.0.0</li>
         <li>
@@ -193,7 +190,7 @@
         <li>
             <b>typeorm</b> : ^0.2.8</li>
         <li>
-            <b>typescript</b> : ^3.1.3</li>
+            <b>typescript</b> : ^3.1.5</li>
         <li>
             <b>uuid</b> : ^3.3.2</li>
         <li>
@@ -226,7 +223,9 @@
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <script src="./js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

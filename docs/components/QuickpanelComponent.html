@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -50,6 +47,9 @@
         </li>
         <li >
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -96,7 +96,7 @@
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>quickpanel.component.scss</code></td>
+                <td class="col-md-9"><code>./quickpanel.component.scss</code></td>
             </tr>
 
 
@@ -105,6 +105,12 @@
                 <td class="col-md-3">templateUrl</td>
                 <td class="col-md-9"><code>./quickpanel.component.html</code></td>
             </tr>
+
+
+
+
+
+
 
 
         </tbody>
@@ -648,6 +654,51 @@ export class QuickpanelComponent implements OnInit {
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./quickpanel.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">@import &#x27;~@angular/material/theming&#x27;;
+
+$config: mat-typography-config();
+
+// Custom title that uses all of the typography styles from the &#x60;title&#x60; level.
+//.unicorn-title {
+//  @include mat-typography-level-to-styles($config, title);
+//}
+
+.sidebar {
+}
+.content {
+  margin-top: 2px;
+}
+.example-margin {
+  margin: 0 10px;
+}
+.today {
+  width: 100%;
+  height: 22%;
+  position: absolute;
+  background: &#x27;#17161642&#x27;;
+  z-index: 1;
+}
+.today-bg {
+  padding: 30px 0;
+  background: url(&#x27;../../../../apps/webapp/src/assets/img/bg/city1.jpg&#x27;);
+}
+.today-time {
+  margin: 0;
+  color: white;
+  z-index: 2;
+}
+.today-date {
+  margin: 0;
+  color: white;
+  z-index: 2;
+}
+</code></pre>
+    </div>
+
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
@@ -674,7 +725,7 @@ export class QuickpanelComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><mat-tab-group>  <mat-tab label="Overview">    <div class="sidebar">      <div fxLayout="column" fxLayoutAlign="center center" style="padding: 30px 0; background: url(\'assets/img/bg/city1.jpg\');">        <div style="width: 100%; height: 22%; position: absolute;background: #17161642;z-index: 1"></div>        <div class="mat-display-2" style="margin: 0; color: white;z-index: 2">{{today | date:\'shortTime\'}}</div>        <div class="mat-subheading-2" style="margin: 0;color: white;z-index: 2">{{today | date:\'EEEE\'}}, {{today | date:\'MMMM\'}} {{today | date:\'dd\'}}        </div>      </div>      <mat-divider></mat-divider>      <h3 class="mat-subheading-2" style="margin: 10px 14px 0;">Upcoming Events</h3>      <mat-nav-list>        <div *ngFor="let event of events;">          <mat-list-item>            <div fxLayout="row" fxLayoutAlign="start center" mat-ripple>              <div fxLayout="column">                <div class="mat-ubheading-2"  style="margin: 0; font-weight: bold;">{{ event.title }}</div>                <div style="font-size: 12px;">{{ event.time }}</div>              </div>            </div>          </mat-list-item>        </div>      </mat-nav-list>      <mat-divider></mat-divider>      <mat-nav-list>        <h3 class="mat-subheading-2" style="margin: 10px 14px 0;">Todo-List</h3>        <div *ngFor="let todolist of todolists;">          <mat-list-item >            <div fxLayout="row" fxLayoutAlign="start center" mat-ripple>              <div class="title" fxLayout="column" >                <div class="mat-ubheading-2"  style="margin: 0; font-weight: bold;">{{ todolist.title }}</div>                <div style="font-size: 12px;">{{ todolist.time }}</div>              </div>            </div>          </mat-list-item>        </div>      </mat-nav-list>      <mat-divider></mat-divider>    </div>  </mat-tab>  <mat-tab label="Notifications">    <div class="sidebar">      <div>        <h3 style="margin: 10px 14px 0;">Friends</h3>        <mat-list>          <mat-list-item *ngFor="let message of messages">            <img matListAvatar [src]="message.img" alt="...">            <h3 matLine style="margin: 0; font-weight: bold;"> {{message.from}} </h3>            <p matLine>              <span> {{message.subject}} </span>              <span> -- {{message.content}} </span>            </p>          </mat-list-item>        </mat-list>      </div>    </div>  </mat-tab></mat-tab-group><mat-divider></mat-divider><mat-nav-list>  <div>    <h3 class="mat-subheading-2" style="margin: 10px 14px 0;">Server Statistics</h3>    <div>      <mat-list-item >        <h5>CPU Load</h5>        <mat-progress-bar          [color]="\'accent\'"          [mode]="\'buffer\'"          [value]="\'70\'"          [bufferValue]="100">></mat-progress-bar>      </mat-list-item>    </div>    <div>      <mat-list-item >        <h5>RAM Usage</h5>        <mat-progress-bar          [color]="\'primary\'"          [mode]="\'buffer\'"          [value]="\'47\'"          [bufferValue]="100"></mat-progress-bar>      </mat-list-item>    </div>    <div>      <mat-list-item>        <h5>CPU Temp</h5>        <mat-progress-bar          [color]="\'warn\'"          [mode]="\'buffer\'"          [value]="\'43\'"          [bufferValue]="100"></mat-progress-bar>      </mat-list-item>    </div>  </div></mat-nav-list></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
@@ -720,7 +771,9 @@ export class QuickpanelComponent implements OnInit {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

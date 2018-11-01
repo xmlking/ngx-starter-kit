@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -141,7 +138,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsEmailIsNotEmpty</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String, minLength: 10, maxLength: 100})<br />@IsEmail()<br />@IsNotEmpty()<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -181,7 +182,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsStringIsNotEmpty</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String})<br />@IsString()<br />@IsNotEmpty()<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -221,7 +226,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsStringIsNotEmpty</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String})<br />@IsString()<br />@IsNotEmpty()<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -296,7 +305,9 @@ export class UpdateUserDto {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

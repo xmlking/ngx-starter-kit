@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -50,6 +47,9 @@
         </li>
         <li >
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -97,7 +97,7 @@
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>accounts-grid-list.component.scss</code></td>
+                <td class="col-md-9"><code>./accounts-grid-list.component.scss</code></td>
             </tr>
 
 
@@ -106,6 +106,12 @@
                 <td class="col-md-3">templateUrl</td>
                 <td class="col-md-9"><code>./accounts-grid-list.component.html</code></td>
             </tr>
+
+
+
+
+
+
 
 
         </tbody>
@@ -578,7 +584,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ViewChild</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;gridView&#x27;)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -617,7 +627,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ViewChild</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(MatPaginator)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -853,6 +867,108 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./accounts-grid-list.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">:host {
+  display: block;
+  padding: 1.5%;
+  position: relative;
+}
+
+.fix-height {
+  position: relative;
+  top: 0;
+  max-height: 52vh;
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+}
+
+@import &#x27;~@angular/material/theming&#x27;;
+
+/* Toolbar
+-------------------------------------------------- */
+mat-toolbar {
+  padding: 8px 24px 0;
+}
+
+mat-form-field {
+  font-size: 16px;
+}
+
+/* Card
+-------------------------------------------------- */
+mat-grid-tile {
+  mat-card {
+    width: calc(100% - 70px);
+    height: calc(100% - 70px);
+
+    @include mat-elevation-transition;
+    @include mat-elevation(2);
+
+    &amp;:hover {
+      cursor: pointer;
+      @include mat-elevation(6);
+    }
+
+    &amp;.active {
+      @include mat-elevation(8);
+    }
+
+    .mat-card-title,
+    .mat-card-subtitle {
+      white-space: nowrap;
+      width: 30em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    &amp;.mat-bg-primary {
+      background: #3f51b5 !important;
+      color: #fff !important;
+    }
+    &amp;.mat-bg-accent {
+      background-color: #ffc107;
+      color: #000;
+    }
+    &amp;.mat-bg-warn {
+      background-color: #f44336;
+      color: #fff;
+    }
+  }
+}
+
+/* List
+-------------------------------------------------- */
+mat-list-item {
+  //position: relative; // For mdRipple
+  &amp;:hover {
+    cursor: pointer;
+    background: #f5f5f5;
+  }
+  &amp;.active {
+    background: #eaeaea;
+  }
+
+  .subline {
+    color: #999999;
+  }
+}
+
+//@mixin md-icon-size($size: 24px) {
+//  font-size: $size;
+//  height: $size;
+//  width: $size;
+//}
+//
+//.mat-icon {
+//  @include md-icon-size(16px);
+//}
+</code></pre>
+    </div>
+
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
@@ -879,7 +995,7 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><ngx-breadcrumbs title="Grid" [crumbs]="crumbs"></ngx-breadcrumbs><mat-card class="mat-elevation-z8">  <mat-toolbar>    <!--<div>Accounts | </div> -->    <mat-form-field fxFlex>      <input matInput #filter (keyup)="applyFilter($event.target.value)">      <mat-placeholder>        <mat-icon>search</mat-icon>        Filter      </mat-placeholder>    </mat-form-field>    <mat-button-toggle-group #gridView="matButtonToggleGroup" style="margin-left: 16px">      <mat-button-toggle value=\'list\'>        <mat-icon>view_list</mat-icon>      </mat-button-toggle>      <mat-button-toggle value=\'grid\' checked>        <mat-icon>view_comfy</mat-icon>      </mat-button-toggle>    </mat-button-toggle-group>  </mat-toolbar>  <ng-container *ngIf="gridView.value === \'grid\'; then grid; else list">  </ng-container>  <mat-paginator #paginator [pageSize]="6" [pageSizeOptions]="[6, 9, 12, 18]"                 [showFirstLastButtons]="true"></mat-paginator></mat-card><ng-template #grid>  <mat-grid-list cols="3" rowHeight="250px" gutterSize="10px" class="fix-height">    <mat-grid-tile *ngFor="let account of renderData | async">      <!--<mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">-->      <!--<mat-card-header>-->      <!--<img mat-card-avatar src="https://source.unsplash.com/random/200x200">-->      <!--<mat-card-title>{{ account.first_name }}</mat-card-title>-->      <!--<mat-card-subtitle>{{ account.last_name }}</mat-card-subtitle>-->      <!--</mat-card-header>-->      <!--&lt;!&ndash;<img mat-card-image src="https://source.unsplash.com/random/800x600">&ndash;&gt;-->      <!--&lt;!&ndash;<mat-card-content>&ndash;&gt;-->      <!--&lt;!&ndash;<p>Something pretty ... </p>&ndash;&gt;-->      <!--&lt;!&ndash;</mat-card-content>&ndash;&gt;-->      <!--</mat-card>-->      <mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">        <mat-card-header>          <!--<img mat-card-avatar src="https://source.unsplash.com/random/200x200">-->          <img mat-card-avatar src="{{account.picture.thumbnail}}">          <mat-card-title>{{ account.name.title }} {{ account.name.first }} {{ account.name.last }}</mat-card-title>          <mat-card-subtitle> {{ account.email }}</mat-card-subtitle>        </mat-card-header>        <!--<img mat-card-image src="{{account.picture.medium}}">-->        <mat-card-content>          Address: {{account.location.street}}, {{account.location.city}}, {{account.location.state}}          {{account.location.zip}}<br>          Date of Birth: {{account.dob | amCalendar}}<br>          email: {{account.email}}<br>          phone: {{account.phone}}, cell: {{account.cell}}<br>        </mat-card-content>        <mat-card-actions>          <button mat-button>LIKE</button>          <button mat-button>SHARE</button>        </mat-card-actions>      </mat-card>    </mat-grid-tile>  </mat-grid-list></ng-template><ng-template #list>  <mat-list class="fix-height">    <ng-container *ngFor="let accounts of renderData | async | groupBy:\'gender\'">      <h3 mat-subheader>{{accounts.key}}</h3>      <mat-list-item *ngFor="let account of accounts.value; let last = last" (click)="onClick(account)"                     [class.active]="selection.isSelected(account)">        <mat-icon matListIcon>{{ account.gender == \'male\' ? \'person\' : \'face\'}}</mat-icon>        <!--<img mat-list-avatar src="https://source.unsplash.com/random/200x200">-->        <img mat-card-avatar src="{{account.picture.thumbnail}}">        <h3 matLine> {{account.name.first}} {{account.name.last}} </h3>        <p matLine><span> {{account.email}} </span><span class="subline">-- {{account.phone}} </span></p>        <mat-divider [inset]="true" *ngIf="!last"></mat-divider>      </mat-list-item>      <mat-divider></mat-divider>    </ng-container>  </mat-list></ng-template></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
@@ -925,7 +1041,9 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

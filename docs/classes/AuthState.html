@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -228,7 +225,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Selector() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Selector()<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -302,7 +303,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(AuthModeChanged)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -388,7 +393,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(ChangeAuthMode)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -474,7 +483,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Selector() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Selector()<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -548,7 +561,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(Login)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -632,7 +649,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(LoginSuccess)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -716,7 +737,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(Logout)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -789,7 +814,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Action() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Action(undefined)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -864,7 +893,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@Selector() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Selector()<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -1071,7 +1104,9 @@ export class AuthState {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
