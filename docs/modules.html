@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -641,23 +638,6 @@
             <div class="col-sm-4">
                 <div class="card card-module">
                     <div class="card-header">
-                        <h4 class="card-title">ScrollToTopModule</h4>
-                    </div>
-                    <div class="card-block">
-                                <p>
-                                    <object id="demo-svg" type="image/svg+xml" lazy="./modules/ScrollToTopModule/dependencies.svg" style="width: 100%; height: 175px;">
-                                        Your browser does not support SVG
-                                    </object>
-                                </p>
-                        <footer class="text-center">
-                            <a href="./modules/ScrollToTopModule.html" class="btn btn-default">Browse</a>
-                        </footer>
-                    </div>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="card card-module">
-                    <div class="card-header">
                         <h4 class="card-title">ScrollbarModule</h4>
                     </div>
                     <div class="card-block">
@@ -668,6 +648,23 @@
                                 </p>
                         <footer class="text-center">
                             <a href="./modules/ScrollbarModule.html" class="btn btn-default">Browse</a>
+                        </footer>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="card card-module">
+                    <div class="card-header">
+                        <h4 class="card-title">ScrollToTopModule</h4>
+                    </div>
+                    <div class="card-block">
+                                <p>
+                                    <object id="demo-svg" type="image/svg+xml" lazy="./modules/ScrollToTopModule/dependencies.svg" style="width: 100%; height: 175px;">
+                                        Your browser does not support SVG
+                                    </object>
+                                </p>
+                        <footer class="text-center">
+                            <a href="./modules/ScrollToTopModule.html" class="btn btn-default">Browse</a>
                         </footer>
                     </div>
                 </div>
@@ -864,7 +861,9 @@
 
        <script src="./js/libs/custom-elements.min.js"></script>
        <script src="./js/libs/lit-html.js"></script>
-       <script src="./js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="./js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="./js/menu-wc.js" defer></script>
 
        <script src="./js/libs/bootstrap-native.js"></script>
 

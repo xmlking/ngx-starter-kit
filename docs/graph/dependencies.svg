@@ -337,28 +337,28 @@
 <polygon fill="none" stroke="#000000" points="22571,-230 22571,-282 22759,-282 22759,-230 22571,-230"/>
 </g>
 <g id="clust249" class="cluster">
-<title>cluster_ScrollToTopModule</title>
-<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="9254,-146 9254,-214 9618,-214 9618,-146 9254,-146"/>
-</g>
-<g id="clust250" class="cluster">
-<title>cluster_ScrollToTopModule_declarations</title>
-<polygon fill="none" stroke="#000000" points="9442,-154 9442,-206 9610,-206 9610,-154 9442,-154"/>
-</g>
-<g id="clust253" class="cluster">
-<title>cluster_ScrollToTopModule_exports</title>
-<polygon fill="none" stroke="#000000" points="9262,-154 9262,-206 9434,-206 9434,-154 9262,-154"/>
-</g>
-<g id="clust256" class="cluster">
 <title>cluster_ScrollbarModule</title>
 <polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="11688,-70 11688,-138 12291,-138 12291,-70 11688,-70"/>
 </g>
-<g id="clust257" class="cluster">
+<g id="clust250" class="cluster">
 <title>cluster_ScrollbarModule_declarations</title>
 <polygon fill="none" stroke="#000000" points="11997,-78 11997,-130 12283,-130 12283,-78 11997,-78"/>
 </g>
-<g id="clust261" class="cluster">
+<g id="clust254" class="cluster">
 <title>cluster_ScrollbarModule_exports</title>
 <polygon fill="none" stroke="#000000" points="11696,-78 11696,-130 11989,-130 11989,-78 11696,-78"/>
+</g>
+<g id="clust257" class="cluster">
+<title>cluster_ScrollToTopModule</title>
+<polygon fill="none" stroke="#000000" stroke-dasharray="1,5" points="9254,-146 9254,-214 9618,-214 9618,-146 9254,-146"/>
+</g>
+<g id="clust258" class="cluster">
+<title>cluster_ScrollToTopModule_declarations</title>
+<polygon fill="none" stroke="#000000" points="9442,-154 9442,-206 9610,-206 9610,-154 9442,-154"/>
+</g>
+<g id="clust261" class="cluster">
+<title>cluster_ScrollToTopModule_exports</title>
+<polygon fill="none" stroke="#000000" points="9262,-154 9262,-206 9434,-206 9434,-154 9262,-154"/>
 </g>
 <g id="clust264" class="cluster">
 <title>cluster_SharedModule</title>
@@ -1937,13 +1937,13 @@
 <polygon fill="#000000" stroke="#000000" points="9371.1143,-316.5001 9361.1143,-320 9371.1143,-323.5001 9371.1143,-316.5001"/>
 </g>
 <!-- ScrollToTopComponent  -->
-<g id="node132" class="node">
+<g id="node136" class="node">
 <title>ScrollToTopComponent </title>
 <polygon fill="#fb8072" stroke="#000000" points="9426.3771,-198 9269.6229,-198 9269.6229,-162 9426.3771,-162 9426.3771,-198"/>
 <text text-anchor="middle" x="9348" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollToTopComponent </text>
 </g>
 <!-- ScrollToTopModule&#45;&gt;ScrollToTopComponent  -->
-<g id="edge132" class="edge">
+<g id="edge136" class="edge">
 <title>ScrollToTopModule&#45;&gt;ScrollToTopComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M9635.7119,-237.9909C9635.7119,-221.9506 9635.7119,-201 9635.7119,-201 9635.7119,-201 9373.5118,-201 9373.5118,-201 9373.5118,-201 9373.5118,-200.708 9373.5118,-200.708"/>
 <polygon fill="#000000" stroke="#000000" points="9377.0121,-208.0799 9373.5118,-198.08 9370.0121,-208.0802 9377.0121,-208.0799"/>
@@ -2237,25 +2237,25 @@
 <polygon fill="#000000" stroke="#000000" points="11532.8759,-227.7985 11536.3758,-237.7985 11539.8759,-227.7986 11532.8759,-227.7985"/>
 </g>
 <!-- ScrollbarComponent  -->
-<g id="node135" class="node">
+<g id="node133" class="node">
 <title>ScrollbarComponent </title>
 <polygon fill="#fb8072" stroke="#000000" points="11981.1467,-122 11844.8533,-122 11844.8533,-86 11981.1467,-86 11981.1467,-122"/>
 <text text-anchor="middle" x="11913" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollbarComponent </text>
 </g>
 <!-- ScrollbarModule&#45;&gt;ScrollbarComponent  -->
-<g id="edge135" class="edge">
+<g id="edge133" class="edge">
 <title>ScrollbarModule&#45;&gt;ScrollbarComponent </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M11965.2382,-161.9891C11965.2382,-161.9891 11965.2382,-132.145 11965.2382,-132.145"/>
 <polygon fill="#000000" stroke="#000000" points="11968.7383,-132.145 11965.2382,-122.145 11961.7383,-132.1451 11968.7383,-132.145"/>
 </g>
 <!-- ScrollbarDirective  -->
-<g id="node136" class="node">
+<g id="node134" class="node">
 <title>ScrollbarDirective </title>
 <polygon fill="#fb8072" stroke="#000000" points="11826.397,-122 11703.603,-122 11703.603,-86 11826.397,-86 11826.397,-122"/>
 <text text-anchor="middle" x="11765" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollbarDirective </text>
 </g>
 <!-- ScrollbarModule&#45;&gt;ScrollbarDirective  -->
-<g id="edge136" class="edge">
+<g id="edge134" class="edge">
 <title>ScrollbarModule&#45;&gt;ScrollbarDirective </title>
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M11949.4031,-161.8495C11949.4031,-149.7292 11949.4031,-136 11949.4031,-136 11949.4031,-136 11793.3833,-136 11793.3833,-136 11793.3833,-136 11793.3833,-132.2434 11793.3833,-132.2434"/>
 <polygon fill="#000000" stroke="#000000" points="11796.8833,-132.2434 11793.3833,-122.2434 11789.8833,-132.2434 11796.8833,-132.2434"/>
@@ -2296,41 +2296,41 @@
 <path fill="none" stroke="#000000" stroke-dasharray="5,2" d="M22665,-198.0109C22665,-198.0109 22665,-227.855 22665,-227.855"/>
 <polygon fill="#000000" stroke="#000000" points="22661.5001,-227.8549 22665,-237.855 22668.5001,-227.855 22661.5001,-227.8549"/>
 </g>
-<!-- ScrollToTopComponent -->
-<g id="node131" class="node">
-<title>ScrollToTopComponent</title>
-<polygon fill="#ffffb3" stroke="#000000" points="9602.3766,-198 9449.6234,-198 9449.6234,-162 9602.3766,-162 9602.3766,-198"/>
-<text text-anchor="middle" x="9526" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollToTopComponent</text>
-</g>
-<!-- ScrollToTopComponent&#45;&gt;ScrollToTopModule -->
-<g id="edge131" class="edge">
-<title>ScrollToTopComponent&#45;&gt;ScrollToTopModule</title>
-<path fill="none" stroke="#000000" d="M9602.6378,-180C9618.0283,-180 9629.5824,-180 9629.5824,-180 9629.5824,-180 9629.5824,-227.9891 9629.5824,-227.9891"/>
-<polygon fill="#000000" stroke="#000000" points="9626.0825,-227.989 9629.5824,-237.9891 9633.0825,-227.9891 9626.0825,-227.989"/>
-</g>
 <!-- ScrollbarComponent -->
-<g id="node133" class="node">
+<g id="node131" class="node">
 <title>ScrollbarComponent</title>
 <polygon fill="#ffffb3" stroke="#000000" points="12275.1471,-122 12142.8529,-122 12142.8529,-86 12275.1471,-86 12275.1471,-122"/>
 <text text-anchor="middle" x="12209" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollbarComponent</text>
 </g>
 <!-- ScrollbarComponent&#45;&gt;ScrollbarModule -->
-<g id="edge133" class="edge">
+<g id="edge131" class="edge">
 <title>ScrollbarComponent&#45;&gt;ScrollbarModule</title>
 <path fill="none" stroke="#000000" d="M12178.3044,-122.0439C12178.3044,-134.5633 12178.3044,-149 12178.3044,-149 12178.3044,-149 12031.3885,-149 12031.3885,-149 12031.3885,-149 12031.3885,-151.9672 12031.3885,-151.9672"/>
 <polygon fill="#000000" stroke="#000000" points="12027.8886,-151.9671 12031.3885,-161.9672 12034.8886,-151.9672 12027.8886,-151.9671"/>
 </g>
 <!-- ScrollbarDirective -->
-<g id="node134" class="node">
+<g id="node132" class="node">
 <title>ScrollbarDirective</title>
 <polygon fill="#ffffb3" stroke="#000000" points="12124.8977,-122 12005.1023,-122 12005.1023,-86 12124.8977,-86 12124.8977,-122"/>
 <text text-anchor="middle" x="12065" y="-99.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollbarDirective</text>
 </g>
 <!-- ScrollbarDirective&#45;&gt;ScrollbarModule -->
-<g id="edge134" class="edge">
+<g id="edge132" class="edge">
 <title>ScrollbarDirective&#45;&gt;ScrollbarModule</title>
 <path fill="none" stroke="#000000" d="M12018.345,-122.0109C12018.345,-122.0109 12018.345,-151.855 12018.345,-151.855"/>
 <polygon fill="#000000" stroke="#000000" points="12014.8451,-151.8549 12018.345,-161.855 12021.8451,-151.855 12014.8451,-151.8549"/>
+</g>
+<!-- ScrollToTopComponent -->
+<g id="node135" class="node">
+<title>ScrollToTopComponent</title>
+<polygon fill="#ffffb3" stroke="#000000" points="9602.3766,-198 9449.6234,-198 9449.6234,-162 9602.3766,-162 9602.3766,-198"/>
+<text text-anchor="middle" x="9526" y="-175.8" font-family="Times,serif" font-size="14.00" fill="#000000">ScrollToTopComponent</text>
+</g>
+<!-- ScrollToTopComponent&#45;&gt;ScrollToTopModule -->
+<g id="edge135" class="edge">
+<title>ScrollToTopComponent&#45;&gt;ScrollToTopModule</title>
+<path fill="none" stroke="#000000" d="M9602.6378,-180C9618.0283,-180 9629.5824,-180 9629.5824,-180 9629.5824,-180 9629.5824,-227.9891 9629.5824,-227.9891"/>
+<polygon fill="#000000" stroke="#000000" points="9626.0825,-227.989 9629.5824,-237.9891 9633.0825,-227.9891 9626.0825,-227.989"/>
 </g>
 <!-- ClickOutsideDirective -->
 <g id="node138" class="node">

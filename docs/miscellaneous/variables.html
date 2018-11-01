@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -234,7 +231,7 @@
                             <a href="#ELEMENT_DATA" title="libs/experiments/src/lib/containers/sticky-table/sticky-table.component.ts"><b>ELEMENT_DATA</b>&nbsp;&nbsp;&nbsp;(libs/.../sticky-table.component.ts)</a>
                         </li>
                         <li>
-                            <a href="#environment" title="apps/webapp/src/environments/environment.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
+                            <a href="#environment" title="apps/api/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
                         </li>
                         <li>
                             <a href="#environment" title="apps/api/src/environments/environment.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
@@ -243,16 +240,16 @@
                             <a href="#environment" title="apps/webapp/src/environments/environment.mock.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.mock.ts)</a>
                         </li>
                         <li>
-                            <a href="#environment" title="apps/api/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
-                        </li>
-                        <li>
-                            <a href="#environment" title="apps/webapp/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
+                            <a href="#environment" title="apps/backend/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
                         </li>
                         <li>
                             <a href="#environment" title="apps/backend/src/environments/environment.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
                         </li>
                         <li>
-                            <a href="#environment" title="apps/backend/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
+                            <a href="#environment" title="apps/webapp/src/environments/environment.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#environment" title="apps/webapp/src/environments/environment.prod.ts"><b>environment</b>&nbsp;&nbsp;&nbsp;(apps/.../environment.prod.ts)</a>
                         </li>
                         <li>
                             <a href="#expandAnimation" title="libs/animations/src/lib/expand.animation.ts"><b>expandAnimation</b>&nbsp;&nbsp;&nbsp;(libs/.../expand.animation.ts)</a>
@@ -4053,7 +4050,7 @@ returns a pipeable RxJS operator.</p>
             </tbody>
         </table>
 </section>
-    <h3>apps/webapp/src/environments/environment.ts</h3>
+    <h3>apps/api/src/environments/environment.prod.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -4083,19 +4080,34 @@ returns a pipeable RxJS operator.</p>
                     <tr>
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
-  ...sharedEnvironment,
-  production: false,
-  envName: &#x27;dev&#x27;,
+  production: true,
 
-  DOCS_BASE_URL: &#x27;http://localhost:8000&#x27;,
-  API_BASE_URL: &#x27;http://localhost:3000/api&#x27;,
-  WS_EVENT_BUS_URL: &#x27;ws://localhost:3000/eventbus&#x27;,
-  auth: {
-    // clientId: &#x27;cockpit&#x27;,
-    // issuer: &#x27;http://localhost:8080/auth/realms/ngx&#x27;,
-    clientId: &#x27;is360ui&#x27;,
-    issuer: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360&#x27;,
-  },
+  NODE_ENV: &#x27;production&#x27;,
+  DOMAIN_URL: &#x27;http://localhost:3000&#x27;,
+  PORT: 3000,
+  GLOBAL_PREFIX: &#x27;/api&#x27;,
+  NODE_TLS_REJECT_UNAUTHORIZED: 0,
+
+  TYPEORM_CONNECTION: &#x27;postgres&#x27;,
+  TYPEORM_HOST: &#x27;postgres&#x27;,
+  TYPEORM_PORT: 5432,
+  TYPEORM_DATABASE: &#x27;cockpit&#x27;,
+  TYPEORM_USERNAME: &#x27;cockpit&#x27;,
+  TYPEORM_PASSWORD: &#x27;cockpit123&#x27;,
+
+  TYPEORM_SYNCHRONIZE: false,
+  TYPEORM_LOGGING: false,
+  TYPEORM_ENTITIES: &#x27;./dist/**/**.entity.js&#x27;,
+
+  // OIDC_ISSUER_URL: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/kubernetes&#x27;,
+  // OIDC_CLIENT: &#x27;cockpit&#x27;,
+  OIDC_ISSUER_URL: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360&#x27;,
+  OIDC_CLIENT: &#x27;is360ui&#x27;,
+
+  EMAIL_HOST: &#x27;mail.google.com&#x27;,
+  EMAIL_PORT: 25,
+  EMAIL_FROM: &#x27;&quot;sumo demo&quot; &lt;sumo@demo.com&gt;&#x27;,
+  EMAIL_TEMPLATE_DIR: &#x27;apps/api/email-templates&#x27;,
 }</code>
                         </td>
                     </tr>
@@ -4222,7 +4234,7 @@ returns a pipeable RxJS operator.</p>
             </tbody>
         </table>
 </section>
-    <h3>apps/api/src/environments/environment.prod.ts</h3>
+    <h3>apps/backend/src/environments/environment.prod.ts</h3>
     <section>
     <h3></h3>        <table class="table table-sm table-bordered">
             <tbody>
@@ -4253,33 +4265,96 @@ returns a pipeable RxJS operator.</p>
                         <td class="col-md-4">
                             <i>Default value : </i><code>{
   production: true,
+}</code>
+                        </td>
+                    </tr>
 
-  NODE_ENV: &#x27;production&#x27;,
-  DOMAIN_URL: &#x27;http://localhost:3000&#x27;,
-  PORT: 3000,
-  GLOBAL_PREFIX: &#x27;/api&#x27;,
-  NODE_TLS_REJECT_UNAUTHORIZED: 0,
 
-  TYPEORM_CONNECTION: &#x27;postgres&#x27;,
-  TYPEORM_HOST: &#x27;postgres&#x27;,
-  TYPEORM_PORT: 5432,
-  TYPEORM_DATABASE: &#x27;cockpit&#x27;,
-  TYPEORM_USERNAME: &#x27;cockpit&#x27;,
-  TYPEORM_PASSWORD: &#x27;cockpit123&#x27;,
+            </tbody>
+        </table>
+</section>
+    <h3>apps/backend/src/environments/environment.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="environment"></a>
+                        <span class="name">
+                            <b>
+                            environment
+                            </b>
+                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>environment:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
 
-  TYPEORM_SYNCHRONIZE: false,
-  TYPEORM_LOGGING: false,
-  TYPEORM_ENTITIES: &#x27;./dist/**/**.entity.js&#x27;,
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  production: false,
+}</code>
+                        </td>
+                    </tr>
 
-  // OIDC_ISSUER_URL: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/kubernetes&#x27;,
-  // OIDC_CLIENT: &#x27;cockpit&#x27;,
-  OIDC_ISSUER_URL: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360&#x27;,
-  OIDC_CLIENT: &#x27;is360ui&#x27;,
 
-  EMAIL_HOST: &#x27;mail.google.com&#x27;,
-  EMAIL_PORT: 25,
-  EMAIL_FROM: &#x27;&quot;sumo demo&quot; &lt;sumo@demo.com&gt;&#x27;,
-  EMAIL_TEMPLATE_DIR: &#x27;apps/api/email-templates&#x27;,
+            </tbody>
+        </table>
+</section>
+    <h3>apps/webapp/src/environments/environment.ts</h3>
+    <section>
+    <h3></h3>        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="environment"></a>
+                        <span class="name">
+                            <b>
+                            environment
+                            </b>
+                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <code>environment:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+  ...sharedEnvironment,
+  production: false,
+  envName: &#x27;dev&#x27;,
+
+  DOCS_BASE_URL: &#x27;http://localhost:8000&#x27;,
+  API_BASE_URL: &#x27;http://localhost:3000/api&#x27;,
+  WS_EVENT_BUS_URL: &#x27;ws://localhost:3000/eventbus&#x27;,
+  auth: {
+    // clientId: &#x27;cockpit&#x27;,
+    // issuer: &#x27;http://localhost:8080/auth/realms/ngx&#x27;,
+    clientId: &#x27;is360ui&#x27;,
+    issuer: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360&#x27;,
+  },
 }</code>
                         </td>
                     </tr>
@@ -4330,84 +4405,6 @@ returns a pipeable RxJS operator.</p>
     issuer: &#x27;https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360&#x27;,
     // issuer: &#x27;https://keycloak-is360.7e14.starter-us-west-2.openshiftapps.com/auth/realms/is360&#x27;
   },
-}</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>apps/backend/src/environments/environment.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="environment"></a>
-                        <span class="name">
-                            <b>
-                            environment
-                            </b>
-                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>environment:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>{
-  production: false,
-}</code>
-                        </td>
-                    </tr>
-
-
-            </tbody>
-        </table>
-</section>
-    <h3>apps/backend/src/environments/environment.prod.ts</h3>
-    <section>
-    <h3></h3>        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="environment"></a>
-                        <span class="name">
-                            <b>
-                            environment
-                            </b>
-                            <a href="#environment"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <code>environment:     <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-</code>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/object" target="_blank" >object</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>{
-  production: true,
 }</code>
                         </td>
                     </tr>
@@ -8873,7 +8870,9 @@ returns a pipeable RxJS operator.</p>
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

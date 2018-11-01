@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -50,6 +47,9 @@
         </li>
         <li >
             <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
         </li>
         <li >
             <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
@@ -97,7 +97,7 @@
 
             <tr>
                 <td class="col-md-3">styleUrls</td>
-                <td class="col-md-9"><code>chat-box.component.scss</code></td>
+                <td class="col-md-9"><code>./chat-box.component.scss</code></td>
             </tr>
 
 
@@ -106,6 +106,12 @@
                 <td class="col-md-3">templateUrl</td>
                 <td class="col-md-9"><code>./chat-box.component.html</code></td>
             </tr>
+
+
+
+
+
+
 
 
         </tbody>
@@ -566,7 +572,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ViewChild</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;bottom&#x27;)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -671,7 +681,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>Select</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Select(ChatBoxState.getConversations)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -710,7 +724,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ViewChild</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;input&#x27;)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -749,7 +767,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>Select</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @Select(ChatBoxState.getSelectedConversation)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -1044,6 +1066,150 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
 </code></pre>
     </div>
 
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./chat-box.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">//@import &quot;animation-helper&quot;;
+
+//.flex-vert-center {
+//  display: flex;
+//  align-items: center;
+//}
+
+/* CHAT BUTTON
+-------------------------------------------------- */
+.chat-button {
+  position: fixed !important;
+  bottom: 25px;
+  right: 25px;
+  z-index: 5;
+}
+
+/* CHAT BOX
+-------------------------------------------------- */
+.chat-box {
+  background: #efefef;
+  position: fixed;
+  bottom: 50px;
+  right: 30px;
+  width: 351px;
+  height: 60vh;
+  min-width: 350px;
+  min-height: 400px;
+  max-width: 85vw;
+  max-height: 85vh;
+  border-radius: 5px;
+  z-index: 10;
+  box-shadow: 0px 5px 35px 9px #ccc;
+
+  /* Medium devices (tablets, 768px and up)*/
+  @media (min-width: 768px) {
+    min-height: 30vh;
+    height: 40vh;
+  }
+  /* Large devices (desktops, 992px and up)*/
+  @media (min-width: 992px) {
+    height: 60vh;
+  }
+
+  /* Chat Drawer */
+  //mat-drawer {
+  //  width: 280px;
+  //}
+
+  /* Chat Header */
+  .header {
+    min-height: 72px !important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  /* Chat Messages */
+  .body {
+    padding: 15px;
+    overflow-y: scroll;
+
+    @media only screen and (max-width: 500px) {
+      height: 40vh;
+    }
+
+    /* Chat Messages */
+    .message {
+      padding: 8px 16px;
+      font-weight: 400;
+      text-transform: none;
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 0.5px;
+      margin: 0 0 2px 0;
+      max-width: 65%;
+      float: none;
+      clear: both;
+      line-height: 1.5em;
+      transition: all 200ms;
+      box-sizing: content-box;
+
+      &amp;.to {
+        color: #212121;
+        background: rgba(255, 255, 255, 0.84);
+        border-radius: 5px 15px 15px 15px;
+        text-align: left;
+        word-break: break-all;
+        transform-origin: left top;
+      }
+      &amp;.from {
+        color: #fff;
+        background: rgba(44, 44, 44, 0.67);
+        box-shadow: none;
+        float: right;
+        position: relative;
+        transform-origin: right top;
+        margin: 8px 0 10px 2px;
+        border-radius: 15px 15px 5px 15px;
+        text-align: center;
+        display: inline-block;
+        text-decoration: none;
+        word-break: normal;
+        /* animation-duration: 1s; */
+        animation-name: animate-reply;
+        animation-play-state: paused;
+        animation-fill-mode: forwards;
+        /* opacity: 0; */
+        transform: translate3d(0px, 0px, 0px);
+        animation-delay: -3s;
+        -webkit-animation-delay: -3s;
+      }
+
+      &amp;.to + &amp;.to,
+      &amp;.from + &amp;.from {
+        margin-top: -10px;
+      }
+    }
+  }
+
+  /* Chat Input */
+  .input {
+    padding: 10px 10px 10px;
+
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    overflow: hidden;
+  }
+  //.input &gt; * {
+  //  width: 100%;
+  //}
+}
+
+/* Chat Content */
+.card-content {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</code></pre>
+    </div>
+
     <div class="tab-pane fade " id="c-tree">
         <div id="tree-container"></div>
         <div class="tree-legend">
@@ -1070,7 +1236,7 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><button mat-fab class="chat-button" (click)="toggleChatBox()" [@scrollAnimation]="showChatBox? \'hide\' : \'show\'">  <mat-icon>chat_bubble</mat-icon></button><div cdkDrag fxLayout=\'column\' class="chat-box"     resizable [directions]="[\'bottom\', \'top\', \'left\', \'right\', \'top-left\', \'bottom-left\', \'top-right\', \'bottom-right\']"     [@scrollAnimation]="showChatBox? \'show\' : \'hide\'">  <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"               class="header mat-elevation-z2" color="primary"               cdkDragHandle>    <span fxFlex>ChatBox</span>    <span fxFlex="grow"><!-- fill space --></span>    <!--<ngx-led color="orange" size="10px" [blink]=true></ngx-led>-->    <button *ngIf="canUseSpeechSynthesis" mat-icon-button>      <mat-icon (click)="drawer.toggle()">settings</mat-icon>    </button>    <button mat-icon-button>      <mat-icon (click)="toggleChatBox()">close</mat-icon>    </button>  </mat-toolbar>  <mat-drawer-container fxFlex="grow" [hasBackdrop]="false">    <mat-drawer mode="over" position="end" #drawer>      <mat-toolbar color="accent">Preferences</mat-toolbar>      <mat-accordion>        <mat-expansion-panel [expanded]="true">          <mat-expansion-panel-header>            <mat-panel-title>Voice</mat-panel-title>          </mat-expansion-panel-header>          <ng-template matExpansionPanelContent>            <ngx-text-to-speech-preferences></ngx-text-to-speech-preferences>          </ng-template>        </mat-expansion-panel>        <mat-expansion-panel>          <mat-expansion-panel-header>            <mat-panel-title>Other</mat-panel-title>          </mat-expansion-panel-header>          <p>TODO: Other Settings</p>        </mat-expansion-panel>      </mat-accordion>    </mat-drawer>    <mat-drawer-content fxFlex="grow" class="body">      <div *ngFor="let message of (selectedConversation$ | async).messages"           class="message"           [ngClass]="{ \'from\': message.isIncoming, \'to\': message.isOutgoing }">        {{ message.render() }}      </div>      <div style="position: fixed; bottom: 60px;">        <typing-indicator *ngIf="typing"></typing-indicator>      </div>      <div #bottom></div><br/><br/><br/><br/>    </mat-drawer-content>  </mat-drawer-container>  <mat-divider></mat-divider>  <mat-form-field fxFlex class="input" color="primary">    <mat-icon matPrefix *ngIf="canUseSpeechRecognition" (click)="startTalkingToBot()">keyboard_voice</mat-icon>    <input #input matInput type="text"           (keyup.enter)="sendMessageToBot()" (keyup.escape)="showChatBox = false"           placeholder="Ask anything..." autocomplete="off" x-webkit-speech>    <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>  </mat-form-field></div></div>'
-    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
+    var COMPONENTS = [{'name': 'AboutComponent', 'selector': 'ngx-about'},{'name': 'AccountDetailComponent', 'selector': 'ngx-account-detail'},{'name': 'AccountEditComponent', 'selector': 'ngx-account-edit'},{'name': 'AccountsGridListComponent', 'selector': 'ngx-accounts-grid-list'},{'name': 'AccountsTableComponent', 'selector': 'ngx-accounts-table'},{'name': 'AdvancedPieChartWidgetComponent', 'selector': 'ngx-advanced-pie-chart-widget'},{'name': 'AnimationsComponent', 'selector': 'ngx-animations'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AppConfirmComponent', 'selector': 'ngx-confirm'},{'name': 'AudienceOverviewWidgetComponent', 'selector': 'ngx-audience-overview-widget'},{'name': 'BarChartWidgetComponent', 'selector': 'ngx-bar-chart-widget'},{'name': 'BlogComponent', 'selector': 'ngx-blog'},{'name': 'BreadcrumbsComponent', 'selector': 'ngx-breadcrumbs'},{'name': 'Card', 'selector': 'ngx-card'},{'name': 'CardComponent', 'selector': 'ngx-card'},{'name': 'CardContent', 'selector': 'ngx-card-content'},{'name': 'CardHeader', 'selector': 'ngx-card-header'},{'name': 'ChartWidget', 'selector': 'ngx-chart-widget'},{'name': 'ChartWidgetContent', 'selector': 'ngx-chart-widget-content'},{'name': 'ChartWidgetHeader', 'selector': 'ngx-chart-widget-header'},{'name': 'ChatBoxComponent', 'selector': 'ngx-chat-box'},{'name': 'ChatCardComponent', 'selector': 'ngx-chat-card'},{'name': 'ClapButtonComponent', 'selector': 'app-clap-button'},{'name': 'ClapComponent', 'selector': 'ngx-clap'},{'name': 'ContextMenuComponent', 'selector': 'context-menu'},{'name': 'ContextMenuComponent', 'selector': 'ngx-context-menu'},{'name': 'CounterBubbleComponent', 'selector': 'ngx-counter-bubble'},{'name': 'DashboardLayoutComponent', 'selector': 'ngx-dashboard-layout'},{'name': 'DonutChartWidgetComponent', 'selector': 'ngx-donut-chart-widget'},{'name': 'FabComponent', 'selector': 'ngx-fab'},{'name': 'FeaturesComponent', 'selector': 'ngx-features'},{'name': 'FileUploadComponent', 'selector': 'ngx-file-upload'},{'name': 'FooterComponent', 'selector': 'ngx-footer'},{'name': 'FullscreenToggleComponent', 'selector': 'ngx-fullscreen-toggle'},{'name': 'HeaderComponent', 'selector': 'ngx-home-header'},{'name': 'HomeLayoutComponent', 'selector': 'ngx-home-layout'},{'name': 'ImageComparisonComponent', 'selector': 'ngx-image-comparison'},{'name': 'ImageCompComponent', 'selector': 'ngx-image-comp'},{'name': 'JsonDiffComponent', 'selector': 'ngx-json-diff'},{'name': 'JsonDiffTreeComponent', 'selector': 'ngx-json-diff-tree'},{'name': 'KnobDemoComponent', 'selector': 'ngx-knob-demo'},{'name': 'LandingComponent', 'selector': 'ngx-landing'},{'name': 'LayoutComponent', 'selector': 'ngx-layout'},{'name': 'LedComponent', 'selector': 'ngx-led'},{'name': 'LedDemoComponent', 'selector': 'ngx-led-demo'},{'name': 'LineChartWidgetComponent', 'selector': 'ngx-line-chart-widget'},{'name': 'ListComponent', 'selector': 'ngx-list'},{'name': 'LoadingOverlayComponent', 'selector': 'ngx-loading-overlay'},{'name': 'LoginComponent', 'selector': 'ngx-login'},{'name': 'MarketWidgetComponent', 'selector': 'ngx-market-widget'},{'name': 'MenuItemComponent', 'selector': 'ngx-menu-item'},{'name': 'NotFoundComponent', 'selector': 'ngx-not-found'},{'name': 'NotificationsComponent', 'selector': 'ngx-notifications'},{'name': 'OverviewComponent', 'selector': 'ngx-overview'},{'name': 'QuickInfoWidgetComponent', 'selector': 'ngx-quick-info-widget'},{'name': 'QuickpanelComponent', 'selector': 'ngx-quickpanel'},{'name': 'QuickpanelToggleComponent', 'selector': 'ngx-quickpanel-toggle'},{'name': 'RainbowComponent', 'selector': 'ngx-rainbow'},{'name': 'RealtimeUsersWidgetComponent', 'selector': 'ngx-realtime-users-widget'},{'name': 'RecentSalesWidgetComponent', 'selector': 'ngx-recent-sales-widget'},{'name': 'RecentSalesWidgetTableComponent', 'selector': 'ngx-recent-sales-widget-table'},{'name': 'ResizableComponent', 'selector': '[resizable]'},{'name': 'SalesSummaryWidgetComponent', 'selector': 'ngx-sales-summary-widget'},{'name': 'ScrollbarComponent', 'selector': 'ngx-scrollbar'},{'name': 'ScrollToTopComponent', 'selector': 'scroll-to-top'},{'name': 'SearchBarComponent', 'selector': 'ngx-search-bar'},{'name': 'SearchComponent', 'selector': 'ngx-search'},{'name': 'SidenavComponent', 'selector': 'ngx-sidenav'},{'name': 'SidenavItemComponent', 'selector': 'ngx-sidenav-item'},{'name': 'SidenavToggleComponent', 'selector': 'ngx-sidenav-toggle'},{'name': 'StickyTableComponent', 'selector': 'ngx-sticky-table'},{'name': 'SvgViewerComponent', 'selector': 'svg-viewer'},{'name': 'TextToSpeechPreferencesComponent', 'selector': 'ngx-text-to-speech-preferences'},{'name': 'ThemePickerComponent', 'selector': 'theme-picker'},{'name': 'ToolbarComponent', 'selector': 'ngx-toolbar'},{'name': 'TotalCounterComponent', 'selector': 'ngx-total-counter'},{'name': 'TypingIndicatorComponent', 'selector': 'typing-indicator'},{'name': 'UserMenuComponent', 'selector': 'ngx-user-menu'},{'name': 'VirtualScrollComponent', 'selector': 'ngx-virtual-scroll'},{'name': 'WizdashComponent', 'selector': 'ngx-wizdash'}];
     var DIRECTIVES = [{'name': 'AspectRatioContentDirective', 'selector': '[ngxAspectRatioContent]'},{'name': 'AspectRatioDirective', 'selector': '
   [ngxAspectRatio],
   [ngxAspectRatio.xs], [ngxAspectRatio.sm], [ngxAspectRatio.md], [ngxAspectRatio.lg], [ngxAspectRatio.xl],
@@ -1116,7 +1282,9 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

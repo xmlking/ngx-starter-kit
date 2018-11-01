@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -132,7 +129,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@ApiOperation() @ApiResponse() @ApiResponse() @Post() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiOperation({title: &#x27;Create new record&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;The record has been successfully created.&#x27;, type: Notification})<br />@ApiResponse({status: undefined, description: &#x27;Invalid input, The response body may contain clues as to what went wrong&#x27;})<br />@Post()<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -202,13 +203,17 @@
                 <tr>
                     <td class="col-md-4">
                             <span class="modifier-icon icon ion-ios-reset"></span>
-                        <code>findAll(user: )</code>
+                        <code>findAll(user)</code>
                     </td>
                 </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@ApiOperation() @ApiResponse() @Get() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiOperation({title: &#x27;find all user Notifications&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;All user Notifications&#x27;, isArray: undefined})<br />@Get()<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -272,13 +277,17 @@
                 </tr>
                 <tr>
                     <td class="col-md-4">
-<code>notify(notif: <a href="../classes/Notification.html">CreateNotificationDto</a>, user: )</code>
+<code>notify(notif: <a href="../classes/Notification.html">CreateNotificationDto</a>, user)</code>
                     </td>
                 </tr>
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@ApiOperation() @ApiResponse() @Roles() @Post() @HttpCode() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiOperation({title: &#x27;Notify User&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Accepted&#x27;})<br />@Roles(RolesEnum.USER)<br />@Post(&#x27;/notify&#x27;)<br />@HttpCode(HttpStatus.ACCEPTED)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -363,7 +372,11 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <b>Decorators : </b><code>@ApiOperation() @ApiResponse() @Roles() @Post() @HttpCode() </code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiOperation({title: &#x27;Notify All&#x27;})<br />@ApiResponse({status: undefined, description: &#x27;Accepted&#x27;})<br />@Roles(RolesEnum.ADMIN)<br />@Post(&#x27;/notifyAll&#x27;)<br />@HttpCode(HttpStatus.ACCEPTED)<br />
+                            </code>
                         </td>
                     </tr>
 
@@ -539,7 +552,9 @@ export class NotificationsController extends CrudController&lt;Notification&gt; 
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

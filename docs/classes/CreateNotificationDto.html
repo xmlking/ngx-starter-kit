@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -145,7 +142,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsStringIsNotEmptyIsIn</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String, enum: NotificationColor})<br />@IsString()<br />@IsNotEmpty()<br />@IsIn(undefined)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -184,7 +185,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsStringIsNotEmptyIsEnum</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String, enum: NotificationIcon, default: &#x27;notifications&#x27;})<br />@IsString()<br />@IsNotEmpty()<br />@IsEnum(NotificationIcon)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -223,7 +228,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsStringIsNotEmpty</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String, minLength: 10, maxLength: 100})<br />@IsString()<br />@IsNotEmpty()<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -267,7 +276,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsBooleanIsNotEmpty</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: Boolean, default: undefined})<br />@IsBoolean()<br />@IsNotEmpty()<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -306,7 +319,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ApiModelPropertyIsAsciiIsNotEmptyMinLengthMaxLength</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ApiModelProperty({type: String, minLength: 8, maxLength: 20, default: &#x27;all&#x27;})<br />@IsAscii()<br />@IsNotEmpty()<br />@MinLength(3)<br />@MaxLength(20)<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -396,7 +413,9 @@ export class CreateNotificationDto {
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 

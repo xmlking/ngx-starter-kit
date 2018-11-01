@@ -18,10 +18,7 @@
         </div>
 
         <div class="xs-menu menu" id="mobile-menu">
-                <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search">
-</div>
-            <compodoc-menu></compodoc-menu>
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
         </div>
 
         <div class="container-fluid main">
@@ -1007,7 +1004,11 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Decorators : </i><code>ContentChild</code>
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ContentChild(AspectRatioContentDirective, {read: ElementRef})<br />
+                            </code>
                         </td>
                     </tr>
                         <tr>
@@ -1071,7 +1072,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatio(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatio(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1126,7 +1127,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioXs(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioXs(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1181,7 +1182,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioSm(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioSm(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1236,7 +1237,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioMd(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioMd(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1291,7 +1292,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioLg(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioLg(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1346,7 +1347,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioXl(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioXl(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1401,7 +1402,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioGtXs(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioGtXs(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1456,7 +1457,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioGtSm(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioGtSm(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1511,7 +1512,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioGtMd(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioGtMd(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1566,7 +1567,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioGtLg(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioGtLg(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1621,7 +1622,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioLtSm(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioLtSm(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1676,7 +1677,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioLtMd(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioLtMd(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1731,7 +1732,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioLtLg(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioLtLg(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -1786,7 +1787,7 @@
 
                 <tr>
                     <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>aspectRatioLtXl(val: )</code></span>
+                        <span class="accessor"><b>set</b><code>aspectRatioLtXl(val)</code></span>
                     </td>
                 </tr>
                             <tr>
@@ -2066,7 +2067,9 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
 
        <script src="../js/libs/custom-elements.min.js"></script>
        <script src="../js/libs/lit-html.js"></script>
-       <script src="../js/menu-wc.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
 
        <script src="../js/libs/bootstrap-native.js"></script>
 
