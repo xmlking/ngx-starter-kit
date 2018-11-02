@@ -7,9 +7,9 @@
   <mat-toolbar *ngIf="showToolbar">
     <mat-form-field fxFlex>
       <input matInput #filter (keyup)="applyFilter($event.target.value)">
-      <mat-placeholder>
+      <mat-label>
         <mat-icon>search</mat-icon>Filter
-      </mat-placeholder>
+      </mat-label>
       <button mat-button *ngIf="filter.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="filter.value= ''">
         <mat-icon>close</mat-icon>
       </button>

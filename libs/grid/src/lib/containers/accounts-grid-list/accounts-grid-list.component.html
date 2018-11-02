@@ -5,10 +5,10 @@
     <!--<div>Accounts | </div> -->
     <mat-form-field fxFlex>
       <input matInput #filter (keyup)="applyFilter($event.target.value)">
-      <mat-placeholder>
+      <mat-label>
         <mat-icon>search</mat-icon>
         Filter
-      </mat-placeholder>
+      </mat-label>
     </mat-form-field>
     <mat-button-toggle-group #gridView="matButtonToggleGroup" style="margin-left: 16px">
       <mat-button-toggle value='list'>

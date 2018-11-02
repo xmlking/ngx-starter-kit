@@ -140,8 +140,11 @@ npm i angular-in-memory-web-api
 # Add oauth2-oidc 
 npm i angular-oauth2-oidc 
 
-# Add ngxs
-npm i @ngxs/devtools-plugin @ngxs/store @ngxs/router-plugin
+# Add NGXS
+ng add @ngxs/schematics
+# or add NGXS manually 
+npm i @ngxs/devtools-plugin @ngxs/store @ngxs/router-plugin @ngxs/form-plugin @ngxs/devtools-plugin
+npm i -D @ngxs/schematics
 
 # Add formly
 ng add @ngx-formly/schematics --ui-theme=material
@@ -371,7 +374,8 @@ ng g directive  IconSidenav --project=sidenav --dry-run
 
 # generate components for `auth` Module
 ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest --dry-run 
-ng g component components/login --project=auth --dry-run 
+ng g component components/login --project=auth --dry-run
+ng g @ngxs/schematics:store --name=auth --spec --project=auth --dry-run
 
 # generate components for `navigator` Module
 ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest --dry-run 
