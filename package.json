@@ -158,6 +158,7 @@
     "d3": "^4.13.0",
     "d3-selection-multi": "^1.0.1",
     "dotenv": "^6.1.0",
+    "filepond": "^3.3.0",
     "filepond-plugin-file-encode": "^2.0.0",
     "filepond-plugin-file-validate-size": "^2.0.0",
     "filepond-plugin-file-validate-type": "^1.2.0",
