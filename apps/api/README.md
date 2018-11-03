@@ -23,8 +23,8 @@ Code Style        | [Prettier](https://github.com/prettier/prettier) & [TS-Lint]
 ## Development
 ### Run
 
-#### MongoDB
-> start mongodb 
+#### Postgres
+> start Postgres 
 ```bash
 # start local postgres
 docker-compose up postgres
