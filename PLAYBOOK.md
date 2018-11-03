@@ -11,8 +11,8 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v10.11.0 |          | 
 | NPM                           | v6.4.0   |          |
-| Angular CLI                   | v6.2.4   |          |
-| @nrwl/schematics              | v6.4.0   |          |
+| Angular CLI                   | v7.0.0   |          |
+| @nrwl/schematics              | v7.0.0   |          |
 | @nestjs/cli                   | v5.5.0   |          |
 
 ### Install Prerequisites
@@ -84,7 +84,7 @@ for nx help `npm run help`
 #### Create Workspace
 ```bash
 # create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
-create-nx-workspace  ngx-starter-kit --prefix=ngx
+create-nx-workspace  ngx-starter-kit --prefix=ngx --npm-scope=xmlking --package-manager=npm
 # or
 ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --verbose
 # or if you want *bazel* builds instead of *webpack*
@@ -108,7 +108,7 @@ ng update --all
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module 
 # or with ivy renderer
-ng g app webapp1 --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module --experimental-ivy --dry-run
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --experimental-ivy --dry-run
 
 # generate api app with nestjs
 ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
@@ -143,7 +143,7 @@ npm i angular-oauth2-oidc
 # Add NGXS
 ng add @ngxs/schematics
 # or add NGXS manually 
-npm i @ngxs/devtools-plugin @ngxs/store @ngxs/router-plugin @ngxs/form-plugin @ngxs/devtools-plugin
+npm i @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,devtools-plugin}
 npm i -D @ngxs/schematics
 
 # Add formly
@@ -161,8 +161,10 @@ filepond-plugin-image-preview
 npm i socket.io-client 
 npm i -D @types/socket.io-client
 
+# Add nestjs 
+npm i  @nestjs/{common,core,microservices,swagger,websockets,typeorm,passport,elasticsearch}
 # tslint rules
-npm i -D rxjs-tslint-rules
+npm i -D @nestjs/testing
 
 # Add miscellaneous
 npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable
@@ -196,7 +198,7 @@ semantic-release-cli setup
 npm i -D semantic-release @semantic-release/{changelog,git,github,npm}
 npm i -D commitizen cz-conventional-changelog 
 npm i -D @commitlint/{config-conventional,cli} 
-npm i -D husky@next 
+npm i -D husky 
 npm i -D lint-staged
 ```
 
