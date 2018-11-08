@@ -23,6 +23,8 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
+import { WINDOW, _window } from './services/window.token';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 // Noop handler for factory function
 export function noop() {
@@ -41,6 +43,7 @@ library.add(faTwitter, faGithub, faGoogle);
     CommonModule,
     HttpClientModule,
     FontAwesomeModule,
+    MatSnackBarModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
     NgxsModule.forRoot([AuthState, MenuState, PreferenceState]),
@@ -84,6 +87,7 @@ library.add(faTwitter, faGithub, faGoogle);
       provide: RouterStateSerializer,
       useClass: CustomRouterStateSerializer,
     },
+    { provide: WINDOW, useFactory: _window },
   ],
 })
 export class CoreModule {

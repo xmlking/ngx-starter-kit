@@ -80,7 +80,7 @@
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "40kb",
+                  "baseline": "45kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
