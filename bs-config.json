@@ -1,3 +1,5 @@
 {
-  "port": 4200
+  "port": 4200,
+  "files": ["dist/apps/webapp/*.{html,htm,css,js,json,png}"],
+  "server": { "baseDir": "dist/apps/webapp" }
 }

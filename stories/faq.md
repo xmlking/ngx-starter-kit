@@ -34,6 +34,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 * How implement Progressive Web Applications (PWA) with Service Workers?
 > Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
 > Read [Building a Search-Engine Optimized PWA with Angular](https://blog.bitsrc.io/building-an-search-engine-optimized-pwa-with-angular-part-2-4473aed90c14)
+> Refer [webmax](https://slides.com/webmax/ngsw-workbox)
+> Node: you cannot cache external urls (images etc) unless they are CORS enabled.
+> Creating [App-Shell](https://github.com/angular/angular-cli/wiki/stories-app-shell)
 
 * How to keep footers at the bottom of the page?
 > Refer [here](http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page)
@@ -74,6 +77,10 @@ type `ng.profiler.timeChangeDetection();` in console.
 * How to preload modules? 
 > Read Angular Router: [Preloading Modules](https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb)
 
+
+* How to use new `providedIn` Dependency Injection?
+> Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
+ 
 *  How to manage state in the front-end?
 
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)

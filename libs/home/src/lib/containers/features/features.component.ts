@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 
 import { environment as env } from '@env/environment';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
+import { WINDOW } from '@ngx-starter-kit/core';
 
 @Component({
   selector: 'ngx-features',
@@ -12,9 +13,11 @@ export class FeaturesComponent implements OnInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   versions = env.versions;
 
+  constructor(@Inject(WINDOW) private window: Window) {}
+
   ngOnInit() {}
 
   openLink(link: string) {
-    window.open(link, '_blank');
+    this.window.open(link, '_blank');
   }
 }

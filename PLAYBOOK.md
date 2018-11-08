@@ -86,9 +86,9 @@ for nx help `npm run help`
 # create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
 create-nx-workspace  ngx-starter-kit --prefix=ngx --npm-scope=xmlking --package-manager=npm
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=xmlking --package-manager=npm --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=xmlking --package-manager=npm --bazel  --verbose
 cd ngx-starter-kit
 
 > remove all ngrx NPM pagages from package.json
@@ -106,7 +106,7 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --tags=app-module 
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --dry-run
 # or with ivy renderer
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --experimental-ivy --dry-run
 
@@ -166,6 +166,9 @@ npm i  @nestjs/{common,core,microservices,swagger,websockets,typeorm,passport,el
 # tslint rules
 npm i -D @nestjs/testing
 
+# add lite-server to test PWA locally
+npm i -D lite-server
+
 # Add miscellaneous
 npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable
 
@@ -204,11 +207,13 @@ npm i -D lint-staged
 
 > update 3rd party modules/schematics
 ```bash
+ng update @angular/core
 ng update @angular/cli
 ng update @angular/core
 ng update @angular/material --force
 ng update @angular/pwa
 ng update @ngx-formly/schematics --ui-theme=material
+ng update @nrwl/schematics --force
 ```
 
 #### Generate Artifacts
@@ -237,6 +242,7 @@ ng g service services/PageTitle      --project=core   --dry-run
 ng g service services/ServiceWorker  --project=core   --dry-run
 ng g service services/MediaQuery     --project=core   --dry-run
 ng g service services/DeepLink       --project=core   --dry-run
+ng g service services/Feature        --project=core   --dry-run
 
 # `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components 
 ng g lib material --spec=false --tags=shared-module --unit-test-runner=jest --dry-run
@@ -477,10 +483,10 @@ docker-compose up web
 ### Serve from dist
 > use this to test service-workers
 ```bash
-# 1st terminal - Start the build
-ng build --app=webapp -oh=media --watch
-# 2nd terminal - Start the web server (start server on port 4200)
-npx lite-server --baseDir="dist/apps/webapp"
+# 1st terminal - Start the build in (optional) watch mode 
+ng build --prod --watch
+# 2nd in terminal - Start the static web server. this will use config from bs-config.json
+npx lite-server
 ```
 
 ### Docs

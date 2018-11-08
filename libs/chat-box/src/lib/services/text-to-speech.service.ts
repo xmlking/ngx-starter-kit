@@ -1,13 +1,14 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
 import { SynthesisVoice } from '../state/chat-box.actions';
+import { BrowserFeatureKey, FeatureService, WINDOW } from '@ngx-starter-kit/core';
 
 @Injectable()
 export class TextToSpeechService {
   public canUseSpeechSynthesis = false;
   private speechSynthesis: SpeechSynthesis;
-  constructor() {
-    if ('speechSynthesis' in window) {
-      this.canUseSpeechSynthesis = true;
+  constructor(private readonly featureService: FeatureService, @Inject(WINDOW) private window: Window) {
+    this.canUseSpeechSynthesis  = this.featureService.detectFeature(BrowserFeatureKey.SpeechSynthesis).supported;
+    if (this.canUseSpeechSynthesis) {
       this.speechSynthesis = (window as any).speechSynthesis;
     }
   }

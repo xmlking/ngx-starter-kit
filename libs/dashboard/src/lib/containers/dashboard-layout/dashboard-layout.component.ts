@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { NavigationEnd, Router } from '@angular/router';
@@ -9,6 +9,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { environment } from '@env/environment';
 import { RouterState } from '@ngxs/router-plugin';
 import { map } from 'rxjs/operators';
+import { WINDOW } from '@ngx-starter-kit/core';
 
 @Component({
   selector: 'ngx-dashboard-layout',
@@ -38,6 +39,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private actions$: Actions,
     private media: ObservableMedia,
     private oauthService: OAuthService,
+    @Inject(WINDOW) private window: Window,
   ) {}
 
   ngOnInit() {
@@ -62,7 +64,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     });
 
     setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
+      this.window.dispatchEvent(new Event('resize'));
     }, 2000);
 
     // Disable WebSocket in mock mode
