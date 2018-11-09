@@ -1,5 +1,6 @@
-HOW TO
-======
+Awesome
+=======
+A curated list of awesome Angular resources
 
 * How do I use this template projects?
 > Add your own app along with `default` app and use shared modules in `libs`. 
@@ -77,6 +78,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 * How to preload modules? 
 > Read Angular Router: [Preloading Modules](https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb)
 
+* How to debug router?
+>  `{ enableTracing: true }`
+> Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
 
 * How to use new `providedIn` Dependency Injection?
 > Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)

@@ -8,7 +8,6 @@ import { NotificationsService } from './notifications.service';
 @NgModule({
   imports: [SharedModule, NgxsModule.forFeature([NotificationsState])],
   declarations: [NotificationsComponent],
-  providers: [NotificationsService],
   exports: [NotificationsComponent],
 })
 export class NotificationsModule {}

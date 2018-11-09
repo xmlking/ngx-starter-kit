@@ -35,7 +35,7 @@ export const authConfigImplicit: AuthConfig = {
   sessionChecksEnabled: true,
   useIdTokenHintForSilentRefresh: true,
   // FIXME: use it for debugging only.
-  timeoutFactor: environment.production ? 0.75 : 0.01,
+  timeoutFactor: environment.production ? 0.75 : 0.1,
 };
 
 export const authConfigPassword: AuthConfig = {

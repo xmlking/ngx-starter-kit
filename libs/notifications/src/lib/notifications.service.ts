@@ -7,7 +7,9 @@ import { Observable } from 'rxjs';
 import { catchError, finalize, map, retry } from 'rxjs/operators';
 import { BrowserFeatureKey, FeatureService } from '@ngx-starter-kit/core';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NotificationsService extends EntityService<AppNotification> {
   public apiBaseUrl = environment.API_BASE_URL;
   readonly entityPath = 'notifications';
