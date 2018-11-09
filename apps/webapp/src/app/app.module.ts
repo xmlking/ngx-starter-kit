@@ -38,6 +38,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         initialNavigation: 'enabled',
         preloadingStrategy: PreloadAllModules, // TODO: PreloadSelectedModulesList
         paramsInheritanceStrategy: 'always',
+        // enableTracing: true, // enable to debug routing during development
         // onSameUrlNavigation: 'reload'
       },
     ),
