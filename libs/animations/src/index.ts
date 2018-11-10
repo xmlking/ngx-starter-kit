@@ -1,6 +1,3 @@
-/*
- * Public API Surface of mylib
- */
 export { Animations } from './lib/animations';
 export * from './lib/card.animation';
 export * from './lib/expand.animation';

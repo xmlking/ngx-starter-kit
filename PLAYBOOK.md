@@ -134,7 +134,7 @@ npm i moment ngx-moment
 npm i @angular/material-moment-adapter 
 
 # Add Flex-Layout 
-npm i @angular/flex-layout@next
+npm i @angular/flex-layout
 # Add in-memory-web-api
 npm i angular-in-memory-web-api
 # Add oauth2-oidc 
@@ -170,7 +170,7 @@ npm i -D @nestjs/testing
 npm i -D lite-server
 
 # Add miscellaneous
-npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull immutable
+npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 
 # Add Dev Tools
 npm i -D standard-version
@@ -245,7 +245,7 @@ ng g service services/DeepLink       --project=core   --dry-run
 ng g service services/Feature        --project=core   --dry-run
 
 # `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components 
-ng g lib material --spec=false --tags=shared-module --unit-test-runner=jest --dry-run
+ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest --dry-run
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`  
 ng g lib shared --prefix=ngx --tags=shared-module --unit-test-runner=jest 
@@ -302,7 +302,7 @@ ng g class    notification --type=model --project=notifications --dry-run
 ng g service  notifications --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel1 --prefix=ngx --tags=private-module --unit-test-runner=jest
+ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
 ng g component Quickpanel --project=quickpanel --flat --dry-run
 
 # generate components for `LoadingOverlay` Module
