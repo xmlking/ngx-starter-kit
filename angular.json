@@ -227,7 +227,7 @@
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
-      "prefix": "api",
+      "prefix": "ngx",
       "schematics": {},
       "architect": {
         "build": {
@@ -306,7 +306,7 @@
       "root": "apps/backend",
       "sourceRoot": "apps/backend/src",
       "projectType": "application",
-      "prefix": "backend",
+      "prefix": "ngx",
       "schematics": {},
       "architect": {
         "build": {
@@ -360,7 +360,7 @@
       "root": "libs/models",
       "sourceRoot": "libs/models/src",
       "projectType": "library",
-      "prefix": "ngx-starter-kit",
+      "prefix": "ngx",
       "architect": {
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
