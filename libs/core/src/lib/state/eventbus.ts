@@ -1,22 +1,38 @@
-import { Actions, ofActionSuccessful, ofActionErrored, ofActionDispatched, Store } from '@ngxs/store';
+import { Actions, ofActionErrored, ofActionSuccessful, Store } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { Login } from '@ngx-starter-kit/auth';
+import { Login, LoginSuccess } from '@ngx-starter-kit/auth';
 import {
+  AuthenticateWebSocket,
   ConnectWebSocket,
   DisconnectWebSocket,
-  WebSocketDisconnected,
   WebSocketConnected,
-  AuthenticateWebSocket,
+  WebSocketDisconnected,
 } from '@ngx-starter-kit/socketio-plugin';
+import { RouterNavigation } from '@ngxs/router-plugin';
+import { RouterStateData } from '@ngx-starter-kit/core';
+import { distinctUntilChanged, map } from 'rxjs/operators';
+import { PageTitleService } from '../services/page-title.service';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class EventBus {
-  constructor(private actions$: Actions, private store: Store) {
-    this.actions$.pipe(ofActionDispatched(Login)).subscribe(action => console.log('Login.......Action Dispatched'));
+  constructor(
+    private actions$: Actions,
+    private store: Store,
+    private analytics: GoogleAnalyticsService,
+    private pageTitle: PageTitleService,
+  ) {
     this.actions$.pipe(ofActionSuccessful(Login)).subscribe(action => console.log('Login........Action Successful'));
     this.actions$.pipe(ofActionErrored(Login)).subscribe(action => console.log('Login........Action Errored'));
+    this.actions$
+      .pipe(ofActionSuccessful(LoginSuccess))
+      .subscribe((action: LoginSuccess) => {
+        console.log('LoginSuccess........Action Successful', action.payload.preferred_username);
+        this.analytics.setUsername(action.payload.preferred_username);
+      });
+
     this.actions$
       .pipe(ofActionSuccessful(ConnectWebSocket))
       .subscribe(action => console.log('ConnectWebSocket........Action Successful'));
@@ -30,5 +46,19 @@ export class EventBus {
     this.actions$
       .pipe(ofActionSuccessful(WebSocketDisconnected))
       .subscribe(action => console.log('WebSocketDisconnected........Action Successful'));
+
+    this.actions$
+      .pipe(
+        ofActionSuccessful(RouterNavigation),
+        map((action: RouterNavigation) => action.routerState as any),
+        distinctUntilChanged((previous: RouterStateData, current: RouterStateData) => {
+          return previous.url === current.url;
+        }),
+      )
+      .subscribe(data => {
+        console.log('ofActionSuccessful RouterNavigation', data.url);
+        this.pageTitle.setTitle(data.breadcrumbs);
+        this.analytics.setPage(data.url);
+      });
   }
 }

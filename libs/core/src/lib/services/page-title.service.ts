@@ -1,12 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Store } from '@ngxs/store';
-import { RouterState } from '@ngxs/router-plugin';
-import { RouterStateData } from '../state/custom-router-state.serializer';
 
-declare var ga: any;
 /**
- * Service responsible for setting the title that appears above the home and dashboard pages.
+ * EventBus will use this service
  */
 @Injectable({
   providedIn: 'root',
@@ -16,16 +13,13 @@ export class PageTitleService {
 
   constructor(private store: Store, private bodyTitle: Title) {
     this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
+  }
 
-    // Automatically set pageTitle from router state data
-    store.select<any>(RouterState.state).subscribe((routerStateData: RouterStateData) => {
-      bodyTitle.setTitle(
-        `${Array.from(routerStateData.breadcrumbs.keys())
-          .reverse()
-          .join(' | ')} | ${this.defaultTitle}`,
-      );
-
-      ga('send', 'pageview', routerStateData.url);
-    });
+  public setTitle(breadcrumbs: Map<string, string>) {
+    this.bodyTitle.setTitle(
+      `${Array.from(breadcrumbs.keys())
+        .reverse()
+        .join(' | ')} | ${this.defaultTitle}`,
+    );
   }
 }
