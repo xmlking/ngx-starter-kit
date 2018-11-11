@@ -21,7 +21,6 @@ import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 import { PreferenceState } from './state/preference.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { JwtInterceptor } from './interceptors/jwt.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
 import { WINDOW, _window } from './services/window.token';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
@@ -72,11 +71,6 @@ library.add(faTwitter, faGithub, faGoogle);
       useClass: ErrorInterceptor,
       multi: true,
     },
-    // {
-    //   provide: HTTP_INTERCEPTORS,
-    //   useClass: JwtInterceptor,
-    //   multi: true,
-    // },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
