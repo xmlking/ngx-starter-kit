@@ -9,11 +9,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software                      | Version  | Optional |  
 |-------------------------------|----------|----------| 
-| Node                          | v10.11.0 |          | 
-| NPM                           | v6.4.0   |          |
+| Node                          | v11.1.0  |          | 
+| NPM                           | v6.4.1   |          |
 | Angular CLI                   | v7.0.0   |          |
 | @nrwl/schematics              | v7.0.0   |          |
-| @nestjs/cli                   | v5.5.0   |          |
+| @nestjs/cli                   | v5.6.2   |          |
 
 ### Install Prerequisites
 ```bash
@@ -243,6 +243,7 @@ ng g service services/ServiceWorker  --project=core   --dry-run
 ng g service services/MediaQuery     --project=core   --dry-run
 ng g service services/DeepLink       --project=core   --dry-run
 ng g service services/Feature        --project=core   --dry-run
+ng g service services/GoogleAnalytics --project=core   --dry-run
 
 # `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components 
 ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest --dry-run

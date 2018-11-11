@@ -225,6 +225,9 @@ https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package
 * how to link local npm projects when you o patch a npm module locally?
 > Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)
  
+### NestJS
+* Intro [NestJS](https://www.youtube.com/watch?v=ets56yWvi84)
+
 ### Pattern
 1. https://tomastrajan.github.io/angular-model-pattern-example#/about
 
