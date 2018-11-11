@@ -29,7 +29,6 @@ export class EventBus {
     this.actions$
       .pipe(ofActionSuccessful(LoginSuccess))
       .subscribe((action: LoginSuccess) => {
-        console.log('LoginSuccess........Action Successful', action.payload.preferred_username);
         this.analytics.setUsername(action.payload.preferred_username);
       });
 
@@ -56,7 +55,6 @@ export class EventBus {
         }),
       )
       .subscribe(data => {
-        console.log('ofActionSuccessful RouterNavigation', data.url);
         this.pageTitle.setTitle(data.breadcrumbs);
         this.analytics.setPage(data.url);
       });
