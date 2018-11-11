@@ -423,11 +423,6 @@
           "options": {
             "tsConfig": "libs/socketio-plugin/tsconfig.lib.json",
             "project": "libs/socketio-plugin/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/socketio-plugin/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -463,11 +458,6 @@
           "options": {
             "tsConfig": "libs/tree/tsconfig.lib.json",
             "project": "libs/tree/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/tree/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -784,11 +774,6 @@
           "options": {
             "tsConfig": "libs/app-confirm/tsconfig.lib.json",
             "project": "libs/app-confirm/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/app-confirm/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -824,11 +809,6 @@
           "options": {
             "tsConfig": "libs/draggable/tsconfig.lib.json",
             "project": "libs/draggable/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/draggable/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -864,11 +844,6 @@
           "options": {
             "tsConfig": "libs/breadcrumbs/tsconfig.lib.json",
             "project": "libs/breadcrumbs/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/breadcrumbs/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -904,11 +879,6 @@
           "options": {
             "tsConfig": "libs/scroll-to-top/tsconfig.lib.json",
             "project": "libs/scroll-to-top/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/scroll-to-top/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -944,11 +914,6 @@
           "options": {
             "tsConfig": "libs/scrollbar/tsconfig.lib.json",
             "project": "libs/scrollbar/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/scrollbar/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -984,11 +949,6 @@
           "options": {
             "tsConfig": "libs/context-menu/tsconfig.lib.json",
             "project": "libs/context-menu/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/context-menu/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1024,11 +984,6 @@
           "options": {
             "tsConfig": "libs/theme-picker/tsconfig.lib.json",
             "project": "libs/theme-picker/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/theme-picker/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1092,11 +1047,6 @@
           "options": {
             "tsConfig": "libs/svg-viewer/tsconfig.lib.json",
             "project": "libs/svg-viewer/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/svg-viewer/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1132,11 +1082,6 @@
           "options": {
             "tsConfig": "libs/led/tsconfig.lib.json",
             "project": "libs/led/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/led/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1172,11 +1117,6 @@
           "options": {
             "tsConfig": "libs/chat-box/tsconfig.lib.json",
             "project": "libs/chat-box/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/chat-box/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1212,11 +1152,6 @@
           "options": {
             "tsConfig": "libs/json-diff/tsconfig.lib.json",
             "project": "libs/json-diff/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/json-diff/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1308,11 +1243,6 @@
           "options": {
             "tsConfig": "libs/loading-overlay/tsconfig.lib.json",
             "project": "libs/loading-overlay/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/loading-overlay/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1376,11 +1306,6 @@
           "options": {
             "tsConfig": "libs/notifications/tsconfig.lib.json",
             "project": "libs/notifications/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/notifications/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1444,11 +1369,6 @@
           "options": {
             "tsConfig": "libs/clap/tsconfig.lib.json",
             "project": "libs/clap/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/clap/ng-package.prod.json"
-            }
           }
         },
         "lint": {
@@ -1484,11 +1404,6 @@
           "options": {
             "tsConfig": "libs/image-comparison/tsconfig.lib.json",
             "project": "libs/image-comparison/ng-package.json"
-          },
-          "configurations": {
-            "production": {
-              "project": "libs/image-comparison/ng-package.prod.json"
-            }
           }
         },
         "lint": {
