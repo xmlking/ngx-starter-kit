@@ -239,7 +239,7 @@
     "rxjs-tslint-rules": "^4.11.0",
     "semantic-release": "^15.11.0",
     "supertest": "^3.3.0",
-    "testcafe": "^0.23.0",
+    "testcafe": "^0.23.2",
     "testcafe-angular-selectors": "^0.3.0",
     "testcafe-live": "^0.1.4",
     "ts-jest": "^23.10.4",
