@@ -46,6 +46,7 @@ export class EventBus {
       .pipe(ofActionSuccessful(WebSocketDisconnected))
       .subscribe(action => console.log('WebSocketDisconnected........Action Successful'));
 
+    // FIXME : https://github.com/ngxs/store/issues/542
     this.actions$
       .pipe(
         ofActionSuccessful(RouterNavigation),
