@@ -1,5 +1,6 @@
 import { Injectable, EventEmitter, Inject } from '@angular/core';
 import { WINDOW } from '@ngx-starter-kit/core';
+import { ThemePickerServiceModule } from './theme-picker-service.module';
 
 export interface DocsSiteTheme {
   href: string;
@@ -9,7 +10,7 @@ export interface DocsSiteTheme {
   isDefault?: boolean;
 }
 
-@Injectable()
+@Injectable({ providedIn: ThemePickerServiceModule })
 export class ThemeStorageService {
   static storageKey = 'default-theme-storage-current';
 
