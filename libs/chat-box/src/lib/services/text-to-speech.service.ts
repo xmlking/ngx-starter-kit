@@ -24,9 +24,12 @@ export class TextToSpeechService {
   }
 
   public async getVoiceList(): Promise<SpeechSynthesisVoice[]> {
-    await new Promise((resolve, reject) => {
-      this.speechSynthesis.addEventListener('voiceschanged', resolve);
-    });
+
+    if ('onvoiceschanged' in speechSynthesis) {
+      await new Promise((resolve, reject) => {
+        this.speechSynthesis.addEventListener('voiceschanged', resolve);
+      });
+    }
     return this.speechSynthesis.getVoices();
 
     // return new Promise((resolve: any, reject: any): void => {
