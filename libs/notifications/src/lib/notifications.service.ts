@@ -18,9 +18,10 @@ export class NotificationsService extends EntityService<AppNotification> {
     super(httpClient);
   }
 
-  /*
-  async showNotification(title: string, message: string, button?: string, showNative = false): Promise<string> {
-    const id = UUID.v4();
+  // TODO: Move to state
+  // this.showNotification('PWA Workshop', 'Hello audience! Nice to meet you!', null, true);
+
+  async showNotification(title: string, message: string, button?: string, showNative = false) {
     if (showNative && this.featureService.detectFeature(BrowserFeatureKey.NotificationsAPI).supported
       && !this.featureService.isMobileAndroid()) {
       const permission = await Notification.requestPermission();
@@ -29,19 +30,16 @@ export class NotificationsService extends EntityService<AppNotification> {
           body: message
         });
         notification.onclick = () => {
-          this.notificationClicked.next(id);
+          console.log('clicked todo: mark as read');
         };
-        return id;
       }
+      // this.showInAppNotification(title, message, button);
     }
-    this.showInAppNotification(title, message, button, id);
-    return id;
   }
+  // private showInAppNotification(title: string, message: string, button: string) {
+  //     this.notifications.next(new AppNotification(title, message, button, id));
+  //   }
 
-  private showInAppNotification(title: string, message: string, button: string, id) {
-    this.notifications.next(new AppNotification(title, message, button, id));
-  }
-*/
   getAll(): Observable<AppNotification[]> {
     this.loadingSubject.next(true);
     return this.httpClient.get<[AppNotification[], number]>(`${this.baseUrl}/${this.entityPath}`).pipe(

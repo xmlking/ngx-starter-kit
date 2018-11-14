@@ -1,11 +1,11 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CrudService } from '../core';
 import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { CrudService } from '../core';
 import { Notification } from './notification.entity';
-import { User } from '../auth';
 import { EventBusGateway } from '../shared';
 import { AddNotification, DeleteNotification } from './index';
-import { Repository } from 'typeorm';
+import { User } from '../auth';
 
 @Injectable()
 export class NotificationsService extends CrudService<Notification> {
