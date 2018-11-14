@@ -1,8 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "baseUrl": ".",
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -26,8 +25,8 @@
       "@env/*": [
         "apps/webapp/src/environments/*"
       ],
-      "@api-env/*": [
-        "apps/api/src/environments/*"
+      "@env-api/environment": [
+        "apps/api/src/environments/environment.ts"
       ],
       "@ngx-starter-kit/models": [
         "libs/models/src/index.ts"

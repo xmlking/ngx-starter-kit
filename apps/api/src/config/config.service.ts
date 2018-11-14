@@ -1,28 +1,20 @@
-import { parse, config } from 'dotenv';
-import * as fs from 'fs';
 import { Injectable } from '@nestjs/common';
+import { environment } from '@env-api/environment';
+
 // tslint:disable-next-line
 const packageJson = require('../../../../package.json');
 
 @Injectable()
 export class ConfigService {
-  private readonly envConfig: { [prop: string]: string };
+  private readonly config;
 
-  constructor(filePath: string) {
-    this.envConfig = parse(fs.readFileSync(filePath));
-    config({ path: filePath });
+  constructor() {
+    this.config = environment;
+    console.log('is prod? ', environment.production);
   }
 
-  get(key: string, defaultVal?: any): string {
-    return process.env[key] || this.envConfig[key] || defaultVal;
-  }
-
-  has(key: string): boolean {
-    return this.get(key) !== undefined;
-  }
-
-  public getNumber(key: string): number {
-    return parseInt(this.get(key), 10);
+  get(key: string): any {
+    return this.config.get(key);
   }
 
   public getVersion(): string {
@@ -37,11 +29,6 @@ export class ConfigService {
   }
 
   public getAllowWhitelist(): string[] {
-    const allowWhitelist = this.get('ALLOW_WHITE_LIST');
-    if (allowWhitelist) {
-      return allowWhitelist.split(',');
-    } else {
-      return [];
-    }
+    return this.config.ALLOW_WHITE_LIST ? this.config.ALLOW_WHITE_LIST : [];
   }
 }

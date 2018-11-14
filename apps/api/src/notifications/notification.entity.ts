@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, Index } from 'typeorm';
-import { Base } from '../core';
+import { Base } from '../core/entities/base.entity';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsAscii, IsBoolean, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 

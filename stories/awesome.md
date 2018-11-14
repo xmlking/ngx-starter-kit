@@ -188,6 +188,10 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > Refer [Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
 > Refer [Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
 
+* how to generate PWA's Push Notifications key pair?
+
+> Refer [web-push-codelab](https://web-push-codelab.glitch.me/)
+
 * How to setup NestJS Project?
 
 > Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)

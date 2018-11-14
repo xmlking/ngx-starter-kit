@@ -46,10 +46,10 @@ docker rm 82be5234c94a
 #### Run Dev Mode
 ```bash
 # start in watch mode
-npm run api:start:dev
+ng serve api
 # to turn on logging for `request`
-NODE_DEBUG=request npm run api:start:dev
-DEBUG=typeorm:* npm run api:start:dev
+NODE_DEBUG=request ng serve api
+DEBUG=typeorm:* ng serve api
 
 # start
 npm run api:start

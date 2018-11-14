@@ -4,6 +4,7 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 import { ConfigService } from './config';
 import * as helmet from 'helmet';
+import { environment as env } from '@env-api/environment';
 
 declare const module: any;
 
@@ -17,14 +18,14 @@ async function bootstrap() {
       transform: true,
       whitelist: true,
       forbidNonWhitelisted: true,
-      skipMissingProperties: true,
+      skipMissingProperties: false,
       forbidUnknownValues: true,
     }),
   );
 
   const options = new DocumentBuilder()
     .setTitle('Sumo API Docs')
-    .setDescription('Sumo API for Multi-tenant kubernetes')
+    .setDescription('Sumo API for Ngx Starter Kit')
     .setExternalDoc('Github Repo', 'https://github.com/xmlking/ngx-starter-kit/tree/master/apps/api')
     .setVersion(config.getVersion())
     .addTag('Sumo')
@@ -32,22 +33,22 @@ async function bootstrap() {
     .setSchemes(config.isProd() ? 'https' : 'http')
     .addOAuth2(
       'implicit',
-      `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/auth`,
-      `${config.get('OIDC_ISSUER_URL')}/protocol/openid-connect/token`,
+      `${env.oidc.issuerUrl}/protocol/openid-connect/auth`,
+      `${env.oidc.issuerUrl}/protocol/openid-connect/token`,
     )
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: {
-      oauth2RedirectUrl: `${config.get('DOMAIN_URL')}/docs/oauth2-redirect.html`,
+      oauth2RedirectUrl: `${env.server.domainUrl})}/docs/oauth2-redirect.html`,
       oauth: {
-        clientId: config.get('OIDC_CLIENT'),
+        clientId: env.oidc.client,
         appName: 'Sumo API',
       },
     },
   });
 
-  await app.listen(config.getNumber('PORT') || 3000, '0.0.0.0');
+  await app.listen(env.server.port || 3000, '0.0.0.0');
 
   if (module.hot) {
     module.hot.accept();

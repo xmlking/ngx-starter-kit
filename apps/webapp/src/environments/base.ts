@@ -9,6 +9,9 @@ export default {
     // apiToken: '528e10cbdec04c78a0d0147de041dea4',
     sessionId: 'sumodemo',
   },
+  webPush: {
+    publicVapidKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'
+  },
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],

@@ -5,7 +5,6 @@ import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 
 import { AuthService } from '../auth.service';
 import { JwtToken } from '../interfaces/jwt-token.interface';
-import { ConfigService } from '../../config';
 import { WsException } from '@nestjs/websockets';
 
 const extractJwtFromWsQuery = req => {
@@ -20,7 +19,7 @@ const extractJwtFromWsQuery = req => {
 
 @Injectable()
 export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
-  constructor(private readonly config: ConfigService, private readonly authService: AuthService) {
+  constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: extractJwtFromWsQuery, // ExtractJwt.fromUrlQueryParameter('token'),
       // secretOrKey: process.env.OIDC_PUBLIC_KEY,

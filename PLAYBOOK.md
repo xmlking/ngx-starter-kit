@@ -301,6 +301,7 @@ ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --un
 ng g component notifications --project=notifications --flat --dry-run
 ng g class    notification --type=model --project=notifications --dry-run
 ng g service  notifications --project=notifications --dry-run
+ng g service  PushNotification --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
 ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
