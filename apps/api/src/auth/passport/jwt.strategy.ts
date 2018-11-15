@@ -5,19 +5,20 @@ import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 
 import { AuthService } from '../auth.service';
 import { JwtToken } from '../interfaces/jwt-token.interface';
+import { environment as env } from '@env-api/environment';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      // secretOrKey: process.env.OIDC_PUBLIC_KEY,
+      // secretOrKey: env.auth.publicKey,
       secretOrKeyProvider: passportJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
         strictSsl: false,
-        jwksUri: `${process.env.OIDC_ISSUER_URL}/protocol/openid-connect/certs`,
+        jwksUri: `${env.auth.issuer}/protocol/openid-connect/certs`,
       }),
       handleSigningKeyError: (err, cb) => {
         if (err instanceof SigningKeyNotFoundError) {
@@ -27,8 +28,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       },
 
       // Validate the audience and the issuer.
-      audience: process.env.OIDC_CLIENT,
-      issuer: process.env.OIDC_ISSUER_URL,
+      audience: env.auth.clientId,
+      issuer: env.auth.issuer,
       algorithm: ['RS256'],
     });
   }

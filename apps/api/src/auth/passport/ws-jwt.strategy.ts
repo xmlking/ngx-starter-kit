@@ -6,6 +6,7 @@ import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 import { AuthService } from '../auth.service';
 import { JwtToken } from '../interfaces/jwt-token.interface';
 import { WsException } from '@nestjs/websockets';
+import { environment as env } from '@env-api/environment';
 
 const extractJwtFromWsQuery = req => {
   let token = null;
@@ -22,13 +23,13 @@ export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
   constructor(private readonly authService: AuthService) {
     super({
       jwtFromRequest: extractJwtFromWsQuery, // ExtractJwt.fromUrlQueryParameter('token'),
-      // secretOrKey: process.env.OIDC_PUBLIC_KEY,
+      // secretOrKey: env.auth.publicKey,
       secretOrKeyProvider: passportJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
         strictSsl: false,
-        jwksUri: `${process.env.OIDC_ISSUER_URL}/protocol/openid-connect/certs`,
+        jwksUri: `${env.auth.issuer}/protocol/openid-connect/certs`,
       }),
       handleSigningKeyError: (err, cb) => {
         if (err instanceof SigningKeyNotFoundError) {
@@ -38,8 +39,8 @@ export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
       },
 
       // Validate the audience and the issuer.
-      audience: process.env.OIDC_CLIENT,
-      issuer: process.env.OIDC_ISSUER_URL,
+      audience: env.auth.clientId,
+      issuer: env.auth.issuer,
       algorithm: ['RS256'],
     });
   }
