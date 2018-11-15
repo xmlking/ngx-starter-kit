@@ -29,11 +29,11 @@ export const environment = {
     synchronize: true,
   },
 
-  oidc: {
-    // issuerUrl: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/kubernetes',
-    // client: 'cockpit',
-    issuerUrl: process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
-    client: process.env.OIDC_CLIENT || 'is360ui',
+  auth: {
+    // issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/kubernetes',
+    // clientId: 'cockpit',
+    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+    clientId: 'is360ui',
   },
 
   email: {
@@ -44,7 +44,7 @@ export const environment = {
     defaults: {
       from: '"sumo demo" <sumo@demo.com>',
     },
-    templateDir: 'apps/api/email-templates',
+    templateDir: 'apps/api/src/assets/email-templates',
   },
 
   webPush: {

@@ -34,16 +34,16 @@ async function bootstrap() {
     .setSchemes(config.isProd() ? 'https' : 'http')
     .addOAuth2(
       'implicit',
-      `${env.oidc.issuerUrl}/protocol/openid-connect/auth`,
-      `${env.oidc.issuerUrl}/protocol/openid-connect/token`,
+      `${env.auth.issuer}/protocol/openid-connect/auth`,
+      `${env.auth.issuer}/protocol/openid-connect/token`,
     )
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: {
-      oauth2RedirectUrl: `${env.server.domainUrl})}/docs/oauth2-redirect.html`,
+      oauth2RedirectUrl: `${env.server.domainUrl}/docs/oauth2-redirect.html`,
       oauth: {
-        clientId: env.oidc.client,
+        clientId: env.auth.clientId,
         appName: 'Sumo API',
         // scopeSeparator: ' ',
         // additionalQueryStringParams: {audience: env.oidc.audience},

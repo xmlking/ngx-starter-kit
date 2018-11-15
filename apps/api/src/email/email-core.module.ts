@@ -14,7 +14,7 @@ const defaultConfig = {
     forceEmbeddedImages: false,
     from: undefined,
   },
-  templateDir: `${process.cwd()}/email-templates`,
+  templateDir: `${process.cwd()}/assets/email-templates`,
 };
 
 @Global()
