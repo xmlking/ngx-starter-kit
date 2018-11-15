@@ -9,7 +9,7 @@ psql -h <host> -p <port> -U <username> -W <password> <database>
 ```
 
 ### REST API 
-> Note: you need need to pass [access_token](#token)
+> Note: you need to pass [access_token](#token)
 
 ```bash
 # create 
