@@ -49,13 +49,16 @@ DEBUG=typeorm:* ng serve api
 ```
 
 #### Run Prod Mode
-> run both commands
 ```bash
 # build first
 ng build api --prod
 # then run
 npm run api:start:prod
 ```
+
+**API URL:** http://localhost:3000
+
+**Swagger Docs URL:** http://localhost:3000/docs
 
 ### Build
 > build for production env 
