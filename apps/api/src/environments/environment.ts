@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
 
-  NODE_ENV: 'development',
   NODE_TLS_REJECT_UNAUTHORIZED: 0,
   ALLOW_WHITE_LIST: ['::ffff:127.0.0.1', '::1'],
   LOG_LEVEL: 'debug',

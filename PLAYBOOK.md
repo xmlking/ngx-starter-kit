@@ -208,7 +208,7 @@ npm i -D lint-staged
 > update 3rd party modules/schematics
 ```bash
 ng update @angular/core
-ng update @angular/cli
+ng update @angular/cli@next
 ng update @angular/core
 ng update @angular/material --force
 ng update @angular/pwa
