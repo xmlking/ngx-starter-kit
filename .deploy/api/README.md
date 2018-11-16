@@ -5,12 +5,12 @@ Deploying ngx-starter-kit API
 ### Build
 ```bash
 # build app docker image
-docker build --tag=ngx-starter-kit-api -f .deploy/api/prod.dockerfile . 
+docker build --tag=ngx-starter-kit-api -f .deploy/api/Dockerfile . 
 ```
 
 ### Run
 ```bash
-docker run -it --env TYPEORM_HOST=localhost -p 3000:3000  ngx-starter-kit-api
+docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngx-starter-kit-api
 ```
 
 ### Test
@@ -33,11 +33,11 @@ curl -v -X GET \
 docker login
 
 # tag
-docker tag ngx-starter-kit-api xmlking/ngx-starter-kit-api:0.1.4-SNAPSHOT
-docker tag xmlking/ngx-starter-kit-api:0.1.4-SNAPSHOT  xmlking/ngx-starter-kit-api:latest
+docker tag ngx-starter-kit-api xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT
+docker tag xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT  xmlking/ngx-starter-kit-api:latest
 
 # push
-docker push xmlking/ngx-starter-kit-api:0.1.4-SNAPSHOT
+docker push xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT
 docker push xmlking/ngx-starter-kit-api:latest
 ```
 

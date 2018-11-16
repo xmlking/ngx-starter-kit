@@ -43,11 +43,11 @@ services:
   api:
     build:
       context: .
-      dockerfile: .deploy/api/dev.dockerfile
-    image: 'ngx-starter-kit-api:latest'
+      dockerfile: .deploy/api/Dockerfile
+    image: ngx-starter-kit-api:latest
     container_name: api
-    env_file:
-      - development.env
+    environment:
+      NODE_TLS_REJECT_UNAUTHORIZED: 0
     ports:
       - '3000:3000'
     depends_on:

@@ -1,0 +1,26 @@
+{
+  "name": "api",
+  "version": "0.0.0",
+  "dependencies": {
+    "@nestjs/common": "^5.4.0",
+    "@nestjs/core": "^5.4.0",
+    "@nestjs/passport": "^5.1.0",
+    "@nestjs/swagger": "^2.5.1",
+    "@nestjs/typeorm": "^5.2.2",
+    "@nestjs/websockets": "^5.4.0",
+    "@xmlking/jwks-rsa": "^1.4.3",
+    "class-transformer": "^0.2.0",
+    "class-validator": "^0.9.1",
+    "cls-hooked": "^4.2.2",
+    "helmet": "^3.15.0",
+    "nest-router": "^1.0.7",
+    "nodemailer": "^4.6.8",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "pg": "^7.6.1",
+    "pug": "^2.0.3",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.3.3",
+    "typeorm": "^0.2.9"
+  }
+}

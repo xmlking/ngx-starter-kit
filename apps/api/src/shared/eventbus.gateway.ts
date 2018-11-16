@@ -13,7 +13,6 @@ import { Logger, UseGuards } from '@nestjs/common';
 import { delay } from 'rxjs/operators';
 import { ISocket } from './interfaces/socket.interface';
 import { Server } from 'socket.io';
-import { getActionTypeFromInstance, actionMatcher } from '@ngxs/store';
 import { AuthService, User, WsAuthGuard } from '../auth';
 
 @WebSocketGateway({ namespace: 'eventbus' })
@@ -68,19 +67,26 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
 
   public sendActionToUser<T>(user: User, action: any): void {
     const clients = this.getSocketsForUser(user);
-    const type = getActionTypeFromInstance(action);
+    const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
     clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
   }
 
   public sendActionToAll<T>(action: any): void {
-    const type = getActionTypeFromInstance(action);
+    const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
     this.clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
   }
 
   private getSocketsForUser(user: User): ISocket[] {
     return this.clients.filter(c => c.user && c.user.userId === user.userId);
+  }
+
+  private getActionTypeFromInstance(action: any): string {
+    if (action.constructor && action.constructor.type) {
+      return action.constructor.type;
+    }
+    return action.type;
   }
 }
 

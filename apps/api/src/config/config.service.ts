@@ -25,7 +25,7 @@ export class ConfigService {
   }
 
   public isProd(): boolean {
-    return process.env.NODE_ENV && process.env.NODE_ENV === 'production';
+    return this.config.production;
   }
 
   public getAllowWhitelist(): string[] {
