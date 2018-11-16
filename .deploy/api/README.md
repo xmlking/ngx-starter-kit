@@ -54,7 +54,7 @@ cd .deploy/api
 # create app (first time deployment)
 oc new-app -f api.tmpl.yml -p APPNAME=ngx-starter-kit-api -n ngx-starter-kit
 
-# follow next steps if you want completely delete and deploy.
+# follow next steps if you want completely delete and redeploy.
 # delete only deploymentConfig
 oc delete all -l app=ngx-starter-kit-api -n ngx-starter-kit
 
