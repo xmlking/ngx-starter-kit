@@ -71,7 +71,7 @@ export class EventBus {
         }),
       )
       .subscribe((event: NavigationEnd) => {
-        const data = this.store.selectSnapshot<RouterStateData>(RouterState.state);
+        const data = this.store.selectSnapshot<any>(RouterState.state);
         this.pageTitle.setTitle(data.breadcrumbs);
         this.analytics.setPage(data.url);
       });
