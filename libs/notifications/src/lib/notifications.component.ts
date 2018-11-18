@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { listFadeAnimation } from '@ngx-starter-kit/animations';
 
-import { Observable } from 'rxjs';
-import { Notification } from './notification.model';
-import { NotificationsState } from './notifications.state';
 import { DeleteNotification, FetchNotifications, MarkAllAsRead, MarkAsRead } from './notifications.actions';
 import { SendWebSocketAction } from '@ngx-starter-kit/socketio-plugin';
+import { Observable } from 'rxjs';
+import { NotificationsState } from './notifications.state';
+import { AppNotification } from './app-notification.model';
 
 @Component({
   selector: 'ngx-notifications',
@@ -16,10 +16,8 @@ import { SendWebSocketAction } from '@ngx-starter-kit/socketio-plugin';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class NotificationsComponent implements OnInit {
-  @Select(NotificationsState)
-  notifications$: Observable<Notification>;
-  @Select(NotificationsState.unReadCount)
-  unReadCount$: Observable<number>;
+  @Select(NotificationsState) notifications$: Observable<AppNotification>;
+  @Select(NotificationsState.unReadCount) unReadCount$: Observable<number>;
   isOpen: boolean;
 
   constructor(private store: Store) {}
@@ -49,5 +47,9 @@ export class NotificationsComponent implements OnInit {
 
   markAllAsRead() {
     this.store.dispatch(new MarkAllAsRead());
+  }
+
+  trackById(index: number, item: AppNotification) {
+    return item.id;
   }
 }
