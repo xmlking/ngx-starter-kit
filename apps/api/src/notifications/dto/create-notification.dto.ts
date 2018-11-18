@@ -31,4 +31,9 @@ export class CreateNotificationDto {
   @MinLength(3)
   @MaxLength(20)
   userId: string;
+
+  @ApiModelProperty({ type: Boolean, default: false })
+  @IsBoolean()
+  @IsNotEmpty()
+  public native = false;
 }

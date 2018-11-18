@@ -36,7 +36,7 @@ export class Notification extends Base {
   @CreateDateColumn()
   createdAt?: Date;
 
-  @ApiModelProperty({ type: String })
+  @ApiModelProperty({ type: Boolean, default: false })
   @IsBoolean()
   @IsNotEmpty()
   @Index()
@@ -57,4 +57,11 @@ export class Notification extends Base {
   @Index()
   @Column()
   userId: string;
+
+  @ApiModelProperty({ type: Boolean, default: false })
+  @IsBoolean()
+  @IsNotEmpty()
+  @Index()
+  @Column({ default: false})
+  native: boolean;
 }

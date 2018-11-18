@@ -10,13 +10,9 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  @Select(AuthState.profile)
-  profile$: Observable<any>;
-
-  @Input()
-  quickpanel: MatSidenav;
-  @Input()
-  sidenav: MatSidenav;
+  @Select(AuthState.profile) profile$: Observable<any>;
+  @Input() quickpanel: MatSidenav;
+  @Input() sidenav: MatSidenav;
   isFullscreen = false;
 
   constructor() {}

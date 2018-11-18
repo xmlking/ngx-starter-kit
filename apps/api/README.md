@@ -46,6 +46,8 @@ ng serve api
 # to turn on logging for `request`
 NODE_DEBUG=request ng serve api
 DEBUG=typeorm:* ng serve api
+# optinally you can run with prod env(environment.prod.ts) for tesrting! use this for testing only.
+ng serve api --prod
 ```
 
 #### Run Prod Mode

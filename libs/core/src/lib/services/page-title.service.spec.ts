@@ -14,7 +14,5 @@ describe('PageTitleService', () => {
 
   it('should initialize title to empty string', inject([PageTitleService], (service: PageTitleService) => {
     expect(service).toBeTruthy();
-    expect(service._title).toEqual('');
-    expect(service.title).toEqual('');
   }));
 });

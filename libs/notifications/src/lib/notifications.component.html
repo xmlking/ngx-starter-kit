@@ -25,7 +25,7 @@
       <ng-container *ngIf="notifications?.length !== 0; then thenBlock else elseBlock;"></ng-container>
       <ng-template #thenBlock>
         <perfect-scrollbar class="content">
-          <ng-container *ngFor="let notification of notifications; last as isLast">
+          <ng-container *ngFor="let notification of notifications; last as isLast; trackBy: trackById">
             <div class="notification"
                  (click)="markAsRead(notification)"
                  [ngClass]="notification.color" [class.read]="notification.read"
