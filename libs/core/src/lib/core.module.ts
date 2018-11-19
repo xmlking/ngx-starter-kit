@@ -8,6 +8,7 @@ import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule, RouterStateSerializer } from '@ngxs/router-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faTwitter, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
@@ -19,6 +20,7 @@ import { environment } from '@env/environment';
 import { EventBus } from './state/eventbus';
 import { defaultMenu, demoMenu, adminMenu } from './menu-data';
 import { PreferenceState } from './state/preference.state';
+import { AppState } from './state/app.state';
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
@@ -45,7 +47,10 @@ library.add(faTwitter, faGithub, faGoogle);
     MatSnackBarModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
-    NgxsModule.forRoot([AuthState, MenuState, PreferenceState]),
+    NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState]),
+    NgxsStoragePluginModule.forRoot({
+      key: ['preference', 'app.installed']
+    }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode
       maxAge: 10,

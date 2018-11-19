@@ -143,6 +143,7 @@
     "@ngxs/devtools-plugin": "^3.2.0",
     "@ngxs/form-plugin": "^3.2.0",
     "@ngxs/router-plugin": "^3.2.0",
+    "@ngxs/storage-plugin": "^3.2.0",
     "@ngxs/store": "^3.2.0",
     "@trademe/ng-defer-load": "^2.0.0",
     "@xmlking/api-ai-javascript": "^2.0.0-beta.22",

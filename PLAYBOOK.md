@@ -243,6 +243,7 @@ ng g service services/MediaQuery     --project=core   --dry-run
 ng g service services/DeepLink       --project=core   --dry-run
 ng g service services/Feature        --project=core   --dry-run
 ng g service services/GoogleAnalytics --project=core   --dry-run
+ng g service  PushNotification        --project=core --dry-run
 
 # `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components 
 ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest --dry-run
@@ -300,7 +301,6 @@ ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --un
 ng g component notifications --project=notifications --flat --dry-run
 ng g class    notification --type=model --project=notifications --dry-run
 ng g service  notifications --project=notifications --dry-run
-ng g service  PushNotification --project=notifications --dry-run
 
 # generate components for `Quickpanel` Module
 ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
@@ -403,7 +403,8 @@ ng g component containers/about --project=home
 ng g component components/rainbow --project=dashboard --dry-run
 ng g component containers/dashboardLayout --project=dashboard --dry-run
 ng g component containers/overview --project=dashboard --dry-run
-
+ng g component containers/profile --project=dashboard --dry-run
+ng g component containers/settings --project=dashboard --dry-run
 
 # generate containers, components for `widgets` Module
 ng g component containers/wizdash --project=widgets --dry-run
