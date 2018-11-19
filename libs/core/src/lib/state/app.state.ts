@@ -70,14 +70,14 @@ export class AppState {
   }
 
   @Action(Online)
-  enableNotifications({ patchState }: StateContext<AppStateModel>) {
+  makeOnline({ patchState }: StateContext<AppStateModel>) {
     patchState({
       online: true,
     });
   }
 
   @Action(Offline)
-  disableNotifications({ patchState }: StateContext<AppStateModel>) {
+  makeOffline({ patchState }: StateContext<AppStateModel>) {
     patchState({
       online: false,
     });

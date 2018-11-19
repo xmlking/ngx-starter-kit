@@ -1,4 +1,4 @@
-import { Action, State, StateContext, Store } from '@ngxs/store';
+import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 
 export type Language = 'en' | 'es' | 'de' | 'fr' | 'cn';
 
@@ -74,7 +74,7 @@ export class DisableNotifications {
 
 export interface PreferenceStateModel {
   language: Language;
-  theme: ThemeName;
+  activeThemeName: ThemeName;
   enableNotifications: boolean;
 }
 
@@ -82,12 +82,17 @@ export interface PreferenceStateModel {
   name: 'preference',
   defaults: {
     language: 'en',
-    theme: ThemeName.PINK_BLUEGREY,
+    activeThemeName: ThemeName.INDIGO_PINK,
     enableNotifications: false,
   },
 })
 export class PreferenceState {
   constructor(private store: Store) {}
+
+  @Selector()
+  static activeThemeName(state: PreferenceStateModel) {
+    return state.activeThemeName;
+  }
 
   @Action(ChangeLanguage)
   changeLanguage({ patchState }: StateContext<PreferenceStateModel>, { payload }: ChangeLanguage) {
@@ -99,7 +104,7 @@ export class PreferenceState {
   @Action(ChangeTheme)
   changeTheme({ patchState }: StateContext<PreferenceStateModel>, { payload }: ChangeTheme) {
     patchState({
-      theme: payload,
+      activeThemeName: payload,
     });
   }
 

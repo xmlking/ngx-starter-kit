@@ -67,7 +67,7 @@ export class SettingsComponent implements OnInit, OnDestroy {
   buildForm() {
     this.settingsForm = this.fb.group({
       selectedLanguage: [this.preferences.language],
-      selectedTheme: [this.preferences.theme],
+      selectedTheme: [this.preferences.activeThemeName],
       enableNotifications: this.preferences.enableNotifications,
     });
   }
