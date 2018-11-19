@@ -21,8 +21,7 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
     if (oauthService.hasValidAccessToken()) {
       // This is called when using ImplicitFlow or page reload, no effect for ROPC Flow
       console.log('hasValidAccessToken');
-      // const profile: any = oauthService.getIdentityClaims();
-      const profile: any = await oauthService.loadUserProfile();
+      const profile: any = oauthService.getIdentityClaims();
       store.dispatch(new LoginSuccess(profile));
     }
     return true; // need to return.

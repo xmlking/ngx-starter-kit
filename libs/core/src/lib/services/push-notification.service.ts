@@ -1,11 +1,11 @@
-import {Injectable} from '@angular/core';
-import {SwPush} from '@angular/service-worker';
-import {from as fromPromise, Observable, of} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { SwPush } from '@angular/service-worker';
+import { from as fromPromise, Observable, of } from 'rxjs';
 import { environment } from '@env/environment';
 // import {ApiService} from './api.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class PushNotificationService {
   private pushSubscription: PushSubscription;
@@ -14,8 +14,7 @@ export class PushNotificationService {
     return this.swPush.isEnabled;
   }
 
-  constructor(private readonly swPush: SwPush, /*private readonly apiService: ApiService*/) {
-  }
+  constructor(private readonly swPush: SwPush /*private readonly apiService: ApiService*/) {}
 
   async register() {
     if (!this.swPush.isEnabled) {
@@ -24,7 +23,7 @@ export class PushNotificationService {
 
     // Key generation: https://web-push-codelab.glitch.me
     const subscription = await this.swPush.requestSubscription({ serverPublicKey: environment.webPush.publicVapidKey });
-    console.log('Push subscription endpoint: ', subscription.endpoint);
+    console.log('Push subscription', subscription);
     this.pushSubscription = subscription;
     // return this.apiService.post('push/register', subscription).subscribe();
   }

@@ -43,11 +43,11 @@ export class EventBus {
       this.renderer.listen(this.window, 'beforeinstallprompt', event => {
         event.preventDefault(); // Prevent default for older Chrome versions to prevent double install prompt
         this.analytics.emitEvent(EventCategory.Install, 'available');
+        // this.snackBar.open('You can add this PWA to your homescreen', '', {duration: 3000});
         this.store.dispatch(new SetInstallPrompt(event));
       });
       this.renderer.listen(this.window, 'appinstalled', event => {
         event.preventDefault(); // Prevent default for older Chrome versions to prevent double install prompt
-        ga('send', 'event', 'install', 'installed');
         this.analytics.emitEvent(EventCategory.Install, 'installed');
         this.store.dispatch(new ChangeInstallStatus(true));
       });
@@ -55,7 +55,8 @@ export class EventBus {
       this.actions$.pipe(ofActionSuccessful(SetInstallPrompt)).subscribe(async (action: SetInstallPrompt) => {
         try {
           console.log('platforms', action.payload.platforms);
-          // TODO: prompt user with MatSnackBar and call below if clicked.
+          // TODO: const sb = this.snackBar.open('Do you want to install this app?', 'Install', {duration: 5000})
+          // sb.onAction().subscribe(() => { //prompt here }
           action.payload.prompt();
           const choiceResult = await action.payload.userChoice;
           console.log('choiceResult', choiceResult);

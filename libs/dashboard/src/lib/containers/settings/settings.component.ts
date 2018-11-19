@@ -6,9 +6,12 @@ import {
   ChangeLanguage,
   ChangeTheme,
   DisableNotifications,
-  EnableNotifications, Language,
+  EnableNotifications,
+  Language,
   PreferenceState,
-  PreferenceStateModel, PushNotificationService, ThemeName,
+  PreferenceStateModel,
+  PushNotificationService,
+  ThemeName,
 } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
@@ -22,7 +25,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
   preferences: PreferenceStateModel;
   settingsForm: FormGroup;
   languages: Language[] = ['en', 'es', 'de', 'fr', 'cn'];
-  themes: ThemeName[] = [ThemeName.DEEPPURPLE_AMBER, ThemeName.INDIGO_PINK, ThemeName.PINK_BLUEGREY, ThemeName.PURPLE_GREEN];
+  themes: ThemeName[] = [
+    ThemeName.DEEPPURPLE_AMBER,
+    ThemeName.INDIGO_PINK,
+    ThemeName.PINK_BLUEGREY,
+    ThemeName.PURPLE_GREEN,
+  ];
 
   constructor(private fb: FormBuilder, private store: Store, private pnServ: PushNotificationService) {}
 
@@ -44,7 +52,6 @@ export class SettingsComponent implements OnInit, OnDestroy {
       .get('enableNotifications')
       .valueChanges.pipe(untilDestroy(this))
       .subscribe(enableNotifications => {
-        console.log('pnServ.available', this.pnServ.available);
         if (enableNotifications) {
           this.pnServ.register();
           this.store.dispatch(new EnableNotifications());
