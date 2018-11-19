@@ -26,7 +26,7 @@ export class PushNotificationService {
     const subscription = await this.swPush.requestSubscription({ serverPublicKey: environment.webPush.publicVapidKey });
     console.log('Push subscription endpoint: ', subscription.endpoint);
     this.pushSubscription = subscription;
-    // this.apiService.post('push/register', subscription).subscribe();
+    // return this.apiService.post('push/register', subscription).subscribe();
   }
 
   unregister(): Observable<boolean> {

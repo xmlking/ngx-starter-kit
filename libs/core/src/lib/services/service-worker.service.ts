@@ -10,6 +10,7 @@ import { MatSnackBar } from '@angular/material';
 export class ServiceWorkerService {
   constructor(private swUpdate: SwUpdate, @Inject(WINDOW) private window: Window, private snackBar: MatSnackBar) {}
 
+  // TODO: move to appState/eventBus?
   checkSWUpdate(): void {
     if (environment.production) {
       // Subscribe new worker is available

@@ -11,19 +11,19 @@
     <div class="content">
       <mat-nav-list>
         <mat-list-item>
-          <a matLine >Profile</a>
+          <a matLine [routerLink]="['/dashboard/profile']">Profile</a>
           <button mat-icon-button>
             <mat-icon>account_circle</mat-icon>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <a matLine >Settings</a>
+          <a matLine [routerLink]="['/dashboard/settings']">Settings</a>
           <button mat-icon-button>
             <mat-icon>settings</mat-icon>
           </button>
         </mat-list-item>
         <mat-list-item>
-          <a matLine >Help</a>
+          <a matLine [routerLink]="['/home/faq']">Help</a>
           <button mat-icon-button>
             <mat-icon>help</mat-icon>
           </button>

@@ -6,6 +6,7 @@ export enum EventCategory {
   SideNav = 'sideNav',
   Outbound = 'outboundLink',
   Login = 'login',
+  Install = 'install',
 }
 
 export enum EventAction {

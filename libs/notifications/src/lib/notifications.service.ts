@@ -29,6 +29,19 @@ export class NotificationsService extends EntityService<AppNotification> {
     );
   }
 
+  /**
+   * Util for showing native Notifications
+   * @param noti:  {
+   *    title: 'NGX WebApp Notification',
+   *   options: {
+   *     body: payload.message,
+   *     icon: 'assets/icons/icon-72x72.png',
+   *     data: {
+   *       click_url: '/index.html',
+   *     },
+   *   },
+   * }
+   */
   async showNativeNotification(noti: { title: string; options?: Partial<NotificationOptions> }) {
     if (
       this.featureService.detectFeature(BrowserFeatureKey.NotificationsAPI).supported &&
