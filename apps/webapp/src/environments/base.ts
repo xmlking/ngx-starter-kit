@@ -10,7 +10,7 @@ export default {
     sessionId: 'sumodemo',
   },
   webPush: {
-    publicVapidKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'
+    publicVapidKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
   },
   versions: {
     app: packageJson.version,
@@ -20,7 +20,6 @@ export default {
     flexLayout: packageJson.dependencies['@angular/flex-layout'],
     rxjs: packageJson.dependencies.rxjs,
     angularCli: packageJson.devDependencies['@angular/cli'],
-    // typescript: packageJson.devDependencies['typescript'],
-    typescript: packageJson.dependencies['typescript'],
+    typescript: packageJson.devDependencies['typescript'],
   },
 };
