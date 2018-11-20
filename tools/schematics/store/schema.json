@@ -17,7 +17,5 @@
       "description": "Target projects"
     }
   },
-  "required": [
-    "name"
-  ]
+  "required": ["name"]
 }

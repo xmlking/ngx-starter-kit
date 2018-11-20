@@ -1,8 +1,8 @@
 <div class="user-container" #userButton (ngxClickOutside)="onClickOutside()">
   <button class="user-button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
     <span fxLayout="row" fxLayoutAlign="start center">
-      <img class="user-avatar" [src]="currentUser?.photoURL || 'assets/img/avatars/noavatar.png'">
-      <span class="name" fxHide fxShow.gt-sm>{{currentUser?.given_name || 'Sumo Demo'}}</span>
+      <img class="user-avatar" [src]="currentUser?.photoURL || 'assets/img/avatars/noavatar.png'" />
+      <span class="name" fxHide fxShow.gt-sm>{{ currentUser?.given_name || 'Sumo Demo' }}</span>
       <mat-icon class="icon" fxHide fxShow.gt-sm>keyboard_arrow_down</mat-icon>
     </span>
   </button>
@@ -12,33 +12,22 @@
       <mat-nav-list>
         <mat-list-item>
           <a matLine [routerLink]="['/dashboard/profile']">Profile</a>
-          <button mat-icon-button>
-            <mat-icon>account_circle</mat-icon>
-          </button>
+          <button mat-icon-button><mat-icon>account_circle</mat-icon></button>
         </mat-list-item>
         <mat-list-item>
           <a matLine [routerLink]="['/dashboard/settings']">Settings</a>
-          <button mat-icon-button>
-            <mat-icon>settings</mat-icon>
-          </button>
+          <button mat-icon-button><mat-icon>settings</mat-icon></button>
         </mat-list-item>
         <mat-list-item>
-          <a matLine [routerLink]="['/home/faq']">Help</a>
-          <button mat-icon-button>
-            <mat-icon>help</mat-icon>
-          </button>
+          <a matLine [routerLink]="['/home/faq']">Help</a> <button mat-icon-button><mat-icon>help</mat-icon></button>
         </mat-list-item>
 
         <mat-divider></mat-divider>
 
         <mat-list-item (click)="logout()">
-          <a matLine >Logout</a>
-          <button mat-icon-button>
-            <mat-icon>exit_to_app</mat-icon>
-          </button>
+          <a matLine>Logout</a> <button mat-icon-button><mat-icon>exit_to_app</mat-icon></button>
         </mat-list-item>
       </mat-nav-list>
     </div>
   </div>
-
 </div>

@@ -5,7 +5,8 @@ import {
   OnDestroy,
   HostBinding,
   ChangeDetectorRef,
-  HostListener, Inject,
+  HostListener,
+  Inject,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';

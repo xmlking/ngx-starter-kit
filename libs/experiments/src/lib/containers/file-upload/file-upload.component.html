@@ -1,9 +1,11 @@
 <ngx-breadcrumbs title="Experiments" [crumbs]="crumbs"></ngx-breadcrumbs>
 <mat-card>
-  <file-pond #myPond
-             [files]="myFiles"
-             [options]="pondOptions"
-             (oninit)="pondHandleInit()"
-             (onaddfile)="pondHandleAddFile($event)">
+  <file-pond
+    #myPond
+    [files]="myFiles"
+    [options]="pondOptions"
+    (oninit)="pondHandleInit()"
+    (onaddfile)="pondHandleAddFile($event)"
+  >
   </file-pond>
 </mat-card>

@@ -15,8 +15,10 @@ describe('Auth', () => {
 
   it('it toggles feed', () => {
     store.dispatch(new LogoutSuccess());
-    store.select(state => state.auth.isLoggedIn).subscribe(isLoggedIn => {
-      expect(isLoggedIn).toBe(false);
-    });
+    store
+      .select(state => state.auth.isLoggedIn)
+      .subscribe(isLoggedIn => {
+        expect(isLoggedIn).toBe(false);
+      });
   });
 });

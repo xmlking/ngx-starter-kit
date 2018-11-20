@@ -8,19 +8,13 @@
     </ngx-chart-widget-header-sub-title>
 
     <ngx-chart-widget-header-actions>
-      <button mat-icon-button (click)="reload()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <button mat-icon-button (click)="reload()"><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     </ngx-chart-widget-header-actions>
   </ngx-chart-widget-header>
 
   <ngx-chart-widget-content class="card-content">
-    <div class="content">
-      <canvas #canvas></canvas>
-    </div>
+    <div class="content"><canvas #canvas></canvas></div>
   </ngx-chart-widget-content>
 
   <ngx-loading-overlay [isLoading]="isLoading"></ngx-loading-overlay>

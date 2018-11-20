@@ -1,41 +1,29 @@
 {
   "index": "/index.html",
-  "assetGroups": [{
-    "name": "app",
-    "installMode": "prefetch",
-    "resources": {
-      "files": [
-        "/favicon.ico",
-        "/index.html",
-        "/silent-refresh.html",
-        "/*.css",
-        "/*.js"
-      ],
-      "urls":  [
-        "https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"
-      ]
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": ["/favicon.ico", "/index.html", "/silent-refresh.html", "/*.css", "/*.js"],
+        "urls": ["https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/**"],
+        "urls": ["https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**"]
+      }
     }
-  }, {
-    "name": "assets",
-    "installMode": "lazy",
-    "updateMode": "prefetch",
-    "resources": {
-      "files": [
-        "/assets/**"
-      ],
-      "urls":  [
-        "https://fonts.googleapis.com/**",
-        "https://fonts.gstatic.com/**"
-      ]
-    }
-  }],
+  ],
   "dataGroups": [
     {
       "name": "my-api",
       "version": 1,
-      "urls": [
-        "http://localhost:3000/api/**"
-      ],
+      "urls": ["http://localhost:3000/api/**"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,
@@ -45,9 +33,7 @@
     },
     {
       "name": "random-user",
-      "urls": [
-        "https://randomuser.me/api/*"
-      ],
+      "urls": ["https://randomuser.me/api/*"],
       "cacheConfig": {
         "strategy": "freshness",
         "maxSize": 100,

@@ -34,7 +34,7 @@ export interface AppStateModel {
   defaults: {
     online: window.navigator.onLine,
     installPrompt: null,
-    installed: false
+    installed: false,
   },
 })
 export class AppState {

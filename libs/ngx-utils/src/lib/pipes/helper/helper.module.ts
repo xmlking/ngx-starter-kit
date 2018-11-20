@@ -5,10 +5,8 @@ import { GroupByPipe } from './group-by.pipe';
 import { SafeHtmlPipe } from './safe-html.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [FilterPipe, GroupByPipe, SafeHtmlPipe],
-  exports: [FilterPipe, GroupByPipe, SafeHtmlPipe]
+  exports: [FilterPipe, GroupByPipe, SafeHtmlPipe],
 })
-export class HelperModule { }
+export class HelperModule {}

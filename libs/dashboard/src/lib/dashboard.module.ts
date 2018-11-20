@@ -36,7 +36,7 @@ import { ProfileComponent } from './containers/profile/profile.component';
           {
             path: 'overview',
             component: OverviewComponent,
-            data: {title: 'Overview' },
+            data: { title: 'Overview' },
           },
           {
             path: 'profile',
@@ -61,7 +61,7 @@ import { ProfileComponent } from './containers/profile/profile.component';
           {
             path: 'experiments',
             loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
-            data: { title: 'Experiments', depth: 2,  preload: false },
+            data: { title: 'Experiments', depth: 2, preload: false },
           },
         ],
       },

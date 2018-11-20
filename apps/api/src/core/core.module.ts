@@ -18,10 +18,11 @@ import { Subscription } from '../push/subscription.entity';
     EmailModule.forRoot(env.email),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (config: ConfigService) => ({
-        ...env.database,
-        entities: [Notification, User, Subscription],
-      } as ConnectionOptions),
+      useFactory: async (config: ConfigService) =>
+        ({
+          ...env.database,
+          entities: [Notification, User, Subscription],
+        } as ConnectionOptions),
       inject: [ConfigService],
     }),
   ],

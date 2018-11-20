@@ -5,12 +5,11 @@
   <mat-divider></mat-divider>
   <mat-card-content>
     <mat-list role="list">
-      <mat-list-item *ngFor="let entry of account | keyvalue" role="listitem">
+      <mat-list-item *ngFor="let entry of (account | keyvalue)" role="listitem">
         <div>
-          <span>{{entry.key}}：</span><span>{{ entry.value | json }}</span>
+          <span>{{ entry.key }}：</span><span>{{ entry.value | json }}</span>
         </div>
       </mat-list-item>
     </mat-list>
   </mat-card-content>
 </mat-card>
-

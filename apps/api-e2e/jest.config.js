@@ -11,8 +11,7 @@ module.exports = {
   coverageDirectory: '../../coverage/apps/api-e2e',
   globals: {
     'ts-jest': {
-      tsConfig: "./tsconfig.e2e.json"
-    }
-  }
+      tsConfig: './tsconfig.e2e.json',
+    },
+  },
 };
-

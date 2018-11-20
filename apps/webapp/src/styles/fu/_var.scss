@@ -54,7 +54,6 @@ $config: mat-typography-config(
   $body-1: mat-typography-level(14px, 22px, 400),
   $caption: mat-typography-level(13px, 22px, 400),
   $button: mat-typography-level(14px, 14px, 500),
-  // Line-height must be unit-less fraction of the font-size.
   $input: mat-typography-level(16px, 1.125, 400)
 );
 
@@ -185,7 +184,9 @@ $sidenav-item-padding-left-level5: $sidenav-item-padding-left-level4 + 8px;
 $sidenav-item-padding-left-level6: $sidenav-item-padding-left-level5 + 8px;
 
 $sidenav-width: 270px; // If you change this, you also need to adjust the animations in sidenav.component.ts
-$sidenav-collapsed-width: ($sidenav-item-padding-left + $sidenav-item-padding-right + $sidenav-item-icon-font-size); // If you change this, you also need to adjust the animations in sidenav.component.ts
+$sidenav-collapsed-width: (
+  $sidenav-item-padding-left + $sidenav-item-padding-right + $sidenav-item-icon-font-size
+); // If you change this, you also need to adjust the animations in sidenav.component.ts
 $sidenav-z-index: 1000;
 
 /**

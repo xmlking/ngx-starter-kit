@@ -4,22 +4,19 @@
     <ngx-card-header-sub-title *ngIf="options.subTitle">{{ options.subTitle }}</ngx-card-header-sub-title>
 
     <ngx-card-header-actions>
-      <button mat-icon-button (click)="reload()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <button mat-icon-button (click)="reload()"><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     </ngx-card-header-actions>
   </ngx-card-header>
 
   <ngx-card-content class="card-content">
-    <ngx-recent-sales-widget-table [data]="tableData" [columns]="tableOptions?.columns"
-                                    [pageSize]="tableOptions?.pageSize"></ngx-recent-sales-widget-table>
+    <ngx-recent-sales-widget-table
+      [data]="tableData"
+      [columns]="tableOptions?.columns"
+      [pageSize]="tableOptions?.pageSize"
+    ></ngx-recent-sales-widget-table>
 
-    <div class="content">
-      <canvas #canvas></canvas>
-    </div>
+    <div class="content"><canvas #canvas></canvas></div>
   </ngx-card-content>
 
   <mat-menu #menu="matMenu">

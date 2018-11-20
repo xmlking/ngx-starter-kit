@@ -1,41 +1,21 @@
-<h1 mat-dialog-title cdkDrag cdkDragHandle  cdkDragRootElement=".cdk-overlay-pane" style="cursor: move">{{title}}</h1>
+<h1 mat-dialog-title cdkDrag cdkDragHandle cdkDragRootElement=".cdk-overlay-pane" style="cursor: move">{{ title }}</h1>
 
 <form [formGroup]="entityForm" (ngSubmit)="submit()">
   <mat-dialog-content>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
-        <input
-          matInput
-          type="email"
-          name="email"
-          formControlName="email"
-          placeholder="Email"
-          required>
+        <input matInput type="email" name="email" formControlName="email" placeholder="Email" required />
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="company"
-          formControlName="company"
-          placeholder="Company / Organization">
+        <input matInput name="company" formControlName="company" placeholder="Company / Organization" />
       </mat-form-field>
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="first_name"
-          formControlName="first_name"
-          placeholder="Fisrt Name"
-          required>
+        <input matInput name="first_name" formControlName="first_name" placeholder="Fisrt Name" required />
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="last_name"
-          formControlName="last_name"
-          placeholder="Last Name"
-          required>
+        <input matInput name="last_name" formControlName="last_name" placeholder="Last Name" required />
       </mat-form-field>
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px">
@@ -46,70 +26,47 @@
           formControlName="dob"
           [matDatepicker]="picker"
           placeholder="Date of Birth"
-          [min]="minDate" [max]="maxDate"
-          required>
+          [min]="minDate"
+          [max]="maxDate"
+          required
+        />
         <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <mat-select name="gender"
-                    formControlName="gender"
-                    placeholder="Gender">
-          <mat-option *ngFor="let gender of genderOptions" [value]="gender">
-            {{ gender}}
-          </mat-option>
+        <mat-select name="gender" formControlName="gender" placeholder="Gender">
+          <mat-option *ngFor="let gender of genderOptions" [value]="gender"> {{ gender }} </mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input
-          matInput
-          type="tel"
-          name="phone"
-          formControlName="phone"
-          placeholder="Telephone"
-          required>
+        <input matInput type="tel" name="phone" formControlName="phone" placeholder="Telephone" required />
       </mat-form-field>
     </div>
 
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" formGroupName="address">
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="street"
-          formControlName="street"
-          placeholder="Street"
-          required>
+        <input matInput name="street" formControlName="street" placeholder="Street" required />
       </mat-form-field>
     </div>
     <div fxLayout="column" fxLayout.gt-sm="row" fxLayoutGap.gt-sm="24px" formGroupName="address">
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="city"
-          formControlName="city"
-          placeholder="City"
-          required>
+        <input matInput name="city" formControlName="city" placeholder="City" required />
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input matInput
-               name="state"
-               formControlName="state"
-               placeholder="State"
-               aria-label="State"
-               [matAutocomplete]="auto">
+        <input
+          matInput
+          name="state"
+          formControlName="state"
+          placeholder="State"
+          aria-label="State"
+          [matAutocomplete]="auto"
+        />
         <mat-autocomplete #auto="matAutocomplete">
-          <mat-option *ngFor="let state of filteredStates | async" [value]="state">
-            {{ state }}
-          </mat-option>
+          <mat-option *ngFor="let state of (filteredStates | async)" [value]="state"> {{ state }} </mat-option>
         </mat-autocomplete>
       </mat-form-field>
       <mat-form-field fxFlex>
-        <input
-          matInput
-          name="zip"
-          formControlName="zip"
-          placeholder="Zip / Postal Code"
-          required>
+        <input matInput name="zip" formControlName="zip" placeholder="Zip / Postal Code" required />
       </mat-form-field>
     </div>
   </mat-dialog-content>

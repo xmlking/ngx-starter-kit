@@ -233,12 +233,15 @@
           "builder": "@nrwl/builders:node-build",
           "options": {
             "outputPath": "dist/apps/api",
+            "sourceMap": true,
+            "assets": ["apps/api/src/assets"],
             "main": "apps/api/src/main.ts",
             "tsConfig": "apps/api/tsconfig.app.json",
             "showCircularDependencies": false
           },
           "configurations": {
             "production": {
+              "sourceMap": false,
               "optimization": true,
               "extractLicenses": true,
               "fileReplacements": [

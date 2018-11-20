@@ -16,8 +16,7 @@ export class ServiceWorkerService {
       // Subscribe new worker is available
       this.swUpdate.available.subscribe(event => {
         // update available: ask the user to reload
-        const snackBarRef = this.snackBar
-          .open('Newer version of the app is available', 'Refresh');
+        const snackBarRef = this.snackBar.open('Newer version of the app is available', 'Refresh');
 
         snackBarRef.onAction().subscribe(() => {
           window.location.reload(true);
