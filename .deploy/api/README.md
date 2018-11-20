@@ -10,7 +10,12 @@ docker build --tag=ngx-starter-kit-api -f .deploy/api/Dockerfile .
 
 ### Run
 ```bash
-docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngx-starter-kit-api
+docker-compose up api
+# docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngx-starter-kit-api
+# to see ditectory content:
+docker-compose exec api ./node
+docker-compose exec api ./node -e 'console.log(__dirname);'
+docker-compose exec api ./node -e 'const fs = require('fs'); fs.readdirSync('.').forEach(file => { console.log(file);})
 ```
 
 ### Test

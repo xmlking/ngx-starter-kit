@@ -25,7 +25,7 @@ import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
 import { WINDOW, _window } from './services/window.token';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 // Noop handler for factory function
 export function noop() {
@@ -49,7 +49,7 @@ library.add(faTwitter, faGithub, faGoogle);
     NavigatorModule.forRoot(defaultMenu),
     NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState]),
     NgxsStoragePluginModule.forRoot({
-      key: ['preference', 'app.installed']
+      key: ['preference', 'app.installed'],
     }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode

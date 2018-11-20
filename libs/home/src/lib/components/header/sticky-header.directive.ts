@@ -15,7 +15,6 @@ enum Direction {
   selector: '[stickyHeader]',
 })
 export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
-
   player: AnimationPlayer;
 
   set show(show: boolean) {

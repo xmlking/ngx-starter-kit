@@ -18,6 +18,6 @@ RUN npm run api:build
 
 FROM astefanutti/scratch-node:11
 COPY --from=prod-dependencies /app  .
-COPY --from=builder /app/dist/apps/api/main.js .
+COPY --from=builder /app/dist/apps/api .
 EXPOSE 3000
 ENTRYPOINT ["./node", "main.js"]

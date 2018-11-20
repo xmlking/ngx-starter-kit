@@ -3,24 +3,20 @@
     <ngx-card-header-title>
       {{ options.title }}
 
-      <!-- <div class="gain" [class.increase]="options.gain >= 0" [class.decrease]="options.gain < 0" fxLayout="row"
-           fxLayoutAlign="start center">
-        <div class="percent">{{ options.gain >= 0 ? '+' : '-' }}{{ options.gain }}%</div>
-        <mat-icon *ngIf="options.gain >= 0">trending_up</mat-icon>
-        <mat-icon *ngIf="options.gain < 0">trending_down</mat-icon>
-      </div>-->
+      <!--
+        <div class="gain" [class.increase]="options.gain >= 0" [class.decrease]="options.gain < 0" fxLayout="row"
+             fxLayoutAlign="start center">
+          <div class="percent">{{ options.gain >= 0 ? '+' : '-' }}{{ options.gain }}%</div>
+          <mat-icon *ngIf="options.gain >= 0">trending_up</mat-icon>
+          <mat-icon *ngIf="options.gain < 0">trending_down</mat-icon>
+        </div>
+      -->
     </ngx-card-header-title>
-    <ngx-card-header-sub-title>
-      {{ options.subTitle }}
-    </ngx-card-header-sub-title>
+    <ngx-card-header-sub-title> {{ options.subTitle }} </ngx-card-header-sub-title>
 
     <ngx-card-header-actions>
-      <button mat-icon-button (click)="reload()">
-        <mat-icon>refresh</mat-icon>
-      </button>
-      <button mat-icon-button [matMenuTriggerFor]="menu">
-        <mat-icon>more_vert</mat-icon>
-      </button>
+      <button mat-icon-button (click)="reload()"><mat-icon>refresh</mat-icon></button>
+      <button mat-icon-button [matMenuTriggerFor]="menu"><mat-icon>more_vert</mat-icon></button>
     </ngx-card-header-actions>
   </ngx-card-header>
 
@@ -42,9 +38,7 @@
       </div>
     </div>
 
-    <div class="content">
-      <canvas #canvas></canvas>
-    </div>
+    <div class="content"><canvas #canvas></canvas></div>
   </ngx-card-content>
 
   <ngx-loading-overlay [isLoading]="isLoading"></ngx-loading-overlay>

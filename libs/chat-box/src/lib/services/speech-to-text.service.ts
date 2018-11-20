@@ -13,7 +13,7 @@ export class SpeechToTextService {
   public canUseSpeechRecognition = false;
   private speechRecognition: any;
   constructor(private readonly featureService: FeatureService, @Inject(WINDOW) private window: Window) {
-    this.canUseSpeechRecognition  = this.featureService.detectFeature(BrowserFeatureKey.SpeechRecognition).supported;
+    this.canUseSpeechRecognition = this.featureService.detectFeature(BrowserFeatureKey.SpeechRecognition).supported;
     if (this.canUseSpeechRecognition) {
       this.speechRecognition = new SpeechRecognition();
       this.speechRecognition.continuous = false; // FIXME: Gecko?

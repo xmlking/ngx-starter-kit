@@ -24,12 +24,12 @@ import { AccountEditComponent } from './components/account-edit/account-edit.com
       {
         path: 'crud-table',
         component: AccountsTableComponent,
-        data: { title: 'Accounts', depth: 2  },
+        data: { title: 'Accounts', depth: 2 },
         children: [
           {
             path: ':id',
             component: AccountDetailComponent,
-            data: { title: 'Account Detail'},
+            data: { title: 'Account Detail' },
           },
         ],
       },

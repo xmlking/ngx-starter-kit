@@ -3,23 +3,20 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/webapp"
   },
-  "exclude": [
-    "src/test-setup.ts",
-    "**/*.spec.ts"
-  ],
+  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
   "include": [
-    "**/*.ts"
+    "**/*.ts",
 
-  , "../../libs/home/src/index.ts"
+    "../../libs/home/src/index.ts",
 
-  , "../../libs/dashboard/src/index.ts"
+    "../../libs/dashboard/src/index.ts",
 
-  , "../../libs/experiments/src/index.ts"
+    "../../libs/experiments/src/index.ts",
 
-  , "../../libs/widgets/src/index.ts"
+    "../../libs/widgets/src/index.ts",
 
-  , "../../libs/grid/src/index.ts"
+    "../../libs/grid/src/index.ts",
 
-  , "../../libs/not-found/src/index.ts"
+    "../../libs/not-found/src/index.ts"
   ]
 }

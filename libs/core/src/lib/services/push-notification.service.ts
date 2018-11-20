@@ -9,7 +9,6 @@ import { take } from 'rxjs/operators';
   providedIn: 'root',
 })
 export class PushNotificationService {
-
   get available(): boolean {
     return this.swPush.isEnabled;
   }

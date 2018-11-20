@@ -1,5 +1,5 @@
 module.exports = {
   name: 'breadcrumbs',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/breadcrumbs'
+  coverageDirectory: '../../coverage/libs/breadcrumbs',
 };

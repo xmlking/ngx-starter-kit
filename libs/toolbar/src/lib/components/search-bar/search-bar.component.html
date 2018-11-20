@@ -1,11 +1,20 @@
-<div class="search-wrapper" fxLayout="row" [ngClass]="{ 'focus': focused, 'has-input': input }" fxFlex (ngxClickOutside)="closeDropdown()">
+<div
+  class="search-wrapper"
+  fxLayout="row"
+  [ngClass]="{ focus: focused, 'has-input': input }"
+  fxFlex
+  (ngxClickOutside)="closeDropdown()"
+>
   <mat-icon class="search-icon">search</mat-icon>
-  <input #searchInput type="search"
-         autocomplete="off"
-         spellcheck="false"
-         class="search-input"
-         (focus)="openDropdown()"
-         placeholder="Search...">
+  <input
+    #searchInput
+    type="search"
+    autocomplete="off"
+    spellcheck="false"
+    class="search-input"
+    (focus)="openDropdown()"
+    placeholder="Search..."
+  />
 
   <div class="search-dropdown mat-elevation-z1">
     <div class="content results" *ngIf="input" fxLayout="column">
@@ -30,7 +39,15 @@
           Recently Visited
         </div>
         <div class="items">
-          <div class="item" matRipple *ngFor="let item of recentlyVisited" [routerLink]="item.route" (click)="closeDropdown()">{{ item.name }}</div>
+          <div
+            class="item"
+            matRipple
+            *ngFor="let item of recentlyVisited"
+            [routerLink]="item.route"
+            (click)="closeDropdown()"
+          >
+            {{ item.name }}
+          </div>
         </div>
       </div>
       <div class="frequently" fxLayout="column" fxFlex fxFlexOffset="16px">

@@ -1,9 +1,17 @@
 <ngx-card>
   <div class="header" fxLayout="column" fxLayout.gt-xs="row">
-    <div class="property" *ngFor="let property of options" [class.active]="isActive(property)"
-         fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="8px"
-         fxLayout.gt-xs="column" fxLayoutAlign.gt-xs="start stretch" fxLayoutGap.gt-xs="0"
-         (click)="setActiveOptions(property)">
+    <div
+      class="property"
+      *ngFor="let property of options"
+      [class.active]="isActive(property)"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="8px"
+      fxLayout.gt-xs="column"
+      fxLayoutAlign.gt-xs="start stretch"
+      fxLayoutGap.gt-xs="0"
+      (click)="setActiveOptions(property)"
+    >
       <div class="label" fxFlex="grow">{{ property.label }}</div>
       <div class="value" fxFlex="grow">{{ property.sum }}</div>
       <div class="gain" fxFlex="grow" [class.success]="property.gain >= 0" [class.warn]="property.gain < 0">
@@ -16,9 +24,7 @@
   </div>
 
   <ngx-card-content>
-    <div class="content">
-      <canvas #canvas></canvas>
-    </div>
+    <div class="content"><canvas #canvas></canvas></div>
   </ngx-card-content>
 
   <ngx-card-actions class="actions" fxLayout="row" fxLayoutAlign="space-between center">
@@ -30,8 +36,6 @@
       <mat-option value="custom">Custom</mat-option>
     </mat-select>
 
-    <button type="button" mat-button color="primary">
-      AUDIENCE OVERVIEW
-    </button>
+    <button type="button" mat-button color="primary">AUDIENCE OVERVIEW</button>
   </ngx-card-actions>
 </ngx-card>

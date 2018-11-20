@@ -1,23 +1,30 @@
-<button mat-fab class="chat-button" (click)="toggleChatBox()" [@scrollAnimation]="showChatBox? 'hide' : 'show'">
+<button mat-fab class="chat-button" (click)="toggleChatBox()" [@scrollAnimation]="showChatBox ? 'hide' : 'show'">
   <mat-icon>chat_bubble</mat-icon>
 </button>
 
-<div cdkDrag fxLayout='column' class="chat-box"
-     resizable [directions]="['bottom', 'top', 'left', 'right', 'top-left', 'bottom-left', 'top-right', 'bottom-right']"
-     [@scrollAnimation]="showChatBox? 'show' : 'hide'">
-
-  <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-               class="header mat-elevation-z2" color="primary"
-               cdkDragHandle style="cursor: move">
-    <span fxFlex>ChatBox</span>
-    <span fxFlex="grow"><!-- fill space --></span>
-    <!--<ngx-led color="orange" size="10px" [blink]=true></ngx-led>-->
+<div
+  cdkDrag
+  fxLayout="column"
+  class="chat-box"
+  resizable
+  [directions]="['bottom', 'top', 'left', 'right', 'top-left', 'bottom-left', 'top-right', 'bottom-right']"
+  [@scrollAnimation]="showChatBox ? 'show' : 'hide'"
+>
+  <mat-toolbar
+    fxFlex
+    fxLayout="row"
+    fxLayoutAlign="start center"
+    class="header mat-elevation-z2"
+    color="primary"
+    cdkDragHandle
+    style="cursor: move"
+  >
+    <span fxFlex>ChatBox</span> <span fxFlex="grow"><!-- fill space --></span>
+    <!-- <ngx-led color="orange" size="10px" [blink]=true></ngx-led> -->
     <button *ngIf="canUseSpeechSynthesis" mat-icon-button>
       <mat-icon (click)="drawer.toggle()">settings</mat-icon>
     </button>
-    <button mat-icon-button>
-      <mat-icon (click)="toggleChatBox()">close</mat-icon>
-    </button>
+    <button mat-icon-button><mat-icon (click)="toggleChatBox()">close</mat-icon></button>
   </mat-toolbar>
 
   <mat-drawer-container fxFlex="grow" [hasBackdrop]="false">
@@ -25,32 +32,28 @@
       <mat-toolbar color="accent">Preferences</mat-toolbar>
       <mat-accordion>
         <mat-expansion-panel [expanded]="true">
-          <mat-expansion-panel-header>
-            <mat-panel-title>Voice</mat-panel-title>
-          </mat-expansion-panel-header>
+          <mat-expansion-panel-header> <mat-panel-title>Voice</mat-panel-title> </mat-expansion-panel-header>
           <ng-template matExpansionPanelContent>
             <ngx-text-to-speech-preferences></ngx-text-to-speech-preferences>
           </ng-template>
         </mat-expansion-panel>
         <mat-expansion-panel>
-          <mat-expansion-panel-header>
-            <mat-panel-title>Other</mat-panel-title>
-          </mat-expansion-panel-header>
+          <mat-expansion-panel-header> <mat-panel-title>Other</mat-panel-title> </mat-expansion-panel-header>
           <p>TODO: Other Settings</p>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-drawer>
     <mat-drawer-content fxFlex="grow" class="body">
-
-      <div *ngFor="let message of (selectedConversation$ | async).messages"
-           class="message"
-           [ngClass]="{ 'from': message.isIncoming, 'to': message.isOutgoing }">
+      <div
+        *ngFor="let message of (selectedConversation$ | async).messages"
+        class="message"
+        [ngClass]="{ from: message.isIncoming, to: message.isOutgoing }"
+      >
         {{ message.render() }}
       </div>
-      <div style="position: fixed; bottom: 60px;">
-        <typing-indicator *ngIf="typing"></typing-indicator>
-      </div>
-      <div #bottom></div><br/><br/><br/><br/>
+      <div style="position: fixed; bottom: 60px;"><typing-indicator *ngIf="typing"></typing-indicator></div>
+      <div #bottom></div>
+      <br /><br /><br /><br />
     </mat-drawer-content>
   </mat-drawer-container>
 
@@ -58,11 +61,16 @@
 
   <mat-form-field fxFlex class="input" color="primary">
     <mat-icon matPrefix *ngIf="canUseSpeechRecognition" (click)="startTalkingToBot()">keyboard_voice</mat-icon>
-    <input #input matInput type="text"
-           (keyup.enter)="sendMessageToBot()" (keyup.escape)="showChatBox = false"
-           placeholder="Ask anything..." autocomplete="off" x-webkit-speech>
+    <input
+      #input
+      matInput
+      type="text"
+      (keyup.enter)="sendMessageToBot()"
+      (keyup.escape)="showChatBox = false"
+      placeholder="Ask anything..."
+      autocomplete="off"
+      x-webkit-speech
+    />
     <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>
   </mat-form-field>
-
 </div>
-

@@ -31,11 +31,13 @@ import { ResizableState } from './resizable.state';
   providers: [Store],
   template: `
     <ng-content></ng-content>
-    <div *ngFor="let dir of directions"
-      class="ngr-grabber" [ngClass]="'ngr-' + dir"
+    <div
+      *ngFor="let dir of directions"
+      class="ngr-grabber"
+      [ngClass]="'ngr-' + dir"
       (mousedown)="onMouseDown($event, dir)"
-      (touchstart)="onMouseDown($event, dir)">
-    </div>
+      (touchstart)="onMouseDown($event, dir)"
+    ></div>
   `,
   styleUrls: ['resizable.component.css'],
   // tslint:disable-next-line

@@ -1,17 +1,20 @@
 <mat-toolbar class="toolbar" fxLayout="row" fxLayoutAlign="space-between">
-
   <div fxLayout="row" fxLayoutAlign="start center">
     <ngx-sidenav-toggle [sidenav]="sidenav"></ngx-sidenav-toggle>
 
-    <img class="logo" [routerLink]="['/']" fxHide.gt-md fxHide.xs
-         style="height: 35px; margin-left: 24px; margin-bottom: -5px;"
-         src="assets/img/logo_text_dark.png">
+    <img
+      class="logo"
+      [routerLink]="['/']"
+      fxHide.gt-md
+      fxHide.xs
+      style="height: 35px; margin-left: 24px; margin-bottom: -5px;"
+      src="assets/img/logo_text_dark.png"
+    />
 
     <ngx-search-bar fxFlex="500px" fxHide fxShow.gt-md></ngx-search-bar>
   </div>
 
   <div fxLayout="row">
-
     <ngx-fullscreen-toggle class="button" fxHide fxShow.gt-sm></ngx-fullscreen-toggle>
 
     <ngx-search class="button" fxHide fxShow.gt-sm></ngx-search>
@@ -23,6 +26,5 @@
     <ngx-user-menu class="button" [currentUser]="profile$ | async"></ngx-user-menu>
 
     <ngx-quickpanel-toggle class="button" [quickpanel]="quickpanel"></ngx-quickpanel-toggle>
-
   </div>
 </mat-toolbar>

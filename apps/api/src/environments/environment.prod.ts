@@ -16,14 +16,15 @@ export const environment = {
     port: process.env.TYPEORM_PORT ? Number(process.env.TYPEORM_PORT) : 5432,
     database: process.env.TYPEORM_DATABASE || 'cockpit',
     username: process.env.TYPEORM_USERNAME || 'cockpit',
-    password:  process.env.TYPEORM_PASSWORD || 'cockpit123',
+    password: process.env.TYPEORM_PASSWORD || 'cockpit123',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
     synchronize: false,
   },
 
   auth: {
-    issuer: process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+    issuer:
+      process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
     clientId: process.env.OIDC_CLIENT_ID || 'is360ui',
   },
 
@@ -40,7 +41,7 @@ export const environment = {
     defaults: {
       from: process.env.EMAIL_FROM ? process.env.EMAIL_FROM : '"sumo demo" <sumo@demo.com>',
     },
-    templateDir:  process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
+    templateDir: process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
   },
 
   webPush: {
