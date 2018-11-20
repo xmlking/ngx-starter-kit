@@ -11,9 +11,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 |-------------------------------|----------|----------| 
 | Node                          | v11.1.0  |          | 
 | NPM                           | v6.4.1   |          |
-| Angular CLI                   | v7.0.0   |          |
-| @nrwl/schematics              | v7.0.0   |          |
-| @nestjs/cli                   | v5.6.2   |          |
+| Angular CLI                   | v7.1.0   |          |
+| @nrwl/schematics              | v7.1.0   |          |
+| @nestjs/cli                   | v5.6.3   |          |
+| semantic-release-cli          | v4.0.11  |          |
 
 ### Install Prerequisites
 ```bash
@@ -55,7 +56,7 @@ npm remove -g @nestjs/cli
 npm remove -g semantic-release-cli
 npm remove -g commitizen
 
-npm install -g @angular/cli
+npm install -g @angular/cli@next
 npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
@@ -108,7 +109,7 @@ ng update --all
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --dry-run
 # or with ivy renderer
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --experimental-ivy --dry-run
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --dry-run -- --experimental-ivy 
 
 # generate api app with nestjs
 ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
