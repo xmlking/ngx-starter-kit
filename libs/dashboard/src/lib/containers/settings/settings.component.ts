@@ -51,12 +51,12 @@ export class SettingsComponent implements OnInit, OnDestroy {
     this.settingsForm
       .get('enableNotifications')
       .valueChanges.pipe(untilDestroy(this))
-      .subscribe(enableNotifications => {
+      .subscribe(async enableNotifications => {
         if (enableNotifications) {
-          this.pnServ.register();
+          await this.pnServ.register();
           this.store.dispatch(new EnableNotifications());
         } else {
-          this.pnServ.unregister();
+          await this.pnServ.unregister();
           this.store.dispatch(new DisableNotifications());
         }
       });

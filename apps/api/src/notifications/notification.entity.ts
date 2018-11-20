@@ -20,7 +20,7 @@ export enum NotificationIcon {
 
 @Entity('notification')
 export class Notification extends Base {
-  @ApiModelProperty({ type: String })
+  @ApiModelProperty({ type: String, enum: NotificationIcon, default: NotificationIcon.notifications })
   @IsString()
   @IsNotEmpty()
   @Column()
@@ -43,10 +43,10 @@ export class Notification extends Base {
   @Column()
   read: boolean;
 
-  @ApiModelProperty({ type: String })
+  @ApiModelProperty({ type: String, enum: NotificationColor, default: NotificationColor.PRIMARY })
   @IsString()
   @IsNotEmpty()
-  @Column()
+  @Column({ enum: ['warn', 'accent', 'primary'] })
   color?: NotificationColor;
 
   @ApiModelProperty({ type: String, minLength: 8, maxLength: 20 })
@@ -62,6 +62,6 @@ export class Notification extends Base {
   @IsBoolean()
   @IsNotEmpty()
   @Index()
-  @Column({ default: false})
+  @Column({ default: false })
   native: boolean;
 }

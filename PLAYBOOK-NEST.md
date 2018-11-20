@@ -101,6 +101,12 @@ nest g module notifications --dry-run
 nest g controller notifications --dry-run
 nest g service notifications notifications --dry-run
 nest g class notification notifications --dry-run
+
+# scaffold push module
+nest g module push  --dry-run
+nest g controller push --dry-run
+nest g service  push --dry-run
+nest g class subscription push --no-spec  --dry-run # rename as subscription.entity.ts
 ```
 
 

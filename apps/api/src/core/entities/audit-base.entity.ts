@@ -12,10 +12,12 @@ export abstract class AuditBase {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @ApiModelProperty({ type: Date })
   // @Exclude()
   @CreateDateColumn()
   createdAt?: Date;
 
+  @ApiModelProperty({ type: Date })
   // @Exclude()
   @UpdateDateColumn()
   updatedAt?: Date;
