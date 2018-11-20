@@ -7,6 +7,7 @@ import { UserModule } from './user';
 // import { ChatModule } from './chat';
 import { AppController } from './app.controller';
 import { NotificationsModule } from './notifications';
+import { PushModule } from './push';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { NotificationsModule } from './notifications';
         children: [
           { path: '/auth', module: AuthModule },
           { path: '/user', module: UserModule },
+          { path: '/push', module: PushModule },
           // { path: '/account', module: AccountModule },
           { path: '/notifications', module: NotificationsModule },
         ],
@@ -26,6 +28,7 @@ import { NotificationsModule } from './notifications';
     UserModule,
     // AccountModule,
     NotificationsModule,
+    PushModule,
     // ChatModule,
   ],
   controllers: [AppController],

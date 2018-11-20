@@ -3,7 +3,7 @@ import { IsAscii, IsBoolean, IsEnum, IsIn, IsNotEmpty, IsString, MaxLength, MinL
 import { NotificationColor, NotificationIcon } from '../notification.entity';
 
 export class CreateNotificationDto {
-  @ApiModelProperty({ type: String, enum: NotificationIcon, default: 'notifications' })
+  @ApiModelProperty({ type: String, enum: NotificationIcon, default: NotificationIcon.notifications })
   @IsString()
   @IsNotEmpty()
   @IsEnum(NotificationIcon)
@@ -19,7 +19,7 @@ export class CreateNotificationDto {
   @IsNotEmpty()
   read: boolean = false;
 
-  @ApiModelProperty({ type: String, enum: NotificationColor })
+  @ApiModelProperty({ type: String, enum: NotificationColor, default: NotificationColor.PRIMARY })
   @IsString()
   @IsNotEmpty()
   @IsIn(['warn', 'accent', 'primary'])

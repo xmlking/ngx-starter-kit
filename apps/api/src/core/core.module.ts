@@ -10,6 +10,7 @@ import { ConnectionOptions } from 'typeorm';
 import { Notification } from '../notifications/notification.entity';
 import { User } from '../auth/user.entity';
 import { environment as env } from '@env-api/environment';
+import { Subscription } from '../push/subscription.entity';
 
 @Module({
   imports: [
@@ -19,7 +20,7 @@ import { environment as env } from '@env-api/environment';
       imports: [ConfigModule],
       useFactory: async (config: ConfigService) => ({
         ...env.database,
-        entities: [Notification, User],
+        entities: [Notification, User, Subscription],
       } as ConnectionOptions),
       inject: [ConfigService],
     }),
