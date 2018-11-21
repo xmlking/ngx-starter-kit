@@ -1,21 +1,24 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { DeepPartial, FindManyOptions, FindOneOptions, Repository, UpdateResult, DeleteResult } from 'typeorm';
+import { DeepPartial, DeleteResult, FindConditions, FindManyOptions, FindOneOptions, Repository, UpdateResult } from 'typeorm';
 import { Base } from '../entities/base.entity';
 import { ICrudService } from './icube.service';
 
 export abstract class CrudService<T extends Base> implements ICrudService<T> {
   protected constructor(protected readonly repository: Repository<T>) {}
 
-  public async getAll(filter?: FindManyOptions<T>): Promise<[T[], number]> {
-    const records = await this.repository.findAndCount(filter);
+  public async getAll(options?: FindManyOptions<T>): Promise<[T[], number]> {
+    const records = await this.repository.findAndCount(options);
     if (records[1] === 0) {
       throw new NotFoundException(`The requested records were not found`);
     }
     return records;
   }
 
-  public async getOne(filter: string): Promise<T> {
-    const record = await this.repository.findOne(filter);
+  public async getOne(
+    id: string | number | FindOneOptions<T> | FindConditions<T>,
+    options?: FindOneOptions<T>,
+  ): Promise<T> {
+    const record = await this.repository.findOne(id as any, options);
     if (!record) {
       throw new NotFoundException(`The requested record was not found`);
     }
@@ -23,44 +26,16 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
   }
 
   public async create(entity: DeepPartial<T>): Promise<T> {
-    // FIXME: https://github.com/typeorm/typeorm/issues/1544
-    const obj = this.repository.create(entity as any);
+    const obj = this.repository.create(entity);
     try {
+      // https://github.com/Microsoft/TypeScript/issues/21592
       return await this.repository.save(obj as any);
     } catch (err /*: WriteError*/) {
       throw new BadRequestException(err);
     }
   }
 
-  // public async update(id: string, entity: DeepPartial<T>): Promise<FindAndModifyWriteOpResultObject> {
-  //   try {
-  //     return await this.repository.findOneAndUpdate({ id }, {$set: classToPlain(entity)});
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new BadRequestException(err.message);
-  //   }
-  // }
-  //
-  // public async replace(id: string, entity: DeepPartial<T>): Promise<FindAndModifyWriteOpResultObject> {
-  //   const obj = this.repository.create(entity);
-  //   try {
-  //     return await this.repository.findOneAndReplace({ id },  obj);
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new BadRequestException(err.message);
-  //   }
-  // }
-  //
-  // public async delete(id: string): Promise<FindAndModifyWriteOpResultObject> {
-  //   try {
-  //     return await this.repository.findOneAndDelete({ id });
-  //   } catch (err) {
-  //     console.log(err);
-  //     throw new NotFoundException(`The record was not found`);
-  //   }
-  // }
-
-  public async update(id: string, entity: DeepPartial<T>): Promise<UpdateResult> {
+  public async update(id: string | number | FindConditions<T>, entity: DeepPartial<T>): Promise<UpdateResult> {
     try {
       return await this.repository.update(id, entity);
     } catch (err /*: WriteError*/) {
@@ -68,13 +43,11 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     }
   }
 
-  public async delete(id: string): Promise<DeleteResult> {
-    const obj = await this.repository.findOne(id);
-    if (obj) {
-      // FIXME: https://github.com/typeorm/typeorm/issues/1544
-      return this.repository.delete(obj as any);
-    } else {
-      throw new NotFoundException(`The record was not found`);
+  public async delete(criteria: string | number | FindConditions<T>): Promise<DeleteResult> {
+    try {
+      return this.repository.delete(criteria);
+    } catch (err) {
+      throw new NotFoundException(`The record was not found`, err);
     }
   }
 }
