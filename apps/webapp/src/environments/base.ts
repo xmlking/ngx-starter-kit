@@ -10,7 +10,8 @@ export default {
     sessionId: 'sumodemo',
   },
   webPush: {
-    publicVapidKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
+    // Key generation: https://web-push-codelab.glitch.me
+    publicKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
   },
   versions: {
     app: packageJson.version,

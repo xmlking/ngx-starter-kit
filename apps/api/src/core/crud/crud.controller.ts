@@ -13,7 +13,7 @@ export abstract class CrudController<T extends Base> {
   @ApiResponse({ status: HttpStatus.OK, description: 'All records', /* type: T, */ isArray: true })
   @Get()
   async findAll(options?: any): Promise<[T[], number]> {
-    return this.crudService.getAll();
+    return this.crudService.getAll(options);
   }
 
   @ApiOperation({ title: 'Find by id' })
@@ -44,7 +44,7 @@ export abstract class CrudController<T extends Base> {
   })
   @Put(':id')
   async update(@Param('id') id: string, @Body() entity: DeepPartial<T>, options?: any): Promise<any> {
-    return this.crudService.update(id, entity as any); // FIXME: https://github.com/typeorm/typeorm/issues/1544
+    return this.crudService.update(id, entity); // FIXME: https://github.com/typeorm/typeorm/issues/1544
   }
 
   @ApiOperation({ title: 'Delete record' })
