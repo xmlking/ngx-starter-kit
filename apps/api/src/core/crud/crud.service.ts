@@ -1,5 +1,13 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import { DeepPartial, DeleteResult, FindConditions, FindManyOptions, FindOneOptions, Repository, UpdateResult } from 'typeorm';
+import {
+  DeepPartial,
+  DeleteResult,
+  FindConditions,
+  FindManyOptions,
+  FindOneOptions,
+  Repository,
+  UpdateResult,
+} from 'typeorm';
 import { Base } from '../entities/base.entity';
 import { ICrudService } from './icube.service';
 
