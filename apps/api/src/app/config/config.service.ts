@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { environment } from '@env-api/environment';
 
 // tslint:disable-next-line
-const packageJson = require('../../../../package.json');
+const packageJson = require('../../../../../package.json');
 
 @Injectable()
 export class ConfigService {

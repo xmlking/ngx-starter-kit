@@ -6,7 +6,12 @@ describe('PushService', () => {
 
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [PushService],
+      providers: [
+        {
+          provide: PushService,
+          useValue: {}, // TODO: Mock
+        },
+      ],
     }).compile();
     service = module.get<PushService>(PushService);
   });

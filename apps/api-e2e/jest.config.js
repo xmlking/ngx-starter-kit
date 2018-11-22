@@ -1,8 +1,8 @@
 module.exports = {
   name: 'api-e2e',
-  testRegex: '.spec.ts$',
+  testRegex: '.e2e-spec.ts$',
   transform: {
-    '^.+\\.(ts|js|html)$': 'jest-preset-angular/preprocessor.js',
+    '^.+\\.(t|j)s$': 'ts-jest',
   },
   moduleFileExtensions: ['js', 'json', 'ts'],
   collectCoverage: true,
@@ -11,7 +11,7 @@ module.exports = {
   coverageDirectory: '../../coverage/apps/api-e2e',
   globals: {
     'ts-jest': {
-      tsConfig: './tsconfig.e2e.json',
+      tsConfig: 'apps/api-e2e/tsconfig.e2e.json',
     },
   },
 };
