@@ -88,6 +88,12 @@ npm ls jasmine-marbles
 
 for nx help `npm run help`
 
+> Explicitly Passing Arguments to Angular CLI
+
+`nx/ng` commands now accept a delimiter to distinguish the end of options for `Nx` and the beginning of options to `Angular CLI` with a (like npm run) according to Guideline 10 of `POSIX.2 utility syntax guidelines`.
+
+`npm run affected -- --target lint --uncommitted --parallel -- --fix`
+
 #### Create Workspace
 
 ```bash

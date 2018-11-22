@@ -38,7 +38,6 @@ export class GoogleAnalyticsService {
 
   /**
    * set user after login success.
-   * @param userId
    */
   public setUsername(userId: string) {
     if (typeof ga === 'function') {
@@ -48,7 +47,6 @@ export class GoogleAnalyticsService {
 
   /**
    * set page after navigation success
-   * @param path
    */
   public setPage(path: string) {
     if (typeof ga === 'function') {

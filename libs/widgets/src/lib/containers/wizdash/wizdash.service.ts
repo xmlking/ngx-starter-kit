@@ -37,7 +37,6 @@ import {
 } from '../../demo-data/widget-demo-data';
 
 /**
- * @class WizdashService
  * This is just a demo service for populating the charts on the dashboard.
  * You will have to implement a similiar service for the data to be populated.
  * Examples are provided below :)
@@ -66,7 +65,6 @@ export class WizdashService {
 
   /**
    * Converting Data from Server to Chart compatible format
-   * @returns {Chart.ChartData}
    */
   toSalesChartData(chartData: { labels: string[]; data: number[] }) {
     return {
