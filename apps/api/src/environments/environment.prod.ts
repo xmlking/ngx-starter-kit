@@ -4,9 +4,9 @@ export const environment = {
   NODE_TLS_REJECT_UNAUTHORIZED: 0,
 
   server: {
-    host: 'localhost',
-    domainUrl: 'http://localhost:3000',
-    port: 3000,
+    host: process.env.HOST || '0.0.0.0',
+    domainUrl: process.env.DOMAIN_URL || 'http://localhost:3000',
+    port: process.env.PORT || 3000,
     globalPrefix: '/api',
   },
 

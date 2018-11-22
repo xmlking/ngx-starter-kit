@@ -48,7 +48,7 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(env.server.port || 3000, '0.0.0.0');
+  await app.listen(env.server.port || 3000, env.server.host || '0.0.0.0');
 
   if (module.hot) {
     module.hot.accept();
