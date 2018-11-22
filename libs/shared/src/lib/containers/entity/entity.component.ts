@@ -99,7 +99,6 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   /**
    * Overwrite this method, to get the data your way.
-   * @returns {Observable<TEntity[]>}
    */
   getData(): Observable<TEntity[]> {
     return this.entityService.getAll();
@@ -187,7 +186,6 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   /**
    * will be called with entity or undefined
-   * @param {TEntity} entity
    */
   showDetails(entity: TEntity) {}
 
