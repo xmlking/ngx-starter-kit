@@ -22,7 +22,7 @@ async function bootstrap() {
     }),
   );
 
-  // app.useStaticAssets(join(__dirname + './../public')); // for uploaded images
+  // app.useStaticAssets(join(__dirname, './../public')); // for uploaded images
 
   const options = new DocumentBuilder()
     .setTitle('Sumo API Docs')
@@ -51,7 +51,7 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(env.server.port || 3000, '0.0.0.0');
+  await app.listen(env.server.port || 3000, env.server.host || '0.0.0.0');
 }
 
 bootstrap();

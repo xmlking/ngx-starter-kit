@@ -10,7 +10,7 @@ export const environment = {
   LOG_LEVEL: 'debug',
 
   server: {
-    host: 'localhost',
+    host: '0.0.0.0',
     domainUrl: 'http://localhost:3000',
     port: 3000,
     globalPrefix: '/api',
