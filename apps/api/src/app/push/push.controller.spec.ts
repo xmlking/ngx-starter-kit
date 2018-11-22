@@ -1,5 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { PushController } from './push.controller';
+import { PushService } from './push.service';
 
 describe('Push Controller', () => {
   let module: TestingModule;
@@ -7,6 +8,12 @@ describe('Push Controller', () => {
   beforeAll(async () => {
     module = await Test.createTestingModule({
       controllers: [PushController],
+      providers: [
+        {
+          provide: PushService,
+          useValue: {}, // TODO: Mock
+        },
+      ],
     }).compile();
   });
   it('should be defined', () => {

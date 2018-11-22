@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
-**PANT** (_PostgreSQL_ - _Angular_ - _NestJS_ - _TypeScript_) Stack
+**PANTS** (_PostgreSQL_ - _Angular_ - _NestJS_ - _TypeScript_) Stack
 
 ## Install
 
