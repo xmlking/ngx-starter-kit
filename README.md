@@ -1,5 +1,4 @@
-Ngx Starter Kit
-===============
+# Ngx Starter Kit
 
 [![Build Status](https://travis-ci.org/xmlking/ngx-starter-kit.svg?branch=master)](https://travis-ci.org/xmlking/ngx-starter-kit)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
@@ -9,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
-**PANT** (*PostgreSQL* - *Angular* - *NestJS* - *TypeScript*) Stack
+**PANTS** (_PostgreSQL_ - _Angular_ - _NestJS_ - _TypeScript_) Stack
 
 ## Install
 
@@ -50,7 +49,7 @@ Run `npm run doc:serve` to serve docs.
 Run `npm run deploy:mock` to deploy demo app to gp-pages.
 
 Analyzing bundle size `npm run bundle-report`
- 
+
 Analyzing and Visualizing the Dependency Graph (affected modules by uncommitted changes)
 
-`npm run affected:dep-graph -- --uncommitted`
+`npm run affected -- --target dep-graph --uncommitted`

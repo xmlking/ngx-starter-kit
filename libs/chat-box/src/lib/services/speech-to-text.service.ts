@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Inject, Injectable } from '@angular/core';
+import { BrowserFeatureKey, FeatureService, WINDOW } from '@ngx-starter-kit/core';
 
 const SpeechRecognition =
   (window as any).webkitSpeechRecognition ||
@@ -11,9 +12,9 @@ const SpeechRecognition =
 export class SpeechToTextService {
   public canUseSpeechRecognition = false;
   private speechRecognition: any;
-  constructor() {
-    if (SpeechRecognition !== undefined) {
-      this.canUseSpeechRecognition = true;
+  constructor(private readonly featureService: FeatureService, @Inject(WINDOW) private window: Window) {
+    this.canUseSpeechRecognition = this.featureService.detectFeature(BrowserFeatureKey.SpeechRecognition).supported;
+    if (this.canUseSpeechRecognition) {
       this.speechRecognition = new SpeechRecognition();
       this.speechRecognition.continuous = false; // FIXME: Gecko?
       this.speechRecognition.lang = 'en-US';
@@ -51,7 +52,8 @@ export class SpeechToTextService {
 
         this.speechRecognition.onnomatch = (err: any): void => {
           console.log('No Match');
-          reject("I didn't recognise your question.");
+          // prettier-ignore
+          reject('I didn\'t recognise your question.');
         };
 
         this.speechRecognition.onerror = (err: any): void => {

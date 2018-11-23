@@ -1,3 +1,4 @@
+import { NgZone } from '@angular/core';
 import { Action, Select, Selector, State, StateContext } from '@ngxs/store';
 import {
   Login,
@@ -30,7 +31,12 @@ export interface AuthStateModel {
   },
 })
 export class AuthState {
-  constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private oauthService: OAuthService,
+    private router: Router,
+    private zone: NgZone,
+  ) {}
 
   @Selector()
   static isLoggedIn(state: AuthStateModel) {
@@ -54,7 +60,9 @@ export class AuthState {
       profile: payload,
     });
     this.authService.startAutoRefreshToken();
-    this.router.navigate(['/dashboard']);
+    if (getState().authMode === AuthMode.PasswordFlow) {
+      this.zone.run(() => this.router.navigate(['/dashboard']));
+    }
   }
 
   @Action([LogoutSuccess, LoginCanceled])
@@ -65,7 +73,7 @@ export class AuthState {
       authMode: getState().authMode,
     });
     this.authService.stopAutoRefreshToken();
-    this.router.navigate(['/home']);
+    this.zone.run(() => this.router.navigate(['/home']));
   }
 
   @Action(AuthModeChanged)

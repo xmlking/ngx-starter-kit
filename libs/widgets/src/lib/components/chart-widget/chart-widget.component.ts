@@ -55,7 +55,8 @@ export class ChartWidgetHeaderActions {
   selector: 'ngx-chart-widget-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-content></ng-content>`,
+    <ng-content></ng-content>
+  `,
 })
 export class ChartWidgetContent {
   @HostBinding('class.ngx-chart-widget-content')

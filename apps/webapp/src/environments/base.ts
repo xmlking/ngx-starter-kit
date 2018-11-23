@@ -9,6 +9,10 @@ export default {
     // apiToken: '528e10cbdec04c78a0d0147de041dea4',
     sessionId: 'sumodemo',
   },
+  webPush: {
+    // Key generation: https://web-push-codelab.glitch.me
+    publicKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
+  },
   versions: {
     app: packageJson.version,
     angular: packageJson.dependencies['@angular/core'],
@@ -17,7 +21,6 @@ export default {
     flexLayout: packageJson.dependencies['@angular/flex-layout'],
     rxjs: packageJson.dependencies.rxjs,
     angularCli: packageJson.devDependencies['@angular/cli'],
-    // typescript: packageJson.devDependencies['typescript'],
-    typescript: packageJson.dependencies['typescript'],
+    typescript: packageJson.devDependencies['typescript'],
   },
 };

@@ -1,5 +1,5 @@
 module.exports = {
   name: 'quickpanel',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/quickpanel'
+  coverageDirectory: '../../coverage/libs/quickpanel',
 };

@@ -5,6 +5,7 @@ import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
 import { distinctUntilChanged, map, share, tap, throttleTime } from 'rxjs/operators';
 import { BehaviorSubject, fromEvent } from 'rxjs';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { WINDOW } from '@ngx-starter-kit/core';
 
 enum ShowStatus {
   show = 'show',
@@ -23,13 +24,17 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
 
   pageScrollInstance: PageScrollInstance;
 
-  constructor(private pageScrollService: PageScrollService, @Inject(DOCUMENT) private document: any) {}
+  constructor(
+    private pageScrollService: PageScrollService,
+    @Inject(DOCUMENT) private document: any,
+    @Inject(WINDOW) private window: Window,
+  ) {}
 
   ngAfterViewInit() {
     this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
-    const scroll$ = fromEvent(window, 'scroll').pipe(
+    const scroll$ = fromEvent(this.window, 'scroll').pipe(
       throttleTime(10),
-      map(() => window.pageYOffset),
+      map(() => this.window.pageYOffset),
       map(y => {
         if (y > 100) {
           return ShowStatus.show;

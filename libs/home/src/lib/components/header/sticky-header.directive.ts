@@ -1,9 +1,10 @@
 import { animate, AnimationBuilder, AnimationMetadata, AnimationPlayer, style } from '@angular/animations';
 
-import { AfterViewInit, Directive, ElementRef, OnDestroy } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Inject, OnDestroy } from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { distinctUntilChanged, filter, map, pairwise, share, throttleTime } from 'rxjs/operators';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { WINDOW } from '@ngx-starter-kit/core';
 
 enum Direction {
   Up = 'Up',
@@ -14,7 +15,6 @@ enum Direction {
   selector: '[stickyHeader]',
 })
 export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
-
   player: AnimationPlayer;
 
   set show(show: boolean) {
@@ -30,7 +30,7 @@ export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
     player.play();
   }
 
-  constructor(private builder: AnimationBuilder, private el: ElementRef) {}
+  constructor(private builder: AnimationBuilder, private el: ElementRef, @Inject(WINDOW) private window: Window) {}
 
   private fadeIn(): AnimationMetadata[] {
     return [style({ opacity: 0 }), animate('400ms ease-in', style({ opacity: 1 }))];
@@ -49,9 +49,9 @@ export class StickyHeaderDirective implements AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    const scroll$ = fromEvent(window, 'scroll').pipe(
+    const scroll$ = fromEvent(this.window, 'scroll').pipe(
       throttleTime(10),
-      map(() => window.pageYOffset),
+      map(() => this.window.pageYOffset),
       pairwise(),
       map(([y1, y2]): Direction => (y2 < y1 ? Direction.Up : Direction.Down)),
       distinctUntilChanged(),

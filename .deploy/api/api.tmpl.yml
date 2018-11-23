@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: ${APPNAME}
   annotations:
-    tags: "ngx-starter-kit-api,mongodb,template"
+    tags: "ngx-starter-kit-api,postgres,template"
     description: ngx-starter-ki api template
 
 objects:
@@ -72,13 +72,13 @@ objects:
             protocol: TCP
           env:
           - name: TYPEORM_HOST
-            value: mongodb
+            value: postgres
           - name: TYPEORM_PORT
-            value: 27017
+            value: 5432
           - name: TYPEORM_DATABASE
             value: cockpit
           - name: TYPEORM_USERNAME
-            value: mdbuser
+            value: cockpit
           - name: TYPEORM_PASSWORD
             value: cockpit123
 

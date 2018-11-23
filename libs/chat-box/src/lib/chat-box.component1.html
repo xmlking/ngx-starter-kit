@@ -1,8 +1,13 @@
-<button mat-fab class="chat-circle" (click)="showChatBox = !showChatBox" [@scrollAnimation]="showChatBox? 'hide' : 'show'">
+<button
+  mat-fab
+  class="chat-circle"
+  (click)="showChatBox = !showChatBox"
+  [@scrollAnimation]="showChatBox? 'hide' : 'show'"
+>
   <mat-icon>chat_bubble</mat-icon>
 </button>
 
-<div  [@scrollAnimation]="showChatBox? 'show' : 'hide'">
+<div [@scrollAnimation]="showChatBox? 'show' : 'hide'">
   <mat-tab-group headerPosition="below" [dynamicHeight]="true">
     <mat-tab label="CHAT">
       <ng-template mat-tab-label>
@@ -11,21 +16,26 @@
           CHAT
         </div>
       </ng-template>
-      <div fxLayout='column' class="chat-box resize">
-        <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-                     class="chat-header mat-elevation-z2" color="primary"
-                     [draggable] dragTarget=".chat-box">
-          <span fxFlex>Chat</span>
-          <span fxFlex="grow"><!-- fill space --></span>
-          <button mat-icon-button>
-            <mat-icon (click)="showChatBox = !showChatBox">close</mat-icon>
-          </button>
+      <div fxLayout="column" class="chat-box resize">
+        <mat-toolbar
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="chat-header mat-elevation-z2"
+          color="primary"
+          [draggable]
+          dragTarget=".chat-box"
+        >
+          <span fxFlex>Chat</span> <span fxFlex="grow"><!-- fill space --></span>
+          <button mat-icon-button><mat-icon (click)="showChatBox = !showChatBox">close</mat-icon></button>
         </mat-toolbar>
 
         <div fxFlex="grow" class="chat-logs">
-          <div *ngFor="let message of messages | async"
-               class="message"
-               [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }">
+          <div
+            *ngFor="let message of messages | async"
+            class="message"
+            [ngClass]="{ 'from': message.sentBy === 'bot', 'to': message.sentBy === 'user' }"
+          >
             {{ message.content }}
           </div>
         </div>
@@ -34,12 +44,17 @@
         <div fxFlex class="chat-input-container">
           <mat-form-field>
             <mat-icon *ngIf="canUseSpeechRecognition" matPrefix (click)="startTalkingToBot()">keyboard_voice</mat-icon>
-            <input type="text" [(ngModel)]="formInput" (keyup.enter)="sendMessageToBot()" matInput
-                   placeholder="Ask anything..." autocomplete="off">
+            <input
+              type="text"
+              [(ngModel)]="formInput"
+              (keyup.enter)="sendMessageToBot()"
+              matInput
+              placeholder="Ask anything..."
+              autocomplete="off"
+            />
             <mat-icon matSuffix (click)="sendMessageToBot()">send</mat-icon>
           </mat-form-field>
         </div>
-
       </div>
     </mat-tab>
     <mat-tab label="HELP">
@@ -49,30 +64,29 @@
           HELP
         </div>
       </ng-template>
-      <div fxLayout='column' class="chat-box resize">
-        <mat-toolbar fxFlex fxLayout="row" fxLayoutAlign="start center"
-                     class="chat-header mat-elevation-z2" color="primary"
-                     [draggable] dragTarget=".chat-box">
-          <span fxFlex>Help</span>
-          <span fxFlex="grow"><!-- fill space --></span>
-          <button mat-icon-button>
-            <mat-icon (click)="showChatBox = !showChatBox">close</mat-icon>
-          </button>
+      <div fxLayout="column" class="chat-box resize">
+        <mat-toolbar
+          fxFlex
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          class="chat-header mat-elevation-z2"
+          color="primary"
+          [draggable]
+          dragTarget=".chat-box"
+        >
+          <span fxFlex>Help</span> <span fxFlex="grow"><!-- fill space --></span>
+          <button mat-icon-button><mat-icon (click)="showChatBox = !showChatBox">close</mat-icon></button>
         </mat-toolbar>
         <div fxFlex="grow" class="chat-logs">
           <mat-form-field>
-            <mat-select placeholder="Favorite Voice"  [(value)]="selectedVoice">
-              <mat-option *ngFor="let voice of voices" [value]="voice">
-                {{ voice.name }}
-              </mat-option>
+            <mat-select placeholder="Favorite Voice" [(value)]="selectedVoice">
+              <mat-option *ngFor="let voice of voices" [value]="voice"> {{ voice.name }} </mat-option>
             </mat-select>
           </mat-form-field>
         </div>
         <mat-divider></mat-divider>
-        <div fxFlex class="chat-input-container">
-        </div>
+        <div fxFlex class="chat-input-container"></div>
       </div>
     </mat-tab>
   </mat-tab-group>
 </div>
-

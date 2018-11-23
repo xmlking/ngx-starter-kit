@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { PageTitleService, ServiceWorkerService } from '@ngx-starter-kit/core';
+import { ServiceWorkerService } from '@ngx-starter-kit/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
@@ -9,8 +9,7 @@ import { Meta, Title } from '@angular/platform-browser';
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {
-  // HINT: keep PageTitleService injected here, so that, it get initialized during bootstrap
-  constructor(private sw: ServiceWorkerService, public meta: Meta, private pageTitleService: PageTitleService) {
+  constructor(private sw: ServiceWorkerService, public meta: Meta) {
     meta.addTags([
       { charset: 'UTF-8' },
       { name: 'description', content: 'NGX Starter Kit' },

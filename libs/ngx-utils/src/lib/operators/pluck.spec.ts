@@ -48,7 +48,11 @@ describe('pluck', () => {
 
   it('should work with multi pluck', () => {
     of(obj)
-      .pipe(pluck('a'), pluck('c'), pluck('d'))
+      .pipe(
+        pluck('a'),
+        pluck('c'),
+        pluck('d'),
+      )
       .subscribe(d => {
         expect(d).toBe(false);
       });

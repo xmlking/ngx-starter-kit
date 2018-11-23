@@ -5,18 +5,9 @@ import { debounceTime, mapTo } from 'rxjs/operators';
 @Component({
   selector: 'ngx-clap',
   template: `
-  <ngx-counter-bubble
-    *ngIf="showBubble$ | async"
-    [counter]="userCounter" >
-  </ngx-counter-bubble>
-  <ngx-total-counter
-    *ngIf="!(showBubble$ | async)"
-    [counter]="totalCounter">
-  </ngx-total-counter>
-  <ngx-fab
-    (click)="userCounterChange.emit()"
-    [counter]="userCounter">
-  </ngx-fab>
+    <ngx-counter-bubble *ngIf="(showBubble$ | async)" [counter]="userCounter"> </ngx-counter-bubble>
+    <ngx-total-counter *ngIf="!(showBubble$ | async)" [counter]="totalCounter"> </ngx-total-counter>
+    <ngx-fab (click)="userCounterChange.emit()" [counter]="userCounter"> </ngx-fab>
   `,
   styles: [
     `
