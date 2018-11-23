@@ -7,6 +7,7 @@ import { PushService } from './push.service';
 import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
 import { SendNotificationDto } from './dto/send-notification.dto';
+import { SendTopicNotificationDto } from './dto/send-topic-notification.dto';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Sumo', 'Push')
@@ -80,7 +81,7 @@ export class PushController extends CrudController<Subscription> {
   @Post('notify')
   notify(@Body() notif: SendNotificationDto) {
     const notification = {
-      title: 'NGX WebApp Notification',
+      title: notif.title,
       body: notif.body,
       icon: 'assets/icons/icon-72x72.png',
       data: {
@@ -88,5 +89,27 @@ export class PushController extends CrudController<Subscription> {
       },
     };
     return this.pushService.notify(notif.id, notification as any);
+  }
+
+  @ApiOperation({ title: 'Send Push Notifications to all subscribers to a topic' })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'Push Notifications has been successfully sent.',
+  })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Invalid input, The response body may contain clues as to what went wrong',
+  })
+  @Post('notifyAll')
+  notifyAll(@Body() notif: SendTopicNotificationDto) {
+    const notification = {
+      title: notif.title,
+      body: notif.body,
+      icon: 'assets/icons/icon-72x72.png',
+      data: {
+        click_url: '/dashboard',
+      },
+    };
+    return this.pushService.notifyAll(notif.topic, notification as any);
   }
 }

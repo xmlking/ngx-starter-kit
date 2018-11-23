@@ -2,7 +2,7 @@ import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PushSubscription, sendNotification, setVapidDetails, WebPushError } from 'web-push';
 import { CrudService } from '../core';
-import { FindConditions, Repository } from 'typeorm';
+import { Any, FindConditions, Repository } from 'typeorm';
 import { Subscription } from './subscription.entity';
 import { environment as env } from '@env-api/environment';
 
@@ -29,6 +29,18 @@ export class PushService extends CrudService<Subscription> {
   async notify(id: string | number, notification: Notification) {
     const { endpoint, p256dh, auth } = await this.getOne(id);
     return this._sendNotification({ endpoint, keys: { p256dh, auth } }, notification);
+  }
+
+  async notifyAll(topic: string, notification: Notification) {
+    // FIXME: https://github.com/typeorm/typeorm/issues/3150
+    const subscriptions = await this.findAndCount({ topics: Any([topic]) } );
+    // console.log(subscriptions);
+    if (subscriptions[1] > 0) {
+      subscriptions[0].forEach( sub => {
+        const { endpoint, p256dh, auth } = sub;
+        this._sendNotification({ endpoint, keys: { p256dh, auth } }, notification);
+      });
+    }
   }
 
   private async _sendNotification(subscription: PushSubscription, notification: Notification) {

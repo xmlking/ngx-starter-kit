@@ -13,14 +13,7 @@ export class PushNotificationService {
   private readonly entityPath = 'push';
   private readonly existingSubscription: PushSubscription;
 
-  constructor(private readonly swPush: SwPush, private httpClient: HttpClient) {
-    if (this.swPush.isEnabled) {
-      // subscribe for new messages for testing
-      this.swPush.messages.subscribe(message => {
-        console.log('received push notification', message);
-      });
-    }
-  }
+  constructor(private readonly swPush: SwPush, private httpClient: HttpClient) {}
 
   async register() {
     if (!this.swPush.isEnabled) {
@@ -58,6 +51,17 @@ export class PushNotificationService {
         .toPromise();
       await subscription.unsubscribe();
     }
+  }
+
+  async notify(id: string) {
+    await this.httpClient
+      .post(`${this.baseUrl}/${this.entityPath}/notify`, {
+        id: encodeURIComponent(id),
+        title: 'NGX WebApp Notification',
+        body: 'test body 321',
+      })
+      .pipe(catchError(this.handleError))
+      .toPromise();
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -1,11 +1,11 @@
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsNotEmpty, IsString } from 'class-validator';
 
-export class SendNotificationDto {
+export class SendTopicNotificationDto {
   @ApiModelProperty({ type: String })
   @IsNotEmpty()
   @IsString()
-  id: string;
+  topic: string;
 
   @ApiModelProperty({ type: String })
   @IsNotEmpty()

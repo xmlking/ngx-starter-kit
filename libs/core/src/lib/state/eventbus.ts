@@ -1,5 +1,6 @@
 import { Actions, ofActionErrored, ofActionSuccessful, Store } from '@ngxs/store';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { SwPush } from '@angular/service-worker';
 import { Login, LoginSuccess } from '@ngx-starter-kit/auth';
 import {
   AuthenticateWebSocket,
@@ -25,6 +26,7 @@ export class EventBus {
     private actions$: Actions,
     private store: Store,
     private router: Router,
+    private readonly swPush: SwPush,
     private analytics: GoogleAnalyticsService,
     private pageTitle: PageTitleService,
     private rendererFactory: RendererFactory2,
@@ -64,6 +66,13 @@ export class EventBus {
         } catch (installError) {
           this.analytics.emitEvent(EventCategory.Install, 'errored');
         }
+      });
+    }
+
+    if (this.swPush.isEnabled) {
+      // subscribe for new messages for testing
+      this.swPush.messages.subscribe(message => {
+        console.log('received push notification', message);
       });
     }
 
