@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  padding: 1.5%;
+  position: relative;
+}
+
+.mat-table {
+  display: block;
+}
+
+.mat-row,
+.mat-header-row {
+  display: flex;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  align-items: center;
+  min-height: 60px;
+  padding: 0 24px;
+}
+
+.add-padding-right {
+  padding-right: 8px;
+}

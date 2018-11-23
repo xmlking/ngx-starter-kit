@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { WINDOW } from '@ngx-starter-kit/core';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 
@@ -17,10 +18,10 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
   private _sub: Subscription;
-  constructor(private elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef, @Inject(WINDOW) private window: Window) {}
 
   ngOnInit() {
-    fromEvent<Event>(window, 'resize')
+    fromEvent<Event>(this.window, 'resize')
       .pipe(
         debounceTime(100),
         map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),

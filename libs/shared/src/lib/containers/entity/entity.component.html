@@ -1,93 +1,130 @@
-<!--FIXME Only used for GRID Demo-->
+<!-- FIXME Only used for GRID Demo -->
 <ngx-breadcrumbs title="Grid" [crumbs]="crumbs"></ngx-breadcrumbs>
-<!--FIXME End-->
+<!-- FIXME End -->
 
 <div fxLayout="column">
-<mat-card class="mat-elevation-z8">
-  <mat-toolbar *ngIf="showToolbar">
-    <mat-form-field fxFlex>
-      <input matInput #filter (keyup)="applyFilter($event.target.value)">
-      <mat-placeholder>
-        <mat-icon>search</mat-icon>Filter
-      </mat-placeholder>
-      <button mat-button *ngIf="filter.value !== ''" matSuffix mat-icon-button aria-label="Clear" (click)="filter.value= ''">
-        <mat-icon>close</mat-icon>
-      </button>
-    </mat-form-field>
-
-    <button  *ngIf="showColumnFilter" mat-icon-button style="margin-left: 16px" type="button" [matMenuTriggerFor]="columnFilter">
-      <mat-icon>filter_list</mat-icon>
-    </button>
-
-    <mat-menu #columnFilter="matMenu" yPosition="below" xPosition="before">
-      <button class="checkbox-item mat-menu-item" *ngFor="let column of columns"
-              (click)="toggleColumnVisibility(column, $event)">
-
-        <!--<mat-checkbox [(ngModel)]="column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">-->
-        <mat-checkbox  [checked]="column.visible" (change)="column.visible = !column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">
-          {{ column.header }}
-        </mat-checkbox>
-      </button>
-    </mat-menu>
-
-    <button *ngIf="showActionColumn" mat-mini-fab color="primary" style="margin-left: 16px" (click)="openPopUp()" matTooltip="add">
-      <mat-icon>add</mat-icon>
-    </button>
-  </mat-toolbar>
-
-  <mat-progress-bar   *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
-
-  <mat-table #table [dataSource]="dataSource" matSort>
-
-    <!-- Checkbox Column -->
-    <ng-container *ngIf="maxSelectable > 0" matColumnDef="select">
-      <mat-header-cell *matHeaderCellDef>
-        <mat-checkbox (change)="$event ? masterToggle() : null"
-                      [disabled]="!dataSource.filteredData.length"
-                      [checked]="isMasterToggleChecked()"
-                      [indeterminate]="isMasterToggleIndeterminate()">
-        </mat-checkbox>
-      </mat-header-cell>
-      <mat-cell *matCellDef="let row">
-        <mat-checkbox (click)="$event.stopPropagation()"
-                      (change)="$event ? selectRow(row) : null"
-                      [checked]="selection.isSelected(row)">
-        </mat-checkbox>
-      </mat-cell>
-    </ng-container>
-
-    <ng-container *ngFor="let column of columns" [matColumnDef]="column.property">
-      <mat-header-cell *matHeaderCellDef mat-sort-header> {{column.header}} </mat-header-cell>
-      <mat-cell *matCellDef="let row"> {{column.displayFn(row)}} </mat-cell>
-    </ng-container>
-
-    <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn" sticky>
-      <mat-header-cell *matHeaderCellDef>{{actionColumn}}</mat-header-cell>
-      <mat-cell *matCellDef="let entity">
-        <button type="button" (click)="openPopUp(entity)" color="primary" mat-icon-button>
-          <mat-icon>edit_mode</mat-icon>
+  <mat-card class="mat-elevation-z8">
+    <mat-toolbar *ngIf="showToolbar">
+      <mat-form-field fxFlex>
+        <input matInput #filter (keyup)="applyFilter($event.target.value)" />
+        <mat-label> <mat-icon>search</mat-icon>Filter </mat-label>
+        <button
+          mat-button
+          *ngIf="filter.value !== ''"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="filter.value = ''"
+        >
+          <mat-icon>close</mat-icon>
         </button>
+      </mat-form-field>
 
-        <button type="button" (click)="delete(entity).subscribe()" color="warn" mat-icon-button>
-          <mat-icon>delete</mat-icon>
+      <button
+        *ngIf="showColumnFilter"
+        mat-icon-button
+        style="margin-left: 16px"
+        type="button"
+        [matMenuTriggerFor]="columnFilter"
+      >
+        <mat-icon>filter_list</mat-icon>
+      </button>
+
+      <mat-menu #columnFilter="matMenu" yPosition="below" xPosition="before">
+        <button
+          class="checkbox-item mat-menu-item"
+          *ngFor="let column of columns"
+          (click)="toggleColumnVisibility(column, $event)"
+        >
+          <!--
+            <mat-checkbox [(ngModel)]="column.visible" class="checkbox" #checkbox (click)="$event.stopPropagation()">
+          -->
+          <mat-checkbox
+            [checked]="column.visible"
+            (change)="column.visible = !column.visible"
+            class="checkbox"
+            #checkbox
+            (click)="$event.stopPropagation()"
+          >
+            {{ column.header }}
+          </mat-checkbox>
         </button>
-      </mat-cell>
-    </ng-container>
+      </mat-menu>
 
-    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
-    <mat-row *matRowDef="let row; columns: displayedColumns;" class="row"
-             [class.selected]="selection.isSelected(row)"></mat-row>
-    <!--<mat-row *matRowDef="let row; columns: displayedColumns;" class="row"-->
-             <!--[class.selected]="selection.isSelected(row)" (click)="selectRow(row)"></mat-row>-->
-  </mat-table>
+      <button
+        *ngIf="showActionColumn"
+        mat-mini-fab
+        color="primary"
+        style="margin-left: 16px"
+        (click)="openPopUp()"
+        matTooltip="add"
+      >
+        <mat-icon>add</mat-icon>
+      </button>
+    </mat-toolbar>
 
-  <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" [showFirstLastButtons]="true"></mat-paginator>
+    <mat-progress-bar *ngIf="(loading$ | async)" mode="indeterminate"></mat-progress-bar>
 
-</mat-card>
+    <mat-table #table [dataSource]="dataSource" matSort>
+      <!-- Checkbox Column -->
+      <ng-container *ngIf="maxSelectable > 0" matColumnDef="select">
+        <mat-header-cell *matHeaderCellDef>
+          <mat-checkbox
+            (change)="$event ? masterToggle() : null"
+            [disabled]="!dataSource.filteredData.length"
+            [checked]="isMasterToggleChecked()"
+            [indeterminate]="isMasterToggleIndeterminate()"
+          >
+          </mat-checkbox>
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <mat-checkbox
+            (click)="$event.stopPropagation()"
+            (change)="$event ? selectRow(row) : null"
+            [checked]="selection.isSelected(row)"
+          >
+          </mat-checkbox>
+        </mat-cell>
+      </ng-container>
 
+      <ng-container *ngFor="let column of columns" [matColumnDef]="column.property">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{ column.header }} </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ column.displayFn(row) }} </mat-cell>
+      </ng-container>
+
+      <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn" sticky>
+        <mat-header-cell *matHeaderCellDef>{{ actionColumn }}</mat-header-cell>
+        <mat-cell *matCellDef="let entity">
+          <button type="button" (click)="openPopUp(entity)" color="primary" mat-icon-button>
+            <mat-icon>edit_mode</mat-icon>
+          </button>
+
+          <button type="button" (click)="delete(entity).subscribe()" color="warn" mat-icon-button>
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        class="row"
+        [class.selected]="selection.isSelected(row)"
+      ></mat-row>
+      <!-- <mat-row *matRowDef="let row; columns: displayedColumns;" class="row" -->
+      <!-- [class.selected]="selection.isSelected(row)" (click)="selectRow(row)"></mat-row> -->
+    </mat-table>
+
+    <mat-paginator
+      #paginator
+      [pageSize]="5"
+      [pageSizeOptions]="[5, 10, 20]"
+      [showFirstLastButtons]="true"
+    ></mat-paginator>
+  </mat-card>
 </div>
 
-<br/><br/>
-<!--<div [@routerTransition]="getRouteAnimation(o)">-->
-  <router-outlet #o="outlet"></router-outlet>
-<!--</div>-->
+<br /><br />
+<!-- <div [@routerTransition]="getRouteAnimation(o)"> -->
+<router-outlet #o="outlet"></router-outlet>
+<!-- </div> -->

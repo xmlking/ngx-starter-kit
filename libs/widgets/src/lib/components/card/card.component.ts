@@ -33,7 +33,8 @@ export class CardHeader {
   selector: 'ngx-card-content',
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
-    <ng-content></ng-content>`,
+    <ng-content></ng-content>
+  `,
 })
 export class CardContent {
   @HostBinding('class.ngx-card-content')

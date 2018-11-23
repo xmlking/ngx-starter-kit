@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { NgLetDirective } from './ng-let.directive';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [NgLetDirective],
-  exports: [NgLetDirective]
+  exports: [NgLetDirective],
 })
-export class NgLetModule { }
+export class NgLetModule {}

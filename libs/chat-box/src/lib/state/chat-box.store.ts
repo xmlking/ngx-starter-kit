@@ -128,9 +128,12 @@ export class ChatBoxState implements NgxsOnInit {
 
   @Selector()
   static getConversationById(id: string) {
-    return createSelector([ChatBoxState], (state: ChatBoxStateModel) => {
-      return state.conversations.find(con => con.id === id);
-    });
+    return createSelector(
+      [ChatBoxState],
+      (state: ChatBoxStateModel) => {
+        return state.conversations.find(con => con.id === id);
+      },
+    );
   }
 
   @Selector()

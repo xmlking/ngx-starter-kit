@@ -7,11 +7,13 @@ import { ChatBoxModule } from '@ngx-starter-kit/chat-box';
 
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { OverviewComponent } from './containers/overview/overview.component';
+import { SettingsComponent } from './containers/settings/settings.component';
 import { RainbowComponent } from './components/rainbow/rainbow.component';
 import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
 import { ToolbarModule } from '@ngx-starter-kit/toolbar';
 import { SidenavModule } from '@ngx-starter-kit/sidenav';
 import { environment } from '@env/environment';
+import { ProfileComponent } from './containers/profile/profile.component';
 
 @NgModule({
   imports: [
@@ -34,7 +36,17 @@ import { environment } from '@env/environment';
           {
             path: 'overview',
             component: OverviewComponent,
-            data: { animation: 'overview' },
+            data: { title: 'Overview' },
+          },
+          {
+            path: 'profile',
+            component: ProfileComponent,
+            data: { title: 'Settings', depth: '2' },
+          },
+          {
+            path: 'settings',
+            component: SettingsComponent,
+            data: { title: 'Settings', depth: '2' },
           },
           {
             path: '',
@@ -49,12 +61,12 @@ import { environment } from '@env/environment';
           {
             path: 'experiments',
             loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
-            data: { title: 'Experiments', depth: 2,  preload: false },
+            data: { title: 'Experiments', depth: 2, preload: false },
           },
         ],
       },
     ]),
   ],
-  declarations: [DashboardLayoutComponent, OverviewComponent, RainbowComponent],
+  declarations: [DashboardLayoutComponent, OverviewComponent, RainbowComponent, ProfileComponent, SettingsComponent],
 })
 export class DashboardModule {}

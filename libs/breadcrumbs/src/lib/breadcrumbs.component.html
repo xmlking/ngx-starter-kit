@@ -1,6 +1,12 @@
 <div class="title">{{ title }}</div>
 <div class="crumbs" fxLayout="row" fxLayoutAlign="start center">
-  <div class="crumb" *ngFor="let crumb of crumbs; let last = last" [ngSwitch]="!!crumb.link" fxLayout="row" fxLayoutAlign="start center">
+  <div
+    class="crumb"
+    *ngFor="let crumb of crumbs; let last = last"
+    [ngSwitch]="!!crumb.link"
+    fxLayout="row"
+    fxLayoutAlign="start center"
+  >
     <a *ngSwitchCase="true" class="crumb link" [routerLink]="[crumb.link]">{{ crumb.name }}</a>
     <div *ngSwitchDefault class="link">{{ crumb.name }}</div>
     <mat-icon *ngIf="!last" class="chevron">chevron_right</mat-icon>

@@ -1,8 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "./",
-    "outDir": "./dist/out-tsc",
+    "importHelpers": true,
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -15,10 +14,11 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom",
       "esnext.array"
     ],
+    "baseUrl": ".",
     "paths": {
       "@ngx-starter-kit/*": [
         "libs/*"
@@ -26,8 +26,8 @@
       "@env/*": [
         "apps/webapp/src/environments/*"
       ],
-      "@api-env/*": [
-        "apps/api/src/environments/*"
+      "@env-api/environment": [
+        "apps/api/src/environments/environment.ts"
       ],
       "@ngx-starter-kit/models": [
         "libs/models/src/index.ts"

@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
+import { ThemePickerServiceModule } from './theme-picker-service.module';
 
 /**
  * Class for managing stylesheets. Stylesheets are loaded into named slots so that they can be
  * removed or changed later.
  */
-@Injectable()
+@Injectable({ providedIn: ThemePickerServiceModule })
 export class StyleManagerService {
   /**
    * Set the stylesheet with the specified key.

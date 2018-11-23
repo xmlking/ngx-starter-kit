@@ -6,6 +6,7 @@ import {
   HostBinding,
   ChangeDetectorRef,
   HostListener,
+  Inject,
 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
@@ -13,6 +14,7 @@ import { Observable, Subject, Subscription } from 'rxjs';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
 import { MenuItem, MenuService, SidenavState } from '@ngx-starter-kit/navigator';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { WINDOW } from '@ngx-starter-kit/core';
 // import { sidenavAnimation } from '@ngx-starter-kit/animations';
 
 @Component({
@@ -32,6 +34,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
     private menuService: MenuService,
     private snackBar: MatSnackBar,
     private cd: ChangeDetectorRef,
+    @Inject(WINDOW) private window: Window,
   ) {}
 
   ngOnInit() {
@@ -55,7 +58,7 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
   toggleIconSidenav() {
     setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
+      this.window.dispatchEvent(new Event('resize'));
     }, 300);
 
     this.menuService.isIconSidenav = !this.menuService.isIconSidenav;

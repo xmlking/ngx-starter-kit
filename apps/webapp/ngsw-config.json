@@ -1,34 +1,58 @@
 {
   "index": "/index.html",
-  "assetGroups": [{
-    "name": "app",
-    "installMode": "prefetch",
-    "resources": {
-      "files": [
-        "/favicon.ico",
-        "/index.html",
-        "/*.css",
-        "/*.js"
-      ]
+  "assetGroups": [
+    {
+      "name": "app",
+      "installMode": "prefetch",
+      "resources": {
+        "files": ["/favicon.ico", "/index.html", "/silent-refresh.html", "/*.css", "/*.js"],
+        "urls": ["https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"]
+      }
+    },
+    {
+      "name": "assets",
+      "installMode": "lazy",
+      "updateMode": "prefetch",
+      "resources": {
+        "files": ["/assets/**"],
+        "urls": ["https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**"]
+      }
     }
-  }, {
-    "name": "assets",
-    "installMode": "lazy",
-    "updateMode": "prefetch",
-    "resources": {
-      "files": [
-        "/assets/**"
-      ]
+  ],
+  "dataGroups": [
+    {
+      "name": "my-api",
+      "version": 1,
+      "urls": ["http://localhost:3000/api/**"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "12h",
+        "timeout": "2s"
+      }
+    },
+    {
+      "name": "random-user",
+      "urls": ["https://randomuser.me/api/*"],
+      "cacheConfig": {
+        "strategy": "freshness",
+        "maxSize": 100,
+        "maxAge": "1d",
+        "timeout": "5s"
+      }
+    },
+    {
+      "name": "keycloak",
+      "urls": [
+        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/.well-known/openid-configuration",
+        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/protocol/openid-connect/certs",
+        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/protocol/openid-connect/login-status-iframe.html"
+      ],
+      "cacheConfig": {
+        "strategy": "performance",
+        "maxSize": 100,
+        "maxAge": "30d"
+      }
     }
-  }, {
-    "name": "static-assets",
-    "installMode": "lazy",
-    "updateMode": "prefetch",
-    "resources": {
-      "urls":  [
-        "https://fonts.googleapis.com/icon?family=Material+Icons",
-        "https://fonts.googleapis.com/css?family=Roboto:300,400,500|Roboto+Mono:300|Dancing+Script:700"
-      ]
-    }
-  }]
+  ]
 }
