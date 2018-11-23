@@ -1,3 +1,43 @@
+# [1.3.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.2.0...v1.3.0) (2018-11-23)
+
+
+### Bug Fixes
+
+* **api:** fix auth config ([67f8c57](https://github.com/xmlking/ngx-starter-kit/commit/67f8c57))
+* **api:** make typeorm work with 'ng serve api' ([e549023](https://github.com/xmlking/ngx-starter-kit/commit/e549023))
+* **auth:** fix redirection to dashboard after login via ImplicitFLow ([6685ce9](https://github.com/xmlking/ngx-starter-kit/commit/6685ce9))
+* **chat-box:** fix voice box for safari ([5068a72](https://github.com/xmlking/ngx-starter-kit/commit/5068a72))
+* **core:** adding es7/array polyfill to support old browsers ([7340567](https://github.com/xmlking/ngx-starter-kit/commit/7340567))
+* **core:** removed ng-package.prod.json as it is no longer needed by nx ([f51f0f5](https://github.com/xmlking/ngx-starter-kit/commit/f51f0f5))
+* **eventbus:** workaround for ngxs router plugin issue ([78a41a2](https://github.com/xmlking/ngx-starter-kit/commit/78a41a2))
+* **eventbus:** workaround for ngxs router plugin issue ([9fb3ab0](https://github.com/xmlking/ngx-starter-kit/commit/9fb3ab0))
+* **experiments:** update ngx-knob, lock d3 version ([1b26e5b](https://github.com/xmlking/ngx-starter-kit/commit/1b26e5b))
+* **grid:** fix drag: changed cdkDragRootElement from .mat-dialog-container .cdk-overlay-pane ([92153e6](https://github.com/xmlking/ngx-starter-kit/commit/92153e6))
+* **material:** mat-placeholde -> mat-label ([95b3141](https://github.com/xmlking/ngx-starter-kit/commit/95b3141))
+* **ThemePicker:** ThemePicker now using PreferenceState for storage ([d448bf8](https://github.com/xmlking/ngx-starter-kit/commit/d448bf8))
+
+
+### Features
+
+* **analytics:** added google analytics service ([f52e75f](https://github.com/xmlking/ngx-starter-kit/commit/f52e75f))
+* **api:** added push API module to save PushSubscriptions ([945034c](https://github.com/xmlking/ngx-starter-kit/commit/945034c))
+* **core:** using Inject(WINDOW) and new ServiceWorker ([2bfc467](https://github.com/xmlking/ngx-starter-kit/commit/2bfc467))
+* **dashboard:** added profile and settings pages ([848d51e](https://github.com/xmlking/ngx-starter-kit/commit/848d51e))
+* **dashboard:** added profile and settings pages ([1a77689](https://github.com/xmlking/ngx-starter-kit/commit/1a77689))
+* **notifications:** added field: native to  Notification model ([12fa080](https://github.com/xmlking/ngx-starter-kit/commit/12fa080))
+* **notifications:** added notify, notifyAll API ([3600c99](https://github.com/xmlking/ngx-starter-kit/commit/3600c99))
+* **push:** PushNotifications subscription backend API ([4b65131](https://github.com/xmlking/ngx-starter-kit/commit/4b65131))
+
+
+### Performance Improvements
+
+* **polish:** removed console.log ([12bde29](https://github.com/xmlking/ngx-starter-kit/commit/12bde29))
+
+
+### Reverts
+
+* **test:** test ([348c307](https://github.com/xmlking/ngx-starter-kit/commit/348c307))
+
 # [1.2.0](https://github.com/xmlking/ngx-starter-kit.git/compare/v1.1.0...v1.2.0) (2018-10-28)
 
 
