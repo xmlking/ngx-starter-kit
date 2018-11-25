@@ -34,7 +34,7 @@ import { ProfileComponent } from './containers/profile/profile.component';
         data: { title: 'Dashboard', depth: 1 },
         children: [
           {
-            path: 'overview',
+            path: '',
             component: OverviewComponent,
             data: { title: 'Overview' },
           },
@@ -49,9 +49,9 @@ import { ProfileComponent } from './containers/profile/profile.component';
             data: { title: 'Settings', depth: '2' },
           },
           {
-            path: '',
+            path: 'widgets',
             loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
-            data: { title: 'Widgets', preload: true },
+            data: { title: 'Widgets', depth: '2', preload: false },
           },
           {
             path: 'grid',
