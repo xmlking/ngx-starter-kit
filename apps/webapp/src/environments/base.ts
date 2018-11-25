@@ -5,9 +5,10 @@ export default {
   secret: 'SECRET',
   apiToken: 'SECRET_TOKEN',
   dialogFlow: {
+    baseUrl: 'https://api.dialogflow.com/v1/query?v=20150910',
     apiToken: '37808bf14a19406cbe2a50cfd1332dd3',
-    // apiToken: '528e10cbdec04c78a0d0147de041dea4',
-    sessionId: 'sumodemo',
+    baseUrlV2: 'https://dialogflow.googleapis.com/v2beta1/projects/',
+    apiTokenV2: '528e10cbdec04c78a0d0147de041dea4',
   },
   webPush: {
     // Key generation: https://web-push-codelab.glitch.me
