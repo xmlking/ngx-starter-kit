@@ -65,7 +65,7 @@ library.add(faTwitter, faGithub, faGoogle);
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
           passThruUnknownUrl: true,
-          // delay: 500,
+          delay: 1000,
           // apiBase: 'api'
         })
       : [],
