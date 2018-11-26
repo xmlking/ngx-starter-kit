@@ -14,12 +14,11 @@ export enum EventAction {
   Click = 'click',
 }
 
-/**
- * EventBus will use this service
- */
-@Injectable({
-  providedIn: 'root',
-})
+// FIXME: to keep GoogleAnalyticsService injected before AuthHandler
+@Injectable()
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class GoogleAnalyticsService {
   constructor(public router: Router) {}
 

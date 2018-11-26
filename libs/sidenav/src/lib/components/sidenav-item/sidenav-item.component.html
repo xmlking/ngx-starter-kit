@@ -11,8 +11,8 @@
     <mat-icon>{{ item.icon }}</mat-icon>
     <span class="sidenav-item-name fade-in-on-icon-sidenav">{{ item.name }}</span>
     <span fxFlex><!-- fill space --></span>
-    <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badgeColor">{{
-      item.badge
+    <span class="badge fade-in-on-icon-sidenav" *ngIf="item.badge" [style.background-color]="item.badge.color">{{
+      item.badge.value
     }}</span>
   </a>
 

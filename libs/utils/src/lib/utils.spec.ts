@@ -1,7 +1,12 @@
-import { Utils } from './utils';
+import { waitUntil } from './utils';
 
 describe('Utils', () => {
-  it('should work', () => {
-    expect(new Utils()).toBeDefined();
+  it('waitUntil should work', async () => {
+    let bool: boolean;
+    setTimeout(_ => {
+      bool = true;
+    }, 500);
+    const result = await waitUntil(_ => bool === true, 600);
+    await expect(result);
   });
 });
