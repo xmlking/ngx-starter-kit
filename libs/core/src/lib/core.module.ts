@@ -3,29 +3,38 @@ import { CommonModule } from '@angular/common';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormlyModule } from '@ngx-formly/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgxPageScrollModule } from 'ngx-page-scroll';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsRouterPluginModule, RouterStateSerializer } from '@ngxs/router-plugin';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faTwitter, faGithub, faGoogle } from '@fortawesome/free-brands-svg-icons';
+import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
 import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
-import { NavigatorModule, MenuState } from '@ngx-starter-kit/navigator';
+import { MenuState, NavigatorModule } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
-import { EventBus } from './state/eventbus';
-import { defaultMenu, demoMenu, adminMenu } from './menu-data';
-import { PreferenceState } from './state/preference.state';
-import { AppState } from './state/app.state';
+
 import { InMemoryDataService } from './services/in-memory-data.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
-import { WINDOW, _window } from './services/window.token';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { _window, WINDOW } from './services/window.token';
+
+import { defaultMenu } from './menu-data';
+
+import { AppState } from './state/app.state';
+import { PreferenceState } from './state/preference.state';
+
+import { AppHandler } from './state/app.handler';
+import { RouteHandler } from './state/route.handler';
+import { EventBusHandler } from './state/eventbus.handler';
+import { AuthHandler } from './state/auth.handler';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 // Noop handler for factory function
 export function noop() {
@@ -71,6 +80,7 @@ library.add(faTwitter, faGithub, faGoogle);
       : [],
   ],
   providers: [
+    GoogleAnalyticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
@@ -79,7 +89,7 @@ library.add(faTwitter, faGithub, faGoogle);
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
-      deps: [EventBus],
+      deps: [EventBusHandler, RouteHandler, AppHandler, AuthHandler],
       multi: true,
     },
     {
