@@ -38,11 +38,11 @@ export class Subscription extends Base {
   @Column('text', { array: true })
   topics: string[];
 
-  @ApiModelProperty({ type: 'string', format: 'date-time',  example: '2018-11-21T06:20:32.232Z'})
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn()
   createdAt?: Date;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time',  example: '2018-11-21T06:20:32.232Z'})
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @UpdateDateColumn()
   updatedAt?: Date;
 

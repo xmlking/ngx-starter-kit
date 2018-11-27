@@ -1,6 +1,5 @@
-import { UpdateDateColumn, CreateDateColumn, ManyToOne, VersionColumn, PrimaryGeneratedColumn } from 'typeorm';
-import { Exclude, Transform } from 'class-transformer';
-import toHexString from './toHexString';
+import { CreateDateColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn, VersionColumn } from 'typeorm';
+import { Exclude } from 'class-transformer';
 import { ApiModelProperty } from '@nestjs/swagger';
 // FIXME: we need to import User like this to avoid Circular denpendence problem
 import { User } from '../../auth/user.entity';
@@ -12,12 +11,12 @@ export abstract class AuditBase {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time',  example: '2018-11-21T06:20:32.232Z'})
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   // @Exclude()
   @CreateDateColumn()
   createdAt?: Date;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time',  example: '2018-11-21T06:20:32.232Z'})
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   // @Exclude()
   @UpdateDateColumn()
   updatedAt?: Date;
