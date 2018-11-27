@@ -8,18 +8,25 @@ export interface BeforeInstallPromptEvent extends Event {
   prompt(): void;
 }
 
+export class ChangeOnlineStatus {
+  static readonly type = '[App] Change Online Status';
+}
+
 export class ChangeInstallStatus {
   static readonly type = '[App] Change Install Status';
   constructor(public payload: boolean) {}
 }
+
 export class SetInstallPrompt {
   static readonly type = '[App] Set Install Prompt';
   constructor(public payload: BeforeInstallPromptEvent) {}
 }
-export class Online {
+
+export class IsOnline {
   static readonly type = '[App] Network Online';
 }
-export class Offline {
+
+export class IsOffline {
   static readonly type = '[App] Network Offline';
 }
 
@@ -38,10 +45,10 @@ export interface AppStateModel {
   },
 })
 export class AppState {
-  constructor() {}
+  constructor(@Inject(WINDOW) private readonly window: Window) {}
 
   @Selector()
-  static online(state: AppStateModel) {
+  static isOnline(state: AppStateModel) {
     return state.online;
   }
 
@@ -69,17 +76,10 @@ export class AppState {
     });
   }
 
-  @Action(Online)
-  makeOnline({ patchState }: StateContext<AppStateModel>) {
+  @Action(ChangeOnlineStatus)
+  changeOnlineStatus({ patchState }: StateContext<AppStateModel>) {
     patchState({
-      online: true,
-    });
-  }
-
-  @Action(Offline)
-  makeOffline({ patchState }: StateContext<AppStateModel>) {
-    patchState({
-      online: false,
+      online: this.window.navigator.onLine,
     });
   }
 }

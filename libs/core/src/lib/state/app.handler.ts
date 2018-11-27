@@ -2,7 +2,7 @@ import { Actions, ofActionSuccessful, Store } from '@ngxs/store';
 import { Inject, Injectable, Renderer2, RendererFactory2 } from '@angular/core';
 import { SwPush } from '@angular/service-worker';
 import { EventCategory, GoogleAnalyticsService } from '../services/google-analytics.service';
-import { AppState, ChangeInstallStatus, Offline, Online, SetInstallPrompt } from './app.state';
+import { AppState, ChangeInstallStatus, ChangeOnlineStatus, IsOffline, IsOnline, SetInstallPrompt } from './app.state';
 import { WINDOW } from '../services/window.token';
 
 @Injectable({
@@ -20,10 +20,10 @@ export class AppHandler {
   ) {
     this.renderer = rendererFactory.createRenderer(this.window, null);
     this.renderer.listen(this.window, 'online', () => {
-      this.store.dispatch(new Online());
+      this.store.dispatch([new ChangeOnlineStatus(), new IsOnline()]);
     });
     this.renderer.listen(this.window, 'offline', () => {
-      this.store.dispatch(new Offline());
+      this.store.dispatch([new ChangeOnlineStatus(), new IsOffline()]);
     });
 
     const installed = this.store.selectSnapshot(AppState.installed);
