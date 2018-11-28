@@ -146,8 +146,7 @@ ng add @angular/pwa --project webapp
 ng add @angular/material
 npm i hammerjs
 npm i -D @types/hammerjs
-npm i moment ngx-moment
-npm i @angular/material-moment-adapter
+npm i date-fns@next
 
 # Add Flex-Layout
 npm i @angular/flex-layout
@@ -377,6 +376,14 @@ ng g module directives/ngLet --project=ngx-utils --spec=false --dry-run
 ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export --dry-run
 ng g module directives/routerLinkMatch --project=ngx-utils --spec=false --dry-run
 ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export --dry-run
+
+ng g module pipes/dateFns --project=ngx-utils --spec=false --dry-run
+ng g service pipes/date-fns/DateFnsConfiguration --project=ngx-utils --module=date-fns --spec=false --dry-run
+ng g pipe pipes/date-fns/FormatDistanceToNow --project=ngx-utils --module=date-fns --export --dry-run
+amTimeAgo
+
+TimeAgoPipe
+
 
 
 # generate components for `toolbar` Module

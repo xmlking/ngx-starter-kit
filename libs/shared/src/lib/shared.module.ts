@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MomentModule } from 'ngx-moment';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 import { MaterialModule } from '@ngx-starter-kit/material';
 import { MaterialDateModule } from '@ngx-starter-kit/material';
@@ -15,7 +14,7 @@ import {
   PERFECT_SCROLLBAR_CONFIG,
 } from 'ngx-perfect-scrollbar';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { NgLetModule, RouterLinkMatchModule } from '@ngx-starter-kit/ngx-utils';
+import { DateFnsModule, NgLetModule, RouterLinkMatchModule } from '@ngx-starter-kit/ngx-utils';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -34,8 +33,8 @@ const DIRECTIVES = [MinValidatorDirective, ClickOutsideDirective];
     BreadcrumbsModule,
     MaterialModule,
     MaterialDateModule,
-    MomentModule,
     NgLetModule,
+    DateFnsModule,
     RouterLinkMatchModule,
     FontAwesomeModule,
     FormlyMaterialModule,

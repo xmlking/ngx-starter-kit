@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { MatMomentDateModule } from '@angular/material-moment-adapter';
 import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatDatepickerModule } from '@angular/material';
 
-const MODULE_EXPORTS = [MatMomentDateModule, MatDatepickerModule];
+const MODULE_EXPORTS = [MatDatepickerModule];
 
 const DATE_FORMATS: MatDateFormats = {
   parse: {
