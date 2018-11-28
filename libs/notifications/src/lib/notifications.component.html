@@ -43,7 +43,7 @@
                 <mat-icon class="icon">{{ notification.icon }}</mat-icon>
                 <div class="title" fxLayout="column">
                   <div class="name">{{ notification.message }}</div>
-                  <div class="time">{{ notification.createdAt | amTimeAgo }}</div>
+                  <div class="time">{{ notification.createdAt | formatTimeInWords }}</div>
                 </div>
                 <span fxFlex></span>
                 <button (click)="dismiss(notification, $event)" type="button" mat-icon-button>

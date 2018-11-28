@@ -45,7 +45,7 @@ export interface AppStateModel {
   },
 })
 export class AppState {
-  constructor(@Inject(WINDOW) private readonly window: Window) {}
+  constructor(/*@Inject(WINDOW) private readonly window: Window*/) {}
 
   @Selector()
   static isOnline(state: AppStateModel) {
@@ -79,7 +79,7 @@ export class AppState {
   @Action(ChangeOnlineStatus)
   changeOnlineStatus({ patchState }: StateContext<AppStateModel>) {
     patchState({
-      online: this.window.navigator.onLine,
+      online: window.navigator.onLine,
     });
   }
 }
