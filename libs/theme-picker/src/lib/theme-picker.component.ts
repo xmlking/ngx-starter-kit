@@ -1,6 +1,8 @@
-import { Component, ViewEncapsulation, ChangeDetectionStrategy, HostBinding } from '@angular/core';
+import { Component, ViewEncapsulation, ChangeDetectionStrategy, HostBinding, OnInit, OnDestroy } from '@angular/core';
 import { StyleManagerService } from './style-manager.service';
-import { ThemeStorageService, DocsSiteTheme } from './theme-storage.service';
+import { Select, Store } from '@ngxs/store';
+import { themes, PreferenceState, ThemeName, ChangeTheme } from '@ngx-starter-kit/core';
+import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
 @Component({
   selector: 'theme-picker',
@@ -10,61 +12,37 @@ import { ThemeStorageService, DocsSiteTheme } from './theme-storage.service';
   encapsulation: ViewEncapsulation.None,
   // host: { 'aria-hidden': 'true' }
 })
-export class ThemePickerComponent {
-  @HostBinding('attr.aria-hidden')
-  ariaHidden = true;
-  currentTheme;
+export class ThemePickerComponent implements OnInit, OnDestroy {
+  @HostBinding('attr.aria-hidden') ariaHidden = true;
+  allThemes = themes;
+  @Select(PreferenceState.activeThemeName) activeThemeName$;
+  currentTheme: ThemeName;
 
-  themes = [
-    {
-      primary: '#673AB7',
-      accent: '#FFC107',
-      href: 'deeppurple-amber.css',
-      isDark: false,
-    },
-    {
-      primary: '#3F51B5',
-      accent: '#E91E63',
-      href: 'indigo-pink.css',
-      isDark: false,
-      isDefault: true,
-    },
-    {
-      primary: '#E91E63',
-      accent: '#607D8B',
-      href: 'pink-bluegrey.css',
-      isDark: true,
-    },
-    {
-      primary: '#9C27B0',
-      accent: '#4CAF50',
-      href: 'purple-green.css',
-      isDark: true,
-    },
-  ];
+  constructor(private store: Store, public styleManager: StyleManagerService) {}
 
-  constructor(public styleManager: StyleManagerService, private _themeStorage: ThemeStorageService) {
-    const currentTheme = this._themeStorage.getStoredTheme();
-    if (currentTheme) {
-      this.installTheme(currentTheme);
-    }
+  changeTheme(themeName: ThemeName) {
+    this.store.dispatch(new ChangeTheme(themeName));
   }
 
-  installTheme(theme: DocsSiteTheme) {
-    this.currentTheme = this._getCurrentThemeFromHref(theme.href);
-
-    if (theme.isDefault) {
-      this.styleManager.removeStyle('theme');
-    } else {
-      this.styleManager.setStyle('theme', `assets/themes/${theme.href}`);
-    }
-
-    if (this.currentTheme) {
-      this._themeStorage.storeTheme(this.currentTheme);
-    }
+  ngOnInit(): void {
+    // this.installTheme(this.store.selectSnapshot(PreferenceState.activeThemeName));
+    this.activeThemeName$.pipe(untilDestroy(this)).subscribe(themeName => {
+      this.installTheme(themeName);
+    });
   }
 
-  private _getCurrentThemeFromHref(href: string): DocsSiteTheme {
-    return this.themes.find(theme => theme.href === href);
+  ngOnDestroy(): void {}
+
+  installTheme(themeName: ThemeName) {
+    console.log(`installing ${themeName}`);
+    if (themeName) {
+      this.currentTheme = themeName;
+      const theme = this.allThemes.get(themeName);
+      if (theme.isDefault) {
+        this.styleManager.removeStyle('theme');
+      } else {
+        this.styleManager.setStyle('theme', `assets/themes/${theme.href}`);
+      }
+    }
   }
 }

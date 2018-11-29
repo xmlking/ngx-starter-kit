@@ -1,5 +1,5 @@
 import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
-import { Notification } from './notification.model';
+import { AppNotification } from './app-notification.model';
 import { tap } from 'rxjs/operators';
 import { NotificationsService } from './notifications.service';
 import {
@@ -10,7 +10,7 @@ import {
   MarkAllAsRead,
 } from './notifications.actions';
 
-@State<Notification[]>({
+@State<AppNotification[]>({
   name: 'notifications',
   defaults: [],
 })
@@ -18,33 +18,45 @@ export class NotificationsState implements NgxsOnInit {
   constructor(private notificationsService: NotificationsService) {}
 
   @Selector()
-  static unReadCount(state: Notification[]) {
+  static unReadCount(state: AppNotification[]) {
     return state.filter(note => !note.read).length;
   }
 
-  ngxsOnInit(ctx: StateContext<Notification[]>) {
+  ngxsOnInit(ctx: StateContext<AppNotification[]>) {
     console.log('State initialized, now getting Notifications.');
-    // well, this way be call be called before dashboard is routed due to preloadingStrategy. so lets use ngOnInit on component
+    /**
+     * well, this way, it will be called before dashboard is routed due to preloadingStrategy.
+     * we will loose lazy loading benefits. so lets use ngOnInit on component to load initial data.
+     */
     // ctx.dispatch(new FetchNotifications())
   }
 
   @Action(AddNotification)
-  add({ getState, setState, patchState }: StateContext<Notification[]>, { payload }: AddNotification) {
+  add({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: AddNotification) {
     setState([...getState(), payload]);
+    if (payload.native) {
+      return this.notificationsService.showNativeNotification({
+        title: 'NGX WebApp Notification',
+        options: {
+          body: payload.message,
+          icon: 'assets/icons/icon-72x72.png',
+        },
+      });
+    }
   }
 
   @Action(FetchNotifications, { cancelUncompleted: true })
-  fetchNotifications({ getState, patchState, setState }: StateContext<Notification[]>) {
+  fetchNotifications({ getState, patchState, setState }: StateContext<AppNotification[]>) {
     return this.notificationsService.getAll().pipe(tap(res => setState(res)));
   }
 
   @Action(DeleteNotification)
-  delete({ getState, setState, patchState }: StateContext<Notification[]>, { payload }: AddNotification) {
+  delete({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: AddNotification) {
     setState(getState().filter(note => note !== payload));
   }
 
   @Action(MarkAsRead)
-  markAsRead({ getState, setState, patchState }: StateContext<Notification[]>, { payload }: MarkAsRead) {
+  markAsRead({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: MarkAsRead) {
     setState(
       getState().map(notification => {
         if (notification === payload) {
@@ -56,7 +68,7 @@ export class NotificationsState implements NgxsOnInit {
   }
 
   @Action(MarkAllAsRead)
-  markAllAsRead({ getState, setState, patchState }: StateContext<Notification[]>) {
+  markAllAsRead({ getState, setState, patchState }: StateContext<AppNotification[]>) {
     setState(
       getState().map(notification => {
         notification.read = true;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
-import { Notification as AppNotification } from './notification.model';
+import { AppNotification } from './app-notification.model';
 import { EntityService } from '@ngx-starter-kit/shared';
 import { Observable } from 'rxjs';
 import { catchError, finalize, map, retry } from 'rxjs/operators';
@@ -18,28 +18,6 @@ export class NotificationsService extends EntityService<AppNotification> {
     super(httpClient);
   }
 
-  // TODO: Move to state
-  // this.showNotification('PWA Workshop', 'Hello audience! Nice to meet you!', null, true);
-
-  async showNotification(title: string, message: string, button?: string, showNative = false) {
-    if (showNative && this.featureService.detectFeature(BrowserFeatureKey.NotificationsAPI).supported
-      && !this.featureService.isMobileAndroid()) {
-      const permission = await Notification.requestPermission();
-      if (permission === 'granted') {
-        const notification = new Notification(title, {
-          body: message
-        });
-        notification.onclick = () => {
-          console.log('clicked todo: mark as read');
-        };
-      }
-      // this.showInAppNotification(title, message, button);
-    }
-  }
-  // private showInAppNotification(title: string, message: string, button: string) {
-  //     this.notifications.next(new AppNotification(title, message, button, id));
-  //   }
-
   getAll(): Observable<AppNotification[]> {
     this.loadingSubject.next(true);
     return this.httpClient.get<[AppNotification[], number]>(`${this.baseUrl}/${this.entityPath}`).pipe(
@@ -49,5 +27,33 @@ export class NotificationsService extends EntityService<AppNotification> {
       // return without count
       map(data => data[0]),
     );
+  }
+
+  /**
+   * Util for showing native Notifications
+   * @param noti:  {
+   *    title: 'NGX WebApp Notification',
+   *   options: {
+   *     body: payload.message,
+   *     icon: 'assets/icons/icon-72x72.png',
+   *     data: {
+   *       click_url: '/index.html',
+   *     },
+   *   },
+   * }
+   */
+  async showNativeNotification(noti: { title: string; options?: Partial<NotificationOptions> }) {
+    if (
+      this.featureService.detectFeature(BrowserFeatureKey.NotificationsAPI).supported &&
+      !this.featureService.isMobileAndroid()
+    ) {
+      const permission = await Notification.requestPermission();
+      if (permission === 'granted') {
+        const notification = new Notification(noti.title, noti.options);
+        notification.onclick = () => {
+          console.log('clicked todo: mark as read');
+        };
+      }
+    }
   }
 }

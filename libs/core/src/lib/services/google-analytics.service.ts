@@ -6,6 +6,7 @@ export enum EventCategory {
   SideNav = 'sideNav',
   Outbound = 'outboundLink',
   Login = 'login',
+  Install = 'install',
 }
 
 export enum EventAction {
@@ -13,12 +14,11 @@ export enum EventAction {
   Click = 'click',
 }
 
-/**
- * EventBus will use this service
- */
-@Injectable({
-  providedIn: 'root',
-})
+// FIXME: to keep GoogleAnalyticsService injected before AuthHandler
+@Injectable()
+// @Injectable({
+//   providedIn: 'root',
+// })
 export class GoogleAnalyticsService {
   constructor(public router: Router) {}
 
@@ -37,7 +37,6 @@ export class GoogleAnalyticsService {
 
   /**
    * set user after login success.
-   * @param userId
    */
   public setUsername(userId: string) {
     if (typeof ga === 'function') {
@@ -47,7 +46,6 @@ export class GoogleAnalyticsService {
 
   /**
    * set page after navigation success
-   * @param path
    */
   public setPage(path: string) {
     if (typeof ga === 'function') {

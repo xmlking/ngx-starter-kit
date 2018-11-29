@@ -1,13 +1,12 @@
 export const environment = {
   production: true,
 
-  NODE_ENV: 'production',
   NODE_TLS_REJECT_UNAUTHORIZED: 0,
 
   server: {
-    host: 'localhost',
-    domainUrl: 'http://localhost:3000',
-    port: 3000,
+    host: process.env.HOST || '0.0.0.0',
+    domainUrl: process.env.DOMAIN_URL || 'http://localhost:3000',
+    port: process.env.PORT || 3000,
     globalPrefix: '/api',
   },
 
@@ -17,14 +16,15 @@ export const environment = {
     port: process.env.TYPEORM_PORT ? Number(process.env.TYPEORM_PORT) : 5432,
     database: process.env.TYPEORM_DATABASE || 'cockpit',
     username: process.env.TYPEORM_USERNAME || 'cockpit',
-    password:  process.env.TYPEORM_PASSWORD || 'cockpit123',
+    password: process.env.TYPEORM_PASSWORD || 'cockpit123',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
     synchronize: false,
   },
 
   auth: {
-    issuer: process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+    issuer:
+      process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
     clientId: process.env.OIDC_CLIENT_ID || 'is360ui',
   },
 
@@ -41,11 +41,15 @@ export const environment = {
     defaults: {
       from: process.env.EMAIL_FROM ? process.env.EMAIL_FROM : '"sumo demo" <sumo@demo.com>',
     },
-    templateDir:  process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
+    templateDir: process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
   },
 
+  // Key generation: https://web-push-codelab.glitch.me
   webPush: {
-    publicVapidKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
-    privateVapidKey: 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
+    subject: process.env.VAPID_SUBJECT || 'mailto: sumo@demo.com',
+    publicKey:
+      process.env.VAPID_PUBLIC_KEY ||
+      'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
+    privateKey: process.env.VAPID_PRIVATE_KEY || 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
   },
 };

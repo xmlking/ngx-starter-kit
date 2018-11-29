@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Store } from '@ngxs/store';
 
 /**
  * EventBus will use this service
@@ -11,7 +10,7 @@ import { Store } from '@ngxs/store';
 export class PageTitleService {
   private readonly defaultTitle;
 
-  constructor(private store: Store, private bodyTitle: Title) {
+  constructor(private bodyTitle: Title) {
     this.defaultTitle = bodyTitle.getTitle() || 'WebApp';
   }
 

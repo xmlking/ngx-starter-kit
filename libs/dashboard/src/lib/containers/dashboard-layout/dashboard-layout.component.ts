@@ -15,8 +15,8 @@ import { WINDOW } from '@ngx-starter-kit/core';
   selector: 'ngx-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',
   styleUrls: ['./dashboard-layout.component.scss'],
-  animations: [routeAnimation],
-  // animations: [hierarchicalRouteAnimation],
+  // animations: [routeAnimation],
+  animations: [hierarchicalRouteAnimation],
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {

@@ -1,8 +1,8 @@
 import { FastifyAdapter, NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { AppModule } from './app.module';
-import { ConfigService } from './config';
+import { AppModule } from './app/app.module';
+import { ConfigService } from './app/config';
 import * as helmet from 'helmet';
 import { join } from 'path';
 import { environment as env } from '@env-api/environment';
@@ -22,7 +22,7 @@ async function bootstrap() {
     }),
   );
 
-  // app.useStaticAssets(join(__dirname + './../public')); // for uploaded images
+  // app.useStaticAssets(join(__dirname, './../public')); // for uploaded images
 
   const options = new DocumentBuilder()
     .setTitle('Sumo API Docs')
@@ -51,7 +51,7 @@ async function bootstrap() {
     },
   });
 
-  await app.listen(env.server.port || 3000, '0.0.0.0');
+  await app.listen(env.server.port || 3000, env.server.host || '0.0.0.0');
 }
 
 bootstrap();

@@ -8,9 +8,12 @@ import { RouterLinkMatchModule } from './router-link-match.module';
 
 @Component({
   template: `
-      <a [routerLinkMatch]="{
-          'test1-class': 'test1'
-        }">Test1</a>
+    <a
+      [routerLinkMatch]="{
+        'test1-class': 'test1'
+      }"
+      >Test1</a
+    >
   `,
   selector: 'test-1',
 })
@@ -18,19 +21,29 @@ class Test1Component {}
 
 @Component({
   template: `
-      <a [routerLinkMatch]="{
+    <a
+      [routerLinkMatch]="{
         'test2-class': 'test2'
-      }" class="origin-class">Test2</a>
+      }"
+      class="origin-class"
+      >Test2</a
+    >
   `,
   selector: 'test-2',
 })
 class Test2Component {}
 
 @Component({
-  template: `<a [routerLinkMatch]="{
-    'test2-class': 'test2',
-    'test1-class': 'test1'
-  }" class="origin-class">Test3</a>`,
+  template: `
+    <a
+      [routerLinkMatch]="{
+        'test2-class': 'test2',
+        'test1-class': 'test1'
+      }"
+      class="origin-class"
+      >Test3</a
+    >
+  `,
   selector: 'test-3',
 })
 class Test3Component {}
@@ -54,7 +67,9 @@ class Test4Component {
 
 @Component({
   selector: 'root-cmp',
-  template: `<router-outlet></router-outlet><test-3></test-3><test-4></test-4>`,
+  template: `
+    <router-outlet></router-outlet><test-3></test-3><test-4></test-4>
+  `,
 })
 class RootComponent {}
 

@@ -4,10 +4,8 @@ import { CharactersPipe } from './characters.pipe';
 import { WordsPipe } from './words.pipe';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [CharactersPipe, WordsPipe],
-  exports: [CharactersPipe, WordsPipe]
+  exports: [CharactersPipe, WordsPipe],
 })
-export class TruncateModule { }
+export class TruncateModule {}

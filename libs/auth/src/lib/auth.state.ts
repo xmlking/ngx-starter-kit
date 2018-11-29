@@ -31,7 +31,12 @@ export interface AuthStateModel {
   },
 })
 export class AuthState {
-  constructor(private authService: AuthService, private oauthService: OAuthService, private router: Router, private zone: NgZone) {}
+  constructor(
+    private authService: AuthService,
+    private oauthService: OAuthService,
+    private router: Router,
+    private zone: NgZone,
+  ) {}
 
   @Selector()
   static isLoggedIn(state: AuthStateModel) {

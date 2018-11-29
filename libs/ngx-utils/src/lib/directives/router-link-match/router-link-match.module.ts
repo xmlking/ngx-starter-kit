@@ -3,10 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterLinkMatchDirective } from './router-link-match.directive';
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule],
   declarations: [RouterLinkMatchDirective],
-  exports: [RouterLinkMatchDirective]
+  exports: [RouterLinkMatchDirective],
 })
-export class RouterLinkMatchModule { }
+export class RouterLinkMatchModule {}

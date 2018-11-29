@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": ".",
+    "importHelpers": true,
     "sourceMap": true,
     "declaration": false,
     "module": "es2015",
@@ -14,10 +14,11 @@
       "node_modules/@types"
     ],
     "lib": [
-      "es2017",
+      "es2018",
       "dom",
       "esnext.array"
     ],
+    "baseUrl": ".",
     "paths": {
       "@ngx-starter-kit/*": [
         "libs/*"

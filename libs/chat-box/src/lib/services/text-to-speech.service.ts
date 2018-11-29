@@ -7,7 +7,7 @@ export class TextToSpeechService {
   public canUseSpeechSynthesis = false;
   private speechSynthesis: SpeechSynthesis;
   constructor(private readonly featureService: FeatureService, @Inject(WINDOW) private window: Window) {
-    this.canUseSpeechSynthesis  = this.featureService.detectFeature(BrowserFeatureKey.SpeechSynthesis).supported;
+    this.canUseSpeechSynthesis = this.featureService.detectFeature(BrowserFeatureKey.SpeechSynthesis).supported;
     if (this.canUseSpeechSynthesis) {
       this.speechSynthesis = (window as any).speechSynthesis;
     }
@@ -24,7 +24,6 @@ export class TextToSpeechService {
   }
 
   public async getVoiceList(): Promise<SpeechSynthesisVoice[]> {
-
     if ('onvoiceschanged' in speechSynthesis) {
       await new Promise((resolve, reject) => {
         this.speechSynthesis.addEventListener('voiceschanged', resolve);

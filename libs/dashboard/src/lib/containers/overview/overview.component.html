@@ -1,19 +1,22 @@
-<!--<div class="default-primary-header">-->
-<!--<h1>Overview</h1>-->
-<!--</div>-->
-
-
-<!--<div fxLayout fxLayoutAlign="center center">-->
-  <!--<mat-card fxFlex="30%">-->
-    <!--<mat-card-title>Search</mat-card-title>-->
-
-    <!--<mat-card-content fxLayout="column">-->
-      <!--<mat-form-field>-->
-        <!--<input matInput placeholder="Search">-->
-      <!--</mat-form-field>-->
-    <!--</mat-card-content>-->
-
-    <!--<button mat-raised-button color="accent">Search</button>-->
-  <!--</mat-card>-->
-<!--</div>-->
 <ngx-breadcrumbs title="Overview" [crumbs]="crumbs"></ngx-breadcrumbs>
+
+<div fxLayout="row wrap" fxLayout.lt-sm="column" fxLayoutGap="32px grid">
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/grid/grid-list">Grid List</a></mat-card>
+  </div>
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/grid/crud-table">CRUD Table</a></mat-card>
+  </div>
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/experiments/layout">Layout</a></mat-card>
+  </div>
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/experiments/animations">Animations</a></mat-card>
+  </div>
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/widgets">Widgets</a></mat-card>
+  </div>
+  <div fxFlex="0 1 calc(33.3% - 32px)" fxFlex.lt-md="0 1 calc(50% - 32px)" fxFlex.lt-sm="100%">
+    <mat-card><a routerLink="/dashboard/settings">Settings</a></mat-card>
+  </div>
+</div>

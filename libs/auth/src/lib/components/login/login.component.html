@@ -6,31 +6,41 @@
       </button>
     </mat-toolbar-row>
     <mat-toolbar-row style="min-height:120px;" fxLayout="column" fxLayoutAlign="center center">
-      <img class="login-angular-logo" src="assets/img/homepage/angular-white-transparent.svg">
+      <img class="login-angular-logo" src="assets/img/homepage/angular-white-transparent.svg" />
     </mat-toolbar-row>
   </mat-toolbar>
 
-
   <form class="padding" fxLayout="column" fxLayoutGap="16px" [formGroup]="loginForm">
-
-      <span fxLayout="row" fxLayoutAlign="space-between center">
-        <mat-hint align="start" *ngIf="infoMsg">{{infoMsg}}</mat-hint>
-        <mat-error align="end" class="center" *ngIf="errorMsg">{{errorMsg}}</mat-error>
-      </span>
+    <span fxLayout="row" fxLayoutAlign="space-between center">
+      <mat-hint align="start" *ngIf="infoMsg">{{ infoMsg }}</mat-hint>
+      <mat-error align="end" class="center" *ngIf="errorMsg">{{ errorMsg }}</mat-error>
+    </span>
 
     <mat-form-field fxFlex="grow" appearance="fill">
       <mat-label>Username</mat-label>
-      <!--<mat-icon matPrefix>person_outline</mat-icon>-->
-      <input autofocus matInput required placeholder="Usernames:  sumo, sumo1, sumo2, sumo3" formControlName="username">
+      <!-- <mat-icon matPrefix>person_outline</mat-icon> -->
+      <input
+        autofocus
+        matInput
+        required
+        placeholder="Usernames:  sumo, sumo1, sumo2, sumo3"
+        formControlName="username"
+      />
       <mat-hint>Usernames: sumo, sumo1, sumo2, sumo3</mat-hint>
       <mat-error *ngIf="loginForm.get('username').hasError('required')">We need an username to log you in</mat-error>
     </mat-form-field>
 
     <mat-form-field fxFlex="grow" appearance="fill">
       <mat-label>Password</mat-label>
-      <!--<mat-icon matPrefix>lock_outline</mat-icon>-->
-      <input matInput required [type]="inputType" autocomplete="false" placeholder="Password: demo"
-             formControlName="password">
+      <!-- <mat-icon matPrefix>lock_outline</mat-icon> -->
+      <input
+        matInput
+        required
+        [type]="inputType"
+        autocomplete="false"
+        placeholder="Password: demo"
+        formControlName="password"
+      />
       <button type="button" mat-icon-button matSuffix (click)="toggleInputType()" matTooltip="Toggle Visibility">
         <mat-icon *ngIf="visible">visibility</mat-icon>
         <mat-icon *ngIf="!visible">visibility_off</mat-icon>
@@ -44,20 +54,23 @@
       <mat-checkbox class="mat-caption">Remember Me</mat-checkbox>
       <a class="mat-caption" [routerLink]="['/forgot-password']">Forgot Password?</a>
     </div>
-    <button type="submit" color="primary" mat-raised-button [disabled]="!loginForm.valid"
-            (click)="onSubmit(loginForm.value)">
+    <button
+      type="submit"
+      color="primary"
+      mat-raised-button
+      [disabled]="!loginForm.valid"
+      (click)="onSubmit(loginForm.value)"
+    >
       SIGN IN
     </button>
 
     <mat-hint class="text-center mat-caption">
-      <p>Not a member?
-        <a [routerLink]="['/register']">Register</a>
-      </p>
+      <p>Not a member? <a [routerLink]="['/register']">Register</a></p>
     </mat-hint>
     <!--
-    <mat-hint class="text-center mat-caption">
-      <p>or sign in with:</p>
-    </mat-hint>
+      <mat-hint class="text-center mat-caption">
+        <p>or sign in with:</p>
+      </mat-hint>
     -->
     <span fxLayout="row" fxLayoutAlign="space-evenly center">
       <button mat-mini-fab (click)="initSSO()" matTooltip="Login with KeyCloak" matTooltipPosition="above">
@@ -66,14 +79,12 @@
       <button mat-mini-fab matTooltip="Login with Google" matTooltipPosition="above">
         <fa-icon [icon]="['fab', 'google']"></fa-icon>
       </button>
-      <button mat-mini-fab  matTooltip="Login with Twitter" matTooltipPosition="above">
+      <button mat-mini-fab matTooltip="Login with Twitter" matTooltipPosition="above">
         <fa-icon [icon]="['fab', 'twitter']"></fa-icon>
       </button>
       <button mat-mini-fab matTooltip="Login with GitHub" matTooltipPosition="above">
         <fa-icon [icon]="['fab', 'github']"></fa-icon>
       </button>
     </span>
-
   </form>
 </div>
-
