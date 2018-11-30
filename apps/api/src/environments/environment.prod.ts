@@ -52,4 +52,30 @@ export const environment = {
       'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
     privateKey: process.env.VAPID_PRIVATE_KEY || 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
   },
+  kubernetes: {
+    CLUSTER1: {
+      baseUrl: 'https://k8s-prod-ctc-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: process.env.CLUSTER1_SERVICE_ACCOUNT_TOKEN || 'AAAAAAAAAAAA',
+    },
+    CLUSTER2: {
+      baseUrl: 'https://k8s-prod-elr-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: process.env.CLUSTER2_SERVICE_ACCOUNT_TOKEN || 'BBBBBBBBBBBB',
+    },
+    CLUSTER3: {
+      baseUrl: 'https://k8s-prod-ptc-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: process.env.CLUSTER3_SERVICE_ACCOUNT_TOKEN || 'CCCCCCCCCCCCC',
+    },
+    CLUSTER4: {
+      baseUrl: 'https://10.176.22.126:6443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: process.env.CLUSTER4_SERVICE_ACCOUNT_TOKEN || 'DDDDDDDDDDDDD',
+    },
+  },
 };

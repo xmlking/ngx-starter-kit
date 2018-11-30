@@ -52,4 +52,30 @@ export const environment = {
     publicKey: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
     privateKey: 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
   },
+  kubernetes: {
+    CLUSTER1: {
+      baseUrl: 'https://k8s-prod-ctc-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: 'AAAAAAAAAAAA',
+    },
+    CLUSTER2: {
+      baseUrl: 'https://k8s-prod-elr-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: 'BBBBBBBBBBBB',
+    },
+    CLUSTER3: {
+      baseUrl: 'https://k8s-prod-ptc-aci.optum.com:16443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: 'CCCCCCCCCCCCC',
+    },
+    CLUSTER4: {
+      baseUrl: 'https://10.176.22.126:6443',
+      version: '1.10',
+      /* tslint:disable-next-line:max-line-length */
+      token: 'DDDDDDDDDDDDD',
+    },
+  },
 };
