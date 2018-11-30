@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 
+// generated using https://transform.now.sh/json-to-ts-interface/
 export interface ResponseObject {
   results?: (RandomAccount)[] | null;
   info: Info;
@@ -19,7 +20,7 @@ export interface RandomAccount {
   name: Name;
   location: Location;
   email: string;
-  dob: string;
+  dob: Dob;
   phone: string;
   cell: string;
   id: Id;
@@ -38,6 +39,23 @@ export interface Location {
   city: string;
   state: string;
   postcode: number;
+  coordinates: Coordinates;
+  timezone: Timezone;
+}
+
+export interface Coordinates {
+  latitude: string;
+  longitude: string;
+}
+
+export interface Timezone {
+  offset: string;
+  description: string;
+}
+
+export interface Dob {
+  date: string;
+  age: number;
 }
 
 export interface Id {

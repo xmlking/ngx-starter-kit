@@ -1,11 +1,12 @@
-import { OnDestroy, ChangeDetectorRef, Pipe, PipeTransform } from '@angular/core';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { of, Observable } from 'rxjs';
-import { repeatWhen, takeWhile, map, tap, delay } from 'rxjs/operators';
+import { interval, Observable, of } from 'rxjs';
+import { delayWhen, map, repeatWhen, takeWhile, tap } from 'rxjs/operators';
 
 import { Options } from 'date-fns';
-// import { formatDistance, differenceInMinutes } from 'date-fns/esm';
-import { formatDistance, differenceInMinutes } from 'date-fns';
+// FIXME: esm modules not working with Jest Tests
+import { differenceInMinutes, formatDistance } from 'date-fns/esm';
+// import { formatDistance, differenceInMinutes } from 'date-fns';
 
 const defaultConfig: Options = { addSuffix: true };
 /**
@@ -50,10 +51,11 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
   private timeAgo(date: string | number | Date, options?: Options): Observable<string> {
     let nextBackoff = this.backoff(date);
     return of(true).pipe(
-      repeatWhen(emitTrue => emitTrue.pipe(delay(nextBackoff))), // will not recheck input until delay completes
+      // will not recheck input until delay completes
+      repeatWhen(notify => notify.pipe(delayWhen( () => interval(nextBackoff)))),
       takeWhile(_ => !this.isDestroyed),
       map(_ => formatDistance(date, new Date(), options)),
-      tap(_ => (nextBackoff = this.backoff(date))),
+      tap(_ => nextBackoff = this.backoff(date)),
     );
   }
 
