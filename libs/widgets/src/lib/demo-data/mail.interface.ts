@@ -1,5 +1,3 @@
-import { Moment } from 'moment';
-
 export type InboxGroup = 'primary' | 'social' | 'promotions';
 export type InboxType = 'draft' | 'sent' | 'spam' | 'trash' | 'none';
 
@@ -16,7 +14,7 @@ export class Mail {
   };
   subject?: string;
   content?: string;
-  when?: Moment;
+  when?: Date;
   read?: boolean;
   starred?: boolean;
   labels?: {

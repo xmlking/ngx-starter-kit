@@ -1,7 +1,4 @@
-import * as moment from 'moment';
-
-const today = moment().minutes(0);
-const now = moment();
+import { format, subDays, subMinutes, formatDistance } from 'date-fns/esm';
 
 export const salesChartDemoValues = [
   193,
@@ -84,10 +81,7 @@ export const salesChartDemoValues = [
 export const salesChartDemoLabels = () => {
   return salesChartDemoValues
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -122,10 +116,7 @@ export const visitsChartDemoValues = [
 export const visitsChartDemoLabels = () => {
   return visitsChartDemoValues
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -156,10 +147,7 @@ export const clicksChartDemoValues = [
 export const clicksChartDemoLabels = () => {
   return clicksChartDemoValues
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -190,10 +178,7 @@ export const conversionsChartDemoValues = [
 export const conversionsChartDemoLabels = () => {
   return conversionsChartDemoValues
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -202,10 +187,7 @@ export const salesSummaryDemoData = { revenue: [6, 4, 8, 3, 10, 8, 4], expenses:
 export const salesSummaryDemoLabels = () => {
   return salesSummaryDemoData.revenue
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -238,10 +220,7 @@ export const audienceOverviewUsersDemoData = [108, 78, 63, 119, 85, 140, 101];
 export const audienceOverviewUsersDemoLabels = () => {
   return audienceOverviewUsersDemoData
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -251,10 +230,7 @@ export const audienceOverviewSessionsDemoData = [125, 43, 87, 150, 120, 100, 164
 export const audienceOverviewSessionsDemoLabels = () => {
   return audienceOverviewSessionsDemoData
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -264,10 +240,7 @@ export const audienceOverviewBounceRateDemoData = [5.5, 12.3, 8.4, 7.3, 9.8, 6.6
 export const audienceOverviewBounceRateDemoLabels = () => {
   return audienceOverviewBounceRateDemoData
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -277,10 +250,7 @@ export const audienceOverviewSessionDurationDemoData = [125, 43, 87, 150, 120, 1
 export const audienceOverviewSessionDurationDemoLabels = () => {
   return audienceOverviewSessionDurationDemoData
     .map((value, index) =>
-      today
-        .clone()
-        .subtract(index, 'day')
-        .format('DD/MM'),
+      format(subDays(subMinutes(new Date(), 0), index), 'dd/MM')
     )
     .reverse();
 };
@@ -289,82 +259,52 @@ export const recentSalesTableDemoData = [
   {
     name: 'Apple iPhone 8',
     price: '$899.99',
-    timestamp: now
-      .clone()
-      .subtract(2, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 2), new Date())
   },
   {
     name: 'USB-C Cable',
     price: '$8.99',
-    timestamp: now
-      .clone()
-      .subtract(6, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 6), new Date())
   },
   {
     name: 'Apple MacBook Pro',
     price: '$1299.99',
-    timestamp: now
-      .clone()
-      .subtract(14, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 14), new Date())
   },
   {
     name: 'Samsung Galaxy S9',
     price: '$799.99',
-    timestamp: now
-      .clone()
-      .subtract(17, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 17), new Date())
   },
   {
     name: 'Lightning to USB-C Adapter',
     price: '$16.99',
-    timestamp: now
-      .clone()
-      .subtract(25, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 25), new Date())
   },
   {
     name: 'Samsung Galaxy S8 256GB',
     price: '$599.99',
-    timestamp: now
-      .clone()
-      .subtract(42, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 42), new Date())
   },
   {
     name: 'Apple iPhone X',
     price: '$1099.99',
-    timestamp: now
-      .clone()
-      .subtract(87, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 87), new Date())
   },
   {
     name: 'Apple iPhone 7 128GB',
     price: '$699.99',
-    timestamp: now
-      .clone()
-      .subtract(97, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 97), new Date())
   },
   {
     name: 'Apple Mac Pro',
     price: '$999.99',
-    timestamp: now
-      .clone()
-      .subtract(104, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 104), new Date())
   },
   {
     name: 'Samsung DEX',
     price: '$54.99',
-    timestamp: now
-      .clone()
-      .subtract(150, 'minutes')
-      .fromNow(),
+    timestamp: formatDistance (subMinutes(new Date(), 150), new Date())
   },
 ];
 
@@ -423,10 +363,7 @@ export const recentSalesChartDemoValues = [
 export const recentSalesChartDemoLabels = () => {
   return recentSalesChartDemoValues
     .map((value, index) =>
-      now
-        .clone()
-        .subtract(index * 10, 'minutes')
-        .fromNow(),
+      formatDistance (subMinutes(new Date(), 10), new Date())
     )
     .reverse();
 };

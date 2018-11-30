@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartData } from 'chart.js';
-import * as moment from 'moment';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 import { fadeOutAnimation } from '@ngx-starter-kit/animations';
@@ -17,6 +16,7 @@ import {
 import { RecentSalesWidgetOptions } from '../../components/recent-sales-widget/recent-sales-widget-options.interface';
 import { SalesSummaryWidgetOptions } from '../../components/sales-summary-widget/sales-summary-widget-options.interface';
 import { WizdashService } from './wizdash.service';
+import { formatDistance } from 'date-fns/esm';
 
 @Component({
   selector: 'ngx-wizdash',
@@ -185,7 +185,7 @@ export class WizdashComponent implements OnInit {
     // Prefill realtimeUsersData with 30 random values
     for (let i = 0; i < 30; i++) {
       this._realtimeUsersDataSubject.next({
-        label: moment().fromNow(),
+        label: formatDistance(new Date(), new Date()),
         value: Math.round(Math.random() * (100 - 10) + 10),
       } as RealtimeUsersWidgetData);
     }
@@ -193,7 +193,7 @@ export class WizdashComponent implements OnInit {
     // Simulate incoming values for Realtime Users Widget
     setInterval(() => {
       this._realtimeUsersDataSubject.next({
-        label: moment().fromNow(),
+        label: formatDistance(new Date(), new Date()),
         value: Math.round(Math.random() * (100 - 10) + 10),
       } as RealtimeUsersWidgetData);
     }, 5000);

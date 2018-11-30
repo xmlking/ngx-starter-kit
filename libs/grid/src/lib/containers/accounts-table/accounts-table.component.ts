@@ -7,9 +7,8 @@ import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
-
+import { format } from 'date-fns/esm';
 import { AccountEditComponent } from '../../components/account-edit/account-edit.component';
-import * as moment from 'moment';
 import { Navigate } from '@ngxs/router-plugin';
 import { Store } from '@ngxs/store';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
@@ -37,7 +36,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     new EntityColumnDef<Account>({ property: 'Name',    header: 'Name',   displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
     new EntityColumnDef<Account>({ property: 'gender', header: 'Gender' }),
     // prettier-ignore
-    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${moment(entity.dob).format('LL')}` }),
+    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${format(entity.dob, 'MMMM dd, yyyy')}` }),
     new EntityColumnDef<Account>({ property: 'city', header: 'City', displayFn: entity => `${entity.address.city}` }),
     new EntityColumnDef<Account>({
       property: 'state',
