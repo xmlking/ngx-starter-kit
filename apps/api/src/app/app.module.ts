@@ -8,6 +8,7 @@ import { UserModule } from './user';
 import { AppController } from './app.controller';
 import { NotificationsModule } from './notifications';
 import { PushModule } from './push';
+import { ExternalModule } from './external';
 
 @Module({
   imports: [
@@ -22,14 +23,16 @@ import { PushModule } from './push';
           { path: '/notifications', module: NotificationsModule },
         ],
       },
+      { path: '/external', module: ExternalModule },
     ]),
     CoreModule,
     AuthModule,
     UserModule,
     // AccountModule,
+    // ChatModule,
+    ExternalModule,
     NotificationsModule,
     PushModule,
-    // ChatModule,
   ],
   controllers: [AppController],
 })
