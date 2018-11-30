@@ -54,25 +54,25 @@ export const environment = {
   },
   kubernetes: {
     CLUSTER1: {
-      baseUrl: 'https://k8s-prod-ctc-aci.optum.com:16443',
+      baseUrl: 'https://cluster1:8080',
       version: '1.10',
       /* tslint:disable-next-line:max-line-length */
       token: 'AAAAAAAAAAAA',
     },
     CLUSTER2: {
-      baseUrl: 'https://k8s-prod-elr-aci.optum.com:16443',
+      baseUrl: 'https://cluster2:8080',
       version: '1.10',
       /* tslint:disable-next-line:max-line-length */
       token: 'BBBBBBBBBBBB',
     },
     CLUSTER3: {
-      baseUrl: 'https://k8s-prod-ptc-aci.optum.com:16443',
+      baseUrl: 'https://cluster3:8080',
       version: '1.10',
       /* tslint:disable-next-line:max-line-length */
       token: 'CCCCCCCCCCCCC',
     },
     CLUSTER4: {
-      baseUrl: 'https://10.176.22.126:6443',
+      baseUrl: 'https://cluster4:8080',
       version: '1.10',
       /* tslint:disable-next-line:max-line-length */
       token: 'DDDDDDDDDDDDD',
