@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
-**PANTS** (:elephant: _PostgreSQL_  - :a: _Angular_  - :rocket: _NestJS_  - _TypeScript_) Stack in :dolphin: NX workspace
+**PANTS** (:elephant: _PostgreSQL_ :a: _Angular_ :rocket: _NestJS_ :snowman: _TypeScript_) Stack in :dolphin: NX workspace
 
 ## Install
 
