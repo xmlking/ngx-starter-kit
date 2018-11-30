@@ -7,7 +7,7 @@ import { Account, Gender } from '../../models/account.model';
 import { states } from './states';
 import { Observable } from 'rxjs';
 import { EntityFormComponent } from '@ngx-starter-kit/shared';
-import * as moment from 'moment';
+import { subYears } from 'date-fns/esm';
 
 @Component({
   selector: 'ngx-account-edit',
@@ -19,8 +19,8 @@ export class AccountEditComponent extends EntityFormComponent<Account> {
   readonly states: string[] = states;
   filteredStates: Observable<string[]>;
 
-  readonly maxDate = moment();
-  readonly minDate = moment().subtract(100, 'years');
+  readonly maxDate = new Date();
+  readonly minDate = subYears(this.maxDate, 100);
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string; payload: Account },

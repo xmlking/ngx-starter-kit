@@ -1,9 +1,9 @@
 import { HttpClient, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, BehaviorSubject, throwError } from 'rxjs';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
 import { environment } from '@env/environment';
 import { Entity } from './entity.model';
-import { map, retry, catchError, finalize } from 'rxjs/operators';
-import * as moment from 'moment';
+import { catchError, finalize, retry } from 'rxjs/operators';
+import { format } from 'date-fns/esm';
 
 export interface Filter {
   [name: string]: string | string[];
@@ -93,7 +93,7 @@ export abstract class EntityService<T extends Entity> {
   protected convertToJson(body: any) {
     const temporalFunctionToJson = Date.prototype.toJSON;
     Date.prototype.toJSON = function() {
-      return moment(this).format('YYYY-MM-DD');
+      return format(this, 'YYYY-MM-DD');
     };
 
     const jsonBody = JSON.stringify(body);
