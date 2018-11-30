@@ -19,6 +19,7 @@ export class AuthGuard implements CanActivate {
         return true;
       } else {
         this.store.dispatch(new Login({ infoMsg: 'Please login to Enter' }));
+        // TODO return router.parseUrl('/notauthorized');
         return false;
       }
     }

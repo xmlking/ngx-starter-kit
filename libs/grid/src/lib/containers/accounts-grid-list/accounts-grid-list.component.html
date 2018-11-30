@@ -51,7 +51,7 @@
         <mat-card-content>
           Address: {{ account.location.street }}, {{ account.location.city }}, {{ account.location.state }}
           {{ account.location.zip }}<br />
-          Date of Birth: {{ account.dob | amCalendar }}<br />
+          Date of Birth: {{ account.dob.date | date }}<br />
           email: {{ account.email }}<br />
           phone: {{ account.phone }}, cell: {{ account.cell }}<br />
         </mat-card-content>
