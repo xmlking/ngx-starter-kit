@@ -11,6 +11,18 @@ Right click on `docs` in project view --> Make Directory as --> Excluded.
 Right click on `dist` in project view --> Make Directory as --> Excluded.
 Right click on `coverage` in project view --> Make Directory as --> Excluded.
 
+#### How to configure `Jest` to test code that is importing `esm modules`?
+1. Add `transformIgnorePatterns` to `jest.config.js`
+```js
+module.exports = {
+  name: 'ngx-utils',
+  preset: '../../jest.config.js',
+  transformIgnorePatterns: ['node_modules/(?!date-fns)'],
+  coverageDirectory: '../../coverage/libs/ngx-utils',
+};
+```
+2. Add `"allowJs": true` to `compilerOptions` in `tsconfig.spec.json`
+
 #### How to release/deploy?
 
 using  travis CI/CD

@@ -34,17 +34,17 @@ export const defaultMenu: MenuItem[] = [
   },
   {
     name: 'Experiments',
-    icon: 'pie_chart_outlined',
+    icon: 'developer_board',
     disabled: false,
     children: [
       {
         name: 'Animations',
-        icon: 'view_list',
+        icon: 'screen_rotation',
         link: '/dashboard/experiments/animations',
       },
       {
         name: 'Upload',
-        icon: 'directions',
+        icon: 'backup',
         link: '/dashboard/experiments/file-upload',
       },
       {
@@ -64,13 +64,18 @@ export const defaultMenu: MenuItem[] = [
       },
       {
         name: 'Knob',
-        icon: 'directions',
+        icon: 'rotate_right',
         link: '/dashboard/experiments/knob',
       },
       {
         name: 'Layout',
         icon: 'apps',
         link: '/dashboard/experiments/layout',
+      },
+      {
+        name: 'Viewport',
+        icon: 'view_carousel',
+        link: '/dashboard/experiments/viewport',
       },
       // {
       //   name: 'Microinteractions',

@@ -4,9 +4,7 @@ import { interval, Observable, of } from 'rxjs';
 import { delayWhen, map, repeatWhen, takeWhile, tap } from 'rxjs/operators';
 
 import { Options } from 'date-fns';
-// FIXME: esm modules not working with Jest Tests
 import { differenceInMinutes, formatDistance } from 'date-fns/esm';
-// import { formatDistance, differenceInMinutes } from 'date-fns';
 
 const defaultConfig: Options = { addSuffix: true };
 /**

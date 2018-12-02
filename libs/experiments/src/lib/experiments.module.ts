@@ -3,6 +3,7 @@ import { RouterModule } from '@angular/router';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { KnobModule } from '@xmlking/ngx-knob';
+import { InViewportModule } from '@ngx-starter-kit/ngx-utils';
 
 import { ClapModule } from '@ngx-starter-kit/clap';
 import { LedModule } from '@ngx-starter-kit/led';
@@ -19,13 +20,14 @@ import { VirtualScrollComponent } from './containers/virtual-scroll/virtual-scro
 import { StickyTableComponent } from './containers/sticky-table/sticky-table.component';
 import { LedDemoComponent } from './containers/led-demo/led-demo.component';
 import { ImageCompComponent } from './containers/image-comp/image-comp.component';
+import { LayoutComponent } from './containers/layout/layout.component';
+import { CardComponent } from './components/card/card.component';
+import { ViewportComponent } from './containers/viewport/viewport.component';
 
 // Registering plugins
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
-import { LayoutComponent } from './containers/layout/layout.component';
-import { CardComponent } from './components/card/card.component';
 
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
 
@@ -38,6 +40,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ClapModule,
     LedModule,
     KnobModule,
+    InViewportModule,
     ImageComparisonModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */
@@ -92,6 +95,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         component: LayoutComponent,
         data: { title: 'Layout', depth: 3 },
       },
+      {
+        path: 'viewport',
+        component: ViewportComponent,
+        data: { title: 'Viewport', depth: 3 },
+      },
     ]),
   ],
   declarations: [
@@ -107,6 +115,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     ImageCompComponent,
     LayoutComponent,
     CardComponent,
+    ViewportComponent,
   ],
 })
 export class ExperimentsModule {}

@@ -1,0 +1,38 @@
+<div class="static-header">
+  <h2>Scroll to load more images</h2>
+  <p>
+    Total images displayed: <strong>{{ totalImagesShown }}</strong>
+  </p>
+  <small>Picture courtesy: <a href="https://unsplash.com/">Unsplash</a></small>
+</div>
+<div class="images">
+  <div
+    class="image-container"
+    *ngFor="let image of imageItemCollection"
+    [oneTime]="true"
+    (inViewport)="show($event, image)"
+  >
+    <ng-container *ngIf="image.show"> <img name="beautiful-image" src="{{ image.url }}" /> </ng-container>
+  </div>
+</div>
+<!-- Animation demo -->
+<div>
+  <div class="images">
+    <img
+      (inViewport)="anim($event, 'cowboy')"
+      src="https://d33wubrfki0l68.cloudfront.net/87e1bf9b49ec8a0ae7b343fce4f95fba32eb2cf8/0a3e5/images/cowboy.svg"
+      width="275"
+      height="275"
+      class="animate-me cowboy"
+    />
+  </div>
+  <div class="images">
+    <img
+      (inViewport)="anim($event, 'chef')"
+      src="https://d33wubrfki0l68.cloudfront.net/185c274053d2803726663cad3aac7245f90aa3fe/7df55/images/chef.svg"
+      width="275"
+      height="275"
+      class="animate-me chef"
+    />
+  </div>
+</div>
