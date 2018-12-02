@@ -120,14 +120,14 @@ ng update --all
 # also run `npm outdated` and update versions in package.json then run `npm install`
 
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --dry-run
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
 # or with ivy renderer
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module --dry-run -- --experimental-ivy
+ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d -- --experimental-ivy
 
 # generate api app with nestjs
-ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module --dry-run
+ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module -d
 # generate backend app with express
-ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module --dry-run
+ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module -d
 ```
 
 #### Dependencies
@@ -156,9 +156,9 @@ npm i angular-in-memory-web-api
 npm i angular-oauth2-oidc
 
 # Add NGXS
-ng add @ngxs/schematics
+ng add @ngxs/schematics # makesure "defaultCollection" is still  "@nrwl/schematics" in angular.json
 # or add NGXS manually
-npm i @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,devtools-plugin}
+npm i @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
 npm i -D @ngxs/schematics
 
 # Add formly
@@ -228,7 +228,7 @@ ng update @nrwl/schematics --force
 
 #### Generate Artifacts
 
-> Add `--dry-run` option to following commands to see which artifacts will be created, without actually creating them.
+> Add `--dry-run` or `-d` option to following commands to see which artifacts will be created, without actually creating them.
 
 ```bash
 
@@ -240,26 +240,26 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-ng g lib animations --module false -tags=utils --unit-test-runner=jest --dry-run
-ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest --dry-run
-ng g lib utils --module false --tags=utils --unit-test-runner=jest --dry-run
+ng g lib animations --module false -tags=utils --unit-test-runner=jest -d
+ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest -d
+ng g lib utils --module false --tags=utils --unit-test-runner=jest -d
 # system wide models
-ng g lib models --module false --tags=utils --unit-test-runner=jest --dry-run
+ng g lib models --module false --tags=utils --unit-test-runner=jest -d
 
 # add `core` module which will be only inported into root/app module.
-ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest --dry-run
+ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest -d
 # add  global services for `core` Module
-ng g service services/InMemoryData   --project=core   --spec=false --dry-run
-ng g service services/PageTitle      --project=core   --dry-run
-ng g service services/ServiceWorker  --project=core   --dry-run
-ng g service services/MediaQuery     --project=core   --dry-run
-ng g service services/DeepLink       --project=core   --dry-run
-ng g service services/Feature        --project=core   --dry-run
-ng g service services/GoogleAnalytics --project=core   --dry-run
-ng g service  PushNotification        --project=core --dry-run
+ng g service services/InMemoryData   --project=core   --spec=false -d
+ng g service services/PageTitle      --project=core   -d
+ng g service services/ServiceWorker  --project=core   -d
+ng g service services/MediaQuery     --project=core   -d
+ng g service services/DeepLink       --project=core   -d
+ng g service services/Feature        --project=core   -d
+ng g service services/GoogleAnalytics --project=core   -d
+ng g service  PushNotification        --project=core -d
 
 # `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components
-ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest --dry-run
+ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest -d
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
 ng g lib shared --prefix=ngx --tags=shared-module --unit-test-runner=jest
@@ -272,146 +272,144 @@ ng g component containers/entity --project=shared  --skip-import
 ng g component containers/entityForm  --project=shared  --skip-import
 
 # generate containers for `NotFound` Module
-ng g component containers/NotFound --project=not-found --dry-run
+ng g component containers/NotFound --project=not-found -d
 
 
 ### generate `Reusable lib Modules`
 
 # generate components for `AppConfirm` Module
-ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest --dry-run
-ng g component AppConfirm --project=app-confirm  --flat  --dry-run
-ng g service AppConfirm --project=app-confirm --spec=false --dry-run
+ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g component AppConfirm --project=app-confirm  --flat  -d
+ng g service AppConfirm --project=app-confirm --spec=false -d
 
 # generate components for `Draggable` Module
 ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g directive directives/Draggable --project=draggable --export=true --dry-run
+ng g directive directives/Draggable --project=draggable --export=true -d
 
 # generate components for `Breadcrumbs` Module
 ng g lib Breadcrumbs --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component breadcrumbs --project=breadcrumbs --flat --dry-run
-ng g service  breadcrumbs --project=breadcrumbs --dry-run
+ng g component breadcrumbs --project=breadcrumbs --flat -d
+ng g service  breadcrumbs --project=breadcrumbs -d
 
 # generate components for `ScrollToTop` Module
 ng g lib ScrollToTop --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component ScrollToTop --project=scroll-to-top --flat --dry-run
+ng g component ScrollToTop --project=scroll-to-top --flat -d
 
 ng g lib scrollbar --prefix=ngx --tags=public-module --publishable=true
 
 
 # generate components for `ContextMenu` Module
 ng g lib ContextMenu --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component ContextMenu --project=context-menu --flat --dry-run
-ng g directive ContextMenuTrigger --project=context-menu --flat --dry-run
+ng g component ContextMenu --project=context-menu --flat -d
+ng g directive ContextMenuTrigger --project=context-menu --flat -d
 
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component ThemePicker --project=theme-picker --flat --dry-run
-ng g service  ThemeStorage --project=theme-picker --dry-run
-ng g service  StyleManager --project=theme-picker --dry-run
+ng g component ThemePicker --project=theme-picker --flat -d
+ng g service  ThemeStorage --project=theme-picker -d
+ng g service  StyleManager --project=theme-picker -d
 
 # generate components for `Notifications` Module
-ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest --dry-run
-ng g component notifications --project=notifications --flat --dry-run
-ng g class    notification --type=model --project=notifications --dry-run
-ng g service  notifications --project=notifications --dry-run
+ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g component notifications --project=notifications --flat -d
+ng g class    notification --type=model --project=notifications -d
+ng g service  notifications --project=notifications -d
 
 # generate components for `Quickpanel` Module
 ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
-ng g component Quickpanel --project=quickpanel --flat --dry-run
+ng g component Quickpanel --project=quickpanel --flat -d
 
 # generate components for `LoadingOverlay` Module
 ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component LoadingOverlay --project=loading-overlay --flat --dry-run
+ng g component LoadingOverlay --project=loading-overlay --flat -d
 
 # generate components for `svgViewer` Module
 ng g lib svgViewer --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component svgViewer --project=svg-viewer --flat --dry-run
+ng g component svgViewer --project=svg-viewer --flat -d
 
 # generate components for `led` Module
 ng g lib led --prefix=ngx --tags=public-module --publishable=true
-ng g component led --project=led --flat --dry-run
+ng g component led --project=led --flat -d
 
 # generate components for `chatBox` Module
-ng g lib chatBox --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest --dry-run
-ng g component chatBox --project=chat-box --flat --dry-run
-ng g component components/typingIndicator --project=chat-box --dry-run
-ng g component components/chatCard --project=chat-box --dry-run
-ng g component components/TextToSpeechPreferences  --project=chat-box --dry-run
-ng g service services/nlp --project=chat-box --dry-run
-ng g service services/SpeechToText --project=chat-box --dry-run
-ng g service services/TextToSpeech --project=chat-box --dry-run
-ng g service services/chat --project=chat-box --dry-run
+ng g lib chatBox --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g component chatBox --project=chat-box --flat -d
+ng g component components/typingIndicator --project=chat-box -d
+ng g component components/chatCard --project=chat-box -d
+ng g component components/TextToSpeechPreferences  --project=chat-box -d
+ng g service services/nlp --project=chat-box -d
+ng g service services/SpeechToText --project=chat-box -d
+ng g service services/TextToSpeech --project=chat-box -d
+ng g service services/chat --project=chat-box -d
 
 # generate components for `socketioPlugin` Module
-ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest --dry-run
-ng g service socketioSubject --project=socketio-plugin --dry-run
+ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
+ng g service socketioSubject --project=socketio-plugin -d
 
 # generate components for `openTracing` Module
-ng g lib openTracing --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest --dry-run
-ng g service services/ZipkinTracing --project=open-tracing --dry-run
-ng g interceptor interceptors/tracing  --project=open-tracing --dry-run
+ng g lib openTracing --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
+ng g service services/ZipkinTracing --project=open-tracing -d
+ng g interceptor interceptors/tracing  --project=open-tracing -d
 
 # generate components for `jsonDiff` Module
 ng g lib jsonDiff --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
-ng g component jsonDiff --project=json-diff --flat --dry-run
-ng g component jsonDiffTree --project=json-diff --flat --dry-run
+ng g component jsonDiff --project=json-diff --flat -d
+ng g component jsonDiffTree --project=json-diff --flat -d
 
 # generate components for `clap` Module
 ng g lib clap  --prefix=ngx --tags=public-module --spec=false --publishable=true --unit-test-runner=jest
-ng g component clap --project=clap  -s  -t --spec=false --export --flat --dry-run
-ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  --dry-run
-ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  --dry-run
-ng g component components/fab --project=clap  -s  -t --spec=false --flat  --dry-run
+ng g component clap --project=clap  -s  -t --spec=false --export --flat -d
+ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  -d
+ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  -d
+ng g component components/fab --project=clap  -s  -t --spec=false --flat  -d
 
 # generate components for `ngx-utils` Module
 ng g lib ngxUtils  --prefix=ngx --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
-ng g module pipes/truncate --project=ngx-utils --spec=false --dry-run
-ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export --dry-run
-ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export --dry-run
-ng g module pipes/helper --project=ngx-utils --spec=false --dry-run
-ng g pipe pipes/helper/filter --project=ngx-utils --module=helper --export --dry-run
-ng g pipe pipes/helper/groupBy --project=ngx-utils --module=helper --export --dry-run
-ng g pipe pipes/helper/safeHtml --project=ngx-utils --module=helper --export --dry-run
-ng g module directives/ngLet --project=ngx-utils --spec=false --dry-run
-ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export --dry-run
-ng g module directives/routerLinkMatch --project=ngx-utils --spec=false --dry-run
-ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export --dry-run
-
-ng g module pipes/dateFns --project=ngx-utils --spec=false --dry-run
-ng g service pipes/date-fns/DateFnsConfiguration --project=ngx-utils --module=date-fns --spec=false --dry-run
-ng g pipe pipes/date-fns/FormatDistanceToNow --project=ngx-utils --module=date-fns --export --dry-run
-amTimeAgo
-
-TimeAgoPipe
-
+ng g module pipes/truncate --project=ngx-utils --spec=false -d
+ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export -d
+ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export -d
+ng g module pipes/helper --project=ngx-utils --spec=false -d
+ng g pipe pipes/helper/filter --project=ngx-utils --module=helper --export -d
+ng g pipe pipes/helper/groupBy --project=ngx-utils --module=helper --export -d
+ng g pipe pipes/helper/safeHtml --project=ngx-utils --module=helper --export -d
+ng g module directives/ngLet --project=ngx-utils --spec=false -d
+ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export -d
+ng g module directives/routerLinkMatch --project=ngx-utils --spec=false -d
+ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export -d
+ng g module pipes/dateFns --project=ngx-utils --spec=false -d
+ng g service pipes/date-fns/DateFnsConfiguration --project=ngx-utils --module=date-fns --spec=false -d
+ng g pipe pipes/date-fns/FormatTimeInWords --project=ngx-utils --module=date-fns --export -d
+ng g module directives/inViewport --project=ngx-utils --spec=false -d
+ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
+ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
 
 
 # generate components for `toolbar` Module
-ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest --dry-run
-ng g component toolbar --project=toolbar --flat --dry-run
-ng g component components/search --project=toolbar  --dry-run
+ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest -d
+ng g component toolbar --project=toolbar --flat -d
+ng g component components/search --project=toolbar  -d
 ng g component components/searchBar --project=toolbar
 ng g component components/UserMenu --project=toolbar
-ng g component components/FullscreenToggle --project=toolbar --dry-run
-ng g component components/SidenavMobileToggle --project=toolbar --dry-run
-ng g component components/QuickpanelToggle --project=toolbar --dry-run
+ng g component components/FullscreenToggle --project=toolbar -d
+ng g component components/SidenavMobileToggle --project=toolbar -d
+ng g component components/QuickpanelToggle --project=toolbar -d
 
 # generate components for `sidenav` Module
-ng g lib sidenav --prefix=ngx --tags=private-module --unit-test-runner=jest --dry-run
-ng g component sidenav --project=sidenav --flat --dry-run
-ng g component components/sidenavItem --project=sidenav  --dry-run
-ng g directive  IconSidenav --project=sidenav --dry-run
+ng g lib sidenav --prefix=ngx --tags=private-module --unit-test-runner=jest -d
+ng g component sidenav --project=sidenav --flat -d
+ng g component components/sidenavItem --project=sidenav  -d
+ng g directive  IconSidenav --project=sidenav -d
 
 # generate components for `auth` Module
-ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest --dry-run
-ng g component components/login --project=auth --dry-run
-ng g @ngxs/schematics:store --name=auth --spec --project=auth --dry-run
+ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
+ng g component components/login --project=auth -d
+ng g @ngxs/schematics:store --name=auth --spec --project=auth -d
 
 # generate components for `navigator` Module
-ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest --dry-run
-ng g service services/menu --project=navigator --dry-run
-ng g class models/menuItem --project=navigator --type=model  --dry-run
-ng g class state/menu --project=navigator --type=state  --dry-run
+ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest -d
+ng g service services/menu --project=navigator -d
+ng g class models/menuItem --project=navigator --type=model  -d
+ng g class state/menu --project=navigator --type=state  -d
 
 # generate containers, components for `home` Module
 ng g component components/header --project=home
@@ -421,42 +419,42 @@ ng g component containers/blog --project=home
 ng g component containers/about --project=home
 
 # generate containers, components for `dashboard` Module
-ng g component components/rainbow --project=dashboard --dry-run
-ng g component containers/dashboardLayout --project=dashboard --dry-run
-ng g component containers/overview --project=dashboard --dry-run
-ng g component containers/profile --project=dashboard --dry-run
-ng g component containers/settings --project=dashboard --dry-run
+ng g component components/rainbow --project=dashboard -d
+ng g component containers/dashboardLayout --project=dashboard -d
+ng g component containers/overview --project=dashboard -d
+ng g component containers/profile --project=dashboard -d
+ng g component containers/settings --project=dashboard -d
 
 # generate containers, components for `widgets` Module
-ng g component containers/wizdash --project=widgets --dry-run
+ng g component containers/wizdash --project=widgets -d
 
 # generate containers, components for `grid` Module
-ng g component  containers/AccountsTable --project=grid --dry-run
-ng g component  components/AccountDetail --project=grid  --dry-run
-ng g component  components/AccountEdit --project=grid  --dry-run
-ng g class      models/account --type=model --project=grid  --dry-run
-ng g service    services/account --project=grid  --dry-run
-ng g component  containers/AccountsGridList --project=grid  --dry-run
+ng g component  containers/AccountsTable --project=grid -d
+ng g component  components/AccountDetail --project=grid  -d
+ng g component  components/AccountEdit --project=grid  -d
+ng g class      models/account --type=model --project=grid  -d
+ng g service    services/account --project=grid  -d
+ng g component  containers/AccountsGridList --project=grid  -d
 
 # generate containers, components for `experiments` Module
-ng g component containers/animations --project=experiments --dry-run
-ng g component components/hammerCard --project=experiments --dry-run
-ng g directive components/Hammertime/Hammertime --project=experiments --dry-run
-ng g component containers/ContextMenu --project=experiments --dry-run
-ng g component containers/FileUpload --project=experiments --dry-run
-ng g component containers/virtualScroll --project=experiments --dry-run
-ng g component containers/StickyTable --project=experiments --dry-run
-ng g component containers/clapButton --project=experiments  -s  -t --spec=false  --dry-run
-ng g component containers/knobDemo --project=experiments --dry-run
-ng g component containers/ledDemo --project=experiments  --dry-run
-ng g component containers/ImageComp --project=experiments  --dry-run
-ng g component containers/layout --project=experiments --dry-run
-ng g component components/card --project=experiments --dry-run
-
+ng g component containers/animations --project=experiments -d
+ng g component components/hammerCard --project=experiments -d
+ng g directive components/Hammertime/Hammertime --project=experiments -d
+ng g component containers/ContextMenu --project=experiments -d
+ng g component containers/FileUpload --project=experiments -d
+ng g component containers/virtualScroll --project=experiments -d
+ng g component containers/StickyTable --project=experiments -d
+ng g component containers/clapButton --project=experiments  -s  -t --spec=false  -d
+ng g component containers/knobDemo --project=experiments -d
+ng g component containers/ledDemo --project=experiments  -d
+ng g component containers/ImageComp --project=experiments  -d
+ng g component containers/layout --project=experiments -d
+ng g component components/card --project=experiments -d
+ng g component containers/viewport --project=experiments --spec=false -d
 
 # generate components for `ImageComparison` Module
-ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true --dry-run
-ng g component ImageComparison --project=image-comparison --export --flat --dry-run
+ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true -d
+ng g component ImageComparison --project=image-comparison --export --flat -d
 ```
 
 #### Workspace Schematics
@@ -466,7 +464,7 @@ ng g component ImageComparison --project=image-comparison --export --flat --dry-
 ng g workspace-schematic store
 # run workspace-schematic `store`
 # *** always delete ./dist folder when you change schematic implementation ***
-npm run workspace-schematic store models/sumoDemo -- --project=grid  --dry-run
+npm run workspace-schematic store models/sumoDemo -- --project=grid  -d
 ```
 
 ### Install

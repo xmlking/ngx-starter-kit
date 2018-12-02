@@ -22,6 +22,7 @@ export enum BrowserFeatureKey {
   WebBluetoothAPI = 'Web Bluetooth',
   SpeechSynthesis = 'Speech Synthesis',
   SpeechRecognition = 'Speech Recognition',
+  IntersectionObserver = 'Intersection Observer',
 }
 
 export class BrowserFeature {
@@ -63,6 +64,7 @@ export class FeatureService {
         'mozSpeechRecognition' in this.window ||
         'msSpeechRecognition' in this.window ||
         'oSpeechRecognition' in this.window,
+      [BrowserFeatureKey.IntersectionObserver]: 'IntersectionObserver' in this.window,
     };
   }
 

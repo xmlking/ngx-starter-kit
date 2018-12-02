@@ -1,0 +1,59 @@
+a {
+  text-decoration: none;
+}
+
+.static-header {
+  position: fixed;
+  z-index: 1000;
+  background: #eee;
+  text-align: center;
+  width: 100%;
+
+  padding: 10px;
+}
+
+.images {
+  padding-top: 110px;
+  left: 0;
+  right: 0;
+  text-align: center;
+}
+
+.images img {
+  max-width: 500px;
+}
+
+.images .image-container, .images img {
+  height: 350px;
+}
+
+// animation demo
+
+.cowboy.fancy {
+  animation: anim1 .7s ease-out;
+}
+.chef.fancy {
+  animation: anim2 .7s ease-out;
+}
+
+@keyframes anim1 {
+  0% {
+    opacity: 0;
+    transform: translateX(-30rem) rotate(-45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes anim2 {
+  0% {
+    opacity: 0;
+    transform: translateX(30rem) rotate(45deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}

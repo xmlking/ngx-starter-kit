@@ -3,6 +3,7 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/libs/ngx-utils",
     "module": "commonjs",
+    "allowJs": true,
     "types": ["jest", "node"]
   },
   "files": ["src/test-setup.ts"],
