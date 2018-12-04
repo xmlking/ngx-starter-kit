@@ -34,15 +34,6 @@ export class NotificationsState implements NgxsOnInit {
   @Action(AddNotification)
   add({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: AddNotification) {
     setState([...getState(), payload]);
-    if (payload.native) {
-      return this.notificationsService.showNativeNotification({
-        title: 'NGX WebApp Notification',
-        options: {
-          body: payload.message,
-          icon: 'assets/icons/icon-72x72.png',
-        },
-      });
-    }
   }
 
   @Action(FetchNotifications, { cancelUncompleted: true })

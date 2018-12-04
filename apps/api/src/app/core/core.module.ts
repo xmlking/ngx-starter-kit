@@ -7,10 +7,10 @@ import { LoggingInterceptor, TransformInterceptor } from './interceptors';
 import { RequestContextMiddleware } from './context';
 import { ConfigService } from '../config';
 import { ConnectionOptions } from 'typeorm';
-import { Notification } from '../notifications/notification.entity';
-import { User } from '../auth/user.entity';
 import { environment as env } from '@env-api/environment';
-import { Subscription } from '../push/subscription.entity';
+import { User } from '../auth/user.entity';
+import { Notification } from '../notifications/notification/notification.entity';
+import { Subscription } from '../notifications/subscription/subscription.entity';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { Subscription } from '../push/subscription.entity';
       useFactory: async (config: ConfigService) =>
         ({
           ...env.database,
-          entities: [Notification, User, Subscription],
+          entities: [User, Notification, Subscription],
         } as ConnectionOptions),
       inject: [ConfigService],
     }),

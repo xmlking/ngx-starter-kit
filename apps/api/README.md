@@ -84,16 +84,12 @@ npm run api:build
 # check of nest installed
 nest info
 
-# scaffold project module
-nest generate module project --dry-run
-nest generate controller project --dry-run
-nest generate service project project --dry-run
-nest generate class project --dry-run
-
-# scaffold core module
-nest g module core --dry-run
-nest g guard auth core --dry-run
-nest g exception auth --dry-run
+# scaffold auth module
+nest g module app/auth  --dry-run
+nest g controller auth app/auth --flat --dry-run
+nest g service auth app/auth --flat --dry-run
+nest g class user.entity app/auth --no-spec --dry-run
+nest g class auth.exception app/auth --no-spec --dry-run
 ```
 
 ### Test

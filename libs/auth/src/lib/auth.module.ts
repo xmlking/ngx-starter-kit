@@ -19,13 +19,14 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatTooltipModule,
   MatToolbarModule,
+  MatTooltipModule,
 } from '@angular/material';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { environment } from '@env/environment';
+import { AuthHandler } from './auth.handler';
 
 @NgModule({
   imports: [
@@ -67,4 +68,6 @@ export class AuthModule {
       providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Store], multi: true }],
     };
   }
+  // HINT: AuthHandler is injected here to initialize it as Module Run Block
+  constructor(authHandler: AuthHandler) {}
 }

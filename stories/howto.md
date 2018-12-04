@@ -50,6 +50,10 @@ How to migrate project to newer versions?
 
 > [refer](https://update.angular.io/)
 
+how to implement MODULE_INITIALIZER like APP_INITIALIZER? 
+
+> [refer](https://www.bennadel.com/blog/3180-ngmodule-constructors-provide-a-module-level-run-block-in-angular-2-1-1.htm)
+
 How to commit code?
 
  ```bash

@@ -3,7 +3,6 @@ import { Select, Store } from '@ngxs/store';
 import { listFadeAnimation } from '@ngx-starter-kit/animations';
 
 import { DeleteNotification, FetchNotifications, MarkAllAsRead, MarkAsRead } from './notifications.actions';
-import { SendWebSocketAction } from '@ngx-starter-kit/socketio-plugin';
 import { Observable } from 'rxjs';
 import { NotificationsState } from './notifications.state';
 import { AppNotification } from './app-notification.model';
@@ -34,7 +33,6 @@ export class NotificationsComponent implements OnInit {
   dismiss(notification, event) {
     event.stopPropagation();
     this.store.dispatch(new DeleteNotification(notification));
-    this.store.dispatch(new SendWebSocketAction(new DeleteNotification(notification)));
   }
 
   toggleDropdown() {
