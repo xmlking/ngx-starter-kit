@@ -45,9 +45,7 @@ export class NotificationService extends CrudService<Notification> {
       title: notification.title,
       body: notification.body,
       icon: 'assets/icons/icon-72x72.png',
-      data: {
-        click_url: '/dashboard',
-      },
+      data: notification,
       vibrate: [200, 100, 200],
     };
 
