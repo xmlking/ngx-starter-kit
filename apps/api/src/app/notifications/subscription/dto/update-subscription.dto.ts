@@ -1,8 +1,9 @@
 import { ApiModelProperty } from '@nestjs/swagger';
-import { IsNotEmpty } from 'class-validator';
+import { ArrayNotEmpty, ArrayUnique } from 'class-validator';
 
 export class UpdateSubscriptionDto {
   @ApiModelProperty({ type: String, isArray: true })
-  @IsNotEmpty()
+  @ArrayNotEmpty()
+  @ArrayUnique()
   topics: string[];
 }

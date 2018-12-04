@@ -10,8 +10,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 })
 export class PushNotificationService {
   public baseUrl = environment.API_BASE_URL;
-  private readonly entityPath = 'push';
-  private readonly existingSubscription: PushSubscription;
+  private readonly entityPath = 'subscription';
 
   constructor(private readonly swPush: SwPush, private httpClient: HttpClient) {}
 
@@ -31,7 +30,7 @@ export class PushNotificationService {
     } = subscription.toJSON();
     console.log('push subscription created', { endpoint, auth, p256dh });
     await this.httpClient
-      .post(`${this.baseUrl}/${this.entityPath}`, { endpoint, auth, p256dh, topics: ['sumo1', 'sumo2'] })
+      .post(`${this.baseUrl}/${this.entityPath}`, { endpoint, auth, p256dh })
       .pipe(catchError(this.handleError))
       .toPromise();
   }
@@ -51,17 +50,6 @@ export class PushNotificationService {
         .toPromise();
       await subscription.unsubscribe();
     }
-  }
-
-  async notify(id: string) {
-    await this.httpClient
-      .post(`${this.baseUrl}/${this.entityPath}/notify`, {
-        id: encodeURIComponent(id),
-        title: 'NGX WebApp Notification',
-        body: 'test body 321',
-      })
-      .pipe(catchError(this.handleError))
-      .toPromise();
   }
 
   private handleError(error: HttpErrorResponse) {

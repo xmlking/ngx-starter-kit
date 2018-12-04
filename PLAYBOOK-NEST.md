@@ -66,54 +66,47 @@ npm i -D @types/helmet
 
 ```bash
 # scaffold core module
-nest g module core --dry-run
-nest g guard auth core --dry-run
-nest g exception auth --dry-run
+nest g module app/core --dry-run
+nest g guard auth app/core --dry-run
+
 
 # scaffold shared module
-nest g module shared --dry-run
-nest g gateway eventbus shared --dry-run  #  /src/shared/eventbus/eventbus.gateway.ts to shared/eventbus.gateway.ts
-
-# scaffold project module
-nest g module project --dry-run
-nest g controller project --dry-run
-nest g service project project --dry-run
-nest g class project --dry-run
+nest g module app/shared --dry-run
+nest g gateway eventbus app/shared --dry-run
 
 # scaffold user module
-nest g module user --dry-run
-nest g controller profile user --dry-run
-nest g service profile user --dry-run
-nest g class profile user --dry-run
-nest g controller email user --dry-run
+nest g module app/user --dry-run
+nest g controller profile app/user --dry-run
+nest g service profile app/user --dry-run
+nest g class profile/profile.entity app/user --no-spec --dry-run
+nest g controller email app/user --dry-run
 
 # scaffold email module
-nest g module email --dry-run
-nest g service email email --dry-run
+nest g module app/email --dry-run
+nest g service email app/email --flat --dry-run
 
 # scaffold auth module
-nest g module auth  --dry-run
-nest g service auth auth --dry-run
-nest g controller auth  --dry-run
-nest g class user auth --dry-run # move ../ and rename as user.entity.ts
+nest g module app/auth  --dry-run
+nest g controller auth app/auth --flat --dry-run
+nest g service auth app/auth --flat --dry-run
+nest g class user.entity app/auth --no-spec --dry-run
+nest g class auth.exception app/auth --no-spec --dry-run
 
 # scaffold chat module
-nest g module chat  --dry-run
-nest g service chat chat --dry-run
-nest g controller chat  --dry-run
-nest g gateway chat --dry-run
+nest g module app/chat  --dry-run
+nest g controller chat app/chat --flat --dry-run
+nest g service chat app/chat --flat --dry-run
+nest g gateway chat app/chat --flat --dry-run
 
-# scaffold chat module
-nest g module notifications --dry-run
-nest g controller notifications --dry-run
-nest g service notifications notifications --dry-run
-nest g class notification notifications --dry-run
-
-# scaffold push module
-nest g module push  --dry-run
-nest g controller push --dry-run
-nest g service  push --dry-run
-nest g class subscription push --no-spec  --dry-run # rename as subscription.entity.ts
+# scaffold notifications module
+nest g module app/notifications --dry-run
+nest g controller notification app/notifications --dry-run
+nest g service notification app/notifications --dry-run
+nest g service  notification/push  app/notifications --flat --no-spec --dry-run
+nest g class notification/notification.entity app/notifications --no-spec --dry-run
+nest g controller subscription app/notifications  --dry-run
+nest g service subscription app/notifications --dry-run
+nest g class subscription/subscription.entity app/notifications --no-spec --dry-run
 ```
 
 ### Ref

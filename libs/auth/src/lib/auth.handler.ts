@@ -1,7 +1,7 @@
 import { Actions, ofActionErrored, ofActionSuccessful } from '@ngxs/store';
 import { Injectable } from '@angular/core';
-import { Login, LoginSuccess } from '@ngx-starter-kit/auth';
-import { GoogleAnalyticsService } from '@ngx-starter-kit/core';
+import { Login, LoginSuccess } from './auth.actions';
+import { GoogleAnalyticsService } from '@ngx-starter-kit/core/src/lib/services/google-analytics.service';
 
 @Injectable({
   providedIn: 'root',

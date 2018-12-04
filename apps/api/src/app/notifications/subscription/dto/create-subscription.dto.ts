@@ -1,5 +1,5 @@
-import { ApiModelProperty } from '@nestjs/swagger';
-import { IsNotEmpty, IsString, IsUrl } from 'class-validator';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { ArrayUnique, IsNotEmpty, IsOptional, IsString, IsUrl } from 'class-validator';
 
 export class CreateSubscriptionDto {
   @ApiModelProperty({ type: String })
@@ -17,7 +17,10 @@ export class CreateSubscriptionDto {
   @IsString()
   p256dh: string;
 
-  @ApiModelProperty({ type: String, isArray: true })
-  @IsNotEmpty()
+  @ApiModelPropertyOptional({ type: String, isArray: true })
+  @IsOptional()
+  @ArrayUnique()
+  // @IsEnum(TopicsEnum, { each: true })
+  @IsString({ each: true })
   topics: string[];
 }

@@ -33,7 +33,6 @@ import { PreferenceState } from './state/preference.state';
 import { AppHandler } from './state/app.handler';
 import { RouteHandler } from './state/route.handler';
 import { EventBusHandler } from './state/eventbus.handler';
-import { AuthHandler } from './state/auth.handler';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 // Noop handler for factory function
@@ -89,7 +88,7 @@ library.add(faTwitter, faGithub, faGoogle);
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
-      deps: [EventBusHandler, RouteHandler, AppHandler, AuthHandler],
+      deps: [EventBusHandler, RouteHandler, AppHandler],
       multi: true,
     },
     {

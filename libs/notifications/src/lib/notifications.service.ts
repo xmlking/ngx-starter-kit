@@ -20,7 +20,7 @@ export class NotificationsService extends EntityService<AppNotification> {
 
   getAll(): Observable<AppNotification[]> {
     this.loadingSubject.next(true);
-    return this.httpClient.get<[AppNotification[], number]>(`${this.baseUrl}/${this.entityPath}`).pipe(
+    return this.httpClient.get<[AppNotification[], number]>(`${this.baseUrl}/${this.entityPath}/user`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
