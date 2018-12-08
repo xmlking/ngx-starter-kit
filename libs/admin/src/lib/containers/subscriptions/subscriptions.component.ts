@@ -1,0 +1,89 @@
+import { Component, TemplateRef, ViewChild } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Navigate } from '@ngxs/router-plugin';
+import { MatDialog, MatSnackBar } from '@angular/material';
+import { throwError } from 'rxjs';
+import { catchError, filter, mergeMap, tap } from 'rxjs/operators';
+import { formatDistance } from 'date-fns/esm';
+import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
+import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
+import { SubscriptionService } from '../../services/subscription.service';
+import { Subscription } from '../../models/subscription.model';
+
+const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
+const cellHtmlTpl = require('./cell.templates.html');
+
+// tslint:disable-next-line
+@Component({
+  selector: 'ngx-subscriptions',
+  template: entityHtmlTpl + cellHtmlTpl,
+  // templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
+  styleUrls: [
+    './subscriptions.component.scss',
+    '../../../../../shared/src/lib/containers/entity/entity.component.scss',
+  ],
+})
+export class SubscriptionsComponent extends EntitiesComponent<Subscription, SubscriptionService> {
+  @ViewChild('deleteButton') deleteTpl: TemplateRef<any>;
+  columns: EntityColumnDef<Subscription>[];
+
+  // optional
+  readonly showColumnFilter = true;
+  readonly showToolbar = true;
+
+  constructor(
+    subscriptionService: SubscriptionService,
+    private store: Store,
+    private dialog: MatDialog,
+    private snack: MatSnackBar,
+    private confirmService: AppConfirmService,
+  ) {
+    super(subscriptionService);
+  }
+
+  // tslint:disable-next-line
+  ngOnInit() {
+    super.ngOnInit();
+    this.columns = [
+      new EntityColumnDef<Subscription>({ property: 'id', header: 'No.' }),
+      new EntityColumnDef<Subscription>({ property: 'userId', header: 'User' }),
+      new EntityColumnDef<Subscription>({ property: 'topics', header: 'Topics' }),
+      new EntityColumnDef<Subscription>({
+        property: 'createdAt',
+        header: 'Created',
+        displayFn: entity => `${formatDistance(entity.createdAt, new Date(), { addSuffix: true })}`,
+      }),
+      new EntityColumnDef<Subscription>({
+        property: 'updatedAt',
+        header: 'Updated',
+        displayFn: entity => `${formatDistance(entity.updatedAt, new Date(), { addSuffix: true })}`,
+      }),
+      new EntityColumnDef<Subscription>({ property: 'actions', header: 'Actions', template: this.deleteTpl }),
+    ] as EntityColumnDef<Subscription>[];
+  }
+
+  // optional
+  delete(item: Subscription) {
+    return this.confirmService.confirm('Confirm', `Delete Sub(${item.id}) for ${item.userId}?`).pipe(
+      filter(confirmed => confirmed === true),
+      mergeMap(_ => super.delete(item)),
+      tap(_ => {
+        this.snack.open('Subscription Deleted!', 'OK', { duration: 5000 });
+        this.store.dispatch(new Navigate([`/admin/subscriptions`]));
+      }),
+      catchError(error => {
+        this.snack.open(error, 'OK', { duration: 10000 });
+        return throwError('Ignore Me!');
+      }),
+    );
+  }
+
+  // optional
+  showDetails(entity: Subscription) {
+    if (entity) {
+      this.store.dispatch(new Navigate([`/admin/subscriptions/${entity.id}`]));
+    } else {
+      this.store.dispatch(new Navigate(['/admin/subscriptions']));
+    }
+  }
+}

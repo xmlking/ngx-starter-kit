@@ -1471,6 +1471,34 @@
           }
         }
       }
+    },
+    "admin": {
+      "root": "libs/admin",
+      "sourceRoot": "libs/admin/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/admin/tsconfig.lib.json",
+              "libs/admin/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/admin/jest.config.js",
+            "tsConfig": "libs/admin/tsconfig.spec.json",
+            "setupFile": "libs/admin/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "schematics": {
@@ -1483,6 +1511,9 @@
     },
     "@nrwl/schematics:library": {
       "unitTestRunner": "jest"
+    },
+    "@ngx-formly/schematics:component": {
+      "styleext": "scss"
     }
   },
   "cli": {

@@ -55,7 +55,7 @@ library.add(faTwitter, faGithub, faGoogle);
     MatSnackBarModule,
     NgxPageScrollModule,
     NavigatorModule.forRoot(defaultMenu),
-    NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState]),
+    NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState], { developmentMode: !environment.production }),
     NgxsStoragePluginModule.forRoot({
       key: ['preference', 'app.installed'],
     }),

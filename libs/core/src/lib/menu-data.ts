@@ -11,6 +11,11 @@ export const defaultMenu: MenuItem[] = [
     icon: 'dashboard',
     link: '/dashboard',
   },
+  {
+    name: 'Admin',
+    icon: 'security',
+    link: '/admin',
+  },
   // {
   //   name: 'Custom components',
   //   type: SidenavItemType.Separator,
@@ -161,6 +166,23 @@ export const defaultMenu: MenuItem[] = [
 ];
 
 export const adminMenu: MenuItem[] = [
+  {
+    name: 'Messaging',
+    icon: 'business',
+    disabled: false,
+    children: [
+      {
+        name: 'Subscriptions',
+        icon: 'web_aaset',
+        link: '/admin/subscriptions',
+      },
+      {
+        name: 'Notifications',
+        icon: 'grid_on',
+        link: '/admin/notifications',
+      },
+    ],
+  },
   {
     name: 'Dashboard',
     type: MenuItemType.DropDown,
