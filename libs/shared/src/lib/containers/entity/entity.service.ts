@@ -68,10 +68,10 @@ export abstract class EntityService<T extends Entity> {
     );
   }
 
-  put(entity: T) {
+  put(id: number | string, entity: T) {
     console.log(entity);
     this.loadingSubject.next(true);
-    return this.httpClient.put(`${this.baseUrl}/${this.entityPath}`, entity).pipe(
+    return this.httpClient.put(`${this.baseUrl}/${this.entityPath}/${id}`, entity).pipe(
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
     );

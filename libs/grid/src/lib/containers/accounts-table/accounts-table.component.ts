@@ -105,9 +105,12 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
    **/
   openPopUp(entity: Account) {
     let isNew = false;
+    let id;
     if (!entity) {
       isNew = true;
       entity = this.getNewEntity();
+    } else {
+      id = entity.id;
     }
     const title = isNew ? 'Add Member' : 'Update Member';
 
@@ -122,13 +125,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
       .pipe(
         filter(res => res !== false),
         // tap(res => console.log(res)),
-        map((res: Account) => {
-          if (!isNew) {
-            res.id = entity.id;
-          }
-          return res;
-        }),
-        concatMap((res: Account) => super.updateOrCreate(res, isNew)),
+        concatMap((res: Account) => super.updateOrCreate(res, id)),
       )
       .subscribe(
         _ => {

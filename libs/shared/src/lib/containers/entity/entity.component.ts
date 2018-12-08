@@ -89,11 +89,11 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     return this.entityService.delete(item.id).pipe(concatMap(_ => this.update()));
   }
 
-  updateOrCreate(entity: TEntity, isNew: boolean) {
-    if (isNew) {
-      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
+  updateOrCreate(entity: TEntity, id: number) {
+    if (id) {
+      return this.entityService.put(id, entity).pipe(concatMap(_ => this.update()));
     } else {
-      return this.entityService.put(entity).pipe(concatMap(_ => this.update()));
+      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
     }
   }
 
