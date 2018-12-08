@@ -49,11 +49,6 @@ import { ProfileComponent } from './containers/profile/profile.component';
             data: { title: 'Settings', depth: '2' },
           },
           {
-            path: 'widgets',
-            loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
-            data: { title: 'Widgets', depth: '2', preload: false },
-          },
-          {
             path: 'grid',
             loadChildren: '@ngx-starter-kit/grid#GridModule',
             data: { title: 'Grid', depth: 2, preload: false },
@@ -62,6 +57,11 @@ import { ProfileComponent } from './containers/profile/profile.component';
             path: 'experiments',
             loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
             data: { title: 'Experiments', depth: 2, preload: false },
+          },
+          {
+            path: 'widgets',
+            loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
+            data: { title: 'Widgets', depth: '2', preload: false },
           },
         ],
       },
