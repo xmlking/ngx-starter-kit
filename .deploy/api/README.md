@@ -68,7 +68,7 @@ oc delete all,configmap,secret -l app=ngx-starter-kit-api -n ngx-starter-kit
 
 # redeploy
 # From OpenShift Console UI
-Applications > Deployments > ngx-starter-kit > Deploy 
+Applications > Deployments > ngx-starter-kit > Deploy
 ```
  
 #### Kubernetes Deployment

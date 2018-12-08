@@ -1,0 +1,12 @@
+<ng-template #send let-row>
+  <button mat-icon-button (click)="onSend(row).subscribe()"><mat-icon>mail_outline</mat-icon></button>
+</ng-template>
+
+<ng-template #editDelete let-row>
+  <button type="button" (click)="openPopUp(row)" color="primary" mat-icon-button><mat-icon>edit_mode</mat-icon></button>
+  <button type="button" (click)="delete(row).subscribe()" color="warn" mat-icon-button>
+    <mat-icon>delete</mat-icon>
+  </button>
+</ng-template>
+
+<ng-template #demo let-row let-column="column"> <div>{{ row.id }} -- {{ column }}</div> </ng-template>

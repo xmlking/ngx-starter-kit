@@ -10,10 +10,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | -------------------- | ------- | -------- |
 | Node                 | v11.1.0 |          |
 | NPM                  | v6.4.1  |          |
-| Angular CLI          | v7.1.0  |          |
-| @nrwl/schematics     | v7.1.0  |          |
+| Angular CLI          | v7.1.2  |          |
+| @nrwl/schematics     | v7.1.1  |          |
 | @nestjs/cli          | v5.6.3  |          |
-| semantic-release-cli | v4.0.11 |          |
+| semantic-release-cli | v4.0.12 |          |
+| commitizen           | v3.0.5  |          |
 
 ### Install Prerequisites
 
@@ -61,7 +62,7 @@ npm remove -g @nestjs/cli
 npm remove -g semantic-release-cli
 npm remove -g commitizen
 
-npm install -g @angular/cli@next
+npm install -g @angular/cli
 npm install -g @nrwl/schematics
 npm install -g @nestjs/cli
 npm install -g semantic-release-cli
@@ -76,6 +77,8 @@ ng config -g schematics.@nrwl/schematics:component.styleext scss
 ng config -g cli.packageManager npm
 # set jest as default TestRunner
 ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
+# set scss as default styleext for ngx-formly
+ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
 more cat ~/.angular-config.json
 # show dependency tree for specified package.
@@ -235,6 +238,7 @@ ng update @nrwl/schematics --force
 # generate `Lazy-loaded Feature Modules`
 ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
 ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
+ng g lib admin          --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
 ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest --tags=entry-module
 ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
@@ -386,75 +390,91 @@ ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-vie
 
 # generate components for `toolbar` Module
 ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest -d
-ng g component toolbar --project=toolbar --flat -d
-ng g component components/search --project=toolbar  -d
-ng g component components/searchBar --project=toolbar
-ng g component components/UserMenu --project=toolbar
-ng g component components/FullscreenToggle --project=toolbar -d
+ng g component toolbar                        --project=toolbar --flat -d
+ng g component components/search              --project=toolbar -d
+ng g component components/searchBar           --project=toolbar -d
+ng g component components/UserMenu            --project=toolbar -d
+ng g component components/FullscreenToggle    --project=toolbar -d
 ng g component components/SidenavMobileToggle --project=toolbar -d
-ng g component components/QuickpanelToggle --project=toolbar -d
+ng g component components/QuickpanelToggle    --project=toolbar -d
 
 # generate components for `sidenav` Module
 ng g lib sidenav --prefix=ngx --tags=private-module --unit-test-runner=jest -d
-ng g component sidenav --project=sidenav --flat -d
-ng g component components/sidenavItem --project=sidenav  -d
-ng g directive  IconSidenav --project=sidenav -d
+ng g component sidenav                --project=sidenav --flat -d
+ng g component components/sidenavItem --project=sidenav -d
+ng g directive  IconSidenav           --project=sidenav -d
 
 # generate components for `auth` Module
 ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
 ng g component components/login --project=auth -d
+ng g guard admin --project=auth  -d
 ng g @ngxs/schematics:store --name=auth --spec --project=auth -d
 
 # generate components for `navigator` Module
 ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest -d
-ng g service services/menu --project=navigator -d
-ng g class models/menuItem --project=navigator --type=model  -d
-ng g class state/menu --project=navigator --type=state  -d
+ng g service services/menu  --project=navigator -d
+ng g class models/menuItem  --project=navigator --type=model  -d
+ng g class state/menu       --project=navigator --type=state  -d
 
 # generate containers, components for `home` Module
-ng g component components/header --project=home
-ng g component containers/homeLayout --project=home
-ng g component containers/landing --project=home
-ng g component containers/blog --project=home
-ng g component containers/about --project=home
+ng g component components/header      --project=home
+ng g component containers/homeLayout  --project=home
+ng g component containers/landing     --project=home
+ng g component containers/blog        --project=home
+ng g component containers/about       --project=home
 
 # generate containers, components for `dashboard` Module
-ng g component components/rainbow --project=dashboard -d
+ng g component components/rainbow         --project=dashboard -d
 ng g component containers/dashboardLayout --project=dashboard -d
-ng g component containers/overview --project=dashboard -d
-ng g component containers/profile --project=dashboard -d
-ng g component containers/settings --project=dashboard -d
+ng g component containers/overview        --project=dashboard -d
+ng g component containers/profile         --project=dashboard -d
+ng g component containers/settings        --project=dashboard -d
 
 # generate containers, components for `widgets` Module
 ng g component containers/wizdash --project=widgets -d
 
 # generate containers, components for `grid` Module
-ng g component  containers/AccountsTable --project=grid -d
-ng g component  components/AccountDetail --project=grid  -d
-ng g component  components/AccountEdit --project=grid  -d
-ng g class      models/account --type=model --project=grid  -d
-ng g service    services/account --project=grid  -d
+ng g component  containers/AccountsTable    --project=grid -d
+ng g component  components/AccountDetail    --project=grid  -d
+ng g component  components/AccountEdit      --project=grid  -d
+ng g class      models/account              --project=grid --type=model -d
+ng g service    services/account            --project=grid  -d
 ng g component  containers/AccountsGridList --project=grid  -d
 
 # generate containers, components for `experiments` Module
-ng g component containers/animations --project=experiments -d
-ng g component components/hammerCard --project=experiments -d
+ng g component containers/animations            --project=experiments -d
+ng g component components/hammerCard            --project=experiments -d
 ng g directive components/Hammertime/Hammertime --project=experiments -d
-ng g component containers/ContextMenu --project=experiments -d
-ng g component containers/FileUpload --project=experiments -d
-ng g component containers/virtualScroll --project=experiments -d
-ng g component containers/StickyTable --project=experiments -d
-ng g component containers/clapButton --project=experiments  -s  -t --spec=false  -d
-ng g component containers/knobDemo --project=experiments -d
-ng g component containers/ledDemo --project=experiments  -d
-ng g component containers/ImageComp --project=experiments  -d
-ng g component containers/layout --project=experiments -d
-ng g component components/card --project=experiments -d
-ng g component containers/viewport --project=experiments --spec=false -d
+ng g component containers/ContextMenu           --project=experiments -d
+ng g component containers/FileUpload            --project=experiments -d
+ng g component containers/virtualScroll         --project=experiments -d
+ng g component containers/StickyTable           --project=experiments -d
+ng g component containers/clapButton            --project=experiments -s  -t --spec=false  -d
+ng g component containers/knobDemo              --project=experiments -d
+ng g component containers/ledDemo               --project=experiments  -d
+ng g component containers/ImageComp             --project=experiments  -d
+ng g component containers/layout                --project=experiments -d
+ng g component components/card                  --project=experiments -d
+ng g component containers/viewport              --project=experiments --spec=false -d
 
 # generate components for `ImageComparison` Module
 ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true -d
 ng g component ImageComparison --project=image-comparison --export --flat -d
+
+
+# generate containers, components for `admin` Module
+ng g component containers/overview            --project=admin -d
+ng g component containers/adminLayout         --project=admin -d
+
+ng g component containers/notifications       --project=admin -d
+ng g component components/notificationDetail  --project=admin  -d
+ng g component components/notificationEdit    --project=admin  -d
+ng g service   services/notification          --project=admin  -d
+
+ng g component containers/subscriptions       --project=admin -d
+ng g component components/subscriptionDetail  --project=admin  -d
+ng g class     models/subscription            --project=admin --type=model -d
+ng g service   services/subscription          --project=admin  -d
 ```
 
 #### Workspace Schematics

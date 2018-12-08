@@ -1,0 +1,13 @@
+<h1 mat-dialog-title cdkDrag cdkDragHandle cdkDragRootElement=".cdk-overlay-pane" style="cursor: move">{{ title }}</h1>
+
+<form [formGroup]="entityForm" (ngSubmit)="submit()">
+  <mat-dialog-content>
+    <formly-form [model]="model" [fields]="fields" [options]="options" [form]="entityForm"> </formly-form>
+  </mat-dialog-content>
+  <mat-dialog-actions fxLayout="row" fxLayoutAlign="space-between center">
+    <button mat-button color="warn" type="button" (click)="options.resetModel()" [mat-dialog-close]="false">
+      Cancel
+    </button>
+    <button mat-raised-button color="primary" [disabled]="entityForm.invalid">Save</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,16 @@
+<mat-sidenav-container class="dashboard-container">
+  <mat-sidenav class="quickpanel" [opened]="quickpanelOpen" position="end" align="end" mode="over" #quickpanel>
+    <ngx-quickpanel></ngx-quickpanel>
+  </mat-sidenav>
+
+  <mat-sidenav-content class="content-container" fxLayout="column">
+    <ngx-toolbar [quickpanel]="quickpanel"></ngx-toolbar>
+    <!--<ngx-topnav></ngx-topnav>-->
+    <div class="wrapper">
+      <ngx-breadcrumbs title="Admin" [crumbs]="crumbs$ | async"></ngx-breadcrumbs>
+      <perfect-scrollbar [usePSClass]="noPSClass" style="overflow: visible">
+        <div [@routeAnimation]="depth$ | async"><router-outlet (activate)="onActivate($event)"></router-outlet></div>
+      </perfect-scrollbar>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
