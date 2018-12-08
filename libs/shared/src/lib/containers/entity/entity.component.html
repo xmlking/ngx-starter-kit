@@ -1,7 +1,3 @@
-<!-- FIXME Only used for GRID Demo -->
-<ngx-breadcrumbs title="Grid" [crumbs]="crumbs"></ngx-breadcrumbs>
-<!-- FIXME End -->
-
 <div fxLayout="column">
   <mat-card class="mat-elevation-z8">
     <mat-toolbar *ngIf="showToolbar">
@@ -87,9 +83,21 @@
         </mat-cell>
       </ng-container>
 
-      <ng-container *ngFor="let column of columns" [matColumnDef]="column.property">
+      <ng-container
+        *ngFor="let column of columns"
+        [matColumnDef]="column.property"
+        [sticky]="column.sticky === 'start'"
+        [stickyEnd]="column.sticky === 'end'"
+      >
         <mat-header-cell *matHeaderCellDef mat-sort-header> {{ column.header }} </mat-header-cell>
-        <mat-cell *matCellDef="let row"> {{ column.displayFn(row) }} </mat-cell>
+        <mat-cell *matCellDef="let row">
+          <ng-container *ngIf="column.template; else noTemplate">
+            <ng-container
+              *ngTemplateOutlet="column.template; context: { $implicit: row, column: row[column.property] }"
+            ></ng-container>
+          </ng-container>
+          <ng-template #noTemplate> {{ column.displayFn(row) }} </ng-template>
+        </mat-cell>
       </ng-container>
 
       <ng-container *ngIf="showActionColumn" [matColumnDef]="actionColumn" sticky>
