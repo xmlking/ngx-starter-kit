@@ -51,7 +51,8 @@ export class NotificationsState implements NgxsOnInit {
     setState(
       getState().map(notification => {
         if (notification === payload) {
-          notification.read = true;
+          // notification.read = true;
+          return { ...notification, ...{ read: true } };
         }
         return notification;
       }),
@@ -62,8 +63,7 @@ export class NotificationsState implements NgxsOnInit {
   markAllAsRead({ getState, setState, patchState }: StateContext<AppNotification[]>) {
     setState(
       getState().map(notification => {
-        notification.read = true;
-        return notification;
+        return { ...notification, ...{ read: true } };
       }),
     );
   }

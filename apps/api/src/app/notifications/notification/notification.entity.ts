@@ -15,12 +15,12 @@ export enum NotificationColor {
 }
 
 export enum NotificationIcon {
-  notifications = 'notifications',
-  notifications_active = 'notifications_active',
-  shopping_basket = 'shopping_basket',
-  eject = 'eject',
-  cached = 'cached',
-  code = 'code',
+  NOTIFICATIONS = 'notifications',
+  NOTIFICATIONS_ACTIVE = 'notifications_active',
+  SHOPPING_BASKET = 'shopping_basket',
+  EJECT = 'eject',
+  CACHED = 'cached',
+  CODE = 'code',
 }
 
 @Entity('notification')
@@ -42,8 +42,8 @@ export class Notification extends Base {
   @Column({ enum: ['all', 'user', 'topic'] })
   targetType: string;
 
-  @ApiModelProperty({ type: String, enum: NotificationIcon, default: NotificationIcon.notifications })
-  @Column({ enum: NotificationIcon, default: NotificationIcon.notifications })
+  @ApiModelProperty({ type: String, enum: NotificationIcon, default: NotificationIcon.NOTIFICATIONS })
+  @Column({ enum: NotificationIcon, default: NotificationIcon.NOTIFICATIONS })
   icon?: NotificationIcon;
 
   @ApiModelProperty({ type: String, enum: NotificationColor, default: NotificationColor.PRIMARY })
@@ -60,6 +60,11 @@ export class Notification extends Base {
   @Column({ default: false })
   native?: boolean;
 
+  @ApiModelProperty({ type: Boolean, default: true })
+  @Index()
+  @Column({ default: true })
+  isActive?: boolean;
+
   @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn()
   createdAt?: Date;
@@ -71,9 +76,4 @@ export class Notification extends Base {
   @Exclude()
   @VersionColumn()
   version?: number;
-
-  @ApiModelProperty({ type: Boolean, default: true })
-  @Index()
-  @Column({ default: true })
-  isActive: boolean;
 }

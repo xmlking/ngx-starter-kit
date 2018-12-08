@@ -2,10 +2,9 @@ import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class SendNotificationDto {
-  @ApiModelProperty({ type: String })
+  @ApiModelProperty({ type: Number })
   @IsNotEmpty()
-  @IsString()
-  id: string;
+  id: number;
 
   @ApiModelPropertyOptional({ type: String })
   @IsOptional()

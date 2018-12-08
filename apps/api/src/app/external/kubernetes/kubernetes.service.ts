@@ -51,7 +51,11 @@ export class KubernetesService implements OnModuleInit {
     // }
   }
 
-  public async listNamespaces(cluster: string) {
+  getClusterNames() {
+    return this.clients.keys();
+  }
+
+  async listNamespaces(cluster: string) {
     try {
       const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
       return namespaces.body.items;
@@ -60,7 +64,7 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  public async myNamespaces(cluster: string, token: string) {
+  async myNamespaces(cluster: string, token: string) {
     try {
       // this.client.get(cluster).setToken(token)
       const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
@@ -70,7 +74,7 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  public async getNamespace(cluster: string, namespace: string) {
+  async getNamespace(cluster: string, namespace: string) {
     try {
       const namespace1 = await this.clients
         .get(cluster)
@@ -82,7 +86,7 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  public async myServiceAccounts(cluster: string, namespace: string) {
+  async myServiceAccounts(cluster: string, namespace: string) {
     try {
       const namespaces = await this.clients
         .get(cluster)
@@ -94,7 +98,7 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  public async hasNamespace(cluster: string, namespace: string) {
+  async hasNamespace(cluster: string, namespace: string) {
     try {
       const foundNamespace = await this.clients
         .get(cluster)

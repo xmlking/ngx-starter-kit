@@ -12,14 +12,13 @@ export enum NotificationColor {
 }
 
 export enum NotificationIcon {
-  notifications = 'notifications',
-  notifications_active = 'notifications_active',
-  shopping_basket = 'shopping_basket',
-  eject = 'eject',
-  cached = 'cached',
-  code = 'code',
+  NOTIFICATIONS = 'notifications',
+  NOTIFICATIONS_ACTIVE = 'notifications_active',
+  SHOPPING_BASKET = 'shopping_basket',
+  EJECT = 'eject',
+  CACHED = 'cached',
+  CODE = 'code',
 }
-
 
 export class AppNotification extends Entity {
   public id: number;
@@ -31,6 +30,7 @@ export class AppNotification extends Entity {
   public color: NotificationColor;
   public read: boolean;
   public native: boolean;
+  public isActive: boolean;
   public createdAt: Date;
   public updatedAt?: Date;
 }
