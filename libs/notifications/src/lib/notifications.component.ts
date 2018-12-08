@@ -27,7 +27,6 @@ export class NotificationsComponent implements OnInit {
 
   markAsRead(notification) {
     this.store.dispatch(new MarkAsRead(notification));
-    notification.read = true;
   }
 
   dismiss(notification, event) {

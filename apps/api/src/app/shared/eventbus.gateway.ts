@@ -62,7 +62,7 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
   @SubscribeMessage('actions')
   onActions(client: ISocket, action: any) {
     // this.logger.log(`actions  => ${client.id}  ${client.user.userId} ${action.type} ${action.payload}`);
-    this.emit(action.type, action);
+    this.emit(action.type, action, client.user);
   }
 
   public sendActionToUser<T>(user: User, action: any): void {

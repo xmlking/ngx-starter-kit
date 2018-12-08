@@ -4,7 +4,7 @@ import { Any, In, Repository } from 'typeorm';
 import { CrudService } from '../../core';
 import { Notification, TargetType } from './notification.entity';
 import { EventBusGateway } from '../../shared';
-import { MarkAsRead, DeleteNotification } from '../index';
+import { DeleteNotification, MarkAsRead } from '../index';
 import { User } from '../../auth';
 import { SubscriptionService } from '../subscription/subscription.service';
 import { PushService } from './push.service';
@@ -69,10 +69,16 @@ export class NotificationService extends CrudService<Notification> {
     });
   }
 
-  async onMarkAsRead(action: MarkAsRead) {
-    await this.update({ id: parseInt(action.payload.id, 10) }, { read: true });
+  async onMarkAsRead(action: MarkAsRead, user: User) {
+    await this.update(
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { read: true },
+    );
   }
-  async onDeleteNotification(action: DeleteNotification) {
-    await this.update({ id: parseInt(action.payload.id, 10) }, { isActive: false });
+  async onDeleteNotification(action: DeleteNotification, user: User) {
+    await this.update(
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { isActive: false },
+    );
   }
 }

@@ -25,7 +25,7 @@ export class CreateNotificationDto {
   @IsEnum(TargetType)
   readonly targetType: TargetType;
 
-  @ApiModelPropertyOptional({ type: String, enum: NotificationIcon, default: NotificationIcon.notifications })
+  @ApiModelPropertyOptional({ type: String, enum: NotificationIcon, default: NotificationIcon.NOTIFICATIONS })
   @IsOptional()
   @IsEnum(NotificationIcon)
   readonly icon?: NotificationIcon;
