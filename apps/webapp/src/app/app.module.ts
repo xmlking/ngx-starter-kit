@@ -28,6 +28,7 @@ export class MyHammerConfig extends HammerGestureConfig {
         { path: '', redirectTo: 'home', pathMatch: 'full' },
         { path: 'home', loadChildren: '@ngx-starter-kit/home#HomeModule', data: { preload: true } },
         { path: 'dashboard', loadChildren: '@ngx-starter-kit/dashboard#DashboardModule', data: { preload: true } },
+        { path: 'admin', loadChildren: '@ngx-starter-kit/admin#AdminModule', data: { preload: false } },
         {
           path: '404',
           loadChildren: '@ngx-starter-kit/not-found#NotFoundModule',

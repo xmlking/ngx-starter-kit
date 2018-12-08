@@ -17,6 +17,8 @@
 
     "../../libs/grid/src/index.ts",
 
-    "../../libs/not-found/src/index.ts"
+    "../../libs/not-found/src/index.ts",
+
+    "../../libs/admin/src/index.ts"
   ]
 }
