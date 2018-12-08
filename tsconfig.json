@@ -10,146 +10,53 @@
     "experimentalDecorators": true,
     "target": "es5",
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom",
-      "esnext.array"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom", "esnext.array"],
     "baseUrl": ".",
     "paths": {
-      "@ngx-starter-kit/*": [
-        "libs/*"
-      ],
-      "@env/*": [
-        "apps/webapp/src/environments/*"
-      ],
-      "@env-api/environment": [
-        "apps/api/src/environments/environment.ts"
-      ],
-      "@ngx-starter-kit/models": [
-        "libs/models/src/index.ts"
-      ],
-      "@ngx-starter-kit/core": [
-        "libs/core/src/index.ts"
-      ],
-      "@ngx-starter-kit/shared": [
-        "libs/shared/src/index.ts"
-      ],
-      "@ngx-starter-kit/navigator": [
-        "libs/navigator/src/index.ts"
-      ],
-      "@ngx-starter-kit/socketio-plugin": [
-        "libs/socketio-plugin/src/index.ts"
-      ],
-      "@ngx-starter-kit/tree": [
-        "libs/tree/src/index.ts"
-      ],
-      "@ngx-starter-kit/home": [
-        "libs/home/src/index.ts"
-      ],
-      "@ngx-starter-kit/dashboard": [
-        "libs/dashboard/src/index.ts"
-      ],
-      "@ngx-starter-kit/not-found": [
-        "libs/not-found/src/index.ts"
-      ],
-      "@ngx-starter-kit/experiments": [
-        "libs/experiments/src/index.ts"
-      ],
-      "@ngx-starter-kit/widgets": [
-        "libs/widgets/src/index.ts"
-      ],
-      "@ngx-starter-kit/material": [
-        "libs/material/src/index.ts"
-      ],
-      "@ngx-starter-kit/animations": [
-        "libs/animations/src/index.ts"
-      ],
-      "@ngx-starter-kit/utils": [
-        "libs/utils/src/index.ts"
-      ],
-      "@ngx-starter-kit/auth": [
-        "libs/auth/src/index.ts"
-      ],
-      "@ngx-starter-kit/app-confirm": [
-        "libs/app-confirm/src/index.ts"
-      ],
-      "@ngx-starter-kit/draggable": [
-        "libs/draggable/src/index.ts"
-      ],
-      "@ngx-starter-kit/breadcrumbs": [
-        "libs/breadcrumbs/src/index.ts"
-      ],
-      "@ngx-starter-kit/scroll-to-top": [
-        "libs/scroll-to-top/src/index.ts"
-      ],
-      "@ngx-starter-kit/scrollbar": [
-        "libs/scrollbar/src/index.ts"
-      ],
-      "@ngx-starter-kit/context-menu": [
-        "libs/context-menu/src/index.ts"
-      ],
-      "@ngx-starter-kit/theme-picker": [
-        "libs/theme-picker/src/index.ts"
-      ],
-      "@ngx-starter-kit/quickpanel": [
-        "libs/quickpanel/src/index.ts"
-      ],
-      "@ngx-starter-kit/svg-viewer": [
-        "libs/svg-viewer/src/index.ts"
-      ],
-      "@ngx-starter-kit/led": [
-        "libs/led/src/index.ts"
-      ],
-      "@ngx-starter-kit/chat-box": [
-        "libs/chat-box/src/index.ts"
-      ],
-      "@ngx-starter-kit/json-diff": [
-        "libs/json-diff/src/index.ts"
-      ],
-      "@ngx-starter-kit/toolbar": [
-        "libs/toolbar/src/index.ts"
-      ],
-      "@ngx-starter-kit/sidenav": [
-        "libs/sidenav/src/index.ts"
-      ],
-      "@ngx-starter-kit/loading-overlay": [
-        "libs/loading-overlay/src/index.ts"
-      ],
-      "@ngx-starter-kit/grid": [
-        "libs/grid/src/index.ts"
-      ],
-      "notifications/*": [
-        "dist/notifications/*"
-      ],
-      "@ngx-starter-kit/notifications": [
-        "libs/notifications/src/index.ts"
-      ],
-      "clap/*": [
-        "dist/clap/*"
-      ],
-      "@ngx-starter-kit/clap": [
-        "libs/clap/src/index.ts"
-      ],
-      "image-comparison/*": [
-        "dist/image-comparison/*"
-      ],
-      "@ngx-starter-kit/image-comparison": [
-        "libs/image-comparison/src/index.ts"
-      ],
-      "@ngx-starter-kit/ngx-utils": [
-        "libs/ngx-utils/src/index.ts"
-      ]
+      "@ngx-starter-kit/*": ["libs/*"],
+      "@env/*": ["apps/webapp/src/environments/*"],
+      "@env-api/environment": ["apps/api/src/environments/environment.ts"],
+      "@ngx-starter-kit/models": ["libs/models/src/index.ts"],
+      "@ngx-starter-kit/core": ["libs/core/src/index.ts"],
+      "@ngx-starter-kit/shared": ["libs/shared/src/index.ts"],
+      "@ngx-starter-kit/navigator": ["libs/navigator/src/index.ts"],
+      "@ngx-starter-kit/socketio-plugin": ["libs/socketio-plugin/src/index.ts"],
+      "@ngx-starter-kit/tree": ["libs/tree/src/index.ts"],
+      "@ngx-starter-kit/home": ["libs/home/src/index.ts"],
+      "@ngx-starter-kit/dashboard": ["libs/dashboard/src/index.ts"],
+      "@ngx-starter-kit/not-found": ["libs/not-found/src/index.ts"],
+      "@ngx-starter-kit/experiments": ["libs/experiments/src/index.ts"],
+      "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"],
+      "@ngx-starter-kit/material": ["libs/material/src/index.ts"],
+      "@ngx-starter-kit/animations": ["libs/animations/src/index.ts"],
+      "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"],
+      "@ngx-starter-kit/auth": ["libs/auth/src/index.ts"],
+      "@ngx-starter-kit/app-confirm": ["libs/app-confirm/src/index.ts"],
+      "@ngx-starter-kit/draggable": ["libs/draggable/src/index.ts"],
+      "@ngx-starter-kit/breadcrumbs": ["libs/breadcrumbs/src/index.ts"],
+      "@ngx-starter-kit/scroll-to-top": ["libs/scroll-to-top/src/index.ts"],
+      "@ngx-starter-kit/scrollbar": ["libs/scrollbar/src/index.ts"],
+      "@ngx-starter-kit/context-menu": ["libs/context-menu/src/index.ts"],
+      "@ngx-starter-kit/theme-picker": ["libs/theme-picker/src/index.ts"],
+      "@ngx-starter-kit/quickpanel": ["libs/quickpanel/src/index.ts"],
+      "@ngx-starter-kit/svg-viewer": ["libs/svg-viewer/src/index.ts"],
+      "@ngx-starter-kit/led": ["libs/led/src/index.ts"],
+      "@ngx-starter-kit/chat-box": ["libs/chat-box/src/index.ts"],
+      "@ngx-starter-kit/json-diff": ["libs/json-diff/src/index.ts"],
+      "@ngx-starter-kit/toolbar": ["libs/toolbar/src/index.ts"],
+      "@ngx-starter-kit/sidenav": ["libs/sidenav/src/index.ts"],
+      "@ngx-starter-kit/loading-overlay": ["libs/loading-overlay/src/index.ts"],
+      "@ngx-starter-kit/grid": ["libs/grid/src/index.ts"],
+      "notifications/*": ["dist/notifications/*"],
+      "@ngx-starter-kit/notifications": ["libs/notifications/src/index.ts"],
+      "clap/*": ["dist/clap/*"],
+      "@ngx-starter-kit/clap": ["libs/clap/src/index.ts"],
+      "image-comparison/*": ["dist/image-comparison/*"],
+      "@ngx-starter-kit/image-comparison": ["libs/image-comparison/src/index.ts"],
+      "@ngx-starter-kit/ngx-utils": ["libs/ngx-utils/src/index.ts"],
+      "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"]
     }
   },
-  "exclude": [
-    "node_modules",
-    "tmp",
-    "dist/**/*",
-    "coverage/**/*",
-    "tools/**/_*files/**/*"
-  ]
+  "exclude": ["node_modules", "tmp", "dist/**/*", "coverage/**/*", "tools/**/_*files/**/*"]
 }
