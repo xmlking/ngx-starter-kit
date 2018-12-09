@@ -16,9 +16,10 @@ const cellHtmlTpl = require('./cell.templates.html');
 
 // tslint:disable-next-line
 @Component({
-  selector: 'ngx-notifications',
+  selector: 'ngx-admin-notifications',
+  // FIXME: AOT build not working with require
   template: entityHtmlTpl + cellHtmlTpl,
-  // templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
+  // templateUrl: './notifications.component.html',
   styleUrls: [
     './notifications.component.scss',
     '../../../../../shared/src/lib/containers/entity/entity.component.scss',

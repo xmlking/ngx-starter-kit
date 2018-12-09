@@ -15,9 +15,10 @@ const cellHtmlTpl = require('./cell.templates.html');
 
 // tslint:disable-next-line
 @Component({
-  selector: 'ngx-subscriptions',
+  selector: 'ngx-admin-subscriptions',
+  // FIXME: AOT build not working with require
   template: entityHtmlTpl + cellHtmlTpl,
-  // templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
+  // templateUrl: './subscriptions.component.html',
   styleUrls: [
     './subscriptions.component.scss',
     '../../../../../shared/src/lib/containers/entity/entity.component.scss',

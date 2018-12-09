@@ -13,8 +13,6 @@ import { NotificationsComponent } from '../notifications/notifications.component
   animations: [hierarchicalRouteAnimation],
 })
 export class AdminLayoutComponent implements OnInit {
-  // @ViewChild('sumo') sumoTpl: TemplateRef<any>;
-  @ViewChild('demo') demoTpl: TemplateRef<any>;
   quickpanelOpen = false;
   crumbs$;
   depth$;

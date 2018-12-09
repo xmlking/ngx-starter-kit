@@ -29,48 +29,6 @@
       "updatedAt": "2018-12-09T06:22:08.201Z"
     },
     {
-      "id": 10,
-      "title": "title for sumo1",
-      "body": "sample body for sumo1",
-      "target": "sumo1",
-      "targetType": "user",
-      "icon": "notifications",
-      "color": "primary",
-      "read": false,
-      "native": true,
-      "isActive": true,
-      "createdAt": "2018-12-04T16:25:42.546Z",
-      "updatedAt": "2018-12-04T16:25:42.546Z"
-    },
-    {
-      "id": 5,
-      "title": "title for topic1",
-      "body": "sample body for topic1",
-      "target": "topic_1",
-      "targetType": "topic",
-      "icon": "notifications",
-      "color": "primary",
-      "read": false,
-      "native": false,
-      "isActive": true,
-      "createdAt": "2018-12-04T16:23:25.712Z",
-      "updatedAt": "2018-12-04T16:23:25.712Z"
-    },
-    {
-      "id": 6,
-      "title": "title for topic2",
-      "body": "sample body for topic2",
-      "target": "topic_2",
-      "targetType": "topic",
-      "icon": "notifications",
-      "color": "primary",
-      "read": false,
-      "native": true,
-      "isActive": true,
-      "createdAt": "2018-12-04T16:24:25.001Z",
-      "updatedAt": "2018-12-04T16:24:25.001Z"
-    },
-    {
       "id": 3,
       "title": "sumo3 sending by admin",
       "body": "sumo3 sending by admin",
@@ -78,11 +36,11 @@
       "targetType": "user",
       "icon": "notifications",
       "color": "primary",
-      "read": false,
+      "read": true,
       "native": true,
       "isActive": true,
       "createdAt": "2018-12-04T16:26:11.107Z",
-      "updatedAt": "2018-12-09T07:08:44.868Z"
+      "updatedAt": "2018-12-09T08:12:52.262Z"
     },
     {
       "id": 2,
@@ -99,20 +57,6 @@
       "updatedAt": "2018-12-08T00:41:58.748Z"
     },
     {
-      "id": 8,
-      "title": "title for sumo2",
-      "body": "sample body for sumo2",
-      "target": "sumo2",
-      "targetType": "user",
-      "icon": "notifications",
-      "color": "primary",
-      "read": false,
-      "native": true,
-      "isActive": true,
-      "createdAt": "2018-12-04T16:25:23.540Z",
-      "updatedAt": "2018-12-04T16:25:23.540Z"
-    },
-    {
       "id": 14,
       "title": "title111222",
       "body": "body111",
@@ -127,5 +71,5 @@
       "updatedAt": "2018-12-09T06:00:41.401Z"
     }
   ],
-  9
+  5
 ]

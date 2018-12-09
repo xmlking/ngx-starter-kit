@@ -20,6 +20,9 @@ export class InMemoryDataService implements InMemoryDbService {
     const notificationsResponse = await fetch('assets/data/notifications.json');
     const notifications = await notificationsResponse.json();
 
+    const subscriptionResponse = await fetch('assets/data/subscription.json');
+    const subscription = await subscriptionResponse.json();
+
     const symbols = [
       {
         id: 1,
@@ -38,7 +41,7 @@ export class InMemoryDataService implements InMemoryDbService {
       },
     ];
 
-    return { accounts, symbols, notifications };
+    return { accounts, symbols, notifications, subscription };
   }
 
   parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
