@@ -8,7 +8,7 @@
     <!--<ngx-topnav></ngx-topnav>-->
     <div class="wrapper">
       <ngx-breadcrumbs title="Admin" [crumbs]="crumbs$ | async"></ngx-breadcrumbs>
-      <perfect-scrollbar [usePSClass]="noPSClass" style="overflow: visible">
+      <perfect-scrollbar [usePSClass]="false" style="overflow: visible">
         <div [@routeAnimation]="depth$ | async"><router-outlet (activate)="onActivate($event)"></router-outlet></div>
       </perfect-scrollbar>
     </div>
