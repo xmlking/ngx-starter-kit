@@ -11,15 +11,15 @@ import { AppNotification, TargetType, NotificationColor, NotificationIcon } from
 import { NotificationService } from '../../services/notification.service';
 import { NotificationEditComponent } from '../../components/notification-edit/notification-edit.component';
 
-const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
-const cellHtmlTpl = require('./cell.templates.html');
+// const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
+// const cellHtmlTpl = require('./cell.templates.html');
 
 // tslint:disable-next-line
 @Component({
   selector: 'ngx-admin-notifications',
   // FIXME: AOT build not working with require
-  template: entityHtmlTpl + cellHtmlTpl,
-  // templateUrl: './notifications.component.html',
+  // template: entityHtmlTpl + cellHtmlTpl,
+  templateUrl: './notifications.component.html',
   styleUrls: [
     './notifications.component.scss',
     '../../../../../shared/src/lib/containers/entity/entity.component.scss',
