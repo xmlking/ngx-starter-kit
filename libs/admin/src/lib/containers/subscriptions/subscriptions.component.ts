@@ -10,15 +10,15 @@ import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
 import { SubscriptionService } from '../../services/subscription.service';
 import { Subscription } from '../../models/subscription.model';
 
-const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
-const cellHtmlTpl = require('./cell.templates.html');
+// const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
+// const cellHtmlTpl = require('./cell.templates.html');
 
 // tslint:disable-next-line
 @Component({
   selector: 'ngx-admin-subscriptions',
   // FIXME: AOT build not working with require
-  template: entityHtmlTpl + cellHtmlTpl,
-  // templateUrl: './subscriptions.component.html',
+  // template: entityHtmlTpl + cellHtmlTpl,
+  templateUrl: './subscriptions.component.html',
   styleUrls: [
     './subscriptions.component.scss',
     '../../../../../shared/src/lib/containers/entity/entity.component.scss',

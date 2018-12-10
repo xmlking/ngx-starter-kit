@@ -1,5 +1,6 @@
-Awesome
-=======
+Awesome Links
+==============
+
 A curated list of awesome Angular resources
 
 * How do I use this template projects?
@@ -195,6 +196,8 @@ semantic-release is a fully automated library/system for versioning, changelog g
 * How to setup NestJS Project?
 
 > Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
+<br/>
+> Refer [Vendure](https://github.com/vendure-ecommerce/vendure) an eCommerce framework build with GraphQL and NestJS 
 
 * Shoud I use mergeMap or  concatMap or switchMap or forkJoin for my usecase? 
 
