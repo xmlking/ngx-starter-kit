@@ -40,7 +40,6 @@ export class MyHammerConfig extends HammerGestureConfig {
       {
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-        initialNavigation: 'enabled',
         preloadingStrategy: PreloadAllModules, // TODO: PreloadSelectedModulesList
         paramsInheritanceStrategy: 'always',
         // enableTracing: true, // enable to debug routing during development
