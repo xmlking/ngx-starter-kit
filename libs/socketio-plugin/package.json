@@ -1,9 +1,10 @@
 {
-  "name": "socketio-plugin",
+  "name": "@ngx-starter-kit/socketio-plugin",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": "^7.0.0",
-    "@angular/core": "^7.0.0",
-    "socket.io-client": "^2.1.1"
+    "@angular/common": "^7.1.0",
+    "@angular/core": "^7.1.0",
+    "@ngxs/store": "^3.3.0",
+    "socket.io-client": "^2.2.0"
   }
 }

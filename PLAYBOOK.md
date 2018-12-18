@@ -8,12 +8,12 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software             | Version | Optional |
 | -------------------- | ------- | -------- |
-| Node                 | v11.1.0 |          |
-| NPM                  | v6.4.1  |          |
-| Angular CLI          | v7.1.2  |          |
+| Node                 | v11.4.0 |          |
+| NPM                  | v6.5.0  |          |
+| Angular CLI          | v7.1.3  |          |
 | @nrwl/schematics     | v7.1.1  |          |
-| @nestjs/cli          | v5.6.3  |          |
-| semantic-release-cli | v4.0.12 |          |
+| @nestjs/cli          | v5.7.1  |          |
+| semantic-release-cli | v4.1.0  |          |
 | commitizen           | v3.0.5  |          |
 
 ### Install Prerequisites
@@ -126,6 +126,8 @@ ng update --all
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
 # or with ivy renderer
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d -- --experimental-ivy
+
+# NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
 # generate api app with nestjs
 ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module -d
@@ -251,7 +253,7 @@ ng g lib utils --module false --tags=utils --unit-test-runner=jest -d
 ng g lib models --module false --tags=utils --unit-test-runner=jest -d
 
 # add `core` module which will be only inported into root/app module.
-ng g lib core --prefix=ngx --tags=core-module --unit-test-runner=jest -d
+ng g lib core --tags=core-module --unit-test-runner=jest -d
 # add  global services for `core` Module
 ng g service services/InMemoryData   --project=core   --spec=false -d
 ng g service services/PageTitle      --project=core   -d
@@ -282,39 +284,39 @@ ng g component containers/NotFound --project=not-found -d
 ### generate `Reusable lib Modules`
 
 # generate components for `AppConfirm` Module
-ng g lib AppConfirm  --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib AppConfirm --tags=public-module --publishable=true --unit-test-runner=jest -d
 ng g component AppConfirm --project=app-confirm  --flat  -d
 ng g service AppConfirm --project=app-confirm --spec=false -d
 
 # generate components for `Draggable` Module
-ng g lib Draggable --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib Draggable --tags=public-module --publishable=true --unit-test-runner=jest
 ng g directive directives/Draggable --project=draggable --export=true -d
 
 # generate components for `Breadcrumbs` Module
-ng g lib Breadcrumbs --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib Breadcrumbs --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component breadcrumbs --project=breadcrumbs --flat -d
 ng g service  breadcrumbs --project=breadcrumbs -d
 
 # generate components for `ScrollToTop` Module
-ng g lib ScrollToTop --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ScrollToTop --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component ScrollToTop --project=scroll-to-top --flat -d
 
-ng g lib scrollbar --prefix=ngx --tags=public-module --publishable=true
+ng g lib scrollbar --tags=public-module --publishable=true
 
 
 # generate components for `ContextMenu` Module
-ng g lib ContextMenu --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ContextMenu --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component ContextMenu --project=context-menu --flat -d
 ng g directive ContextMenuTrigger --project=context-menu --flat -d
 
 # generate components, services for `ThemePicker` Module
-ng g lib ThemePicker --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ThemePicker --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component ThemePicker --project=theme-picker --flat -d
 ng g service  ThemeStorage --project=theme-picker -d
 ng g service  StyleManager --project=theme-picker -d
 
 # generate components for `Notifications` Module
-ng g lib Notifications --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib Notifications --tags=public-module --publishable=true --unit-test-runner=jest -d
 ng g component notifications --project=notifications --flat -d
 ng g class    notification --type=model --project=notifications -d
 ng g service  notifications --project=notifications -d
@@ -324,19 +326,19 @@ ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
 ng g component Quickpanel --project=quickpanel --flat -d
 
 # generate components for `LoadingOverlay` Module
-ng g lib LoadingOverlay --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib LoadingOverlay --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component LoadingOverlay --project=loading-overlay --flat -d
 
 # generate components for `svgViewer` Module
-ng g lib svgViewer --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib svgViewer --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component svgViewer --project=svg-viewer --flat -d
 
 # generate components for `led` Module
-ng g lib led --prefix=ngx --tags=public-module --publishable=true
+ng g lib led --tags=public-module --publishable=true
 ng g component led --project=led --flat -d
 
 # generate components for `chatBox` Module
-ng g lib chatBox --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib chatBox --tags=public-module --publishable=true --unit-test-runner=jest -d
 ng g component chatBox --project=chat-box --flat -d
 ng g component components/typingIndicator --project=chat-box -d
 ng g component components/chatCard --project=chat-box -d
@@ -347,28 +349,28 @@ ng g service services/TextToSpeech --project=chat-box -d
 ng g service services/chat --project=chat-box -d
 
 # generate components for `socketioPlugin` Module
-ng g lib socketioPlugin --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
+ng g lib socketioPlugin --tags=public-module --publishable=true --spec=false --unit-test-runner=jest -d
 ng g service socketioSubject --project=socketio-plugin -d
 
 # generate components for `openTracing` Module
-ng g lib openTracing --prefix=ngx --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
+ng g lib openTracing --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
 ng g service services/ZipkinTracing --project=open-tracing -d
 ng g interceptor interceptors/tracing  --project=open-tracing -d
 
 # generate components for `jsonDiff` Module
-ng g lib jsonDiff --prefix=ngx --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib jsonDiff --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component jsonDiff --project=json-diff --flat -d
 ng g component jsonDiffTree --project=json-diff --flat -d
 
 # generate components for `clap` Module
-ng g lib clap  --prefix=ngx --tags=public-module --spec=false --publishable=true --unit-test-runner=jest
+ng g lib clap --tags=public-module --spec=false --publishable=true --unit-test-runner=jest
 ng g component clap --project=clap  -s  -t --spec=false --export --flat -d
 ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  -d
 ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  -d
 ng g component components/fab --project=clap  -s  -t --spec=false --flat  -d
 
 # generate components for `ngx-utils` Module
-ng g lib ngxUtils  --prefix=ngx --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
+ng g lib ngxUtils --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
 ng g module pipes/truncate --project=ngx-utils --spec=false -d
 ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export -d
 ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export -d
@@ -389,7 +391,7 @@ ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-vie
 
 
 # generate components for `toolbar` Module
-ng g lib toolbar --prefix=ngx --tags=private-module --unit-test-runner=jest -d
+ng g lib toolbar --tags=private-module --unit-test-runner=jest -d
 ng g component toolbar                        --project=toolbar --flat -d
 ng g component components/search              --project=toolbar -d
 ng g component components/searchBar           --project=toolbar -d
@@ -399,7 +401,7 @@ ng g component components/SidenavMobileToggle --project=toolbar -d
 ng g component components/QuickpanelToggle    --project=toolbar -d
 
 # generate components for `sidenav` Module
-ng g lib sidenav --prefix=ngx --tags=private-module --unit-test-runner=jest -d
+ng g lib sidenav --tags=private-module --unit-test-runner=jest -d
 ng g component sidenav                --project=sidenav --flat -d
 ng g component components/sidenavItem --project=sidenav -d
 ng g directive  IconSidenav           --project=sidenav -d
@@ -458,7 +460,7 @@ ng g component components/card                  --project=experiments -d
 ng g component containers/viewport              --project=experiments --spec=false -d
 
 # generate components for `ImageComparison` Module
-ng g lib ImageComparison  --prefix=ngx --tags=public-module --spec=false --publishable=true -d
+ng g lib ImageComparison --tags=public-module --spec=false --publishable=true -d
 ng g component ImageComparison --project=image-comparison --export --flat -d
 
 
@@ -564,6 +566,19 @@ npx ngh --dir dist/apps/webapp
 npm whoami
 npx standard-version
 "release": "standard-version && git push — follow-tags origin master && npm publish"
+```
+
+#### build library
+```bash
+ng build socketio-plugin
+```
+#### publish library
+> from workspace root
+```bash
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# check who-am-i
+npm whoami
+npm publish dist/libs/socketio-plugin --access public
 ```
 
 ### Analyze

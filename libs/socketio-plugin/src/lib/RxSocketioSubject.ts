@@ -1,7 +1,9 @@
 import { NextObserver, Observable, Observer, Subscriber, Subscription, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import * as io from 'socket.io-client';
+import * as io_ from 'socket.io-client';
 import ConnectOpts = SocketIOClient.ConnectOpts;
+
+const io = io_;
 
 // TODO https://github.com/arjitkhullar/ocr/blob/master/src/app/socket.service.ts
 
