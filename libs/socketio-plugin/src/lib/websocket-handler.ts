@@ -31,7 +31,7 @@ export class WebSocketHandler {
     actions.pipe(ofActionDispatched(AuthenticateWebSocket)).subscribe(event => socket.auth({ sumo: 1 }));
     socket.connectionStatus.pipe(distinctUntilChanged()).subscribe(status => {
       if (status) {
-        store.dispatch(new WebSocketConnected());
+        store.dispatch(new WebSocketConnected({ socketId: socket.id }));
       } else {
         store.dispatch(new WebSocketDisconnected());
       }

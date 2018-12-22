@@ -90,7 +90,9 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
     this._socket = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
 
-    this._socket.on('connect', event => config.openObserver.next(event));
+    this._socket.on('connect', event =>
+      config.openObserver.next(new CustomEvent('opened', { detail: { id: this._socket.id } })),
+    );
 
     this._socket.on('disconnect', event => config.closeObserver.next(event));
 
