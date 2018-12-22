@@ -80,6 +80,7 @@ export class SendWebSocketAction {
 
 export class WebSocketConnected {
   static readonly type = '[Websocket] Connected';
+  constructor(public payload: { socketId: string }) {}
 }
 
 export class WebSocketDisconnected {

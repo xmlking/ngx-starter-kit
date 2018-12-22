@@ -314,6 +314,7 @@ ng g lib ThemePicker --tags=public-module --publishable=true --unit-test-runner=
 ng g component ThemePicker --project=theme-picker --flat -d
 ng g service  ThemeStorage --project=theme-picker -d
 ng g service  StyleManager --project=theme-picker -d
+ng g module ThemePickerService --project=theme-picker --flat -d
 
 # generate components for `Notifications` Module
 ng g lib Notifications --tags=public-module --publishable=true --unit-test-runner=jest -d

@@ -15,6 +15,10 @@ export class WebSocketSubject extends Subject<any> {
    * The connection status of the websocket.
    */
   connectionStatus = new Subject<boolean>();
+  private _id: string;
+  get id() {
+    return this._id;
+  }
 
   private _socket: RxSocketioSubject<SocketIOEvent>;
   private _internalConfig: RxSocketioSubjectConfig<SocketIOEvent>;
@@ -32,7 +36,12 @@ export class WebSocketSubject extends Subject<any> {
         },
       },
       openObserver: {
-        next: (e: Event) => this.connectionStatus.next(true),
+        next: (e: CustomEvent) => {
+          if (e.detail.id) {
+            this._id = e.detail.id;
+          }
+          this.connectionStatus.next(true);
+        },
       },
     };
   }
