@@ -58,5 +58,5 @@
       "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp", "dist/**/*", "coverage/**/*", "tools/**/_*files/**/*"]
+  "exclude": ["node_modules", "tmp", "dist/**/*", "coverage/**/*", "todo/**/*", "tools/**/_*files/**/*"]
 }
