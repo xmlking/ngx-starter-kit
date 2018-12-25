@@ -195,9 +195,6 @@ npm i -D @compodoc/compodoc
 npm i -D loaders.css
 npm i -D api-ai-javascript
 
-#  temp workaround
-npm i -D @angular/http
-
 # install without saving
 npm install trianglify --no-save --no-lock
 

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Any, In, Repository } from 'typeorm';
 import { CrudService } from '../../core';
@@ -11,7 +11,7 @@ import { PushService } from './push.service';
 import { Subscription } from '../subscription/subscription.entity';
 
 @Injectable()
-export class NotificationService extends CrudService<Notification> {
+export class NotificationService extends CrudService<Notification> implements OnModuleInit, OnModuleDestroy {
   constructor(
     private readonly pushService: PushService,
     private readonly eventBus: EventBusGateway,

@@ -15,16 +15,16 @@ export class EventBusHandler {
   constructor(private actions$: Actions, private store: Store) {
     this.actions$
       .pipe(ofActionSuccessful(ConnectWebSocket))
-      .subscribe(action => console.log('ConnectWebSocket........Action Successful'));
+      .subscribe(action => console.log('ConnectWebSocket', action));
     this.actions$
       .pipe(ofActionSuccessful(DisconnectWebSocket))
-      .subscribe(action => console.log('DisconnectWebSocket........Action Successful'));
+      .subscribe(action => console.log('DisconnectWebSocket', action));
     this.actions$.pipe(ofActionSuccessful(WebSocketConnected)).subscribe(action => {
-      console.log('WebSocketConnected........Action Successful');
+      console.log('WebSocketConnected', action);
       this.store.dispatch(new AuthenticateWebSocket());
     });
     this.actions$
       .pipe(ofActionSuccessful(WebSocketDisconnected))
-      .subscribe(action => console.log('WebSocketDisconnected........Action Successful'));
+      .subscribe(action => console.log('WebSocketDisconnected', action));
   }
 }
