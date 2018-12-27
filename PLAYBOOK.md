@@ -503,6 +503,12 @@ ng update @angular/core
 ng update --all
 ```
 
+### Build
+
+```bash
+# Create a translation source file
+ng xi18n --output-path apps/webapp/src/local
+```
 ### Run
 
 ```bash

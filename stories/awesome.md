@@ -56,7 +56,7 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Refer [here](https://github.com/nrwl/nx-examples)
 
 * internationalization ?
-> i18n coming soon
+> Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)
 
 * Component-Driven Development (CDD)
 > Read [CDD](https://www.learnstorybook.com/angular/en/get-started/)
