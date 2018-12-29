@@ -161,10 +161,13 @@ npm i angular-in-memory-web-api
 npm i angular-oauth2-oidc
 
 # Add NGXS
-ng add @ngxs/schematics # makesure "defaultCollection" is still  "@nrwl/schematics" in angular.json
+ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
 # or add NGXS manually
 npm i @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
 npm i -D @ngxs/schematics
+
+npm i @ngxs-labs/immer-adapter
+npm i immer
 
 # Add formly
 ng add @ngx-formly/schematics --ui-theme=material
