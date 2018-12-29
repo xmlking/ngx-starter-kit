@@ -1,6 +1,7 @@
 import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
-import { AppNotification } from './app-notification.model';
+import { produce } from '@ngxs-labs/immer-adapter';
 import { tap } from 'rxjs/operators';
+import { AppNotification } from './app-notification.model';
 import { NotificationsService } from './notifications.service';
 import {
   FetchNotifications,
@@ -32,8 +33,10 @@ export class NotificationsState implements NgxsOnInit {
   }
 
   @Action(AddNotification)
-  add({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: AddNotification) {
-    setState([...getState(), payload]);
+  add(ctx: StateContext<AppNotification[]>, { payload }: AddNotification) {
+    produce(ctx, (draft: AppNotification[]) => {
+      draft.push(payload);
+    });
   }
 
   @Action(FetchNotifications, { cancelUncompleted: true })
@@ -42,29 +45,27 @@ export class NotificationsState implements NgxsOnInit {
   }
 
   @Action(DeleteNotification)
-  delete({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: AddNotification) {
-    setState(getState().filter(note => note !== payload));
+  delete(ctx: StateContext<AppNotification[]>, { payload }: AddNotification) {
+    produce(ctx, draft => {
+      draft.splice(draft.findIndex(note => note.id === payload.id), 1);
+      // or (slower):
+      // return draft.filter(note => note.id !== payload.id);
+    });
   }
 
   @Action(MarkAsRead)
-  markAsRead({ getState, setState, patchState }: StateContext<AppNotification[]>, { payload }: MarkAsRead) {
-    setState(
-      getState().map(notification => {
-        if (notification === payload) {
-          // notification.read = true;
-          return { ...notification, ...{ read: true } };
-        }
-        return notification;
-      }),
-    );
+  markAsRead(ctx: StateContext<AppNotification[]>, { payload }: MarkAsRead) {
+    produce(ctx, draft => {
+      draft[draft.findIndex(note => note.id === payload.id)].read = true;
+    });
   }
 
   @Action(MarkAllAsRead)
-  markAllAsRead({ getState, setState, patchState }: StateContext<AppNotification[]>) {
-    setState(
-      getState().map(notification => {
-        return { ...notification, ...{ read: true } };
-      }),
-    );
+  markAllAsRead(ctx: StateContext<AppNotification[]>) {
+    produce(ctx, draft => {
+      draft.forEach(item => {
+        item.read = true;
+      });
+    });
   }
 }
