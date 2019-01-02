@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.json",
+  "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc/apps/webapp-e2e",
     "module": "commonjs",
@@ -8,18 +8,11 @@
   },
   "include": [
     "**/*.ts",
-    /* add all lazy-loaded libraries here: "../../../libs/my-lib/index.ts" */
-
     "../../libs/home/src/index.ts",
-
     "../../libs/dashboard/src/index.ts",
-
     "../../libs/experiments/src/index.ts",
-
     "../../libs/widgets/src/index.ts",
-
     "../../libs/grid/src/index.ts",
-
     "../../libs/not-found/src/index.ts"
   ]
 }
