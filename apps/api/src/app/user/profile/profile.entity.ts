@@ -1,6 +1,6 @@
 import { Column, Entity, JoinColumn, OneToOne } from 'typeorm';
-import { AuditBase } from '../../core';
-import { Image } from './Image.entity';
+import { AuditBase } from '../../core/entities/audit-base.entity';
+import { Image } from './image.entity';
 
 @Entity('profile')
 export class Profile extends AuditBase {

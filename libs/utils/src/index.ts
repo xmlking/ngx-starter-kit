@@ -1,4 +1,5 @@
-export { StateDef } from './lib/StateDef';
-export { waitUntil } from './lib/utils';
-export { DeepPartial } from './lib/DeepPartial';
-export { ObjectLiteral } from './lib/ObjectLiteral';
+export { StateDef } from './lib/state-def';
+export { waitUntil } from './lib/wait-until';
+export { DeepPartial } from './lib/deep-partial';
+export { ObjectLiteral } from './lib/object-literal';
+export * from './lib/require-multi';

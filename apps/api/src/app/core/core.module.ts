@@ -8,9 +8,19 @@ import { RequestContextMiddleware } from './context';
 import { ConfigService } from '../config';
 import { ConnectionOptions } from 'typeorm';
 import { environment as env } from '@env-api/environment';
-import { User } from '../auth/user.entity';
-import { Notification } from '../notifications/notification/notification.entity';
-import { Subscription } from '../notifications/subscription/subscription.entity';
+import { isClass } from '@ngx-starter-kit/utils';
+
+function requireAllClasses(rc) {
+  return rc
+    .keys()
+    .filter(filePath => !filePath.includes('base'))
+    .flatMap(key => Object.values(rc(key)))
+    .filter(isClass);
+}
+
+const requireContext = (require as any).context('../..', true, /\.entity.ts/);
+// const requireContext = (require as any).context('../..', true, /^\.\/.*\/.*\/(?!(base|audit-base)).*\.entity.ts$/);
+const entities = requireAllClasses(requireContext);
 
 @Module({
   imports: [
@@ -21,7 +31,7 @@ import { Subscription } from '../notifications/subscription/subscription.entity'
       useFactory: async (config: ConfigService) =>
         ({
           ...env.database,
-          entities: [User, Notification, Subscription],
+          entities,
         } as ConnectionOptions),
       inject: [ConfigService],
     }),
