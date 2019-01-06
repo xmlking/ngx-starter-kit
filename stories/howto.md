@@ -15,11 +15,11 @@
    ####  hot to make IntelliJ ignore generated files and recognise assets as Resources?
   </summary>
 
-  Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.
-  Right click on `apps/webapp/src` in project vie --> Make Directory as --> Resources Root.
-  Right click on `docs` in project view --> Make Directory as --> Excluded.
-  Right click on `dist` in project view --> Make Directory as --> Excluded.
-  Right click on `coverage` in project view --> Make Directory as --> Excluded.
+  Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.</br>
+  Right click on `apps/webapp/src` in project vie --> Make Directory as --> Resources Root.</br>
+  Right click on `docs` in project view --> Make Directory as --> Excluded.</br>
+  Right click on `dist` in project view --> Make Directory as --> Excluded.</br>
+  Right click on `coverage` in project view --> Make Directory as --> Excluded.</br>
 </details>
 
 <details>
