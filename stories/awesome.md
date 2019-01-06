@@ -54,6 +54,7 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Refer [here](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
 > Refer [here](https://www.youtube.com/watch?v=0N589xX2ZQw)
 > Refer [here](https://github.com/nrwl/nx-examples)
+> [Create Your First Custom Angular CLI Schematic with Nx](https://auth0.com/blog/create-custom-schematics-with-nx/)
 
 * internationalization ?
 > Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)

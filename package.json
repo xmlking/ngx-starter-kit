@@ -169,7 +169,7 @@
     "formidable": "^1.2.1",
     "hammerjs": "^2.0.8",
     "helmet": "^3.15.0",
-    "immer": "^1.9.3",
+    "immer": "^1.10.0",
     "intersection-observer": "^0.5.1",
     "nest-router": "^1.0.0",
     "ngx-filepond": "^4.1.0",
@@ -202,8 +202,8 @@
     "@nestjs/testing": "^5.5.0",
     "@ngx-formly/schematics": "5.0.0-beta.5",
     "@ngxs/schematics": "0.0.1-alpha.5",
-    "@nrwl/builders": "^7.2.0",
-    "@nrwl/schematics": "^7.2.0",
+    "@nrwl/builders": "^7.3.0",
+    "@nrwl/schematics": "^7.3.0",
     "@semantic-release/changelog": "^3.0.1",
     "@semantic-release/git": "^7.0.0",
     "@semantic-release/github": "^5.2.0",
@@ -250,8 +250,6 @@
     "tslint": "^5.12.0",
     "tslint-config-prettier": "^1.17.0",
     "typescript": "~3.2.2",
-    "webpack-bundle-analyzer": "^3.0.3",
-    "webpack-cli": "^3.1.2",
-    "webpack-node-externals": "^1.7.2"
+    "webpack-bundle-analyzer": "^3.0.3"
   }
 }

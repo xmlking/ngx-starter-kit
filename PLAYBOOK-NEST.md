@@ -18,7 +18,7 @@ npm install -g @nestjs/cli
 > adding code dependencies
 
 ```bash
-nest new apps/api "my api" "0.1.0-SNAPSHOT" "Sumanth Chinthagunta <xmlking@gmail.com>" -d
+ng g node-app api --framework=nestjs --unit-test-runner=jest --tags=api-module -d
 
 # Add nestjs
 npm i  @nestjs/{common,core,microservices,swagger,websockets,typeorm,passport,elasticsearch}
@@ -54,7 +54,6 @@ npm i passport passport-jwt @xmlking/jwks-rsa
 
 npm i -D rimraf nodemon tsconfig-paths ts-loader
 npm i -D jest ts-jest @types/jest supertest @types/supertest
-npm i -D webpack-cli webpack-node-externals
 npm i -D @types/nodemailer
 npm i -D @types/socket.io
 npm i -D @types/passport@0.4.2 @types/passport-jwt
