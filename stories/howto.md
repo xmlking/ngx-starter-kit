@@ -43,6 +43,7 @@ ng test app-confirm
 ```
 
 #### How to implement test spec using Angular Test Bed(ATB)?
+
 >  https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/
 >  https://codecraft.tv/courses/angular/unit-testing/asynchronous/
 
@@ -77,19 +78,24 @@ how to implement MODULE_INITIALIZER like APP_INITIALIZER?
 
 #### How to Cut a Release?
 
-semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
+> `semantic-release` is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
-> [refer](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+<details>
+  <summary>MORE</summary>
 
-https://adrianperez.codes/enforcing-commit-conventions/
+  > Read [introduction-to-semantic-release](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
 
-https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
+    https://adrianperez.codes/enforcing-commit-conventions/
 
-```bash
-export GH_TOKEN=<my_github_token>
-export CI=true
-npm run semantic-release
-```
+    https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
+
+  ```bash
+  export GH_TOKEN=<my_github_token>
+  export CI=true
+  npm run semantic-release
+  ```
+
+</details>
 
 #### How to cleanup git tags?
 
@@ -135,50 +141,53 @@ NODE_DEBUG=request  npm run api:start:dev
 
 #### How to remove zone.js dependency?
 
-> for `Web Components build` with `Angular Elements`, it might be overhead using NgZone
-and sometime conflict with host app if it host also built with `Angular` 
+> for `Web Components` build with `Angular Elements`, it might be overhead using NgZone
+and sometimes conflict with host app if host app also built with `Angular` 
 
 <details>
-  <summary>Howto</summary>
-  <p>
-    1.  let’s first remove dependency on zone.js. Remove the following import from `polyfils.ts` file:
-        ```js
-        /* Zone JS is required by Angular itself. */
-        import 'zone.js/dist/zone';  // Included with Angular CLI.
-        ```
-    2.  Configure Angular to use the noop Zone implementation like this:
-        ```js
-        platformBrowserDynamic()
-            .bootstrapModule(AppModule, {
-                ngZone: 'noop'
-            });
-        ```
-    3.  Trigger change detection manually as we dont have Zone
-        > `ChangeDetectorRef.detectChanges` runs change detection for a specific component
-        ```js
-        export class AppComponent  {
-          name = 'Angular';
-          constructor(cd: ChangeDetectorRef) {
-              setTimeout(() => {
-                  this.name = 'updated';
-                  cd.markForCheck();
-              }, 1000);
-          }
+  <summary>HOWTO REMOVE ZONE</summary>
+
+  1.  let’s first remove dependency on zone.js.
+      > Remove the following import from `polyfils.ts` file:
+      ```js
+      /* Zone JS is required by Angular itself. */
+      import 'zone.js/dist/zone';  // Included with Angular CLI.
+      ```
+
+  2.  Configure Angular to use the `noop` Zone implementation like this:
+      ```js
+      platformBrowserDynamic()
+          .bootstrapModule(AppModule, {
+              ngZone: 'noop'
+          });
+      ```
+
+  3.  Trigger change detection manually as we dont have Zone
+      > `ChangeDetectorRef.detectChanges` runs change detection for a specific component
+      ```js
+      export class AppComponent  {
+        name = 'Angular';
+        constructor(cd: ChangeDetectorRef) {
+            setTimeout(() => {
+                this.name = 'updated';
+                cd.markForCheck();
+            }, 1000);
         }
-        ```
-        > `ApplicationRef.tick`  cause change detection on the whole application.
-        ```js
-        export class AppComponent  {
-          name = 'Angular';
-          constructor(app: ApplicationRef) {
-              setTimeout(() => {
-                  this.name = 'updated';
-                  app.tick();
-              }, 1000);
-          }
+      }
+      ```
+
+      > `ApplicationRef.tick`  cause change detection on the whole application.
+      ```js
+      export class AppComponent  {
+        name = 'Angular';
+        constructor(app: ApplicationRef) {
+            setTimeout(() => {
+                this.name = 'updated';
+                app.tick();
+            }, 1000);
         }
-        ```
-  </p>
+      }
+      ```
 
 </details>
 
