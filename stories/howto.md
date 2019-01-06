@@ -1,4 +1,4 @@
-
+# How to
 
 ####  hot to make IntelliJ default to es6 for javascript?
 > To set the default language level for JavaScript, go to  File > Other Settings > Default Settings > Languages and Frameworks > JavaScript Version --> ECMAScript 6
@@ -42,7 +42,7 @@ ng generate jest-project --project app-confirm
 ng test app-confirm
 ```
 
-How to implement test spec using Angular Test Bed(ATB)?
+#### How to implement test spec using Angular Test Bed(ATB)?
 >  https://codecraft.tv/courses/angular/unit-testing/angular-test-bed/
 >  https://codecraft.tv/courses/angular/unit-testing/asynchronous/
 
@@ -54,7 +54,7 @@ how to implement MODULE_INITIALIZER like APP_INITIALIZER?
 
 > [refer](https://www.bennadel.com/blog/3180-ngmodule-constructors-provide-a-module-level-run-block-in-angular-2-1-1.htm)
 
-How to commit code?
+#### How to commit code?
 
  ```bash
  git status
@@ -75,7 +75,7 @@ How to commit code?
 
 
 
-How to Cut a Release?
+#### How to Cut a Release?
 
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
@@ -91,7 +91,7 @@ export CI=true
 npm run semantic-release
 ```
 
-How to cleanup git tags?
+#### How to cleanup git tags?
 
 ```bash
 # Delete all local tags and get the list of remote tags:
@@ -108,7 +108,7 @@ git tag -l | xargs git tag -d
 ```
 
 
-linting affected?
+#### linting affected?
 ```bash
 npm run affected:lint  -- --base=origin/master --base=HEAD 
 npm run affected:lint  -- --uncommitted --fix
@@ -126,8 +126,59 @@ npm run format:check --base=master --head=HEAD
 npx nx format:check --base=master --head=HEAD
 ```
 
-How to enable debug for node?
+#### How to enable debug for node?
 ```bash
 NODE_DEBUG=request  npm run api:start:dev
 ```
+
+
+
+#### How to remove zone.js dependency?
+
+> for `Web Components build` with `Angular Elements`, it might be overhead using NgZone
+and sometime conflict with host app if it host also built with `Angular` 
+
+<details>
+  <summary>Howto</summary>
+  <p>
+    1.  let’s first remove dependency on zone.js. Remove the following import from `polyfils.ts` file:
+        ```js
+        /* Zone JS is required by Angular itself. */
+        import 'zone.js/dist/zone';  // Included with Angular CLI.
+        ```
+    2.  Configure Angular to use the noop Zone implementation like this:
+        ```js
+        platformBrowserDynamic()
+            .bootstrapModule(AppModule, {
+                ngZone: 'noop'
+            });
+        ```
+    3.  Trigger change detection manually as we dont have Zone
+        > `ChangeDetectorRef.detectChanges` runs change detection for a specific component
+        ```js
+        export class AppComponent  {
+          name = 'Angular';
+          constructor(cd: ChangeDetectorRef) {
+              setTimeout(() => {
+                  this.name = 'updated';
+                  cd.markForCheck();
+              }, 1000);
+          }
+        }
+        ```
+        > `ApplicationRef.tick`  cause change detection on the whole application.
+        ```js
+        export class AppComponent  {
+          name = 'Angular';
+          constructor(app: ApplicationRef) {
+              setTimeout(() => {
+                  this.name = 'updated';
+                  app.tick();
+              }, 1000);
+          }
+        }
+        ```
+  </p>
+
+</details>
 
