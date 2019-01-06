@@ -101,11 +101,11 @@ for nx help `npm run help`
 
 ```bash
 # create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
-create-nx-workspace  ngx-starter-kit --prefix=ngx --npm-scope=xmlking --package-manager=npm
+create-nx-workspace  ngx-starter-kit --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=xmlking --package-manager=npm --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=xmlking --package-manager=npm --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm --bazel  --verbose
 cd ngx-starter-kit
 
 > remove all ngrx NPM pagages from package.json
@@ -129,8 +129,14 @@ ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
+# generate micro-app `chat-box`
+ng g app chatApp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
+ng add ngx-build-plus --project chat-box
+ng add @angular/elements --project chat-box ?
+npm i @webcomponents/custom-elements ?
+
 # generate api app with nestjs
-ng g node-app api --framework=express --unit-test-runner=jest --tags=api-module -d
+ng g node-app api --framework=nestjs --unit-test-runner=jest --tags=api-module -d
 # generate backend app with express
 ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module -d
 ```
