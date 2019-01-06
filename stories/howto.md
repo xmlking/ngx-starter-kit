@@ -2,8 +2,7 @@
 
 <details>
   <summary>
-
-   ####  hot to make IntelliJ default to es6 for javascript?
+    <b>hot to make IntelliJ default to es6 for javascript?</br></br></b>
   </summary>
 
   > To set the default language level for JavaScript, go to  File > Other Settings > Default Settings > Languages and Frameworks > JavaScript Version --> ECMAScript 6
@@ -11,8 +10,7 @@
 
 <details>
   <summary>
-
-   ####  hot to make IntelliJ ignore generated files and recognise assets as Resources?
+   <b>hot to make IntelliJ ignore generated files and recognise assets as Resources?</br></br></b>
   </summary>
 
   Right click on `apps/webapp/src/styles` in project vie --> Make Directory as --> Resources Root.</br>
