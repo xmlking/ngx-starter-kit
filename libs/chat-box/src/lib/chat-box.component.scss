@@ -118,11 +118,8 @@
 
   /* Chat Input */
   .input {
-    padding: 10px 10px 10px;
-
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
-    overflow: hidden;
   }
   //.input > * {
   //  width: 100%;
@@ -135,3 +132,4 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+

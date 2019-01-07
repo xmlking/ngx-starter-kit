@@ -27,15 +27,11 @@ import { SendMessage } from './state/chat-box.actions';
 export class ChatBoxComponent implements OnInit, OnDestroy {
   showChatBox = false;
   typing = false;
-  @ViewChild('bottom')
-  bottom: ElementRef;
-  @ViewChild('input')
-  input: ElementRef<HTMLInputElement>;
+  @ViewChild('bottom') bottom: ElementRef;
+  @ViewChild('input') input: ElementRef<HTMLInputElement>;
 
-  @Select(ChatBoxState.getConversations)
-  conversations$: Observable<Conversation[]>;
-  @Select(ChatBoxState.getSelectedConversation)
-  selectedConversation$: Observable<Conversation>;
+  @Select(ChatBoxState.getConversations) conversations$: Observable<Conversation[]>;
+  @Select(ChatBoxState.getSelectedConversation) selectedConversation$: Observable<Conversation>;
   voices: SpeechSynthesisVoice[];
   canUseSpeechRecognition = false;
   canUseSpeechSynthesis = false;

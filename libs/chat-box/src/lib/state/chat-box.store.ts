@@ -9,6 +9,8 @@ import {
   StateContext,
   Store,
 } from '@ngxs/store';
+import { produce } from '@ngxs-labs/immer-adapter';
+import { produce as produceOri } from 'immer';
 import { NlpService } from '../services/nlp.service';
 import { ChatService } from '../services/chat.service';
 import { TextToSpeechService } from '../services/text-to-speech.service';
@@ -30,7 +32,8 @@ import {
 
 export class ChatBoxStateModel {
   conversations: Conversation[];
-  selectedConversation: Conversation;
+  selectedConversation: Conversation; // TODO change to activeConversationId
+  activeConversationId: string | number;
   canUseSpeechRecognition: boolean;
   canUseSpeechSynthesis: boolean;
   voices: SpeechSynthesisVoice[];
@@ -49,6 +52,7 @@ export class ChatBoxStateModel {
   defaults: {
     conversations: [],
     selectedConversation: null,
+    activeConversationId: null,
     canUseSpeechRecognition: false,
     canUseSpeechSynthesis: false,
     voices: [],
@@ -177,11 +181,11 @@ export class ChatBoxState implements NgxsOnInit {
   }
 
   @Action(CreateNewConversation)
-  createConversation({ getState, patchState, setState }: StateContext<ChatBoxStateModel>) {
-    const newConversation = new Conversation('payload.conversationId');
-    patchState({
-      conversations: [...getState().conversations, newConversation],
-      selectedConversation: newConversation,
+  createConversation(ctx: StateContext<ChatBoxStateModel>) {
+    const newConversation = new Conversation('payload.conversationId'); // TODO create with UUID. from server?
+    produce(ctx, (draft: ChatBoxStateModel) => {
+      draft.conversations.push(newConversation);
+      draft.selectedConversation = newConversation;
     });
   }
 
@@ -206,32 +210,30 @@ export class ChatBoxState implements NgxsOnInit {
   }
 
   @Action(CloseConversation)
-  closeConversation(
-    { getState, patchState, setState, dispatch }: StateContext<ChatBoxStateModel>,
-    { payload }: CloseConversation,
-  ) {
+  closeConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: CloseConversation) {
     console.log(`close conversation ${payload.conversationId}`);
-    const closingConversation = getState().conversations.find(con => con.id === payload.conversationId);
-    dispatch(new SaveConversation({ conversationId: payload.conversationId })).pipe(
+    const closingConversation = ctx.getState().conversations.find(con => con.id === payload.conversationId);
+    ctx.dispatch(new SaveConversation({ conversationId: payload.conversationId })).pipe(
       tap(_ => {
-        const remainingCons = getState().conversations.filter(
-          conversation => conversation.id !== payload.conversationId,
-        );
-        patchState({
-          conversations: remainingCons,
-          selectedConversation: remainingCons[remainingCons.length - 1],
+        produce(ctx, (draft: ChatBoxStateModel) => {
+          draft.conversations.splice(draft.conversations.findIndex(con => con.id === payload.conversationId), 1);
+          draft.selectedConversation = draft.conversations[draft.conversations.length - 1];
         });
       }),
     );
   }
 
   @Action(AddMessage, { cancelUncompleted: true })
-  addMessage({ getState, patchState, setState }: StateContext<ChatBoxStateModel>, { payload }: AddMessage) {
-    const conversation = getState().conversations.find(con => con.id === payload.conversationId);
-    conversation.messages.push(payload.message);
-    // patchState({
-    //   // conversations: [...getState().conversations]
-    // });
+  addMessage(ctx: StateContext<ChatBoxStateModel>, { payload }: AddMessage) {
+    produce(ctx, (draft: ChatBoxStateModel) => {
+      // draft.conversations[draft.conversations.findIndex(con => con.id === payload.conversationId)].messages.push(
+      //   payload.message,
+      // );
+      const convIdx = draft.conversations.findIndex(con => con.id === payload.conversationId);
+      const conv = draft.conversations[convIdx];
+      draft.conversations[convIdx] = new Conversation(conv.id, [...conv.messages, payload.message]);
+      draft.selectedConversation = draft.conversations[convIdx];
+    });
   }
 
   @Action(SendMessage, { cancelUncompleted: true })
