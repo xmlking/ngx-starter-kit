@@ -45,7 +45,7 @@
     </mat-drawer>
     <mat-drawer-content fxFlex="grow" class="body">
       <div
-        *ngFor="let message of (selectedConversation$ | async).messages"
+        *ngFor="let message of (activeConversation$ | async).messages"
         class="message"
         [ngClass]="{ from: message.isIncoming, to: message.isOutgoing }"
       >
@@ -59,7 +59,7 @@
 
   <mat-divider></mat-divider>
 
-  <mat-form-field fxFlex class="input" appearance="legacy" color="primary"  >
+  <mat-form-field fxFlex class="input custom-outline" appearance="outline" color="primary"  >
     <mat-icon matPrefix *ngIf="canUseSpeechRecognition" (click)="startTalkingToBot()">keyboard_voice</mat-icon>
     <input
       #input

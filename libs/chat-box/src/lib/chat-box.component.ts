@@ -1,22 +1,12 @@
-import {
-  AfterViewInit,
-  Component,
-  ElementRef,
-  OnDestroy,
-  OnInit,
-  QueryList,
-  ViewChild,
-  ViewChildren,
-} from '@angular/core';
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { scrollFabAnimation } from '@ngx-starter-kit/animations';
 import { fromEvent, Observable } from 'rxjs';
 import { filter, take, takeUntil } from 'rxjs/operators';
 import { Select, Store } from '@ngxs/store';
 
-import { ChatMessage, Conversation, ModeType } from './chat-message.model';
+import { Conversation } from './chat-message.model';
 import { ChatBoxState } from './state/chat-box.store';
-import { AddMessage, CreateNewConversation, FetchConversations, StartVoiceCommand } from './state/chat-box.actions';
-import { SendMessage } from './state/chat-box.actions';
+import { CreateNewConversation, FetchConversations, SendMessage, StartVoiceCommand } from './state/chat-box.actions';
 
 @Component({
   selector: 'ngx-chat-box',
@@ -31,7 +21,7 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
   @ViewChild('input') input: ElementRef<HTMLInputElement>;
 
   @Select(ChatBoxState.getConversations) conversations$: Observable<Conversation[]>;
-  @Select(ChatBoxState.getSelectedConversation) selectedConversation$: Observable<Conversation>;
+  @Select(ChatBoxState.getActiveConversation) activeConversation$: Observable<Conversation>;
   voices: SpeechSynthesisVoice[];
   canUseSpeechRecognition = false;
   canUseSpeechSynthesis = false;
@@ -45,7 +35,7 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.store.dispatch(new FetchConversations());
     // TODO: only create new Conversation when user select one are more avatars and click +
-    if (!this.store.selectSnapshot(ChatBoxState.getSelectedConversation)) {
+    if (!this.store.selectSnapshot(ChatBoxState.getActiveConversation)) {
       this.store.dispatch(new CreateNewConversation());
     }
   }
@@ -63,7 +53,6 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
   }
 
   async sendMessageToBot() {
-    const selectedConversation = this.store.selectSnapshot(ChatBoxState.getSelectedConversation);
     this.store.dispatch(new SendMessage({ message: this.input.nativeElement.value }));
     this.input.nativeElement.value = '';
     this.focus();

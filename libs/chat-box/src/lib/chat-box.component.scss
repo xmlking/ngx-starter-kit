@@ -115,15 +115,6 @@
       }
     }
   }
-
-  /* Chat Input */
-  .input {
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-  }
-  //.input > * {
-  //  width: 100%;
-  //}
 }
 
 /* Chat Content */
@@ -133,3 +124,11 @@
   text-overflow: ellipsis;
 }
 
+/* Custom mat-form-field-outline */
+:host /deep/ mat-form-field.mat-form-field-appearance-outline.custom-outline .mat-form-field-wrapper {
+  padding-bottom: 0;
+  margin: 0;
+  //.mat-form-field-outline {
+  //  display: none;
+  //}
+}

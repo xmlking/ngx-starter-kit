@@ -139,6 +139,7 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 * Angular Performance 
 
 > Refer [here](https://blog.ninja-squad.com/)
+> Refer [angular performance checklist](https://github.com/mgechev/angular-performance-checklist)
 
 * Angular universal aks SSR
 > Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5)
