@@ -18,7 +18,7 @@ export class CreateNewConversation {
 
 export class SwitchConversation {
   static readonly type = '[ChatBox] SwitchConversation';
-  constructor(public readonly payload: { conversationId: string }) {}
+  constructor(public readonly payload: { conversationId: string | number }) {}
 }
 
 export class SaveConversation {
@@ -33,7 +33,7 @@ export class CloseConversation {
 
 export class AddMessage {
   static readonly type = '[ChatBox] AddMessage';
-  constructor(public readonly payload: { conversationId: string; message: ChatMessage<string> }) {}
+  constructor(public readonly payload: { conversationId: string | number; message: ChatMessage<string> }) {}
 }
 
 export class StartVoiceCommand {

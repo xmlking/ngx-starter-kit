@@ -32,7 +32,6 @@ import {
 
 export class ChatBoxStateModel {
   conversations: Conversation[];
-  selectedConversation: Conversation; // TODO change to activeConversationId
   activeConversationId: string | number;
   canUseSpeechRecognition: boolean;
   canUseSpeechSynthesis: boolean;
@@ -51,7 +50,6 @@ export class ChatBoxStateModel {
   name: 'chatbox',
   defaults: {
     conversations: [],
-    selectedConversation: null,
     activeConversationId: null,
     canUseSpeechRecognition: false,
     canUseSpeechSynthesis: false,
@@ -126,8 +124,8 @@ export class ChatBoxState implements NgxsOnInit {
   }
 
   @Selector()
-  static getSelectedConversation(state: ChatBoxStateModel) {
-    return state.selectedConversation;
+  static getActiveConversation(state: ChatBoxStateModel) {
+    return state.conversations[state.conversations.findIndex(con => con.id === state.activeConversationId)];
   }
 
   @Selector()
@@ -175,9 +173,15 @@ export class ChatBoxState implements NgxsOnInit {
   }
 
   @Action(FetchConversations)
-  fetchConversations({ getState, patchState, setState }: StateContext<ChatBoxStateModel>) {
+  fetchConversations(ctx: StateContext<ChatBoxStateModel>) {
     console.log('fetching open conversations');
-    // return this.chat.fetchInFlightConversations().pipe(tap(res => patchState({ conversations: res })));
+    // return this.chat.fetchInFlightConversations().pipe(
+    //   tap((res: Conversation[]) =>
+    //     produce(ctx, (draft: ChatBoxStateModel) => {
+    //       draft.conversations = res;
+    //     }),
+    //   ),
+    // );
   }
 
   @Action(CreateNewConversation)
@@ -185,27 +189,26 @@ export class ChatBoxState implements NgxsOnInit {
     const newConversation = new Conversation('payload.conversationId'); // TODO create with UUID. from server?
     produce(ctx, (draft: ChatBoxStateModel) => {
       draft.conversations.push(newConversation);
-      draft.selectedConversation = newConversation;
+      draft.activeConversationId = newConversation.id;
     });
   }
 
   @Action(SwitchConversation)
-  switchConversation(
-    { getState, patchState, setState }: StateContext<ChatBoxStateModel>,
-    { payload }: SwitchConversation,
-  ) {
-    const switchedConversation = getState().conversations.find(con => con.id === payload.conversationId);
+  switchConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: SwitchConversation) {
+    const state = ctx.getState();
+    const switchedConversation =
+      state.conversations[state.conversations.findIndex(con => con.id === state.activeConversationId)];
     if (switchedConversation) {
-      patchState({
-        selectedConversation: switchedConversation,
+      produce(ctx, (draft: ChatBoxStateModel) => {
+        draft.activeConversationId = switchedConversation.id;
       });
     }
   }
 
   @Action(SaveConversation)
-  saveConversation({ getState, patchState, setState }: StateContext<ChatBoxStateModel>, { payload }: SaveConversation) {
+  saveConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: SaveConversation) {
     console.log(`saving conversation ${payload.conversationId}`);
-    // const conversation = getState().conversations.find( con => con.id === payload.conversationId);
+    // const conversation = ctx.getState().conversations[ctx.getState().conversations.findIndex(con => con.id === payload.conversationId)];
     // return this.chat.saveConversation(conversation);
   }
 
@@ -217,7 +220,7 @@ export class ChatBoxState implements NgxsOnInit {
       tap(_ => {
         produce(ctx, (draft: ChatBoxStateModel) => {
           draft.conversations.splice(draft.conversations.findIndex(con => con.id === payload.conversationId), 1);
-          draft.selectedConversation = draft.conversations[draft.conversations.length - 1];
+          draft.activeConversationId = draft.conversations[draft.conversations.length - 1].id;
         });
       }),
     );
@@ -232,29 +235,26 @@ export class ChatBoxState implements NgxsOnInit {
       const convIdx = draft.conversations.findIndex(con => con.id === payload.conversationId);
       const conv = draft.conversations[convIdx];
       draft.conversations[convIdx] = new Conversation(conv.id, [...conv.messages, payload.message]);
-      draft.selectedConversation = draft.conversations[convIdx];
+      draft.activeConversationId = draft.conversations[convIdx].id;
     });
   }
 
   @Action(SendMessage, { cancelUncompleted: true })
-  async sendMessage(
-    { getState, patchState, setState, dispatch }: StateContext<ChatBoxStateModel>,
-    { payload }: SendMessage,
-  ) {
-    dispatch(
+  async sendMessage(ctx: StateContext<ChatBoxStateModel>, { payload }: SendMessage) {
+    ctx.dispatch(
       new AddMessage({
-        conversationId: getState().selectedConversation.id,
+        conversationId: ctx.getState().activeConversationId,
         message: ChatMessage.fromUserMessage(payload.message, ModeType.TYPE),
       }),
     );
   }
 
   @Action(StartVoiceCommand, { cancelUncompleted: true })
-  async startVoiceCommand({ getState, patchState, setState, dispatch }: StateContext<ChatBoxStateModel>) {
+  async startVoiceCommand(ctx: StateContext<ChatBoxStateModel>) {
     const message = await this.stt.getVoiceMessage();
-    dispatch(
+    ctx.dispatch(
       new AddMessage({
-        conversationId: getState().selectedConversation.id,
+        conversationId: ctx.getState().activeConversationId,
         message: ChatMessage.fromUserMessage(message, ModeType.SPEAK),
       }),
     );
