@@ -25,3 +25,14 @@ delete(item: Account) {
 }
 
 ```
+
+
+### Publish
+```bash
+# build
+ng build app-confirm
+# replace your npm key
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# publish
+npm publish dist/libs/app-confirm --access public
+```

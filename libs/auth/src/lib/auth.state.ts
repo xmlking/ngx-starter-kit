@@ -22,6 +22,7 @@ export interface AuthStateModel {
   authMode: AuthMode;
 }
 
+/** @dynamic */
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {

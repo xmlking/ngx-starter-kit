@@ -47,6 +47,7 @@ export function noop() {
  */
 library.add(faTwitter, faGithub, faGoogle);
 
+/** @dynamic */
 @NgModule({
   imports: [
     CommonModule,

@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { SynthesisVoice } from '../state/chat-box.actions';
 import { BrowserFeatureKey, FeatureService, WINDOW } from '@ngx-starter-kit/core';
 
+/** @dynamic */
 @Injectable()
 export class TextToSpeechService {
   public canUseSpeechSynthesis = false;

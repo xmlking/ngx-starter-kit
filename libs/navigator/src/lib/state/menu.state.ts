@@ -29,6 +29,7 @@ export interface MenuStateModel {
   iconMode: boolean;
 }
 
+/** @dynamic */
 @State<MenuStateModel>({
   name: 'menu',
   defaults: {

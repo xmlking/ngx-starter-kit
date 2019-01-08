@@ -9,216 +9,126 @@
   },
   "projects": {
     "webapp": {
-      "tags": [
-        "app-module"
-      ]
+      "tags": ["app-module"]
     },
     "webapp-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "webapp"
-      ]
+      "implicitDependencies": ["webapp"]
     },
     "api": {
-      "tags": [
-        "api-module"
-      ]
+      "tags": ["api-module"]
     },
     "api-e2e": {
       "tags": [],
-      "implicitDependencies": [
-        "api"
-      ]
+      "implicitDependencies": ["api"]
     },
     "backend": {
-      "tags": [
-        "api-module"
-      ]
+      "tags": ["api-module"]
     },
     "navigator": {
-      "tags": [
-        "private-module",
-        "core-module"
-      ]
+      "tags": ["private-module", "core-module"]
     },
     "socketio-plugin": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "tree": {
-      "tags": [
-        "utils"
-      ]
+      "tags": ["utils"]
     },
     "home": {
-      "tags": [
-        "layout",
-        "entry-module"
-      ]
+      "tags": ["layout", "entry-module"]
     },
     "dashboard": {
-      "tags": [
-        "layout",
-        "entry-module"
-      ]
+      "tags": ["layout", "entry-module"]
     },
     "not-found": {
-      "tags": [
-        "entry-module"
-      ]
+      "tags": ["entry-module"]
     },
     "experiments": {
-      "tags": [
-        "child-module"
-      ]
+      "tags": ["child-module"]
     },
     "widgets": {
-      "tags": [
-        "child-module"
-      ]
+      "tags": ["child-module"]
     },
     "material": {
-      "tags": [
-        "shared-module"
-      ]
+      "tags": ["shared-module"]
     },
     "animations": {
-      "tags": [
-        "utils"
-      ]
+      "tags": ["utils"]
     },
     "utils": {
-      "tags": [
-        "utils"
-      ]
+      "tags": ["utils"]
     },
     "auth": {
-      "tags": [
-        "private-module",
-        "core-module"
-      ]
+      "tags": ["private-module", "core-module"]
     },
     "shared": {
-      "tags": [
-        "shared-module"
-      ]
+      "tags": ["shared-module"]
     },
     "app-confirm": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "draggable": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "breadcrumbs": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "scroll-to-top": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "scrollbar": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "context-menu": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "theme-picker": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "quickpanel": {
-      "tags": [
-        "private-module"
-      ]
+      "tags": ["private-module"]
     },
     "svg-viewer": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "led": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "chat-box": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "json-diff": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "toolbar": {
-      "tags": [
-        "private-module"
-      ]
+      "tags": ["private-module"]
     },
     "sidenav": {
-      "tags": [
-        "private-module"
-      ]
+      "tags": ["private-module"]
     },
     "loading-overlay": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "grid": {
-      "tags": [
-        "child-module"
-      ]
+      "tags": ["child-module"]
     },
     "notifications": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "core": {
-      "tags": [
-        "core-module"
-      ]
+      "tags": ["core-module"]
     },
     "clap": {
-      "tags": [
-        "public-module"
-      ]
+      "tags": ["public-module"]
     },
     "image-comparison": {
-      "tags": [
-        "public-module"
-      ]
-    },
-    "models": {
-      "tags": [
-        "utils"
-      ]
+      "tags": ["public-module"]
     },
     "ngx-utils": {
-      "tags": [
-        "public-module",
-        "utils"
-      ]
+      "tags": ["public-module", "utils"]
     },
     "admin": {
-      "tags": [
-        "entry-module"
-      ]
+      "tags": ["entry-module"]
     }
   }
 }

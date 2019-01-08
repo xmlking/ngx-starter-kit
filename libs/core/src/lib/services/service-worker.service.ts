@@ -4,6 +4,7 @@ import { environment } from '@env/environment';
 import { WINDOW } from './window.token';
 import { MatSnackBar } from '@angular/material';
 
+/** @dynamic */
 @Injectable({
   providedIn: 'root',
 })

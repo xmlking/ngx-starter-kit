@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
 import { WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 
+/** @dynamic */
 @Component({
   selector: 'ngx-dashboard-layout',
   templateUrl: './dashboard-layout.component.html',

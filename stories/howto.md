@@ -233,3 +233,30 @@
       ```
 </details>
 
+
+<details>
+  <summary>
+
+   #### How to enable SCSS ``@import` for lib modules?
+  </summary>
+
+  > if you SCSS `@import` in your lib module like in [led](../libs/led/src/lib/led.component.scss), 
+  you may want to add `IncludePaths` setting. Add this to your `ng-package.json`
+  ```json
+  {
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/libs/led",
+    "lib": {
+      "entryFile": "src/index.ts",
+      "styleIncludePaths": [
+        "../../apps/webapp/src/styles"
+      ]
+    }
+  }
+  ```
+</details>
+
+
+
+Build Error: No name was provided for external module 'date-fns/esm' in output.globals – guessing 'esm'
+Solution: Add umdModuleIds to `ng-package.json`

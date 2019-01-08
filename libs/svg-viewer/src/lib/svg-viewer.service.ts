@@ -4,6 +4,7 @@ import { of as observableOf, Observable } from 'rxjs';
 import { catchError, finalize, map, share } from 'rxjs/operators';
 import { SvgViewerConfig } from './svg-viewer.config';
 
+/** @dynamic */
 @Injectable()
 export class SvgViewerService {
   private static _cache: Map<string, SVGElement>;

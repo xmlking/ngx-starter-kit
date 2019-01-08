@@ -8,6 +8,7 @@ const SpeechRecognition =
   (window as any).oSpeechRecognition ||
   (window as any).SpeechRecognition;
 
+/** @dynamic */
 @Injectable()
 export class SpeechToTextService {
   public canUseSpeechRecognition = false;

@@ -4,6 +4,7 @@ import { environment as env } from '@env/environment';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
 import { WINDOW } from '@ngx-starter-kit/core';
 
+/** @dynamic */
 @Component({
   selector: 'ngx-features',
   templateUrl: './features.component.html',

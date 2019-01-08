@@ -60,3 +60,14 @@ export class ViewportDemoComponent implements OnInit, OnDestroy {
   }
 }
 ```
+
+
+### Publish
+```bash
+# build
+ng build ngx-utils
+# replace your npm key
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# publish
+npm publish dist/libs/ngx-utils --access public
+```
