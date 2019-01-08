@@ -140,7 +140,7 @@
     "@ngx-lite/in-viewport": "^0.1.3",
     "@ngx-lite/input-star-rating": "^0.2.5",
     "@ngx-lite/input-tag": "^0.2.8",
-    "@ngxs-labs/immer-adapter": "^1.1.1",
+    "@ngxs-labs/immer-adapter": "^1.1.0",
     "@ngxs/devtools-plugin": "^3.3.0",
     "@ngxs/form-plugin": "^3.3.0",
     "@ngxs/router-plugin": "^3.3.0",

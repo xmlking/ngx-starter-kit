@@ -1,6 +1,15 @@
 # socketio-plugin
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/socketio-plugin
+```
+
+### Usage
+
 ### Publish
+
 ```bash
 # build
 ng build socketio-plugin

@@ -1,7 +1,15 @@
 # Scrollbar
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/scrollbar
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build scrollbar

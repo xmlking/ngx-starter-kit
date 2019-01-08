@@ -1,7 +1,15 @@
 # Theme-Picker
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/theme-picker
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build theme-picker

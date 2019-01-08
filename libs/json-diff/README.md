@@ -1,7 +1,15 @@
 # Json Diff
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/json-diff
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build json-diff

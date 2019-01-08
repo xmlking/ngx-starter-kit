@@ -1,7 +1,15 @@
 # Led
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/led
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build led

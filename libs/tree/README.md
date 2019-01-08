@@ -1,7 +1,15 @@
 # Tree
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/tree
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build tree

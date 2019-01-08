@@ -1,7 +1,15 @@
 # Notifications
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/notifications
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build notifications
