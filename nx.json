@@ -129,6 +129,9 @@
     },
     "admin": {
       "tags": ["entry-module"]
+    },
+    "models": {
+      "tags": ["utils"]
     }
   }
 }
