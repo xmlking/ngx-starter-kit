@@ -2,6 +2,15 @@ Conform Popup
 =============
 confirm popup dialog to get user's choice.
 
+
+### Install
+
+```bash
+npm i @ngx-starter-kit/app-confirm
+```
+
+### Usage
+
 ```ts
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm'
 import { AppConfirmService } from '@ngx-starter-kit/app-confirm';

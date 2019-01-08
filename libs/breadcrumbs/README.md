@@ -1,6 +1,14 @@
 # Breadcrumbs
 
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/breadcrumbs
+```
+
+### Usage
+
 ### Publish
 ```bash
 # build

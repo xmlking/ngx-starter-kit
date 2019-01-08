@@ -1,5 +1,11 @@
 # Image Comparison
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/image-comparison
+```
+
 ### Usage
 
 ```html
@@ -14,6 +20,7 @@
 - [ImageComparison](https://github.com/M-Ulyanov/ImageComparison)
 
 ### Publish
+
 ```bash
 # build
 ng build image-comparison

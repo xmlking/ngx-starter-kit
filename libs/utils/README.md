@@ -1,7 +1,15 @@
 # Utils
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/utils
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build utils

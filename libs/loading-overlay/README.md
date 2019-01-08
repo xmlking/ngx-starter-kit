@@ -1,7 +1,15 @@
 # loading-overlay
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/loading-overlay
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build loading-overlay

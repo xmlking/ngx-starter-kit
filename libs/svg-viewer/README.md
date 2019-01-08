@@ -1,7 +1,15 @@
 # Svg-Viewer
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/svg-viewer
+```
+
+### Usage
 
 ### Publish
+
 ```bash
 # build
 ng build svg-viewer

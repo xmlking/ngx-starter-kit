@@ -1,6 +1,15 @@
 # Scroll-to-Top
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/scroll-to-top
+```
+
+### Usage
+
 ### Publish
+
 ```bash
 # build
 ng build scroll-to-top

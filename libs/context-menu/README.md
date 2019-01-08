@@ -1,5 +1,11 @@
 # Context Menu
 
+### Install
+
+```bash
+npm i @ngx-starter-kit/context-menu
+```
+
 ### Usage
 
 1.  Add `ContextMenuModule` module to your module `imports`
@@ -22,8 +28,8 @@
 <div [contextMenu]="myContextMenu">Right click me to see the menu</div>
 ```
 
-
 ### Publish
+
 ```bash
 # build
 ng build context-menu
@@ -32,4 +38,3 @@ export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # publish
 npm publish dist/libs/context-menu --access public
 ```
-

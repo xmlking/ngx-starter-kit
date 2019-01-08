@@ -6,6 +6,14 @@ same as [@ngrx-utils/store](https://github.com/ngrx-utils/ngrx-utils) without de
 
 **Directive:** inViewport, ngLet, routerLinkMatch
 
+## Install
+
+```bash
+npm i @ngx-starter-kit/ngx-utils
+```
+
+## Usage
+
 ### InViewport Directive
 
 > Add `IntersectionObserver` [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) to [polyfills.ts](../../apps/webapp/src/polyfills.ts) for `Safari` Support
@@ -16,14 +24,14 @@ same as [@ngrx-utils/store](https://github.com/ngrx-utils/ngrx-utils) without de
 </div>
 ```
 
-> If `entry.intersectionRatio >= 0.5` ==> `Inside Viewport`
-> <br/>
+> If `entry.intersectionRatio >= 0.5` ==> `Inside Viewport` > <br/>
 > If `entry.intersectionRatio < 0.5` ==> `Outside Viewport`
 
 #### Flags
-1. Trigger only One Time : `[oneTime]="true"`  usecase: image loading. 
+
+1. Trigger only One Time : `[oneTime]="true"` usecase: image loading.
 2. Server-Side Rendering : By default, loads the elements on the server.
-> If you do not want to pre-render the elements in server, you can set `preRender to false. i.e., `[preRender]="false"`
+   > If you do not want to pre-render the elements in server, you can set `preRender to false. i.e.,`[preRender]="false"`
 
 ### Viewport Service
 
@@ -61,8 +69,8 @@ export class ViewportDemoComponent implements OnInit, OnDestroy {
 }
 ```
 
+## Publish
 
-### Publish
 ```bash
 # build
 ng build ngx-utils
