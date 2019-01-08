@@ -254,7 +254,7 @@ ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashb
 
 ng g lib animations --module false -tags=utils --unit-test-runner=jest -d
 ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest -d
-ng g lib utils --module false --tags=utils --unit-test-runner=jest -d
+ng g lib utils --module false --publishable=true --tags=utils --unit-test-runner=jest -d
 # system wide models
 ng g lib models --module false --tags=utils --unit-test-runner=jest -d
 

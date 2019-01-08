@@ -30,6 +30,7 @@ import {
   SynthesisVoice,
 } from './chat-box.actions';
 
+
 export class ChatBoxStateModel {
   conversations: Conversation[];
   activeConversationId: string | number;
@@ -46,6 +47,7 @@ export class ChatBoxStateModel {
   loading: boolean;
 }
 
+/** @dynamic */
 @State<ChatBoxStateModel>({
   name: 'chatbox',
   defaults: {

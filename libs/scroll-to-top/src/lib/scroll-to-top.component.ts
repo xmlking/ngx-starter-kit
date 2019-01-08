@@ -12,6 +12,7 @@ enum ShowStatus {
   hide = 'hide',
 }
 
+/** @dynamic */
 @Component({
   selector: 'scroll-to-top',
   templateUrl: './scroll-to-top.component.html',

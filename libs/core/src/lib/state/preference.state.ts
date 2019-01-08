@@ -78,6 +78,7 @@ export interface PreferenceStateModel {
   enableNotifications: boolean;
 }
 
+/** @dynamic */
 @State<PreferenceStateModel>({
   name: 'preference',
   defaults: {

@@ -7,6 +7,7 @@ import { WINDOW } from '@ngx-starter-kit/core';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 
+/** @dynamic */
 @Component({
   selector: 'ngx-about',
   templateUrl: './about.component.html',

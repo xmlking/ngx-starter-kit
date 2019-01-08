@@ -1,11 +1,11 @@
-# socketio-plugin
+# Scroll-to-Top
 
 ### Publish
 ```bash
 # build
-ng build socketio-plugin
+ng build scroll-to-top
 # replace your npm key
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # publish
-npm publish dist/libs/socketio-plugin --access public
+npm publish dist/libs/scroll-to-top --access public
 ```

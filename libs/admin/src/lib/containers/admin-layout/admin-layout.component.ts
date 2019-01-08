@@ -6,6 +6,7 @@ import { Store } from '@ngxs/store';
 import { WINDOW } from '@ngx-starter-kit/core';
 import { NotificationsComponent } from '../notifications/notifications.component';
 
+/** @dynamic */
 @Component({
   selector: 'ngx-admin-layout',
   templateUrl: './admin-layout.component.html',

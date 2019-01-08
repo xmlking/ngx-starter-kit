@@ -5,6 +5,7 @@ import { EventCategory, GoogleAnalyticsService } from '../services/google-analyt
 import { AppState, ChangeInstallStatus, ChangeOnlineStatus, IsOffline, IsOnline, SetInstallPrompt } from './app.state';
 import { WINDOW } from '../services/window.token';
 
+/** @dynamic */
 @Injectable({
   providedIn: 'root',
 })

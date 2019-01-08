@@ -36,6 +36,7 @@ export interface AppStateModel {
   installed: boolean;
 }
 
+/** @dynamic */
 @State<AppStateModel>({
   name: 'app',
   defaults: {

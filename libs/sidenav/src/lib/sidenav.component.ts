@@ -17,6 +17,7 @@ import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { WINDOW } from '@ngx-starter-kit/core';
 // import { sidenavAnimation } from '@ngx-starter-kit/animations';
 
+/** @dynamic */
 @Component({
   selector: 'ngx-sidenav',
   templateUrl: './sidenav.component.html',

@@ -11,6 +11,7 @@ enum Direction {
   Down = 'Down',
 }
 
+/** @dynamic */
 @Directive({
   selector: '[stickyHeader]',
 })

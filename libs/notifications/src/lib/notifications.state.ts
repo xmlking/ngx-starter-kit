@@ -11,6 +11,7 @@ import {
   MarkAllAsRead,
 } from './notifications.actions';
 
+/** @dynamic */
 @State<AppNotification[]>({
   name: 'notifications',
   defaults: [],

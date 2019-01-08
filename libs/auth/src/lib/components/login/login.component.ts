@@ -8,6 +8,7 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { Store } from '@ngxs/store';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 
+/** @dynamic */
 @Component({
   selector: 'ngx-login',
   templateUrl: './login.component.html',

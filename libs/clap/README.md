@@ -11,3 +11,14 @@ Clap micro-interaction
 2. Creating Reusable Animations in Angular
 
 - https://netbasal.com/creating-reusable-animations-in-angular-6a2350d6191a
+
+
+### Publish
+```bash
+# build
+ng build clap
+# replace your npm key
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# publish
+npm publish dist/libs/clap --access public
+```

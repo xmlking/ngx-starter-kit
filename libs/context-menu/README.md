@@ -21,3 +21,15 @@
 ```html
 <div [contextMenu]="myContextMenu">Right click me to see the menu</div>
 ```
+
+
+### Publish
+```bash
+# build
+ng build context-menu
+# replace your npm key
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# publish
+npm publish dist/libs/context-menu --access public
+```
+

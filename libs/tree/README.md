@@ -1,11 +1,12 @@
-# socketio-plugin
+# Tree
+
 
 ### Publish
 ```bash
 # build
-ng build socketio-plugin
+ng build tree
 # replace your npm key
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # publish
-npm publish dist/libs/socketio-plugin --access public
+npm publish dist/libs/tree --access public
 ```
