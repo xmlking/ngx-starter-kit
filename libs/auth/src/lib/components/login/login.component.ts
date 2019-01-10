@@ -4,7 +4,7 @@ import { ROPCService } from '../../ropc.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { HttpErrorResponse } from '@angular/common/http';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { Store } from '@ngxs/store';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 

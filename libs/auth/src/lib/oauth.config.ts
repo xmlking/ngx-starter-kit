@@ -1,4 +1,4 @@
-import { AuthConfig } from 'angular-oauth2-oidc';
+import { AuthConfig } from '@xmlking/angular-oauth2-oidc-all';
 import { environment } from '@env/environment';
 
 const base = document.querySelector('base');

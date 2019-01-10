@@ -13,7 +13,7 @@ import {
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
 import { authConfigImplicit, authConfigPassword } from './oauth.config';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { map } from 'rxjs/operators';
 
 export interface AuthStateModel {

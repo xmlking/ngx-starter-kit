@@ -1,4 +1,4 @@
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { Store } from '@ngxs/store';
 import { LoginSuccess } from './auth.actions';
 import { AuthorizationErrorResponse } from './oauth.errors';

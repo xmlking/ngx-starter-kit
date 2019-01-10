@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from 'angular-oauth2-oidc';
+import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from '@xmlking/angular-oauth2-oidc-all';
 import { Store } from '@ngxs/store';
 
 import { initializeAuth } from './oauth.init';
