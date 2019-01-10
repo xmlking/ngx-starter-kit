@@ -56,6 +56,9 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Refer [here](https://github.com/nrwl/nx-examples)
 > [Create Your First Custom Angular CLI Schematic with Nx](https://auth0.com/blog/create-custom-schematics-with-nx/)
 
+* What are the guidelines to setup monorepo for enterprise size apps?
+> Refer [Opinionated guidelines for large nx angular projects](https://blog.strongbrew.io//opinionated-guidelines-for-large-nx-angular-projects/)
+
 * internationalization ?
 > Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)
 

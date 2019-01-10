@@ -3,7 +3,7 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Observable } from 'rxjs';
 import { Store } from '@ngxs/store';
 import { environment } from '@env/environment';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 
 const allowedUrls = [environment.API_BASE_URL, environment.DOCS_BASE_URL];
 

@@ -164,7 +164,8 @@ npm i @angular/flex-layout
 # Add in-memory-web-api
 npm i angular-in-memory-web-api
 # Add oauth2-oidc
-npm i angular-oauth2-oidc
+~~npm i angular-oauth2-oidc~~
+npm i @xmlking/angular-oauth2-oidc-all
 
 # Add NGXS
 ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
@@ -415,7 +416,7 @@ ng g component components/sidenavItem --project=sidenav -d
 ng g directive  IconSidenav           --project=sidenav -d
 
 # generate components for `auth` Module
-ng g lib auth --prefix=ngx --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
+ng g lib auth --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
 ng g component components/login --project=auth -d
 ng g guard admin --project=auth  -d
 ng g @ngxs/schematics:store --name=auth --spec --project=auth -d
@@ -569,7 +570,9 @@ npx compodoc -s -d docs
 
 ```bash
 # build for gh-pages
-build:mock --base-href /ngx-starter-kit/
+npm run build:mock
+# maybe compress
+gzip -k -r dist/apps/webapp/*.js
 # push gh-pages
 npx ngh --dir dist/apps/webapp
 ```

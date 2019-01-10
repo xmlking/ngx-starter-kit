@@ -5,7 +5,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { routeAnimation, hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
-import { OAuthService } from 'angular-oauth2-oidc';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { environment } from '@env/environment';
 import { RouterState } from '@ngxs/router-plugin';
 import { map } from 'rxjs/operators';
