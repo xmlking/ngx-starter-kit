@@ -1,5 +1,5 @@
 import { Directive, HostBinding, HostListener, Inject, OnInit, OnDestroy } from '@angular/core';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 import { Store } from '@ngxs/store';
@@ -44,10 +44,10 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
     }
   }
 
-  constructor(private store: Store, private menuService: MenuService, private media: ObservableMedia) {}
+  constructor(private store: Store, private menuService: MenuService, private mediaObserver: MediaObserver) {}
 
   ngOnInit() {
-    this._mediaSubscription = this.media.subscribe((change: MediaChange) => {
+    this._mediaSubscription = this.mediaObserver.media$.subscribe((change: MediaChange) => {
       this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
     });
   }

@@ -6,7 +6,7 @@ import { Tree } from '@ngx-starter-kit/tree';
 import { NavigationEnd, Router } from '@angular/router';
 import { SidenavState } from './sidenav-state.enum';
 import { MENU_ITEMS } from '../symbols';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { map } from 'rxjs/operators';
 
 @Injectable()
@@ -68,7 +68,7 @@ export class MenuService {
   constructor(
     @Inject(MENU_ITEMS) private menuItems: MenuItem[],
     private router: Router,
-    private media: ObservableMedia,
+    mediaObserver: MediaObserver
   ) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -81,8 +81,7 @@ export class MenuService {
       }
     });
 
-    media
-      .asObservable()
+    mediaObserver.media$
       .pipe(map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'))
       .subscribe(isLowerThanLarge => {
         this.isLowerThanLarge = isLowerThanLarge;
