@@ -1,6 +1,6 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Subscription } from 'rxjs';
-import { MediaChange, ObservableMedia } from '@angular/flex-layout';
+import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { NavigationEnd, Router } from '@angular/router';
 import { routeAnimation, hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { Actions, Store } from '@ngxs/store';
@@ -34,7 +34,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private router: Router,
     private store: Store,
     private actions$: Actions,
-    private media: ObservableMedia,
+    private mediaObserver: MediaObserver,
     private oauthService: OAuthService,
     @Inject(WINDOW) private window: Window,
   ) {}
@@ -47,8 +47,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 
     this.depth$ = this.store.select<any>(RouterState.state).pipe(map(state => state.data.depth));
 
-    this.media
-      .asObservable()
+    this.mediaObserver.media$
       .pipe(untilDestroy(this))
       .subscribe((change: MediaChange) => {
         const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';

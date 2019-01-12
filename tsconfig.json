@@ -30,7 +30,7 @@
       "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"],
       "@ngx-starter-kit/material": ["libs/material/src/index.ts"],
       "@ngx-starter-kit/animations": ["libs/animations/src/index.ts"],
-      "@ngx-starter-kit/utils": ["dist/libs/utils", "libs/utils/src/index.ts"],
+      "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"],
       "@ngx-starter-kit/auth": ["libs/auth/src/index.ts"],
       "@ngx-starter-kit/app-confirm": ["dist/libs/app-confirm", "libs/app-confirm/src/index.ts"],
       "@ngx-starter-kit/draggable": ["dist/libs/draggable", "libs/draggable/src/index.ts"],

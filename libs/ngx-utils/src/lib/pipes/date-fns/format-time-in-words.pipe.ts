@@ -3,10 +3,10 @@ import { AsyncPipe } from '@angular/common';
 import { interval, Observable, of } from 'rxjs';
 import { delayWhen, map, repeatWhen, takeWhile, tap } from 'rxjs/operators';
 
-import { Options } from 'date-fns';
 import { differenceInMinutes, formatDistance } from 'date-fns/esm';
+import { parseISO } from 'date-fns/esm';
 
-const defaultConfig: Options = { addSuffix: true };
+const defaultConfig = { addSuffix: true };
 /**
  * impure pipe, which in general can lead to bad performance
  * but the backoff function limits the frequency the pipe checks for updates
@@ -34,7 +34,7 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
     this.isDestroyed = true; // pipe will stop executing after next iteration
   }
 
-  transform(date: string | number | Date, options?: Options): string {
+  transform(date: string | number | Date, options?): string {
     if (date == null) {
       throw new Error(FormatTimeInWordsPipe.NO_ARGS_ERROR);
     }
@@ -46,19 +46,19 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
     return this.async.transform(this.agoExpression);
   }
 
-  private timeAgo(date: string | number | Date, options?: Options): Observable<string> {
+  private timeAgo(date: string | number | Date, options?): Observable<string> {
     let nextBackoff = this.backoff(date);
     return of(true).pipe(
       // will not recheck input until delay completes
-      repeatWhen(notify => notify.pipe(delayWhen( () => interval(nextBackoff)))),
+      repeatWhen(notify => notify.pipe(delayWhen(() => interval(nextBackoff)))),
       takeWhile(_ => !this.isDestroyed),
-      map(_ => formatDistance(date, new Date(), options)),
-      tap(_ => nextBackoff = this.backoff(date)),
+      map(_ => formatDistance(this.stringToDate(date), new Date(), options)),
+      tap(_ => (nextBackoff = this.backoff(date))),
     );
   }
 
   private backoff(date: string | number | Date): number {
-    const minutesElapsed = Math.abs(differenceInMinutes(new Date(), date)); // this will always be positive
+    const minutesElapsed = Math.abs(differenceInMinutes(new Date(), this.stringToDate(date))); // this will always be positive
     let backoffAmountInSeconds: number;
     if (minutesElapsed < 2) {
       backoffAmountInSeconds = 5;
@@ -70,5 +70,14 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
       backoffAmountInSeconds = 300; // 5 minutes
     }
     return backoffAmountInSeconds * 1000; // return an amount of milliseconds
+  }
+
+  private stringToDate(date: string | number | Date): number | Date {
+    const isString = s  => typeof(s) === 'string' || s instanceof String;
+    console.log(date);
+    console.log(new Date(date as string));
+    console.log(new Date(Date.parse(date as string)));
+
+    return isString(date) ? parseISO(date) : date;
   }
 }
