@@ -74,10 +74,6 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
 
   private stringToDate(date: string | number | Date): number | Date {
     const isString = s  => typeof(s) === 'string' || s instanceof String;
-    console.log(date);
-    console.log(new Date(date as string));
-    console.log(new Date(Date.parse(date as string)));
-
     return isString(date) ? parseISO(date) : date;
   }
 }
