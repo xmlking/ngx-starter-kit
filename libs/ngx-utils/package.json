@@ -1,6 +1,6 @@
 {
   "name": "@ngx-starter-kit/ngx-utils",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "peerDependencies": {
     "@angular/common": ">=6.0.0 <8.0.0",
     "@angular/core": ">=6.0.0 <8.0.0",
