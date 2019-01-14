@@ -3,16 +3,27 @@ import {
   ChangeDetectorRef,
   ContentChild,
   Directive,
-  ElementRef,
+  ElementRef, Injectable,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit,
+  OnInit, Optional,
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
-import { BaseDirective, MediaChange, MediaMonitor, StyleUtils } from '@angular/flex-layout';
+import { BaseDirective2, MediaChange, MediaMarshaller, StyleBuilder, StyleUtils } from '@angular/flex-layout';
 import { AspectRatioContentDirective } from './aspect-ratio-content.directive';
+import { BaseDirective } from './base';
+
+export interface AspectRatioParent {
+  inline: boolean;
+}
+@Injectable({providedIn: 'root'})
+export class AspectRatioStyleBuilder extends StyleBuilder {
+  buildStyles(input: string, parent: AspectRatioParent) {
+    return {'xxx': 'xxx'};
+  }
+}
 
 @Directive({
   selector: `
@@ -28,13 +39,14 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
   pseudoElement: any;
 
   constructor(
-    monitor: MediaMonitor,
-    private styleUtils: StyleUtils,
-    private renderer: Renderer2,
-    private hostElement: ElementRef,
-    private cd: ChangeDetectorRef,
+    marshal: MediaMarshaller,
+    protected styler: StyleUtils,
+    protected renderer: Renderer2,
+    protected elementRef: ElementRef,
+    protected cd: ChangeDetectorRef,
+    @Optional() protected styleBuilder: AspectRatioStyleBuilder,
   ) {
-    super(monitor, hostElement, styleUtils);
+    super(marshal, elementRef, styler, styleBuilder);
 
     this.pseudoElement = this.renderer.createElement('div');
     this.renderer.addClass(this.pseudoElement, 'ngx-aspect-ratio-pseudo-element');
@@ -134,12 +146,12 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
   }
 
   ngAfterContentInit() {
-    if (this.hostElement && this.pseudoElement && this.contentElement) {
-      this.renderer.addClass(this.hostElement.nativeElement, 'ngx-aspect-ratio-host-element');
+    if (this.elementRef && this.pseudoElement && this.contentElement) {
+      this.renderer.addClass(this.elementRef.nativeElement, 'ngx-aspect-ratio-host-element');
 
-      this.renderer.insertBefore(this.hostElement.nativeElement, this.pseudoElement, this.contentElement.nativeElement);
+      this.renderer.insertBefore(this.elementRef.nativeElement, this.pseudoElement, this.contentElement.nativeElement);
     } else {
-      if (!this.hostElement) {
+      if (!this.elementRef) {
         console.error('ngxAspectRatio: Host Element is not defined.');
       }
       if (!this.pseudoElement) {
