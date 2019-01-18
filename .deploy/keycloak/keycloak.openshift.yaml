@@ -1,0 +1,115 @@
+apiVersion: v1
+kind: List
+items:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      annotations: {}
+      name: keycloak-data
+      labels:
+        app: keycloak
+    spec:
+      accessModes:
+        - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: keycloak-secrets
+      labels:
+        app: keycloak
+    stringData:
+      keycloak_password: admin123
+
+  - apiVersion: apps.openshift.io/v1
+    kind: DeploymentConfig
+    metadata:
+      name: keycloak
+      labels:
+        app: keycloak
+      annotations:
+        sidecar.istio.io/inject: "false"
+    spec:
+      replicas: 1
+      template:
+        metadata:
+          labels:
+            app: keycloak
+        spec:
+          containers:
+            - name: keycloak
+              image: docker.io/jboss/keycloak:4.8.3.Final
+              imagePullPolicy: IfNotPresent
+              ports:
+                - containerPort: 8080
+              env:
+                - name: POD_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      apiVersion: v1
+                      fieldPath: metadata.namespace
+                - name: KEYCLOAK_USER
+                  value: admin
+                - name: KEYCLOAK_PASSWORD
+                  valueFrom:
+                    secretKeyRef:
+                      name: keycloak-secrets
+                      key: keycloak_password
+                - name: PROXY_ADDRESS_FORWARDING
+                  value: "true"
+              livenessProbe:
+                httpGet:
+                  path: /auth
+                  port: 8080
+                initialDelaySeconds: 60
+                timeoutSeconds: 10
+              readinessProbe:
+                httpGet:
+                  path: /auth
+                  port: 8080
+                initialDelaySeconds: 10
+                timeoutSeconds: 10
+              volumeMounts:
+                - mountPath: /opt/jboss/keycloak/standalone/data
+                  name: keycloak-data
+                  readOnly: false
+          volumes:
+            - name: keycloak-data
+              persistentVolumeClaim:
+                claimName: keycloak-data
+      triggers:
+        - type: ConfigChange
+
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: keycloak
+      labels:
+        app: keycloak
+    spec:
+      ports:
+        - name: keycloak-8080-http
+          port: 8080
+          protocol: TCP
+          targetPort: 8080
+      selector:
+        app: keycloak
+
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: keycloak
+      labels:
+        expose: "true"
+        app: keycloak
+    spec:
+      to:
+        kind: Service
+        name: keycloak
+      port:
+        targetPort: keycloak-8080-http
+      tls:
+        termination: edge

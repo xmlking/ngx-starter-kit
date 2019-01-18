@@ -29,10 +29,9 @@ export const environment = {
   },
 
   auth: {
-    // issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/kubernetes',
-    // clientId: 'cockpit',
-    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
-    clientId: 'is360ui',
+    clientId: 'ngxapi',
+    // issuer: 'http://localhost:8080/auth/realms/ngx',
+    issuer: 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
   },
 
   email: {
