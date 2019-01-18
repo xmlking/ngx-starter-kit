@@ -24,8 +24,8 @@ export const environment = {
 
   auth: {
     issuer:
-      process.env.OIDC_ISSUER_URL || 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
-    clientId: process.env.OIDC_CLIENT_ID || 'is360ui',
+      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
   },
 
   email: {

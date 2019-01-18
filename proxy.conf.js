@@ -18,7 +18,7 @@ const PROXY_CONFIG = [
     context: [
       "/auth/realms"
     ],
-    'target': 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com',
+    'target': 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com',
     'secure': false,
     'logLevel': 'debug',
     // 'changeOrigin': true,
