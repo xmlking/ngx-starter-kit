@@ -53,7 +53,7 @@ docker push xmlking/ngx-starter-kit:latest
 ```bash
 # login with your ID
 oc login <my OpenShift URL>
-# oc login  https://console.starter-us-west-1.openshift.com
+# oc login  https://console.starter-us-east-1.openshift.com
 oc project ngx-starter-kit
 cd .deploy/webapp
 

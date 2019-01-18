@@ -44,9 +44,9 @@
     {
       "name": "keycloak",
       "urls": [
-        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/.well-known/openid-configuration",
-        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/protocol/openid-connect/certs",
-        "https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360/protocol/openid-connect/login-status-iframe.html"
+        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/.well-known/openid-configuration",
+        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/certs",
+        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
       ],
       "cacheConfig": {
         "strategy": "performance",
