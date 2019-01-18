@@ -16,7 +16,12 @@ npm i @ngx-starter-kit/ngx-utils
 
 ### InViewport Directive
 
-> Add `IntersectionObserver` [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) to [polyfills.ts](../../apps/webapp/src/polyfills.ts) for `Safari` Support
+> Add `IntersectionObserver` conditional [polyfill](https://github.com/w3c/IntersectionObserver/tree/master/polyfill) to ~[index.html](../../apps/webapp/src/index.html)~ for `Safari` Support
+
+```html
+<script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
+```
+
 
 ```html
 <div ngxInViewport (inViewport)="showMyElement=true">

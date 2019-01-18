@@ -83,5 +83,3 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
 (window as any).global = window;
 import 'core-js/es7/array';
 
-/* Polyfill for IntersectionObserver */
-import 'intersection-observer';
