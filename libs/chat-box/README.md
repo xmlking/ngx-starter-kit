@@ -28,6 +28,14 @@ export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 npm publish dist/libs/chat-box --access public
 ```
 
-TODO
+### TODO
 multiple conversations inspired by
 https://www.weave.works/
+
+> implement polymorphic user supplied complements to render variety `messages` 
+
+```html
+<Message data='messageObject'></Message>
+<ChoiceMessage data='messageObject'></ChoiceMessage>
+```
+

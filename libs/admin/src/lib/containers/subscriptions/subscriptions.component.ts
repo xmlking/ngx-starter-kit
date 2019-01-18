@@ -52,12 +52,12 @@ export class SubscriptionsComponent extends EntitiesComponent<Subscription, Subs
       new EntityColumnDef<Subscription>({
         property: 'createdAt',
         header: 'Created',
-        displayFn: entity => `${formatDistance(entity.createdAt, new Date(), { addSuffix: true })}`,
+        displayFn: entity => `${formatDistance(this.stringToDate(entity.createdAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<Subscription>({
         property: 'updatedAt',
         header: 'Updated',
-        displayFn: entity => `${formatDistance(entity.updatedAt, new Date(), { addSuffix: true })}`,
+        displayFn: entity => `${formatDistance(this.stringToDate(entity.updatedAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<Subscription>({ property: 'actions', header: 'Actions', template: this.deleteTpl }),
     ] as EntityColumnDef<Subscription>[];
