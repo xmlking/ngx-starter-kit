@@ -63,12 +63,12 @@ export class NotificationsComponent extends EntitiesComponent<AppNotification, N
       new EntityColumnDef<AppNotification>({
         property: 'createdAt',
         header: 'Created',
-        displayFn: entity => `${formatDistance(entity.createdAt, new Date(), { addSuffix: true })}`,
+        displayFn: entity => `${formatDistance(this.stringToDate(entity.createdAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<AppNotification>({
         property: 'updatedAt',
         header: 'Updated',
-        displayFn: entity => `${formatDistance(entity.updatedAt, new Date(), { addSuffix: true })}`,
+        displayFn: entity => `${formatDistance(this.stringToDate(entity.updatedAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<AppNotification>({ property: 'send', header: 'Send', template: this.sendTpl }),
       // new EntityColumnDef<AppNotification>({ property: 'actions', header: 'Actions', template: this.editDeleteTpl }),

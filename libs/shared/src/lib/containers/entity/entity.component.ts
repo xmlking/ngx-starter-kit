@@ -9,6 +9,7 @@ import { EntityFormComponent } from './entity-form.component';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { parseISO } from 'date-fns/esm';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
@@ -193,5 +194,10 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     event.stopPropagation();
     event.stopImmediatePropagation();
     column.visible = !column.visible;
+  }
+
+  protected stringToDate(date: string | number | Date): number | Date {
+    const isString = s  => typeof(s) === 'string' || s instanceof String;
+    return isString(date) ? parseISO(date) : date;
   }
 }

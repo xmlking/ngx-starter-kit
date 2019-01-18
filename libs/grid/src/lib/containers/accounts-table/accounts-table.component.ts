@@ -36,7 +36,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     new EntityColumnDef<Account>({ property: 'Name',    header: 'Name',   displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
     new EntityColumnDef<Account>({ property: 'gender', header: 'Gender' }),
     // prettier-ignore
-    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${format(entity.dob, 'MMMM dd, yyyy')}` }),
+    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${format(this.stringToDate(entity.dob), 'MMMM dd, yyyy')}` }),
     new EntityColumnDef<Account>({ property: 'city', header: 'City', displayFn: entity => `${entity.address.city}` }),
     new EntityColumnDef<Account>({
       property: 'state',
