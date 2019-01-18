@@ -12,10 +12,9 @@ export const environment = {
   API_BASE_URL: 'http://localhost:3000/api',
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
   auth: {
-    // clientId: 'cockpit',
+    clientId: 'ngxapp',
     // issuer: 'http://localhost:8080/auth/realms/ngx',
-    clientId: 'is360ui',
-    issuer: 'https://myroute-is360.a3c1.starter-us-west-1.openshiftapps.com/auth/realms/is360',
+    issuer: 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
   },
 };
 
