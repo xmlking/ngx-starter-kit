@@ -20,7 +20,7 @@ export class AdminGuard implements CanActivate {
       if ((this.oauthService.hasValidIdToken() || this.oauthService.hasValidAccessToken()) && this.isAdmin()) {
         return true;
       } else {
-        this.snack.open('You are not Admin. Please login with kubeadmin', 'OK', { duration: 5000 });
+        this.snack.open('You are not Admin. Please login with ngxadmin : ngxadmin', 'OK', { duration: 5000 });
         return false;
       }
     }
@@ -28,6 +28,6 @@ export class AdminGuard implements CanActivate {
 
   isAdmin(): boolean {
     // const userRoles = (<any>this.oauthService.getIdentityClaims()).groups.filter(role => role.startsWith('NGX_'));
-    return (<any>this.oauthService.getIdentityClaims()).preferred_username === 'kubeadmin';
+    return (<any>this.oauthService.getIdentityClaims()).preferred_username === 'ngxadmin';
   }
 }
