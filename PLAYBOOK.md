@@ -11,7 +11,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Node                 | v11.4.0 |          |
 | NPM                  | v6.5.0  |          |
 | Angular CLI          | v7.1.3  |          |
-| @nrwl/schematics     | v7.4.0  |          |
+| @nrwl/schematics     | v7.4.1  |          |
 | @nestjs/cli          | v5.7.1  |          |
 | semantic-release-cli | v4.1.0  |          |
 | commitizen           | v3.0.5  |          |
