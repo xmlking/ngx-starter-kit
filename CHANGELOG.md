@@ -1,3 +1,50 @@
+# [1.4.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.3.0...v1.4.0) (2019-01-20)
+
+
+### Bug Fixes
+
+* **animations:** making hierarchical route animations default ([800153a](https://github.com/xmlking/ngx-starter-kit/commit/800153a))
+* **api:** using timestamptz type for Dates in Entities ([a528864](https://github.com/xmlking/ngx-starter-kit/commit/a528864))
+* **chat-box:** changed chat-box input style to outline ([a252f4e](https://github.com/xmlking/ngx-starter-kit/commit/a252f4e))
+* **chat-box:** fix chatbox input appearance ([1653547](https://github.com/xmlking/ngx-starter-kit/commit/1653547))
+* **dependencies:** removing more moment dependencies ([a22cbf2](https://github.com/xmlking/ngx-starter-kit/commit/a22cbf2))
+* **dependencies:** removing more moment dependencies ([8a5492e](https://github.com/xmlking/ngx-starter-kit/commit/8a5492e))
+* **dependencies:** updated dependencies ([c97573a](https://github.com/xmlking/ngx-starter-kit/commit/c97573a))
+* **ngx-utils:** fix date-fns formatTimeInWords pipe's change detection ([7c5c240](https://github.com/xmlking/ngx-starter-kit/commit/7c5c240))
+* **notifications:** implement mock data for notifications PUT, POST actions ([45cfbe6](https://github.com/xmlking/ngx-starter-kit/commit/45cfbe6))
+* **notifications:** polish notifications ([d64f64b](https://github.com/xmlking/ngx-starter-kit/commit/d64f64b))
+* **notifications:** refactored notifications module ([fa7c98c](https://github.com/xmlking/ngx-starter-kit/commit/fa7c98c))
+
+
+### Features
+
+* **admin:** adding admin module to manage notifications ([db85e50](https://github.com/xmlking/ngx-starter-kit/commit/db85e50))
+* **admin:** adding admin module to manage notifications ([56cdcf8](https://github.com/xmlking/ngx-starter-kit/commit/56cdcf8))
+* **api:**  kubernetes ([ffdab6c](https://github.com/xmlking/ngx-starter-kit/commit/ffdab6c))
+* **api:**  kubernetes ([dc5922a](https://github.com/xmlking/ngx-starter-kit/commit/dc5922a))
+* **api:** added kubernetes api ([28f6a50](https://github.com/xmlking/ngx-starter-kit/commit/28f6a50))
+* **api:** dynamically load entities using webpack require.context ([57dfd96](https://github.com/xmlking/ngx-starter-kit/commit/57dfd96))
+* **auth:** fix sso: removed initialNavigation ([7e0114d](https://github.com/xmlking/ngx-starter-kit/commit/7e0114d))
+* **auth:** using  [@xmlking](https://github.com/xmlking)/angular-oauth2-oidc-all ([dd02035](https://github.com/xmlking/ngx-starter-kit/commit/dd02035))
+* **core:** lib modules published to NPM ([4a3540a](https://github.com/xmlking/ngx-starter-kit/commit/4a3540a))
+* **docs:** added FAQ for removing NgZone ([f25ec6a](https://github.com/xmlking/ngx-starter-kit/commit/f25ec6a))
+* **docs:** added FAQ for removing NgZone ([0d4bb09](https://github.com/xmlking/ngx-starter-kit/commit/0d4bb09))
+* **docs:** added FAQ for removing NgZone ([cced6fd](https://github.com/xmlking/ngx-starter-kit/commit/cced6fd))
+* **docs:** added FAQ for removing NgZone ([04ef04f](https://github.com/xmlking/ngx-starter-kit/commit/04ef04f))
+* **entity:** added column templates and sticky column options ([92d4cb7](https://github.com/xmlking/ngx-starter-kit/commit/92d4cb7))
+* **ngx-utils:** replaced Moment lib with date-fns ([0dc4e2e](https://github.com/xmlking/ngx-starter-kit/commit/0dc4e2e))
+* **ngx-utils:** updated formatTimeInWords Pipe to reflect new date-fns changes in 2.0.0-alpha.27 ([2b79d8e](https://github.com/xmlking/ngx-starter-kit/commit/2b79d8e))
+* **notifications:** refactored notifications module ([1599ab7](https://github.com/xmlking/ngx-starter-kit/commit/1599ab7))
+* **socketio-plugin:** WebSocketConnected event now carry socketId ([48b61f1](https://github.com/xmlking/ngx-starter-kit/commit/48b61f1))
+* **socketio-plugin:** WebSocketConnected event now carry socketId ([fe61005](https://github.com/xmlking/ngx-starter-kit/commit/fe61005))
+* **viewport:** added new Viewport module ([7b47023](https://github.com/xmlking/ngx-starter-kit/commit/7b47023))
+
+
+### Performance Improvements
+
+* **core:** upgrade to es2018 ([ac6c1a9](https://github.com/xmlking/ngx-starter-kit/commit/ac6c1a9))
+* **notifications:** using 'immer' to patch ngxs state ([5e5e255](https://github.com/xmlking/ngx-starter-kit/commit/5e5e255))
+
 # [1.3.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.2.0...v1.3.0) (2018-11-23)
 
 
