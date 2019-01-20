@@ -3,11 +3,11 @@ KeyCloak Testing
 
 Pre-configured KeyCloak OpenID Connect server for testing.
 
-* **Realm**: kubernetes
-* **Client ID**: kube-tenant 
+* **Realm**: ngx
+* **Client ID**: ngxapp, ngxapi
 * **Accounts**:
   * *ROLE_ADMIN*
-    1. kubeadmin : kubeadmin
+    1. ngxadmin : ngxadmin
   * *ROLE_USER*
     1. sumo: demo
     2. sumo1: demo
