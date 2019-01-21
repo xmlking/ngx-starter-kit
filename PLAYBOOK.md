@@ -10,7 +10,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | -------------------- | ------- | -------- |
 | Node                 | v11.4.0 |          |
 | NPM                  | v6.5.0  |          |
-| Angular CLI          | v7.1.3  |          |
+| Angular CLI          | v7.3.0  |          |
 | @nrwl/schematics     | v7.4.1  |          |
 | @nestjs/cli          | v5.7.1  |          |
 | semantic-release-cli | v4.1.0  |          |
@@ -231,10 +231,11 @@ npm i -D lint-staged
 
 ```bash
 ng update
-ng update @angular/core@next
-ng update @angular/cli@next
+# ng update --next
+ng update @angular/core --next
+ng update @angular/cli --next
 ng update @angular/material --force
-ng update @angular/pwa@next
+ng update @angular/pwa --next
 ng update @ngx-formly/schematics --ui-theme=material
 ng update @nrwl/schematics --force
 ```
@@ -316,6 +317,13 @@ ng g lib scrollbar --tags=public-module --publishable=true
 ng g lib ContextMenu --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component ContextMenu --project=context-menu --flat -d
 ng g directive ContextMenuTrigger --project=context-menu --flat -d
+
+# generate components for `Prefetch` Module
+ng g service  Prefetch --tags=public-module --prefix=ngx --publishable=true --unit-test-runner=jest
+ng g service  PrefetchRegistry --project=prefetch --skipTests -d
+ng g service  QuicklinkStrategy --project=prefetch --skipTests -d
+ng g service  LinkHandler --project=prefetch --skipTests -d
+ng g directive Link --project=prefetch --flat --skipTests -d
 
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker --tags=public-module --publishable=true --unit-test-runner=jest
