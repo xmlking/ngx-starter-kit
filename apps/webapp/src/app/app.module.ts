@@ -9,7 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from '@ngx-starter-kit/core';
 
 import { environment } from '@env/environment';
-import { PreloadSelectedModulesList } from './preloading-strategy';
+import { PreloadViewportModule, PreloadViewportStrategy, PreloadSelectedStrategy } from '@ngx-starter-kit/preload';
 
 export class MyHammerConfig extends HammerGestureConfig {
   overrides = <any>{
@@ -23,6 +23,7 @@ export class MyHammerConfig extends HammerGestureConfig {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    // PreloadViewportModule,
     RouterModule.forRoot(
       [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -40,7 +41,9 @@ export class MyHammerConfig extends HammerGestureConfig {
       {
         scrollPositionRestoration: 'enabled',
         anchorScrolling: 'enabled',
-        preloadingStrategy: PreloadAllModules, // TODO: PreloadSelectedModulesList
+        preloadingStrategy: PreloadSelectedStrategy,
+        // preloadingStrategy: PreloadViewportStrategy,
+        // preloadingStrategy: PreloadAllModules,
         paramsInheritanceStrategy: 'always',
         // enableTracing: true, // enable to debug routing during development
         // onSameUrlNavigation: 'reload'
@@ -50,7 +53,6 @@ export class MyHammerConfig extends HammerGestureConfig {
     CoreModule, // IMP: Please keep CoreModule after RouterModule
   ],
   providers: [
-    PreloadSelectedModulesList,
     {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,

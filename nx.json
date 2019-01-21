@@ -132,6 +132,9 @@
     },
     "models": {
       "tags": ["utils"]
+    },
+    "preload": {
+      "tags": ["public-module"]
     }
   }
 }

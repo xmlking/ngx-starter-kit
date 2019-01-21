@@ -318,13 +318,6 @@ ng g lib ContextMenu --tags=public-module --publishable=true --unit-test-runner=
 ng g component ContextMenu --project=context-menu --flat -d
 ng g directive ContextMenuTrigger --project=context-menu --flat -d
 
-# generate components for `Prefetch` Module
-ng g service  Prefetch --tags=public-module --prefix=ngx --publishable=true --unit-test-runner=jest
-ng g service  PrefetchRegistry --project=prefetch --skipTests -d
-ng g service  QuicklinkStrategy --project=prefetch --skipTests -d
-ng g service  LinkHandler --project=prefetch --skipTests -d
-ng g directive Link --project=prefetch --flat --skipTests -d
-
 # generate components, services for `ThemePicker` Module
 ng g lib ThemePicker --tags=public-module --publishable=true --unit-test-runner=jest
 ng g component ThemePicker --project=theme-picker --flat -d
@@ -406,6 +399,15 @@ ng g module directives/inViewport --project=ngx-utils --spec=false -d
 ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
 ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
 
+
+# generate components for `preload` Module
+ng g lib  preload --tags=public-module --prefix=ngx --publishable=true --unit-test-runner=jest --skipTests
+ng g service strategies/selected/PreloadSelectedStrategy --project=preload --skipTests -d
+ng g module     strategies/viewport/PreloadViewport --flat --project=preload --skipTests -d
+ng g service    strategies/viewport/PreloadViewportStrategy --project=preload --skipTests -d
+ng g service    strategies/viewport/PrefetchRegistry --project=preload --skipTests -d
+ng g service    strategies/viewport/LinkHandler --project=preload --skipTests -d
+ng g directive  strategies/viewport/Link --project=preload  --module=preload-viewport --skipTests -d
 
 # generate components for `toolbar` Module
 ng g lib toolbar --tags=private-module --unit-test-runner=jest -d
