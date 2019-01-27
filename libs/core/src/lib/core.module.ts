@@ -4,7 +4,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormlyModule } from '@ngx-formly/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -54,7 +54,7 @@ library.add(faTwitter, faGithub, faGoogle);
     HttpClientModule,
     FontAwesomeModule,
     MatSnackBarModule,
-    NgxPageScrollModule,
+    NgxPageScrollCoreModule.forRoot({_logLevel: 3}),
     NavigatorModule.forRoot(defaultMenu),
     NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState], { developmentMode: !environment.production }),
     NgxsStoragePluginModule.forRoot({

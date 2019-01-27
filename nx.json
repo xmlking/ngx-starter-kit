@@ -49,9 +49,6 @@
     "widgets": {
       "tags": ["child-module"]
     },
-    "material": {
-      "tags": ["shared-module"]
-    },
     "animations": {
       "tags": ["utils"]
     },

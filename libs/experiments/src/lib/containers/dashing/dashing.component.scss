@@ -1,0 +1,39 @@
+.grid-container {
+  margin: 10px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+}
+
+.more-button {
+  float: right;
+  font-size: 2em;
+}
+
+.dashboard-card-content {
+  text-align: center;
+}
+
+.cdk-drop-list {
+  height: 100%;
+  width: 100%;
+}
+
+
+.cdk-drag-preview {
+  box-sizing: border-box;
+  opacity: 0.5;
+}
+
+.cdk-drag-animating {
+  transition: unset;
+}
+
+.cdk-drag-placeholder {
+  display: none;
+}
