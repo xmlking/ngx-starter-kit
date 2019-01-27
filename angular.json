@@ -86,7 +86,7 @@
                 {
                   "type": "bundle",
                   "name": "vendor",
-                  "baseline": "1mb",
+                  "baseline": "1.5mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
@@ -119,7 +119,7 @@
                 },
                 {
                   "type": "all",
-                  "baseline": "10mb",
+                  "baseline": "50mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 }
