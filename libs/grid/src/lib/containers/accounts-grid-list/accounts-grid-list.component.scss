@@ -31,13 +31,16 @@ mat-grid-tile {
   mat-card {
     width: calc(100% - 70px);
     height: calc(100% - 70px);
-
-    @include mat-elevation-transition;
     @include mat-elevation(2);
+
+    //@include mat-elevation-transition;
+    transition: transform 0.25s ease;
 
     &:hover {
       cursor: pointer;
       @include mat-elevation(6);
+      //box-shadow: 0 15px 37px 0 #dbe2eb;
+      transform: translateY(-1rem);
     }
 
     &.active {
