@@ -9,9 +9,9 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software             | Version | Optional |
 | -------------------- | ------- | -------- |
 | Node                 | v11.4.0 |          |
-| NPM                  | v6.5.0  |          |
+| NPM                  | v6.6.0  |          |
 | Angular CLI          | v7.3.0  |          |
-| @nrwl/schematics     | v7.4.1  |          |
+| @nrwl/schematics     | v7.5.0  |          |
 | @nestjs/cli          | v5.7.1  |          |
 | semantic-release-cli | v4.1.0  |          |
 | commitizen           | v3.0.5  |          |
@@ -273,15 +273,10 @@ ng g service services/Feature        --project=core   -d
 ng g service services/GoogleAnalytics --project=core   -d
 ng g service  PushNotification        --project=core -d
 
-# `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components
-ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest -d
-
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
 ng g lib shared --prefix=ngx --tags=shared-module --unit-test-runner=jest
 # generate containers, components for `shared` Module
 ng g service containers/entity/entity --project=shared
-ng g directive directives/min  --project=shared  --export=true
-ng g directive components/ClickOutside  --project=shared  --export=true
 ng g component components/entityTable --project=shared  --export=true
 ng g component containers/entity --project=shared  --skip-import
 ng g component containers/entityForm  --project=shared  --skip-import
@@ -398,6 +393,10 @@ ng g pipe pipes/date-fns/FormatTimeInWords --project=ngx-utils --module=date-fns
 ng g module directives/inViewport --project=ngx-utils --spec=false -d
 ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
 ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
+ng g module directives/clickOutside --project=ngx-utils --spec=false -d
+ng g directive directives/click-outside/clickOutside  --selector=ngxClickOutside --project=ngx-utils --module=click-outside --export -d
+ng g module directives/min --project=ngx-utils --spec=false -d
+ng g directive directives/min/MinValidator  --selector=appMin --project=ngx-utils --module=min --export -d
 
 
 # generate components for `preload` Module
@@ -475,6 +474,7 @@ ng g component containers/knobDemo              --project=experiments -d
 ng g component containers/ledDemo               --project=experiments  -d
 ng g component containers/ImageComp             --project=experiments  -d
 ng g component containers/layout                --project=experiments -d
+ng g component containers/dashing               --project=experiments -d
 ng g component components/card                  --project=experiments -d
 ng g component containers/viewport              --project=experiments --spec=false -d
 

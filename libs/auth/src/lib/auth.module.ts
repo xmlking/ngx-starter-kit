@@ -1,46 +1,51 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from '@xmlking/angular-oauth2-oidc-all';
 import { Store } from '@ngxs/store';
+import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from '@xmlking/angular-oauth2-oidc-all';
 
-import { initializeAuth } from './oauth.init';
+import { environment } from '@env/environment';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+
 import { AuthState } from './auth.state';
-import { LoginComponent } from './components/login/login.component';
+import { AuthGuard } from './auth.guard';
 import { ROPCService } from './ropc.service';
 import { AuthService } from './auth.service';
-import { AuthGuard } from './auth.guard';
+import { AuthHandler } from './auth.handler';
+import { initializeAuth } from './oauth.init';
+import { LoginComponent } from './components/login/login.component';
 
 import {
+  MatIconModule,
   MatButtonModule,
   MatCardModule,
   MatCheckboxModule,
   MatDialogModule,
-  MatFormFieldModule,
-  MatIconModule,
   MatInputModule,
+  MatFormFieldModule,
   MatToolbarModule,
   MatTooltipModule,
 } from '@angular/material';
-import { ReactiveFormsModule } from '@angular/forms';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { environment } from '@env/environment';
-import { AuthHandler } from './auth.handler';
+
+const matModules = [
+  MatIconModule,
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatInputModule,
+  MatFormFieldModule,
+  MatTooltipModule,
+  MatToolbarModule,
+];
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    MatButtonModule,
-    MatCardModule,
-    MatCheckboxModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatTooltipModule,
-    MatInputModule,
-    MatToolbarModule,
+    [...matModules],
     FlexLayoutModule,
     ReactiveFormsModule,
     FontAwesomeModule,

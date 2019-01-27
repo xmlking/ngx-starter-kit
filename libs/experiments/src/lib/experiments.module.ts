@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { FilePondModule, registerPlugin } from 'ngx-filepond';
-import { ScrollingModule } from '@angular/cdk/scrolling';
-import { KnobModule } from '@xmlking/ngx-knob';
-import { InViewportModule } from '@ngx-starter-kit/ngx-utils';
 
-import { ClapModule } from '@ngx-starter-kit/clap';
+import { KnobModule } from '@xmlking/ngx-knob';
 import { LedModule } from '@ngx-starter-kit/led';
-import { ImageComparisonModule } from '@ngx-starter-kit/image-comparison';
+import { ClapModule } from '@ngx-starter-kit/clap';
 import { SharedModule } from '@ngx-starter-kit/shared';
+import { InViewportModule } from '@ngx-starter-kit/ngx-utils';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 import { ContextMenuModule } from '@ngx-starter-kit/context-menu';
+import { ImageComparisonModule } from '@ngx-starter-kit/image-comparison';
+
 import { AnimationsComponent } from './containers/animations/animations.component';
 import { FileUploadComponent } from './containers/file-upload/file-upload.component';
 import { HammertimeDirective } from './components/hammertime/hammertime.directive';
@@ -23,20 +24,46 @@ import { ImageCompComponent } from './containers/image-comp/image-comp.component
 import { LayoutComponent } from './containers/layout/layout.component';
 import { CardComponent } from './components/card/card.component';
 import { ViewportComponent } from './containers/viewport/viewport.component';
+import { DashingComponent } from './containers/dashing/dashing.component';
 
 // Registering plugins
 import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
 import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
 import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
 
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { DragDropModule } from '@angular/cdk/drag-drop';
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatGridListModule,
+  MatIconModule,
+  MatListModule,
+  MatPaginatorModule,
+  MatTableModule,
+} from '@angular/material';
+
 registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
+
+const matModules = [
+  MatCardModule,
+  MatListModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatGridListModule,
+  MatButtonModule,
+  MatIconModule,
+  DragDropModule,
+  ScrollingModule,
+];
 
 @NgModule({
   imports: [
     SharedModule,
+    BreadcrumbsModule,
+    [...matModules],
     FilePondModule,
     ContextMenuModule,
-    ScrollingModule,
     ClapModule,
     LedModule,
     KnobModule,
@@ -96,6 +123,11 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
         data: { title: 'Layout', depth: 3 },
       },
       {
+        path: 'dashing',
+        component: DashingComponent,
+        data: { title: 'Dashing', depth: 3 },
+      },
+      {
         path: 'viewport',
         component: ViewportComponent,
         data: { title: 'Viewport', depth: 3 },
@@ -114,6 +146,7 @@ registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, F
     LedDemoComponent,
     ImageCompComponent,
     LayoutComponent,
+    DashingComponent,
     CardComponent,
     ViewportComponent,
   ],

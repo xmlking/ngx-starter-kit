@@ -107,7 +107,8 @@ export class AuthState {
 
   @Action(Login)
   login({ getState, dispatch }: StateContext<AuthStateModel>, { payload }: Login) {
-    return this.authService.login(payload).pipe(
+    // HINT: done escape form zone https://github.com/angular/material2/issues/13640
+    return this.zone.run( () => this.authService.login(payload).pipe(
       map(profile => {
         if (profile === false) {
           dispatch(new LoginCanceled());
@@ -115,6 +116,6 @@ export class AuthState {
           dispatch(new LoginSuccess(profile));
         }
       }),
-    );
+    ));
   }
 }
