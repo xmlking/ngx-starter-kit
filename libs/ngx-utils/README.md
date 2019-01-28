@@ -24,7 +24,6 @@ npm i date-fns@^2.0.0-alpha.27
 <script src="https://polyfill.io/v2/polyfill.min.js?features=IntersectionObserver"></script>
 ```
 
-
 ```html
 <div ngxInViewport (inViewport)="showMyElement=true">
   <ng-container *ngIf="showMyElement"> <div>Hello World!</div> </ng-container>
@@ -35,11 +34,13 @@ npm i date-fns@^2.0.0-alpha.27
 > If `entry.intersectionRatio < 0.5` ==> `Outside Viewport`
 
 > lazy loading images example
+
 ```html
-  <div *ngFor="let image of images" [oneTime]="true" (inViewport)="show($event, image)">
-    <ng-container *ngIf="image.show"> <img src="{{ image.url }}" /> </ng-container>
-  </div>
+<div *ngFor="let image of images" [oneTime]="true" (inViewport)="show($event, image)">
+  <ng-container *ngIf="image.show"> <img src="{{ image.url }}" /> </ng-container>
+</div>
 ```
+
 ```ts
   show(event: Partial<IntersectionObserverEntry>, image: ImageItem) {
     if (event.intersectionRatio >= 0.5) {
@@ -47,6 +48,7 @@ npm i date-fns@^2.0.0-alpha.27
     }
   }
 ```
+
 #### Flags
 
 1. Trigger only One Time : `[oneTime]="true"` usecase: image loading.
