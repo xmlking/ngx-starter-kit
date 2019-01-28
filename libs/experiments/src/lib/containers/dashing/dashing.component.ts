@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 import { CdkDropList, CdkDragDrop, CdkDragEnter, moveItemInArray } from '@angular/cdk/drag-drop';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 const COLORS = [
   '#ea4335',
   '#4285f4',
@@ -51,6 +52,11 @@ function getColor() {
   styleUrls: ['./dashing.component.scss'],
 })
 export class DashingComponent implements AfterViewInit {
+  crumbs: ReadonlyArray<Crumb> = [
+    { name: 'Dashboard', link: '/dashboard' },
+    { name: 'Experiments', link: '/dashboard/experiments' },
+    { name: 'Dashing' },
+  ];
   @ViewChildren(CdkDropList) dropsQuery: QueryList<CdkDropList>;
 
   drops: CdkDropList[];
