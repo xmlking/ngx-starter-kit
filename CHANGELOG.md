@@ -1,3 +1,19 @@
+# [1.5.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.4.0...v1.5.0) (2019-01-30)
+
+
+### Bug Fixes
+
+* **grid:** grid item hover animation changed ([73e7af3](https://github.com/xmlking/ngx-starter-kit/commit/73e7af3))
+
+
+### Features
+
+* **dashing:** initial experiment to implement dashing.io ([c16bac6](https://github.com/xmlking/ngx-starter-kit/commit/c16bac6))
+* **dashing:** initial experiment to implement dashing.io ([2ce5f6a](https://github.com/xmlking/ngx-starter-kit/commit/2ce5f6a))
+* **preload:** added Preload strategies module ([3426302](https://github.com/xmlking/ngx-starter-kit/commit/3426302))
+* **preload:** added Preload strategies module ([65b6642](https://github.com/xmlking/ngx-starter-kit/commit/65b6642))
+* **shared:** split shared module for optimal loading ([8cb2cdd](https://github.com/xmlking/ngx-starter-kit/commit/8cb2cdd))
+
 # [1.4.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.3.0...v1.4.0) (2019-01-20)
 
 
