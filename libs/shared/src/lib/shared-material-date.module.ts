@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatDatepickerModule } from '@angular/material';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
 
-const MODULE_EXPORTS = [MatDatepickerModule];
+const MODULE_EXPORTS = [MatDatepickerModule, MatNativeDateModule];
 
 const DATE_FORMATS: MatDateFormats = {
   parse: {
@@ -17,8 +17,7 @@ const DATE_FORMATS: MatDateFormats = {
 };
 
 @NgModule({
-  imports: MODULE_EXPORTS,
   exports: MODULE_EXPORTS,
   providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS }, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
 })
-export class MaterialDateModule {}
+export class SharedMaterialDateModule {}

@@ -28,7 +28,6 @@
       "@ngx-starter-kit/not-found": ["libs/not-found/src/index.ts"],
       "@ngx-starter-kit/experiments": ["libs/experiments/src/index.ts"],
       "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"],
-      "@ngx-starter-kit/material": ["libs/material/src/index.ts"],
       "@ngx-starter-kit/animations": ["libs/animations/src/index.ts"],
       "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"],
       "@ngx-starter-kit/auth": ["libs/auth/src/index.ts"],
@@ -52,7 +51,8 @@
       "@ngx-starter-kit/clap": ["dist/libs/clap", "libs/clap/src/index.ts"],
       "@ngx-starter-kit/image-comparison": ["dist/libs/image-comparison", "libs/image-comparison/src/index.ts"],
       "@ngx-starter-kit/ngx-utils": ["dist/libs/ngx-utils", "libs/ngx-utils/src/index.ts"],
-      "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"]
+      "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"],
+      "@ngx-starter-kit/preload": ["libs/preload/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "dist/**/*", "coverage/**/*", "todo/**/*", "tools/**/_*files/**/*"]

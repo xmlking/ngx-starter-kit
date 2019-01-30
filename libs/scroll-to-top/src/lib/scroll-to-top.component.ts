@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, Inject, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { scrollFabAnimation } from '@ngx-starter-kit/animations';
-import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll';
+import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
 import { distinctUntilChanged, map, share, tap, throttleTime } from 'rxjs/operators';
 import { BehaviorSubject, fromEvent } from 'rxjs';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
@@ -32,7 +32,11 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
   ) {}
 
   ngAfterViewInit() {
-    this.pageScrollInstance = PageScrollInstance.simpleInstance(this.document, '#top');
+    this.pageScrollInstance = this.pageScrollService.create({
+      document: this.document,
+      scrollTarget: '#top'
+    });
+
     const scroll$ = fromEvent(this.window, 'scroll').pipe(
       throttleTime(10),
       map(() => this.window.pageYOffset),

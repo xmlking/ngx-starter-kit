@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/material",
+    "outDir": "../../dist/out-tsc/libs/preload",
     "target": "es2015",
     "module": "es2015",
     "moduleResolution": "node",

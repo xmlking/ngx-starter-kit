@@ -74,6 +74,12 @@ type `ng.profiler.timeChangeDetection();` in console.
 > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
 > Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
 
+* UI Kits
+  1. [Material](https://material.angular.io/)
+  2. [Nebular](https://akveo.github.io/nebular/)
+  3. [Clarity](https://clarity.design/)
+
+
 * Animations 
 > Read [Hierarchical Route Animations](https://fluin.io/blog/hierarchical-route-animations) 
 
@@ -203,6 +209,8 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
 <br/>
 > Refer [Vendure](https://github.com/vendure-ecommerce/vendure) an eCommerce framework build with GraphQL and NestJS 
+<br/>
+> Refer [Getting Started with Nest.js](https://scotch.io/tutorials/getting-started-with-nestjs)
 
 * Shoud I use mergeMap or  concatMap or switchMap or forkJoin for my usecase? 
 
