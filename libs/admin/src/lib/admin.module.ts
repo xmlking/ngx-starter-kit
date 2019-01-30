@@ -1,9 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+
+import { AdminGuard } from '@ngx-starter-kit/auth';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ToolbarModule } from '@ngx-starter-kit/toolbar';
+import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
 import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 import { HelperModule, TruncateModule } from '@ngx-starter-kit/ngx-utils';
+
 import { OverviewComponent } from './containers/overview/overview.component';
 import { SubscriptionsComponent } from './containers/subscriptions/subscriptions.component';
 import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
@@ -11,22 +19,59 @@ import { NotificationsComponent } from './containers/notifications/notifications
 import { NotificationDetailComponent } from './components/notification-detail/notification-detail.component';
 import { NotificationEditComponent } from './components/notification-edit/notification-edit.component';
 import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
-import { ToolbarModule } from '@ngx-starter-kit/toolbar';
-import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
-import { AdminGuard } from '@ngx-starter-kit/auth';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
+
+
+
+import {
+  MatButtonModule,
+  MatButtonToggleModule,
+  MatCardModule,
+  MatCheckboxModule,
+  MatDialogModule,
+  MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatMenuModule,
+  MatPaginatorModule,
+  MatProgressBarModule,
+  MatSidenavModule,
+  MatTableModule,
+  MatToolbarModule,
+} from '@angular/material';
+
+const matModules = [
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatButtonToggleModule,
+  MatMenuModule,
+  MatCheckboxModule,
+  MatToolbarModule,
+  MatProgressBarModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatDividerModule,
+  MatListModule,
+  MatDialogModule,
+  MatSidenavModule,
+  DragDropModule,
+];
 
 @NgModule({
   imports: [
     SharedModule,
-    DragDropModule,
+    BreadcrumbsModule,
+    [...matModules],
     AppConfirmModule,
     TruncateModule,
     HelperModule,
     ToolbarModule,
     QuickpanelModule,
-    FormlyModule.forRoot(),
+    FormlyModule.forChild({}),
     FormlyMaterialModule,
     RouterModule.forChild([
       /* {path: '', pathMatch: 'full', component: InsertYourComponentHere} */

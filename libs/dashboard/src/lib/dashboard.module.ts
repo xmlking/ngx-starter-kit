@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { SharedModule } from '@ngx-starter-kit/shared';
 
 import { AuthGuard } from '@ngx-starter-kit/auth';
 import { ChatBoxModule } from '@ngx-starter-kit/chat-box';
+import { SharedModule } from '@ngx-starter-kit/shared';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
 
 import { DashboardLayoutComponent } from './containers/dashboard-layout/dashboard-layout.component';
 import { OverviewComponent } from './containers/overview/overview.component';
@@ -15,9 +16,32 @@ import { SidenavModule } from '@ngx-starter-kit/sidenav';
 import { environment } from '@env/environment';
 import { ProfileComponent } from './containers/profile/profile.component';
 
+import {
+  MatCardModule,
+  MatDividerModule,
+  MatIconModule,
+  MatListModule,
+  MatRadioModule,
+  MatSidenavModule,
+  MatSlideToggleModule,
+} from '@angular/material';
+
+
+const matModules = [
+  MatSidenavModule,
+  MatCardModule,
+  MatIconModule,
+  MatDividerModule,
+  MatListModule,
+  MatRadioModule,
+  MatSlideToggleModule,
+];
+
 @NgModule({
   imports: [
     SharedModule,
+    BreadcrumbsModule,
+    [...matModules],
     SidenavModule,
     ToolbarModule,
     QuickpanelModule,

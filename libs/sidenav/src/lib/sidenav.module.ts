@@ -20,6 +20,7 @@ import { ScrollbarModule } from '@ngx-starter-kit/scrollbar';
 
 @NgModule({
   imports: [
+    CommonModule,
     MatIconModule,
     MatToolbarModule,
     MatListModule,
@@ -30,8 +31,7 @@ import { ScrollbarModule } from '@ngx-starter-kit/scrollbar';
     RouterModule,
     PerfectScrollbarModule,
     FlexLayoutModule,
-    ScrollbarModule,
-    CommonModule,
+    ScrollbarModule
   ],
   exports: [SidenavComponent, IconSidenavDirective],
   declarations: [SidenavItemComponent, MenuItemComponent, SidenavComponent, IconSidenavDirective],

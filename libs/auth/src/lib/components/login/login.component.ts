@@ -1,11 +1,11 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Inject, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ROPCService } from '../../ropc.service';
-import { Router } from '@angular/router';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { AfterViewInit, ChangeDetectorRef, Component, Inject } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+
+import { ROPCService } from '../../ropc.service';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
 
 /** @dynamic */
@@ -27,7 +27,6 @@ export class LoginComponent {
     private cd: ChangeDetectorRef,
     private oauthService: OAuthService,
     private ropcService: ROPCService,
-    private router: Router,
     @Inject(MAT_DIALOG_DATA) public data: { infoMsg: string },
     public dialogRef: MatDialogRef<LoginComponent>,
   ) {

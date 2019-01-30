@@ -45,6 +45,31 @@ import { AspectRatioDirective } from './components/aspect-ratio/aspect-ratio.dir
 import { PageDirective } from './components/page/page.directive';
 import { PagePaddingDirective } from './components/page/page-padding.directive';
 
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatCheckboxModule, MatDividerModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatMenuModule, MatPaginatorModule,
+  MatSelectModule, MatTableModule,
+} from '@angular/material';
+
+const matModules = [
+  MatCardModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatMenuModule,
+  MatCheckboxModule,
+  MatSelectModule,
+  MatDividerModule,
+  MatTableModule,
+  MatPaginatorModule
+];
+
 const chartWidgetComponents = [
   ChartWidget,
   ChartWidgetHeader,
@@ -83,6 +108,7 @@ const WIDGETS = [
 @NgModule({
   imports: [
     SharedModule,
+    [...matModules],
     LoadingOverlayModule,
     ScrollbarModule,
     RouterModule.forChild([

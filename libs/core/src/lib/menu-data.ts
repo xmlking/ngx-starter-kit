@@ -78,6 +78,11 @@ export const defaultMenu: MenuItem[] = [
         link: '/dashboard/experiments/layout',
       },
       {
+        name: 'Dashing',
+        icon: 'apps',
+        link: '/dashboard/experiments/dashing',
+      },
+      {
         name: 'Viewport',
         icon: 'view_carousel',
         link: '/dashboard/experiments/viewport',

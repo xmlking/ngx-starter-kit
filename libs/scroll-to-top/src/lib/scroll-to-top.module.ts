@@ -4,7 +4,7 @@ import { ScrollToTopComponent } from './scroll-to-top.component';
 import { MatButtonModule, MatIconModule, MatTooltipModule } from '@angular/material';
 
 @NgModule({
-  imports: [MatButtonModule, MatIconModule, MatTooltipModule, CommonModule],
+  imports: [CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
   exports: [ScrollToTopComponent],
   declarations: [ScrollToTopComponent],
 })
