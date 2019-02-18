@@ -64,10 +64,10 @@ export class GoogleAnalyticsService {
   public emitEvent(eventCategory: EventCategory, eventAction: string, eventLabel?: string, eventValue?: number) {
     if (typeof ga === 'function') {
       ga('send', 'event', {
-        eventCategory: eventCategory,
-        eventAction: eventAction,
-        eventLabel: eventLabel,
-        eventValue: eventValue,
+        eventCategory,
+        eventAction,
+        eventLabel,
+        eventValue,
       });
     }
   }

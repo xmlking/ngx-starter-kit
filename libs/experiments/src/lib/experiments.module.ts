@@ -27,9 +27,9 @@ import { ViewportComponent } from './containers/viewport/viewport.component';
 import { DashingComponent } from './containers/dashing/dashing.component';
 
 // Registering plugins
-import * as FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import * as FilepondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
-import * as FilepondPluginImagePreview from 'filepond-plugin-image-preview';
+import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
+import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
+import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
 
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { DragDropModule } from '@angular/cdk/drag-drop';
@@ -43,7 +43,7 @@ import {
   MatTableModule,
 } from '@angular/material';
 
-registerPlugin(FilePondPluginFileValidateType, FilepondPluginFileValidateSize, FilepondPluginImagePreview);
+registerPlugin(FilePondPluginFileValidateType, FilePondPluginFileValidateSize, FilePondPluginImagePreview);
 
 const matModules = [
   MatCardModule,

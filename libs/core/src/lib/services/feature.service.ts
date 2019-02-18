@@ -48,9 +48,11 @@ export class FeatureService {
       [BrowserFeatureKey.BeforeInstallPromptEvent]: 'BeforeInstallPromptEvent' in this.window,
       [BrowserFeatureKey.BackgroundSync]: 'SyncManager' in this.window,
       [BrowserFeatureKey.NavigationPreloadManager]: 'NavigationPreloadManager' in this.window,
-      [BrowserFeatureKey.BudgetAPI]: 'budget' in this.navigator && 'reserve' in (<any>this.navigator).budget,
-      [BrowserFeatureKey.StorageEstimation]: 'storage' in this.navigator && 'estimate' in (<any>this.navigator).storage,
-      [BrowserFeatureKey.PersistentStorage]: 'storage' in this.navigator && 'persist' in (<any>this.navigator).storage,
+      [BrowserFeatureKey.BudgetAPI]: 'budget' in this.navigator && 'reserve' in (this.navigator as any).budget,
+      [BrowserFeatureKey.StorageEstimation]:
+        'storage' in this.navigator && 'estimate' in (this.navigator as any).storage,
+      [BrowserFeatureKey.PersistentStorage]:
+        'storage' in this.navigator && 'persist' in (this.navigator as any).storage,
       [BrowserFeatureKey.WebShareAPI]: 'share' in this.navigator,
       [BrowserFeatureKey.MediaSessionAPI]: 'mediaSession' in this.navigator,
       [BrowserFeatureKey.MediaCapabilities]: 'mediaCapabilities' in this.navigator,

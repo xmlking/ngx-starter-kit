@@ -8,32 +8,35 @@ import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 })
 export class MediaQueryService {
   constructor(mediaObserver: MediaObserver) {
-    mediaObserver.media$
-      .subscribe(res => this._changes$.next(res), err => this._changes$.error(err), () => this._changes$.complete());
+    mediaObserver.media$.subscribe(
+      res => this.changesPrivate$.next(res),
+      err => this.changesPrivate$.error(err),
+      () => this.changesPrivate$.complete(),
+    );
 
-    this._changes$.subscribe(change => {
-      this._lowerThanMedium.next(change.mqAlias === 'xs' || change.mqAlias === 'sm');
+    this.changesPrivate$.subscribe(change => {
+      this.lowerThanMedium.next(change.mqAlias === 'xs' || change.mqAlias === 'sm');
     });
 
-    this._changes$.subscribe(change => {
-      this._lowerThanLarge.next(change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md');
+    this.changesPrivate$.subscribe(change => {
+      this.lowerThanLarge.next(change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md');
     });
   }
 
-  private _lowerThanMedium = new ReplaySubject<boolean>(1);
-  private _lowerThanLarge = new ReplaySubject<boolean>(1);
+  private lowerThanMedium = new ReplaySubject<boolean>(1);
+  private lowerThanLarge = new ReplaySubject<boolean>(1);
 
-  private _changes$: ReplaySubject<MediaChange> = new ReplaySubject(1);
+  private changesPrivate$: ReplaySubject<MediaChange> = new ReplaySubject(1);
 
   get changes$(): Observable<MediaChange> {
-    return this._changes$.asObservable();
+    return this.changesPrivate$.asObservable();
   }
 
   get isLowerThanMedium$(): Observable<boolean> {
-    return this._lowerThanMedium.asObservable();
+    return this.lowerThanMedium.asObservable();
   }
 
   get isLowerThanLarge$(): Observable<boolean> {
-    return this._lowerThanLarge.asObservable();
+    return this.lowerThanLarge.asObservable();
   }
 }

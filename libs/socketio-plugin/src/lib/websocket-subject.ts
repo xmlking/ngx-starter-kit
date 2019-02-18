@@ -15,21 +15,21 @@ export class WebSocketSubject extends Subject<any> {
    * The connection status of the websocket.
    */
   connectionStatus = new Subject<boolean>();
-  private _id: string;
+  private idPrivate: string;
   get id() {
-    return this._id;
+    return this.idPrivate;
   }
 
-  private _socket: RxSocketioSubject<SocketIOEvent>;
-  private _internalConfig: RxSocketioSubjectConfig<SocketIOEvent>;
+  private socketPrivate: RxSocketioSubject<SocketIOEvent>;
+  private internalConfigPrivate: RxSocketioSubjectConfig<SocketIOEvent>;
 
-  constructor(@Inject(NGXS_WEBSOCKET_OPTIONS) private _config: NgxsWebsocketPluginOptions) {
+  constructor(@Inject(NGXS_WEBSOCKET_OPTIONS) private configPrivate: NgxsWebsocketPluginOptions) {
     super();
 
-    this._internalConfig = {
-      url: this._config.url,
-      serializer: this._config.serializer,
-      deserializer: this._config.deserializer,
+    this.internalConfigPrivate = {
+      url: this.configPrivate.url,
+      serializer: this.configPrivate.serializer,
+      deserializer: this.configPrivate.deserializer,
       closeObserver: {
         next: (e: CloseEvent) => {
           this.connectionStatus.next(false);
@@ -38,7 +38,7 @@ export class WebSocketSubject extends Subject<any> {
       openObserver: {
         next: (e: CustomEvent) => {
           if (e.detail.id) {
-            this._id = e.detail.id;
+            this.idPrivate = e.detail.id;
           }
           this.connectionStatus.next(true);
         },
@@ -55,37 +55,37 @@ export class WebSocketSubject extends Subject<any> {
     // to pass them here
     if (options) {
       if (options.url) {
-        this._internalConfig.url = options.url;
+        this.internalConfigPrivate.url = options.url;
       }
 
       if (options.connectOpts) {
-        this._internalConfig.connectOpts = options.connectOpts;
+        this.internalConfigPrivate.connectOpts = options.connectOpts;
       }
 
       if (options.serializer) {
-        this._internalConfig.serializer = options.serializer;
+        this.internalConfigPrivate.serializer = options.serializer;
       }
 
       if (options.deserializer) {
-        this._internalConfig.deserializer = options.deserializer;
+        this.internalConfigPrivate.deserializer = options.deserializer;
       }
 
       if (options.tokenFn && typeof options.tokenFn === 'function') {
-        this._internalConfig.tokenFn = options.tokenFn;
+        this.internalConfigPrivate.tokenFn = options.tokenFn;
       }
     }
 
-    this._socket = new RxSocketioSubject<SocketIOEvent>(this._internalConfig);
-    this._socket.subscribe((message: any) => this.next(message));
+    this.socketPrivate = new RxSocketioSubject<SocketIOEvent>(this.internalConfigPrivate);
+    this.socketPrivate.subscribe((message: any) => this.next(message));
   }
 
   /**
    * Disconnected the websocket.
    */
   disconnect() {
-    if (this._socket) {
-      this._socket.complete();
-      this._socket = undefined;
+    if (this.socketPrivate) {
+      this.socketPrivate.complete();
+      this.socketPrivate = undefined;
     }
   }
 
@@ -93,20 +93,20 @@ export class WebSocketSubject extends Subject<any> {
    * Send auth request to the websocket.
    */
   auth(data: any): void {
-    if (!this._socket) {
+    if (!this.socketPrivate) {
       throw new Error('You must connect before Authenticate');
     }
-    this._socket.next({ event: 'auth', data });
+    this.socketPrivate.next({ event: 'auth', data });
   }
 
   /**
    * Send action to the websocket.
    */
   send(data: any): void {
-    if (!this._socket) {
+    if (!this.socketPrivate) {
       throw new Error('You must connect before sending data');
     }
 
-    this._socket.next({ event: 'actions', data });
+    this.socketPrivate.next({ event: 'actions', data });
   }
 }

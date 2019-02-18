@@ -30,8 +30,8 @@ export { Comparator } from './merge-sort';
  */
 
 export enum TraversalStrategy {
-  PreOrder,
-  PostOrder,
+  PreOrder = 'PreOrder',
+  PostOrder = 'PostOrder',
 }
 
 export interface TreeNode<T> {
@@ -102,12 +102,12 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
 
     const queue = [this.root];
     while (queue.length) {
-      const _node = queue.shift();
-      for (let i = 0; i < _node.children.length; i++) {
-        if (_node.children[i] === node) {
-          _node.children.splice(i, 1);
+      const nodeTemp = queue.shift();
+      for (let i = 0; i < nodeTemp.children.length; i++) {
+        if (nodeTemp.children[i] === node) {
+          nodeTemp.children.splice(i, 1);
         } else {
-          queue.push(_node.children[i]);
+          queue.push(nodeTemp.children[i]);
         }
       }
     }
@@ -121,11 +121,11 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
     const queue = [this.root];
     while (queue.length) {
       // tslint:disable:no-non-null-assertion
-      const _node = queue.shift()!;
-      if (_node === node) {
-        return _node;
+      const nodeTemp = queue.shift()!;
+      if (nodeTemp === node) {
+        return nodeTemp;
       }
-      for (const child of _node.children) {
+      for (const child of nodeTemp.children) {
         queue.push(child);
       }
     }
@@ -135,11 +135,11 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
   findByPredicateBFS(predicate: (node: T) => boolean): T {
     const queue = [this.root];
     while (queue.length) {
-      const _node = queue.shift()!;
-      if (predicate(_node)) {
-        return _node;
+      const nodeTemp = queue.shift()!;
+      if (predicate(nodeTemp)) {
+        return nodeTemp;
       }
-      for (const child of _node.children) {
+      for (const child of nodeTemp.children) {
         queue.push(child);
       }
     }
@@ -175,7 +175,7 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
 
   traverseDFS(fn: (node: T) => any, method: TraversalStrategy = TraversalStrategy.PreOrder) {
     const current = this.root;
-    if ((method = TraversalStrategy.PreOrder)) {
+    if (method === TraversalStrategy.PostOrder) {
       this._postOrder(current, fn);
     } else {
       this._preOrder(current, fn);
