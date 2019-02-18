@@ -2,6 +2,7 @@ import {
   Action,
   Actions,
   createSelector,
+  NgxsAfterBootstrap,
   NgxsOnInit,
   ofActionDispatched,
   Selector,
@@ -70,7 +71,7 @@ export class ChatBoxStateModel {
     loading: false,
   },
 })
-export class ChatBoxState implements NgxsOnInit {
+export class ChatBoxState implements NgxsAfterBootstrap {
   constructor(
     private nlp: NlpService,
     private stt: SpeechToTextService,
@@ -149,7 +150,7 @@ export class ChatBoxState implements NgxsOnInit {
     return state.voiceForm.model;
   }
 
-  async ngxsOnInit({ getState, setState, patchState, dispatch }: StateContext<ChatBoxStateModel>) {
+  async ngxsAfterBootstrap({ patchState, dispatch }: StateContext<ChatBoxStateModel>) {
     console.log('ChatBoxState initialized, setting defaults');
     if (this.tts.canUseSpeechSynthesis) {
       const voices = await this.tts.getVoiceList();
