@@ -2,7 +2,8 @@ import { Get, Post, Put, Delete, Body, Param, HttpStatus } from '@nestjs/common'
 import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { Base } from '../entities/base.entity';
 import { DeepPartial } from 'typeorm';
-import { ICrudService } from './icube.service';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+import { ICrudService } from './icrud.service';
 
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
@@ -31,7 +32,7 @@ export abstract class CrudController<T extends Base> {
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
   @Post()
-  async create(@Body() entity: DeepPartial<T>, options?: any): Promise<T> {
+  async create(@Body() entity: DeepPartial<T>, ...options: any[]): Promise<T> {
     return this.crudService.create(entity);
   }
 
@@ -43,7 +44,7 @@ export abstract class CrudController<T extends Base> {
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
   @Put(':id')
-  async update(@Param('id') id: string, @Body() entity: DeepPartial<T>, options?: any): Promise<any> {
+  async update(@Param('id') id: string, @Body() entity: QueryDeepPartialEntity<T>, ...options: any[]): Promise<any> {
     return this.crudService.update(id, entity); // FIXME: https://github.com/typeorm/typeorm/issues/1544
   }
 
@@ -51,7 +52,7 @@ export abstract class CrudController<T extends Base> {
   @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
   @Delete(':id')
-  async delete(@Param('id') id: string, options?: any): Promise<any> {
+  async delete(@Param('id') id: string, ...options: any[]): Promise<any> {
     return this.crudService.delete(id);
   }
 }

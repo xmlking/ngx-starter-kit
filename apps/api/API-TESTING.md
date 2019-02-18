@@ -90,7 +90,7 @@ curl -v -X POST \
 
 ```bash
 OIDC_ISSUER_URL=https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx
-OIDC_CLIENT_ID=ngxapp
+OIDC_CLIENT_ID=ngxapi
 
 USERNAME=sumo3
 PASSWORD=demo
@@ -105,7 +105,7 @@ response=$(curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/token \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d username=$USERNAME \
  -d password=$PASSWORD \
- -d client_id=OIDC_CLIENT_ID \
+ -d client_id=$OIDC_CLIENT_ID \
  -d 'grant_type=password' \
  -d 'scope=openid')
 

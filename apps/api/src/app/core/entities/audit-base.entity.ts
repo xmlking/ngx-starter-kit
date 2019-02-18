@@ -1,8 +1,18 @@
-import { CreateDateColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn, VersionColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  CreateDateColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  VersionColumn,
+} from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { ApiModelProperty } from '@nestjs/swagger';
 // FIXME: we need to import User like this to avoid Circular denpendence problem
 import { User } from '../../auth/user.entity';
+import { RequestContext } from '../context';
 
 // TODO: Implement Soft Delete
 
@@ -12,32 +22,46 @@ export abstract class AuditBase {
   id: number;
 
   @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
-  // @Exclude()
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt?: Date;
 
   @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
-  // @Exclude()
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt?: Date;
 
-  // @Exclude()
+  @ApiModelProperty({ type: User })
   @ManyToOne(type => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
     nullable: false,
   })
-  createdBy: User;
+  createdBy?: User;
 
-  // @Exclude()
+  @ApiModelProperty({ type: User })
   @ManyToOne(type => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
-    nullable: false,
+    nullable: true,
   })
-  updatedBy: User;
+  updatedBy?: User;
 
   @Exclude()
   @VersionColumn()
   version?: number;
+
+  @BeforeInsert()
+  setCreatedByUser() {
+    const currentUser = RequestContext.currentUser();
+    if (currentUser) {
+      this.createdBy = currentUser;
+    }
+  }
+
+  @BeforeUpdate()
+  setUpdatedByUser() {
+    const currentUser = RequestContext.currentUser();
+    if (currentUser) {
+      this.updatedBy = currentUser;
+    }
+  }
 }

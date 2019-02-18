@@ -9,7 +9,7 @@ import { SendNotificationDto } from './dto/send-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Notifications')
+@ApiUseTags('Notifications')
 @Controller('notifications')
 export class NotificationController extends CrudController<Notification> {
   constructor(private readonly notificationService: NotificationService) {
