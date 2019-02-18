@@ -1,0 +1,26 @@
+.thick {
+  font-weight: bold;
+}
+
+:host /deep/ {
+  /*
+   * FilePond Custom Styles
+   */
+
+  .filepond--drop-label {
+    color: #4c4e53;
+  }
+
+  .filepond--label-action {
+    text-decoration-color: #babdc0;
+  }
+
+  .filepond--panel-root {
+    background-color: #edf0f4;
+  }
+
+  .filepond--root {
+    width: 170px;
+    margin: 0 auto;
+  }
+}

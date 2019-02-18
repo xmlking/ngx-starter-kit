@@ -5,12 +5,13 @@ import { NavigationEnd, Router } from '@angular/router';
 import { routeAnimation, hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { environment } from '@env/environment';
 import { RouterState } from '@ngxs/router-plugin';
 import { map } from 'rxjs/operators';
 import { WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+// import { AuthService } from '@ngx-starter-kit/oidc';
 
 /** @dynamic */
 @Component({
@@ -36,6 +37,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private actions$: Actions,
     private mediaObserver: MediaObserver,
     private oauthService: OAuthService,
+    // private authService: AuthService,
     @Inject(WINDOW) private window: Window,
   ) {}
 
@@ -47,15 +49,13 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 
     this.depth$ = this.store.select<any>(RouterState.state).pipe(map(state => state.data.depth));
 
-    this.mediaObserver.media$
-      .pipe(untilDestroy(this))
-      .subscribe((change: MediaChange) => {
-        const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+    this.mediaObserver.media$.pipe(untilDestroy(this)).subscribe((change: MediaChange) => {
+      const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
 
-        this.isMobile = isMobile;
-        this.sidenavMode = isMobile ? 'over' : 'side';
-        this.sidenavOpen = !isMobile;
-      });
+      this.isMobile = isMobile;
+      this.sidenavMode = isMobile ? 'over' : 'side';
+      this.sidenavOpen = !isMobile;
+    });
 
     this.router.events.pipe(untilDestroy(this)).subscribe(event => {
       if (event instanceof NavigationEnd && this.isMobile) {
@@ -72,7 +72,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
       this.store.dispatch(
         new ConnectWebSocket({
           url: environment.WS_EVENT_BUS_URL,
-          tokenFn: () => this.oauthService.getAccessToken(),
+          tokenFn: () => this.oauthService.getAccessToken(), // this.authService.getToken(),
         }),
       );
     }
