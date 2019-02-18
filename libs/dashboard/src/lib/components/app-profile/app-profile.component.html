@@ -1,0 +1,100 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar [src]="imagePath" alt="User Avatar" />
+    <mat-card-title>App Profile</mat-card-title>
+    <mat-card-subtitle>{{ oidcProfile.firstName }} {{ oidcProfile.lastName }}</mat-card-subtitle>
+    <div fxFlex></div>
+    <ng-container *ngIf="editing; else otherwise">
+      <button mat-icon-button aria-label="save" (click)="save()">
+        <mat-icon>save</mat-icon>
+      </button>
+    </ng-container>
+    <ng-template #otherwise>
+      <button mat-icon-button aria-label="edit" (click)="editing = true">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </ng-template>
+  </mat-card-header>
+
+  <mat-divider></mat-divider>
+  <mat-card-content>
+    <form [formGroup]="formGroup" (ngSubmit)="save()">
+      <mat-list role="list">
+        <mat-list-item *ngFor="let entry of (oidcProfile | keyvalue)" role="listitem">
+          <div class="thick" fxFlex="40">
+            {{ entry.key }}
+          </div>
+          <div fxFlex="60">
+            {{ entry.value | json }}
+          </div>
+        </mat-list-item>
+        <ng-container [ngSwitch]="editing">
+          <mat-list-item role="listitem">
+            <div class="thick" fxFlex="40">Gender</div>
+            <ng-container *ngSwitchCase="true">
+              <mat-form-field floatLabel="never" fxFlex="40">
+                <mat-select name="gender" formControlName="gender" placeholder="Gender">
+                  <mat-option *ngFor="let gender of (genderOptions | keyvalue)" [value]="gender.value">
+                    {{ gender.key }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+              <div fxFlex="60">{{ formGroup.controls['gender'].value }}</div>
+            </ng-container>
+          </mat-list-item>
+          <mat-list-item role="listitem">
+            <div class="thick" fxFlex="40">Phone</div>
+            <ng-container *ngSwitchCase="true">
+              <mat-form-field floatLabel="never" fxFlex="40">
+                <input
+                  matInput
+                  [ngxMask]="'(###) 000-0000'"
+                  type="tel"
+                  name="mobilePhone"
+                  formControlName="mobilePhone"
+                  placeholder="Mobile Phone"
+                />
+              </mat-form-field>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+              <div fxFlex="60">{{ formGroup.controls['mobilePhone'].value }}</div>
+            </ng-container>
+          </mat-list-item>
+          <mat-list-item role="listitem" style="height: auto;">
+            <div class="thick" fxFlex="40">Avatar</div>
+            <ng-container *ngSwitchCase="true">
+              <!--              <mat-form-field>-->
+              <!--                <input matInput type="text" name="avatar" formControlName="avatar" placeholder="Avatar" />-->
+              <!--              </mat-form-field>-->
+<!--              <div fxFlex="60"><img mat-card-avatar [src]="imagePath" alt="User Avatar" /></div>-->
+              <file-pond
+                #myPond
+                [files]="files"
+                [options]="pondOptions"
+                (oninit)="pondHandleInit()"
+                (onaddfile)="pondHandleAddFile($event)"
+                (onremovefile)="pondHandleRemoveFile($event)"
+                (onprocessfile)="emitUpload($event)"
+              >
+              </file-pond>
+            </ng-container>
+            <ng-container *ngSwitchCase="false">
+              <div fxFlex="60"><img mat-card-avatar [src]="imagePath" alt="User Avatar" /></div>
+            </ng-container>
+          </mat-list-item>
+        </ng-container>
+      </mat-list>
+    </form>
+  </mat-card-content>
+  <mat-divider></mat-divider>
+
+  <mat-card-actions align="end">
+    <div *ngIf="appProfile">Updated {{ appProfile.updatedAt | formatTimeInWords }}</div>
+    <div fxFlex></div>
+    <button mat-button (click)="createProfile()">CREATE</button>
+    <button mat-button (click)="updateProfile()">UPDATE</button>
+    <button mat-button  (click)="removeAll()">DELETE</button>
+  </mat-card-actions>
+</mat-card>
