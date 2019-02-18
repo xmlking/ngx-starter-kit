@@ -46,7 +46,7 @@ export interface RxSocketioSubjectConfig<T> {
    * WebSocket impl in Node (WebSocket is a DOM API), or for mocking a WebSocket
    * for testing purposes
    */
-  WebSocketCtor?: { new (url: string, protocols?: string | string[]): WebSocket };
+  WebSocketCtor?: new (url: string, protocols?: string | string[]) => WebSocket;
   /** Sets the `binaryType` property of the underlying WebSocket. */
   binaryType?: 'blob' | 'arraybuffer';
 }
@@ -60,14 +60,14 @@ const DEFAULT_WEBSOCKET_CONFIG: RxSocketioSubjectConfig<any> = {
 export type WebSocketMessage = string | ArrayBuffer | Blob | ArrayBufferView;
 
 export class RxSocketioSubject<T> extends AnonymousSubject<T> {
-  private _output: Subject<T>;
-  private _config: RxSocketioSubjectConfig<T>;
-  private _socket: SocketIOClient.Socket;
+  private outputPrivate: Subject<T>;
+  private configPrivate: RxSocketioSubjectConfig<T>;
+  private socketPrivate: SocketIOClient.Socket;
 
   constructor(urlConfigOrSource: string | RxSocketioSubjectConfig<T> | Observable<T>, destination?: Observer<T>) {
     super();
 
-    const config = (this._config = { ...DEFAULT_WEBSOCKET_CONFIG });
+    const config = (this.configPrivate = { ...DEFAULT_WEBSOCKET_CONFIG });
 
     if (typeof urlConfigOrSource === 'string') {
       config.url = urlConfigOrSource;
@@ -86,38 +86,38 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
       (config.connectOpts.query as any).token = config.tokenFn();
     }
 
-    this._output = new Subject<T>();
+    this.outputPrivate = new Subject<T>();
 
-    this._socket = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
+    this.socketPrivate = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
 
-    this._socket.on('connect', event =>
-      config.openObserver.next(new CustomEvent('opened', { detail: { id: this._socket.id } })),
+    this.socketPrivate.on('connect', event =>
+      config.openObserver.next(new CustomEvent('opened', { detail: { id: this.socketPrivate.id } })),
     );
 
-    this._socket.on('disconnect', event => config.closeObserver.next(event));
+    this.socketPrivate.on('disconnect', event => config.closeObserver.next(event));
 
-    this._socket.on('actions', data => this._output.next(data));
+    this.socketPrivate.on('actions', data => this.outputPrivate.next(data));
 
-    this._socket.on('reconnect_attempt', () => {
+    this.socketPrivate.on('reconnect_attempt', () => {
       if (config.tokenFn && typeof config.tokenFn === 'function') {
-        (this._socket.io.opts.query as any).token = config.tokenFn();
+        (this.socketPrivate.io.opts.query as any).token = config.tokenFn();
       }
     });
 
     this.destination = Subscriber.create(
       (message: T) => {
-        this._socket.emit((message as any).event, (message as any).data);
+        this.socketPrivate.emit((message as any).event, (message as any).data);
       },
       error => {
-        this._socket.close();
+        this.socketPrivate.close();
         const errorEvent = new ErrorEvent('', {
           message: 'Error in data stream.',
-          error: error,
+          error,
         });
         super.error.call(this, errorEvent);
       },
       () => {
-        this._socket.close();
+        this.socketPrivate.close();
         const closeEvent = new CloseEvent('cloased', {
           code: 1000,
           reason: 'Connection closed by client.',
@@ -142,7 +142,7 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
   _subscribe(subscriber: Subscriber<T>): Subscription {
     const subscription = new Subscription();
-    subscription.add(this._output.subscribe(subscriber));
+    subscription.add(this.outputPrivate.subscribe(subscriber));
     return subscription;
   }
 

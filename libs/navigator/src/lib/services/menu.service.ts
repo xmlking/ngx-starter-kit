@@ -14,62 +14,58 @@ export class MenuService {
   /**
    * Menu Items
    */
-  private _tree: Tree<MenuItem>;
+  private treePrivate: Tree<MenuItem>;
 
-  private _items = new BehaviorSubject<MenuItem[]>([{ name: 'dummy' }]);
+  private itemsPrivate = new BehaviorSubject<MenuItem[]>([{ name: 'dummy' }]);
 
-  items$ = this._items.asObservable();
+  items$ = this.itemsPrivate.asObservable();
 
   get items(): MenuItem[] {
-    return this._items.getValue();
+    return this.itemsPrivate.getValue();
   }
 
   set items(items: MenuItem[]) {
-    this._items.next(items);
+    this.itemsPrivate.next(items);
   }
 
   // TODO: temp
   get tree(): Tree<MenuItem> {
-    return this._tree;
+    return this.treePrivate;
   }
 
   /**
    * Currently Open
    */
-  private _currentlyOpen = new BehaviorSubject<MenuItem[]>([]);
+  private currentlyOpenPrivate = new BehaviorSubject<MenuItem[]>([]);
 
-  currentlyOpen$ = this._currentlyOpen.asObservable();
+  currentlyOpen$ = this.currentlyOpenPrivate.asObservable();
 
   get currentlyOpen(): MenuItem[] {
-    return this._currentlyOpen.getValue();
+    return this.currentlyOpenPrivate.getValue();
   }
 
   set currentlyOpen(currentlyOpen: MenuItem[]) {
-    this._currentlyOpen.next(currentlyOpen);
+    this.currentlyOpenPrivate.next(currentlyOpen);
   }
 
   /**
    * SidenavState for Animation
    */
-  private _sidenavState = new BehaviorSubject<SidenavState>(SidenavState.Expanded);
+  private sidenavStatePrivate = new BehaviorSubject<SidenavState>(SidenavState.Expanded);
 
-  sidenavState$ = this._sidenavState.asObservable();
+  sidenavState$ = this.sidenavStatePrivate.asObservable();
 
   get sidenavState() {
-    return this._sidenavState.getValue();
+    return this.sidenavStatePrivate.getValue();
   }
 
   set sidenavState(sidenavState: SidenavState) {
-    this._sidenavState.next(sidenavState);
+    this.sidenavStatePrivate.next(sidenavState);
   }
   isIconSidenav: boolean;
   isLowerThanLarge: boolean;
 
-  constructor(
-    @Inject(MENU_ITEMS) private menuItems: MenuItem[],
-    private router: Router,
-    mediaObserver: MediaObserver
-  ) {
+  constructor(@Inject(MENU_ITEMS) private menuItems: MenuItem[], private router: Router, mediaObserver: MediaObserver) {
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.setCurrentlyOpenByRoute(event.url);
@@ -97,8 +93,8 @@ export class MenuService {
 
     // sets defaultMenu as default;
     // this.publishMenuChange('default-menu');
-    this._tree = new Tree<MenuItem>({ name: 'root', children: menuItems });
-    this._items.next(this._tree.root.children);
+    this.treePrivate = new Tree<MenuItem>({ name: 'root', children: menuItems });
+    this.itemsPrivate.next(this.treePrivate.root.children);
   }
 
   isOpen(item: MenuItem) {
@@ -123,7 +119,7 @@ export class MenuService {
 
   // private setCurrentlyOpenByRoute(route: string) {
   public setCurrentlyOpenByRoute(route: string) {
-    const item = this._tree.findByPredicateBFS(node => {
+    const item = this.treePrivate.findByPredicateBFS(node => {
       return node.link === route;
     });
     let currentlyOpen = [];
@@ -138,13 +134,13 @@ export class MenuService {
   }
 
   getItemByRoute(route: string) {
-    return this._tree.findByPredicateBFS(node => {
+    return this.treePrivate.findByPredicateBFS(node => {
       return node.link === route;
     });
   }
 
   private getParents(item: MenuItem): MenuItem[] {
-    const ancestors = this._tree.getAllParents(item);
+    const ancestors = this.treePrivate.getAllParents(item);
     ancestors.shift();
     return ancestors;
   }

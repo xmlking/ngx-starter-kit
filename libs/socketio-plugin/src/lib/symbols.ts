@@ -44,7 +44,7 @@ export interface NgxsWebsocketPluginOptions {
 }
 
 export function noop(arg) {
-  return function() {};
+  return () => {};
 }
 
 /**
