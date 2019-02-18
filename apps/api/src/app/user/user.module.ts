@@ -4,12 +4,11 @@ import { SharedModule } from '../shared';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ProfileController } from './profile/profile.controller';
 import { ProfileService } from './profile/profile.service';
+import { Profile } from './profile/profile.entity';
+import { Image } from './profile/image.entity';
 
 @Module({
-  imports: [
-    SharedModule,
-    // TypeOrmModule.forFeature([Profile, Image]),
-  ],
+  imports: [SharedModule, TypeOrmModule.forFeature([Profile, Image])],
   controllers: [EmailController, ProfileController],
   providers: [ProfileService],
 })

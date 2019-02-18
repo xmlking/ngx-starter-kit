@@ -4,7 +4,7 @@ import { EmailDto } from './dto/email.dto';
 import { ApiOAuth2Auth, ApiUseTags } from '@nestjs/swagger';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Email')
+@ApiUseTags('Email')
 @Controller('email')
 export class EmailController {
   constructor(private readonly emailService: EmailService) {}

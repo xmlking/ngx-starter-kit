@@ -21,7 +21,7 @@ export class KubernetesService implements OnModuleInit {
   private readonly logger = new Logger(KubernetesService.name);
 
   private readonly clients = new Map(
-    Object.entries(env.kubernetes).map<[string, Api.Api]>(([key, value]) => [
+    Object.entries(env.kubernetes).map<[string, Api.ApiRoot]>(([key, value]) => [
       key,
       new Client({
         config: {

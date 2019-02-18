@@ -1,16 +1,24 @@
-import { Column, CreateDateColumn, Entity, Index, OneToMany, UpdateDateColumn, VersionColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  OneToMany,
+  RelationId,
+  UpdateDateColumn,
+  VersionColumn,
+} from 'typeorm';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsAscii, IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { Base } from '../core/entities/base.entity';
-
-export enum AccountSourceType {
-  msId,
-  hsId,
-  gitHub,
-}
+import { Image } from '../user/profile/image.entity';
+import { OneToOne } from 'typeorm/decorator/relations/OneToOne';
+import { JoinColumn } from 'typeorm/decorator/relations/JoinColumn';
+import { Profile } from '../user/profile/profile.entity';
+import { User as IUser } from '@ngx-starter-kit/models';
 
 @Entity('user')
-export class User extends Base {
+export class User extends Base implements IUser {
   @ApiModelProperty({ type: String })
   @IsString()
   @IsNotEmpty()
@@ -41,12 +49,28 @@ export class User extends Base {
   @Column()
   userId: string;
 
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt?: Date;
 
+  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt?: Date;
 
   @VersionColumn()
   version?: number;
+
+  @ApiModelProperty({ type: Image, isArray: true })
+  @OneToMany(_ => Image, image => image.user)
+  images?: Image[];
+
+  @ApiModelProperty({ type: Profile })
+  // FIXME: OneToOne downward cascade delete not implemented
+  @OneToOne(type => Profile, { cascade: ['insert', 'remove'], nullable: true, onDelete: 'SET NULL' })
+  @JoinColumn()
+  profile?: Profile;
+
+  @ApiModelProperty({ type: Number })
+  @RelationId((user: User) => user.profile)
+  profileId?: number;
 }

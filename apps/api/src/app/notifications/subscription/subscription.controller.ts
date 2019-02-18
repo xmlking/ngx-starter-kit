@@ -9,7 +9,7 @@ import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Subscription')
+@ApiUseTags('Subscription')
 @Controller('subscription')
 export class SubscriptionController extends CrudController<Subscription> {
   constructor(private readonly subscriptionService: SubscriptionService) {
@@ -26,7 +26,11 @@ export class SubscriptionController extends CrudController<Subscription> {
   }
 
   @ApiOperation({ title: 'find all user Subscriptions' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All user Subscriptions', /* type: Subscription, */ isArray: true })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'All user Subscriptions',
+    /* type: Subscription, */ isArray: true,
+  })
   @Get('user')
   async getUserSubscriptions(@CurrentUser() user): Promise<[Subscription[], number]> {
     return this.subscriptionService.getUserSubscriptions(user);

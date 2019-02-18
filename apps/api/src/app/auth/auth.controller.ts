@@ -7,7 +7,7 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Auth')
+@ApiUseTags('Auth')
 @Controller()
 export class AuthController extends CrudController<User> {
   constructor(private readonly authService: AuthService) {
