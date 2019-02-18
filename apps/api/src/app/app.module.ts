@@ -8,6 +8,7 @@ import { UserModule } from './user';
 import { AppController } from './app.controller';
 import { NotificationsModule } from './notifications';
 import { ExternalModule } from './external';
+import { CacheModule } from './cache';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { ExternalModule } from './external';
       { path: '/external', module: ExternalModule },
     ]),
     CoreModule,
+    CacheModule,
     AuthModule,
     UserModule,
     // AccountModule,
