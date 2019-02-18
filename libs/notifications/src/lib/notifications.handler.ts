@@ -26,6 +26,9 @@ export class NotificationsHandler {
           this.store.dispatch(new AddNotification(new AppNotification(message.notification.data)));
         }
       });
+      this.swPush.notificationClicks.subscribe(({ action, notification: { title, ...notification } }) => {
+        console.log(`action: ${action}, title: ${title}, notification`, notification);
+      });
     }
   }
 }
