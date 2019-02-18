@@ -1,9 +1,13 @@
 // src/environments/base.ts
 const packageJson = require('../../../../package.json');
+
+const base = document.querySelector('base');
+
 export default {
   appName: 'Ngx Starter Kit',
   secret: 'SECRET',
   apiToken: 'SECRET_TOKEN',
+  baseUrl: (base && base.href) || window.location.origin + '/',
   dialogFlow: {
     baseUrl: 'https://api.dialogflow.com/v1/query?v=20150910',
     apiToken: '37808bf14a19406cbe2a50cfd1332dd3',
@@ -22,6 +26,6 @@ export default {
     flexLayout: packageJson.dependencies['@angular/flex-layout'],
     rxjs: packageJson.dependencies.rxjs,
     angularCli: packageJson.devDependencies['@angular/cli'],
-    typescript: packageJson.devDependencies['typescript'],
+    typescript: packageJson.devDependencies.typescript,
   },
 };

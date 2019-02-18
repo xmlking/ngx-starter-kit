@@ -16,8 +16,8 @@ import { OAuthEvent } from '@xmlking/angular-oauth2-oidc-all/events';
 @Injectable()
 export class AuthService {
   static loginDefaultConf = { width: '380px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
-  private _refresher: Subscription;
-  private _monitorer: Subscription;
+  private refresher: Subscription;
+  private monitorer: Subscription;
   // @Select('auth.authMode') authMode$: Observable<AuthMode>;
   authMode: AuthMode;
 
@@ -37,7 +37,7 @@ export class AuthService {
   }
 
   private monitorSessionActivities() {
-    this._monitorer = this.oauthService.events.subscribe(e => {
+    this.monitorer = this.oauthService.events.subscribe(e => {
       switch (e.type) {
         case 'logout':
         case 'session_terminated':
@@ -77,28 +77,31 @@ export class AuthService {
       // For Password Flow
       return this.ropcService.logOut();
     } else {
-      // For ImplicitFlow
+      // For ImplicitFlow or CodeFLow or HybridFlow
       this.oauthService.logOut();
     }
   }
 
   stopAutoRefreshToken() {
-    if (this._refresher && !this._refresher.closed) {
-      this._refresher.unsubscribe();
+    if (this.refresher && !this.refresher.closed) {
+      this.refresher.unsubscribe();
     }
   }
 
   startAutoRefreshToken() {
-    if (this._refresher && !this._refresher.closed) {
-      this._refresher.unsubscribe();
+    if (this.refresher && !this.refresher.closed) {
+      this.refresher.unsubscribe();
     }
-    if (this._monitorer && !this._monitorer.closed) {
-      this._monitorer.unsubscribe();
+    if (this.monitorer && !this.monitorer.closed) {
+      this.monitorer.unsubscribe();
     }
 
-    if (this.authMode === AuthMode.PasswordFlow) {
-      // for Password Flow
-      this._refresher = this.oauthService.events
+    if (this.authMode === AuthMode.ImplicitFLow) {
+      // for Implicit flow
+      this.oauthService.setupAutomaticSilentRefresh();
+    } else {
+      // for PasswordFlow or CodeFLow or HybridFlow
+      this.refresher = this.oauthService.events
         .pipe(
           tap(e => {
             console.log(`sumo: type: $e.type, `, e);
@@ -112,9 +115,6 @@ export class AuthService {
           }),
         )
         .subscribe();
-    } else {
-      // for Implicit flow
-      this.oauthService.setupAutomaticSilentRefresh();
     }
 
     this.monitorSessionActivities();

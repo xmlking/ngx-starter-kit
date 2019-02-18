@@ -28,12 +28,11 @@ export class ROPCService {
       return;
     }
 
-    const refresh_token = this.oauthService.getRefreshToken();
-    const access_token = this.oauthService.getAccessToken();
+    const refreshToken = this.oauthService.getRefreshToken();
 
     this.oauthService.logOut(true);
 
-    const body = new HttpParams().set('client_id', this.oauthService.clientId).set('refresh_token', refresh_token);
+    const body = new HttpParams().set('client_id', this.oauthService.clientId).set('refresh_token', refreshToken);
 
     return this.httpClient.post(this.oauthService.logoutUrl, body.toString(), {
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded'),
