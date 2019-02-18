@@ -101,3 +101,7 @@ export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # publish
 npm publish dist/libs/ngx-utils --access public
 ```
+
+### Reference
+
+- [Improve Performance With Lazy Components](https://blog.angularindepth.com/improve-performance-with-lazy-components-f3c5ff4597d2)
