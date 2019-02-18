@@ -67,7 +67,11 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "hidden": true
+              },
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
@@ -135,7 +139,11 @@
               "baseHref": "/ngx-starter-kit/",
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "hidden": true
+              },
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
@@ -609,7 +617,7 @@
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "tsConfig": "libs/utils/tsconfig.spec.json",
-            "setupFile": "libs/auth/src/test-setup.ts"
+            "setupFile": "libs/utils/src/test-setup.ts"
           }
         }
       }
@@ -1278,32 +1286,32 @@
         }
       }
     },
-    "preload": {
-      "root": "libs/preload",
-      "sourceRoot": "libs/preload/src",
+    "oidc": {
+      "root": "libs/oidc",
+      "sourceRoot": "libs/oidc/src",
       "projectType": "library",
       "prefix": "ngx",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-ng-packagr:build",
           "options": {
-            "tsConfig": "libs/preload/tsconfig.lib.json",
-            "project": "libs/preload/ng-package.json"
+            "tsConfig": "libs/oidc/tsconfig.lib.json",
+            "project": "libs/oidc/ng-package.json"
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["libs/preload/tsconfig.lib.json", "libs/preload/tsconfig.spec.json"],
+            "tsConfig": ["libs/oidc/tsconfig.lib.json", "libs/oidc/tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         },
         "test": {
           "builder": "@nrwl/builders:jest",
           "options": {
-            "jestConfig": "libs/preload/jest.config.js",
-            "tsConfig": "libs/preload/tsconfig.spec.json",
-            "setupFile": "libs/preload/src/test-setup.ts"
+            "jestConfig": "libs/oidc/jest.config.js",
+            "tsConfig": "libs/oidc/tsconfig.spec.json",
+            "setupFile": "libs/oidc/src/test-setup.ts"
           }
         }
       }

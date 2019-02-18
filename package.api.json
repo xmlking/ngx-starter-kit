@@ -2,13 +2,14 @@
   "name": "api",
   "version": "0.0.0",
   "dependencies": {
-    "@nestjs/common": "^5.6.0",
-    "@nestjs/core": "^5.6.0",
+    "@nestjs/common": "^5.7.0",
+    "@nestjs/core": "^5.7.0",
     "@nestjs/passport": "^5.1.0",
     "@nestjs/swagger": "^2.5.0",
-    "@nestjs/typeorm": "^5.2.0",
-    "@nestjs/websockets": "^5.6.0",
+    "@nestjs/typeorm": "^5.3.0",
+    "@nestjs/websockets": "^5.7.0",
     "@xmlking/jwks-rsa": "^1.4.3",
+    "cache-manager": "^2.9.0",
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
     "cls-hooked": "^4.2.2",
@@ -20,7 +21,8 @@
     "pg": "^7.8.0",
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.12",
-    "rxjs": "^6.3.3",
+    "rxjs": "^6.4.0",
+    "sharp": "^0.21.3",
     "typeorm": "^0.2.12",
     "web-push": "^3.3.3"
   }

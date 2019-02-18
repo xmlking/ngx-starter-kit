@@ -1,113 +1,134 @@
-Awesome Links
-==============
+# Awesome Links
 
 A curated list of awesome Angular resources
 
-* How do I use this template projects?
-> Add your own app along with `default` app and use shared modules in `libs`. 
-once you are conferable , then you can delete demo `default` app
+- How do I use this template projects?
 
-* How structure code into modules for better organize and maintain code? 
-> Use `Core`, `Shared` and lazy-loaded `Feature` modules
-> More [here](https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81)
+  > Add your own app along with `default` app and use shared modules in `libs`.
+  > once you are conferable , then you can delete demo `default` app
 
-* How do I mock test?
+- How structure code into modules for better organize and maintain code?
+
+  > Use `Core`, `Shared` and lazy-loaded `Feature` modules
+  > More [here](https://medium.com/@tomastrajan/6-best-practices-pro-tips-for-angular-cli-better-developer-experience-7b328bc9db81)
+
+- How do I mock test?
 
 > Refer [here](https://medium.com/@amcdnl/custom-environments-for-angular-cli-4ce0b82da83b)
 
-* How do I design Landing page?
+- How do I design Landing page?
 
-* How to Profile Change Detection?
+- How to Profile Change Detection?
 
 > Refer [here](https://angular-guru.com/blog/angular-unknown-features)
-type `ng.profiler.timeChangeDetection();` in console.
+> type `ng.profiler.timeChangeDetection();` in console.
 
-* How do I theme SPA App?
-> Refer [here](https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html)
-> Refer [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1)
+- How do I theme SPA App?
 
-* How do I Make Site Responsive? 
-> Refer [here](https://github.com/angular/flex-layout/wiki/Responsive-API)
-> Refer [here](https://medium.com/@nima_ap/creating-a-responsive-dashboard-in-angular-5-from-scratch-147f6a493d9e)
+  > Refer [here](https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html)
+  > Refer [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1)
 
-* How to use flex grid? 
-> Refer [Flexbox and Grid Layout for Angular Component](https://blog.angularindepth.com/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63)
+- How do I Make Site Responsive?
 
-* How implement Progressive Web Applications (PWA) with Service Workers?
-> Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
-> Read [Building a Search-Engine Optimized PWA with Angular](https://blog.bitsrc.io/building-an-search-engine-optimized-pwa-with-angular-part-2-4473aed90c14)
-> Refer [webmax](https://slides.com/webmax/ngsw-workbox)
-> Node: you cannot cache external urls (images etc) unless they are CORS enabled.
-> Creating [App-Shell](https://github.com/angular/angular-cli/wiki/stories-app-shell)
+  > Refer [here](https://github.com/angular/flex-layout/wiki/Responsive-API)
+  > Refer [here](https://medium.com/@nima_ap/creating-a-responsive-dashboard-in-angular-5-from-scratch-147f6a493d9e)
 
-* How to keep footers at the bottom of the page?
-> Refer [here](http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page)
+- How to use flex grid?
 
-* Organizing Styles
-> Global SCSS and per component specific SCSS (modular!)
-  1. Global styles 
+  > Refer [Flexbox and Grid Layout for Angular Component](https://blog.angularindepth.com/angular-flex-layout-flexbox-and-grid-layout-for-angular-component-6e7c24457b63)
+
+- How implement Progressive Web Applications (PWA) with Service Workers?
+
+  > Refer [here](https://medium.com/codingthesmartway-com-blog/angular-5-service-worker-b722e571e306)
+  > Read [Building a Search-Engine Optimized PWA with Angular](https://blog.bitsrc.io/building-an-search-engine-optimized-pwa-with-angular-part-2-4473aed90c14)
+  > Refer [webmax](https://slides.com/webmax/ngsw-workbox)
+  > Node: you cannot cache external urls (images etc) unless they are CORS enabled.
+  > Creating [App-Shell](https://github.com/angular/angular-cli/wiki/stories-app-shell)
+
+- How to keep footers at the bottom of the page?
+
+  > Refer [here](http://matthewjamestaylor.com/blog/keeping-footers-at-the-bottom-of-the-page)
+
+- Organizing Styles
+
+  > Global SCSS and per component specific SCSS (modular!)
+
+  1. Global styles
   2. Component styles
   3. Theme styles
 
-* WTF is monorepo? 
-> Read [Advantages of monorepos](https://danluu.com/monorepo/)
-> Refer [here](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
-> Refer [here](https://www.youtube.com/watch?v=0N589xX2ZQw)
-> Refer [here](https://github.com/nrwl/nx-examples)
-> [Create Your First Custom Angular CLI Schematic with Nx](https://auth0.com/blog/create-custom-schematics-with-nx/)
+- WTF is monorepo?
 
-* What are the guidelines to setup monorepo for enterprise size apps?
-> Refer [Opinionated guidelines for large nx angular projects](https://blog.strongbrew.io//opinionated-guidelines-for-large-nx-angular-projects/)
+  - [Angular Enterprise Monorepo Patterns](https://go.nrwl.io/angular-enterprise-monorepo-patterns-new-book)
+  - [Advantages of monorepos](https://danluu.com/monorepo/)
+  - [Getting Started with Nx: The Nrwl Extensions for Angular](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
+  - [From Zero to However Far We Can Get With Nx](https://www.youtube.com/watch?v=0N589xX2ZQw)
+  - [nx-examples](https://github.com/nrwl/nx-examples)
+  - [Nx monorepo with Ionic4](https://github.com/TeamHive/app-starter)
+  - [Create Your First Custom Angular CLI Schematic with Nx](https://auth0.com/blog/create-custom-schematics-with-nx/)
+  - [Why Angular Teams Fail at Code Sharing and How This Monorepo Approach Will Fix It](https://christianlydemann.com/why-angular-teams-fail-at-code-sharing-and-how-this-mono-repo-approach-will-fix-it/)
 
-* internationalization ?
-> Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)
+- What are the guidelines to setup monorepo for enterprise size apps?
 
-* Component-Driven Development (CDD)
-> Read [CDD](https://www.learnstorybook.com/angular/en/get-started/)
+  > Refer [Opinionated guidelines for large nx angular projects](https://blog.strongbrew.io//opinionated-guidelines-for-large-nx-angular-projects/)
 
-*  Creating Reusable Animations in Angular 
-> Read [Reusable Animations](https://netbasal.com/creating-reusable-animations-in-angular-6a2350d6191a)
+- internationalization ?
 
-*  Micro-Interactions
-> Read [medium-clap](https://medium.com/@yonatandoron/how-i-implemented-the-medium-clap-from-scratch-4a16ac90ad3b)
-> Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
-> Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
-> Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
+  > Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)
 
-* UI Kits
+- Component-Driven Development (CDD)
+
+  > Read [CDD](https://www.learnstorybook.com/angular/en/get-started/)
+
+- Creating Reusable Animations in Angular
+
+  > Read [Reusable Animations](https://netbasal.com/creating-reusable-animations-in-angular-6a2350d6191a)
+
+- Micro-Interactions
+
+  > Read [medium-clap](https://medium.com/@yonatandoron/how-i-implemented-the-medium-clap-from-scratch-4a16ac90ad3b)
+  > Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
+  > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
+  > Read [Microinteractions: small details matter](https://uxdesign.cc/microinteractions-detailed-design-9113c88946d0)
+
+- UI Kits
   1. [Material](https://material.angular.io/)
   2. [Nebular](https://akveo.github.io/nebular/)
   3. [Clarity](https://clarity.design/)
 
+* Animations
 
-* Animations 
-> Read [Hierarchical Route Animations](https://fluin.io/blog/hierarchical-route-animations) 
+  > Read [Hierarchical Route Animations](https://fluin.io/blog/hierarchical-route-animations)
 
-*  Why I Prefer NGXS over NGRX 
-> Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
+* Why I Prefer NGXS over NGRX
 
-* How to preload modules? 
-> Read Angular Router: [Preloading Modules](https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb)
+  > Read [NGXS vs NGRX](https://blog.singular.uk/why-i-prefer-ngxs-over-ngrx-df727cd868b5?gi=405262c5a9c5)
+
+* How to preload modules?
+
+  > Read Angular Router: [Preloading Modules](https://vsavkin.com/angular-router-preloading-modules-ba3c75e424cb)
 
 * How to debug router?
->  `{ enableTracing: true }`
-> Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
+
+  > `{ enableTracing: true }`
+  > Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
 
 * How to use new `providedIn` Dependency Injection?
-> Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
- 
-*  How to manage state in the front-end?
+
+  > Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
+
+* How to manage state in the front-end?
 
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)
 > Read [Immer with NGXS](https://blog.angularindepth.com/simple-state-mutations-in-ngxs-with-immer-48b908874a5e)
 
-* Best practices for NgRx Action?
+- Best practices for NgRx Action?
 
 > Types of Actions: User Actions, Backend Actions, Device Actions
 
 > Watch [Good Action Hygiene with NgRx Mike Ryan](https://www.youtube.com/watch?v=JmnsEvoy-gY)
 
-* How to implement route animations?
+- How to implement route animations?
 
 > Refer [here](https://angularfirebase.com/snippets/router-transition-animations-with-angular-4/)
 > Refer [here](https://coryrylan.com/blog/introduction-to-angular-router-animations)
@@ -117,49 +138,54 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Refer [here](https://medium.com/@tomastrajan/total-guide-to-dynamic-angular-animations-that-can-be-toggled-at-runtime-be5bb6778a0a)
 
-* how to Deploy to GitHub Pages?
+- how to Deploy to GitHub Pages?
 
 > Refer [here](https://github.com/angular/angular-cli/wiki/stories-github-pages)
 
-* How to chose a color palette for material components?
+- How to chose a color palette for material components?
 
 > Refer [here](https://material.io/guidelines/style/color.html#color-usability)
 
-* how to implement search experience with facets and sort options?
+- how to implement search experience with facets and sort options?
 
 > Refer [here](https://github.com/sfeir-open-source/angular-search-experience)
 
-* What I get from angular-cli?
+- What I get from angular-cli?
 
 > Refer [stories](https://github.com/angular/angular-cli/tree/master/docs/documentation/stories)
+> Refer [blogs](https://blog.ninja-squad.com/)
 
-* Publishing Angular Library?
+- Publishing Angular Library?
 
 > Refer [stories](https://blog.angularindepth.com/the-angular-library-series-publishing-ce24bb673275)
 
-* How to customize material design typography?
+- How to customize material design typography?
 
 > Refer [stories](https://github.com/angular/material2/blob/master/guides/typography.md)
 
-* How to cache backed-end API?
+- How to cache backed-end API?
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
 
-* Angular Performance 
+- Angular Performance
 
 > Refer [here](https://blog.ninja-squad.com/)
 > Refer [angular performance checklist](https://github.com/mgechev/angular-performance-checklist)
 
-* Angular universal aks SSR
-> Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5)
+- Server-side rendering(SSR) and Pre-rendering
 
-* How to configure nginx?
-> Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+  > [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
+  > Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5) <br/> > [nest-next](https://github.com/kyle-mccarthy/nest-next) <br/> > [nuxt/vue.js + nest](https://github.com/chanlito/nuxt-ts-starter) <br/> > [nest + angular](https://github.com/kamilmysliwiec/universal-nest)<br/>
 
-* How to build a library for Angular apps?
-> Read [build a library](https://medium.com/@tomsu/how-to-build-a-library-for-angular-apps-4f9b38b0ed11)
+- How to configure nginx?
 
-* how do adopt semantic-release process?
+  > Use [blog](https://medium.freecodecamp.org/an-introduction-to-nginx-for-developers-62179b6a458f)
+
+- How to build a library for Angular apps?
+
+  > Read [build a library](https://medium.com/@tomsu/how-to-build-a-library-for-angular-apps-4f9b38b0ed11)
+
+- how do adopt semantic-release process?
 
 semantic-release is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
 
@@ -169,62 +195,63 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > Read [enforcing commit conventions](https://adrianperez.codes/enforcing-commit-conventions/)
 > Read [automate package releases](https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f)
 
-* How to package the libs for publishing ?
+- How to package the libs for publishing ?
 
 > Use[ng-packagr](https://github.com/dherges/ng-packagr)
 > Use[with nx](https://github.com/dherges/nx-packaged)
 
-* How to implement security interceptors?
+- How to implement security interceptors?
 
 > [Refer](https://medium.com/@ryanchenkie_40935/angular-authentication-using-the-http-client-and-http-interceptors-2f9d1540eb8)
- 
-* How to get HTTPS working on your local development environment?
- 
+
+- How to get HTTPS working on your local development environment?
+
 > [Refer](https://medium.freecodecamp.org/how-to-get-https-working-on-your-local-development-environment-in-5-minutes-7af615770eec)
- 
- 
-* 10 More Useful Angular Features You Might Not Have Heard Of
 
->  https://angular-guru.com/blog/angular-more-unknown-features
+- 10 More Useful Angular Features You Might Not Have Heard Of
 
-* Apps That Work Natively on the Web and Mobile
-> https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7
+> https://angular-guru.com/blog/angular-more-unknown-features
 
-* How to use Angular CDK Tables?
- 
+- Apps That Work Natively on the Web and Mobile
+
+  > https://blog.angular.io/apps-that-work-natively-on-the-web-and-mobile-9b26852495e7
+
+- How to use Angular CDK Tables?
+
 > [Refer](https://medium.com/@zackderose/angular-cdk-tables-1537774d7c99)
- 
-* How to implement Server-side Pagination, Filtering, Sorting, with Angular Material Data Table 
-> Complete Examples
-> Refer [blog](https://blog.angular-university.io/angular-material-data-table/)
-> Refer [Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
-> Refer [Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
 
-* how to generate PWA's Push Notifications key pair?
+- How to implement Server-side Pagination, Filtering, Sorting, with Angular Material Data Table
+
+  > Complete Examples
+  > Refer [blog](https://blog.angular-university.io/angular-material-data-table/)
+  > Refer [Example 1](https://github.com/angular-university/angular-material-course/tree/2-data-table-finished/src/app/course)
+  > Refer [Example 2](https://github.com/angular/material2/blob/master/src/material-examples/table-http/table-http-example.ts)
+
+- how to generate PWA's Push Notifications key pair?
 
 > Refer [web-push-codelab](https://web-push-codelab.glitch.me/)
 
-* How to setup NestJS Project?
+- How to setup NestJS Project?
 
-> Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
-<br/>
-> Refer [Vendure](https://github.com/vendure-ecommerce/vendure) an eCommerce framework build with GraphQL and NestJS 
-<br/>
+> Refer [An Introduction to NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/) > <br/>
+> Refer [Vendure](https://github.com/vendure-ecommerce/vendure) an eCommerce framework build with GraphQL and NestJS
+> <br/>
 > Refer [Getting Started with Nest.js](https://scotch.io/tutorials/getting-started-with-nestjs)
 
-* Shoud I use mergeMap or  concatMap or switchMap or forkJoin for my usecase? 
+- Shoud I use mergeMap or concatMap or switchMap or forkJoin for my usecase?
 
-> *Short Answer*: concatMap for writes, mergeMap for reads, switchMap when you have to cancel http call.  
- 
-> TL;DR: mergeMap doesn’t preserve the order, concatMap does preserve the order. 
-switchMap cancels previous inner Observables when a new inner Observable appears
+> _Short Answer_: concatMap for writes, mergeMap for reads, switchMap when you have to cancel http call.
+
+> TL;DR: mergeMap doesn’t preserve the order, concatMap does preserve the order.
+> switchMap cancels previous inner Observables when a new inner Observable appears
 > Ref [blog](https://blog.angularindepth.com/practical-rxjs-in-the-wild-requests-with-concatmap-vs-mergemap-vs-forkjoin-11e5b2efe293)
 > Ref [blog](https://blog.angularindepth.com/learn-to-combine-rxjs-sequences-with-super-intuitive-interactive-diagrams-20fce8e6511)
 > Ref [blog](https://netbasal.com/rxjs-eight-operators-worth-getting-to-know-2b6c18e601d)
 
-* Secure Angular App with KeyCloak?
+- Secure Angular App with KeyCloak?
 
 in this project, we are demonstrating how to secure UI and backend APIs using following OIDC Flows.
+
 1. Resource Owner Password Credentials FLow
 2. Implicit FLow
 3. Authorization Code FLow [Waiting](https://github.com/manfredsteyer/angular-oauth2-oidc/pull/195)
@@ -237,22 +264,23 @@ https://github.com/ssilvert/keycloak-schematic/wiki
 https://symbiotics.co.za/integrating-keycloak-with-an-angular-4-web-application-part-2/
 https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/src/app/shared/auth/auth.service.ts
 
-* https://medium.com/@robert.broeckelmann/when-to-use-which-oauth2-grants-and-oidc-flows-ec6a5c00d864
+- https://medium.com/@robert.broeckelmann/when-to-use-which-oauth2-grants-and-oidc-flows-ec6a5c00d864
 
-* How to i18n?
-https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package.json
+- How to i18n?
+  https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package.json
 
-* how to link local npm projects when you o patch a npm module locally?
-> Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)
- 
+- how to link local npm projects when you o patch a npm module locally?
+  > Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)
+
 ### NestJS
-* Intro [NestJS](https://www.youtube.com/watch?v=ets56yWvi84)
+
+- Intro [NestJS](https://www.youtube.com/watch?v=ets56yWvi84)
 
 ### Pattern
-1. https://tomastrajan.github.io/angular-model-pattern-example#/about
 
+1. https://tomastrajan.github.io/angular-model-pattern-example#/about
 
 ### Awesome links
 
-* Angular Articles
-  * https://angular-guru.com/blog
+- Angular Articles
+  - https://angular-guru.com/blog

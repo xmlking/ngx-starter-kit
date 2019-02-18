@@ -8,6 +8,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
 
+If you are interested in smaller example project: [Mini-starter-kit](https://github.com/xmlking/connect4)
+
 **PANTS** (:elephant: _PostgreSQL_ :a: _Angular_ :rocket: _NestJS_ :snowman: _TypeScript_) Stack in :dolphin: NX workspace
 
 ## Install
