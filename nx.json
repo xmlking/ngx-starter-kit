@@ -130,7 +130,7 @@
     "models": {
       "tags": ["utils"]
     },
-    "preload": {
+    "oidc": {
       "tags": ["public-module"]
     }
   }

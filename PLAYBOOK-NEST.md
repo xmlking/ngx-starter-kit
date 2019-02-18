@@ -107,7 +107,6 @@ nest g controller subscription app/notifications  --dry-run
 nest g service subscription app/notifications --dry-run
 nest g class subscription/subscription.entity app/notifications --no-spec --dry-run
 
-
 You could also use `ng g` if you `npm i -D @nestjs/schematics`
 ng g @nestjs/schematics:module game --path app --source-root apps/api/src -d
 ng g @nestjs/schematics:controller match --path app/game  --source-root apps/api/src -d

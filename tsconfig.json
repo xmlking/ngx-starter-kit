@@ -52,7 +52,7 @@
       "@ngx-starter-kit/image-comparison": ["dist/libs/image-comparison", "libs/image-comparison/src/index.ts"],
       "@ngx-starter-kit/ngx-utils": ["dist/libs/ngx-utils", "libs/ngx-utils/src/index.ts"],
       "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"],
-      "@ngx-starter-kit/preload": ["libs/preload/src/index.ts"]
+      "@ngx-starter-kit/oidc": ["libs/oidc/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "dist/**/*", "coverage/**/*", "todo/**/*", "tools/**/_*files/**/*"]
