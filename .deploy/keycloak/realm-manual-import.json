@@ -5,82 +5,72 @@
     {
       "username": "ngxadmin",
       "enabled": true,
-      "firstName" : "ngxadmin",
-      "lastName" : "demo",
-      "email" : "ngxadmin@ngx.com",
+      "firstName": "ngxadmin",
+      "lastName": "demo",
+      "email": "ngxadmin@ngx.com",
       "credentials": [
         {
           "type": "password",
           "value": "ngxadmin"
         }
       ],
-      "realmRoles": [
-        "ROLE_ADMIN"
-      ]
+      "realmRoles": ["ROLE_ADMIN"]
     },
     {
       "username": "sumo",
       "enabled": true,
-      "firstName" : "sumo",
-      "lastName" : "demo",
-      "email" : "sumo@ngx.com",
+      "firstName": "sumo",
+      "lastName": "demo",
+      "email": "sumo@ngx.com",
       "credentials": [
         {
           "type": "password",
           "value": "demo"
         }
       ],
-      "realmRoles": [
-        "ROLE_USER"
-      ]
+      "realmRoles": ["ROLE_USER"]
     },
     {
       "username": "sumo1",
       "enabled": true,
-      "firstName" : "sumo1",
-      "lastName" : "demo",
-      "email" : "sumo1@ngx.com",
+      "firstName": "sumo1",
+      "lastName": "demo",
+      "email": "sumo1@ngx.com",
       "credentials": [
         {
           "type": "password",
           "value": "demo"
         }
       ],
-      "realmRoles": [
-        "ROLE_USER"
-      ]
+      "realmRoles": ["ROLE_USER"]
     },
     {
       "username": "sumo2",
       "enabled": true,
-      "firstName" : "sumo2",
-      "lastName" : "demo",
-      "email" : "sumo2@ngx.com",
+      "firstName": "sumo2",
+      "lastName": "demo",
+      "email": "sumo2@ngx.com",
       "credentials": [
         {
           "type": "password",
           "value": "demo"
         }
       ],
-      "realmRoles": [
-        "ROLE_USER"
-      ]
+      "realmRoles": ["ROLE_USER"]
     },
     {
       "username": "sumo3",
       "enabled": true,
-      "firstName" : "sumo3",
-      "lastName" : "demo",
-      "email" : "sumo3@ngx.com",
+      "firstName": "sumo3",
+      "lastName": "demo",
+      "email": "sumo3@ngx.com",
       "credentials": [
         {
           "type": "password",
           "value": "demo"
         }
       ],
-      "realmRoles": [
-        "ROLE_USER"
-      ]
+      "realmRoles": ["ROLE_USER"]
     }
   ],
   "roles": {
@@ -95,35 +85,27 @@
       }
     ]
   },
-  "defaultRoles": [
-    "ROLE_USER"
-  ],
+  "defaultRoles": ["ROLE_USER"],
   "clients": [
     {
       "clientId": "ngxapp",
       "enabled": true,
-      "implicitFlowEnabled" : true,
-      "directAccessGrantsEnabled" : true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
       "publicClient": true,
-      "redirectUris": [
-        "*"
-      ],
-      "webOrigins": [
-        "*"
-      ]
+      "rootUrl": "http://localhost:4200",
+      "redirectUris": ["*"],
+      "webOrigins": ["*"]
     },
     {
       "clientId": "ngxapi",
       "enabled": true,
-      "implicitFlowEnabled" : true,
-      "directAccessGrantsEnabled" : true,
+      "implicitFlowEnabled": true,
+      "directAccessGrantsEnabled": true,
       "publicClient": true,
-      "redirectUris": [
-        "*"
-      ],
-      "webOrigins": [
-        "*"
-      ]
+      "rootUrl": "http://localhost:3000",
+      "redirectUris": ["*"],
+      "webOrigins": ["*"]
     }
   ]
 }
