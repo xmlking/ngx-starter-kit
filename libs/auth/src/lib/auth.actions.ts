@@ -1,7 +1,8 @@
 export enum AuthMode {
   ImplicitFLow = 'ImplicitFLow',
   PasswordFlow = 'ROPCFlow',
-  AuthorizationCodeFLow = 'AuthorizationCodeFLow',
+  CodeFLow = 'CodeFLow',
+  HybridFlow = 'HybridFlow',
 }
 
 //  Actions
@@ -11,6 +12,9 @@ export class Login {
 }
 export class Logout {
   static readonly type = '[Auth] Logout';
+}
+export class Signup {
+  static readonly type = '[Auth] Signup';
 }
 export class LoadProfile {
   static readonly type = '[Auth] Load Profile';

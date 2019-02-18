@@ -4,6 +4,7 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { AdminGuard } from '@ngx-starter-kit/auth';
+// import { AuthGuard } from '@ngx-starter-kit/oidc';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ToolbarModule } from '@ngx-starter-kit/toolbar';
@@ -19,8 +20,6 @@ import { NotificationsComponent } from './containers/notifications/notifications
 import { NotificationDetailComponent } from './components/notification-detail/notification-detail.component';
 import { NotificationEditComponent } from './components/notification-edit/notification-edit.component';
 import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
-
-
 
 import {
   MatButtonModule,
@@ -78,8 +77,9 @@ const matModules = [
       {
         path: '',
         component: AdminLayoutComponent,
+        // canActivate: [AuthGuard],
         canActivate: [AdminGuard],
-        data: { title: 'Admin', depth: 1 },
+        data: { title: 'Admin', depth: 1, roles: ['ROLE_ADMIN'] },
         children: [
           { path: '', component: OverviewComponent, data: { title: 'Overview', depth: 2 } },
           {

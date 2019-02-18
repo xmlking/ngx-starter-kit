@@ -28,6 +28,6 @@ export class AdminGuard implements CanActivate {
 
   isAdmin(): boolean {
     // const userRoles = (<any>this.oauthService.getIdentityClaims()).groups.filter(role => role.startsWith('NGX_'));
-    return (<any>this.oauthService.getIdentityClaims()).preferred_username === 'ngxadmin';
+    return (this.oauthService.getIdentityClaims() as any).preferred_username === 'ngxadmin';
   }
 }

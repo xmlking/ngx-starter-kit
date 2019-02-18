@@ -1,7 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { Store } from '@ngxs/store';
+import { NgxsModule, Store } from '@ngxs/store';
 import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from '@xmlking/angular-oauth2-oidc-all';
 
 import { environment } from '@env/environment';
@@ -44,6 +44,7 @@ const matModules = [
 @NgModule({
   imports: [
     CommonModule,
+    NgxsModule.forFeature([AuthState]),
     RouterModule,
     [...matModules],
     FlexLayoutModule,
@@ -58,13 +59,7 @@ const matModules = [
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
-  providers: [
-    AuthState,
-    ROPCService,
-    AuthService,
-    AuthGuard,
-    { provide: ValidationHandler, useClass: JwksValidationHandler },
-  ],
+  providers: [ROPCService, AuthService, AuthGuard, { provide: ValidationHandler, useClass: JwksValidationHandler }],
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {

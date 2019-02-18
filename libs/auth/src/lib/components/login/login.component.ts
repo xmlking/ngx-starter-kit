@@ -15,8 +15,8 @@ import { ChangeAuthMode, AuthMode } from '../../auth.actions';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
-  public infoMsg: String;
-  public errorMsg: String;
+  public infoMsg: string;
+  public errorMsg: string;
   inputType = 'password';
   visible = false;
   loginForm: FormGroup;
@@ -53,8 +53,9 @@ export class LoginComponent {
   }
 
   initSSO() {
-    this.store.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
-      this.oauthService.initImplicitFlow();
+    this.store.dispatch(new ChangeAuthMode(AuthMode.CodeFLow)).subscribe(() => {
+      // this.oauthService.initImplicitFlow();
+      this.oauthService.initAuthorizationCodeFlow();
       console.log('initSSO');
     });
   }

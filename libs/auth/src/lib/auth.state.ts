@@ -12,7 +12,7 @@ import {
 } from './auth.actions';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { authConfigImplicit, authConfigPassword } from './oauth.config';
+import { authConfigCodeFlow, authConfigHybridFlow, authConfigImplicit, authConfigPassword } from './oauth.config';
 import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { map } from 'rxjs/operators';
 
@@ -91,6 +91,12 @@ export class AuthState {
         case AuthMode.PasswordFlow:
           this.oauthService.configure(authConfigPassword);
           break;
+        case AuthMode.CodeFLow:
+          this.oauthService.configure(authConfigCodeFlow);
+          break;
+        case AuthMode.HybridFlow:
+          this.oauthService.configure(authConfigHybridFlow);
+          break;
         default:
           this.oauthService.configure(authConfigImplicit);
           break;
@@ -107,15 +113,17 @@ export class AuthState {
 
   @Action(Login)
   login({ getState, dispatch }: StateContext<AuthStateModel>, { payload }: Login) {
-    // HINT: done escape form zone https://github.com/angular/material2/issues/13640
-    return this.zone.run( () => this.authService.login(payload).pipe(
-      map(profile => {
-        if (profile === false) {
-          dispatch(new LoginCanceled());
-        } else {
-          dispatch(new LoginSuccess(profile));
-        }
-      }),
-    ));
+    // HINT: don't escape form zone https://github.com/angular/material2/issues/13640
+    return this.zone.run(() =>
+      this.authService.login(payload).pipe(
+        map(profile => {
+          if (profile === false) {
+            dispatch(new LoginCanceled());
+          } else {
+            dispatch(new LoginSuccess(profile));
+          }
+        }),
+      ),
+    );
   }
 }

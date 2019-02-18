@@ -4,6 +4,9 @@ import { SwPush } from '@angular/service-worker';
 import { EventCategory, GoogleAnalyticsService } from '../services/google-analytics.service';
 import { AppState, ChangeInstallStatus, ChangeOnlineStatus, IsOffline, IsOnline, SetInstallPrompt } from './app.state';
 import { WINDOW } from '../services/window.token';
+import { LoginSuccess } from '@ngx-starter-kit/auth';
+// import { LoginSuccess } from '@ngx-starter-kit/oidc';
+import { FetchProfile } from '../state/profile.state';
 
 /** @dynamic */
 @Injectable({
@@ -53,6 +56,11 @@ export class AppHandler {
         } catch (installError) {
           this.analytics.emitEvent(EventCategory.Install, 'errored');
         }
+      });
+      this.actions$.pipe(ofActionSuccessful(LoginSuccess)).subscribe((action: LoginSuccess) => {
+        this.analytics.setUsername(action.payload.preferred_username);
+        console.log('setting action.payload.preferred_username', action.payload.preferred_username);
+        this.store.dispatch(new FetchProfile());
       });
     }
 

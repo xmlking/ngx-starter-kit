@@ -21,8 +21,8 @@ export class CustomRouterStateSerializer implements RouterStateSerializer<Router
     const breadcrumbs = new Map();
     while (route.firstChild) {
       route = route.firstChild;
-      if (route.data['title']) {
-        breadcrumbs.set(route.data['title'], route.pathFromRoot.flatMap(segment => segment.url).join('/'));
+      if (route.data.title) {
+        breadcrumbs.set(route.data.title, route.pathFromRoot.flatMap(segment => segment.url).join('/'));
       }
     }
     const { params } = route;
