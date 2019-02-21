@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/webapp"
+    "outDir": "../../dist/apps/webapp"
   },
   "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
   "include": [

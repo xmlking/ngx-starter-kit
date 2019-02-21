@@ -1,4 +1,4 @@
-app-home-layout {
+ngx-home-layout {
   display: flex;
   flex-direction: column;
   position: absolute;
@@ -8,13 +8,13 @@ app-home-layout {
   right: 0;
 }
 
-app-root > ngx-sidenav {
+ngx-root > ngx-sidenav {
   flex: 1;
 }
 
-app-root > ngx-home-layout,
-app-root > ngx-dashboard-layout,
-app-root > ngx-admin-layout {
+ngx-root > ngx-home-layout,
+ngx-root > ngx-dashboard-layout,
+ngx-root > ngx-admin-layout {
   overflow-y: auto;
 }
 
@@ -24,9 +24,9 @@ app-root > ngx-admin-layout {
     top: 92px;
   }
 
-  app-root > ngx-home-layout,
-  app-root > ngx-dashboard-layout,
-  app-root > ngx-admin-layout {
+  ngx-root > ngx-home-layout,
+  ngx-root > ngx-dashboard-layout,
+  ngx-root > ngx-admin-layout {
     overflow-y: visible;
   }
 }

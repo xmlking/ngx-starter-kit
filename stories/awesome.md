@@ -59,6 +59,10 @@ A curated list of awesome Angular resources
 
 - WTF is monorepo?
 
+  **Monorepo != Monolith**
+  > When you have all your codebase within the same repository it’s tempting to fall into the trap of creating a monolith (a gigantic application where all parts are intertwined with each other) so we need to ensure that modularity is a first class citizen within these repositories.
+
+  > Each package has clearly defined boundaries and ownership.
   - [Angular Enterprise Monorepo Patterns](https://go.nrwl.io/angular-enterprise-monorepo-patterns-new-book)
   - [Advantages of monorepos](https://danluu.com/monorepo/)
   - [Getting Started with Nx: The Nrwl Extensions for Angular](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)

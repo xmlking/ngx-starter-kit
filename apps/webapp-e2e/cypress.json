@@ -1,11 +1,11 @@
 {
-  "fileServerFolder": "../../dist/out-tsc/apps/webapp-e2e",
-  "fixturesFolder": "../../dist/out-tsc/apps/webapp-e2e/src/fixtures",
-  "integrationFolder": "../../dist/out-tsc/apps/webapp-e2e/src/integration",
-  "pluginsFile": "../../dist/out-tsc/apps/webapp-e2e/src/plugins/index.js",
+  "fileServerFolder": "../../dist/apps/webapp-e2e",
+  "fixturesFolder": "../../dist/apps/webapp-e2e/src/fixtures",
+  "integrationFolder": "../../dist/apps/webapp-e2e/src/integration",
+  "pluginsFile": "../../dist/apps/webapp-e2e/src/plugins/index.js",
   "supportFile": false,
   "video": true,
-  "videosFolder": "../../dist/out-tsc/apps/webapp-e2e/videos",
-  "screenshotsFolder": "../../dist/out-tsc/apps/webapp-e2e/screenshots",
+  "videosFolder": "../../dist/apps/webapp-e2e/videos",
+  "screenshotsFolder": "../../dist/apps/webapp-e2e/screenshots",
   "chromeWebSecurity": false
 }

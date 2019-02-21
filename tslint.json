@@ -10,6 +10,7 @@
     "import-blacklist": [true, "rxjs/Rx"],
     "interface-name": false,
     "max-classes-per-file": false,
+    "max-line-length": [true, 140],
     "member-access": false,
     "member-ordering": [
       true,
@@ -26,8 +27,10 @@
     "no-switch-case-fall-through": true,
     "no-use-before-declare": true,
     "no-var-requires": false,
+    "object-literal-key-quotes": [true, "as-needed"],
     "object-literal-sort-keys": false,
     "ordered-imports": false,
+    "quotemark": [true, "single"],
     "trailing-comma": false,
     "no-output-on-prefix": true,
     "use-input-property-decorator": true,

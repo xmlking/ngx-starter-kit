@@ -213,8 +213,8 @@ npm i -D tslint-config-prettier
 # to check any conflects
 npx tslint-config-prettier-check ./tslint.json
 
-# install testCafe for e2e testing and remove protractor
-npm i -D testcafe testcafe-angular-selectors testcafe-live
+# install cypress for e2e testing and remove protractor
+npm i -D cypress @types/jquery
 
 # for CI/CD automation and release
 # first time semantic-release setup
@@ -567,6 +567,22 @@ ng serve -c=prod
 docker-compose up --build web
 # run web
 docker-compose up web
+```
+
+### Uint Test
+```bash
+ng test <module>
+```
+
+### E2E Test
+```bash
+ng e2e webapp-e2e
+# headless tests (CI)
+ng e2e webapp-e2e --headless
+# Production target
+ng e2e webapp-e2e --prod
+# Watching for changes
+ng e2e webapp-e2e --watch
 ```
 
 ### Serve from dist
