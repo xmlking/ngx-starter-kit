@@ -21,3 +21,6 @@ COPY --from=prod-dependencies /app  .
 COPY --from=builder /app/dist/apps/api .
 EXPOSE 3000
 ENTRYPOINT ["./node", "main.js"]
+
+# TODO: Add non-root User
+# https://github.com/alextanhongpin/go-docker-multi-stage-build/blob/master/Dockerfile

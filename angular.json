@@ -7,10 +7,10 @@
       "root": "apps/webapp",
       "sourceRoot": "apps/webapp/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "ngx",
       "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
+        "@nrwl/schematics:component": {
+          "style": "scss"
         }
       },
       "architect": {
@@ -79,11 +79,12 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "serviceWorker": true,
+              "ngswConfigPath": "apps/webapp/ngsw-config.json",
               "budgets": [
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "45kb",
+                  "baseline": "300kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
@@ -97,14 +98,14 @@
                 {
                   "type": "bundle",
                   "name": "styles",
-                  "baseline": "250kb",
+                  "baseline": "350kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1.2mb",
+                  "baseline": "10mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
@@ -201,10 +202,11 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/builders:cypress",
           "options": {
-            "jestConfig": "",
-            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json"
+            "cypressConfig": "apps/webapp-e2e/cypress.json",
+            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "webapp:serve"
           },
           "configurations": {
             "production": {
@@ -225,6 +227,7 @@
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
+      "prefix": "api",
       "schematics": {},
       "architect": {
         "build": {
@@ -242,12 +245,14 @@
               "sourceMap": false,
               "optimization": true,
               "extractLicenses": true,
+              "inspect": false,
               "fileReplacements": [
                 {
                   "replace": "apps/api/src/environments/environment.ts",
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "externalDependencies": "none"
             }
           }
         },

@@ -47,6 +47,10 @@ export const authConfigCodeFlow: AuthConfig = {
   // FIXME: use it for debugging only.
   timeoutFactor: environment.production ? 0.75 : 0.1,
   disableAtHashCheck: true,
+
+  // PingFederate Specific
+  // dummyClientSecret: '.....',
+  // customQueryParams: { acr_values: '....' },
 };
 
 export const authConfigHybridFlow: AuthConfig = {
