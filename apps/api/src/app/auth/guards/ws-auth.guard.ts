@@ -15,6 +15,17 @@ export const defaultWsOptions = {
   },
 };
 
+const createPassportContext = (request, response) => (type, options) =>
+  new Promise((resolve, reject) =>
+    passport.authenticate(type, options, (err, user, info) => {
+      try {
+        return resolve(options.callback(err, user, info));
+      } catch (err) {
+        reject(err);
+      }
+    })(request, response, resolve),
+  );
+
 @Injectable()
 export class WsAuthGuard implements CanActivate {
   constructor() {}
@@ -35,14 +46,3 @@ export class WsAuthGuard implements CanActivate {
     }
   }
 }
-
-const createPassportContext = (request, response) => (type, options) =>
-  new Promise((resolve, reject) =>
-    passport.authenticate(type, options, (err, user, info) => {
-      try {
-        return resolve(options.callback(err, user, info));
-      } catch (err) {
-        reject(err);
-      }
-    })(request, response, resolve),
-  );

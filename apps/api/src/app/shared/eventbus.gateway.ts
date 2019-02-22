@@ -17,9 +17,9 @@ import { AuthService, User, WsAuthGuard } from '../auth';
 
 @WebSocketGateway({ namespace: 'eventbus' })
 export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
-  private readonly logger = new Logger(EventBusGateway.name);
   static EVENTS = 'events';
   static ACTIONS = 'actions';
+  private readonly logger = new Logger(EventBusGateway.name);
 
   @WebSocketServer()
   server: Server;

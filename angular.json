@@ -287,19 +287,21 @@
       "root": "apps/api-e2e",
       "sourceRoot": "apps/api-e2e/src",
       "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
       "architect": {
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "apps/api-e2e/jest.config.js",
-            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/api-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "**/*.json"]
+          }
+        },
+        "e2e": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api-e2e/jest.config.js",
+            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
           }
         }
       }
