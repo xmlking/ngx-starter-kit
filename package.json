@@ -132,7 +132,7 @@
     "@ngxs/form-plugin": "^3.3.0",
     "@ngxs/router-plugin": "^3.3.0",
     "@ngxs/storage-plugin": "^3.3.0",
-    "@ngxs/store": "^3.3.4-dev.master-28d61a1",
+    "@ngxs/store": "dev",
     "@nrwl/nx": "^7.6.0",
     "@xmlking/angular-oauth2-oidc-all": "^5.2.1",
     "@xmlking/api-ai-javascript": "^2.0.0-beta.22",
