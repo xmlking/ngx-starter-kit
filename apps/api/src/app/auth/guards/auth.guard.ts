@@ -15,6 +15,17 @@ export const defaultOptions = {
   },
 };
 
+const createPassportContext = (request, response) => (type, options) =>
+  new Promise((resolve, reject) =>
+    passport.authenticate(type, options, (err, user, info) => {
+      try {
+        return resolve(options.callback(err, user, info));
+      } catch (err) {
+        reject(err);
+      }
+    })(request, response, resolve),
+  );
+
 // TODO like https://github.com/nestjs/nest/blob/master/sample/19-auth/src/auth/guards/jwt-auth.guard.ts
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -30,14 +41,3 @@ export class AuthGuard implements CanActivate {
     return true;
   }
 }
-
-const createPassportContext = (request, response) => (type, options) =>
-  new Promise((resolve, reject) =>
-    passport.authenticate(type, options, (err, user, info) => {
-      try {
-        return resolve(options.callback(err, user, info));
-      } catch (err) {
-        reject(err);
-      }
-    })(request, response, resolve),
-  );

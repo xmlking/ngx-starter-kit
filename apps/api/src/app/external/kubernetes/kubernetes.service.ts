@@ -60,7 +60,7 @@ export class KubernetesService implements OnModuleInit {
       const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
       return namespaces.body.items;
     } catch (error) {
-      KubernetesService.handleError(error);
+      this.handleError(error);
     }
   }
 
@@ -70,7 +70,7 @@ export class KubernetesService implements OnModuleInit {
       const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
       return namespaces.items;
     } catch (error) {
-      KubernetesService.handleError(error);
+      this.handleError(error);
     }
   }
 
@@ -82,7 +82,7 @@ export class KubernetesService implements OnModuleInit {
         .get();
       return namespace1.body;
     } catch (error) {
-      KubernetesService.handleError(error);
+      this.handleError(error);
     }
   }
 
@@ -94,7 +94,7 @@ export class KubernetesService implements OnModuleInit {
         .serviceaccounts.get();
       return namespaces.body.items;
     } catch (error) {
-      KubernetesService.handleError(error);
+      this.handleError(error);
     }
   }
 
@@ -106,12 +106,14 @@ export class KubernetesService implements OnModuleInit {
         .get();
       return !!foundNamespace;
     } catch (error) {
-      if (error.code === 404) return false;
-      KubernetesService.handleError(error);
+      if (error.code === 404) {
+        return false;
+      }
+      this.handleError(error);
     }
   }
 
-  static handleError(error: Error & { code?: number; statusCode?: number }) {
+  private handleError(error: Error & { code?: number; statusCode?: number }) {
     const message = error.message || 'unknown error';
     const statusCode = error.statusCode || error.code || HttpStatus.I_AM_A_TEAPOT;
     console.log(message, statusCode);

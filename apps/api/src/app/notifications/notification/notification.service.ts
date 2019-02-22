@@ -49,7 +49,8 @@ export class NotificationService extends CrudService<Notification> implements On
       vibrate: [200, 100, 200],
     };
 
-    let subscriptions: Subscription[], count: number;
+    let subscriptions: Subscription[];
+    let count: number;
     switch (notification.targetType) {
       case TargetType.USER:
         [subscriptions, count] = await this.subscriptionService.findAndCount({ userId: notification.target });

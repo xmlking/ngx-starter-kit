@@ -3,7 +3,7 @@ import { ArgumentsHost, Catch, ExceptionFilter, NotFoundException } from '@nestj
 
 @Catch(EntityNotFoundError)
 export class EntityNotFoundFilter implements ExceptionFilter {
-  catch(exception: EntityNotFoundError, _host: ArgumentsHost) {
+  catch(exception: EntityNotFoundError, host: ArgumentsHost) {
     throw new NotFoundException(exception.message);
   }
 }
