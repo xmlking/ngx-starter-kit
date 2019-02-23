@@ -3,7 +3,7 @@ import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/sw
 import { KubernetesService } from './kubernetes.service';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('External', 'Kubernetes')
+@ApiUseTags('Project', 'Kubernetes')
 @ApiResponse({ status: HttpStatus.OK, description: 'Found' })
 @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Not Found' })
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })

@@ -57,6 +57,10 @@ export abstract class AuditBase {
     }
   }
 
+  /**
+   * NOTE: @BeforeUpdate won't run if you just call update(id, partialEntity)
+   * https://github.com/typeorm/typeorm/blob/master/docs/listeners-and-subscribers.md#beforeupdate
+   */
   @BeforeUpdate()
   setUpdatedByUser() {
     const currentUser = RequestContext.currentUser();

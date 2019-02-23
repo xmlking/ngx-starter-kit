@@ -97,6 +97,22 @@ nest g controller chat app/chat --flat --dry-run
 nest g service chat app/chat --flat --dry-run
 nest g gateway chat app/chat --flat --dry-run
 
+# scaffold external module
+nest g module app/external  --dry-run
+nest g controller weather app/external --dry-run
+nest g service weather app/external --dry-run
+
+# scaffold project module
+nest g module app/project --dry-run
+nest g controller kubernetes app/project --dry-run
+nest g service kubernetes app/project --dry-run
+nest g class cluster/cluster.entity app/project --no-spec --dry-run
+nest g controller cluster app/project --dry-run
+nest g service cluster app/project --dry-run
+nest g class project.entity app/project --no-spec --dry-run
+nest g controller project app --dry-run
+nest g service project app --dry-run
+
 # scaffold notifications module
 nest g module app/notifications --dry-run
 nest g controller notification app/notifications --dry-run

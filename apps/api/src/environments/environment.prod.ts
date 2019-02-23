@@ -44,6 +44,11 @@ export const environment = {
     templateDir: process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
   },
 
+  weather: {
+    baseUrl: 'https://api.openweathermap.org/data/2.5',
+    apiKey: '7cb0f6a068d1de4845c49ba22b74d7cc'
+  },
+
   // Key generation: https://web-push-codelab.glitch.me
   webPush: {
     subject: process.env.VAPID_SUBJECT || 'mailto: sumo@demo.com',

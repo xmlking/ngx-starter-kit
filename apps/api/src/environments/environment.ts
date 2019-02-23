@@ -38,11 +38,17 @@ export const environment = {
     transport: {
       host: 'mail.google.com',
       port: 25,
+      // secure: false
     },
     defaults: {
       from: '"sumo demo" <sumo@demo.com>',
     },
     templateDir: 'apps/api/src/assets/email-templates',
+  },
+
+  weather: {
+    baseUrl: 'https://samples.openweathermap.org/data/2.5',
+    apiKey: 'b6907d289e10d714a6e88b30761fae22'
   },
 
   // Key generation: https://web-push-codelab.glitch.me

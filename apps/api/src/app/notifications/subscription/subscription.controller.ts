@@ -18,7 +18,7 @@ export class SubscriptionController extends CrudController<Subscription> {
 
   @ApiOperation({ title: 'find all Subscriptions. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'All Subscriptions', /* type: Subscription, */ isArray: true })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
   async findAll(): Promise<[Subscription[], number]> {
@@ -39,7 +39,7 @@ export class SubscriptionController extends CrudController<Subscription> {
   @ApiOperation({ title: 'Find by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Subscription })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Subscription> {

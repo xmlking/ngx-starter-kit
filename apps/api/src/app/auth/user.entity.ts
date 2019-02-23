@@ -7,13 +7,13 @@ import {
   RelationId,
   UpdateDateColumn,
   VersionColumn,
+  OneToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsAscii, IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
 import { Base } from '../core/entities/base.entity';
 import { Image } from '../user/profile/image.entity';
-import { OneToOne } from 'typeorm/decorator/relations/OneToOne';
-import { JoinColumn } from 'typeorm/decorator/relations/JoinColumn';
 import { Profile } from '../user/profile/profile.entity';
 import { User as IUser } from '@ngx-starter-kit/models';
 

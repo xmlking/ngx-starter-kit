@@ -24,7 +24,7 @@ import { ProfileService } from './profile.service';
 const ALLOWED_MIME_TYPES = ['image/gif', 'image/png', 'image/jpeg', 'image/bmp', 'image/webp'];
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Profile')
+@ApiUseTags('Profile', 'User')
 @Controller('profile')
 export class ProfileController extends CrudController<Profile> {
   constructor(private readonly profileService: ProfileService) {
@@ -52,7 +52,7 @@ export class ProfileController extends CrudController<Profile> {
     type: Profile /*[[Profile], Number]*/,
     isArray: true,
   })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
   async findAll(): Promise<[Profile[], number]> {
@@ -62,7 +62,7 @@ export class ProfileController extends CrudController<Profile> {
   @ApiOperation({ title: 'Find Profile by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Profile })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Profile> {
