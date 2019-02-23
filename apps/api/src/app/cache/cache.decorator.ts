@@ -1,7 +1,8 @@
 import { CacheService } from './cache.service';
-import { CacheManagerOptions, Injectable, InternalServerErrorException } from '@nestjs/common';
+import { CacheManagerOptions, InternalServerErrorException } from '@nestjs/common';
 import 'reflect-metadata';
 import { tap } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 export enum ReturnType {
   OBSERVABLE = 'Observable',
@@ -15,6 +16,7 @@ export function Cache(options?: CacheManagerOptions): MethodDecorator {
     const className = target.constructor.name;
     let returnType = ReturnType.SCALAR;
     const returnTypeRaw = Reflect.getMetadata('design:returntype', target, methodName);
+    // TODO:  throw error if  returnType is nigher  Promise nor Observable
     if (returnTypeRaw) {
       if (returnTypeRaw.name === ReturnType.PROMISE) {
         returnType = ReturnType.PROMISE;
@@ -22,8 +24,6 @@ export function Cache(options?: CacheManagerOptions): MethodDecorator {
         returnType = ReturnType.OBSERVABLE;
       }
     }
-
-    console.log('returnType ', returnType);
 
     if (returnType === ReturnType.PROMISE) {
       descriptor.value = async function(...args: any[]) {
@@ -42,7 +42,8 @@ export function Cache(options?: CacheManagerOptions): MethodDecorator {
         await this.cacheService.set(cacheKey, result, options);
         return result;
       };
-    } else if (returnType === ReturnType.OBSERVABLE) { // TODO remove async
+    } else if (returnType === ReturnType.OBSERVABLE) {
+      // TODO: remove async
       descriptor.value = async function(...args: any[]) {
         if (!this.cacheService || !(this.cacheService instanceof CacheService)) {
           throw new InternalServerErrorException('Target Class should inject CacheService');
@@ -52,7 +53,7 @@ export function Cache(options?: CacheManagerOptions): MethodDecorator {
 
         const entry = await this.cacheService.get(cacheKey);
         if (entry) {
-          return entry;
+          return of(entry);
         }
 
         const result = originalMethod.apply(this, args);
@@ -79,6 +80,20 @@ export function Cache(options?: CacheManagerOptions): MethodDecorator {
       };
     }
 
+    return descriptor;
+  };
+}
+
+export function CacheBuster(cacheKey?: string): MethodDecorator {
+  return (target: any, methodName: string, descriptor: TypedPropertyDescriptor<any>) => {
+    const originalMethod = descriptor.value;
+    const className = target.constructor.name;
+    descriptor.value = async function(...args: any[]) {
+      if (cacheKey) {
+        await this.cacheService.del(cacheKey);
+      }
+      return originalMethod.apply(this, args);
+    };
     return descriptor;
   };
 }
