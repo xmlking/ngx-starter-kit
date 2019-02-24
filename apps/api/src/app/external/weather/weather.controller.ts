@@ -24,7 +24,7 @@ export class WeatherController {
 
   @ApiOperation({ title: 'get forecast by zipCode e.g., 91501' })
   @Get('forecast/:zip')
-  getForecast(@Param('zip') zip: string): Promise<any> {
+  getForecast(@Param('zip') zip: string): Observable<any> {
     this.logger.log('forecast zip', zip);
     return this.weatherService.getForecastByZip(zip);
   }

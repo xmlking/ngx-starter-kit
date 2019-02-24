@@ -34,13 +34,13 @@ export class WeatherService extends BaseRemoteService {
   }
 
   // 5 day / 3 hour forecast data
-  @Cache({ ttl: 60 * 60 * 3})
-  getForecastByZip(zip: string, countryCode: string = 'us'): Promise<any> {
+  @Cache<any>({ ttl: 60 * 60 * 3})
+  getForecastByZip(zip: string, countryCode: string = 'us'): Observable<any> {
     return this.http.get(`${this.baseUrl}/forecast?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders()).pipe(
       tap(res => this.logger.log(`Status: ${res.status}`)),
       map(res => res.data ),
       catchError(this.handleError),
-    ).toPromise();
+    );
   }
 
   getHeaders() {

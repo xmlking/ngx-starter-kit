@@ -81,7 +81,7 @@ ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
 more cat ~/.angular-config.json
-# show dependency tree for specified package.
+# find reverse dependencies for a package
 npm ls jasmine-marbles
 ```
 

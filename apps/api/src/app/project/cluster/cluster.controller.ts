@@ -9,7 +9,7 @@ import { UpdateClusterDto } from './dto/update-cluster.dto';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Project', 'Cluster', 'Admin')
-// @Roles(RolesEnum.ADMIN) FIXME: class level not working.
+@Roles(RolesEnum.ADMIN) // FIXME: class level not working.
 @Controller('cluster')
 export class ClusterController extends CrudController<Cluster> {
   constructor(private readonly clusterService: ClusterService) {
@@ -41,7 +41,7 @@ export class ClusterController extends CrudController<Cluster> {
     return super.update(id, entity);
   }
 
-  @Roles(RolesEnum.ADMIN)
+  @Roles(RolesEnum.ADMIN) // FIXME: remove me: class level not working.
   @ApiOperation({ title: 'Delete record' })
   @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
