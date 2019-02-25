@@ -263,10 +263,16 @@ ng g lib models --framework none --tags=utils --unit-test-runner=jest -d
 ng g interface User  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
 ng g interface Image  --project=models --type=model -d
-ng g enum ImageType --project=models --type=enum -d
-ng g enum Gender --project=models --type=enum -d
-ng g enum AccountSourceType --project=models --type=enum -d
-
+ng g enum ImageType --project=models -d
+ng g enum Gender --project=models -d
+ng g enum AccountSourceType --project=models -d
+ng g enum ZoneType --project=models -d
+ng g enum EnvironmentType --project=models -d
+ng g interface Labels  --project=models --type=model -d
+ng g interface Membership  --project=models --type=model -d
+ng g interface ResourceQuota  --project=models --type=model -d
+ng g interface Project  --project=models --type=model -d
+ng g interface Cluster  --project=models --type=model -d
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --tags=core-module --unit-test-runner=jest -d

@@ -1,7 +1,7 @@
 import { CacheService } from './cache.service';
 import { CacheManagerOptions, InternalServerErrorException } from '@nestjs/common';
 import 'reflect-metadata';
-import { tap , switchMap} from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 import { from, Observable, of } from 'rxjs';
 
 type Cacheable<T> = (...args) => Observable<T>;
@@ -18,7 +18,8 @@ export function Cache<T>(options?: CacheManagerOptions) {
     // @ts-ignore
     descriptor.value = function(...args: any[]) {
       const cache = this.cacheService;
-      if (!cache || !(cache instanceof CacheService)) { // TODO: Can we do design time check if CacheService injected?
+      if (!cache || !(cache instanceof CacheService)) {
+        // TODO: Can we do design time check if CacheService injected?
         throw new InternalServerErrorException('Target Class should inject CacheService');
       } else {
         const cacheKey = `${className}:${methodName}:${args.map(a => JSON.stringify(a)).join()}`;

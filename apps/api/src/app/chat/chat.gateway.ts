@@ -27,9 +27,9 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
 
   constructor(private chatService: ChatService) {}
 
-  public afterInit(server) {}
+  afterInit(server) {}
 
-  public handleConnection(client) {
+  handleConnection(client) {
     const event = 'connected';
     client.emit(event, { message: 'Hello...' });
     client.broadcast.emit(event, {
@@ -37,7 +37,7 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     });
     // this.chatService.addConnectedUser()
   }
-  public handleDisconnect(client) {
+  handleDisconnect(client) {
     const event = 'disconnected';
     client.broadcast.emit(event, {
       message: `${client.client.conn.id} disconnected`,

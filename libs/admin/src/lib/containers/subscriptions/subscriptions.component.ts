@@ -47,7 +47,7 @@ export class SubscriptionsComponent extends EntitiesComponent<Subscription, Subs
     super.ngOnInit();
     this.columns = [
       new EntityColumnDef<Subscription>({ property: 'id', header: 'No.' }),
-      new EntityColumnDef<Subscription>({ property: 'userId', header: 'User' }),
+      new EntityColumnDef<Subscription>({ property: 'username', header: 'User' }),
       new EntityColumnDef<Subscription>({ property: 'topics', header: 'Topics' }),
       new EntityColumnDef<Subscription>({
         property: 'createdAt',
@@ -65,7 +65,7 @@ export class SubscriptionsComponent extends EntitiesComponent<Subscription, Subs
 
   // optional
   delete(item: Subscription) {
-    return this.confirmService.confirm('Confirm', `Delete Sub(${item.id}) for ${item.userId}?`).pipe(
+    return this.confirmService.confirm('Confirm', `Delete Sub(${item.id}) for ${item.username}?`).pipe(
       filter(confirmed => confirmed === true),
       mergeMap(_ => super.delete(item)),
       tap(_ => {

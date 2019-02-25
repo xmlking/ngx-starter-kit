@@ -5,7 +5,7 @@ export class Subscription extends Entity {
   endpoint: string;
   auth: string;
   p256dh: string;
-  userId: string;
+  username: string;
   topics: string[];
   createdAt?: Date;
   updatedAt?: Date;

@@ -18,11 +18,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
   protected constructor(protected readonly repository: Repository<T>) {}
 
   public async getAll(options?: FindManyOptions<T>): Promise<[T[], number]> {
-    const records = await this.repository.findAndCount(options);
-    if (records[1] === 0) {
-      throw new NotFoundException(`The requested records were not found`);
-    }
-    return records;
+    return await this.repository.findAndCount(options);
   }
 
   public async getOne(

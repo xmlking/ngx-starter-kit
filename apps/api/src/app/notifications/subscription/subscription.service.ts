@@ -24,8 +24,8 @@ export class SubscriptionService extends CrudService<Subscription> {
     return this.subscriptionRepository.find(conditions);
   }
 
-  public async getUserSubscriptions(user: User): Promise<[Subscription[], number]> {
-    const records = await this.repository.findAndCount({ userId: user.userId });
+  async getUserSubscriptions(user: User): Promise<[Subscription[], number]> {
+    const records = await this.repository.findAndCount({ username: user.username });
     if (records[1] === 0) {
       throw new NotFoundException(`The requested records were not found`);
     }

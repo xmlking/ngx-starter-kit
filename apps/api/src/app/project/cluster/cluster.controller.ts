@@ -6,6 +6,7 @@ import { ClusterService } from './cluster.service';
 import { Roles, RolesEnum } from '../../auth';
 import { CreateClusterDto } from './dto/create-cluster.dto';
 import { UpdateClusterDto } from './dto/update-cluster.dto';
+import { Observable } from 'rxjs';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Project', 'Cluster', 'Admin')
@@ -14,6 +15,21 @@ import { UpdateClusterDto } from './dto/update-cluster.dto';
 export class ClusterController extends CrudController<Cluster> {
   constructor(private readonly clusterService: ClusterService) {
     super(clusterService);
+  }
+
+  @ApiOperation({ title: 'Get kubernetes cluster names' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'All records', type: String, isArray: true })
+  @Get('clusterNames')
+  getClusterNames(): Observable<string[]> {
+    return this.clusterService.getClusterNames();
+  }
+
+  @ApiOperation({ title: 'Find by Name' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Cluster })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
+  @Get('byName/:name')
+  async findByName(@Param('name') name: string): Promise<Cluster> {
+    return this.clusterService.getOne({ name });
   }
 
   @Roles(RolesEnum.ADMIN)

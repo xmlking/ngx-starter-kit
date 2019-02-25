@@ -11,7 +11,9 @@ import {
 } from '@nestjs/common';
 import * as Api from 'kubernetes-client';
 import { ConfigService } from '../../config';
-import { environment as env } from '@env-api/environment';
+import { ClusterService } from '../cluster/cluster.service';
+import { KubeContext } from '../interfaces/kube-context';
+import { User } from '../../auth';
 
 const Client = Api.Client1_10;
 const config = Api.config;
@@ -19,30 +21,14 @@ const config = Api.config;
 @Injectable()
 export class KubernetesService implements OnModuleInit {
   private readonly logger = new Logger(KubernetesService.name);
+  private clusters: Map<string, Api.ApiRoot>;
 
-  private readonly clients = new Map(
-    Object.entries(env.kubernetes).map<[string, Api.ApiRoot]>(([key, value]) => [
-      key,
-      new Client({
-        config: {
-          url: value.baseUrl,
-          auth: {
-            bearer: value.token,
-          },
-          insecureSkipTlsVerify: true,
-          version: 'v1',
-          promises: true,
-        },
-        version: value.version || '1.10',
-      }),
-    ]),
-  );
-
-  constructor(private readonly appConfig: ConfigService) {}
+  constructor(private readonly appConfig: ConfigService, private readonly clusterService: ClusterService) {}
 
   async onModuleInit() {
+    await this.refreshClusters();
     // @ts-ignore
-    // for (const [key, client] of this.clients.entries()) {
+    // for (const [key, client] of this.clusters.entries()) {
     //   try {
     //     await client.loadSpec();
     //   } catch (err) {
@@ -51,56 +37,49 @@ export class KubernetesService implements OnModuleInit {
     // }
   }
 
-  getClusterNames() {
-    return this.clients.keys();
+  /**
+   * for admin
+   */
+
+  async refreshClusters() {
+    this.logger.log('Refreshing Kubernetes Clusters...');
+    const [clusters, size] = await this.clusterService.getAll();
+    this.logger.log(`Refreshed ${size} Kubernetes Clusters`);
+    this.clusters = new Map(
+      clusters.map<[string, Api.ApiRoot]>(cluster => [
+        cluster.name,
+        new Client({
+          config: {
+            url: cluster.baseUrl,
+            auth: {
+              bearer: cluster.token,
+            },
+            insecureSkipTlsVerify: true,
+            version: 'v1',
+            promises: true,
+          },
+          version: cluster.version || '1.13',
+        }),
+      ]),
+    );
   }
 
   async listNamespaces(cluster: string) {
     try {
-      const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
+      const namespaces = await this.clusters.get(cluster).api.v1.namespaces.get();
       return namespaces.body.items;
     } catch (error) {
       this.handleError(error);
     }
   }
 
-  async myNamespaces(cluster: string, token: string) {
-    try {
-      // this.client.get(cluster).setToken(token)
-      const namespaces = await this.clients.get(cluster).api.v1.namespaces.get();
-      return namespaces.items;
-    } catch (error) {
-      this.handleError(error);
-    }
-  }
+  /**
+   * for any
+   */
 
-  async getNamespace(cluster: string, namespace: string) {
+  async hasNamespace({ cluster, namespace }: KubeContext) {
     try {
-      const namespace1 = await this.clients
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .get();
-      return namespace1.body;
-    } catch (error) {
-      this.handleError(error);
-    }
-  }
-
-  async myServiceAccounts(cluster: string, namespace: string) {
-    try {
-      const namespaces = await this.clients
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .serviceaccounts.get();
-      return namespaces.body.items;
-    } catch (error) {
-      this.handleError(error);
-    }
-  }
-
-  async hasNamespace(cluster: string, namespace: string) {
-    try {
-      const foundNamespace = await this.clients
+      const foundNamespace = await this.clusters
         .get(cluster)
         .api.v1.namespaces(namespace)
         .get();
@@ -109,6 +88,338 @@ export class KubernetesService implements OnModuleInit {
       if (error.code === 404) {
         return false;
       }
+      this.handleError(error);
+    }
+  }
+
+  async getNamespace({ cluster, namespace }: KubeContext) {
+    try {
+      const response = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .get();
+      return response.body;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createNamespace({ cluster, namespace, labels: { name = namespace } }: KubeContext) {
+    const request = {
+      body: {
+        apiVersion: 'v1',
+        kind: 'Namespace',
+        metadata: {
+          name,
+          labels: {
+            namespace,
+          },
+        },
+      },
+    };
+
+    try {
+      return await this.clusters.get(cluster).api.v1.namespaces.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async deleteNamespace({ cluster, namespace }: KubeContext) {
+    try {
+      return await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .delete();
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createServiceAccount({ cluster, namespace }: KubeContext, serviceAccountName: string) {
+    const request = {
+      body: {
+        apiVersion: 'v1',
+        kind: 'ServiceAccount',
+        metadata: {
+          name: serviceAccountName,
+        },
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .serviceaccounts.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async deleteServiceAccount({ cluster, namespace }: KubeContext, serviceAccountName: string) {
+    try {
+      return await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .serviceaccounts(serviceAccountName)
+        .delete();
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createNetworkPolicy({ cluster, namespace }: KubeContext) {
+    const request = {
+      body: {
+        apiVersion: 'networking.k8s.io/v1',
+        kind: 'NetworkPolicy',
+        metadata: { name: 'default-deny' },
+        spec: {
+          policyTypes: ['Egress', 'Ingress'],
+          ingress: [
+            {
+              from: [
+                {
+                  namespaceSelector: {
+                    matchLabels: {
+                      namespace,
+                    },
+                  },
+                },
+              ],
+            },
+          ],
+          egress: [
+            {
+              to: [
+                {
+                  namespaceSelector: {
+                    matchLabels: {
+                      namespace,
+                    },
+                  },
+                },
+              ],
+            },
+            {
+              ports: [
+                {
+                  port: 53,
+                  protocol: 'TCP',
+                },
+                {
+                  port: 53,
+                  protocol: 'UDP',
+                },
+              ],
+            },
+          ],
+        },
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .apis['networking.k8s.io'].v1.namespaces(namespace)
+        .networkpolicies.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createClusterRoleBindingForServiceAccount(
+    { cluster, namespace, labels: { name = namespace } }: KubeContext,
+    serviceAccountName: string,
+    role: string,
+  ) {
+    const request = {
+      body: {
+        apiVersion: 'rbac.authorization.k8s.io/v1',
+        kind: 'RoleBinding',
+        metadata: {
+          name: `rb-${name}-${serviceAccountName}-${role}-sa`,
+          labels: {
+            created: 'kubeadmin',
+          },
+        },
+        roleRef: {
+          kind: 'ClusterRole',
+          name: role,
+          apiGroup: 'rbac.authorization.k8s.io',
+        },
+        subjects: [
+          {
+            kind: 'ServiceAccount',
+            name: serviceAccountName,
+            namespace,
+          },
+        ],
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .apis['rbac.authorization.k8s.io'].v1.namespaces(namespace)
+        .rolebindings.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createClusterRoleBindingForDashboardUsers({ cluster, namespace, labels: { name = namespace } }: KubeContext, username: string) {
+    const request = {
+      body: {
+        apiVersion: 'rbac.authorization.k8s.io/v1',
+        kind: 'RoleBinding',
+        metadata: {
+          name: `rb-${name}-${username}`,
+          labels: {
+            created: 'kubeadmin',
+          },
+        },
+        roleRef: {
+          kind: 'ClusterRole',
+          name: 'admin',
+          apiGroup: 'rbac.authorization.k8s.io',
+        },
+        subjects: [
+          {
+            kind: 'User',
+            name: username,
+            apiGroup: 'rbac.authorization.k8s.io',
+            namespace,
+          },
+        ],
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .apis['rbac.authorization.k8s.io'].v1.namespaces(namespace)
+        .rolebindings.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createResourceQuotaForNamespace({ cluster, namespace, labels: { name = namespace } }: KubeContext) {
+    const request = {
+      body: {
+        apiVersion: 'v1',
+        kind: 'ResourceQuota',
+        metadata: {
+          name: `rq-${name.toLowerCase()}`,
+        },
+        spec: {
+          hard: {
+            cpu: '156',
+            memory: '720Gi',
+            'requests.cpu': '156',
+            'requests.memory': '720Gi',
+            'limits.cpu': '156',
+            'limits.memory': '720Gi',
+          },
+        },
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .resourcequotas.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async createResourceLimitRangeForNamespace({ cluster, namespace, labels: { name = namespace }, }: KubeContext) {
+    const request = {
+      body: {
+        apiVersion: 'v1',
+        kind: 'LimitRange',
+        metadata: {
+          name: `rq-${name.toLowerCase()}`,
+        },
+        spec: {
+          limits: [
+            {
+              max: {
+                cpu: '32',
+                memory: '128Gi',
+              },
+              min: {
+                cpu: '300m',
+                memory: '6Mi',
+              },
+              type: 'Pod',
+            },
+            {
+              default: {
+                cpu: '500m',
+                memory: '500Mi',
+              },
+              defaultRequest: {
+                cpu: '300m',
+                memory: '300Mi',
+              },
+              type: 'Container',
+            },
+          ],
+        },
+      },
+    };
+
+    try {
+      return await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .limitranges.post(request);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async listDeployments({ cluster, namespace }: KubeContext) {
+    try {
+      const deployments = await this.clusters
+        .get(cluster)
+        .apis.apps.v1.namespaces(namespace)
+        .deployments.get();
+      return deployments.body.items;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  /**
+   * for me
+   */
+
+  async myNamespaces(context: KubeContext) {
+    const { cluster, namespace } = context;
+    try {
+      // this.clusters.get(cluster).setToken(token)
+      const namespaces = await this.clusters.get(cluster).api.v1.namespaces.get();
+      return namespaces.items;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  async myServiceAccounts(context: KubeContext) {
+    const { cluster, namespace } = context;
+    try {
+      const namespaces = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .serviceaccounts.get();
+      return namespaces.body.items;
+    } catch (error) {
       this.handleError(error);
     }
   }

@@ -91,7 +91,7 @@ export class NotificationController extends CrudController<Notification> {
   // @Delete('deleteByUser/:id')
   // async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
   //   return this.notificationService.update(
-  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.userId },
+  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.username },
   //     { isActive: false },
   //   );
   // }

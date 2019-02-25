@@ -21,7 +21,7 @@ export class Subscription extends Base {
   @ApiModelProperty({ type: String, minLength: 3, maxLength: 20 })
   @Index()
   @Column()
-  userId: string;
+  username: string;
 
   @ApiModelProperty({ type: String, isArray: true })
   @Column('text', { nullable: true, array: true })

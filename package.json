@@ -8,6 +8,10 @@
     "type": "git",
     "url": "https://github.com/xmlking/ngx-starter-kit.git"
   },
+  "workspaces": [
+    "libs/*",
+    "apps/*"
+  ],
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -243,13 +247,9 @@
     "tsconfig-paths": "^3.8.0",
     "tsickle": "^0.34.0",
     "tslib": "^1.9.3",
-    "tslint": "^5.12.0",
+    "tslint": "^5.13.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "~3.1.6",
     "webpack-bundle-analyzer": "^3.0.0"
-  },
-  "workspaces": [
-    "libs/*",
-    "apps/*"
-  ]
+  }
 }

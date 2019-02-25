@@ -3,8 +3,8 @@ import { User } from './interfaces/user';
 
 @Injectable()
 export class ChatService {
-  public rooms: string[] = [];
-  public connectedUsers: User[] = [];
+  rooms: string[] = [];
+  connectedUsers: User[] = [];
 
   addConnectedUser(user: User): void {
     this.connectedUsers.push(user);

@@ -23,5 +23,5 @@ export class CreateUserDto {
   @MaxLength(20)
   @IsString()
   @IsNotEmpty()
-  readonly userId: string;
+  readonly username: string;
 }

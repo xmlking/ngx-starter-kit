@@ -4,17 +4,28 @@ import { FindConditions, Repository, UpdateResult } from 'typeorm';
 import { CrudService, RequestContext } from '../../core';
 import { Cluster } from './cluster.entity';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+import { Cache, CacheService } from '../../cache';
+import { from } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class ClusterService extends CrudService<Cluster> {
-  constructor(@InjectRepository(Cluster) private readonly clusterRepository: Repository<Cluster>) {
+  constructor(
+    @InjectRepository(Cluster) private readonly clusterRepository: Repository<Cluster>,
+    private cacheService: CacheService,
+  ) {
     super(clusterRepository);
+  }
+
+  @Cache<string[]>({ ttl: 60 * 60 * 3 })
+  getClusterNames() {
+    return from(super.getAll()).pipe(map(([clusters, size]) => clusters.map(c => c.name)));
   }
 
   /**
    * FIXME: workaround as @BeforeUpdate don't work with repository.update().
    */
-  public async update(
+  async update(
     id: string | number | FindConditions<Cluster>,
     partialEntity: QueryDeepPartialEntity<Cluster>,
     ...options: any[]

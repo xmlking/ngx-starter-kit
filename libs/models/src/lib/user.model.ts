@@ -6,10 +6,10 @@ export interface User {
   firstName: string;
   lastName: string;
   email: string;
-  userId: string;
-  createdAt?: Date;
-  updatedAt?: Date;
+  username: string;
   images?: Image[];
   profile?: Profile;
-  profileId?: number;
+  readonly profileId?: number;
+  readonly createdAt?: Date;
+  readonly updatedAt?: Date;
 }

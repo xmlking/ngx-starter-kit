@@ -47,7 +47,7 @@ export class User extends Base implements IUser {
   @MaxLength(20)
   @Index({ unique: true })
   @Column()
-  userId: string;
+  username: string;
 
   @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })
@@ -70,7 +70,7 @@ export class User extends Base implements IUser {
   @JoinColumn()
   profile?: Profile;
 
-  @ApiModelProperty({ type: Number })
+  @ApiModelProperty({ type: Number, readOnly: true })
   @RelationId((user: User) => user.profile)
-  profileId?: number;
+  readonly profileId?: number;
 }

@@ -12,7 +12,7 @@ export class SearchProjectDto {
   @ApiModelProperty({ type: String })
   @IsString()
   @IsOptional()
-  readonly userId?: string;
+  readonly username?: string;
 
   @ApiModelPropertyOptional({ type: String })
   @IsAscii()

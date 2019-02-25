@@ -1,32 +1,17 @@
-import { IsEnum } from 'class-validator';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { IsEnum, IsString } from 'class-validator';
+import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
+import { EnvironmentType, Labels as ILabels, ZoneType } from '@ngx-starter-kit/models';
 
-export enum EnvironmentType {
-  Prod,
-  NonProd,
-}
-export enum ZoneType {
-  DMZ,
-  Core,
-}
-
-export enum DCType {
-  CLUSTER1,
-  CLUSTER2,
-  CLUSTER3,
-  CLUSTER4,
-}
-
-export class Labels {
-  @ApiModelProperty({ enum: ['Prod', 'NonProd'] })
+export class Labels implements ILabels {
+  @ApiModelProperty({ type: String, enum: EnvironmentType, default: EnvironmentType.NonProd })
   @IsEnum(EnvironmentType)
   env: EnvironmentType;
 
-  @ApiModelProperty({ required: false, enum: ['Core', 'DMZ'] })
+  @ApiModelProperty({ type: String, enum: ZoneType, default: ZoneType.Core })
   @IsEnum(ZoneType)
-  zone?: ZoneType;
+  zone: ZoneType;
 
-  @ApiModelProperty({ required: false, enum: ['CLUSTER1', 'CLUSTER2', 'CLUSTER3', 'CLUSTER4'] })
-  @IsEnum(DCType)
-  dc?: DCType;
+  @ApiModelPropertyOptional({ type: String })
+  @IsString()
+  name?: string;
 }

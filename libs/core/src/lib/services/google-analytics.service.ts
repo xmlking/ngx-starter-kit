@@ -38,9 +38,9 @@ export class GoogleAnalyticsService {
   /**
    * set user after login success.
    */
-  public setUsername(userId: string) {
+  public setUsername(username: string) {
     if (typeof ga === 'function') {
-      ga('set', 'userId', userId);
+      ga('set', 'userId', username);
     }
   }
 

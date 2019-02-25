@@ -7,9 +7,10 @@ import { ClusterService } from './cluster/cluster.service';
 import { ProjectController } from './project.controller';
 import { ProjectService } from './project.service';
 import { Cluster } from './cluster/cluster.entity';
+import { Project } from './project.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Cluster])],
+  imports: [TypeOrmModule.forFeature([Cluster, Project])],
   controllers: [KubernetesController, ClusterController, ProjectController],
   providers: [KubernetesService, ClusterService, ProjectService]
 })
