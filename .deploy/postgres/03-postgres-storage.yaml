@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: postgres
+  labels:
+    app: postgres
+spec:
+# use hostpath when deploying local k8s and use nas-thin for k8s cluster
+  storageClassName: hostpath
+#  storageClassName: nas-thin
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

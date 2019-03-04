@@ -1,0 +1,78 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: citus-workers
+  labels:
+    app: citus-workers
+  namespace: ngx-ns
+spec:
+  selector:
+    app: citus-workers
+  clusterIP: None
+  ports:
+    - port: 5432
+---
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  annotations:
+    com.citusdata.role: Worker
+  name: citus-workers
+  namespace: ngx-ns
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: citus-workers
+  serviceName: citus-workers
+  template:
+    metadata:
+      labels:
+        app: citus-workers
+    spec:
+      containers:
+        - name: citus-worker
+          image: ***REMOVED***schinth/citus:8.1.1
+          lifecycle:
+            postStart:
+              exec:
+                command:
+                  - /bin/sh
+                  - -c
+                  - if [ ${POD_IP} ]; then psql --host=citus-master --username=postgres --command="SELECT * from master_add_node('${HOSTNAME}.citus-workers', 5432);" ; fi
+          ports:
+            - containerPort: 5432
+          env:
+            - name: POD_IP
+              valueFrom:
+                fieldRef:
+                  fieldPath: status.podIP
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: citus-secrets
+                  key: password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: citus-secrets
+                  key: password
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+          volumeMounts:
+            - name: worker-storage
+              mountPath: /var/lib/postgresql/data
+          livenessProbe:
+            exec:
+              command:
+                - ./pg_healthcheck
+            initialDelaySeconds: 60
+  volumeClaimTemplates:
+    - metadata:
+        name: worker-storage
+      spec:
+        accessModes: [ "ReadWriteOnce" ]
+        resources:
+          requests:
+            storage: "10G"
+        storageClassName: "nas-thin"

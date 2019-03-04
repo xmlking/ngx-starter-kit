@@ -1,0 +1,78 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: citus-master-pvc
+  namespace: ngx-ns
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: nas-thin
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: citus-master
+  namespace: ngx-ns
+  labels:
+    app: citus-master
+spec:
+  selector:
+    app: citus-master
+  type: NodePort
+  ports:
+    - name: postgresql
+      port: 5432
+      nodePort: 32345
+---
+apiVersion: apps/v1beta2
+kind: Deployment
+metadata:
+  name: citus-master
+  namespace: ngx-ns
+  annotations:
+    com.citusdata.role: Master
+spec:
+  selector:
+    matchLabels:
+      app: citus-master
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: citus-master
+    spec:
+      securityContext:
+        runAsUser: 999
+      containers:
+        - name: citus
+          image: ***REMOVED***schinth/citus:8.1.1
+          ports:
+            - containerPort: 5432
+          env:
+            - name: PGDATA
+              value: /var/lib/postgresql/data/pgdata
+            - name: PGPASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: citus-secrets
+                  key: password
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: citus-secrets
+                  key: password
+          volumeMounts:
+            - name: storage
+              mountPath: /var/lib/postgresql/data
+          livenessProbe:
+            exec:
+              command:
+                - ./pg_healthcheck
+            initialDelaySeconds: 60
+      volumes:
+        - name: storage
+          persistentVolumeClaim:
+            claimName: citus-master-pvc
