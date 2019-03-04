@@ -9,7 +9,10 @@ export class RoleGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const endpointRoles = this.reflector.get<string[]>('roles', context.getHandler());
+    const methodEndpointRoles = this.reflector.get<string[]>('roles', context.getHandler()) || [];
+    const classEndpointRoles = this.reflector.get<string[]>('roles', context.getClass()) || [];
+    const endpointRoles = [...methodEndpointRoles, ...classEndpointRoles];
+
     if (!endpointRoles || endpointRoles.length === 0) {
       return true;
     }

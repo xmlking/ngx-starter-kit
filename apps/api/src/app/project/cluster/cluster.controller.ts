@@ -10,13 +10,14 @@ import { Observable } from 'rxjs';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Project', 'Cluster', 'Admin')
-@Roles(RolesEnum.ADMIN) // FIXME: class level not working.
+@Roles(RolesEnum.ADMIN)
 @Controller('cluster')
 export class ClusterController extends CrudController<Cluster> {
   constructor(private readonly clusterService: ClusterService) {
     super(clusterService);
   }
 
+  @Roles(RolesEnum.USER)
   @ApiOperation({ title: 'Get kubernetes cluster names' })
   @ApiResponse({ status: HttpStatus.OK, description: 'All records', type: String, isArray: true })
   @Get('clusterNames')
@@ -32,7 +33,6 @@ export class ClusterController extends CrudController<Cluster> {
     return this.clusterService.getOne({ name });
   }
 
-  @Roles(RolesEnum.ADMIN)
   @ApiOperation({ title: 'Create new record' })
   @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully created.', type: Cluster })
   @ApiResponse({
@@ -44,7 +44,6 @@ export class ClusterController extends CrudController<Cluster> {
     return super.create(entity);
   }
 
-  @Roles(RolesEnum.ADMIN)
   @ApiOperation({ title: 'Update an existing record' })
   @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully edited.' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
@@ -57,12 +56,12 @@ export class ClusterController extends CrudController<Cluster> {
     return super.update(id, entity);
   }
 
-  @Roles(RolesEnum.ADMIN) // FIXME: remove me: class level not working.
-  @ApiOperation({ title: 'Delete record' })
-  @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @Delete(':id')
-  async delete(@Param('id') id: string, ...options: any[]): Promise<any> {
-    return super.delete(id);
-  }
+  // @Roles(RolesEnum.ADMIN) // FIXME: remove me: class level not working.
+  // @ApiOperation({ title: 'Delete record' })
+  // @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
+  // @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
+  // @Delete(':id')
+  // async delete(@Param('id') id: string, ...options: any[]): Promise<any> {
+  //   return super.delete(id);
+  // }
 }

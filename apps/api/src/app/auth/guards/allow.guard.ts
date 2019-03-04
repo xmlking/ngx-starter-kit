@@ -8,9 +8,9 @@ export class AllowGuard implements CanActivate {
   constructor(private reflector: Reflector, private config: ConfigService) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const endpointAllow = this.reflector.get<string[]>('allow', context.getHandler());
-    // const classEndpointAllow = this.reflector.get<string[]>('allow', context.getClass());
-    // const endpointAllows = [...endpointAllow, ...classEndpointAllow];
+    const endpointAllow =
+      this.reflector.get<string[]>('allow', context.getHandler()) ||
+      this.reflector.get<string[]>('allow', context.getClass());
 
     if (endpointAllow) {
       // skip for public
