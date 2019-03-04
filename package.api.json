@@ -23,7 +23,7 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.4.0",
     "sharp": "^0.21.3",
-    "typeorm": "^0.2.12",
+    "typeorm": "^0.2.14",
     "web-push": "^3.3.3"
   }
 }
