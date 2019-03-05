@@ -54,7 +54,6 @@ using travis CI/CD
 
 [The way to fully automated releases in open source projects](https://medium.com/@kevinkreuzer/the-way-to-fully-automated-releases-in-open-source-projects-44c015f38fd6)
 
-
 > Commits that have [ci skip] or [skip ci] anywhere in the commit messages are ignored by Travis CI.
 
 > [refer](http://dev.topheman.com/continuous-deployment-with-travis-ci/)

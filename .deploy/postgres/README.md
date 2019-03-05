@@ -1,12 +1,13 @@
 # PostgreSQL
 
-Deploying **Postgre** as datastore for *APIs* and *KeyCloak*
+Deploying **Postgre** as datastore for _APIs_ and _KeyCloak_
 
 ### Prerequisites
-* Working Kubernetes Cluster
-* [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or [oc](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) utility installed
-* [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) defined on your Kubernetes instance
-* install postgres cli via `brew install postgresql`
+
+- Working Kubernetes Cluster
+- [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) or [oc](https://docs.openshift.com/container-platform/3.11/cli_reference/get_started_cli.html) utility installed
+- [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) defined on your Kubernetes instance
+- install postgres cli via `brew install postgresql`
 
 ### Deploy
 
@@ -21,8 +22,8 @@ Deploying **Postgre** as datastore for *APIs* and *KeyCloak*
 cd .deploy/postgres
 
 # create configmap
-kubectl create -f 01-postgres-configmap.yaml 
-# verify 
+kubectl create -f 01-postgres-configmap.yaml
+# verify
 kubectl get configmap postgres -o yaml
 
 # create secrets
@@ -50,7 +51,7 @@ kubectl exec -it $MY_POD -- /bin/bash
 kubectl cp /Developer/Work/SPA/ngx-starter-kit/.deploy/postgres/scripts/create_databases.sh $MY_POD:/tmp/test.sh
 
 # create service (use -service.yaml for prod cluster, -nodeport.yaml for development)
-kubectl create -f 05-postgres-service.yaml 
+kubectl create -f 05-postgres-service.yaml
 # verify service
 kubectl get svc postgres
 kubectl get ep
@@ -78,9 +79,10 @@ kubectl delete secret postgres
 kubectl delete persistentvolumeclaim postgres
 ```
 
-
 #### TODO
-> deploy via typescript 
+
+> deploy via typescript
+
 ```bash
 ts-node .deploy/postgres/deploy.ts
 ```
