@@ -4,6 +4,10 @@ metadata:
   name: postgres
   labels:
     app: postgres
+  annotations:
+    trident.netapp.io/reclaimPolicy: "Retain"
+    trident.netapp.io/snapshotDirectory: "false"
+    trident.netapp.io/snapshotPolicy: "default"
 spec:
 # use hostpath when deploying local k8s and use nas-thin for k8s cluster
   storageClassName: hostpath

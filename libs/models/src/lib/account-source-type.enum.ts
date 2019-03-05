@@ -1,5 +1,5 @@
 export enum AccountSourceType {
-  msId,
+  bsId,
   hsId,
   gitHub,
 }

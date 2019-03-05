@@ -29,7 +29,7 @@ export class ProjectService extends CrudService<Project> implements OnModuleInit
   //   const cursor = this.projectRepository.createEntityCursor({
   //     $or: [
   //       {
-  //         msId: filter.userId,
+  //         bsId: filter.userId,
   //       },
   //       {
   //         'memberships.name': filter.userId,

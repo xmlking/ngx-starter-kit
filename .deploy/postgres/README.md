@@ -55,6 +55,9 @@ kubectl create -f 05-postgres-service.yaml
 kubectl get svc postgres
 kubectl get ep
 
+# create network policy(optional - if your cluster is enabled for network-policy)
+kubectl create -f 06-keycloak-network-policy.yaml
+
 kubectl get all,configmap,secret -l app=postgres
 ```
 

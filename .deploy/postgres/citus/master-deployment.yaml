@@ -48,7 +48,7 @@ spec:
         runAsUser: 999
       containers:
         - name: citus
-          image: ***REMOVED***schinth/citus:8.1.1
+          image: schinth/citus:8.1.1
           ports:
             - containerPort: 5432
           env:
