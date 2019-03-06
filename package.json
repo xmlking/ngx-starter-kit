@@ -167,7 +167,7 @@
     "helmet": "^3.15.0",
     "immer": "^2.1.0",
     "intersection-observer": "^0.5.1",
-    "keycloak-js": "^4.8.3",
+    "keycloak-js": "^5.0.0",
     "nest-router": "^1.0.0",
     "ngx-filepond": "^5.0.0",
     "ngx-page-scroll": "^6.0.0-beta.1",
