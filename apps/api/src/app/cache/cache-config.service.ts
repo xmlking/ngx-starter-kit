@@ -8,7 +8,7 @@ export class CacheConfigService implements CacheOptionsFactory {
    * Example retry strategy for when redis is used for the cache
    * This example is only compatible with cache-manager-redis-store because it used node_redis
    */
-  public retryStrategy() {
+  retryStrategy() {
     return {
       retry_strategy: (options: any) => {
         if (options.error && options.error.code === 'ECONNREFUSED') {
@@ -25,9 +25,9 @@ export class CacheConfigService implements CacheOptionsFactory {
     };
   }
 
-  public createCacheOptions(): CacheModuleOptions {
+  createCacheOptions(): CacheModuleOptions {
     return {
-      ttl: 5, // seconds
+      ttl: 60, // seconds
       max: 10, // maximum number of items in cache
     };
   }

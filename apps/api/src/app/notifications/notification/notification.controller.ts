@@ -18,7 +18,7 @@ export class NotificationController extends CrudController<Notification> {
 
   @ApiOperation({ title: 'find all Notifications. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'All Notifications', /* type: Notification, */ isArray: true })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
   async findAll(): Promise<[Notification[], number]> {
@@ -39,7 +39,7 @@ export class NotificationController extends CrudController<Notification> {
   @ApiOperation({ title: 'Find by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Notification })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Notification> {
@@ -56,7 +56,7 @@ export class NotificationController extends CrudController<Notification> {
     status: HttpStatus.BAD_REQUEST,
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Post()
   async create(@Body() entity: CreateNotificationDto): Promise<Notification> {
@@ -64,7 +64,7 @@ export class NotificationController extends CrudController<Notification> {
   }
 
   @ApiExcludeEndpoint()
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Put(':id')
   async update(
@@ -78,7 +78,7 @@ export class NotificationController extends CrudController<Notification> {
   @ApiOperation({ title: 'Delete record by admin' })
   @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Delete(':id')
   async deleteByAdmin(@Param('id') id: string): Promise<any> {
@@ -91,7 +91,7 @@ export class NotificationController extends CrudController<Notification> {
   // @Delete('deleteByUser/:id')
   // async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
   //   return this.notificationService.update(
-  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.userId },
+  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.username },
   //     { isActive: false },
   //   );
   // }
@@ -105,7 +105,7 @@ export class NotificationController extends CrudController<Notification> {
     status: HttpStatus.BAD_REQUEST,
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Post('send')
   async send(@Body() notif: SendNotificationDto) {

@@ -18,7 +18,7 @@ export class SubscriptionController extends CrudController<Subscription> {
 
   @ApiOperation({ title: 'find all Subscriptions. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'All Subscriptions', /* type: Subscription, */ isArray: true })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
   async findAll(): Promise<[Subscription[], number]> {
@@ -39,7 +39,7 @@ export class SubscriptionController extends CrudController<Subscription> {
   @ApiOperation({ title: 'Find by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Subscription })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Subscription> {
@@ -60,7 +60,7 @@ export class SubscriptionController extends CrudController<Subscription> {
   async create(@Body() entity: CreateSubscriptionDto, @CurrentUser() user: User): Promise<Subscription> {
     const records = await this.subscriptionService.findAndCount({ endpoint: entity.endpoint });
     if (records[1] === 0) {
-      return super.create({ ...entity, userId: user.userId });
+      return super.create({ ...entity, username: user.username });
     } else {
       return records[0][0];
     }
@@ -80,9 +80,9 @@ export class SubscriptionController extends CrudController<Subscription> {
     @CurrentUser() user: User,
   ): Promise<any> {
     if (id.startsWith('http')) {
-      return this.subscriptionService.update({ endpoint: id, userId: user.userId }, entity);
+      return this.subscriptionService.update({ endpoint: id, username: user.username }, entity);
     } else {
-      return this.subscriptionService.update({ id: parseInt(id, 10), userId: user.userId }, entity);
+      return this.subscriptionService.update({ id: parseInt(id, 10), username: user.username }, entity);
     }
   }
 
@@ -92,9 +92,9 @@ export class SubscriptionController extends CrudController<Subscription> {
   @Delete(':id')
   async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
     if (id.startsWith('http')) {
-      return this.subscriptionService.delete({ endpoint: id, userId: user.userId });
+      return this.subscriptionService.delete({ endpoint: id, username: user.username });
     } else {
-      return this.subscriptionService.delete({ id: parseInt(id, 10), userId: user.userId });
+      return this.subscriptionService.delete({ id: parseInt(id, 10), username: user.username });
     }
   }
 }

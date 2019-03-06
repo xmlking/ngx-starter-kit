@@ -2,14 +2,17 @@ import { CanActivate, ExecutionContext, Injectable, UnauthorizedException, Forbi
 import { Reflector } from '@nestjs/core';
 import { RolesEnum } from '../decorators';
 
-const userId = 'msId';
+const username = 'username';
 
 @Injectable()
 export class RoleGuard implements CanActivate {
   constructor(private reflector: Reflector) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
-    const endpointRoles = this.reflector.get<string[]>('roles', context.getHandler());
+    const methodEndpointRoles = this.reflector.get<string[]>('roles', context.getHandler()) || [];
+    const classEndpointRoles = this.reflector.get<string[]>('roles', context.getClass()) || [];
+    const endpointRoles = [...methodEndpointRoles, ...classEndpointRoles];
+
     if (!endpointRoles || endpointRoles.length === 0) {
       return true;
     }
@@ -24,7 +27,7 @@ export class RoleGuard implements CanActivate {
     }
 
     if (endpointRoles.includes(RolesEnum.SELF)) {
-      if (token.preferred_username === this.resolveUserId(request)) {
+      if (token.preferred_username === this.resolveUsername(request)) {
         return true;
       } else {
         throw new ForbiddenException(`SELF use only`);
@@ -58,13 +61,13 @@ export class RoleGuard implements CanActivate {
     return authRoles.every(val => userRoles.includes(val));
   }
 
-  private resolveUserId(request: any) {
+  private resolveUsername(request: any) {
     if (request.method === 'GET' || request.method === 'DELETE') {
-      return request.params[userId] || request.query[userId];
+      return request.params[username] || request.query[username];
     }
 
     if (request.method === 'POST' || request.method === 'PATCH' || request.method === 'PUT') {
-      return request.params[userId] || request.body[userId];
+      return request.params[username] || request.body[username];
     }
     return null;
   }

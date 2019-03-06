@@ -28,8 +28,6 @@ async function bootstrap() {
     .setDescription('Sumo API for Ngx Starter Kit')
     .setExternalDoc('Github Repo', 'https://github.com/xmlking/ngx-starter-kit/tree/master/apps/api')
     .setVersion(config.getVersion())
-    .addTag('Sumo')
-    .addTag('External')
     .setSchemes(config.isProd() ? 'https' : 'http')
     .addOAuth2(
       'implicit',

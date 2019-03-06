@@ -21,8 +21,8 @@ Pre-configured KeyCloak OpenID Connect server for testing.
 
 ```json
   auth: {
-    clientId: 'cockpit',
-    issuer: 'http://localhost:9080/auth/realms/ngx'
+    clientId: 'ngxapp',
+    issuer: 'http://localhost:8080/auth/realms/ngx',
   }
 ```
 
@@ -44,8 +44,8 @@ docker-compose exec keycloak sh
 
 ### Use
 
-http://localhost:m080/
-> admin: admin
+http://localhost:8080/
+> admin: admin123
 
 ### Setup
 
@@ -60,7 +60,7 @@ http://localhost:m080/
 ```bash
 # Environment variable. change as per your server setup
 OIDC_ISSUER_URL=http://localhost:8080/auth/realms/ngx
-OIDC_CLIENT=cockpit
+OIDC_CLIENT=ngxapp
 
 USERNAME=sumo
 PASSWORD=demo

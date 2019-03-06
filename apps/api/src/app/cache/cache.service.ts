@@ -1,9 +1,10 @@
-import { CACHE_MANAGER, Inject, Injectable } from '@nestjs/common';
+import { CACHE_MANAGER, CacheManagerOptions, Inject, Injectable } from '@nestjs/common';
 
 export interface ICacheManager {
-  store: any;
-  get(key: string): any;
-  set(key: string, value: string, options?: { ttl: number }): any;
+  store?: any;
+  get<T>(key: string): Promise<T>;
+  set<T>(key: string, value: T, options?: CacheManagerOptions): Promise<T>;
+  del(key: string): Promise<void>;
 }
 
 @Injectable()
@@ -14,11 +15,15 @@ export class CacheService {
     this.cache = cache;
   }
 
-  public get(key: string): Promise<any> {
+  get<T>(key: string): Promise<T> {
     return this.cache.get(key);
   }
 
-  public set(key: string, value: any, options?: { ttl: number }): Promise<any> {
+  set<T>(key: string, value: T, options?: CacheManagerOptions): Promise<T> {
     return this.cache.set(key, value, options);
+  }
+
+  del(key: string): Promise<void> {
+    return this.cache.del(key);
   }
 }

@@ -30,8 +30,8 @@ export class NotificationService extends CrudService<Notification> implements On
     this.eventBus.off(DeleteNotification.type, this.onDeleteNotification.bind(this));
   }
 
-  public async getUserNotifications(user: User): Promise<[Notification[], number]> {
-    const records = await this.repository.findAndCount({ target: In(['all', user.userId]), isActive: true });
+  async getUserNotifications(user: User): Promise<[Notification[], number]> {
+    const records = await this.repository.findAndCount({ target: In(['all', user.username]), isActive: true });
     if (records[1] === 0) {
       throw new NotFoundException(`The requested records were not found`);
     }
@@ -53,7 +53,7 @@ export class NotificationService extends CrudService<Notification> implements On
     let count: number;
     switch (notification.targetType) {
       case TargetType.USER:
-        [subscriptions, count] = await this.subscriptionService.findAndCount({ userId: notification.target });
+        [subscriptions, count] = await this.subscriptionService.findAndCount({ username: notification.target });
         break;
       case TargetType.TOPIC:
         // FIXME: https://github.com/typeorm/typeorm/issues/3150
@@ -72,13 +72,13 @@ export class NotificationService extends CrudService<Notification> implements On
 
   async onMarkAsRead(action: MarkAsRead, user: User) {
     await this.update(
-      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.username },
       { read: true },
     );
   }
   async onDeleteNotification(action: DeleteNotification, user: User) {
     await this.update(
-      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.username },
       { isActive: false },
     );
   }

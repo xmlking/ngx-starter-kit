@@ -5,11 +5,15 @@ describe('CacheService', () => {
 
   let store: any = {};
 
-  const Manager = jest.fn<ICacheManager>().mockImplementation(() => {
+  const Manager = jest.fn<ICacheManager, any[]>(() => {
     return {
       get: jest.fn((key: string) => store[key]),
       set: jest.fn((key: string, value: any, options?: { ttl: number }) => {
         store[key] = value;
+        return value;
+      }),
+      del: jest.fn(async (key: string) => {
+        delete store[key];
       }),
     };
   });
@@ -45,6 +49,14 @@ describe('CacheService', () => {
     store.testKey = 'test value';
 
     expect(service.get('testKey')).toEqual('test value');
+  });
+
+  it('should set delete value', () => {
+    store.testKey = 'test value';
+
+    expect(service.get('testKey')).toEqual('test value');
+    service.del('testKey');
+    expect(service.get('testKey')).toBeUndefined();
   });
 
   it('set should overwrite existing value', () => {

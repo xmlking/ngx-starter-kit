@@ -52,6 +52,8 @@ module.exports = {
 
 using travis CI/CD
 
+[The way to fully automated releases in open source projects](https://medium.com/@kevinkreuzer/the-way-to-fully-automated-releases-in-open-source-projects-44c015f38fd6)
+
 > Commits that have [ci skip] or [skip ci] anywhere in the commit messages are ignored by Travis CI.
 
 > [refer](http://dev.topheman.com/continuous-deployment-with-travis-ci/)
@@ -276,7 +278,8 @@ NODE_DEBUG=request  npm run api:start:dev
   </summary>
 
 1. [Transform VSCode Into Best Angular Dev Environment](https://blog.feathersjs.com/design-patterns-for-modern-web-apis-1f046635215)
-   </details>
+
+</details>
 
 <details>
   <summary>
@@ -286,7 +289,19 @@ NODE_DEBUG=request  npm run api:start:dev
   </summary>
 
 1. [Design patterns for modern web APIs](https://github.com/nrwl/angular-vscode)
-   </details>
+
+</details>
+
+<details>
+  <summary>
+
+#### How to setup HMR with NGXS?
+
+  </summary>
+
+1. [NGXS with HMR Plugin](https://medium.com/ngxs/ngxs-with-hmr-plugin-c2004bcf576d)
+
+</details>
 
 Build Error: No name was provided for external module 'date-fns/esm' in output.globals – guessing 'esm'
 Solution: Add umdModuleIds to `ng-package.json`

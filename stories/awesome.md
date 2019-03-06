@@ -60,9 +60,11 @@ A curated list of awesome Angular resources
 - WTF is monorepo?
 
   **Monorepo != Monolith**
+
   > When you have all your codebase within the same repository it’s tempting to fall into the trap of creating a monolith (a gigantic application where all parts are intertwined with each other) so we need to ensure that modularity is a first class citizen within these repositories.
 
   > Each package has clearly defined boundaries and ownership.
+
   - [Angular Enterprise Monorepo Patterns](https://go.nrwl.io/angular-enterprise-monorepo-patterns-new-book)
   - [Advantages of monorepos](https://danluu.com/monorepo/)
   - [Getting Started with Nx: The Nrwl Extensions for Angular](http://blog.ng-book.com/getting-started-with-nx-the-nrwl-extensions-for-angular/)
@@ -71,6 +73,9 @@ A curated list of awesome Angular resources
   - [Nx monorepo with Ionic4](https://github.com/TeamHive/app-starter)
   - [Create Your First Custom Angular CLI Schematic with Nx](https://auth0.com/blog/create-custom-schematics-with-nx/)
   - [Why Angular Teams Fail at Code Sharing and How This Monorepo Approach Will Fix It](https://christianlydemann.com/why-angular-teams-fail-at-code-sharing-and-how-this-mono-repo-approach-will-fix-it/)
+  - [Harmony with Angular, Lerna and Yarn Workspaces](https://medium.com/@zachary.n.feldman/harmony-with-angular-lerna-and-yarn-workspaces-6a7394f08da)
+  - [NestJS mono-repo starter](https://github.com/BrunnerLivio/nestjs-monorepo-starter)
+  - [Sustainable Angular Architectures With Strategic Design And Monorepos - Part 1: Methodology](https://www.softwarearchitekt.at/post/2019/03/04/sustainable-angular-architectures-with-strategic-design-and-monorepos-part-1-methodology.aspx)
 
 - What are the guidelines to setup monorepo for enterprise size apps?
 
@@ -203,6 +208,10 @@ semantic-release is a fully automated library/system for versioning, changelog g
 
 > Use[ng-packagr](https://github.com/dherges/ng-packagr)
 > Use[with nx](https://github.com/dherges/nx-packaged)
+
+- How to lazy load modules ?
+
+> Use [Angular Loadable](https://medium.com/@zamamohammed/announcing-angular-loadable-ngx-loadable-2-2kb-4ef7e6321784) for non-routable modules
 
 - How to implement security interceptors?
 

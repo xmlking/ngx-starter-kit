@@ -28,7 +28,7 @@ export class EmailService {
     this.transporter.use('compile', this.renderTemplate(templateDir));
   }
 
-  public async sendMail(sendMailOptions: SendMailOptions & EmailTemplate): Promise<SentMessageInfo> {
+  async sendMail(sendMailOptions: SendMailOptions & EmailTemplate): Promise<SentMessageInfo> {
     return await this.transporter.sendMail(sendMailOptions);
   }
 

@@ -10,11 +10,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | -------------------- | -------- | -------- |
 | Node                 | v11.10.0 |          |
 | NPM                  | v6.8.0   |          |
-| Angular CLI          | v7.3.0   |          |
-| @nrwl/schematics     | v7.5.0   |          |
-| @nestjs/cli          | v5.7.1   |          |
+| Angular CLI          | v7.3.2   |          |
+| @nrwl/schematics     | v7.6.2   |          |
+| @nestjs/cli          | v5.8.0   |          |
 | semantic-release-cli | v4.1.0   |          |
-| commitizen           | v3.0.5   |          |
+| commitizen           | v3.0.6   |          |
 
 ### Install Prerequisites
 
@@ -81,7 +81,7 @@ ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
 more cat ~/.angular-config.json
-# show dependency tree for specified package.
+# find reverse dependencies for a package
 npm ls jasmine-marbles
 ```
 
@@ -255,18 +255,24 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-ng g lib animations --module false -tags=utils --unit-test-runner=jest -d
-ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest -d
-ng g lib utils --module false --publishable=true --tags=utils --unit-test-runner=jest -d
+ng g lib animations --framework=none -tags=utils --unit-test-runner=jest -d
+ng g lib Tree --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
+ng g lib utils --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
 # system wide `models` module
-ng g lib models --module false --tags=utils --unit-test-runner=jest -d
+ng g lib models --framework none --tags=utils --unit-test-runner=jest -d
 ng g interface User  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
 ng g interface Image  --project=models --type=model -d
-ng g enum ImageType --project=models --type=enum -d
-ng g enum Gender --project=models --type=enum -d
-ng g enum AccountSourceType --project=models --type=enum -d
-
+ng g enum ImageType --project=models -d
+ng g enum Gender --project=models -d
+ng g enum AccountSourceType --project=models -d
+ng g enum ZoneType --project=models -d
+ng g enum EnvironmentType --project=models -d
+ng g interface Labels  --project=models --type=model -d
+ng g interface Membership  --project=models --type=model -d
+ng g interface ResourceQuota  --project=models --type=model -d
+ng g interface Project  --project=models --type=model -d
+ng g interface Cluster  --project=models --type=model -d
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --tags=core-module --unit-test-runner=jest -d
@@ -384,7 +390,7 @@ ng g component components/totalCounter --project=clap  -s  -t --skip-tests --fla
 ng g component components/fab --project=clap  -s  -t --skip-tests --flat  -d
 
 # generate components for `ngx-utils` Module
-ng g lib ngxUtils --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
+ng g lib ngxUtils --tags=public-module,utils --framework=none --publishable=true --unit-test-runner=jest
 ng g module pipes/truncate --project=ngx-utils --skip-tests -d
 ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export -d
 ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export -d

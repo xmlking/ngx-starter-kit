@@ -44,6 +44,11 @@ export const environment = {
     templateDir: process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
   },
 
+  weather: {
+    baseUrl: 'https://api.openweathermap.org/data/2.5',
+    apiKey: '7cb0f6a068d1de4845c49ba22b74d7cc',
+  },
+
   // Key generation: https://web-push-codelab.glitch.me
   webPush: {
     subject: process.env.VAPID_SUBJECT || 'mailto: sumo@demo.com',
@@ -51,31 +56,5 @@ export const environment = {
       process.env.VAPID_PUBLIC_KEY ||
       'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
     privateKey: process.env.VAPID_PRIVATE_KEY || 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
-  },
-  kubernetes: {
-    CLUSTER1: {
-      baseUrl: 'https://cluster1:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER1_SERVICE_ACCOUNT_TOKEN || 'AAAAAAAAAAAA',
-    },
-    CLUSTER2: {
-      baseUrl: 'https://cluster2:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER2_SERVICE_ACCOUNT_TOKEN || 'BBBBBBBBBBBB',
-    },
-    CLUSTER3: {
-      baseUrl: 'https://cluster3:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER3_SERVICE_ACCOUNT_TOKEN || 'CCCCCCCCCCCCC',
-    },
-    CLUSTER4: {
-      baseUrl: 'https://cluster4:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER4_SERVICE_ACCOUNT_TOKEN || 'DDDDDDDDDDDDD',
-    },
   },
 };

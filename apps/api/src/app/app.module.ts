@@ -9,6 +9,7 @@ import { AppController } from './app.controller';
 import { NotificationsModule } from './notifications';
 import { ExternalModule } from './external';
 import { CacheModule } from './cache';
+import { ProjectModule } from './project';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { CacheModule } from './cache';
           { path: '/auth', module: AuthModule },
           { path: '/user', module: UserModule },
           // { path: '/account', module: AccountModule },
+          { path: '/', module: ProjectModule },
           { path: '/', module: NotificationsModule },
         ],
       },
@@ -32,6 +34,7 @@ import { CacheModule } from './cache';
     // ChatModule,
     ExternalModule,
     NotificationsModule,
+    ProjectModule,
   ],
   controllers: [AppController],
 })
