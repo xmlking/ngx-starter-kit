@@ -1,0 +1,75 @@
+[
+  [
+    {
+      "id": 9,
+      "title": "title for sumo3 2",
+      "body": "sample body for sumo3 2",
+      "target": "sumo3",
+      "targetType": "user",
+      "icon": "notifications",
+      "color": "primary",
+      "read": false,
+      "native": false,
+      "isActive": true,
+      "createdAt": "2018-12-04T16:25:33.506Z",
+      "updatedAt": "2018-12-09T06:22:38.677Z"
+    },
+    {
+      "id": 7,
+      "title": "title for sumo3",
+      "body": "sample body for sumo3",
+      "target": "sumo3",
+      "targetType": "user",
+      "icon": "notifications",
+      "color": "primary",
+      "read": false,
+      "native": true,
+      "isActive": true,
+      "createdAt": "2018-12-04T16:24:49.813Z",
+      "updatedAt": "2018-12-09T06:22:08.201Z"
+    },
+    {
+      "id": 3,
+      "title": "sumo3 sending by admin",
+      "body": "sumo3 sending by admin",
+      "target": "sumo3",
+      "targetType": "user",
+      "icon": "notifications",
+      "color": "primary",
+      "read": true,
+      "native": true,
+      "isActive": true,
+      "createdAt": "2018-12-04T16:26:11.107Z",
+      "updatedAt": "2018-12-09T08:12:52.262Z"
+    },
+    {
+      "id": 2,
+      "title": "title for all",
+      "body": "sample body for all",
+      "target": "all",
+      "targetType": "all",
+      "icon": "notifications",
+      "color": "primary",
+      "read": false,
+      "native": false,
+      "isActive": true,
+      "createdAt": "2018-12-04T16:17:32.512Z",
+      "updatedAt": "2018-12-08T00:41:58.748Z"
+    },
+    {
+      "id": 14,
+      "title": "title111222",
+      "body": "body111",
+      "target": "all",
+      "targetType": "all",
+      "icon": "notifications",
+      "color": "warn",
+      "read": false,
+      "native": true,
+      "isActive": true,
+      "createdAt": "2018-12-09T04:41:07.043Z",
+      "updatedAt": "2018-12-09T06:00:41.401Z"
+    }
+  ],
+  5
+]
