@@ -131,6 +131,8 @@ git cz --no-verify
     https://adrianperez.codes/enforcing-commit-conventions/
 
     https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
+    
+    https://github.com/atlassian/lerna-semantic-release
 
 ```bash
 export GH_TOKEN=<my_github_token>

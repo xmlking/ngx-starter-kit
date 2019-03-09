@@ -89,7 +89,7 @@ curl -v -X POST \
 ### Token
 
 ```bash
-OIDC_ISSUER_URL=https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx
+OIDC_ISSUER_URL=https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx
 OIDC_CLIENT_ID=ngxapi
 
 USERNAME=sumo3

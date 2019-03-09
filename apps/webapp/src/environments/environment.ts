@@ -15,8 +15,8 @@ export const environment: IEnvironment = {
 
   auth: {
     clientId: 'ngxapp',
-    issuer: 'http://localhost:8080/auth/realms/ngx',
-    // issuer: 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    // issuer: 'http://localhost:8080/auth/realms/ngx',
+    issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
   },
 };
 

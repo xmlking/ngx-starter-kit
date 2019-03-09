@@ -88,11 +88,11 @@ items:
             - name: keycloak
               image: docker.io/jboss/keycloak:4.8.3.Final
               imagePullPolicy: IfNotPresent
-              resources:
-                limits:
-                  memory: 4G
-                requests:
-                  memory: 2G
+#              resources:
+#                limits:
+#                  memory: 4G
+#                requests:
+#                  memory: 2G
               ports:
                 - containerPort: 8080
               env:

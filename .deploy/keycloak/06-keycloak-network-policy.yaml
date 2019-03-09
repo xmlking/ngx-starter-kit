@@ -10,7 +10,17 @@ spec:
       app: keycloak
   policyTypes:
     - Ingress
+    - Egress
   ingress:
     - ports:
         - protocol: TCP
           port: 8080
+  egress:
+    - to:
+        - ipBlock:
+            cidr: 0.0.0.0/0
+#      ports:
+#        - protocol: TCP
+#          port: 389
+#        - protocol: TCP
+#          port: 636

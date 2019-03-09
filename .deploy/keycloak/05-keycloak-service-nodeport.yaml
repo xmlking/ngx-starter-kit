@@ -10,7 +10,7 @@ spec:
     - name: http
       port: 8080
       protocol: TCP
-      targetPort: http
-      nodePort: 31080
+      targetPort: 8080
+      nodePort: 32080
   selector:
     app: keycloak

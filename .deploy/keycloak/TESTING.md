@@ -56,7 +56,7 @@ http://localhost:9080/
 
 ```bash
 # Environment variable. change as per your server setup
-OIDC_BASE_URL=http://localhost:9080/auth/realms/kubernetes
+OIDC_BASE_URL=http://localhost:9080/auth/realms/ngx
 CLIENT_ID=kube-tenant
 
 USERNAME=sumo

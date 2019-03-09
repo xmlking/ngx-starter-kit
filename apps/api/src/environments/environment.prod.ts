@@ -24,7 +24,7 @@ export const environment = {
 
   auth: {
     issuer:
-      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
     clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
   },
 
