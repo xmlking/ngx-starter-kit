@@ -57,7 +57,6 @@ spec:
 #          volumeMounts:
 #            - mountPath: /opt/jboss/keycloak/standalone/data
 #              name: keycloak-data-volume
-#              readOnly: false
 #            - mountPath: "/etc/x509/https"
 #              name: tls-config-volume
 #              readOnly: true

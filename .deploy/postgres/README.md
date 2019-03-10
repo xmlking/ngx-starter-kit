@@ -19,7 +19,7 @@ Deploying **Postgre** as datastore for _APIs_ and _KeyCloak_
 > 4. generate base64 passwords for `*-secrets.yaml` with `echo -n 'admin' | base64`
 
 ```bash
-cd .deploy/postgres
+cd .deploy/postgres/manual
 
 # create configmap
 kubectl create -f 01-postgres-configmap.yaml
@@ -74,6 +74,22 @@ kubectl delete deployment postgres
 kubectl delete configmap postgres
 kubectl delete secret postgres
 kubectl delete persistentvolumeclaim postgres
+```
+
+### Deploying to Kubernetes via Helm
+```bash
+cd .deploy/postgres/helm
+
+# To install the chart with the release name keycloak:
+helm install --name postgres \
+  --namespace default \
+  --set postgresUser=admin \
+  --set postgresPassword=password \
+  --set postgresDatabase=keycloak-db \
+stable/postgresql
+
+# To uninstall/delete the keycloak deployment:
+helm delete --purge postgres
 ```
 
 #### TODO

@@ -1,0 +1,14 @@
+keycloak:
+  username: admin
+  password: admin123
+  persistence:
+    dbVendor: postgres
+    dbHost: postgres
+    existingSecret: postgres
+    existingSecretKey: KEYCLOAK_POSTGRES_PASSWORD
+  extraEnv: |
+    - name: POSTGRES_PORT
+      value: '5432'
+  service:
+    type: NodePort
+    nodePort: 32080
