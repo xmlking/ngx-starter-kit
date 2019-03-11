@@ -12,6 +12,28 @@ Deploying **KeyCloak** on kubernetes and/or OpenShift
 
 ## Deploy
 
+### TLS Certs
+> first time only: generate a self-signed certificate to configure Ingress 
+
+```bash
+cd .deploy/keycloak/manual
+# generate a self-signed  key pair
+openssl req -newkey rsa:2048 -nodes -keyout tls.key -x509 -days 365 -out tls.crt \
+-subj "/C=US/ST=California/L=Los Angeles/O=Sumo/OU=Demo/CN=*.traefik.k8s/emailAddress=webmaster@traefik.k8s"
+# verify cert
+openssl verify tls.crt
+```
+
+```bash
+# generate a kubernetes tls file
+kubectl create secret tls keycloak-secrets-tls \
+--key tls.key --cert tls.crt \
+-o yaml --dry-run > 02-keycloak-secrets-tls.yml
+# apply tls secret
+kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
+```
+
+
 ### Deploying to Kubernetes
 
 > 1. assume you already setup `ngx` kubernetes context
@@ -31,8 +53,9 @@ kubectl get configmap keycloak -o yaml
 # create secrets
 # to generate base64 passwords use `echo -n 'admin' | base64`
 kubectl create -f 02-keycloak-secrets.yaml
+kubectl create -f 02-keycloak-secrets-tls.yml
 # verify secrets
-kubectl get secret keycloak -o yaml
+kubectl get secret -l app=keycloak -o yaml
 
 # create persistentvolumeclaim (optional)
 kubectl create -f 03-keycloak-storage.yaml
@@ -49,18 +72,18 @@ kubectl get po -o wide --watch
 
 POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
 kubectl exec -it $POD_NAME -- /bin/bash
-kubectl log $POD_NAME -f
+kubectl logs $POD_NAME -f
 # Accessing logs from Init Containers
 kubectl logs $POD_NAME -c wait-for-postgresql -f
 kubectl exec -it $POD_NAME -c wait-for-postgresql -- /bin/sh
 
-# create service (use -service.yaml for development, -nodeport.yaml for prod)
+# create service (use -service.yaml and -ingress.yaml for development, -nodeport.yaml for prod)
 kubectl create -f 05-keycloak-service-nodeport.yaml
 # verify service
 kubectl get svc keycloak -o wide
 kubectl get ep
 
-# create network policy
+# create network policy (if your k8s enabled with network policies) 
 kubectl create -f 06-keycloak-network-policy.yaml
 # test network policy
 kubectl get networkpolicy
@@ -69,7 +92,7 @@ open http://node1:32080
 open http://node2:32080
 open http://node3:32080
 
-kubectl get all,configmap,secret -l app=keycloak
+kubectl get all,configmap,secret,ingress -l app=keycloak
 ```
 
 #### Delete Keycloak Deployment
@@ -87,13 +110,13 @@ kubectl delete persistentvolumeclaim keycloak
 
 #### Install Tiller
 
-> first only: setup tiller in default `kube-system` namespace or your private namespace
+> first time only: setup tiller in default `kube-system` namespace or your private namespace
 
 ```bash
 # Install tiller into default `kube-system` namespace
 helm init
 # Install tiller into your private namespace (below showing `kube-system` namespace, but it could be any of your namespaces)
-helm init --tiller-namespace=kube-system --service-account=default --tiller-image=gcr.io/kubernetes-helm/tiller:$TILLER_TAG
+helm init --tiller-namespace=kube-system --service-account=default --tiller-image=gcr.io/kubernetes-helm/tiller:v2.13.0
 
 # Upgrade tiller to latest version
 export TILLER_TAG=v2.13.0
@@ -117,24 +140,23 @@ helm install --name keycloak --namespace default -f values.yaml stable/keycloak
 
 # verify deployment
 helm ls
-kubectl get all,configmap,secret -l app=keycloak
+kubectl get all,configmap,secret,ingress -l app=keycloak
 kubectl describe pod keycloak
 kubectl get statefulset keycloak -o yaml
-
+kubectl get ingress keycloak  -o yaml
 
 POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
 kubectl exec -it $POD_NAME -- /bin/bash
 kubectl log $POD_NAME -f
+echo | openssl s_client -showcerts -connect keycloak.traefik.k8s:443 2>/dev/null
  
  
 # To update 
-helm upgrade --namespace default -f values.yaml -f override.yaml keycloak stable/keycloak
+helm upgrade --namespace default -f values.yaml keycloak stable/keycloak
 
 # To uninstall/delete the `keycloak` deployment
 helm delete keycloak
-
-delete keycloak and purge
-helm delete --purge keycloak
+helm delete keycloak --purge  # delete keycloak and purge
 ```
 
  
@@ -144,12 +166,18 @@ Within your cluster, at the following DNS name at port 80:
 
   `keycloak-http.default.svc.cluster.local`
 
-From outside the cluster, run these commands in the same shell:
+From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
 
   ```bash
   export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services keycloak-http)
   export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
   echo http://$NODE_IP:$NODE_PORT
+  ```
+
+From outside the cluster: (`when Ingress used in values.yaml`)
+
+  ```bash
+  open https://keycloak.traefik.k8s
   ```
 
 ##### Login with the following credentials:

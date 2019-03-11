@@ -1,24 +1,23 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: keycloak
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.passHostHeader: "true"
   labels:
     app: keycloak
+  name: keycloak
+#  namespace: default
 spec:
-  to:
-    kind: Service
-    name: keycloak
-  port:
-    targetPort: http
-  tls:
-    - hosts:
-      - keycloak.example.com
-      secretName: keycloak-secrets-tls
   rules:
-    - host: keycloak.example.com
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: keycloak
-              servicePort: http
+  - host: keycloak.traefik.k8s
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: http
+        path: /
+  tls:
+  - hosts:
+    - keycloak.traefik.k8s
+    secretName: keycloak-secrets-tls
