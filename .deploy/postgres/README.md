@@ -45,7 +45,7 @@ kubectl get deployment postgres -o yaml
 kubectl get po -o wide --watch
 
 MY_POD=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
-kubectl log $MY_POD -f
+kubectl logs $MY_POD -f
 kubectl exec -it $MY_POD -- /bin/bash
 # if you have to copy something use `kubectl cp`
 kubectl cp /Developer/Work/SPA/ngx-starter-kit/.deploy/postgres/scripts/create_databases.sh $MY_POD:/tmp/test.sh

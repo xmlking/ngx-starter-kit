@@ -17,7 +17,7 @@ spec:
           port: 8080
   egress:
     - to:
-        - ipBlock:
+        - ipBlock: # Allow keycloak to talk to external LDAP server
             cidr: 0.0.0.0/0
 #      ports:
 #        - protocol: TCP

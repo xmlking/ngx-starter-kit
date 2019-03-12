@@ -85,8 +85,9 @@ kubectl get ep
 
 # create network policy (if your k8s enabled with network policies) 
 kubectl create -f 06-keycloak-network-policy.yaml
+kubectl create -f 06-keycloak-helm-network-policy.yaml
 # test network policy
-kubectl get networkpolicy
+kubectl get networkpolicy -lapp=keycloak
 
 open http://node1:32080
 open http://node2:32080
@@ -104,6 +105,7 @@ kubectl delete deployment keycloak
 kubectl delete configmap keycloak
 kubectl delete secret keycloak
 kubectl delete persistentvolumeclaim keycloak
+kubectl delete networkpolicy -lapp=keycloak
 ```
 
 ### Deploying to Kubernetes via Helm
@@ -136,7 +138,7 @@ helm reset --tiller-namespace=kube-system
 cd .deploy/keycloak/helm
 
 # To install the chart with the release name `keycloak`
-helm install --name keycloak --namespace default -f values.yaml stable/keycloak
+helm install --name=keycloak --namespace=default -f values-dev.yaml stable/keycloak
 
 # verify deployment
 helm ls
@@ -147,12 +149,12 @@ kubectl get ingress keycloak  -o yaml
 
 POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
 kubectl exec -it $POD_NAME -- /bin/bash
-kubectl log $POD_NAME -f
+kubectl logs $POD_NAME -f
 echo | openssl s_client -showcerts -connect keycloak.traefik.k8s:443 2>/dev/null
  
  
 # To update 
-helm upgrade --namespace default -f values.yaml keycloak stable/keycloak
+helm upgrade --namespace=default -f values-dev.yaml keycloak stable/keycloak
 
 # To uninstall/delete the `keycloak` deployment
 helm delete keycloak

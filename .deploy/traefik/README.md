@@ -5,7 +5,7 @@ Ingress Controller with Traefik
 
 `cd .deploy/traefik`
     
-1. Create a file called `traefik-values.yaml`.
+1. Create a file called `values-dev.yaml`.
     ```yaml
     dashboard:
       enabled: true
@@ -21,13 +21,13 @@ Ingress Controller with Traefik
 
 2. Install the Traefik Chart and check if the pod is up and running.
     ```bash
-    helm install stable/traefik --name=traefik --namespace=kube-system -f traefik-values.yaml
+    helm install stable/traefik --name=traefik --namespace=kube-system -f values-dev.yaml
     kubectl get pods --namespace=kube-system
     kubectl get ingress traefik-dashboard --namespace=kube-system -o yaml
     # to see traefik logs
     kubectl logs $(kubectl get pods --namespace=kube-system -lapp=traefik -o jsonpath='{.items[0].metadata.name}') -f --namespace=kube-system
-    # To update, if you change `traefik-values.yaml` later
-    helm upgrade --namespace=kube-system  -f traefik-values.yaml traefik stable/traefik
+    # To update, if you change `values-dev.yaml` later
+    helm upgrade --namespace=kube-system  -f values-dev.yaml traefik stable/traefik
     ```
 
 3. Add your domains to MacOS `/etc/hosts` as needed. Other options:  `wildcard DNS in localhost development` [1](https://gist.github.com/eloypnd/5efc3b590e7c738630fdcf0c10b68072), [2](https://medium.com/localz-engineering/kubernetes-traefik-locally-with-a-wildcard-certificate-e15219e5255d)

@@ -19,6 +19,8 @@ keycloak:
     annotations:
       kubernetes.io/ingress.class: traefik
       traefik.frontend.passHostHeader: "true"
+      traefik.ingress.kubernetes.io/preserve-host: "true"
+#      ingress.kubernetes.io/ssl-proxy-headers: "X-Forwarded-Proto: https"
     hosts:
       - keycloak.traefik.k8s
     tls:

@@ -1,0 +1,29 @@
+keycloak:
+  username: admin
+  password: admin123
+  persistence:
+    dbVendor: postgres
+    dbHost: postgres
+    existingSecret: postgres
+    existingSecretKey: KEYCLOAK_POSTGRES_PASSWORD
+  extraEnv: |
+    - name: POSTGRES_PORT
+      value: '5432'
+# use `service` for prod and `ingress` for dev. Comment other before install.
+  service:
+    type: NodePort
+    nodePort: 32080
+#  ingress:
+#    enabled: true
+#    path: /
+#    annotations:
+#      kubernetes.io/ingress.class: traefik
+#      traefik.frontend.passHostHeader: "true"
+#      traefik.ingress.kubernetes.io/preserve-host: "true"
+##      ingress.kubernetes.io/ssl-proxy-headers: "X-Forwarded-Proto: https"
+#    hosts:
+#      - keycloak.traefik.k8s
+#    tls:
+#      - secretName: keycloak-secrets-tls
+#        hosts:
+#          - keycloak.traefik.k8s
