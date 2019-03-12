@@ -252,7 +252,7 @@ NODE_DEBUG=request  npm run api:start:dev
 <details>
   <summary>
 
-#### How to enable SCSS ``@import` for lib modules?
+#### How to enable SCSS `@import` for lib modules?
 
   </summary>
 
