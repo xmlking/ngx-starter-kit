@@ -285,11 +285,7 @@ NODE_DEBUG=request  npm run api:start:dev
 
 <details>
 
-<summary>
-
-#### API Design
-
-</summary>
+<summary><bAPI Design</br></br></b></summary>
 
 1. [Design patterns for modern web APIs](https://github.com/nrwl/angular-vscode)
 
