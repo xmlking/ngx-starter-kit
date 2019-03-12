@@ -14,7 +14,7 @@ COPY --from=dev-dependencies /app /app
 COPY apps/api apps/api
 COPY angular.json nx.json tsconfig.json ./
 ENV NODE_ENV production
-RUN npm run api:build
+RUN $(npm bin)/rimraf dist && $(npm bin)/ng build api --prod
 
 FROM astefanutti/scratch-node:11
 COPY --from=prod-dependencies /app  .

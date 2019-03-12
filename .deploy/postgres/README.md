@@ -44,11 +44,11 @@ kubectl describe pod postgres
 kubectl get deployment postgres -o yaml
 kubectl get po -o wide --watch
 
-MY_POD=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
-kubectl logs $MY_POD -f
-kubectl exec -it $MY_POD -- /bin/bash
+POD_NAME=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
+kubectl logs $POD_NAME -f
+kubectl exec -it $POD_NAME -- /bin/bash
 # if you have to copy something use `kubectl cp`
-kubectl cp /Developer/Work/SPA/ngx-starter-kit/.deploy/postgres/scripts/create_databases.sh $MY_POD:/tmp/test.sh
+kubectl cp /Developer/Work/SPA/ngx-starter-kit/.deploy/postgres/scripts/create_databases.sh $POD_NAME:/tmp/test.sh
 
 # create service (use -service.yaml for prod cluster, -nodeport.yaml for development)
 kubectl create -f 05-postgres-service.yaml
@@ -62,7 +62,7 @@ kubectl get all,configmap,secret -l app=postgres
 ### Connect to PostgreSQL
 
 ```bash
-kubectl port-forward $MY_POD 5432:5432
+kubectl port-forward $POD_NAME 5432:5432
 psql -h localhost -p 5432 -U cockpit --password  -d cockpit
 ```
 

@@ -159,8 +159,8 @@ POST "https://localhost:8080/auth/admin/realms/ngx/user-storage/2f63c117-9f99-4c
 
 log into the container and manually changed the standalone.xml... and then restarted the server using the below command:
 ```bash
-MY_POD=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
-kubectl exec -it $MY_POD -- /bin/bash
+POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
+kubectl exec -it $POD_NAME -- /bin/bash
  
 cd /opt/jboss/keycloak/standalone/configuration
 # change in standalone.xml, standalone-ha.xml: userCache-> enabled="false"
@@ -170,8 +170,8 @@ cd /opt/jboss/keycloak/standalone/configuration
 
 
 # make a local copy for standalone.xml , standalone-ha.xml for latest keycloak version
-kubectl cp $MY_POD:/opt/jboss/keycloak/standalone/configuration/standalone.xml /Developer/Work/SPA/ngx-starter-kit/.deploy/keycloak
-kubectl cp $MY_POD:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml /Developer/Work/SPA/ngx-starter-kit/.deploy/keycloak
+kubectl cp $POD_NAME:/opt/jboss/keycloak/standalone/configuration/standalone.xml /Developer/Work/SPA/ngx-starter-kit/.deploy/keycloak
+kubectl cp $POD_NAME:/opt/jboss/keycloak/standalone/configuration/standalone-ha.xml /Developer/Work/SPA/ngx-starter-kit/.deploy/keycloak
 ```
 
 
