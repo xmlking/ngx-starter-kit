@@ -131,7 +131,7 @@ git cz --no-verify
     https://adrianperez.codes/enforcing-commit-conventions/
 
     https://medium.com/@schalkneethling/automate-package-releases-with-semantic-release-and-commitizen-d7d4c337f04f
-    
+
     https://github.com/atlassian/lerna-semantic-release
 
 ```bash
@@ -273,33 +273,30 @@ NODE_DEBUG=request  npm run api:start:dev
 </details>
 
 <details>
-  <summary>
+<summary>
 
 #### How to setup IDE for Best Angular Dev Environment?
 
-  </summary>
+</summary>
 
 1. [Transform VSCode Into Best Angular Dev Environment](https://blog.feathersjs.com/design-patterns-for-modern-web-apis-1f046635215)
 
 </details>
 
 <details>
-  <summary>
+
+<summary>
 
 #### API Design
 
-  </summary>
+</summary>
 
 1. [Design patterns for modern web APIs](https://github.com/nrwl/angular-vscode)
 
 </details>
 
 <details>
-  <summary>
-
-#### How to setup HMR with NGXS?
-
-  </summary>
+<summary>🏷 How to setup HMR with NGXS?</summary>
 
 1. [NGXS with HMR Plugin](https://medium.com/ngxs/ngxs-with-hmr-plugin-c2004bcf576d)
 
