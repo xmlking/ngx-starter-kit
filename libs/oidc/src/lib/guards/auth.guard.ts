@@ -10,7 +10,7 @@ export class AuthGuard extends BaseAuthGuard {
   constructor(private snack: MatSnackBar, protected router: Router, protected authService: AuthService) {
     super(router, authService);
   }
-
+  // TODO: UrlTree https://juristr.com/blog/2018/11/better-route-guard-redirects/ remember previous tried URL
   async isAccessAllowed(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
     if (!this.authenticated) {
       await this.authService.login({ redirectUri: environment.baseUrl.slice(0, -1) + state.url }); // Let Provider add baseUrl?

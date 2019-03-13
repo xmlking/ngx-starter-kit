@@ -1,7 +1,7 @@
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+
 export const environment = {
   production: true,
-
-  NODE_TLS_REJECT_UNAUTHORIZED: 0,
 
   server: {
     host: process.env.HOST || '0.0.0.0',

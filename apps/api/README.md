@@ -42,6 +42,13 @@ docker ps -a
 docker rm 82be5234c94a
 ```
 
+> connect Postgres running on local k8s
+
+```bash
+$ POD_NAME=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
+$ kubectl port-forward $POD_NAME 5432:5432
+```
+
 #### Run Dev Mode
 
 ```bash

@@ -1,13 +1,13 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+process.env.LOG_LEVEL = 'debug';
 
 export const environment = {
   production: false,
 
-  NODE_TLS_REJECT_UNAUTHORIZED: 0,
   ALLOW_WHITE_LIST: ['::ffff:127.0.0.1', '::1'],
-  LOG_LEVEL: 'debug',
 
   server: {
     host: '0.0.0.0',
