@@ -23,6 +23,11 @@
         "libs/tree/package.json",
         "libs/utils/package.json",
         "package.json"
+      ],
+      "ignore": [
+        "d3",
+        "d3-selection-multi",
+        "typescript"
       ]
     }
   }
