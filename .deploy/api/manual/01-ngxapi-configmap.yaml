@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ngxapi
+  labels:
+    app: ngxapi
+data:
+  DOMAIN_URL: ngxapi
+  TYPEORM_HOST: postgres
+  TYPEORM_PORT: '5432'
+  TYPEORM_DATABASE: cockpit
+  TYPEORM_USERNAME: cockpit
+  TYPEORM_LOGGING: 'false'
+  OIDC_ISSUER_URL: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx'
+  OIDC_CLIENT_ID: ngxapi
+  EMAIL_HOST: mail.google.com
+  EMAIL_PORT: '25'
+  EMAIL_SECURE: 'false'
+  EMAIL_AUTH_USER: auth_user
+  EMAIL_FROM: '"sumo demo" <sumo@demo.com>'
+  VAPID_PUBLIC_KEY: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'

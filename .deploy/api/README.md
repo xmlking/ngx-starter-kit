@@ -1,17 +1,17 @@
 API
 ===
-Deploying ngx-starter-kit API
+Deploying NGX API
 
 ### Build
 ```bash
 # build app docker image
-docker build --tag=ngx-starter-kit-api -f .deploy/api/Dockerfile . 
+docker build --tag=ngxapi -f .deploy/api/Dockerfile . 
 ```
 
 ### Run
 ```bash
 docker-compose up api
-# docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngx-starter-kit-api
+# docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngxapi
 # to see ditectory content:
 docker-compose exec api ./node
 docker-compose exec api ./node -e 'console.log(__dirname);'
@@ -25,7 +25,7 @@ docker-compose exec api ./node -e 'const fs = require('fs'); fs.readdirSync('.')
 ```bash
 # test
 curl -v -X GET \
-  http://localhost:3000/myapi/tenant \
+  http://localhost:3000/api \
 | jq .
 ```
 
@@ -38,49 +38,51 @@ curl -v -X GET \
 docker login
 
 # tag
-docker tag ngx-starter-kit-api xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT
-docker tag xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT  xmlking/ngx-starter-kit-api:latest
+docker tag ngxapi xmlking/ngxapi:1.2.0-SNAPSHOT
+docker tag xmlking/ngxapi:1.2.0-SNAPSHOT  xmlking/ngxapi:latest
 
 # push
-docker push xmlking/ngx-starter-kit-api:1.2.0-SNAPSHOT
-docker push xmlking/ngx-starter-kit-api:latest
+docker push xmlking/ngxapi:1.2.0-SNAPSHOT
+docker push xmlking/ngxapi:latest
 ```
 
 #### OpenShift Deployment
-> Deploy ngx-starter-kit-api to OpenShift
+> Deploy ngxapi to OpenShift
 
 ```bash
 # login
 oc login <my OpenShift URL>
 # oc login https://console.starter-us-east-1.openshift.com
-oc project ngx-starter-kit
-cd .deploy/api
+oc project ngx
+cd .deploy/api/openshift
 
 # create app (first time deployment)
-oc new-app -f api.tmpl.yml -p APPNAME=ngx-starter-kit-api -n ngx-starter-kit
+oc new-app -f api.tmpl.yml -p APPNAME=ngxapi -n ngx
 
 # follow next steps if you want completely delete and redeploy.
 # delete only deploymentConfig
-oc delete all -l app=ngx-starter-kit-api -n ngx-starter-kit
+oc delete all -l app=ngxapi -n ngx
 
 # delete fully
-oc delete all,configmap,secret -l app=ngx-starter-kit-api -n ngx-starter-kit
+oc delete all,configmap,secret -l app=ngxapi -n ngx
 
 # redeploy
 # From OpenShift Console UI
-Applications > Deployments > ngx-starter-kit > Deploy
+Applications > Deployments > ngxapi > Deploy
 ```
  
 #### Kubernetes Deployment
-> assume you already setup `ngx-starter-kit` context
+> assume you already setup `ngx` context
 
-> make sure  `Env`, docker image `Version` are correct in `api.yml`
+> make sure  `Env`, docker image `Version` are correct in `04-ngxapi-deployment.yaml`
 
 ```bash
+cd .deploy/api/manual
+
 ## view all preset contexts
 kubectl config get-contexts
-# switch to `ngx-starter-kit` contexts
-kubectl config use-context ngx-starter-kit
+# switch to `ngx` contexts
+kubectl config use-context ngx
 
 ## create (first time deployment)
 kubectl create -f ./api.yml
