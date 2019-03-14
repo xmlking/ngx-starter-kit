@@ -1,7 +1,12 @@
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
+import { IEnvironment } from './ienvironment';
 
-export const environment = {
+export const environment: IEnvironment = {
   production: true,
+  envName: 'prod',
+
+  env: {
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+  },
 
   server: {
     host: process.env.HOST || '0.0.0.0',

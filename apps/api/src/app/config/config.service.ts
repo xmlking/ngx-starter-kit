@@ -10,6 +10,9 @@ export class ConfigService {
 
   constructor() {
     this.config = environment;
+    for (const [key, value] of Object.entries(environment.env)) {
+      process.env[key] = value ;
+    }
     console.log('is prod? ', environment.production);
   }
 

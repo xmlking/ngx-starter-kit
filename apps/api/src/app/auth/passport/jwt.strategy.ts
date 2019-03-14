@@ -18,7 +18,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
         rateLimit: true,
         jwksRequestsPerMinute: 5,
         strictSsl: false,
-        jwksUri: `${env.auth.issuer}/protocol/openid-connect/certs`,
+        jwksUri: env.auth.jwksUri || `${env.auth.issuer}/protocol/openid-connect/certs`,
       }),
       handleSigningKeyError: (err, cb) => {
         if (err instanceof SigningKeyNotFoundError) {
