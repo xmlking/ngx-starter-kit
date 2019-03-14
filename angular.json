@@ -1333,7 +1333,8 @@
       "prefix": "ngx"
     },
     "@nrwl/schematics:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "framework": "angular"
     },
     "@ngx-formly/schematics:component": {
       "styleext": "scss"

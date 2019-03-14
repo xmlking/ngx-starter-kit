@@ -9,12 +9,12 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
 | Node                 | v11.10.0 |          |
-| NPM                  | v6.8.0   |          |
-| Angular CLI          | v7.3.2   |          |
-| @nrwl/schematics     | v7.6.2   |          |
+| NPM                  | v6.9.0   |          |
+| Angular CLI          | v8.0.0   |          |
+| @nrwl/schematics     | v7.7.0   |          |
 | @nestjs/cli          | v5.8.0   |          |
-| semantic-release-cli | v4.1.0   |          |
-| commitizen           | v3.0.6   |          |
+| semantic-release-cli | v4.1.1   |          |
+| commitizen           | v3.0.7   |          |
 
 ### Install Prerequisites
 
@@ -100,7 +100,7 @@ for nx help `npm run help`
 #### Create Workspace
 
 ```bash
-# create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
+# create workspace Ref: https://nx.dev/tutorial/01-create-application
 create-nx-workspace  ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=npm
 # or
 ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --verbose
@@ -130,7 +130,8 @@ ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
 # generate micro-app `chat-box`
-ng g app chatApp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
+
+ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
 npm i @webcomponents/custom-elements ?
@@ -259,7 +260,7 @@ ng g lib animations --framework=none -tags=utils --unit-test-runner=jest -d
 ng g lib Tree --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
 ng g lib utils --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
 # system wide `models` module
-ng g lib models --framework none --tags=utils --unit-test-runner=jest -d
+ng g lib models --framework=none --tags=utils --unit-test-runner=jest -d
 ng g interface User  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
 ng g interface Image  --project=models --type=model -d
@@ -645,10 +646,11 @@ ng build socketio-plugin
 > from workspace root
 
 ```bash
+export TAG=dev
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # check who-am-i
 npm whoami
-npm publish dist/libs/socketio-plugin --access public
+npm publish dist/libs/socketio-plugin --tag $TAG --access public
 ```
 
 ### Analyze
