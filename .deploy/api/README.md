@@ -4,14 +4,29 @@ Deploying NGX API
 
 ### Build
 ```bash
-# build app docker image
-docker build --tag=ngxapi -f .deploy/api/Dockerfile . 
+# build
+VERSION=1.5.0-SNAPSHOT
+docker build \
+--build-arg VERSION=$VERSION \
+--build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+-t xmlking/ngxapi -f .deploy/api/Dockerfile .
+
+# tag
+docker tag  xmlking/ngxapi  xmlking/ngxapi:$VERSION
+
+# push
+docker push xmlking/ngxapi:$VERSION
+docker push xmlking/ngxapi:latest
+
+# check
+docker inspect  xmlking/ngxapi:$VERSION
+docker image prune -f
 ```
 
 ### Run
 ```bash
 docker-compose up api
-# docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  ngxapi
+# docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  xmlking/ngxapi
 # to see ditectory content:
 docker-compose exec api ./node
 docker-compose exec api ./node -e 'console.log(__dirname);'
@@ -27,23 +42,6 @@ docker-compose exec api ./node -e 'const fs = require('fs'); fs.readdirSync('.')
 curl -v -X GET \
   http://localhost:3000/api \
 | jq .
-```
-
-
-### Deploy
-
-#### Docker Push
-```bash
-# login to hub.docker.com to push docker image
-docker login
-
-# tag
-docker tag ngxapi xmlking/ngxapi:1.2.0-SNAPSHOT
-docker tag xmlking/ngxapi:1.2.0-SNAPSHOT  xmlking/ngxapi:latest
-
-# push
-docker push xmlking/ngxapi:1.2.0-SNAPSHOT
-docker push xmlking/ngxapi:latest
 ```
 
 #### OpenShift Deployment
