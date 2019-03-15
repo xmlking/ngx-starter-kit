@@ -9,7 +9,6 @@ import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
-import { AuthState, AuthStateModel } from './auth.state';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
 import { OAuthEvent } from '@xmlking/angular-oauth2-oidc-all/events';
 
@@ -18,7 +17,7 @@ export class AuthService {
   static loginDefaultConf = { width: '380px', disableClose: true, panelClass: 'mylogin-no-padding-dialog' };
   private refresher: Subscription;
   private monitorer: Subscription;
-  // @Select('auth.authMode') authMode$: Observable<AuthMode>;
+  @Select('auth.authMode') authMode$: Observable<AuthMode>;
   authMode: AuthMode;
 
   constructor(
@@ -29,8 +28,7 @@ export class AuthService {
     private ropcService: ROPCService,
     private oauthService: OAuthService,
   ) {
-    // this.authMode$.subscribe(authMode => {
-    this.store.select(AuthState.authMode).subscribe(authMode => {
+    this.authMode$.subscribe(authMode => {
       console.log(`Auth Mode Changed: ${this.authMode} => ${authMode}`);
       this.authMode = authMode;
     });

@@ -8,7 +8,7 @@ import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio
 import { environment } from '@env/environment';
 import { RouterState } from '@ngxs/router-plugin';
 import { map } from 'rxjs/operators';
-import { WINDOW } from '@ngx-starter-kit/core';
+import { RouterStateData, WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 // import { AuthService } from '@ngx-starter-kit/oidc';
@@ -47,7 +47,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
       map(state => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))),
     );
 
-    this.depth$ = this.store.select<any>(RouterState.state).pipe(map(state => state.data.depth));
+    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map(state => state.data.depth));
 
     this.mediaObserver.media$.pipe(untilDestroy(this)).subscribe((change: MediaChange) => {
       const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';

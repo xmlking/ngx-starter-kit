@@ -63,6 +63,7 @@ library.add(faTwitter, faGithub, faGoogle);
       developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({
+      // FIXME:  https://github.com/ngxs/store/issues/902
       key: ['preference', 'app.installed', 'auth.isLoggedIn'],
     }),
     NgxsReduxDevtoolsPluginModule.forRoot({

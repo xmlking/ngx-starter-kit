@@ -7,6 +7,7 @@ Deploying NGX API
 # build
 VERSION=1.5.0-SNAPSHOT
 docker build \
+--no-cache \
 --build-arg VERSION=$VERSION \
 --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
 -t xmlking/ngxapi -f .deploy/api/Dockerfile .

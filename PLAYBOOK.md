@@ -101,11 +101,11 @@ for nx help `npm run help`
 
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
-create-nx-workspace  ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=npm
+create-nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=npm  --preset=empty --style=scss
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --bazel  --verbose
 cd ngx-starter-kit
 
 > remove all ngrx NPM pagages from package.json
