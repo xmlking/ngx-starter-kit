@@ -41,6 +41,7 @@ kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 > 3. make sure keycloak image `version` is correct in `*-deployment.yaml` file.
 > 4. generate base64 passwords for `*-secrets.yaml` with `echo -n 'admin' | base64`
 > 5. before proceeding to next steps, make sure you deployed `postgres`
+> 6. Helm CLI installed and tiller initiated for your namespace. Refer [here](../helm/)
 
 ```bash
 cd .deploy/keycloak/manual
@@ -109,28 +110,6 @@ kubectl delete networkpolicy -lapp=keycloak
 ```
 
 ### Deploying to Kubernetes via Helm
-
-#### Install Tiller
-
-> first time only: setup tiller in default `kube-system` namespace or your private namespace
-
-```bash
-# Install tiller into default `kube-system` namespace
-helm init
-# Install tiller into your private namespace (below showing `kube-system` namespace, but it could be any of your namespaces)
-helm init --tiller-namespace=kube-system --service-account=default --tiller-image=gcr.io/kubernetes-helm/tiller:v2.13.0
-
-# Upgrade tiller to latest version
-export TILLER_TAG=v2.13.0
-helm init --upgrade --tiller-namespace=kube-system --service-account=default --tiller-image=gcr.io/kubernetes-helm/tiller:$TILLER_TAG
-
-# Verify the installation
-helm version --tiller-namespace=kube-system
-helm ls --tiller-namespace=kube-system
-
-# Uninstall tiller from your namespace
-helm reset --tiller-namespace=kube-system 
-``` 
 
 #### Install Keycloak
 
