@@ -119,7 +119,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.7.0",
     "@fortawesome/free-solid-svg-icons": "^5.7.0",
     "@nestjs/common": "^5.7.0",
-    "@nestjs/core": "^5.7.0",
+    "@nestjs/core": "^6.0.0",
     "@nestjs/cqrs": "^5.1.1",
     "@nestjs/passport": "^5.1.0",
     "@nestjs/swagger": "^2.5.0",
