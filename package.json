@@ -196,7 +196,7 @@
     "@commitlint/cli": "^7.5.0",
     "@commitlint/config-conventional": "^7.5.0",
     "@compodoc/compodoc": "^1.1.0",
-    "@nestjs/schematics": "^5.11.0",
+    "@nestjs/schematics": "^6.0.1",
     "@nestjs/testing": "^5.7.2",
     "@ngx-formly/schematics": "5.0.0-beta.5",
     "@ngxs/schematics": "0.0.1-alpha.5",
