@@ -1,4 +1,4 @@
-import { FastifyAdapter, NestFactory } from '@nestjs/core';
+import { NestFactory } from '@nestjs/core';
 import { ValidationPipe } from '@nestjs/common';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app/app.module';
@@ -9,7 +9,6 @@ import { environment as env } from '@env-api/environment';
 declare const module: any;
 
 async function bootstrap() {
-  // const app = await NestFactory.create(AppModule, new FastifyAdapter(), { cors: true });
   const app = await NestFactory.create(AppModule, { cors: true });
   const config: ConfigService = app.get(ConfigService);
   app.use(helmet());

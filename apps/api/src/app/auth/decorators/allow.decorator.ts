@@ -1,6 +1,6 @@
-import { ReflectMetadata } from '@nestjs/common';
+import { SetMetadata } from '@nestjs/common';
 
-export const Allow = (...roles: AllowEnum[]) => ReflectMetadata('allow', roles);
+export const Allow = (...roles: AllowEnum[]) => SetMetadata('allow', roles);
 
 export enum AllowEnum {
   PUBLIC = 'public',
