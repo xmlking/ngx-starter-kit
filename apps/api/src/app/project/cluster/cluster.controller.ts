@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Get, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { CrudController } from '../../core';
 import { Cluster } from './cluster.entity';
@@ -30,7 +30,7 @@ export class ClusterController extends CrudController<Cluster> {
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
   @Get('byName/:name')
   async findByName(@Param('name') name: string): Promise<Cluster> {
-    return this.clusterService.getOne({ name });
+    return this.clusterService.findOne({ name });
   }
 
   @ApiOperation({ title: 'Create new record' })

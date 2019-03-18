@@ -51,7 +51,7 @@ export class ProfileService extends CrudService<Profile> {
     if (!file) {
       return super.update(id, entity);
     }
-    const profile = await super.getOne(id);
+    const profile = await super.findOne(id);
     if (!profile) {
       throw new BadRequestException('profile not found. something wrong');
     }

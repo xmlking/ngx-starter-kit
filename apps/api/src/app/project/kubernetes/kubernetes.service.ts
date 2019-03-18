@@ -43,7 +43,7 @@ export class KubernetesService implements OnModuleInit {
 
   async refreshClusters() {
     this.logger.log('Refreshing Kubernetes Clusters...');
-    const [clusters, size] = await this.clusterService.getAll();
+    const { total: size, items: clusters } = await this.clusterService.findAll();
     this.logger.log(`Refreshed ${size} Kubernetes Clusters`);
     this.clusters = new Map(
       clusters.map<[string, Api.ApiRoot]>(cluster => [
@@ -269,7 +269,10 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  async createClusterRoleBindingForDashboardUsers({ cluster, namespace, labels: { name = namespace } }: KubeContext, username: string) {
+  async createClusterRoleBindingForDashboardUsers(
+    { cluster, namespace, labels: { name = namespace } }: KubeContext,
+    username: string,
+  ) {
     const request = {
       body: {
         apiVersion: 'rbac.authorization.k8s.io/v1',
@@ -337,7 +340,7 @@ export class KubernetesService implements OnModuleInit {
     }
   }
 
-  async createResourceLimitRangeForNamespace({ cluster, namespace, labels: { name = namespace }, }: KubeContext) {
+  async createResourceLimitRangeForNamespace({ cluster, namespace, labels: { name = namespace } }: KubeContext) {
     const request = {
       body: {
         apiVersion: 'v1',

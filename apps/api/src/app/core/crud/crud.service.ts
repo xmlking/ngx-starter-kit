@@ -1,27 +1,22 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import {
-  DeepPartial,
-  DeleteResult,
-  FindConditions,
-  FindManyOptions,
-  FindOneOptions,
-  Repository,
-  UpdateResult,
-} from 'typeorm';
+import { DeepPartial, DeleteResult, FindConditions, FindManyOptions, FindOneOptions, Repository, UpdateResult } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { mergeMap } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';
 import { Base } from '../entities/base.entity';
 import { ICrudService } from './icrud.service';
+import { IPagination } from './pagination';
 
 export abstract class CrudService<T extends Base> implements ICrudService<T> {
   protected constructor(protected readonly repository: Repository<T>) {}
 
-  public async getAll(options?: FindManyOptions<T>): Promise<[T[], number]> {
-    return await this.repository.findAndCount(options);
+  public async findAll(filter?: FindManyOptions<T>): Promise<IPagination<T>> {
+    const total = await this.repository.count(filter);
+    const items = await this.repository.find(filter);
+    return { items, total };
   }
 
-  public async getOne(
+  public async findOne(
     id: string | number | FindOneOptions<T> | FindConditions<T>,
     options?: FindOneOptions<T>,
   ): Promise<T> {

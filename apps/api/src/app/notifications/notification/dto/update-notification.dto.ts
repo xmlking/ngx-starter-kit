@@ -1,7 +1,7 @@
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { IsAscii, IsBoolean, IsEnum, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from 'class-validator';
 import { NotificationColor, NotificationIcon, TargetType } from '../notification.entity';
-import { Column, Index } from 'typeorm';
+import { Index } from 'typeorm';
 
 export class UpdateNotificationDto {
   @ApiModelProperty({ type: String, minLength: 10, maxLength: 100 })
@@ -43,6 +43,7 @@ export class UpdateNotificationDto {
 
   @ApiModelPropertyOptional({ type: Boolean, default: false })
   @IsOptional()
+  @IsBoolean()
   @Index()
   readonly read?: boolean;
 }

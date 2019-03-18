@@ -3,7 +3,6 @@ import {
   Body,
   Controller,
   Delete,
-  FileInterceptor,
   ForbiddenException,
   Get,
   HttpStatus,
@@ -14,18 +13,22 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiConsumes, ApiImplicitFile, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { CrudController } from '../../core';
 import { CurrentUser, Roles, RolesEnum, User } from '../../auth';
 import { Profile } from './profile.entity';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { ProfileService } from './profile.service';
+import { ProfileList } from './dto/profile-list.model';
+
 
 const ALLOWED_MIME_TYPES = ['image/gif', 'image/png', 'image/jpeg', 'image/bmp', 'image/webp'];
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Profile', 'User')
 @Controller('profile')
+@ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 export class ProfileController extends CrudController<Profile> {
   constructor(private readonly profileService: ProfileService) {
     super(profileService);
@@ -39,35 +42,33 @@ export class ProfileController extends CrudController<Profile> {
     console.log('in myprofile', user.profileId);
     if (user.profileId) {
       // TODO: https://github.com/typeorm/typeorm/issues/1865
-      return this.profileService.getOne(user.profileId);
+      return this.profileService.findOne(user.profileId);
     } else {
       throw new NotFoundException('No Profile Found');
     }
   }
 
   @ApiOperation({ title: 'find all Profiles. Admins only' })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'All Profiles',
-    type: Profile /*[[Profile], Number]*/,
-    isArray: true,
-  })
+  @ApiResponse({ status: HttpStatus.OK, description: 'All Profiles', type: ProfileList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
-  async findAll(): Promise<[Profile[], number]> {
-    return this.profileService.getAll();
+  async findAll(): Promise<ProfileList> {
+    return this.profileService.findAll();
   }
 
   @ApiOperation({ title: 'Find Profile by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Profile })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Profile> {
     console.log('in findById', id);
-    return this.profileService.getOne(id);
+    return this.profileService.findOne(id);
   }
 
   @ApiOperation({ title: 'Create new Profile.' })

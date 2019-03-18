@@ -4,6 +4,8 @@ import { Base } from '../entities/base.entity';
 import { DeepPartial } from 'typeorm';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
 import { ICrudService } from './icrud.service';
+import { IPagination } from './pagination';
+import { PaginationParams } from './pagination-params';
 
 @ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
@@ -11,10 +13,10 @@ export abstract class CrudController<T extends Base> {
   protected constructor(private readonly crudService: ICrudService<T>) {}
 
   @ApiOperation({ title: 'find all' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All records', /* type: T, */ isArray: true })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Found records', /* type: IPagination<T> */ })
   @Get()
-  async findAll(options?: any): Promise<[T[], number]> {
-    return this.crudService.getAll(options);
+  async findAll(filter?: PaginationParams<T>): Promise<IPagination<T>> {
+    return this.crudService.findAll(filter);
   }
 
   @ApiOperation({ title: 'Find by id' })
@@ -22,7 +24,7 @@ export abstract class CrudController<T extends Base> {
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
   @Get(':id')
   async findById(@Param('id') id: string): Promise<T> {
-    return this.crudService.getOne(id);
+    return this.crudService.findOne(id);
   }
 
   @ApiOperation({ title: 'Create new record' })

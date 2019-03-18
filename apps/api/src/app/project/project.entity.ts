@@ -39,7 +39,7 @@ export class Project extends AuditBase implements IProject {
   @Column()
   billingId: string;
 
-  @ApiModelProperty()
+  @ApiModelProperty({ type: Boolean })
   @Column({ default: true })
   isActive?: boolean;
 

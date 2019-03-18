@@ -19,7 +19,7 @@ export class ClusterService extends CrudService<Cluster> {
 
   @Cache<string[]>({ ttl: 60 * 60 * 3 })
   getClusterNames() {
-    return from(super.getAll()).pipe(map(([clusters, size]) => clusters.map(c => c.name)));
+    return from(super.findAll()).pipe(map(({items, total}) => items.map(c => c.name)));
   }
 
   /**
