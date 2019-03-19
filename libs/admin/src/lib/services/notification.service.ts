@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, finalize, map, retry } from 'rxjs/operators';
-import { EntityService } from '@ngx-starter-kit/shared';
+import { EntityService, IPagination } from '@ngx-starter-kit/shared';
 import { environment } from '@env/environment';
 import { AppNotification } from '@ngx-starter-kit/notifications';
 
@@ -19,13 +19,14 @@ export class NotificationService extends EntityService<AppNotification> {
   }
 
   getAll(): Observable<AppNotification[]> {
+    const params = new HttpParams().set('order', 'ASC').set('read', 'false');
     this.loadingSubject.next(true);
-    return this.httpClient.get<[AppNotification[], number]>(`${this.baseUrl}/${this.entityPath}`).pipe(
+    return this.httpClient.get<IPagination<AppNotification>>(`${this.baseUrl}/${this.entityPath}`, { params }).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
       // return without count
-      map(data => data[0]),
+      map(data => data.items),
     );
   }
 

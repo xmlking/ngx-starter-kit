@@ -4,6 +4,7 @@ import { environment } from '@env/environment';
 import { Entity } from './entity.model';
 import { catchError, finalize, retry } from 'rxjs/operators';
 import { format } from 'date-fns/esm';
+import { IPagination } from './pagination';
 
 export interface Filter {
   [name: string]: string | string[];
@@ -26,15 +27,16 @@ export abstract class EntityService<T extends Entity> {
     );
   }
 
-  findAll(filter: Filter, sortOrder = 'asc', pageNumber = 0, pageSize = 100): Observable<T[]> | Observable<never> {
+    // findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<IPagination<T>> | Observable<never> {
+    findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<T[]> | Observable<never> {
     this.loadingSubject.next(true);
     return this.httpClient
       .get<T[]>(`${this.baseUrl}/${this.entityPath}`, {
         params: new HttpParams()
           .set('filter', 'filter TODO')
-          .set('sortOrder', sortOrder)
-          .set('pageNumber', pageNumber.toString())
-          .set('pageSize', pageSize.toString()),
+          .set('order', order)
+          .set('skip', skip.toString())
+          .set('take', take.toString()),
       })
       .pipe(
         retry(3), // retry a failed request up to 3 times
@@ -43,6 +45,7 @@ export abstract class EntityService<T extends Entity> {
       );
   }
 
+  // getAll(): Observable<IPagination<T>> {
   getAll(): Observable<T[]> {
     this.loadingSubject.next(true);
     return this.httpClient.get<T[]>(`${this.baseUrl}/${this.entityPath}`).pipe(

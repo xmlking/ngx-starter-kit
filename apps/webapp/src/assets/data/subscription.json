@@ -1,5 +1,5 @@
-[
-  [
+{
+  "items": [
     {
       "id": 13,
       "endpoint": "https://fcm.googleapis.com/fcm/send/c8eq7G-b2mc:APA91bFp2Gof...",
@@ -11,5 +11,5 @@
       "updatedAt": "2018-11-21T18:50:45.325Z"
     }
   ],
-  1
-]
+  "total": 1
+}

@@ -1,5 +1,5 @@
-[
-  [
+{
+  "items": [
     {
       "id": 9,
       "title": "title for sumo3 2",
@@ -71,5 +71,5 @@
       "updatedAt": "2018-12-09T06:00:41.401Z"
     }
   ],
-  5
-]
+  "total": 9
+}

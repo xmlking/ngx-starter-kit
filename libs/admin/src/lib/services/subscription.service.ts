@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { catchError, finalize, map, retry } from 'rxjs/operators';
-import { EntityService } from '@ngx-starter-kit/shared';
+import { EntityService, IPagination } from '@ngx-starter-kit/shared';
 import { environment } from '@env/environment';
 import { Subscription } from '../models/subscription.model';
 
@@ -20,12 +20,12 @@ export class SubscriptionService extends EntityService<Subscription> {
 
   getAll(): Observable<Subscription[]> {
     this.loadingSubject.next(true);
-    return this.httpClient.get<[Subscription[], number]>(`${this.baseUrl}/${this.entityPath}`).pipe(
+    return this.httpClient.get<IPagination<Subscription>>(`${this.baseUrl}/${this.entityPath}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
       // return without count
-      map(data => data[0]),
+      map(data => data.items),
     );
   }
 }
