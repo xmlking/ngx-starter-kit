@@ -5,11 +5,12 @@ metadata:
   labels:
     app: ngxapi
 data:
-  DOMAIN_URL: ngxapi
-  TYPEORM_HOST: postgres
+  NODE_TLS_REJECT_UNAUTHORIZED: '0'
+  DOMAIN_URL: 'https://ngxapi.traefik.k8s'
+  TYPEORM_HOST: ngxdb-postgresql
   TYPEORM_PORT: '5432'
-  TYPEORM_DATABASE: cockpit
-  TYPEORM_USERNAME: cockpit
+  TYPEORM_DATABASE: postgres
+  TYPEORM_USERNAME: postgres
   TYPEORM_LOGGING: 'false'
   OIDC_ISSUER_URL: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx'
   OIDC_CLIENT_ID: ngxapi

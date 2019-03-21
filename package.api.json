@@ -17,16 +17,20 @@
     "class-validator": "^0.9.1",
     "cls-hooked": "^4.2.2",
     "helmet": "^3.16.0",
+    "kubernetes-client": "^6.11.0",
     "nest-router": "^1.0.0",
     "nodemailer": "^5.1.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "pg": "^7.9.0",
     "pug": "^2.0.3",
-    "reflect-metadata": "^0.1.12",
+    "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
     "sharp": "^0.21.3",
     "typeorm": "^0.2.15",
     "web-push": "^3.3.3"
+  },
+  "devDependencies": {
+    "typescript": "~3.1.6"
   }
 }

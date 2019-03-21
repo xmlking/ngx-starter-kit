@@ -10,7 +10,7 @@ spec:
     - name: http
       port: 3000
       protocol: TCP
-      targetPort: 3000
-      nodePort: 33000
+      targetPort: http
+      nodePort: 32300
   selector:
     app: ngxapi

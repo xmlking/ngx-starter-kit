@@ -1,14 +1,22 @@
+test:
+  enabled: false
+
 keycloak:
   username: admin
   password: admin123
   persistence:
     dbVendor: postgres
-    dbHost: postgres
-    existingSecret: postgres
-    existingSecretKey: KEYCLOAK_POSTGRES_PASSWORD
+    dbHost: ngxdb-postgresql
+    existingSecret: postgres-init-scripts
+    existingSecretKey: keycloak-db-password
   extraEnv: |
-    - name: POSTGRES_PORT
-      value: '5432'
+    - name: PROXY_ADDRESS_FORWARDING
+      value: 'true'
+    - name: ROOT_LOGLEVEL
+      value: INFO
+    - name: KEYCLOAK_LOGLEVEL
+      value: INFO
+
 # use `service` for prod and `ingress` for dev. Comment other before install.
 #  service:
 #    type: NodePort

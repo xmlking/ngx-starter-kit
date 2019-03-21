@@ -1,9 +1,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: postgres
+  name: ngxdb-postgresql
   labels:
-    app: postgres
+    app: postgresql
   annotations:
     trident.netapp.io/reclaimPolicy: "Retain"
     trident.netapp.io/snapshotDirectory: "false"

@@ -1,6 +1,6 @@
 API
 ===
-Deploying NGX API
+Build and Deploy NgxApi
 
 ### Build
 ```bash
@@ -29,9 +29,9 @@ docker image prune -f
 docker-compose up api
 # docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  xmlking/ngxapi
 # to see ditectory content:
-docker-compose exec api ./node
-docker-compose exec api ./node -e 'console.log(__dirname);'
-docker-compose exec api ./node -e 'const fs = require('fs'); fs.readdirSync('.').forEach(file => { console.log(file);})
+docker-compose exec api node
+docker-compose exec api node -e 'console.log(__dirname);'
+docker-compose exec api node -e 'const fs = require('fs'); fs.readdirSync('.').forEach(file => { console.log(file);})
 ```
 
 ### Test
@@ -41,77 +41,16 @@ docker-compose exec api ./node -e 'const fs = require('fs'); fs.readdirSync('.')
 ```bash
 # test
 curl -v -X GET \
-  http://localhost:3000/api \
+  http://localhost:3000/ \
 | jq .
 ```
 
-#### OpenShift Deployment
-> Deploy ngxapi to OpenShift
+### Deploy
 
+Follow instructions from [manual](./manual) or [helm](./helm) or [OpenShift](./openshift)
+
+### Test API
 ```bash
-# login
-oc login <my OpenShift URL>
-# oc login https://console.starter-us-east-1.openshift.com
-oc project ngx
-cd .deploy/api/openshift
-
-# create app (first time deployment)
-oc new-app -f api.tmpl.yml -p APPNAME=ngxapi -n ngx
-
-# follow next steps if you want completely delete and redeploy.
-# delete only deploymentConfig
-oc delete all -l app=ngxapi -n ngx
-
-# delete fully
-oc delete all,configmap,secret -l app=ngxapi -n ngx
-
-# redeploy
-# From OpenShift Console UI
-Applications > Deployments > ngxapi > Deploy
+curl -X  GET "https://ngxapi.traefik.k8s/" -k -H  "accept: application/json"
+curl -X  GET "https://ngxapi.traefik.k8s/echo?sumo=demo" -k -H  "accept: application/json"
 ```
- 
-#### Kubernetes Deployment
-> assume you already setup `ngx` context
-
-> make sure  `Env`, docker image `Version` are correct in `04-ngxapi-deployment.yaml`
-
-```bash
-cd .deploy/api/manual
-
-## view all preset contexts
-kubectl config get-contexts
-# switch to `ngx` contexts
-kubectl config use-context ngx
-
-## create (first time deployment)
-kubectl create -f ./api.yml
-kubectl describe deployment api
-
-## checking
-# see logs
-kubectl logs -f my-pod
-# Once you’ve created a Service of type NodePort, you can use this command to find the NodePort
-kubectl get service api --watch
-# to get <NODE> names 
-kubectl get pod  -o wide
-
-## delete
-kubectl delete -f ./api.yml
-
-## redeploy (new image)
-update tag in api.yml and delete and create again.
-```
-
-#### Kubernetes Commands 
-```bash
-kubectl get deployment -o wide
-kubectl get pods -o wide
-kubectl get service -o wide
-
-kubectl exec -it my-pod  -- /bin/bash
-kubectl logs -f my-pod
-kubectl logs my-pod --previous 
-kubectl logs my-pod -c my-container
-```
-
-

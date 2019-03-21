@@ -27,7 +27,8 @@ spec:
             requests:
               memory: 2G
           ports:
-            - containerPort: 3000
+            - name: http
+              containerPort: 3000
               protocol: TCP
           envFrom:
             - secretRef:
@@ -38,5 +39,5 @@ spec:
             - name: TYPEORM_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: postgres
-                  key: COCKPIT_POSTGRES_PASSWORD
+                  name: ngxdb-postgresql
+                  key: postgresql-password

@@ -1,54 +1,50 @@
-# WebApp
+# NxgApp
 
-Dockerize Angular WebApp
+Build and Deploy NgxApp webapp.
 
 > use [nginxconfig](https://nginxconfig.io/) to generate `nginx.conf`
 
-### Deploy
-
-#### Build Nginx
-
-> Build and publish custom nginx image for OpenShift (One time only)
+### Build
 
 ```bash
-docker build -t openshift-nginx -f .deploy/webapp/nginx.dockerfile .
-docker tag openshift-nginx xmlking/openshift-nginx:1.14-alpine
-docker push xmlking/openshift-nginx
-
-# also tag as `latest` and push
-docker tag xmlking/openshift-nginx:1.14-alpine xmlking/openshift-nginx:latest
-docker push xmlking/openshift-nginx:latest
-```
-
-#### Build App
-
-> Build ngx-starter-kit docker image
-
-```bash
-# build app docker image
-docker build --tag=ngx-starter-kit -f .deploy/webapp/prod.dockerfile .
-```
-
-#### Docker Push
-
-> Push ngx-starter-kit docker image
-
-```bash
-# login to hub.docker.com to push docker image
-docker login
+# build
+VERSION=1.5.0-SNAPSHOT
+docker build \
+--no-cache \
+--build-arg VERSION=$VERSION \
+--build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
+-t xmlking/ngxapp -f .deploy/webapp/Dockerfile .
 
 # tag
-docker tag ngx-starter-kit xmlking/ngx-starter-kit:1.0.0-SNAPSHOT
-docker tag xmlking/ngx-starter-kit:1.0.0-SNAPSHOT  xmlking/ngx-starter-kit:latest
+docker tag  xmlking/ngxapp  xmlking/ngxapp:$VERSION
 
 # push
-docker push xmlking/ngx-starter-kit:1.0.0-SNAPSHOT
-docker push xmlking/ngx-starter-kit:latest
+docker push xmlking/ngxapp:$VERSION
+docker push xmlking/ngxapp:latest
+
+# check
+docker inspect  xmlking/ngxapp:$VERSION
+docker image prune -f
 ```
 
-#### OpenShift Deployment
+### Run
 
-> Deploy ngx-starter-kit app to OpenShift
+Run docker locally for testing.
+
+```bash
+docker run -it  -p 4200:8080 -v .deploy/webapp/nginx.conf:/etc/nginx/conf.d/nginx.conf xmlking/ngxapp
+```
+
+
+### Deploy
+
+#### Deploying to Kubernetes
+
+```bash
+# TODO
+```
+
+#### Deploying OpenShift
 
 ```bash
 # login with your ID
@@ -72,21 +68,9 @@ from OpenShift Console UI,
 Applications > Deployments > webapp > Deploy
 ```
 
-### K8S Commands
 
-```bash
-kubectl get services
-kubectl get pods
-kubectl logs -f  keycloak-server-6-grfmg
-```
 
-### Run
-
-Run docker locally for testing.
-
-```bash
-docker run -it  -p 4200:8080 -v .deploy/webapp/nginx.conf:/etc/nginx/conf.d/nginx.conf cockpit
-```
+### Access NgxApp
 
 The app will be available at http://localhost:4200
 
@@ -101,14 +85,8 @@ docker exec -it <CONTAINER ID> sh
 docker-compose exec web sh
 ```
 
-###Maintenance
 
-```bash
-docker container prune
-docker image prune
-```
-
-### Ref
+### Reference
 
 - If you get 137 error
   - https://samwize.com/2016/05/19/docker-error-returned-a-non-zero-code-137/

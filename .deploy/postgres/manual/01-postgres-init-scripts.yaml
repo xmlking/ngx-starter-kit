@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: postgres-init-scripts
+  labels:
+    app: postgresql
+type: Opaque
+stringData:
+  keycloak-db-init.sql: |-
+    CREATE ROLE keycloak WITH PASSWORD 'keycloak123' NOSUPERUSER LOGIN;
+    CREATE DATABASE keycloak;
+    GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
+

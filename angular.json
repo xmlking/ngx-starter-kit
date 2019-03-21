@@ -252,7 +252,7 @@
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
               ],
-              "externalDependencies": "none"
+              "externalDependencies": "all"
             }
           }
         },

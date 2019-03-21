@@ -1,0 +1,20 @@
+postgresqlPassword: postgres321
+
+#initdbScripts:
+#  keycloak-db-init.sql: |-
+#    CREATE ROLE $KEYCLOAK_DB_USER WITH PASSWORD '$KEYCLOAK_DB_PASSWORD' NOSUPERUSER LOGIN;
+#    CREATE DATABASE $KEYCLOAK_DB;
+#    GRANT ALL PRIVILEGES ON DATABASE $KEYCLOAK_DB TO $KEYCLOAK_DB_USER;
+
+initdbScriptsSecret: postgres-init-scripts
+
+persistence:
+  size: 8Gi
+
+networkPolicy:
+  enabled: true
+
+service:
+  type: NodePort
+  nodePort: 31432
+

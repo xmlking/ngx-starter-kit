@@ -38,6 +38,7 @@ helm repo update --tiller-namespace=kube-system
 
 ```bash
 # example chart instalation 
+# --dry-run --debug flags help you to see before you really deploy
 helm install --name=nginx-ingress --namespace=default --tiller-namespace=kube-system  ./charts-master/incubator/nginx-ingress
 helm install --name=traefik       --namespace=default --tiller-namespace=kube-system  -f  traefik-values.yaml stable/traefik
 ```
@@ -76,9 +77,7 @@ helm template \
 kubectl apply --recursive --filename manual/stable/traefik
 ```
 
-
-
 ### Reference
 1. [What You Yaml is What You Get](https://blog.giantswarm.io/what-you-yaml-is-what-you-get/)
 2. [helm-nomagic](https://github.com/giantswarm/helm-nomagic)
-
+3. [Helm from the trenches](https://hackernoon.com/helm-from-the-trenches-17f87859ee47)

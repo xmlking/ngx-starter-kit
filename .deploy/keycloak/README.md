@@ -33,171 +33,10 @@ kubectl create secret tls keycloak-secrets-tls \
 kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 ```
 
+Follow instructions from [manual](./manual) or [helm](./helm) or [OpenShift](./openshift)
 
-### Deploying to Kubernetes
-
-> 1. assume you already setup `ngx` kubernetes context
-> 2. make sure you current context is using correct `namespace`. i.e., `kubectl config current-context`
-> 3. make sure keycloak image `version` is correct in `*-deployment.yaml` file.
-> 4. generate base64 passwords for `*-secrets.yaml` with `echo -n 'admin' | base64`
-> 5. before proceeding to next steps, make sure you deployed `postgres`
-> 6. Helm CLI installed and tiller initiated for your namespace. Refer [here](../helm/)
-
-```bash
-cd .deploy/keycloak/manual
-
-# create configmap
-kubectl create -f 01-keycloak-configmap.yaml
-# verify
-kubectl get configmap keycloak -o yaml
-
-# create secrets
-# to generate base64 passwords use `echo -n 'admin' | base64`
-kubectl create -f 02-keycloak-secrets.yaml
-kubectl create -f 02-keycloak-secrets-tls.yml
-# verify secrets
-kubectl get secret -l app=keycloak -o yaml
-
-# create persistentvolumeclaim (optional)
-kubectl create -f 03-keycloak-storage.yaml
-# verify persistentvolumeclaim
-kubectl get persistentvolumeclaim --namespace default
-kubectl get persistentvolume
-
-# create deployment
-kubectl create -f 04-keycloak-deployment.yaml
-# verify deployment
-kubectl describe pod keycloak
-kubectl get deployment keycloak -o yaml
-kubectl get po -o wide --watch
-
-POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
-kubectl exec -it $POD_NAME -- /bin/bash
-kubectl logs $POD_NAME -f
-# Accessing logs from Init Containers
-kubectl logs $POD_NAME -c wait-for-postgresql -f
-kubectl exec -it $POD_NAME -c wait-for-postgresql -- /bin/sh
-
-# create service (use -service.yaml and -ingress.yaml for development, -nodeport.yaml for prod)
-kubectl create -f 05-keycloak-service-nodeport.yaml
-# verify service
-kubectl get svc keycloak -o wide
-kubectl get ep
-
-# create network policy (if your k8s enabled with network policies) 
-kubectl create -f 06-keycloak-network-policy.yaml
-kubectl create -f 06-keycloak-helm-network-policy.yaml
-# test network policy
-kubectl get networkpolicy -lapp=keycloak
-
-open http://node1:32080
-open http://node2:32080
-open http://node3:32080
-
-kubectl get all,configmap,secret,ingress -l app=keycloak
-```
-
-#### Delete Keycloak Deployment
-
-```bash
-kubectl delete ingress keycloak
-kubectl delete service keycloak
-kubectl delete deployment keycloak
-kubectl delete configmap keycloak
-kubectl delete secret keycloak
-kubectl delete persistentvolumeclaim keycloak
-kubectl delete networkpolicy -lapp=keycloak
-```
-
-### Deploying to Kubernetes via Helm
-
-#### Install Keycloak
-
-```bash
-cd .deploy/keycloak/helm
-
-# To install the chart with the release name `keycloak`
-helm install --name=keycloak --namespace=default -f values-dev.yaml stable/keycloak
-
-# verify deployment
-helm ls
-kubectl get all,configmap,secret,ingress -l app=keycloak
-kubectl describe pod keycloak
-kubectl get statefulset keycloak -o yaml
-kubectl get ingress keycloak  -o yaml
-
-POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
-kubectl exec -it $POD_NAME -- /bin/bash
-kubectl logs $POD_NAME -f
-echo | openssl s_client -showcerts -connect keycloak.traefik.k8s:443 2>/dev/null
+Then continue steps below. 
  
- 
-# To update 
-helm upgrade --namespace=default -f values-dev.yaml keycloak stable/keycloak
-
-# To uninstall/delete the `keycloak` deployment
-helm delete keycloak
-helm delete keycloak --purge  # delete keycloak and purge
-```
-
- 
-##### Keycloak can be accessed:
-
-Within your cluster, at the following DNS name at port 80:
-
-  `keycloak-http.default.svc.cluster.local`
-
-From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
-
-  ```bash
-  export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services keycloak-http)
-  export NODE_IP=$(kubectl get nodes --namespace default -o jsonpath="{.items[0].status.addresses[0].address}")
-  echo http://$NODE_IP:$NODE_PORT
-  ```
-
-From outside the cluster: (`when Ingress used in values.yaml`)
-
-  ```bash
-  open https://keycloak.traefik.k8s
-  ```
-
-##### Login with the following credentials:
-Username: admin
-
-To retrieve the initial user password run:
-
-  ```bash
-  kubectl get secret --namespace default keycloak-http -o jsonpath="{.data.password}" | base64 --decode; echo
-  ```
- 
-### Deploying to OpenShift
-
-> Deploy KeyCloak to OpenShift
-
-```bash
-cd .deploy/keycloak/openshift
-
-# login with your ID
-oc login <my OpenShift URL>
-# oc login  https://console.starter-us-east-1.openshift.com
-oc project ngx
-cd .deploy/keycloak
-
-# create app (first time deployment)
-oc apply -f ./keycloak-openshift.yaml
-
-# follow next steps if you want completely delete and deploy.
-# delete only deploymentConfig
-oc delete all -l app=keycloak -n ngx
-
-# delete fully
-oc delete all,configmap,secret -l app=keycloak -n ngx
-oc delete pvc --all -n ngx
-
-# redeploy
-From OpenShift Console UI
-Applications > Deployments > ngx > Deploy
-```
 
 #### Environment Variables
 
@@ -212,18 +51,8 @@ PROXY_ADDRESS_FORWARDING="true"
 
 ## Configuration
 
-### Access Keycloak Admin Console
-
-```bash
-# if service exposing via port-forward
-POD_NAME=$(kubectl get pods  -lapp=keycloak -o jsonpath='{.items[0].metadata.name}')
-kubectl port-forward $POD_NAME 8080:8080
-open http://localhost:8080
-# if service exposing via nodeport
-# get node port from `kubectl get svc keycloak`
-open http://localhost:31080
-```
-
+> Access Keycloak Admin Console
+ 
 ### Keycloak automatic configuration
 
 > Open Keycloak WebConsole
@@ -271,7 +100,8 @@ kubectl exec -it $POD_NAME -- /bin/bash
 -Dkeycloak.migration.action=export \
 -Dkeycloak.migration.provider=dir  \
 -Dkeycloak.migration.dir=/tmp/sumo \
--Djboss.http.port=8888 -Djboss.https.port=9999 -Djboss.management.http.port=7777
+-Djboss.socket.binding.port-offset --debug
+# -Djboss.http.port=8888 -Djboss.https.port=9999 -Djboss.management.http.port=7777
 
 # copy files back to codebase
 # exit previous shell first, then

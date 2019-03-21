@@ -17,11 +17,11 @@ export const environment: IEnvironment = {
 
   database: {
     type: 'postgres',
-    host: process.env.TYPEORM_HOST || 'postgres',
+    host: process.env.TYPEORM_HOST || 'ngxdb-postgresql',
     port: process.env.TYPEORM_PORT ? Number(process.env.TYPEORM_PORT) : 5432,
-    database: process.env.TYPEORM_DATABASE || 'cockpit',
-    username: process.env.TYPEORM_USERNAME || 'cockpit',
-    password: process.env.TYPEORM_PASSWORD || 'cockpit123',
+    database: process.env.TYPEORM_DATABASE || 'postgres',
+    username: process.env.TYPEORM_USERNAME || 'postgres',
+    password: process.env.TYPEORM_PASSWORD || 'postgres321',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
     synchronize: false,

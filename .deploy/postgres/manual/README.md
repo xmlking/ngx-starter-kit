@@ -21,27 +21,27 @@ Deploying **Postgre** as datastore for _APIs_ and _KeyCloak_
 ```bash
 cd .deploy/postgres/manual
 
-# create configmap
-kubectl create -f 01-postgres-configmap.yaml
+# create init-scripts secrets
+kubectl create -f 01-postgres-init-scripts.yaml
 # verify
-kubectl get configmap postgres -o yaml
-
-# create secrets
-kubectl create -f 02-postgres-secrets.yaml
-# verify secrets
-kubectl get secret postgres -o yaml
+kubectl get secret postgres-init-scripts -o yaml
 
 # create persistentvolumeclaim
-kubectl create -f 03-postgres-storage.yaml
+kubectl create -f 02-storage.yaml
 # verify persistentvolumeclaim
 kubectl get persistentvolumeclaim --namespace default
 kubectl get persistentvolume
 
-# create deployment
-kubectl create -f 04-postgres-deployment.yaml
-# verify deployment
+# create secrets
+kubectl create -f 03-secrets.yaml
+# verify secrets
+kubectl get secret ngxdb-postgresql -o yaml
+
+# create statefulset
+kubectl create -f 04-statefulset.yaml
+# verify statefulset
 kubectl describe pod postgres
-kubectl get deployment postgres -o yaml
+kubectl get statefulset ngxdb-postgresql -o yaml
 kubectl get po -o wide --watch
 
 POD_NAME=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
@@ -50,13 +50,14 @@ kubectl exec -it $POD_NAME -- /bin/bash
 # if you have to copy something use `kubectl cp`
 kubectl cp /Developer/Work/SPA/ngx-starter-kit/.deploy/postgres/scripts/create_databases.sh $POD_NAME:/tmp/test.sh
 
-# create service (use -service.yaml for prod cluster, -nodeport.yaml for development)
-kubectl create -f 05-postgres-service.yaml
+# create service (use -svc.yaml for prod cluster, -headless.yaml for development)
+kubectl create -f 05-svc.yaml
+kubectl create -f 05-svc-headless.yaml
 # verify service
-kubectl get svc postgres
+kubectl get svc -lapp=postgresql
 kubectl get ep
 
-kubectl get all,configmap,secret -l app=postgres
+kubectl get all,configmap,secret -l app=postgresql
 ```
 
 ### Connect to PostgreSQL
@@ -70,27 +71,12 @@ psql -h localhost -p 5432 -U cockpit --password  -d cockpit
 
 ```bash
 kubectl delete service postgres
-kubectl delete deployment postgres
+kubectl delete statefulset postgres
 kubectl delete configmap postgres
 kubectl delete secret postgres
 kubectl delete persistentvolumeclaim postgres
 ```
 
-### Deploying to Kubernetes via Helm
-```bash
-cd .deploy/postgres/helm
-
-# To install the chart with the release name keycloak:
-helm install --name postgres \
-  --namespace default \
-  --set postgresUser=admin \
-  --set postgresPassword=password \
-  --set postgresDatabase=keycloak-db \
-stable/postgresql
-
-# To uninstall/delete the keycloak deployment:
-helm delete --purge postgres
-```
 
 #### TODO
 

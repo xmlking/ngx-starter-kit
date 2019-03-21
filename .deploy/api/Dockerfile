@@ -27,7 +27,8 @@ ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 
 # Final stage: the running container.
-FROM astefanutti/scratch-node:11
+FROM  mhart/alpine-node:11
+
 # Import the user and group files from the first stage.
 COPY --from=dev-dependencies /user/group /user/passwd /etc/
 COPY --from=prod-dependencies /app  .
@@ -57,7 +58,7 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -it -p 3000:3000  xmlking/ngxapi"
 
-ENTRYPOINT ["./node", "main.js"]
+ENTRYPOINT ["node", "main.js"]
 
 # TODO:
 # https://github.com/alextanhongpin/go-docker-multi-stage-build/blob/master/Dockerfile
