@@ -27,7 +27,8 @@
       "ignore": [
         "d3",
         "d3-selection-multi",
-        "typescript"
+        "typescript",
+        "core-js"
       ]
     }
   }

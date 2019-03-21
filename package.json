@@ -149,7 +149,7 @@
     "class-transformer": "^0.2.0",
     "class-validator": "^0.9.1",
     "cls-hooked": "^4.2.2",
-    "core-js": "^3.0.0",
+    "core-js": "^2.6.5",
     "d3": "4.13.0",
     "d3-selection-multi": "1.0.1",
     "date-fns": "^2.0.0-alpha.27",
