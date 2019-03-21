@@ -1,7 +1,7 @@
-import { Injectable, NotFoundException, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Any, In, Repository } from 'typeorm';
-import { CrudService } from '../../core';
+import { CrudService, IPagination } from '../../core';
 import { Notification, TargetType } from './notification.entity';
 import { EventBusGateway } from '../../shared';
 import { DeleteNotification, MarkAsRead } from '../index';
@@ -9,6 +9,8 @@ import { User } from '../../auth';
 import { SubscriptionService } from '../subscription/subscription.service';
 import { PushService } from './push.service';
 import { Subscription } from '../subscription/subscription.entity';
+import { FindOwnNotificationsDto } from './dto/find-own-notifications.dto';
+import { FindNotificationsDto } from './dto/find-notifications.dto';
 
 @Injectable()
 export class NotificationService extends CrudService<Notification> implements OnModuleInit, OnModuleDestroy {
@@ -17,6 +19,7 @@ export class NotificationService extends CrudService<Notification> implements On
     private readonly eventBus: EventBusGateway,
     private readonly subscriptionService: SubscriptionService,
     @InjectRepository(Notification) private readonly notificationsRepository: Repository<Notification>,
+    @InjectRepository(Subscription) private readonly subscriptionRepository: Repository<Subscription>,
   ) {
     super(notificationsRepository);
   }
@@ -25,21 +28,29 @@ export class NotificationService extends CrudService<Notification> implements On
     this.eventBus.on(MarkAsRead.type, this.onMarkAsRead.bind(this));
     this.eventBus.on(DeleteNotification.type, this.onDeleteNotification.bind(this));
   }
+
   onModuleDestroy() {
     this.eventBus.off(MarkAsRead.type, this.onMarkAsRead.bind(this));
     this.eventBus.off(DeleteNotification.type, this.onDeleteNotification.bind(this));
   }
 
-  public async getUserNotifications(user: User): Promise<[Notification[], number]> {
-    const records = await this.repository.findAndCount({ target: In(['all', user.userId]), isActive: true });
-    if (records[1] === 0) {
-      throw new NotFoundException(`The requested records were not found`);
-    }
-    return records;
+  async findAll({ take, skip, order, ...where }: FindNotificationsDto): Promise<IPagination<Notification>> {
+    return super.findAll({ where, take, skip, order });
+  }
+
+  async findOwn({ take, skip, order }: FindOwnNotificationsDto, actor: User): Promise<IPagination<Notification>> {
+    const criteria = new FindNotificationsDto({
+      target: In(['all', actor.username]),
+      isActive: true,
+      take,
+      skip,
+      order,
+    });
+    return super.findAll(criteria);
   }
 
   async send(id: string | number) {
-    const notification = await this.getOne(id);
+    const notification = await this.findOne(id);
 
     const pushNotification = {
       title: notification.title,
@@ -49,20 +60,21 @@ export class NotificationService extends CrudService<Notification> implements On
       vibrate: [200, 100, 200],
     };
 
-    let subscriptions: Subscription[], count: number;
+    let subscriptions: Subscription[];
     switch (notification.targetType) {
       case TargetType.USER:
-        [subscriptions, count] = await this.subscriptionService.findAndCount({ userId: notification.target });
+        subscriptions = await this.subscriptionRepository.find({ where: { username: notification.target } });
         break;
       case TargetType.TOPIC:
         // FIXME: https://github.com/typeorm/typeorm/issues/3150
-        [subscriptions, count] = await this.subscriptionService.findAndCount({ topics: Any([notification.target]) });
+        subscriptions = await this.subscriptionRepository.find({
+          where: { topics: Any([notification.target]) },
+        });
         break;
       case TargetType.ALL:
-        [subscriptions, count] = await this.subscriptionService.getAll({ take: 10 }); // TODO: for now, lets send to 10
+        subscriptions = await this.subscriptionRepository.find({ take: 10 }); // TODO: for now, lets send to 10
         break;
     }
-
     subscriptions.forEach(subscription => {
       const { endpoint, p256dh, auth } = subscription;
       return this.pushService.sendNotification({ endpoint, keys: { p256dh, auth } }, pushNotification as any);
@@ -71,13 +83,13 @@ export class NotificationService extends CrudService<Notification> implements On
 
   async onMarkAsRead(action: MarkAsRead, user: User) {
     await this.update(
-      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.username },
       { read: true },
     );
   }
   async onDeleteNotification(action: DeleteNotification, user: User) {
     await this.update(
-      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.userId },
+      { id: parseInt(action.payload.id, 10), targetType: TargetType.USER, target: user.username },
       { isActive: false },
     );
   }

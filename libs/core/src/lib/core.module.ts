@@ -4,7 +4,7 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { FormlyModule } from '@ngx-formly/core';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxPageScrollModule } from 'ngx-page-scroll';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { NgxsModule } from '@ngxs/store';
 import { NgxsFormPluginModule } from '@ngxs/form-plugin';
 import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
@@ -15,7 +15,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-import { AuthModule, AuthState } from '@ngx-starter-kit/auth';
+import { AuthModule } from '@ngx-starter-kit/auth';
+// import { OidcFlow, OidcModule, OidcOnLoad, OidcProvider } from '@ngx-starter-kit/oidc';
 import { MenuState, NavigatorModule } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
@@ -29,6 +30,7 @@ import { defaultMenu } from './menu-data';
 
 import { AppState } from './state/app.state';
 import { PreferenceState } from './state/preference.state';
+import { ProfileState } from './state/profile.state';
 
 import { AppHandler } from './state/app.handler';
 import { RouteHandler } from './state/route.handler';
@@ -37,7 +39,7 @@ import { GoogleAnalyticsService } from './services/google-analytics.service';
 
 // Noop handler for factory function
 export function noop() {
-  return function() {};
+  return () => {};
 }
 
 /**
@@ -54,11 +56,15 @@ library.add(faTwitter, faGithub, faGoogle);
     HttpClientModule,
     FontAwesomeModule,
     MatSnackBarModule,
-    NgxPageScrollModule,
+    NgxPageScrollCoreModule.forRoot({ _logLevel: 3 }),
     NavigatorModule.forRoot(defaultMenu),
-    NgxsModule.forRoot([AuthState, MenuState, PreferenceState, AppState], { developmentMode: !environment.production }),
+    // NOTE: NGXS: If you have feature modules they need to be imported after the root module.
+    NgxsModule.forRoot([MenuState, PreferenceState, ProfileState, AppState], {
+      developmentMode: !environment.production,
+    }),
     NgxsStoragePluginModule.forRoot({
-      key: ['preference', 'app.installed'],
+      // FIXME:  https://github.com/ngxs/store/issues/902
+      key: ['preference', 'app.installed', 'auth.isLoggedIn'],
     }),
     NgxsReduxDevtoolsPluginModule.forRoot({
       disabled: environment.production, // Set to true for prod mode
@@ -70,6 +76,18 @@ library.add(faTwitter, faGithub, faGoogle);
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
+    // OidcModule.forRoot({
+    //   providerConfig: { ...environment.auth, provider: OidcProvider.Keycloak },
+    //   initConfig: {
+    //     onLoad: OidcOnLoad.CheckSso,
+    //     flow: OidcFlow.Standard,
+    //   },
+    //   resourceInterceptorConfig: {
+    //     allowedUrls: [environment.API_BASE_URL, environment.DOCS_BASE_URL],
+    //   },
+    //   postLoginRedirectUri: environment.baseUrl + 'dashboard',
+    //   postLogoutRedirectUri: environment.baseUrl + 'home',
+    // }),
     FormlyModule.forRoot(),
     environment.envName === 'mock'
       ? HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {

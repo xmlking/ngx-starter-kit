@@ -1,7 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatListModule,
+  MatToolbarModule,
+} from '@angular/material';
 
-import { SharedModule } from '@ngx-starter-kit/shared';
 import { ThemePickerModule } from '@ngx-starter-kit/theme-picker';
 import { NotificationsModule } from '@ngx-starter-kit/notifications';
 
@@ -12,9 +20,28 @@ import { UserMenuComponent } from './components/user-menu/user-menu.component';
 import { FullscreenToggleComponent } from './components/fullscreen-toggle/fullscreen-toggle.component';
 import { SidenavToggleComponent } from './components/sidenav-toggle/sidenav-toggle.component';
 import { QuickpanelToggleComponent } from './components/quickpanel-toggle/quickpanel-toggle.component';
+import { SharedFlexLayoutModule } from '@ngx-starter-kit/shared';
+import { ClickOutsideModule } from '@ngx-starter-kit/ngx-utils';
+
+const matModules = [
+  MatToolbarModule,
+  MatButtonModule,
+  MatIconModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatListModule,
+];
 
 @NgModule({
-  imports: [SharedModule, ThemePickerModule, RouterModule, NotificationsModule],
+  imports: [
+    CommonModule,
+    [...matModules],
+    ClickOutsideModule,
+    SharedFlexLayoutModule,
+    ThemePickerModule,
+    RouterModule,
+    NotificationsModule,
+  ],
   exports: [ToolbarComponent],
   declarations: [
     ToolbarComponent,

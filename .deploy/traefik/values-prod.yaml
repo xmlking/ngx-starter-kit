@@ -1,0 +1,16 @@
+dashboard:
+  enabled: true
+  domain: traefik.k8s
+#  auth:
+#    basic:
+#      test: $apr1$H6uskkkW$IgXLP6ewTrSuBkTrqE8wj/
+ssl:
+  enabled: true
+#  enforced: true
+  insecureSkipVerify: true
+kubernetes:
+  namespaces:
+    - default
+    - kube-system
+rbac:
+  enabled: true

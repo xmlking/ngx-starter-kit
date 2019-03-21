@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.passHostHeader: "true"
+  labels:
+    app: ngxapi
+  name: ngxapi
+spec:
+  rules:
+  - host: ngxapi.traefik.k8s
+    http:
+      paths:
+      - backend:
+          serviceName: ngxapi
+          servicePort: http
+        path: /
+  tls:
+  - hosts:
+    - ngxapi.traefik.k8s
+    secretName: keycloak-secrets-tls

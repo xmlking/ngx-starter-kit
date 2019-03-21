@@ -1,6 +1,6 @@
 {
   "npmScope": "ngx-starter-kit",
-  "implicitDependencies_TODO_BYPASSED": {
+  "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
     "tsconfig.json": "*",
@@ -48,9 +48,6 @@
     },
     "widgets": {
       "tags": ["child-module"]
-    },
-    "material": {
-      "tags": ["shared-module"]
     },
     "animations": {
       "tags": ["utils"]
@@ -132,6 +129,9 @@
     },
     "models": {
       "tags": ["utils"]
+    },
+    "oidc": {
+      "tags": ["public-module"]
     }
   }
 }

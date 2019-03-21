@@ -37,7 +37,6 @@ jobs:
 #    - stage: test # unit test
 #      script:
 #        - npm run test:ci
-##        - "npm testcafe 'path:`/usr/bin/google-chrome-stable` --headless --disable-gpu --remote-debugging-port=9222 --remote-debugging-address=0.0.0.0' apps/webapp-e2e/**/*.e2e-spec.ts --app 'npm run start' --skip-js-errors --app-init-delay 4000"
 
 #    - stage: test # e2e test
 #      script:

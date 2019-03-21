@@ -1,0 +1,17 @@
+<ngx-breadcrumbs title="Experiments" [crumbs]="crumbs"></ngx-breadcrumbs>
+<div class="grid-container" style="height: 615px; overflow: hidden;">
+  <mat-grid-list cols="8" rowHeight="1:1" gutterSize="15px">
+    <mat-grid-tile *ngFor="let card of cards; let i = index;"
+                   [colspan]="card.cols" [rowspan]="card.rows">
+      <cdk-drop-list [cdkDropListConnectedTo]="drops" [cdkDropListData]="i" >
+        <mat-card cdkDrag (cdkDragEntered)="entered($event)" [cdkDragData]="i"
+                  class="dashboard-card"  [style.backgroundColor]="card.color">
+          <mat-icon cdkDragHandle class="more-button">drag_handle</mat-icon>
+          <mat-card-content class="dashboard-card-content">
+            <h1>{{card.title}}</h1>
+          </mat-card-content>
+        </mat-card>
+      </cdk-drop-list>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

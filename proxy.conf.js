@@ -18,7 +18,7 @@ const PROXY_CONFIG = [
     context: [
       "/auth/realms"
     ],
-    'target': 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com',
+    'target': 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com',
     'secure': false,
     'logLevel': 'debug',
     // 'changeOrigin': true,

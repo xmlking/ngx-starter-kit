@@ -38,9 +38,9 @@ export class GoogleAnalyticsService {
   /**
    * set user after login success.
    */
-  public setUsername(userId: string) {
+  public setUsername(username: string) {
     if (typeof ga === 'function') {
-      ga('set', 'userId', userId);
+      ga('set', 'userId', username);
     }
   }
 
@@ -64,10 +64,10 @@ export class GoogleAnalyticsService {
   public emitEvent(eventCategory: EventCategory, eventAction: string, eventLabel?: string, eventValue?: number) {
     if (typeof ga === 'function') {
       ga('send', 'event', {
-        eventCategory: eventCategory,
-        eventAction: eventAction,
-        eventLabel: eventLabel,
-        eventValue: eventValue,
+        eventCategory,
+        eventAction,
+        eventLabel,
+        eventValue,
       });
     }
   }

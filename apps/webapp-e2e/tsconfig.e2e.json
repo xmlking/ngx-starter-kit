@@ -1,18 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/apps/webapp-e2e",
-    "module": "commonjs",
-    "target": "es5",
-    "types": ["jest", "node"]
+    "sourceMap": false,
+    "outDir": "../../dist/apps/webapp-e2e/src"
   },
-  "include": [
-    "**/*.ts",
-    "../../libs/home/src/index.ts",
-    "../../libs/dashboard/src/index.ts",
-    "../../libs/experiments/src/index.ts",
-    "../../libs/widgets/src/index.ts",
-    "../../libs/grid/src/index.ts",
-    "../../libs/not-found/src/index.ts"
-  ]
+  "include": ["src/**/*.ts"]
 }

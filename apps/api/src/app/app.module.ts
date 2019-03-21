@@ -8,6 +8,8 @@ import { UserModule } from './user';
 import { AppController } from './app.controller';
 import { NotificationsModule } from './notifications';
 import { ExternalModule } from './external';
+import { CacheModule } from './cache';
+import { ProjectModule } from './project';
 
 @Module({
   imports: [
@@ -18,18 +20,21 @@ import { ExternalModule } from './external';
           { path: '/auth', module: AuthModule },
           { path: '/user', module: UserModule },
           // { path: '/account', module: AccountModule },
+          { path: '/', module: ProjectModule },
           { path: '/', module: NotificationsModule },
         ],
       },
       { path: '/external', module: ExternalModule },
     ]),
     CoreModule,
+    CacheModule,
     AuthModule,
     UserModule,
     // AccountModule,
     // ChatModule,
     ExternalModule,
     NotificationsModule,
+    ProjectModule,
   ],
   controllers: [AppController],
 })

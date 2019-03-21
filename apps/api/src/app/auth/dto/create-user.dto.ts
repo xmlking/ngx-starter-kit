@@ -19,10 +19,9 @@ export class CreateUserDto {
 
   @ApiModelProperty({ type: String, minLength: 8, maxLength: 20 })
   @IsAscii()
-  @IsNotEmpty()
   @MinLength(8)
   @MaxLength(20)
   @IsString()
   @IsNotEmpty()
-  readonly userId: string;
+  readonly username: string;
 }

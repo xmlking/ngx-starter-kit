@@ -1,7 +1,12 @@
-export const environment = {
-  production: true,
+import { IEnvironment } from './ienvironment';
 
-  NODE_TLS_REJECT_UNAUTHORIZED: 0,
+export const environment: IEnvironment = {
+  production: true,
+  envName: 'prod',
+
+  env: {
+    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+  },
 
   server: {
     host: process.env.HOST || '0.0.0.0',
@@ -12,11 +17,11 @@ export const environment = {
 
   database: {
     type: 'postgres',
-    host: process.env.TYPEORM_HOST || 'postgres',
+    host: process.env.TYPEORM_HOST || 'ngxdb-postgresql',
     port: process.env.TYPEORM_PORT ? Number(process.env.TYPEORM_PORT) : 5432,
-    database: process.env.TYPEORM_DATABASE || 'cockpit',
-    username: process.env.TYPEORM_USERNAME || 'cockpit',
-    password: process.env.TYPEORM_PASSWORD || 'cockpit123',
+    database: process.env.TYPEORM_DATABASE || 'postgres',
+    username: process.env.TYPEORM_USERNAME || 'postgres',
+    password: process.env.TYPEORM_PASSWORD || 'postgres321',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
     synchronize: false,
@@ -24,7 +29,7 @@ export const environment = {
 
   auth: {
     issuer:
-      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
     clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
   },
 
@@ -44,6 +49,11 @@ export const environment = {
     templateDir: process.env.EMAIL_TEMPLATE_DIR || `${__dirname}/assets/email-templates`,
   },
 
+  weather: {
+    baseUrl: 'https://api.openweathermap.org/data/2.5',
+    apiKey: '7cb0f6a068d1de4845c49ba22b74d7cc',
+  },
+
   // Key generation: https://web-push-codelab.glitch.me
   webPush: {
     subject: process.env.VAPID_SUBJECT || 'mailto: sumo@demo.com',
@@ -51,31 +61,5 @@ export const environment = {
       process.env.VAPID_PUBLIC_KEY ||
       'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg',
     privateKey: process.env.VAPID_PRIVATE_KEY || 'cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI',
-  },
-  kubernetes: {
-    CLUSTER1: {
-      baseUrl: 'https://cluster1:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER1_SERVICE_ACCOUNT_TOKEN || 'AAAAAAAAAAAA',
-    },
-    CLUSTER2: {
-      baseUrl: 'https://cluster2:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER2_SERVICE_ACCOUNT_TOKEN || 'BBBBBBBBBBBB',
-    },
-    CLUSTER3: {
-      baseUrl: 'https://cluster3:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER3_SERVICE_ACCOUNT_TOKEN || 'CCCCCCCCCCCCC',
-    },
-    CLUSTER4: {
-      baseUrl: 'https://cluster4:8080',
-      version: '1.10',
-      /* tslint:disable-next-line:max-line-length */
-      token: process.env.CLUSTER4_SERVICE_ACCOUNT_TOKEN || 'DDDDDDDDDDDDD',
-    },
   },
 };

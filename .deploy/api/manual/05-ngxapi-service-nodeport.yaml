@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngxapi
+  labels:
+    app: ngxapi
+spec:
+  type: NodePort
+  ports:
+    - name: http
+      port: 3000
+      protocol: TCP
+      targetPort: http
+      nodePort: 32300
+  selector:
+    app: ngxapi

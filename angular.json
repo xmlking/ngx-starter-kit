@@ -7,10 +7,10 @@
       "root": "apps/webapp",
       "sourceRoot": "apps/webapp/src",
       "projectType": "application",
-      "prefix": "app",
+      "prefix": "ngx",
       "schematics": {
-        "@schematics/angular:component": {
-          "styleext": "scss"
+        "@nrwl/schematics:component": {
+          "style": "scss"
         }
       },
       "architect": {
@@ -54,7 +54,8 @@
                 "lazy": true
               }
             ],
-            "scripts": []
+            "scripts": [],
+            "es5BrowserSupport": true
           },
           "configurations": {
             "production": {
@@ -66,7 +67,11 @@
               ],
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "hidden": true
+              },
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
@@ -74,32 +79,33 @@
               "vendorChunk": false,
               "buildOptimizer": true,
               "serviceWorker": true,
+              "ngswConfigPath": "apps/webapp/ngsw-config.json",
               "budgets": [
                 {
                   "type": "bundle",
                   "name": "polyfills",
-                  "baseline": "45kb",
+                  "baseline": "300kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "vendor",
-                  "baseline": "1mb",
+                  "baseline": "1.5mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "styles",
-                  "baseline": "250kb",
+                  "baseline": "350kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
                 {
                   "type": "bundle",
                   "name": "main",
-                  "baseline": "1.2mb",
+                  "baseline": "10mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 },
@@ -118,7 +124,7 @@
                 },
                 {
                   "type": "all",
-                  "baseline": "10mb",
+                  "baseline": "50mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%"
                 }
@@ -134,7 +140,11 @@
               "baseHref": "/ngx-starter-kit/",
               "optimization": true,
               "outputHashing": "all",
-              "sourceMap": false,
+              "sourceMap": {
+                "scripts": true,
+                "styles": true,
+                "hidden": true
+              },
               "extractCss": true,
               "namedChunks": false,
               "aot": true,
@@ -192,10 +202,11 @@
       "prefix": "",
       "architect": {
         "e2e": {
-          "builder": "@nrwl/builders:jest",
+          "builder": "@nrwl/builders:cypress",
           "options": {
-            "jestConfig": "",
-            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json"
+            "cypressConfig": "apps/webapp-e2e/cypress.json",
+            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
+            "devServerTarget": "webapp:serve"
           },
           "configurations": {
             "production": {
@@ -216,6 +227,7 @@
       "root": "apps/api",
       "sourceRoot": "apps/api/src",
       "projectType": "application",
+      "prefix": "api",
       "schematics": {},
       "architect": {
         "build": {
@@ -233,12 +245,14 @@
               "sourceMap": false,
               "optimization": true,
               "extractLicenses": true,
+              "inspect": false,
               "fileReplacements": [
                 {
                   "replace": "apps/api/src/environments/environment.ts",
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
-              ]
+              ],
+              "externalDependencies": "all"
             }
           }
         },
@@ -273,19 +287,21 @@
       "root": "apps/api-e2e",
       "sourceRoot": "apps/api-e2e/src",
       "projectType": "application",
+      "prefix": "api",
+      "schematics": {},
       "architect": {
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "apps/api-e2e/jest.config.js",
-            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": "apps/api-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**"]
+            "exclude": ["**/node_modules/**", "**/*.json"]
+          }
+        },
+        "e2e": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "apps/api-e2e/jest.config.js",
+            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
           }
         }
       }
@@ -560,29 +576,6 @@
         }
       }
     },
-    "material": {
-      "root": "libs/material",
-      "sourceRoot": "libs/material/src",
-      "projectType": "library",
-      "prefix": "ngx",
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": ["libs/material/tsconfig.lib.json", "libs/material/tsconfig.spec.json"],
-            "exclude": ["**/node_modules/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/builders:jest",
-          "options": {
-            "jestConfig": "libs/material/jest.config.js",
-            "tsConfig": "libs/material/tsconfig.spec.json",
-            "setupFile": "libs/material/src/test-setup.ts"
-          }
-        }
-      }
-    },
     "animations": {
       "root": "libs/animations",
       "sourceRoot": "libs/animations/src",
@@ -631,7 +624,7 @@
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "tsConfig": "libs/utils/tsconfig.spec.json",
-            "setupFile": "libs/auth/src/test-setup.ts"
+            "setupFile": "libs/utils/src/test-setup.ts"
           }
         }
       }
@@ -1299,6 +1292,36 @@
           }
         }
       }
+    },
+    "oidc": {
+      "root": "libs/oidc",
+      "sourceRoot": "libs/oidc/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/oidc/tsconfig.lib.json",
+            "project": "libs/oidc/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": ["libs/oidc/tsconfig.lib.json", "libs/oidc/tsconfig.spec.json"],
+            "exclude": ["**/node_modules/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/builders:jest",
+          "options": {
+            "jestConfig": "libs/oidc/jest.config.js",
+            "tsConfig": "libs/oidc/tsconfig.spec.json",
+            "setupFile": "libs/oidc/src/test-setup.ts"
+          }
+        }
+      }
     }
   },
   "schematics": {
@@ -1310,7 +1333,8 @@
       "prefix": "ngx"
     },
     "@nrwl/schematics:library": {
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "framework": "angular"
     },
     "@ngx-formly/schematics:component": {
       "styleext": "scss"

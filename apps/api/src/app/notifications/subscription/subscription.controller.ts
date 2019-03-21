@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
 import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { CrudController } from '../../core';
 import { Subscription } from './subscription.entity';
@@ -7,35 +7,43 @@ import { CurrentUser, Roles, RolesEnum } from '../../auth/decorators';
 import { User } from '../../auth';
 import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
+import { SubscriptionList } from './dto/subscription-list.model';
+import { FindSubscriptionsDto } from './dto/find-subscriptions.dto';
+import { FindOwnSubscriptionsDto } from './dto/find-own-subscriptions.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Subscription')
+@ApiUseTags('Subscription')
 @Controller('subscription')
+@ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 export class SubscriptionController extends CrudController<Subscription> {
   constructor(private readonly subscriptionService: SubscriptionService) {
     super(subscriptionService);
   }
 
-  @ApiOperation({ title: 'find all Subscriptions. Admins only' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All Subscriptions', /* type: Subscription, */ isArray: true })
-  @ApiUseTags('admin')
+  @ApiOperation({ title: 'Find all Subscriptions. Admins only' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Subscriptions', type: SubscriptionList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
-  async findAll(): Promise<[Subscription[], number]> {
-    return this.subscriptionService.getAll();
+  async findAll(@Query() filter: FindSubscriptionsDto): Promise<SubscriptionList> {
+    return this.subscriptionService.findAll(filter);
   }
 
   @ApiOperation({ title: 'find all user Subscriptions' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All user Subscriptions', /* type: Subscription, */ isArray: true })
-  @Get('user')
-  async getUserSubscriptions(@CurrentUser() user): Promise<[Subscription[], number]> {
-    return this.subscriptionService.getUserSubscriptions(user);
+  @ApiResponse({ status: HttpStatus.OK, description: 'All user Subscriptions', type: SubscriptionList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @Get('own')
+  async findOwn(@Query() filter: FindOwnSubscriptionsDto, @CurrentUser() user): Promise<SubscriptionList> {
+    return this.subscriptionService.findOwn(filter, user);
   }
 
   @ApiOperation({ title: 'Find by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Subscription })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Subscription> {
@@ -54,11 +62,13 @@ export class SubscriptionController extends CrudController<Subscription> {
   })
   @Post()
   async create(@Body() entity: CreateSubscriptionDto, @CurrentUser() user: User): Promise<Subscription> {
-    const records = await this.subscriptionService.findAndCount({ endpoint: entity.endpoint });
-    if (records[1] === 0) {
-      return super.create({ ...entity, userId: user.userId });
+    const { total, items } = await this.subscriptionService.findAll(
+      new FindSubscriptionsDto({ endpoint: entity.endpoint }),
+    );
+    if (total === 0) {
+      return super.create({ ...entity, username: user.username });
     } else {
-      return records[0][0];
+      return items[0];
     }
   }
 
@@ -76,9 +86,9 @@ export class SubscriptionController extends CrudController<Subscription> {
     @CurrentUser() user: User,
   ): Promise<any> {
     if (id.startsWith('http')) {
-      return this.subscriptionService.update({ endpoint: id, userId: user.userId }, entity);
+      return this.subscriptionService.update({ endpoint: id, username: user.username }, entity);
     } else {
-      return this.subscriptionService.update({ id: parseInt(id, 10), userId: user.userId }, entity);
+      return this.subscriptionService.update({ id: parseInt(id, 10), username: user.username }, entity);
     }
   }
 
@@ -88,9 +98,9 @@ export class SubscriptionController extends CrudController<Subscription> {
   @Delete(':id')
   async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
     if (id.startsWith('http')) {
-      return this.subscriptionService.delete({ endpoint: id, userId: user.userId });
+      return this.subscriptionService.delete({ endpoint: id, username: user.username });
     } else {
-      return this.subscriptionService.delete({ id: parseInt(id, 10), userId: user.userId });
+      return this.subscriptionService.delete({ id: parseInt(id, 10), username: user.username });
     }
   }
 }

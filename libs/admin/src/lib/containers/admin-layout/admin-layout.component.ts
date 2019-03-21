@@ -3,7 +3,7 @@ import { hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { RouterState } from '@ngxs/router-plugin';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngxs/store';
-import { WINDOW } from '@ngx-starter-kit/core';
+import { RouterStateData, WINDOW } from '@ngx-starter-kit/core';
 import { NotificationsComponent } from '../notifications/notifications.component';
 
 /** @dynamic */
@@ -25,7 +25,7 @@ export class AdminLayoutComponent implements OnInit {
       .select<any>(RouterState.state)
       .pipe(map(state => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
 
-    this.depth$ = this.store.select<any>(RouterState.state).pipe(map(state => state.data.depth));
+    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map(state => state.data.depth));
   }
 
   onActivate(componentRef: ComponentRef<any>) {

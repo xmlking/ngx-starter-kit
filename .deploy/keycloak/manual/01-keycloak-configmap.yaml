@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+data:
+  DB_VENDOR: POSTGRES
+  DB_ADDR: postgres
+  DB_PORT: '5432'
+# https://issues.jboss.org/browse/KEYCLOAK-7739
+  POSTGRES_PORT: '5432'
+  DB_DATABASE: keycloak
+  DB_USER: keycloak
+  KEYCLOAK_USER: admin
+  ROOT_LOGLEVEL: INFO
+  KEYCLOAK_LOGLEVEL: INFO
+  PROXY_ADDRESS_FORWARDING: 'true'
+#  KEYCLOAK_HOSTNAME:
+

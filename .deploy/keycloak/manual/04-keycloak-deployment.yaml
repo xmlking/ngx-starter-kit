@@ -1,0 +1,81 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: keycloak
+    spec:
+      securityContext:
+        runAsUser: 1000
+        fsGroup: 1000
+        runAsNonRoot: true
+      terminationGracePeriodSeconds: 60
+      initContainers:
+        - name: wait-for-postgresql
+          image: busybox
+          imagePullPolicy: IfNotPresent
+          command:
+            - sh
+            - -c
+            - |
+              until printf "." && nc -z -w 2 postgres 5432; do
+                  sleep 2;
+              done;
+
+              echo 'PostgreSQL OK ✓'
+      containers:
+        - name: keycloak
+          image: jboss/keycloak:4.8.3.Final
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: keycloak
+            - configMapRef:
+                name: keycloak
+          livenessProbe:
+            httpGet:
+              path: /auth
+              port: http
+            initialDelaySeconds: 120
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: auth/realms/master
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+#          volumeMounts:
+#            - mountPath: /opt/jboss/keycloak/standalone/data
+#              name: keycloak-data-volume
+#            - mountPath: "/etc/x509/https"
+#              name: tls-config-volume
+#              readOnly: true
+#            - mountPath: /opt/jboss/keycloak/standalone/configuration/import
+#              name: keycloak-import-volume
+#              readOnly: true
+#      volumes:
+#        - name: keycloak-data-volume
+#          persistentVolumeClaim:
+#            claimName: keycloak
+#        - name: tls-config-volume
+#          secret:
+#            secretName: keycloak-secrets-tls
+#        - name: keycloak-import-volume
+#          configMap:
+#            defaultMode: 0420
+#            name: keycloak-config-imports
+#            items:
+#              - key: realm-export.json
+#                path: realm-export.json
+#              - key: standalone.xml
+#                path: standalone.xml

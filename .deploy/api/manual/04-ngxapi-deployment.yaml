@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngxapi
+  labels:
+    app: ngxapi
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+  selector:
+    matchLabels:
+      app: ngxapi
+  template:
+    metadata:
+      name: ngxapi
+      labels:
+        app: ngxapi
+    spec:
+      containers:
+        - name: api
+          image: xmlking/ngxapi:latest
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 4G
+            requests:
+              memory: 2G
+          ports:
+            - name: http
+              containerPort: 3000
+              protocol: TCP
+          envFrom:
+            - secretRef:
+                name: ngxapi
+            - configMapRef:
+                name: ngxapi
+          env:
+            - name: TYPEORM_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ngxdb-postgresql
+                  key: postgresql-password

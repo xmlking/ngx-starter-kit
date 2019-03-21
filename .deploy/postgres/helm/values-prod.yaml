@@ -1,0 +1,30 @@
+postgresqlPassword: postgres321
+
+#initdbScripts:
+#  keycloak-db-init.sql: |-
+#    CREATE ROLE $KEYCLOAK_DB_USER WITH PASSWORD '$KEYCLOAK_DB_PASSWORD' NOSUPERUSER LOGIN;
+#    CREATE DATABASE $KEYCLOAK_DB;
+#    GRANT ALL PRIVILEGES ON DATABASE $KEYCLOAK_DB TO $KEYCLOAK_DB_USER;
+
+initdbScriptsSecret: postgres-init-scripts
+
+persistence:
+  size: 8Gi
+  existingClaim: postgres
+
+replication:
+  enabled: true
+  user: repl_user
+  password: repl_password
+  slaveReplicas: 2
+  synchronousCommit: "on"
+  numSynchronousReplicas: 1
+
+networkPolicy:
+  enabled: true
+
+metrics:
+  enabled: true
+
+#volumePermissions:
+#  enabled: false

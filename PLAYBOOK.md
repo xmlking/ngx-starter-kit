@@ -6,15 +6,15 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 > you need following tools. versions listed here are minimal versions tested.
 
-| Software             | Version | Optional |
-| -------------------- | ------- | -------- |
-| Node                 | v11.4.0 |          |
-| NPM                  | v6.5.0  |          |
-| Angular CLI          | v7.1.3  |          |
-| @nrwl/schematics     | v7.4.1  |          |
-| @nestjs/cli          | v5.7.1  |          |
-| semantic-release-cli | v4.1.0  |          |
-| commitizen           | v3.0.5  |          |
+| Software             | Version  | Optional |
+| -------------------- | -------- | -------- |
+| Node                 | v11.11.0 |          |
+| NPM                  | v6.9.0   |          |
+| Angular CLI          | v8.0.0   |          |
+| @nrwl/schematics     | v7.7.2   |          |
+| @nestjs/cli          | v6.0.0   |          |
+| semantic-release-cli | v4.1.1   |          |
+| commitizen           | v3.0.7   |          |
 
 ### Install Prerequisites
 
@@ -81,7 +81,7 @@ ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
 more cat ~/.angular-config.json
-# show dependency tree for specified package.
+# find reverse dependencies for a package
 npm ls jasmine-marbles
 ```
 
@@ -100,12 +100,12 @@ for nx help `npm run help`
 #### Create Workspace
 
 ```bash
-# create workspace Ref: https://nrwl.io/nx/guide-nx-workspace
-create-nx-workspace  ngx-starter-kit --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm
+# create workspace Ref: https://nx.dev/tutorial/01-create-application
+create-nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=npm  --preset=empty --style=scss
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --prefix=ngx --npm-scope=ngx-starter-kit --package-manager=npm --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --bazel  --verbose
 cd ngx-starter-kit
 
 > remove all ngrx NPM pagages from package.json
@@ -130,7 +130,8 @@ ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
 # generate micro-app `chat-box`
-ng g app chatApp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
+
+ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
 npm i @webcomponents/custom-elements ?
@@ -164,7 +165,7 @@ npm i @angular/flex-layout
 # Add in-memory-web-api
 npm i angular-in-memory-web-api
 # Add oauth2-oidc
-~~npm i angular-oauth2-oidc~~
+~npm i angular-oauth2-oidc~
 npm i @xmlking/angular-oauth2-oidc-all
 
 # Add NGXS
@@ -213,8 +214,8 @@ npm i -D tslint-config-prettier
 # to check any conflects
 npx tslint-config-prettier-check ./tslint.json
 
-# install testCafe for e2e testing and remove protractor
-npm i -D testcafe testcafe-angular-selectors testcafe-live
+# install cypress for e2e testing and remove protractor
+npm i -D cypress @types/jquery
 
 # for CI/CD automation and release
 # first time semantic-release setup
@@ -231,10 +232,11 @@ npm i -D lint-staged
 
 ```bash
 ng update
-ng update @angular/core@next
-ng update @angular/cli@next
+# ng update --next
+ng update @angular/core --next
+ng update @angular/cli --next
 ng update @angular/material --force
-ng update @angular/pwa@next
+ng update @angular/pwa --next
 ng update @ngx-formly/schematics --ui-theme=material
 ng update @nrwl/schematics --force
 ```
@@ -254,33 +256,44 @@ ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
 
-ng g lib animations --module false -tags=utils --unit-test-runner=jest -d
-ng g lib Tree --module false  --publishable=true --tags=utils --unit-test-runner=jest -d
-ng g lib utils --module false --publishable=true --tags=utils --unit-test-runner=jest -d
-# system wide models
-ng g lib models --module false --tags=utils --unit-test-runner=jest -d
+ng g lib animations --framework=none -tags=utils --unit-test-runner=jest -d
+ng g lib Tree --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
+ng g lib utils --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
+# system wide `models` module
+ng g lib models --framework=none --tags=utils --unit-test-runner=jest -d
+ng g interface User  --project=models --type=model -d
+ng g interface Profile  --project=models --type=model -d
+ng g interface Image  --project=models --type=model -d
+ng g enum ImageType --project=models -d
+ng g enum Gender --project=models -d
+ng g enum AccountSourceType --project=models -d
+ng g enum ZoneType --project=models -d
+ng g enum EnvironmentType --project=models -d
+ng g interface Labels  --project=models --type=model -d
+ng g interface Membership  --project=models --type=model -d
+ng g interface ResourceQuota  --project=models --type=model -d
+ng g interface Project  --project=models --type=model -d
+ng g interface Cluster  --project=models --type=model -d
 
 # add `core` module which will be only inported into root/app module.
 ng g lib core --tags=core-module --unit-test-runner=jest -d
 # add  global services for `core` Module
-ng g service services/InMemoryData   --project=core   --spec=false -d
+ng g service services/InMemoryData   --project=core   --skip-tests -d
 ng g service services/PageTitle      --project=core   -d
 ng g service services/ServiceWorker  --project=core   -d
 ng g service services/MediaQuery     --project=core   -d
 ng g service services/DeepLink       --project=core   -d
 ng g service services/Feature        --project=core   -d
-ng g service services/GoogleAnalytics --project=core   -d
-ng g service  PushNotification        --project=core -d
-
-# `material` module to encapulate material libs which is impoted into any `Lazy-loaded Feature Modules` that need material components
-ng g lib material --prefix=ngx --spec=false --tags=shared-module --unit-test-runner=jest -d
+ng g service services/GoogleAnalytics --project=core  -d
+ng g service  PushNotification        --project=core  -d
+ng g service  services/Profile        --project=core  --skip-tests -d
+ng g @ngxs/schematics:state --name=preference --spec=false --project=core --sourceRoot=libs/core/src/lib -d
+ng g @ngxs/schematics:state --name=profile --spec=false --project=core --sourceRoot=libs/core/src/lib -d
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
 ng g lib shared --prefix=ngx --tags=shared-module --unit-test-runner=jest
 # generate containers, components for `shared` Module
 ng g service containers/entity/entity --project=shared
-ng g directive directives/min  --project=shared  --export=true
-ng g directive components/ClickOutside  --project=shared  --export=true
 ng g component components/entityTable --project=shared  --export=true
 ng g component containers/entity --project=shared  --skip-import
 ng g component containers/entityForm  --project=shared  --skip-import
@@ -294,7 +307,7 @@ ng g component containers/NotFound --project=not-found -d
 # generate components for `AppConfirm` Module
 ng g lib AppConfirm --tags=public-module --publishable=true --unit-test-runner=jest -d
 ng g component AppConfirm --project=app-confirm  --flat  -d
-ng g service AppConfirm --project=app-confirm --spec=false -d
+ng g service AppConfirm --project=app-confirm --skip-tests -d
 
 # generate components for `Draggable` Module
 ng g lib Draggable --tags=public-module --publishable=true --unit-test-runner=jest
@@ -310,7 +323,6 @@ ng g lib ScrollToTop --tags=public-module --publishable=true --unit-test-runner=
 ng g component ScrollToTop --project=scroll-to-top --flat -d
 
 ng g lib scrollbar --tags=public-module --publishable=true
-
 
 # generate components for `ContextMenu` Module
 ng g lib ContextMenu --tags=public-module --publishable=true --unit-test-runner=jest
@@ -372,32 +384,37 @@ ng g component jsonDiff --project=json-diff --flat -d
 ng g component jsonDiffTree --project=json-diff --flat -d
 
 # generate components for `clap` Module
-ng g lib clap --tags=public-module --spec=false --publishable=true --unit-test-runner=jest
-ng g component clap --project=clap  -s  -t --spec=false --export --flat -d
-ng g component components/counterBubble --project=clap  -s  -t --spec=false --flat  -d
-ng g component components/totalCounter --project=clap  -s  -t --spec=false --flat  -d
-ng g component components/fab --project=clap  -s  -t --spec=false --flat  -d
+ng g lib clap --tags=public-module --skip-tests --publishable=true --unit-test-runner=jest
+ng g component clap --project=clap  -s  -t --skip-tests --export --flat -d
+ng g component components/counterBubble --project=clap  -s  -t --skip-tests --flat  -d
+ng g component components/totalCounter --project=clap  -s  -t --skip-tests --flat  -d
+ng g component components/fab --project=clap  -s  -t --skip-tests --flat  -d
 
 # generate components for `ngx-utils` Module
-ng g lib ngxUtils --tags=public-module,utils --module false --publishable=true --unit-test-runner=jest
-ng g module pipes/truncate --project=ngx-utils --spec=false -d
+ng g lib ngxUtils --tags=public-module,utils --framework=none --publishable=true --unit-test-runner=jest
+ng g module pipes/truncate --project=ngx-utils --skip-tests -d
 ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export -d
 ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export -d
-ng g module pipes/helper --project=ngx-utils --spec=false -d
+ng g module pipes/helper --project=ngx-utils --skip-tests -d
 ng g pipe pipes/helper/filter --project=ngx-utils --module=helper --export -d
 ng g pipe pipes/helper/groupBy --project=ngx-utils --module=helper --export -d
 ng g pipe pipes/helper/safeHtml --project=ngx-utils --module=helper --export -d
-ng g module directives/ngLet --project=ngx-utils --spec=false -d
+ng g module directives/ngLet --project=ngx-utils --skip-tests -d
 ng g directive directives/ng-let/ngLet  --selector=ngLet --project=ngx-utils --module=ng-let --export -d
-ng g module directives/routerLinkMatch --project=ngx-utils --spec=false -d
+ng g module directives/routerLinkMatch --project=ngx-utils --skip-tests -d
 ng g directive directives/router-link-match/RouterLinkMatch  --selector=routerLinkMatch --project=ngx-utils --module=router-link-match --export -d
-ng g module pipes/dateFns --project=ngx-utils --spec=false -d
-ng g service pipes/date-fns/DateFnsConfiguration --project=ngx-utils --module=date-fns --spec=false -d
+ng g module pipes/dateFns --project=ngx-utils --skip-tests -d
+ng g service pipes/date-fns/DateFnsConfiguration --project=ngx-utils --module=date-fns --skip-tests -d
 ng g pipe pipes/date-fns/FormatTimeInWords --project=ngx-utils --module=date-fns --export -d
-ng g module directives/inViewport --project=ngx-utils --spec=false -d
+ng g module directives/inViewport --project=ngx-utils --skip-tests -d
 ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
 ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
-
+ng g module directives/clickOutside --project=ngx-utils --skip-tests -d
+ng g directive directives/click-outside/clickOutside  --selector=ngxClickOutside --project=ngx-utils --module=click-outside --export -d
+ng g module directives/min --project=ngx-utils --skip-tests -d
+ng g directive directives/min/MinValidator  --selector=appMin --project=ngx-utils --module=min --export -d
+ng g module directives/mask --project=ngx-utils --skip-tests -d
+ng g directive directives/mask/mask  --selector=ngxMask --project=ngx-utils --module=mask --export -d
 
 # generate components for `toolbar` Module
 ng g lib toolbar --tags=private-module --unit-test-runner=jest -d
@@ -418,8 +435,22 @@ ng g directive  IconSidenav           --project=sidenav -d
 # generate components for `auth` Module
 ng g lib auth --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
 ng g component components/login --project=auth -d
-ng g guard admin --project=auth  -d
-ng g @ngxs/schematics:store --name=auth --spec --project=auth -d
+ng g guard admin --project=auth --implements CanActivate -d
+ng g @ngxs/schematics:store --name=auth --spec --project=auth --sourceRoot=libs/auth/src/lib -d
+
+# generate components for `oidc` Module
+ng g lib oidc --tags=public-module --prefix=ngx --style=scss --unit-test-runner=jest --spec=false --publishable=true -d
+ng g service services/Auth  --project=oidc -d
+ng g service services/Keycloak  --project=oidc -d
+ng g service services/Generic  --project=oidc -d
+ng g service services/Ping  --project=oidc -d
+ng g guard BaseAuth --project=oidc --implements CanActivate -d
+ng g interceptor DefaultOidc --project=oidc  -d
+ng g @ngxs/schematics:store --name=auth --spec --project=oidc  --sourceRoot=libs/oidc/src/lib -d
+ng g i interfaces/OidcModule config --project=oidc -d
+ng g i interfaces/OidcProvider config --project=oidc -d
+ng g i interfaces/OidcInit config --project=oidc -d
+ng g i interfaces/OidcResourceInterceptor config --project=oidc -d
 
 # generate components for `navigator` Module
 ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest -d
@@ -436,6 +467,7 @@ ng g component containers/about       --project=home
 
 # generate containers, components for `dashboard` Module
 ng g component components/rainbow         --project=dashboard -d
+ng g component components/OidcProfile         --project=dashboard -d
 ng g component containers/dashboardLayout --project=dashboard -d
 ng g component containers/overview        --project=dashboard -d
 ng g component containers/profile         --project=dashboard -d
@@ -460,13 +492,14 @@ ng g component containers/ContextMenu           --project=experiments -d
 ng g component containers/FileUpload            --project=experiments -d
 ng g component containers/virtualScroll         --project=experiments -d
 ng g component containers/StickyTable           --project=experiments -d
-ng g component containers/clapButton            --project=experiments -s  -t --spec=false  -d
+ng g component containers/clapButton            --project=experiments -s  -t --skip-tests  -d
 ng g component containers/knobDemo              --project=experiments -d
 ng g component containers/ledDemo               --project=experiments  -d
 ng g component containers/ImageComp             --project=experiments  -d
 ng g component containers/layout                --project=experiments -d
+ng g component containers/dashing               --project=experiments -d
 ng g component components/card                  --project=experiments -d
-ng g component containers/viewport              --project=experiments --spec=false -d
+ng g component containers/viewport              --project=experiments --skip-tests -d
 
 # generate components for `ImageComparison` Module
 ng g lib ImageComparison --tags=public-module --spec=false --publishable=true -d
@@ -519,7 +552,12 @@ ng update --all
 ```bash
 # Create a translation source file
 ng xi18n --output-path apps/webapp/src/local
+
+ng build api
+# start with hugh memory 
+node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build api --prod
 ```
+
 ### Run
 
 ```bash
@@ -540,6 +578,22 @@ ng serve -c=prod
 docker-compose up --build web
 # run web
 docker-compose up web
+```
+
+### Uint Test
+```bash
+ng test <module>
+```
+
+### E2E Test
+```bash
+ng e2e webapp-e2e
+# headless tests (CI)
+ng e2e webapp-e2e --headless
+# Production target
+ng e2e webapp-e2e --prod
+# Watching for changes
+ng e2e webapp-e2e --watch
 ```
 
 ### Serve from dist
@@ -586,16 +640,21 @@ npx standard-version
 ```
 
 #### build library
+
 ```bash
 ng build socketio-plugin
 ```
+
 #### publish library
+
 > from workspace root
+
 ```bash
+export TAG=dev
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # check who-am-i
 npm whoami
-npm publish dist/libs/socketio-plugin --access public
+npm publish dist/libs/socketio-plugin --tag $TAG --access public
 ```
 
 ### Analyze

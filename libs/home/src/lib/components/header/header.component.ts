@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { Login, Logout } from '@ngx-starter-kit/auth';
-import { AuthState } from '@ngx-starter-kit/auth';
+import { AuthState, Login, Logout, Signup } from '@ngx-starter-kit/auth';
+// import { AuthState, Login, Logout, Signup } from '@ngx-starter-kit/oidc';
 
 @Component({
   selector: 'ngx-home-header',
@@ -31,5 +31,7 @@ export class HeaderComponent implements OnInit {
     this.store.dispatch(new Logout());
   }
 
-  public signup() {}
+  public signup() {
+    this.store.dispatch(new Signup());
+  }
 }

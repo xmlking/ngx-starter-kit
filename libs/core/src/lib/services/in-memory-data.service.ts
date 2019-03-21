@@ -48,7 +48,7 @@ export class InMemoryDataService implements InMemoryDbService {
 
   parseRequestUrl(url: string, utils: RequestInfoUtilities): ParsedRequestUrl {
     const newUrl = url
-      .replace(/\/notifications\/user/, '/notifications')
+      .replace(/\/notifications\/own/, '/notifications')
       .replace(/\/datapower\/serviceproxy/, '/serviceproxy')
       .replace(/\/nas\/cluster/, '/cluster')
       .replace(/\/layer7\/my.cnf/, '/mycnf');

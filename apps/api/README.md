@@ -42,6 +42,13 @@ docker ps -a
 docker rm 82be5234c94a
 ```
 
+> connect Postgres running on local k8s
+
+```bash
+$ POD_NAME=$(kubectl get pods  -lapp=postgres -o jsonpath='{.items[0].metadata.name}')
+$ kubectl port-forward $POD_NAME 5432:5432
+```
+
 #### Run Dev Mode
 
 ```bash
@@ -57,10 +64,12 @@ ng serve api --prod
 #### Run Prod Mode
 
 ```bash
-# build first
+# clean dist first
+npx rimraf dist
+# then build
 ng build api --prod
 # then run
-npm run api:start:prod
+node dist/apps/api/main.js
 ```
 
 **API URL:** http://localhost:3000
@@ -72,7 +81,7 @@ npm run api:start:prod
 > build for production env
 
 ```bash
-npm run api:build
+ng build api --prod
 ```
 
 ### Generate
@@ -92,16 +101,27 @@ nest g class user.entity app/auth --no-spec --dry-run
 nest g class auth.exception app/auth --no-spec --dry-run
 ```
 
-### Test
+### Unit Test
 
 > coverage will be generate in coverage/apps/api
 
 ```bash
-# unit tests
-ng test api
+# unit test only changed
+ng test api --onlyChanged
+# generate coverage
+ng test api --codeCoverage
+# test in CI env
+ng test api --runInBand
+```
 
-# e2e tests
-ng test api-e2e
+### E2E Test
+
+```bash
+ng e2e api-e2e
+# e2e test with watch mode
+ng e2e api-e2e --watch
+# e2e test in CI env
+ng e2e api-e2e --forceExit --detectOpenHandles
 ```
 
 ### Reference

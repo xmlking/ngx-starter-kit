@@ -3,7 +3,7 @@ import { ServiceWorkerService } from '@ngx-starter-kit/core';
 import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-root',
+  selector: 'ngx-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
 import { CrudController } from '../../core';
 import { ApiExcludeEndpoint, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { Notification } from './notification.entity';
@@ -7,39 +7,44 @@ import { NotificationService } from './notification.service';
 import { CurrentUser, Roles, RolesEnum, User } from '../../auth';
 import { SendNotificationDto } from './dto/send-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
+import { NotificationList } from './dto/notification-list.model';
+import { FindNotificationsDto } from './dto/find-notifications.dto';
+import { FindOwnNotificationsDto } from './dto/find-own-notifications.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Sumo', 'Notifications')
+@ApiUseTags('Notifications')
 @Controller('notifications')
+@ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 export class NotificationController extends CrudController<Notification> {
   constructor(private readonly notificationService: NotificationService) {
     super(notificationService);
   }
 
-  @ApiOperation({ title: 'find all Notifications. Admins only' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All Notifications', /* type: Notification, */ isArray: true })
-  @ApiUseTags('admin')
+  @ApiOperation({ title: 'Find all Notifications. Admins only' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Notifications', type: NotificationList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
-  async findAll(): Promise<[Notification[], number]> {
-    return this.notificationService.getAll();
+  async findAll(@Query() filter: FindNotificationsDto): Promise<NotificationList> {
+    // return super.findAll(filter);
+    return this.notificationService.findAll(filter);
   }
 
-  @ApiOperation({ title: 'find all user and global Notifications' })
-  @ApiResponse({
-    status: HttpStatus.OK,
-    description: 'All user Notifications',
-    /* type: Notification, */ isArray: true,
-  })
-  @Get('user')
-  async getUserNotifications(@CurrentUser() user): Promise<[Notification[], number]> {
-    return this.notificationService.getUserNotifications(user);
+  @ApiOperation({ title: 'find user\'s and global Notifications' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Notifications', type: NotificationList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @Get('own')
+  async findOwn(@Query() filter: FindOwnNotificationsDto, @CurrentUser() user): Promise<NotificationList> {
+    return this.notificationService.findOwn(filter, user);
   }
 
   @ApiOperation({ title: 'Find by id. Admins only' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Notification })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id') id: string): Promise<Notification> {
@@ -56,7 +61,8 @@ export class NotificationController extends CrudController<Notification> {
     status: HttpStatus.BAD_REQUEST,
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Post()
   async create(@Body() entity: CreateNotificationDto): Promise<Notification> {
@@ -64,7 +70,8 @@ export class NotificationController extends CrudController<Notification> {
   }
 
   @ApiExcludeEndpoint()
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Put(':id')
   async update(
@@ -78,7 +85,8 @@ export class NotificationController extends CrudController<Notification> {
   @ApiOperation({ title: 'Delete record by admin' })
   @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Delete(':id')
   async deleteByAdmin(@Param('id') id: string): Promise<any> {
@@ -91,7 +99,7 @@ export class NotificationController extends CrudController<Notification> {
   // @Delete('deleteByUser/:id')
   // async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
   //   return this.notificationService.update(
-  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.userId },
+  //     { id: parseInt(id, 10), targetType: TargetType.USER, target: user.username },
   //     { isActive: false },
   //   );
   // }
@@ -105,7 +113,8 @@ export class NotificationController extends CrudController<Notification> {
     status: HttpStatus.BAD_REQUEST,
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
-  @ApiUseTags('admin')
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Post('send')
   async send(@Body() notif: SendNotificationDto) {

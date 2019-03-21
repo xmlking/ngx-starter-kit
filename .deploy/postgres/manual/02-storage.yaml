@@ -1,0 +1,19 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: ngxdb-postgresql
+  labels:
+    app: postgresql
+  annotations:
+    trident.netapp.io/reclaimPolicy: "Retain"
+    trident.netapp.io/snapshotDirectory: "false"
+    trident.netapp.io/snapshotPolicy: "default"
+spec:
+# use hostpath when deploying local k8s and use nas-thin for k8s cluster
+  storageClassName: hostpath
+#  storageClassName: nas-thin
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 10Gi

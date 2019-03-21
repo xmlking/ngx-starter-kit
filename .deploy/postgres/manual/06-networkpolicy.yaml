@@ -1,0 +1,24 @@
+---
+# Source: postgresql/templates/networkpolicy.yaml
+
+kind: NetworkPolicy
+apiVersion: "networking.k8s.io/v1"
+metadata:
+  name: ngxdb-postgresql
+  labels:
+    app: postgresql
+    chart: postgresql-3.11.7
+    release: "ngxdb"
+    heritage: "Tiller"
+spec:
+  podSelector:
+    matchLabels:
+      app: postgresql
+      release: "ngxdb"
+  ingress:
+    # Allow inbound connections
+    - ports:
+      - port: 5432
+    # Allow prometheus scrapes
+    - ports:
+      - port: 9187

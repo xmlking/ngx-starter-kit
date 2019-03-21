@@ -1,4 +1,4 @@
-import { waitUntil } from './utils';
+import { waitUntil } from './wait-until';
 
 describe('Utils', () => {
   it('waitUntil should work', async () => {

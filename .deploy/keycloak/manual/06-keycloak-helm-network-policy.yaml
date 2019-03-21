@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: allow-kube-api
+  labels:
+    app: keycloak
+spec:
+  podSelector: {}
+  policyTypes:
+    - Egress
+  egress:
+    - ports: # Allow tiller to talk with the api server
+        - port: 6443
+          protocol: TCP
+        - port: 6443
+          protocol: UDP

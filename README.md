@@ -3,10 +3,15 @@
 [![Build Status](https://travis-ci.org/xmlking/ngx-starter-kit.svg?branch=master)](https://travis-ci.org/xmlking/ngx-starter-kit)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+[![Greenkeeper badge](https://badges.greenkeeper.io/xmlking/ngx-starter-kit.svg)](https://greenkeeper.io/)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) using [Nrwl Nx](https://nrwl.io/nx).
+This project was generated using [Nx](https://nx.dev).
+
+🔎 **Nx is a set of Angular CLI power-ups for modern development.**
 
 live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
+
+If you are interested in smaller example project: [Mini-starter-kit](https://github.com/xmlking/connect4)
 
 **PANTS** (:elephant: _PostgreSQL_ :a: _Angular_ :rocket: _NestJS_ :snowman: _TypeScript_) Stack in :dolphin: NX workspace
 
@@ -36,8 +41,7 @@ Run `ng test <module>` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ## Running end-to-end tests
 
-Run `npm run e2e` to execute the end-to-end tests via [TestCafe](https://devexpress.github.io/testcafe/).
-Before running the tests make sure you are serving the app via `ng serve`.
+Run `npm run e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/).
 
 ## Docs
 

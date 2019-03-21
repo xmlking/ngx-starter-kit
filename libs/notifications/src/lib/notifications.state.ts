@@ -1,4 +1,4 @@
-import { Action, NgxsOnInit, Selector, State, StateContext } from '@ngxs/store';
+import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
 import { produce } from '@ngxs-labs/immer-adapter';
 import { tap } from 'rxjs/operators';
 import { AppNotification } from './app-notification.model';
@@ -16,7 +16,7 @@ import {
   name: 'notifications',
   defaults: [],
 })
-export class NotificationsState implements NgxsOnInit {
+export class NotificationsState implements NgxsAfterBootstrap {
   constructor(private notificationsService: NotificationsService) {}
 
   @Selector()
@@ -24,11 +24,11 @@ export class NotificationsState implements NgxsOnInit {
     return state.filter(note => !note.read).length;
   }
 
-  ngxsOnInit(ctx: StateContext<AppNotification[]>) {
+  ngxsAfterBootstrap(ctx: StateContext<AppNotification[]>) {
     console.log('State initialized, now getting Notifications.');
     /**
      * well, this way, it will be called before dashboard is routed due to preloadingStrategy.
-     * we will loose lazy loading benefits. so lets use ngOnInit on component to load initial data.
+     * we will loose lazy loading benefits. so lets use ngxsAfterBootstrap on component to load initial data.
      */
     // ctx.dispatch(new FetchNotifications())
   }

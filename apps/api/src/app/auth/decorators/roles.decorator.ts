@@ -1,6 +1,6 @@
-import { ReflectMetadata } from '@nestjs/common';
+import { SetMetadata } from '@nestjs/common';
 
-export const Roles = (...roles: string[]) => ReflectMetadata('roles', roles);
+export const Roles = (...roles: string[]) => SetMetadata('roles', roles);
 
 export enum RolesEnum {
   SELF = 'SELF',

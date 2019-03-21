@@ -10,6 +10,9 @@ export class ConfigService {
 
   constructor() {
     this.config = environment;
+    for (const [key, value] of Object.entries(environment.env)) {
+      process.env[key] = value ;
+    }
     console.log('is prod? ', environment.production);
   }
 
@@ -17,18 +20,18 @@ export class ConfigService {
     return this.config.get(key);
   }
 
-  public getVersion(): string {
+  getVersion(): string {
     if (!process.env.APP_VERSION) {
       process.env.APP_VERSION = packageJson.version;
     }
     return process.env.APP_VERSION;
   }
 
-  public isProd(): boolean {
+  isProd(): boolean {
     return this.config.production;
   }
 
-  public getAllowWhitelist(): string[] {
+  getAllowWhitelist(): string[] {
     return this.config.ALLOW_WHITE_LIST ? this.config.ALLOW_WHITE_LIST : [];
   }
 }

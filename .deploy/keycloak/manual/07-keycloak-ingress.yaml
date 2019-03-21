@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.passHostHeader: "true"
+  labels:
+    app: keycloak
+  name: keycloak
+#  namespace: default
+spec:
+  rules:
+  - host: keycloak.traefik.k8s
+    http:
+      paths:
+      - backend:
+          serviceName: keycloak
+          servicePort: http
+        path: /
+  tls:
+  - hosts:
+    - keycloak.traefik.k8s
+    secretName: keycloak-secrets-tls

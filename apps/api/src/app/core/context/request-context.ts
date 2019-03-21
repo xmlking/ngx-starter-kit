@@ -4,9 +4,9 @@ import uuid from 'uuid';
 import { User } from '../../auth';
 
 export class RequestContext {
-  public readonly id: number;
-  public request: Request;
-  public response: Response;
+  readonly id: number;
+  request: Request;
+  response: Response;
 
   constructor(request: Request, response: Response) {
     this.id = Math.random();
@@ -14,7 +14,7 @@ export class RequestContext {
     this.response = response;
   }
 
-  public static currentRequestContext(): RequestContext {
+  static currentRequestContext(): RequestContext {
     const session = cls.getNamespace(RequestContext.name);
     if (session && session.active) {
       return session.get(RequestContext.name);
@@ -23,7 +23,7 @@ export class RequestContext {
     return null;
   }
 
-  public static currentRequest(): Request {
+  static currentRequest(): Request {
     const requestContext = RequestContext.currentRequestContext();
 
     if (requestContext) {
@@ -33,7 +33,7 @@ export class RequestContext {
     return null;
   }
 
-  public static currentUser(throwError?: boolean): User {
+  static currentUser(throwError?: boolean): User {
     const requestContext = RequestContext.currentRequestContext();
 
     if (requestContext) {
@@ -51,7 +51,7 @@ export class RequestContext {
     return null;
   }
 
-  public static currentToken(throwError?: boolean): any {
+  static currentToken(throwError?: boolean): any {
     const requestContext = RequestContext.currentRequestContext();
 
     if (requestContext) {

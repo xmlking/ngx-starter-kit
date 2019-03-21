@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { ThemePickerModule } from '@ngx-starter-kit/theme-picker';
+
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeLayoutComponent } from './containers/home-layout/home-layout.component';
@@ -13,9 +15,21 @@ import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
 import { FeaturesComponent } from './containers/features/features.component';
 import { StickyHeaderDirective } from './components/header/sticky-header.directive';
 
+import {
+  MatButtonModule,
+  MatCardModule,
+  MatIconModule,
+  MatListModule,
+  MatMenuModule,
+  MatToolbarModule,
+} from '@angular/material';
+
+const matModules = [MatListModule, MatIconModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatCardModule];
+
 @NgModule({
   imports: [
     SharedModule,
+    [...matModules],
     ScrollToTopModule,
     ThemePickerModule,
     SvgViewerModule,

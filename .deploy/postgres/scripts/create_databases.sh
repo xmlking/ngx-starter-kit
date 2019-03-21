@@ -15,9 +15,7 @@ function create_user_and_database() {
 EOSQL
 }
 
-if [ -n "$COCKPIT_POSTGRES_DB" ]; then
-		create_user_and_database $COCKPIT_POSTGRES_DB $COCKPIT_POSTGRES_USER $COCKPIT_POSTGRES_PASSWORD
+if [ -n "$KEYCLOAK_DB" ]; then
+		create_user_and_database $KEYCLOAK_DB $KEYCLOAK_DB_USER $KEYCLOAK_DB_PASSWORD
 fi
-if [ -n "$KEYCLOAK_POSTGRES_DB" ]; then
-		create_user_and_database $KEYCLOAK_POSTGRES_DB $KEYCLOAK_POSTGRES_USER $KEYCLOAK_POSTGRES_PASSWORD
-fi
+

@@ -1,7 +1,9 @@
 export * from './lib/core.module';
 export * from './lib/state/preference.state';
 export * from './lib/state/app.state';
+export * from './lib/state/profile.state';
 export { PageTitleService } from './lib/services/page-title.service';
+export { ProfileService } from './lib/services/profile.service';
 export { ServiceWorkerService } from './lib/services/service-worker.service';
 export { MediaQueryService } from './lib/services/media-query.service';
 export { DeepLinkService } from './lib/services/deep-link.service';

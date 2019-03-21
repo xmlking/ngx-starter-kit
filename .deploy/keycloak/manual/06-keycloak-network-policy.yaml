@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  podSelector:
+    matchLabels:
+      app: keycloak
+  policyTypes:
+    - Ingress
+    - Egress
+  ingress:
+    - ports:
+        - protocol: TCP
+          port: 8080
+  egress:
+    - to:
+        - ipBlock: # Allow keycloak to talk to external LDAP server
+            cidr: 0.0.0.0/0
+#      ports:
+#        - protocol: TCP
+#          port: 389
+#        - protocol: TCP
+#          port: 636

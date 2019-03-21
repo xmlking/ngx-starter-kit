@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: debug-busybox
+spec:
+  securityContext:
+    runAsUser: 60217
+    fsGroup: 53134
+  restartPolicy: Never
+  containers:
+  - name: debug-busybox
+    image: busybox
+    args:
+    - sleep
+    - "100000"
+    volumeMounts:
+    - mountPath: /data
+      name: postgres-data-volume
+      readOnly: false
+  volumes:
+  - name: postgres-data-volume
+    persistentVolumeClaim:
+      claimName: postgres

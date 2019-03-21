@@ -2,11 +2,11 @@ import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 import { Store } from '@ngxs/store';
 import { LoginSuccess } from './auth.actions';
 import { AuthorizationErrorResponse } from './oauth.errors';
-import { authConfigImplicit } from './oauth.config';
+import { authConfigCodeFlow } from './oauth.config';
 
 export function initializeAuth(oauthService: OAuthService, store: Store) {
-  // default: ImplicitFlow
-  oauthService.configure(authConfigImplicit);
+  // default: CodeFlow
+  oauthService.configure(authConfigCodeFlow);
   oauthService.setStorage(sessionStorage);
 
   return async () => {
@@ -18,7 +18,7 @@ export function initializeAuth(oauthService: OAuthService, store: Store) {
     });
 
     if (oauthService.hasValidAccessToken()) {
-      // This is called when using ImplicitFlow or page reload, no effect for ROPC Flow
+      // This is called when using ImplicitFlow/CodeFlow or page reload, no effect for ROPC Flow
       console.log('yes ValidAccessToken');
       const profile: any = oauthService.getIdentityClaims();
       store.dispatch(new LoginSuccess(profile));

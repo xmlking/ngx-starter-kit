@@ -1,28 +1,22 @@
 import { BadRequestException, NotFoundException } from '@nestjs/common';
-import {
-  DeepPartial,
-  DeleteResult,
-  FindConditions,
-  FindManyOptions,
-  FindOneOptions,
-  Repository,
-  UpdateResult,
-} from 'typeorm';
+import { DeepPartial, DeleteResult, FindConditions, FindManyOptions, FindOneOptions, Repository, UpdateResult } from 'typeorm';
+import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';
+import { mergeMap } from 'rxjs/operators';
+import { of, throwError } from 'rxjs';
 import { Base } from '../entities/base.entity';
-import { ICrudService } from './icube.service';
+import { ICrudService } from './icrud.service';
+import { IPagination } from './pagination';
 
 export abstract class CrudService<T extends Base> implements ICrudService<T> {
   protected constructor(protected readonly repository: Repository<T>) {}
 
-  public async getAll(options?: FindManyOptions<T>): Promise<[T[], number]> {
-    const records = await this.repository.findAndCount(options);
-    if (records[1] === 0) {
-      throw new NotFoundException(`The requested records were not found`);
-    }
-    return records;
+  public async findAll(filter?: FindManyOptions<T>): Promise<IPagination<T>> {
+    const total = await this.repository.count(filter);
+    const items = await this.repository.find(filter);
+    return { items, total };
   }
 
-  public async getOne(
+  public async findOne(
     id: string | number | FindOneOptions<T> | FindConditions<T>,
     options?: FindOneOptions<T>,
   ): Promise<T> {
@@ -33,7 +27,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     return record;
   }
 
-  public async create(entity: DeepPartial<T>): Promise<T> {
+  public async create(entity: DeepPartial<T>, ...options: any[]): Promise<T> {
     const obj = this.repository.create(entity);
     try {
       // https://github.com/Microsoft/TypeScript/issues/21592
@@ -43,19 +37,38 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
     }
   }
 
-  public async update(id: string | number | FindConditions<T>, entity: DeepPartial<T>): Promise<UpdateResult> {
+  public async update(
+    id: string | number | FindConditions<T>,
+    partialEntity: QueryDeepPartialEntity<T>,
+    ...options: any[]
+  ): Promise<UpdateResult | T> {
     try {
-      return await this.repository.update(id, entity);
+      return await this.repository.update(id, partialEntity);
     } catch (err /*: WriteError*/) {
       throw new BadRequestException(err);
     }
   }
 
-  public async delete(criteria: string | number | FindConditions<T>): Promise<DeleteResult> {
+  public async delete(criteria: string | number | FindConditions<T>, ...options: any[]): Promise<DeleteResult> {
     try {
       return this.repository.delete(criteria);
     } catch (err) {
       throw new NotFoundException(`The record was not found`, err);
     }
+  }
+
+  /**
+   * e.g., findOneById(id).pipe(map(entity => entity.id), entityNotFound())
+   */
+  private entityNotFound() {
+    return stream$ =>
+      stream$.pipe(
+        mergeMap(signal => {
+          if (!signal) {
+            return throwError(new NotFoundException(`The requested record was not found`));
+          }
+          return of(signal);
+        }),
+      );
   }
 }

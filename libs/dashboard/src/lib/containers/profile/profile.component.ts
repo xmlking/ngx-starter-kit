@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
-import { Store } from '@ngxs/store';
+import { Select, Store } from '@ngxs/store';
 import { AuthState } from '@ngx-starter-kit/auth';
+// import { AuthState } from '@ngx-starter-kit/oidc';
+import { ProfileState } from '@ngx-starter-kit/core';
+import { Observable } from 'rxjs';
+import { Profile } from '@ngx-starter-kit/models';
 
 @Component({
   selector: 'ngx-profile',
@@ -10,10 +14,11 @@ import { AuthState } from '@ngx-starter-kit/auth';
 })
 export class ProfileComponent implements OnInit {
   crumbs: ReadonlyArray<Crumb> = [{ name: 'Dashboard', link: '/dashboard' }, { name: 'Profile' }];
-  profile: any;
+
+  @Select(AuthState.profile) oidcProfile$: Observable<any>;
+  @Select(ProfileState.profile) appProfile$: Observable<Profile>;
+  @Select(ProfileState.loading) loading$: Observable<boolean>;
   constructor(private store: Store) {}
 
-  ngOnInit() {
-    this.profile = this.store.selectSnapshot(AuthState.profile);
-  }
+  ngOnInit() {}
 }

@@ -14,7 +14,7 @@
       "installMode": "lazy",
       "updateMode": "prefetch",
       "resources": {
-        "files": ["/assets/**"],
+        "files": ["/assets/**", "/*.(eot|svg|cur|jpg|png|webp|gif|otf|ttf|woff|woff2|ani)"],
         "urls": ["https://fonts.googleapis.com/**", "https://fonts.gstatic.com/**"]
       }
     }
@@ -44,9 +44,9 @@
     {
       "name": "keycloak",
       "urls": [
-        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/.well-known/openid-configuration",
-        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/certs",
-        "https://keycloak-ngx.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
+        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/.well-known/openid-configuration",
+        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/certs",
+        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
       ],
       "cacheConfig": {
         "strategy": "performance",

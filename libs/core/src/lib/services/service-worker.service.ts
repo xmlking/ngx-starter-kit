@@ -16,6 +16,8 @@ export class ServiceWorkerService {
     if (environment.production) {
       // Subscribe new worker is available
       this.swUpdate.available.subscribe(event => {
+        console.log('Current version is', event.current);
+        console.log('Available version is', event.available);
         // update available: ask the user to reload
         const snackBarRef = this.snackBar.open('Newer version of the app is available', 'Refresh');
 
@@ -23,6 +25,12 @@ export class ServiceWorkerService {
           window.location.reload(true);
         });
       });
+
+      this.swUpdate.activated.subscribe(event => {
+        console.log('Old version was', event.previous);
+        console.log('New version is', event.current);
+      });
+
       // Check for new version
       this.swUpdate.checkForUpdate();
     }
