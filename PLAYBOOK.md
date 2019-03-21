@@ -8,11 +8,11 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
-| Node                 | v11.10.0 |          |
+| Node                 | v11.11.0 |          |
 | NPM                  | v6.9.0   |          |
 | Angular CLI          | v8.0.0   |          |
-| @nrwl/schematics     | v7.7.0   |          |
-| @nestjs/cli          | v5.8.0   |          |
+| @nrwl/schematics     | v7.7.2   |          |
+| @nestjs/cli          | v6.0.0   |          |
 | semantic-release-cli | v4.1.1   |          |
 | commitizen           | v3.0.7   |          |
 
