@@ -1,15 +1,15 @@
-[
-  [
+{
+  "items": [
     {
       "id": 13,
       "endpoint": "https://fcm.googleapis.com/fcm/send/c8eq7G-b2mc:APA91bFp2Gof...",
       "auth": "yu_cVYbAPA91bFp2Gof",
       "p256dh": "BIt3gcVYbAPA91bFp2GofB0Y7N-zvcVYbAPA91bFp2Gof-0jqPlmfIwtcVYbAPA91bFp2GofYBgvk",
-      "userId": "sumo3",
+      "username": "sumo3",
       "topics": ["topic_1", "topic_2"],
       "createdAt": "2018-11-21T18:50:45.325Z",
       "updatedAt": "2018-11-21T18:50:45.325Z"
     }
   ],
-  1
-]
+  "total": 1
+}
