@@ -1,0 +1,22 @@
+ngx-root > ngx-sidenav {
+  flex: 1;
+}
+
+ngx-root > ngx-home-layout,
+ngx-root > ngx-dashboard-layout,
+ngx-root > ngx-admin-layout {
+  overflow-y: auto;
+}
+
+//SUMO
+@media (max-width: 599px) {
+  ngx-home-layout {
+    top: 92px;
+  }
+
+  ngx-root > ngx-home-layout,
+  ngx-root > ngx-dashboard-layout,
+  ngx-root > ngx-admin-layout {
+    overflow-y: visible;
+  }
+}
