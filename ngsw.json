@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1553152035616,
+  "timestamp": 1553152195852,
   "index": "/ngx-starter-kit/index.html",
   "assetGroups": [
     {
@@ -33,11 +33,11 @@
         "/ngx-starter-kit/es2015-polyfills.3487cfe509b8f4f1f872.js",
         "/ngx-starter-kit/favicon.ico",
         "/ngx-starter-kit/index.html",
-        "/ngx-starter-kit/main.05a6f7c790708c0ae2e5.js",
+        "/ngx-starter-kit/main.6aae68a5b0455b48ea87.js",
         "/ngx-starter-kit/polyfills.1164180c187856a88f97.js",
         "/ngx-starter-kit/runtime.5f54047840a36f3f6307.js",
         "/ngx-starter-kit/silent-refresh.html",
-        "/ngx-starter-kit/styles.a591033cd73511c3c507.css"
+        "/ngx-starter-kit/styles.1b255a642ce392187cb9.css"
       ],
       "patterns": [
         "https:\\/\\/cdnjs\\.cloudflare\\.com\\/ajax\\/libs\\/trianglify\\/1\\.2\\.0\\/trianglify\\.min\\.js"
@@ -293,23 +293,23 @@
     "/ngx-starter-kit/assets/img/logo_text_dark2.png": "d2cf247eeedc6b59a3dfbb020dd5cfdc79bba829",
     "/ngx-starter-kit/assets/img/logo_text_dark3.png": "37eb2fadb37bb14b1adaa14dd04b10dcfc387bd6",
     "/ngx-starter-kit/assets/themes/deeppurple-amber.css": "33e2445d21797050fae50540b6b088ac3ea67431",
-    "/ngx-starter-kit/assets/themes/deeppurple-amber.css.map": "a97d6f140e1ca0f91994c7d186dd5ebec91a359f",
+    "/ngx-starter-kit/assets/themes/deeppurple-amber.css.map": "7f7db68aa8b6434979d3bb96a9a7e040bb5587ad",
     "/ngx-starter-kit/assets/themes/indigo-pink.css": "1bd3114bf448ed8d1fcd9afc03c3af4fc856160e",
-    "/ngx-starter-kit/assets/themes/indigo-pink.css.map": "b88ef592a295cc11bdd7d4021b8871e3d79dc94d",
+    "/ngx-starter-kit/assets/themes/indigo-pink.css.map": "d21a41d9b1bbf693d02e69722d10f2817b095458",
     "/ngx-starter-kit/assets/themes/pink-bluegrey.css": "12652aa3083a9790ebb95ee1d043d1438c2b1bca",
-    "/ngx-starter-kit/assets/themes/pink-bluegrey.css.map": "664e48d348158f9a0b597583373eb47580acc4c2",
+    "/ngx-starter-kit/assets/themes/pink-bluegrey.css.map": "3e18147d041d443de8c10c3410452f9f2da63ba9",
     "/ngx-starter-kit/assets/themes/purple-green.css": "300391c83b31a2e6bec4023c3cbd810d0c768598",
-    "/ngx-starter-kit/assets/themes/purple-green.css.map": "bb1f3c9bde41263b52d5bc8dda338aa373a8a859",
+    "/ngx-starter-kit/assets/themes/purple-green.css.map": "26df567d91b35bc05fe178b67c792e1dc5970556",
     "/ngx-starter-kit/city1.5ccf7022f41053fd8b67.jpg": "d767859c2b9d46937aa061f91c3c17da2b116e57",
     "/ngx-starter-kit/common.3e99e6cc15690fdd4cdc.js": "fffa48015cdbc3859f9c9d7f5bf547d50ee019f7",
     "/ngx-starter-kit/es2015-polyfills.3487cfe509b8f4f1f872.js": "0927b93dd52b85e2ac08fe57c5bd004d60c015fb",
     "/ngx-starter-kit/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/ngx-starter-kit/index.html": "40148e8bd0fd54ef41f722e6d1c69c2f2334dcff",
-    "/ngx-starter-kit/main.05a6f7c790708c0ae2e5.js": "b384564f781825b236839466413e10a2bf8ecaa6",
+    "/ngx-starter-kit/index.html": "39c77402d035b94c6950193d956ff9e721e0acad",
+    "/ngx-starter-kit/main.6aae68a5b0455b48ea87.js": "5d7c76e2bb6dc2d6abd2a7a357721c8284ed7c8e",
     "/ngx-starter-kit/polyfills.1164180c187856a88f97.js": "6ae5eb3d5dbd8fb76ba487f12fc1564a51f115e8",
     "/ngx-starter-kit/runtime.5f54047840a36f3f6307.js": "e08247fe690531882c896219bffcab8035a63978",
     "/ngx-starter-kit/silent-refresh.html": "eaa115e4a3b3744cc352cbaae71d0b4cfa21e984",
-    "/ngx-starter-kit/styles.a591033cd73511c3c507.css": "f1d08d15c46b19d430c6706bd34577fb47c57ed3"
+    "/ngx-starter-kit/styles.1b255a642ce392187cb9.css": "f1d08d15c46b19d430c6706bd34577fb47c57ed3"
   },
   "navigationUrls": [
     {
