@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.5.0...v2.0.0) (2019-03-21)
+
+
+### Build System
+
+* **dependencies:** angular 8 and nextjs 6 ([9a06073](https://github.com/xmlking/ngx-starter-kit/commit/9a06073))
+
+
+### BREAKING CHANGES
+
+* **dependencies:** upgrade to angular 8 beta9 which mandate typescript 3.3
+
 # [1.5.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.4.0...v1.5.0) (2019-03-21)
 
 
