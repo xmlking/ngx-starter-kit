@@ -174,7 +174,7 @@
     "ngx-page-scroll": "^6.0.0-beta.1",
     "ngx-page-scroll-core": "^6.0.0-beta.1",
     "ngx-perfect-scrollbar": "^7.2.0",
-    "ngx-quicklink": "^0.0.8",
+    "ngx-quicklink": "^0.0.9",
     "nodemailer": "^5.1.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
