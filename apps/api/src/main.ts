@@ -48,6 +48,9 @@ async function bootstrap() {
     },
   });
 
+  // Starts listening to shutdown hooks
+  app.enableShutdownHooks();
+
   await app.listen(env.server.port || 3000, env.server.host || '0.0.0.0');
 }
 

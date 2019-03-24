@@ -4,6 +4,7 @@ import { Gender, Profile } from '@ngx-starter-kit/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from '@ngx-starter-kit/core';
 
+// TODO: https://netbasal.com/how-to-implement-file-uploading-in-angular-reactive-forms-89a3fffa1a03
 @Component({
   selector: 'ngx-app-profile',
   templateUrl: './app-profile.component.html',

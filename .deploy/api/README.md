@@ -27,6 +27,9 @@ docker image prune -f
 ### Run
 ```bash
 docker-compose up api
+kubectl run -it --rm ngxapi  --port 3000 --hostport=3000 --expose=true --image=xmlking/ngxapi --restart=Never --env TYPEORM_HOST=ngxdb-postgresql
+kubectl port-forward ngxapi 3000:3000
+
 # docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  xmlking/ngxapi
 # to see ditectory content:
 docker-compose exec api node

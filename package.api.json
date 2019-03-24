@@ -9,6 +9,7 @@
     "@nestjs/platform-express": "^6.0.0",
     "@nestjs/platform-socket.io": "^6.0.0",
     "@nestjs/swagger": "^3.0.0",
+    "@nestjs/terminus": "^6.0.0",
     "@nestjs/typeorm": "^6.0.0",
     "@nestjs/websockets": "^6.0.0",
     "@xmlking/jwks-rsa": "^1.4.3",
@@ -28,7 +29,9 @@
     "rxjs": "^6.4.0",
     "sharp": "^0.21.3",
     "typeorm": "^0.2.15",
-    "web-push": "^3.3.3"
+    "web-push": "^3.3.3",
+    "@godaddy/terminus": "^4.1.0",
+    "swagger-ui-express": "^4.0.2"
   },
   "devDependencies": {
     "typescript": "~3.1.6"

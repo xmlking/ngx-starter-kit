@@ -252,6 +252,7 @@
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
               ],
+              webpackConfig: 'tools/hooks/custom.webpack.js',
               "externalDependencies": "all"
             }
           }

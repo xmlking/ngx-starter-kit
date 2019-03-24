@@ -1,4 +1,11 @@
-import { Injectable, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
+import {
+  Injectable,
+  Logger,
+  OnApplicationBootstrap,
+  OnApplicationShutdown,
+  OnModuleDestroy,
+  OnModuleInit,
+} from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Any, In, Repository } from 'typeorm';
 import { CrudService, IPagination } from '../../core';
@@ -13,7 +20,9 @@ import { FindOwnNotificationsDto } from './dto/find-own-notifications.dto';
 import { FindNotificationsDto } from './dto/find-notifications.dto';
 
 @Injectable()
-export class NotificationService extends CrudService<Notification> implements OnModuleInit, OnModuleDestroy {
+export class NotificationService extends CrudService<Notification>
+  implements OnModuleInit, OnModuleDestroy, OnApplicationBootstrap, OnApplicationShutdown {
+  readonly logger = new Logger(NotificationService.name);
   constructor(
     private readonly pushService: PushService,
     private readonly eventBus: EventBusGateway,
@@ -24,7 +33,17 @@ export class NotificationService extends CrudService<Notification> implements On
     super(notificationsRepository);
   }
 
-  async onModuleInit() {
+  async onApplicationBootstrap(): Promise<void> {
+    // DO some async task
+    this.logger.log('in ApplicationBootstrap, done');
+  }
+
+  onApplicationShutdown(signal: string) {
+    console.log('in onApplicationShutdown, signal: ', signal); // e.g. "SIGINT"
+    // process.kill(process.pid, 'SIGINT');
+  }
+
+  onModuleInit() {
     this.eventBus.on(MarkAsRead.type, this.onMarkAsRead.bind(this));
     this.eventBus.on(DeleteNotification.type, this.onDeleteNotification.bind(this));
   }

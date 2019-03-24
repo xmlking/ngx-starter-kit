@@ -10,6 +10,8 @@ import { NotificationsModule } from './notifications';
 import { ExternalModule } from './external';
 import { CacheModule } from './cache';
 import { ProjectModule } from './project';
+import { TerminusModule } from '@nestjs/terminus';
+import { AppHealthService } from './app-health.service';
 
 @Module({
   imports: [
@@ -35,6 +37,10 @@ import { ProjectModule } from './project';
     ExternalModule,
     NotificationsModule,
     ProjectModule,
+    TerminusModule.forRootAsync({
+      imports: [ExternalModule],
+      useClass: AppHealthService,
+    }),
   ],
   controllers: [AppController],
 })
