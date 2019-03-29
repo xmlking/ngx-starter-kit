@@ -237,7 +237,7 @@
     "lint-staged": "^8.1.0",
     "lite-server": "^2.4.0",
     "loaders.css": "^0.1.2",
-    "ng-packagr": "^4.7.1",
+    "ng-packagr": "^5.0.1",
     "nodemon": "^1.18.0",
     "prettier": "^1.16.0",
     "rimraf": "^2.6.2",
