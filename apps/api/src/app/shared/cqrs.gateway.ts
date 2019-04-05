@@ -7,27 +7,33 @@ import {
   WebSocketServer,
   WsResponse,
 } from '@nestjs/websockets';
+import { CommandBus, EventBus } from '@nestjs/cqrs';
 import { Observable, of } from 'rxjs';
-import { EventEmitter } from 'events';
 import { Logger, UseGuards } from '@nestjs/common';
 import { delay } from 'rxjs/operators';
 import { ISocket } from './interfaces/socket.interface';
 import { Server } from 'socket.io';
-import { AuthService, User, WsAuthGuard } from '../auth';
+import { WsAuthGuard } from '../auth';
+import { User } from '@ngx-starter-kit/models';
+import { GenericCommand } from './commands/generic.command';
+import { GenericEvent } from './events/generic.event';
+
+// import { UserService } from '../user';
 
 @WebSocketGateway({ namespace: 'eventbus' })
-export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   static EVENTS = 'events';
-  static ACTIONS = 'actions';
-  private readonly logger = new Logger(EventBusGateway.name);
+  static COMMANDS = 'actions';
+  private readonly logger = new Logger(CQRSGateway.name);
 
   @WebSocketServer()
   server: Server;
   clients: ISocket[] = [];
 
-  constructor(/*private authService: AuthService*/) {
-    super();
-  }
+  constructor(
+    private readonly eventBus: EventBus,
+    private readonly commandBus: CommandBus /*private userService: UserService*/,
+  ) {}
 
   afterInit(server) {}
 
@@ -59,24 +65,45 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
     return of({ event, data }).pipe(delay(1000));
   }
 
-  @SubscribeMessage('actions')
-  onActions(client: ISocket, action: any) {
-    // this.logger.log(`actions  => ${client.id}  ${client.user.username} ${action.type} ${action.payload}`);
-    this.emit(action.type, action, client.user);
+  @SubscribeMessage(CQRSGateway.EVENTS)
+  onEvent(client: ISocket, event: any) {
+    // this.logger.log(`event  => ${client.id}  ${client.user.username} ${event.type} ${event.payload}`);
+    this.eventBus.publish(new GenericEvent(event.type, event.payload , client.user));
+
   }
 
-  sendActionToUser<T>(user: User, action: any): void {
+  @SubscribeMessage(CQRSGateway.COMMANDS)
+  onCommand(client: ISocket, command: any) {
+    // this.logger.log(`command  => ${client.id}  ${client.user.username} ${command.type} ${command.payload}`);
+    this.commandBus.execute(new GenericCommand(command.type, command.payload, client.user ));
+  }
+
+  sendCommandToUser<T>(user: User, action: any): void {
     const clients = this.getSocketsForUser(user);
     const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
-    clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
+    clients.forEach(socket => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
   }
 
-  sendActionToAll<T>(action: any): void {
+  sendCommandToAll<T>(action: any): void {
     const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
-    this.clients.forEach(socket => (socket as any).emit(EventBusGateway.ACTIONS, { ...action, type }));
+    this.clients.forEach(socket => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
   }
+
+  sendEventToUser<T>(user: User, event: any): void {
+    const clients = this.getSocketsForUser(user);
+    const type = this.getActionTypeFromInstance(event);
+    // FIXME: remove any. only needed for docker build
+    clients.forEach(socket => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
+  }
+
+  sendEventToAll<T>(event: any): void {
+    const type = this.getActionTypeFromInstance(event);
+    // FIXME: remove any. only needed for docker build
+    this.clients.forEach(socket => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
+  }
+
 
   private getSocketsForUser(user: User): ISocket[] {
     return this.clients.filter(c => c.user && c.user.username === user.username);
@@ -89,5 +116,3 @@ export class EventBusGateway extends EventEmitter implements OnGatewayInit, OnGa
     return action.type;
   }
 }
-
-// https://github.com/evebook/api/blob/master/src/modules/websocket/websocket.gateway.ts

@@ -5,7 +5,7 @@ export const environment: IEnvironment = {
   envName: 'prod',
 
   env: {
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+    NODE_TLS_REJECT_UNAUTHORIZED: '0',
   },
 
   server: {
@@ -25,12 +25,13 @@ export const environment: IEnvironment = {
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
     synchronize: false,
+    uuidExtension: 'pgcrypto',
   },
 
   auth: {
+    clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
     issuer:
       process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
-    clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
   },
 
   email: {

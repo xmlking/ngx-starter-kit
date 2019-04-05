@@ -4,12 +4,14 @@ import { ApiExcludeEndpoint, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTag
 import { Notification } from './notification.entity';
 import { CreateNotificationDto } from './dto/create-notification.dto';
 import { NotificationService } from './notification.service';
-import { CurrentUser, Roles, RolesEnum, User } from '../../auth';
+import { CurrentUser, Roles, RolesEnum } from '../../auth';
 import { SendNotificationDto } from './dto/send-notification.dto';
 import { UpdateNotificationDto } from './dto/update-notification.dto';
 import { NotificationList } from './dto/notification-list.model';
 import { FindNotificationsDto } from './dto/find-notifications.dto';
 import { FindOwnNotificationsDto } from './dto/find-own-notifications.dto';
+import { User } from '@ngx-starter-kit/models';
+import { UUIDValidationPipe } from '../../shared';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Notifications')
@@ -32,7 +34,7 @@ export class NotificationController extends CrudController<Notification> {
     return this.notificationService.findAll(filter);
   }
 
-  @ApiOperation({ title: 'find user\'s and global Notifications' })
+  @ApiOperation({ title: "find user's and global Notifications" })
   @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Notifications', type: NotificationList })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
   @Get('own')
@@ -47,7 +49,7 @@ export class NotificationController extends CrudController<Notification> {
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<Notification> {
+  async findById(@Param('id', UUIDValidationPipe) id: string): Promise<Notification> {
     return super.findById(id);
   }
 
@@ -90,7 +92,7 @@ export class NotificationController extends CrudController<Notification> {
   @Roles(RolesEnum.ADMIN)
   @Delete(':id')
   async deleteByAdmin(@Param('id') id: string): Promise<any> {
-    return this.notificationService.update({ id: parseInt(id, 10) }, { isActive: false });
+    return this.notificationService.update(id, { isActive: false });
   }
 
   // @ApiOperation({ title: 'Delete record by user' })
