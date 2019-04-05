@@ -27,6 +27,8 @@ ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 
 # Final stage: the running container.
+#FROM  astefanutti/scratch-node
+#COPY --from=busybox:1.30.1 /bin/busybox /bin/busybox
 FROM  mhart/alpine-node:11
 
 # Import the user and group files from the first stage.

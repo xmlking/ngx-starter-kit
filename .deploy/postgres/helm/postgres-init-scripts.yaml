@@ -4,6 +4,8 @@ metadata:
   name: postgres-init-scripts
   labels:
     app: postgresql
+  annotations:
+    "helm.sh/resource-policy": keep
 type: Opaque
 stringData:
   keycloak-db-password: keycloak123

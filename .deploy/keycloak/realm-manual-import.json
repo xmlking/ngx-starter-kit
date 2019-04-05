@@ -14,7 +14,10 @@
           "value": "ngxadmin"
         }
       ],
-      "realmRoles": ["ROLE_ADMIN"]
+      "realmRoles": ["ROLE_ADMIN"],
+      "clientRoles": {
+        "account": ["manage-account"]
+      }
     },
     {
       "username": "sumo",
@@ -28,7 +31,10 @@
           "value": "demo"
         }
       ],
-      "realmRoles": ["ROLE_USER"]
+      "realmRoles": ["ROLE_USER"],
+      "clientRoles": {
+        "account": ["manage-account"]
+      }
     },
     {
       "username": "sumo1",
@@ -42,7 +48,10 @@
           "value": "demo"
         }
       ],
-      "realmRoles": ["ROLE_USER"]
+      "realmRoles": ["ROLE_USER"],
+      "clientRoles": {
+        "account": ["manage-account"]
+      }
     },
     {
       "username": "sumo2",
@@ -56,7 +65,10 @@
           "value": "demo"
         }
       ],
-      "realmRoles": ["ROLE_USER"]
+      "realmRoles": ["ROLE_USER"],
+      "clientRoles": {
+        "account": ["manage-account"]
+      }
     },
     {
       "username": "sumo3",
@@ -70,7 +82,10 @@
           "value": "demo"
         }
       ],
-      "realmRoles": ["ROLE_USER"]
+      "realmRoles": ["ROLE_USER"],
+      "clientRoles": {
+        "account": ["manage-account"]
+      }
     }
   ],
   "roles": {

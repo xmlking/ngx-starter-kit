@@ -28,3 +28,8 @@ metrics:
 
 #volumePermissions:
 #  enabled: false
+
+resources:
+  requests:
+    memory: 2048Mi
+    cpu: 1

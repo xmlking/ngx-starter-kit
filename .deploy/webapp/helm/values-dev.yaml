@@ -1,0 +1,11 @@
+test:
+  enabled: false
+
+image:
+  repository: xmlking/ngxapp
+  tag: 1.5.0-SNAPSHOT
+  pullPolicy: IfNotPresent
+
+securityContext:
+  fsGroup: 65534
+  runAsUser: 65534

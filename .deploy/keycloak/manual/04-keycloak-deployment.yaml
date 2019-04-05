@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 60
       initContainers:
         - name: wait-for-postgresql
-          image: busybox
+          image: alpine:3.8
           imagePullPolicy: IfNotPresent
           command:
             - sh

@@ -27,12 +27,23 @@ keycloak:
     existingSecret: postgres-init-scripts
     existingSecretKey: keycloak-db-password
   extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: 'true'
     - name: ROOT_LOGLEVEL
       value: INFO
     - name: KEYCLOAK_LOGLEVEL
       value: INFO
+  extraInitContainers: |
+    - name: wait-for-postgresql
+      image: alpine:3.8
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+        - -c
+        - |
+          until printf "." && nc -z -w 2 ngxdb-postgresql 5432; do
+              sleep 2;
+          done;
+
+          echo 'PostgreSQL OK ✓'
 
 # use `service` for prod and `ingress` for dev. Comment other before install.
   service:
