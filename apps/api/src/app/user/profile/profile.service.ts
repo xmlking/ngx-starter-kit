@@ -7,9 +7,9 @@ import * as crypto from 'crypto';
 import { ImageType } from '@ngx-starter-kit/models';
 import { CrudService } from '../../core';
 import { Profile } from './profile.entity';
-import { User } from '../../auth';
 import { Image } from './image.entity';
 import { CreateProfileDto } from './dto/create-profile.dto';
+import { User } from '../user.entity';
 
 @Injectable()
 export class ProfileService extends CrudService<Profile> {
@@ -47,7 +47,7 @@ export class ProfileService extends CrudService<Profile> {
     return profile;
   }
 
-  async update(id: number, entity: CreateProfileDto, file, user: User): Promise<UpdateResult | Profile> {
+  async update(id: string, entity: CreateProfileDto, file, user: User): Promise<UpdateResult | Profile> {
     if (!file) {
       return super.update(id, entity);
     }

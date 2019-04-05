@@ -12,10 +12,10 @@ import {
 } from 'typeorm';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { IsAscii, IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
-import { Base } from '../core/entities/base.entity';
-import { Image } from '../user/profile/image.entity';
-import { Profile } from '../user/profile/profile.entity';
+import { Base } from '../core/entities/base';
 import { User as IUser } from '@ngx-starter-kit/models';
+import { Image } from './profile/image.entity';
+import { Profile } from './profile/profile.entity';
 
 @Entity('user')
 export class User extends Base implements IUser {
@@ -70,7 +70,7 @@ export class User extends Base implements IUser {
   @JoinColumn()
   profile?: Profile;
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((user: User) => user.profile)
-  readonly profileId?: number;
+  readonly profileId?: string;
 }

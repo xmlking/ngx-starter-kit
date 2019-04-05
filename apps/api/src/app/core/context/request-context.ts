@@ -1,7 +1,7 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 import * as cls from 'cls-hooked';
 import uuid from 'uuid';
-import { User } from '../../auth';
+import { User } from '@ngx-starter-kit/models';
 
 export class RequestContext {
   readonly id: number;
@@ -38,7 +38,7 @@ export class RequestContext {
 
     if (requestContext) {
       // tslint:disable-next-line
-      const user: any = requestContext.request['user'];
+      const user: User = requestContext.request['user'];
       if (user) {
         return user;
       }

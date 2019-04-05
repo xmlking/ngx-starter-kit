@@ -2,7 +2,7 @@ import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, UpdateDateColum
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { Image } from './image.entity';
-import { Base } from '../../core/entities/base.entity';
+import { Base } from '../../core/entities/base';
 import { Profile as IProfile, Gender } from '@ngx-starter-kit/models';
 
 @Entity('profile')

@@ -16,12 +16,14 @@ import {
 import { FileInterceptor } from '@nestjs/platform-express';
 import { ApiConsumes, ApiImplicitFile, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { CrudController } from '../../core';
-import { CurrentUser, Roles, RolesEnum, User } from '../../auth';
+import { CurrentUser, Roles, RolesEnum } from '../../auth/decorators';
 import { Profile } from './profile.entity';
 import { CreateProfileDto } from './dto/create-profile.dto';
 import { ProfileService } from './profile.service';
 import { ProfileList } from './dto/profile-list.model';
-
+import { User } from '../user.entity';
+// UserModule -> SharedModule -> AuthModule -> UserModule, so
+import { UUIDValidationPipe } from '../../shared/pipes/uuid-validation.pipe';
 
 const ALLOWED_MIME_TYPES = ['image/gif', 'image/png', 'image/jpeg', 'image/bmp', 'image/webp'];
 
@@ -66,7 +68,7 @@ export class ProfileController extends CrudController<Profile> {
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
-  async findById(@Param('id') id: string): Promise<Profile> {
+  async findById(@Param('id', UUIDValidationPipe) id: string): Promise<Profile> {
     console.log('in findById', id);
     return this.profileService.findOne(id);
   }
@@ -147,10 +149,11 @@ export class ProfileController extends CrudController<Profile> {
     if (!user.profileId) {
       throw new ForbiddenException('Current User dont have profile');
     }
-    if (user.profileId !== parseInt(id, 10)) {
+    if (user.profileId !== id) {
+      // FIXME equal
       throw new ForbiddenException('only owner can update their profile');
     }
-    return this.profileService.update(parseInt(id, 10), entity, file, user);
+    return this.profileService.update(id, entity, file, user);
   }
 
   @ApiOperation({ title: 'Delete Profile' })
@@ -162,7 +165,8 @@ export class ProfileController extends CrudController<Profile> {
     if (!user.profileId) {
       throw new ForbiddenException('Current User dont have profile');
     }
-    if (user.profileId !== parseInt(id, 10)) {
+    if (user.profileId !== id) {
+      // FIXME equal
       throw new ForbiddenException('only owner can delete their profile');
     }
     return this.profileService.delete(parseInt(id, 10), user);

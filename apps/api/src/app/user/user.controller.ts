@@ -1,17 +1,17 @@
 import { Body, Controller, HttpStatus, Param, Post, Put } from '@nestjs/common';
 import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { User } from './user.entity';
-import { AuthService } from './auth.service';
+import { UserService } from './user.service';
 import { CrudController } from '../core';
 import { UpdateUserDto } from './dto/update-user.dto';
 import { CreateUserDto } from './dto/create-user.dto';
 
 @ApiOAuth2Auth(['read'])
-@ApiUseTags('Auth')
+@ApiUseTags('User')
 @Controller()
-export class AuthController extends CrudController<User> {
-  constructor(private readonly authService: AuthService) {
-    super(authService);
+export class UserController extends CrudController<User> {
+  constructor(private readonly userService: UserService) {
+    super(userService);
   }
 
   @ApiOperation({ title: 'Create new record' })

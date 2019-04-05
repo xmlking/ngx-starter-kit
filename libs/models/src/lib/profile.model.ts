@@ -2,7 +2,7 @@ import { Image } from './image.model';
 import { Gender } from './gender.enum';
 
 export interface Profile {
-  id?: number | string;
+  id?: string;
   avatar?: Image;
   gender?: Gender;
   mobilePhone?: string;

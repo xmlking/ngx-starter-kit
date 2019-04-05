@@ -26,6 +26,7 @@ export class RoleGuard implements CanActivate {
       throw new UnauthorizedException('RoleGuard should have been executed after AuthGuard');
     }
 
+    // FIXME: useless
     if (endpointRoles.includes(RolesEnum.SELF)) {
       if (token.preferred_username === this.resolveUsername(request)) {
         return true;
@@ -38,7 +39,7 @@ export class RoleGuard implements CanActivate {
       if (this.isRoleOverlay(token.realm_access.roles, [RolesEnum.ADMIN])) {
         return true;
       } else {
-        throw new ForbiddenException(`SumoApp admin users only`);
+        throw new ForbiddenException(`NgxApp admin users only`);
       }
     }
 
@@ -46,7 +47,7 @@ export class RoleGuard implements CanActivate {
       if (this.isRoleOverlay(token.realm_access.roles, [RolesEnum.USER])) {
         return true;
       } else {
-        throw new ForbiddenException(`SumoApp users only`);
+        throw new ForbiddenException(`NgxApp users only`);
       }
     }
 

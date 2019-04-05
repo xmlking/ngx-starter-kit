@@ -1,4 +1,5 @@
 export { User } from './lib/user.model';
+export { JwtToken } from './lib/jwt-token.model';
 export { Profile } from './lib/profile.model';
 export { Image } from './lib/image.model';
 export { Gender } from './lib/gender.enum';

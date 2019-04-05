@@ -3,13 +3,13 @@ import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { passportJwtSecret, SigningKeyNotFoundError } from '@xmlking/jwks-rsa';
 
-import { AuthService } from '../auth.service';
-import { JwtToken } from '../interfaces/jwt-token.interface';
 import { environment as env } from '@env-api/environment';
+import { JwtToken } from '@ngx-starter-kit/models';
+import { UserService } from '../../user';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor(private readonly authService: AuthService) {
+  constructor(private readonly userService: UserService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
       // secretOrKey: env.auth.publicKey,
@@ -36,7 +36,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 
   // tslint:disable-next-line:ban-types
   async validate(token: any, done: Function) {
-    const user = await this.authService.getLoggedUserOrCreate(token).catch(console.error);
+    const user = await this.userService.getLoggedUserOrCreate(token).catch(console.error);
     if (!user) {
       return done(new UnauthorizedException('user not found and cannot create new user in database'), false);
     }

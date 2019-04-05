@@ -3,10 +3,10 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { CrudService } from '../core';
 import { User } from './user.entity';
-import { JwtToken } from './interfaces/jwt-token.interface';
+import { JwtToken } from '@ngx-starter-kit/models';
 
 @Injectable()
-export class AuthService extends CrudService<User> {
+export class UserService extends CrudService<User> {
   constructor(@InjectRepository(User) private readonly userRepository: Repository<User>) {
     super(userRepository);
   }
@@ -26,6 +26,10 @@ export class AuthService extends CrudService<User> {
       };
       return super.create(newUser);
     }
+  }
+
+  async findByEmail(email: string) {
+    return await this.userRepository.findOne({ email });
   }
 
   // TODO

@@ -2,7 +2,7 @@ import { User } from './user.model';
 import { ImageType } from './image-type.enum';
 
 export interface Image {
-  id?: number | string;
+  id?: string;
   title: string;
   type: ImageType;
   user: User;

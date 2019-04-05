@@ -1,25 +1,23 @@
 import {
   BeforeInsert,
   BeforeUpdate,
-  Column,
   CreateDateColumn,
   ManyToOne,
-  PrimaryGeneratedColumn, RelationId,
+  PrimaryGeneratedColumn,
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { ApiModelProperty } from '@nestjs/swagger';
-// FIXME: we need to import User like this to avoid Circular denpendence problem
-import { User } from '../../auth/user.entity';
 import { RequestContext } from '../context';
+import { User } from '../../user';
 
 // TODO: Implement Soft Delete
 
 export abstract class AuditBase {
-  @ApiModelProperty()
-  @PrimaryGeneratedColumn()
-  id: number;
+  @ApiModelProperty({ type: String })
+  @PrimaryGeneratedColumn('uuid')
+  id?: string;
 
   @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })

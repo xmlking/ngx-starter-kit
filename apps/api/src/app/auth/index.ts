@@ -1,6 +1,4 @@
-export * from './auth.module';
-export * from './auth.service';
-export * from './user.entity';
+export { AuthModule } from './auth.module';
 export * from './decorators';
-export * from './guards/ws-auth.guard';
-export * from './guards/auth.guard';
+export { WsAuthGuard } from './guards/ws-auth.guard';
+export { AuthGuard } from './guards/auth.guard';
