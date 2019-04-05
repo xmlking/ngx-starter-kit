@@ -13,7 +13,6 @@ import * as Api from 'kubernetes-client';
 import { ConfigService } from '../../config';
 import { ClusterService } from '../cluster/cluster.service';
 import { KubeContext } from '../interfaces/kube-context';
-import { User } from '../../auth';
 
 const Client = Api.Client1_10;
 const config = Api.config;

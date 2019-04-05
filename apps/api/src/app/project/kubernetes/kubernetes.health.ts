@@ -2,13 +2,14 @@ import { Injectable } from '@nestjs/common';
 import { HealthCheckError } from '@godaddy/terminus';
 import { HealthIndicator, HealthIndicatorResult } from '@nestjs/terminus';
 
+// TODO
 export interface Dog {
   name: string;
   type: string;
 }
 
 @Injectable()
-export class WeatherHealthIndicator extends HealthIndicator {
+export class KubernetesHealthIndicator extends HealthIndicator {
   private readonly dogs: Dog[] = [{ name: 'Fido', type: 'goodboy' }, { name: 'Rex', type: 'badboy' }];
 
   async pingCheck(key: string): Promise<HealthIndicatorResult> {

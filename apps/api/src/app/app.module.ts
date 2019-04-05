@@ -38,7 +38,7 @@ import { AppHealthService } from './app-health.service';
     NotificationsModule,
     ProjectModule,
     TerminusModule.forRootAsync({
-      imports: [ExternalModule],
+      imports: [ProjectModule],
       useClass: AppHealthService,
     }),
   ],
