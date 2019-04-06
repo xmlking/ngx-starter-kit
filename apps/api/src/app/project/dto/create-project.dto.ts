@@ -1,8 +1,20 @@
-import { ArrayUnique, IsAscii, IsEmail, IsNotEmpty, IsOptional, IsString, Length, Matches, ValidateNested } from 'class-validator';
+import {
+  ArrayUnique,
+  IsAscii,
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  Length,
+  Matches,
+  Validate,
+  ValidateNested,
+} from 'class-validator';
 import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Labels } from './labels.dto';
 import { Type } from 'class-transformer';
 import { ResourceQuota } from './resource-quota';
+import { IsNamespaceUnique } from '../validators';
 
 export class CreateProjectDto {
   @ApiModelProperty({ type: String })
@@ -17,6 +29,7 @@ export class CreateProjectDto {
 
   @ApiModelProperty({ type: String })
   @IsString()
+  @IsNotEmpty()
   readonly clusterName: string;
 
   @ApiModelProperty({ type: String, minLength: 5, maxLength: 100 })
@@ -24,6 +37,7 @@ export class CreateProjectDto {
   @IsNotEmpty()
   @Length(5, 100)
   @Matches(/^[a-z\d-]+$/)
+  @IsNamespaceUnique()
   readonly namespace: string;
 
   @ApiModelProperty({ type: String, minLength: 5, maxLength: 100 })

@@ -17,7 +17,7 @@ export class CreateClusterDto {
 
   @ApiModelProperty({ type: String, minLength: 10, maxLength: 256 })
   @IsNotEmpty()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   @MinLength(10)
   @MaxLength(256)
   baseUrl: string;

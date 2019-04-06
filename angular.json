@@ -4,7 +4,7 @@
   "newProjectRoot": "",
   "projects": {
     "webapp": {
-      "root": "apps/webapp",
+      "root": "apps/webapp/",
       "sourceRoot": "apps/webapp/src",
       "projectType": "application",
       "prefix": "ngx",
@@ -252,7 +252,7 @@
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
               ],
-              webpackConfig: 'tools/hooks/custom.webpack.js',
+              "webpackConfig": "tools/hooks/api.webpack.js",
               "externalDependencies": "all"
             }
           }

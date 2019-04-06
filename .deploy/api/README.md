@@ -6,7 +6,7 @@ Build and Deploy NgxApi
 
 ```bash
 # build
-VERSION=1.5.0-SNAPSHOT
+VERSION=2.0.0-SNAPSHOT
 docker build \
 --no-cache \
 --build-arg VERSION=$VERSION \

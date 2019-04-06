@@ -38,6 +38,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - .deploy/postgres/scripts/create_databases.sh:/docker-entrypoint-initdb.d/10-create_databases.sh:ro
 
+  redis:
+    image: redis:alpine
+
   api:
     build:
       context: .

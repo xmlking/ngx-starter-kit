@@ -22,7 +22,9 @@ COPY --from=dev-dependencies /app /app
 COPY apps/api apps/api
 COPY libs/models libs/models
 COPY libs/utils libs/utils
+COPY tools/hooks/api.webpack.js tools/hooks/api.webpack.js
 COPY angular.json nx.json tsconfig.json ./
+RUN npm i typescript@3.1.6
 ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 

@@ -6,6 +6,7 @@ import { ConfigService } from './app/config';
 import * as helmet from 'helmet';
 import { join } from 'path';
 import { environment as env } from '@env-api/environment';
+import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -21,7 +22,11 @@ async function bootstrap() {
     }),
   );
 
-  // app.useStaticAssets(join(__dirname, './../public')); // for uploaded images
+  // Link DI container to class-validator
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
+
+  // for uploaded images
+  // app.useStaticAssets(join(__dirname, './../public'));
 
   const options = new DocumentBuilder()
     .setTitle('Sumo API Docs')

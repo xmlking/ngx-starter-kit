@@ -11,7 +11,7 @@ resources:
 
 image:
   repository: xmlking/ngxapi
-  tag: 1.5.0-SNAPSHOT
+  tag: 2.0.0-SNAPSHOT
   pullPolicy: IfNotPresent
 
 securityContext:

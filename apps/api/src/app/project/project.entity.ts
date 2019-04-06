@@ -3,11 +3,13 @@ import { ApiModelProperty } from '@nestjs/swagger';
 import { Labels } from './dto/labels.dto';
 import { Membership } from './dto/membership';
 import { ResourceQuota } from './dto/resource-quota';
-import { AuditBase } from '../core/entities/audit-base.entity';
+import { AuditBase } from '../core/entities/audit-base';
 import { Cluster } from './cluster/cluster.entity';
 import { Project as IProject } from '@ngx-starter-kit/models';
+import { Unique } from 'typeorm/decorator/Unique';
 
 @Entity()
+@Unique('UQ_namespace_cluster_for_project', ['namespace', 'cluster'])
 export class Project extends AuditBase implements IProject {
   @ApiModelProperty()
   @Index()
@@ -19,6 +21,7 @@ export class Project extends AuditBase implements IProject {
   description: string;
 
   @ApiModelProperty()
+  @Index()
   @Column()
   namespace: string;
 
@@ -63,15 +66,15 @@ export class Project extends AuditBase implements IProject {
   @Column('jsonb')
   resourceQuota: ResourceQuota;
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((project: Project) => project.cluster)
-  readonly clusterId?: number;
+  readonly clusterId?: string;
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((project: Project) => project.createdBy)
-  readonly createdById?: number;
+  readonly createdById?: string;
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((project: Project) => project.updatedBy)
-  readonly updatedById?: number;
+  readonly updatedById?: string;
 }

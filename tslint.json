@@ -1,6 +1,6 @@
 {
-  "extends": ["tslint:recommended", "rxjs-tslint-rules", "tslint-config-prettier"],
-  "rulesDirectory": ["codelyzer", "node_modules/@nrwl/schematics/src/tslint"],
+  "extends": "tslint:recommended",
+  "rulesDirectory": ["codelyzer"],
   "rules": {
     "array-type": false,
     "arrow-parens": false,
@@ -32,16 +32,21 @@
     "ordered-imports": false,
     "quotemark": [true, "single"],
     "trailing-comma": false,
-    "no-output-on-prefix": true,
-    "use-input-property-decorator": true,
-    "use-output-property-decorator": true,
-    "use-host-property-decorator": true,
-    "no-input-rename": true,
-    "no-output-rename": true,
-    "use-life-cycle-interface": true,
-    "use-pipe-transform-interface": true,
     "component-class-suffix": true,
+    "contextual-lifecycle": true,
     "directive-class-suffix": true,
+    "no-conflicting-lifecycle": true,
+    "no-host-metadata-property": true,
+    "no-input-rename": true,
+    "no-inputs-metadata-property": true,
+    "no-output-native": true,
+    "no-output-on-prefix": true,
+    "no-output-rename": true,
+    "no-outputs-metadata-property": true,
+    "template-banana-in-box": true,
+    "template-no-negated-async": true,
+    "use-lifecycle-interface": true,
+    "use-pipe-transform-interface": true,
     //-----------------------
     // Nx Rules
     //-----------------------
@@ -57,35 +62,6 @@
           { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
         ]
       }
-    ],
-    //-----------------------
-    // RxJs Rules
-    //-----------------------
-    "rxjs-no-subject-unsubscribe": {
-      "severity": "error"
-    },
-    "rxjs-no-unsafe-switchmap": true,
-    "rxjs-no-unsafe-takeuntil": true,
-    "rxjs-ban-observables": {
-      "options": [
-        {
-          "empty": "Use EMPTY",
-          "never": "Use NEVER"
-        }
-      ],
-      "severity": "error"
-    },
-    "rxjs-ban-operators": {
-      "options": [
-        {
-          "combineLatest": "Use the static combineLatest",
-          "concat": "Use the static concat",
-          "merge": "Use the static merge",
-          "race": "Use the static race",
-          "zip": "Use the static zip"
-        }
-      ],
-      "severity": "error"
-    }
+    ]
   }
 }

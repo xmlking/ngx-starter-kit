@@ -8,8 +8,8 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
-| Node                 | v11.11.0 |          |
-| NPM                  | v6.9.0   |          |
+| Node                 | v11.13.0 |          |
+| NPM                  | v6.7.0   |          |
 | Angular CLI          | v8.0.0   |          |
 | @nrwl/schematics     | v7.7.2   |          |
 | @nestjs/cli          | v6.0.0   |          |
@@ -262,6 +262,7 @@ ng g lib utils --framework=none --publishable=true --tags=utils --unit-test-runn
 # system wide `models` module
 ng g lib models --framework=none --tags=utils --unit-test-runner=jest -d
 ng g interface User  --project=models --type=model -d
+ng g interface JwtToken  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
 ng g interface Image  --project=models --type=model -d
 ng g enum ImageType --project=models -d
@@ -554,7 +555,7 @@ ng update --all
 ng xi18n --output-path apps/webapp/src/local
 
 ng build api
-# start with hugh memory 
+# start with hugh memory
 node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build api --prod
 ```
 
@@ -581,11 +582,13 @@ docker-compose up web
 ```
 
 ### Uint Test
+
 ```bash
 ng test <module>
 ```
 
 ### E2E Test
+
 ```bash
 ng e2e webapp-e2e
 # headless tests (CI)
