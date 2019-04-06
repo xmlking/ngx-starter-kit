@@ -7,7 +7,7 @@
     "@ngxs/store": ">=3.3.0",
     "@ngxs/router-plugin": ">=3.3.0",
     "@ngxs/storage-plugin": ">=3.3.0",
-    "@ngxs-labs/immer-adapter": ">=1.1.0"
+    "@ngxs-labs/immer-adapter": ">=2.0.0"
   },
   "dependencies": {
     "keycloak-js": ">=5.0.0"
