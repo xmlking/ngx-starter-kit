@@ -1,22 +1,35 @@
-# First stage: cache the dev dependencies.
-FROM node:alpine as dev-dependencies
-WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+######################################################################
+FROM alpine AS utils
+######################################################################
+# ADD TINI FOR SIGNAL HANDLING, staticly linked
+# without tini ctrl-c doesn't work
+ENV TINI_VERSION v0.18.0
+ADD https://github.com/krallin/tini/releases/download/${TINI_VERSION}/tini-static /tini
+RUN chmod +x /tini
 # Create the user and group files that will be used in the running container to
 # run the process as an unprivileged user.
 RUN mkdir /user && \
     echo 'nobody:x:65534:65534:nobody:/:' > /user/passwd && \
     echo 'nobody:x:65534:' > /user/group
 
-# Second stage: cache the prod dependencies.
-FROM node:alpine as prod-dependencies
+######################################################################
+FROM node:11-alpine as prod-dependencies
+######################################################################
 WORKDIR /app
 COPY package.api.json package.json
 RUN npm i --production
 
-# Third stage: build the executable.
-FROM node:alpine as builder
+######################################################################
+FROM node:11-alpine as dev-dependencies
+######################################################################
+WORKDIR /app
+# TODO use slim package.json without cypress etc., for installing devDeps
+COPY package.json package-lock.json ./
+RUN npm ci
+
+######################################################################
+FROM node:11-alpine as builder
+######################################################################
 WORKDIR /app
 COPY --from=dev-dependencies /app /app
 COPY apps/api apps/api
@@ -28,15 +41,19 @@ RUN npm i typescript@3.1.6
 ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 
-# Final stage: the running container.
+######################################################################
 #FROM  astefanutti/scratch-node
 #COPY --from=busybox:1.30.1 /bin/busybox /bin/busybox
-FROM  mhart/alpine-node:11
-
+FROM node:11-alpine as final
+######################################################################
 # Import the user and group files from the first stage.
-COPY --from=dev-dependencies /user/group /user/passwd /etc/
+COPY --from=utils /user/group /user/passwd /etc/
+COPY --from=utils /tini /sbin/tini
+
+WORKDIR /app
 COPY --from=prod-dependencies /app  .
 COPY --from=builder /app/dist/apps/api .
+
 EXPOSE 3000
 
 # Perform any further action as an unprivileged user.
@@ -62,7 +79,11 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.docker.schema-version="1.0" \
       org.label-schema.docker.cmd="docker run -it -p 3000:3000  xmlking/ngxapi"
 
-ENTRYPOINT ["node", "main.js"]
+# Set tini as entrypoint
+ENTRYPOINT ["tini", "--"]
+
+# Run node app under tini
+CMD ["node", "main.js"]
 
 # TODO:
 # https://github.com/alextanhongpin/go-docker-multi-stage-build/blob/master/Dockerfile

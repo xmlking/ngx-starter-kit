@@ -4,12 +4,15 @@
 
 Backend API build with [Nest](https://github.com/nestjs/nest) Framework.
 
+This project uses [@nestjsx/crud](https://github.com/nestjsx/crud) to simplify and standardize the REST API
+
 ## Built with
 
 | Component      | Using                                                                                            | Descrption |
 | -------------- | ------------------------------------------------------------------------------------------------ | ---------- |
 | Base           | [NestJS](https://nestjs.com)                                                                     |
 | ORM            | [TypeORM](http://typeorm.io/)                                                                    |
+| CRUD           | [@nestjsx/crud](https://github.com/nestjsx/crud)                                                 |
 | File Upload    | [Multer](https://github.com/expressjs/multer)                                                    |
 | Validation     | [Class-Validator](https://github.com/typestack/class-validator)                                  |
 | Documentation  | [Open API(Swagger)](https://swagger.io)                                                          |

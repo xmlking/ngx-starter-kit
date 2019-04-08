@@ -1,6 +1,14 @@
 test:
   enabled: false
 
+resources:
+  limits:
+     cpu: 100m
+     memory: 128Mi
+  requests:
+     cpu: 100m
+     memory: 128Mi
+
 image:
   repository: xmlking/ngxapp
   tag: 2.0.0-SNAPSHOT

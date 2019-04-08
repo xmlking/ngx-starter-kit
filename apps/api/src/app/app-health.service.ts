@@ -62,7 +62,7 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
     this.status = State.STOPPING;
     console.log('in onApplicationShutdown, signal: ', signal); // e.g. "SIGINT"
     // write an event to `/dev/termination-log` and you can view the message using `kubectl describe pod...`
-
+    // echo "[Error] - {{ msg }}" > /dev/termination-log
     // process.kill(process.pid, 'SIGINT');
 
     // Gracefully stop server

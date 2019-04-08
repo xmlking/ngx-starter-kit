@@ -1,5 +1,5 @@
 import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
-import { produce } from '@ngxs-labs/immer-adapter';
+import { produce, Mutation } from '@ngxs-labs/immer-adapter';
 import { tap } from 'rxjs/operators';
 import { AppNotification } from './app-notification.model';
 import { NotificationsService } from './notifications.service';

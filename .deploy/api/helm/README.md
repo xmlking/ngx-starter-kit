@@ -5,7 +5,7 @@ Deploying `NgxApi` to `Kubernetes` via `Helm`
 ## Prerequisites
 
 1. Helm command line and Tiller backend [installed](../../helm/README.md).
-2. `helm-secrets` [installed](../../helm/README.md).
+2. `helm-secrets` [installed](../../helm/README.md#managing-helm-chart-secrets-with-helm-secrets).
 
 first create plain `secrets.dev.yaml` e.g., 
 

@@ -1,7 +1,10 @@
 apiVersion: v1
 appVersion: "1.0"
-description: A Helm chart for Kubernetes
+description: Helm chart for NodeJS server
 name: nodeapp
 sources:
   - https://github.com/xmlking/ngx-starter-kit/.deploy/api/helm/nodeapp
 version: 0.1.0
+maintainers:
+  - name: sumanth
+    email: xmlking@gmail.com

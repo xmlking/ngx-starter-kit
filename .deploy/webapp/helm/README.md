@@ -11,7 +11,7 @@ cd .deploy/webapp/helm
 
 # To install the chart with the release name `ngxapp`
 # `--dry-run --debug` flags help you to see before you really deploy
-helm install --name=ngxapp --namespace=default -f values-dev.yaml ./angular
+helm install --name=ngxapp --namespace=default -f values-dev.yaml ./anginx
 
 # verify deployment
 helm ls

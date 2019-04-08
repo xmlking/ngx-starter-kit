@@ -1,4 +1,4 @@
-FROM nginx:1.14-alpine
+FROM nginx:1.15-alpine
 
 LABEL maintainer="Sumanth <xmlking@gmail.com>" \
       description="ANGINX for non-root platform: OpenShift"

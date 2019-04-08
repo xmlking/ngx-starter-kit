@@ -1,0 +1,10 @@
+apiVersion: v1
+appVersion: "1.0"
+description: NGINX HTTP server for Angular
+name: anginx
+sources:
+  - https://github.com/xmlking/ngx-starter-kit/.deploy/webapp/helm/anginx
+version: 0.1.0
+maintainers:
+  - name: sumanth
+    email: xmlking@gmail.com
