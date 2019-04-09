@@ -2,6 +2,15 @@
 dist
 tmp
 sme
+todo
+.github
+.npmrc
+.travis.yml
+greenkeeper.json
+docker-compose.yml
+*.md
+
+.deploy
 
 .git/
 .gitignore

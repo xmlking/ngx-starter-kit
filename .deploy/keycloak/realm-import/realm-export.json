@@ -289,7 +289,7 @@
       "ngxapi": [],
       "security-admin-console": [],
       "admin-cli": [],
-      "ngxapp": [],
+      "ngxweb": [],
       "broker": [
         {
           "id": "45bf247f-b7ea-4a17-b196-2f90ac8eccb6",
@@ -637,7 +637,7 @@
     },
     {
       "id": "805899f7-f443-45c8-b404-beb0f50a890a",
-      "clientId": "ngxapp",
+      "clientId": "ngxweb",
       "rootUrl": "http://localhost:4200",
       "adminUrl": "http://localhost:4200",
       "surrogateAuthRequired": false,

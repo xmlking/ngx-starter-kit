@@ -4,7 +4,7 @@ KeyCloak
 Pre-configured KeyCloak OpenID Connect server for testing.
 
 * **Realm**: ngx
-* **Client ID**: ngxapp, ngxapi
+* **Client ID**: ngxweb, ngxapi
 * **Accounts**:
   * *ROLE_ADMIN*
     1. ngxadmin : ngxadmin
@@ -21,7 +21,7 @@ Pre-configured KeyCloak OpenID Connect server for testing.
 
 ```json
   auth: {
-    clientId: 'ngxapp',
+    clientId: 'ngxweb',
     issuer: 'http://localhost:8080/auth/realms/ngx',
   }
 ```
@@ -60,7 +60,7 @@ http://localhost:8080/
 ```bash
 # Environment variable. change as per your server setup
 OIDC_ISSUER_URL=http://localhost:8080/auth/realms/ngx
-OIDC_CLIENT=ngxapp
+OIDC_CLIENT=ngxweb
 
 USERNAME=sumo
 PASSWORD=demo
@@ -111,7 +111,7 @@ curl -X POST  $OIDC_ISSUER_URL/protocol/openid-connect/logout \
   "aud": "ngxapi",
   "sub": "12c4ef1f-f4bd-451c-a435-ffc5daa1412c",
   "typ": "Bearer",
-  "azp": "ngxapp",
+  "azp": "ngxweb",
   "auth_time": 0,
   "session_state": "92cc97ad-3be7-48e0-9ee9-4329b2a66f07",
   "acr": "1",

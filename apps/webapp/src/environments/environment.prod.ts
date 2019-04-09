@@ -7,11 +7,11 @@ export const environment: IEnvironment = {
   envName: 'prod',
 
   DOCS_BASE_URL: 'http://localhost:8000',
-  API_BASE_URL: 'http://localhost:3000/api',
-  WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
+  API_BASE_URL: 'https://ngxapi.traefik.k8s/api',
+  WS_EVENT_BUS_URL: 'wss://ngxapi.traefik.k8s/eventbus',
 
   auth: {
-    clientId: 'ngxapp',
-    issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    clientId: 'ngxweb',
+    issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
   },
 };

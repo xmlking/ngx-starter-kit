@@ -89,6 +89,7 @@ curl -v -X POST \
 ### Token
 
 ```bash
+# OIDC_ISSUER_URL=https://keycloak.traefik.k8s/auth/realms/ngx
 OIDC_ISSUER_URL=https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx
 OIDC_CLIENT_ID=ngxapi
 

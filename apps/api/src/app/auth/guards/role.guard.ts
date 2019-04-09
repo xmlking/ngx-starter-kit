@@ -39,7 +39,7 @@ export class RoleGuard implements CanActivate {
       if (this.isRoleOverlay(token.realm_access.roles, [RolesEnum.ADMIN])) {
         return true;
       } else {
-        throw new ForbiddenException(`NgxApp admin users only`);
+        throw new ForbiddenException(`NgxWeb admin users only`);
       }
     }
 
@@ -47,7 +47,7 @@ export class RoleGuard implements CanActivate {
       if (this.isRoleOverlay(token.realm_access.roles, [RolesEnum.USER])) {
         return true;
       } else {
-        throw new ForbiddenException(`NgxApp users only`);
+        throw new ForbiddenException(`NgxWeb users only`);
       }
     }
 

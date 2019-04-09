@@ -3,7 +3,7 @@ kind: Template
 metadata:
   name: ${APPNAME}
   annotations:
-    tags: "ngx-starter-kit, webapp, template"
+    tags: "ngxweb, template"
     description: ngx-starter-kit webapp template
 
 objects:
@@ -90,4 +90,4 @@ parameters:
 - name: APPNAME
   value: webapp
 - name: DOCKERIMAGE
-  value: xmlking/ngx-starter-kit:latest
+  value: xmlking/ngxweb:latest

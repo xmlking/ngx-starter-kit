@@ -14,7 +14,7 @@ export const environment: IEnvironment = {
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
 
   auth: {
-    clientId: 'ngxapp',
+    clientId: 'ngxweb',
     // issuer: 'http://localhost:8080/auth/realms/ngx',
     issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
   },

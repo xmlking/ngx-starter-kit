@@ -83,7 +83,7 @@ kubectl apply --recursive -f generated/nodeapp/* --namespace default
 
 ngxapi can be accessed:
 
-* Within your cluster, at the following DNS name at port 80:
+* Within your cluster, at the following DNS name at port 3000:
 
   ```
   ngxapi-nodeapp.default.svc.cluster.local

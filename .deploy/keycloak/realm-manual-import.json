@@ -103,7 +103,7 @@
   "defaultRoles": ["ROLE_USER"],
   "clients": [
     {
-      "clientId": "ngxapp",
+      "clientId": "ngxweb",
       "enabled": true,
       "implicitFlowEnabled": true,
       "directAccessGrantsEnabled": true,

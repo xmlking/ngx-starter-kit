@@ -68,7 +68,8 @@ ARG NAME=ngxapi
 ARG VENDOR=sumo
 
 # Metadata
-LABEL org.label-schema.build-date=$BUILD_DATE \
+LABEL maintainer="Sumanth <xmlking@gmail.com>"  \
+      org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.name=$NAME \
       org.label-schema.description="NGX Api" \
       org.label-schema.url="https://example.com" \

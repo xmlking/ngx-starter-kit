@@ -556,7 +556,8 @@ ng xi18n --output-path apps/webapp/src/local
 
 ng build api
 # start with hugh memory
-node --max_old_space_size=8192 node_modules/@angular/cli/bin/ng build api --prod
+NODE_OPTIONS=--max-old-space-size=4096 ng build api --prod
+NODE_OPTIONS=--max-old-space-size=4096 ng build webapp --prod
 ```
 
 ### Run

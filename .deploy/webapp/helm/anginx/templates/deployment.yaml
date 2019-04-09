@@ -18,6 +18,10 @@ spec:
       labels:
         app.kubernetes.io/name: {{ include "anginx.name" . }}
         app.kubernetes.io/instance: {{ .Release.Name }}
+    {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+    {{- end }}
     spec:
     {{- with .Values.securityContext }}
       securityContext:
@@ -35,25 +39,31 @@ spec:
             httpGet:
               path: /
               port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 6
           readinessProbe:
             httpGet:
               path: /
               port: http
-        {{- with .Values.resources }}Ω
+            initialDelaySeconds: 5
+            timeoutSeconds: 3
+            periodSeconds: 5
+        {{- with .Values.resources }}
           resources:
             {{- toYaml . | nindent 12 }}
         {{- end }}
           volumeMounts:
             - name: config-volume
               mountPath: /etc/nginx/conf.d/default.conf
-              subPath: conf.d/default.conf
+              subPath: default.conf
       volumes:
         - name: config-volume
           configMap:
             name: {{ include "anginx.fullname" . }}
             items:
               - key: default.conf
-                path: conf.d/default.conf
+                path: default.conf
     {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

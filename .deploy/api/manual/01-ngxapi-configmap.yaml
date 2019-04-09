@@ -12,7 +12,8 @@ data:
   TYPEORM_DATABASE: postgres
   TYPEORM_USERNAME: postgres
   TYPEORM_LOGGING: 'false'
-  OIDC_ISSUER_URL: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx'
+  OIDC_ISSUER_URL: 'https://keycloak.traefik.k8s/auth/realms/ngx'
+  OIDC_JWKS_URL: 'http://keycloak-headless:8080/auth/realms/ngx/protocol/openid-connect/certs'
   OIDC_CLIENT_ID: ngxapi
   EMAIL_HOST: mail.google.com
   EMAIL_PORT: '25'

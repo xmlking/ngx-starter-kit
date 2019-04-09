@@ -48,12 +48,12 @@ Post-Install KeyCloak Setup and LDAP Configuration
     Membership User LDAP Attribute: sAMAccountName
     LDAP Filter: (&(objectCategory=Group)(cn=IMP_GROUP_*))
     Member-Of LDAP Attribute: memberOf
-    Client ID: ngxapp (optional)
+    Client ID: ngxweb (optional)
     ```
  
-5. Add new `telephone number` for `ngxapp` client Mappers (optional)
+5. Add new `telephone number` for `ngxweb` client Mappers (optional)
 
-    > Clients > ngxapp > Mappers > telephone number
+    > Clients > ngxweb > Mappers > telephone number
 
     ```
     Name: telephone number
@@ -63,9 +63,9 @@ Post-Install KeyCloak Setup and LDAP Configuration
     Claim JSON Type: String
     ```
  
-6. Add `NGX_ADMIN To Admin` for `ngxapp` client Mappers (optional)
+6. Add `NGX_ADMIN To Admin` for `ngxweb` client Mappers (optional)
 
-    > Clients > ngxapp > Mappers > my_group to admin
+    > Clients > ngxweb > Mappers > my_group to admin
 
     ```
     Name:  NGX_ADMIN to admin
@@ -74,10 +74,10 @@ Post-Install KeyCloak Setup and LDAP Configuration
     New Role Name: ROLE_ADMIN
     ```
 
-7. Add `groups` for `ngxapp` client Mappers (optional)
+7. Add `groups` for `ngxweb` client Mappers (optional)
     > k8s is configured to reed groups from ID_TOKEN/ACCESS_TOKEN, so create groups claim
 
-    > Clients > ngxapp > Mappers > groups
+    > Clients > ngxweb > Mappers > groups
 
     ```
     Name:  groups
@@ -102,9 +102,9 @@ Post-Install KeyCloak Setup and LDAP Configuration
 
 9. Turn off `Full Scope Allowed` (this step is not needed - buggy)
 
-    > Under Clients > ngxapp > Scope
+    > Under Clients > ngxweb > Scope
     
-    Turn off `Full Scope Allowed` for `ngxapp` client and select few Realm Roles
+    Turn off `Full Scope Allowed` for `ngxweb` client and select few Realm Roles
 
 
 ### FAQ

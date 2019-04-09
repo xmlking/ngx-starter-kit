@@ -30,8 +30,8 @@ export const environment: IEnvironment = {
 
   auth: {
     clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
-    issuer:
-      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    issuer: process.env.OIDC_ISSUER_URL || 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    jwksUri: process.env.OIDC_JWKS_URL || 'http://keycloak-headless:8080/auth/realms/ngx/protocol/openid-connect/certs',
   },
 
   email: {

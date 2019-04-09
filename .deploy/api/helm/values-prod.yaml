@@ -58,7 +58,9 @@ env:
   - name: TYPEORM_LOGGING
     value: 'false'
   - name: OIDC_ISSUER_URL
-    value: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx'
+    value: 'https://keycloak.traefik.k8s/auth/realms/ngx'
+  - name: OIDC_JWKS_URL
+    value: 'http://keycloak-headless:8080/auth/realms/ngx/protocol/openid-connect/certs'
   - name: OIDC_CLIENT_ID
     value: ngxapi
   - name: EMAIL_HOST

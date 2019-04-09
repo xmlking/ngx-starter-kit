@@ -1,5 +1,5 @@
 import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
-import { produce, Mutation } from '@ngxs-labs/immer-adapter';
+import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
 import { tap } from 'rxjs/operators';
 import { AppNotification } from './app-notification.model';
 import { NotificationsService } from './notifications.service';
@@ -33,10 +33,12 @@ export class NotificationsState implements NgxsAfterBootstrap {
     // ctx.dispatch(new FetchNotifications())
   }
 
+  @ImmutableContext()
   @Action(AddNotification)
   add(ctx: StateContext<AppNotification[]>, { payload }: AddNotification) {
-    produce(ctx, (draft: AppNotification[]) => {
-      draft.push(payload);
+    ctx.setState((state: AppNotification[]) => {
+      state.push(payload);
+      return state;
     });
   }
 
@@ -45,28 +47,33 @@ export class NotificationsState implements NgxsAfterBootstrap {
     return this.notificationsService.getAll().pipe(tap(res => setState(res)));
   }
 
+  @ImmutableContext()
   @Action(DeleteNotification)
   delete(ctx: StateContext<AppNotification[]>, { payload }: AddNotification) {
-    produce(ctx, draft => {
-      draft.splice(draft.findIndex(note => note.id === payload.id), 1);
+    ctx.setState((state: AppNotification[]) => {
+      return state.splice(state.findIndex(note => note.id === payload.id), 1);
       // or (slower):
-      // return draft.filter(note => note.id !== payload.id);
+      // return state.filter(note => note.id !== payload.id);
     });
   }
 
+  @ImmutableContext()
   @Action(MarkAsRead)
   markAsRead(ctx: StateContext<AppNotification[]>, { payload }: MarkAsRead) {
-    produce(ctx, draft => {
-      draft[draft.findIndex(note => note.id === payload.id)].read = true;
+    ctx.setState((state: AppNotification[]) => {
+      state[state.findIndex(note => note.id === payload.id)].read = true;
+      return state;
     });
   }
 
+  @ImmutableContext()
   @Action(MarkAllAsRead)
   markAllAsRead(ctx: StateContext<AppNotification[]>) {
-    produce(ctx, draft => {
-      draft.forEach(item => {
+    ctx.setState((state: AppNotification[]) => {
+      state.forEach(item => {
         item.read = true;
       });
+      return state;
     });
   }
 }

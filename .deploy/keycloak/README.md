@@ -65,7 +65,7 @@ PROXY_ADDRESS_FORWARDING="true"
 > Open Keycloak WebConsole
 
 1. Create a Keycloak realm called `ngx` via `Master > Add realm` menu, and switch to `ngx` realm
-2. Create a public client called `ngxapp` and `ngxapi` under realm `ngx`
+2. Create a public client called `ngxweb` and `ngxapi` under realm `ngx`
 3. Create a role `ROLE_USER` , `ROLE_ADMIN` under realm `ngx`
 4. Add a user `sumo`, `sumo1` , `sumo2` , `sumo3` under realm `ngx` and add the user to user role `ROLE_USER`
 5. Add a user `ngxadmin` under realm `ngx` and add the user to user role `ROLE_ADMIN`
@@ -75,7 +75,7 @@ PROXY_ADDRESS_FORWARDING="true"
 Refer https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match
 
 1. add `ngxapi_audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi_audience_mapper` and adding `ngxapi` Client under `Included Client Audience`.
-2. for `ngxapp` client, add `ngxapi_audience` at **Client Scopes** tab
+2. for `ngxweb` client, add `ngxapi_audience` at **Client Scopes** tab
 3. for `ngxapi` client, add `ngxapi_audience` at **Client Scopes** tab (for Swagger API Docs)
 
 ---

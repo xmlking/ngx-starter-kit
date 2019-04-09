@@ -2,24 +2,27 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-replicaCount: 1
 
+## Image
 image:
-  repository: nginx
-  tag: alpine
+  repository: nginxinc/nginx-unprivileged
+  tag: 1.15.10-alpine
   pullPolicy: IfNotPresent
 
 nameOverride: ""
 fullnameOverride: ""
 
-securityContext: {}
-## We usually recommend to specify securityContext for containers
-## This increases chances charts run on restricted environments such as OpenShift.
-## If you do want to specify securityContext, uncomment the following
-## lines, adjust them as necessary, and remove the curly braces after 'securityContext:'.
-#  fsGroup: 65534
-#  runAsUser: 65534
+replicaCount: 1
 
+securityContext:
+  runAsUser: 1001
+
+## Pod annotations
+podAnnotations: {}
+
+serverName: localhost
+
+## Service
 service:
   annotations: {}
   clusterIP: ""
@@ -27,7 +30,7 @@ service:
   loadBalancerIP: ""
   loadBalancerSourceRanges: []
   type: ClusterIP
-  port: 8080
+  port: 80
   nodePort: ""
 
 ingress:
@@ -57,6 +60,17 @@ networkPolicy:
 #          protocol: TCP
 #        - port: 6443
 #          protocol: UDP
+
+## Create HorizontalPodAutoscaler object.
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    cpu:
+      targetAverageUtilization: 70
+    memory:
+      targetAverageUtilization: 70
 
 resources: {}
 #  limits:

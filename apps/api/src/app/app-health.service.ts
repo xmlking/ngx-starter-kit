@@ -1,6 +1,8 @@
 import { Injectable, Logger, OnApplicationBootstrap, OnApplicationShutdown } from '@nestjs/common';
 import {
   DNSHealthIndicator,
+  MemoryHealthIndicator,
+  DiskHealthIndicator,
   TerminusEndpoint,
   TerminusModuleOptions,
   TerminusOptionsFactory,
@@ -27,6 +29,8 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
   constructor(
     private readonly db: TypeOrmHealthIndicator,
     private readonly dns: DNSHealthIndicator,
+    private readonly memory: MemoryHealthIndicator,
+    private readonly disk: DiskHealthIndicator,
     private readonly kubernetes: KubernetesHealthIndicator,
   ) {}
 
@@ -35,6 +39,9 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
       {
         url: '/ready', // Non-OK causes no load
         healthIndicators: [
+          async () => this.memory.checkHeap('memory_heap', 200 * 1024 * 1024),
+          async () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
+          // async () => this.disk.checkStorage('storage', {  thresholdPercent: 0.8, path: '/' }),
           async () => this.dns.pingCheck('weather', 'https://samples.openweathermap.org'),
           async () => this.kubernetes.pingCheck('kubernetes'),
         ],

@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { QuicklinkModule, QuicklinkStrategy } from 'ngx-quicklink';
+import { QuicklinkModule, QuicklinkStrategy } from '@xmlking/ngx-quicklink';
 import { CoreModule } from '@ngx-starter-kit/core';
 
 import { environment } from '@env/environment';
