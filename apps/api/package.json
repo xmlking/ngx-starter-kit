@@ -7,19 +7,20 @@
     "typeorm:seeds": "typeorm migration:run",
     "typeorm:flush": "typeorm migration:revert",
     "typeorm:create": "typeorm migration:create",
-    "typeorm:preserve": "npm run typeorm:sync -- -f=ormconfig && npm run typeorm:seeds -- -f=ormconfig"
+    "typeorm:preserve": "yarn typeorm:sync -- -f=ormconfig && yarn typeorm:seeds -- -f=ormconfig"
   },
   "dependencies": {
-    "@nestjs/common": "^6.0.0",
-    "@nestjs/core": "^6.0.0",
+    "@godaddy/terminus": "^4.1.0",
+    "@nestjs/common": "^6.1.0",
+    "@nestjs/core": "^6.1.0",
     "@nestjs/cqrs": "^6.0.0",
     "@nestjs/passport": "^6.0.0",
-    "@nestjs/platform-express": "^6.0.0",
-    "@nestjs/platform-socket.io": "^6.0.0",
+    "@nestjs/platform-express": "^6.1.0",
+    "@nestjs/platform-socket.io": "^6.1.0",
     "@nestjs/swagger": "^3.0.0",
     "@nestjs/terminus": "^6.1.0",
     "@nestjs/typeorm": "^6.0.0",
-    "@nestjs/websockets": "^6.0.0",
+    "@nestjs/websockets": "^6.1.0",
     "@nestjsx/crud": "^3.2.0",
     "@xmlking/jwks-rsa": "^1.4.3",
     "cache-manager": "^2.9.0",
@@ -38,13 +39,27 @@
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
     "sharp": "^0.22.0",
+    "swagger-ui-express": "^4.0.2",
     "typeorm": "^0.2.16",
     "typeorm-express-query-builder": "^1.1.1",
-    "web-push": "^3.3.3",
-    "@godaddy/terminus": "^4.1.0",
-    "swagger-ui-express": "^4.0.2"
+    "web-push": "^3.3.3"
   },
   "devDependencies": {
-    "typescript": "~3.1.6"
+    "@nestjs/microservices": "^6.0.5",
+    "@types/helmet": "^0.0.43",
+    "@types/nodemailer": "^4.6.0",
+    "@types/passport": "1.0.0",
+    "@types/passport-jwt": "^3.0.1",
+    "@types/socket.io": "^2.1.0",
+    "@types/supertest": "^2.0.0",
+    "@types/web-push": "^3.3.0",
+    "mongoose": "^5.5.0",
+    "typescript": "^3.1.6"
+  },
+  "optionalDependencies": {
+    "@nestjs/schematics": "^6.1.0",
+    "@nestjs/testing": "^6.0.0",
+    "nodemon": "^1.18.0",
+    "supertest": "^4.0.0"
   }
 }

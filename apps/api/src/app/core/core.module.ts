@@ -7,7 +7,12 @@ import { LoggingInterceptor, TransformInterceptor } from './interceptors';
 import { RequestContextMiddleware } from './context';
 import { ConfigService } from '../config';
 import { environment as env } from '@env-api/environment';
-import { isClass } from '@ngx-starter-kit/utils';
+
+// FIXME: temp workaround https://github.com/nrwl/nx/pull/1233
+// import { isClass } from '@ngx-starter-kit/utils';
+export function isClass(obj) {
+  return !!obj.prototype && !!obj.prototype.constructor.name;
+}
 
 function requireAllClasses(rc) {
   return rc

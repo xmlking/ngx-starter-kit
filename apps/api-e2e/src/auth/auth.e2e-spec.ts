@@ -3,9 +3,9 @@
 // import { Test } from '@nestjs/testing';
 // import { INestApplication } from '@nestjs/common';
 //
-// import { AuthModule } from '../../src/auth/auth.module';
-// import { AuthService } from '../../src/auth/auth.service';
-// import { AuthenticateDto } from '../../src/auth/dto/authenticate-dto';
+// import { AuthModule } from '../../../api/src/app/auth/auth.module';
+// import { UserService } from '../../../api/src/app/user/user.service';
+// import { AuthenticateDto } from '../../../api/src/app/user/dto/authenticate-dto';
 // import { users } from '../../src/auth/users.const';
 //
 // describe('Auth', () => {

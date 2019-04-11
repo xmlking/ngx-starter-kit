@@ -2,12 +2,11 @@
 FROM node:11-alpine as dev-dependencies
 ######################################################################
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY package.json yarn.lock ./
+RUN yarn --no-cache --ignore-optional --frozen-lockfile
 
 ######################################################################
 FROM node:11-alpine as builder
-#FROM node:11 as builder
 ######################################################################
 WORKDIR /app
 COPY --from=dev-dependencies /app /app
@@ -26,7 +25,6 @@ RUN set -x \
 	&& rm -rf /usr/share/nginx/html/*
 USER 1001
 
-## From 'builder' stage copy over the artifacts in dist folder to default nginx public folder
 COPY --from=builder /app/dist/apps/webapp  /usr/share/nginx/html
 
 # Metadata params

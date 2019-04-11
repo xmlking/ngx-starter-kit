@@ -9,7 +9,8 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
 | Node                 | v11.13.0 |          |
-| NPM                  | v6.7.0   |          |
+| Yarn                 | v1.15.2  |          |
+| Lerna                | v3.13.2  |          |
 | Angular CLI          | v8.0.0   |          |
 | @nrwl/schematics     | v7.7.2   |          |
 | @nestjs/cli          | v6.0.0   |          |
@@ -19,12 +20,14 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 ### Install Prerequisites
 
 ```bash
-# install or Update Node with brew or NVM
+# install or Update Node and Yarn with brew
 brew update
 brew install node
 #brew upgrade node
-# upgrade npm to at least 6.x.x
-npm install -g npm
+brew install yarn
+#brew upgrade yarn
+yarn config set workspaces-experimental true
+yarn global add lerna
 ```
 
 Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
@@ -56,59 +59,59 @@ bazel clean --expunge
 #### Install Global Packages
 
 ```bash
-npm remove -g @angular/cli
-npm remove -g @nrwl/schematics
-npm remove -g @nestjs/cli
-npm remove -g semantic-release-cli
-npm remove -g commitizen
+yarn global remove @angular/cli
+yarn global remove @nrwl/schematics
+yarn global remove @nestjs/cli
+yarn global remove semantic-release-cli
+yarn global remove commitizen
 
-npm install -g @angular/cli
-npm install -g @nrwl/schematics
-npm install -g @nestjs/cli
-npm install -g semantic-release-cli
-npm install -g commitizen
+yarn global add @angular/cli@next
+yarn global add @nrwl/schematics
+yarn global add @nestjs/cli
+yarn global add semantic-release-cli
+yarn global add commitizen
 
 # verify globally installed packages
-npm list -g --depth=0
+yarn global list
 # find out which packages need to be updated
-npm outdated -g --depth=0
+yarn global upgrade-interactive
 # set scss as default css processor
 ng config -g schematics.@nrwl/schematics:component.styleext scss
-ng config -g cli.packageManager npm
+ng config -g cli.packageManager yarn
 # set jest as default TestRunner
 ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 # set scss as default styleext for ngx-formly
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
-more cat ~/.angular-config.json
+cat ~/.angular-config.json
 # find reverse dependencies for a package
-npm ls jasmine-marbles
+yarn why jasmine-marbles
 ```
 
 ### Scaffold Project
 
 > steps below are for setting up a new project from the scratch.
 
-for nx help `npm run help`
+for nx help `yarn run help`
 
 > Explicitly Passing Arguments to Angular CLI
 
 `nx/ng` commands now accept a delimiter to distinguish the end of options for `Nx` and the beginning of options to `Angular CLI` with a (like npm run) according to Guideline 10 of `POSIX.2 utility syntax guidelines`.
 
-`npm run affected -- --target lint --uncommitted --parallel -- --fix`
+`yarn affected -- --target lint --uncommitted --parallel -- --fix`
 
 #### Create Workspace
 
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
-create-nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=npm  --preset=empty --style=scss
+yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=yarn  --preset=empty --style=scss
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=npm --preset=empty --style=scss --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --bazel  --verbose
 cd ngx-starter-kit
 
-> remove all ngrx NPM pagages from package.json
+> remove all `ngrx` NPM pagages from package.json, we will use `ngxs`
 
 # setup your workspace to run tests with jest.
 ng generate jest
@@ -120,7 +123,7 @@ ng update
 # and update as suggested. e.g.,
 ng update @nrwl/schematics
 ng update --all
-# also run `npm outdated` and update versions in package.json then run `npm install`
+# also run `yarn outdated` and update versions in package.json then run `yarn install`
 
 # generate webapp app
 ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
@@ -134,7 +137,7 @@ ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2
 ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
-npm i @webcomponents/custom-elements ?
+arn add @webcomponents/custom-elements ?
 
 # generate api app with nestjs
 ng g node-app api --framework=nestjs --unit-test-runner=jest --tags=api-module -d
@@ -156,32 +159,32 @@ ng add @angular/pwa --project webapp
 # Ref: https://material.angular.io/guide/schematics
 # Ref: https://material.angular.io/guide/getting-started
 ng add @angular/material
-npm i hammerjs
-npm i -D @types/hammerjs
-npm i date-fns@next
+yarn add hammerjs
+yarn add -D @types/hammerjs
+yarn add date-fns@next
 
 # Add Flex-Layout
-npm i @angular/flex-layout
+arn add @angular/flex-layout
 # Add in-memory-web-api
-npm i angular-in-memory-web-api
+arn add angular-in-memory-web-api
 # Add oauth2-oidc
-~npm i angular-oauth2-oidc~
-npm i @xmlking/angular-oauth2-oidc-all
+~arn add angular-oauth2-oidc~
+arn add @xmlking/angular-oauth2-oidc-all
 
 # Add NGXS
 ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
 # or add NGXS manually
-npm i @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
-npm i -D @ngxs/schematics
+arn add @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
+arn add -D @ngxs/schematics
 
-npm i @ngxs-labs/immer-adapter
-npm i immer
+arn add @ngxs-labs/immer-adapter
+arn add immer
 
 # Add formly
 ng add @ngx-formly/schematics --ui-theme=material
 
 # Add Filepond
-npm i ngx-filepond \
+arn add ngx-filepond \
 filepond-plugin-file-encode \
 filepond-plugin-file-validate-size \
 filepond-plugin-file-validate-type \
@@ -189,43 +192,38 @@ filepond-plugin-image-crop \
 filepond-plugin-image-preview
 
 # Add Socket.io
-npm i socket.io-client
-npm i -D @types/socket.io-client
+arn add socket.io-client
+arn add -D @types/socket.io-client
 
 # add lite-server to test PWA locally
-npm i -D lite-server
+arn add -D lite-server
 
 # Add miscellaneous
-npm i ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
+arn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 
 # Add Dev Tools
-npm i -D standard-version
-npm i -D angular-cli-ghpages
-npm i -D @compodoc/compodoc
+arn add -D standard-version
+arn add -D angular-cli-ghpages
+arn add -D @compodoc/compodoc
 
-npm i -D loaders.css
-npm i -D api-ai-javascript
+arn add -D loaders.css
+arn add -D api-ai-javascript
 
 # install without saving
-npm install trianglify --no-save --no-lock
-
-# Do you want to use tslint and prettier without conflicts?
-npm i -D tslint-config-prettier
-# to check any conflects
-npx tslint-config-prettier-check ./tslint.json
+arn add trianglify --no-save --no-lock
 
 # install cypress for e2e testing and remove protractor
-npm i -D cypress @types/jquery
+arn add -D cypress @types/jquery
 
 # for CI/CD automation and release
 # first time semantic-release setup
 semantic-release-cli setup
 
-npm i -D semantic-release @semantic-release/{changelog,git,github,npm}
-npm i -D commitizen cz-conventional-changelog
-npm i -D @commitlint/{config-conventional,cli}
-npm i -D husky
-npm i -D lint-staged
+arn add -D semantic-release @semantic-release/{changelog,git,github,npm}
+arn add -D commitizen cz-conventional-changelog
+arn add -D @commitlint/{config-conventional,cli}
+arn add -D husky
+arn add -D lint-staged
 ```
 
 > update 3rd party modules/schematics
@@ -529,14 +527,13 @@ ng g service   services/subscription          --project=admin  -d
 ng g workspace-schematic store
 # run workspace-schematic `store`
 # *** always delete ./dist folder when you change schematic implementation ***
-npm run workspace-schematic store models/sumoDemo -- --project=grid  -d
+yarn workspace-schematic store models/sumoDemo -- --project=grid  -d
 ```
 
 ### Install
 
 ```bash
-npm install
-cp .env.example .env
+yarn install
 ```
 
 ### Update
@@ -628,7 +625,7 @@ npx compodoc -s -d docs
 
 ```bash
 # build for gh-pages
-npm run build:mock
+yarn build:mock
 # maybe compress
 gzip -k -r dist/apps/webapp/*.js
 # push gh-pages
@@ -640,7 +637,7 @@ npx ngh --dir dist/apps/webapp
 ```bash
 npm whoami
 npx standard-version
-"release": "standard-version && git push — follow-tags origin master && npm publish"
+"release": "standard-version && git push — follow-tags origin master && yarn publish"
 ```
 
 #### build library
@@ -658,7 +655,7 @@ export TAG=dev
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # check who-am-i
 npm whoami
-npm publish dist/libs/socketio-plugin --tag $TAG --access public
+yarn publish dist/libs/socketio-plugin --tag $TAG --access public
 ```
 
 ### Analyze
@@ -666,7 +663,7 @@ npm publish dist/libs/socketio-plugin --tag $TAG --access public
 > Analyzing bundle size
 
 ```bash
-npm run bundle-report
+yarn bundle-report
 ```
 
 ### Check
@@ -675,7 +672,8 @@ npm run bundle-report
 
 ```bash
 node -v
-npm -v
+yarn -v
+lerna -v
 ng -v
 npx nx --version
 nest info
@@ -706,3 +704,5 @@ Right click on `coverage` in project view --> Make Directory as --> Excluded.
 
 - Nx and Angular CLI
   - https://github.com/nrwl/nx/wiki/Nx-and-Angular-CLI
+- NPM vs Yarn Cheat Sheet
+  - https://shift.infinite.red/npm-vs-yarn-cheat-sheet-8755b092e5cc

@@ -6,7 +6,7 @@
     "@angular/core": ">=7.0.0"
   },
   "dependencies": {
-    "@ngxs/store": ">=3.3.0",
+    "@ngxs/store": ">=3.4.0",
     "socket.io-client": ">=2.2.0"
   }
 }

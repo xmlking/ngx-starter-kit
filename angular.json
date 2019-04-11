@@ -1347,7 +1347,7 @@
       "versionMismatch": false
     },
     "defaultCollection": "@nrwl/schematics",
-    "packageManager": "npm"
+    "packageManager": "yarn"
   },
   "defaultProject": "webapp"
 }

@@ -2,11 +2,11 @@
   "name": "@ngx-starter-kit/oidc",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=6.0.0 <8.0.0",
-    "@angular/core": ">=6.0.0 <8.0.0",
-    "@ngxs/store": ">=3.3.0",
-    "@ngxs/router-plugin": ">=3.3.0",
-    "@ngxs/storage-plugin": ">=3.3.0",
+    "@angular/common": ">=7.0.0",
+    "@angular/core": ">=7.0.0",
+    "@ngxs/store": ">=3.4.0",
+    "@ngxs/router-plugin": ">=3.4.0",
+    "@ngxs/storage-plugin": ">=3.4.0",
     "@ngxs-labs/immer-adapter": ">=3.0.1"
   },
   "dependencies": {

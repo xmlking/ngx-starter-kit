@@ -16,16 +16,18 @@ RUN mkdir /user && \
 FROM node:11-alpine as prod-dependencies
 ######################################################################
 WORKDIR /app
-COPY package.api.json package.json
-RUN npm i --production
+ENV NODE_ENV production
+COPY apps/api/package.json yarn.lock ./
+RUN yarn --production --frozen-lockfile
 
 ######################################################################
 FROM node:11-alpine as dev-dependencies
 ######################################################################
 WORKDIR /app
-# TODO use slim package.json without cypress etc., for installing devDeps
-COPY package.json package-lock.json ./
-RUN npm ci
+COPY apps/api/package.json apps/api/package.json
+COPY package.json yarn.lock ./
+RUN yarn --no-cache --ignore-optional --frozen-lockfile && \
+  yarn add typescript@3.1.6 -W
 
 ######################################################################
 FROM node:11-alpine as builder
@@ -37,13 +39,10 @@ COPY libs/models libs/models
 COPY libs/utils libs/utils
 COPY tools/hooks/api.webpack.js tools/hooks/api.webpack.js
 COPY angular.json nx.json tsconfig.json ./
-RUN npm i typescript@3.1.6
 ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 
 ######################################################################
-#FROM  astefanutti/scratch-node
-#COPY --from=busybox:1.30.1 /bin/busybox /bin/busybox
 FROM node:11-alpine as final
 ######################################################################
 # Import the user and group files from the first stage.
@@ -85,6 +84,3 @@ ENTRYPOINT ["tini", "--"]
 
 # Run node app under tini
 CMD ["node", "main.js"]
-
-# TODO:
-# https://github.com/alextanhongpin/go-docker-multi-stage-build/blob/master/Dockerfile
