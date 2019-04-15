@@ -39,32 +39,32 @@ stages:
 jobs:
   include:
 #    - stage: lint
-#      script: yern lint
+#      script: yarn lint
 
 #    - stage: test # unit test
 #      script:
-#        - yern test:ci
+#        - yarn test:ci
 
 #    - stage: test # e2e test
 #      script:
-#        - yern e2e:ci
+#        - yarn e2e:ci
 
 #    - stage: build
-#      before_script: yern prebuild
+#      before_script: yarn prebuild
 #      script:
-#        - yern build:mock
+#        - yarn build:mock
 
 #    - stage: release # semantic release - create changelog
 #      if: branch = master AND tag IS present
 #      script: skip
 #      deploy:
 #        provider: script
-#        script: yern release
+#        script: yarn release
 #        skip-cleanup: true
 
 #    - stage: release # github release
 #      if: branch = master AND tag IS present
-#      script: yern build:mock
+#      script: yarn build:mock
 #      before_deploy:
 #        - tar czvf webapp.tar.gz -C dist/apps/webapp .
 #      deploy:
