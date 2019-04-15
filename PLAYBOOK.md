@@ -533,7 +533,7 @@ yarn workspace-schematic store models/sumoDemo -- --project=grid  -d
 ### Install
 
 ```bash
-yarn install
+yarn
 ```
 
 ### Update
@@ -543,6 +543,9 @@ ng update
 ng update @angular/cli
 ng update @angular/core
 ng update --all
+# interactively update non-ng modules, with `--latest` 
+# this will also update package.json file with information of the new versions of the updated packages
+yarn  upgrade-interactive --latest
 ```
 
 ### Build
@@ -552,7 +555,7 @@ ng update --all
 ng xi18n --output-path apps/webapp/src/local
 
 ng build api
-# start with hugh memory
+# start with hugh memory if ndded
 NODE_OPTIONS=--max-old-space-size=4096 ng build api --prod
 NODE_OPTIONS=--max-old-space-size=4096 ng build webapp --prod
 ```

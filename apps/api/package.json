@@ -45,7 +45,7 @@
     "web-push": "^3.3.3"
   },
   "devDependencies": {
-    "@nestjs/microservices": "^6.0.5",
+    "@nestjs/microservices": "^6.1.0",
     "@types/helmet": "^0.0.43",
     "@types/nodemailer": "^4.6.0",
     "@types/passport": "1.0.0",
@@ -53,12 +53,11 @@
     "@types/socket.io": "^2.1.0",
     "@types/supertest": "^2.0.0",
     "@types/web-push": "^3.3.0",
-    "mongoose": "^5.5.0",
-    "typescript": "^3.1.6"
+    "mongoose": "^5.5.0"
   },
   "optionalDependencies": {
     "@nestjs/schematics": "^6.1.0",
-    "@nestjs/testing": "^6.0.0",
+    "@nestjs/testing": "^6.1.0",
     "nodemon": "^1.18.0",
     "supertest": "^4.0.0"
   }

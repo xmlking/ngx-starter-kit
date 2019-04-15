@@ -24,7 +24,7 @@ enum State {
 @Injectable()
 export class AppHealthService implements TerminusOptionsFactory, OnApplicationBootstrap, OnApplicationShutdown {
   readonly logger = new Logger(AppHealthService.name);
-  status: State;
+  private statusP = State.UNKNOWN;
 
   constructor(
     private readonly db: TypeOrmHealthIndicator,
@@ -49,9 +49,7 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
       {
         // Unlike a readiness probe, it is not idiomatic to check dependencies in a liveness probe.
         url: '/live', // Non-OK causes restart
-        healthIndicators: [
-          async () => this.db.pingCheck('database', { timeout: 300 })
-        ],
+        healthIndicators: [async () => this.db.pingCheck('database', { timeout: 300 })],
       },
     ];
     return {
@@ -80,5 +78,71 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
     // ])
     //   .then(() => process.exit(0))
     //   .catch((err) => process.exit(-1))
+
+  }
+
+  get status(): State {
+    return this.statusP;
+  }
+
+  set status(status: State) {
+    switch (this.statusP) {
+      case State.UNKNOWN:
+        this.statusP = status;
+        break;
+
+      case State.STARTING:
+        switch (status) {
+          case State.STARTING:
+            this.statusP = State.STARTING;
+            break;
+          case State.DOWN:
+            this.statusP = State.DOWN;
+            break;
+        }
+        break;
+
+      case State.UP:
+        switch (status) {
+          case State.STARTING:
+            this.statusP = State.STARTING;
+            break;
+          case State.UP:
+            this.statusP = State.UP;
+            break;
+          case State.DOWN:
+            this.statusP = State.DOWN;
+            break;
+        }
+        break;
+
+      case State.DOWN:
+        break;
+
+      case State.STOPPING:
+        switch (status) {
+          case State.STOPPING:
+            this.statusP = State.STOPPING;
+            break;
+          case State.DOWN:
+            this.statusP = State.STOPPED;
+            break;
+          case State.STOPPED:
+            this.statusP = State.STOPPED;
+            break;
+        }
+        break;
+
+      case State.STOPPED:
+        switch (status) {
+          case State.STOPPING:
+            this.statusP = State.STOPPING;
+            break;
+          case State.DOWN:
+            this.statusP = State.STOPPED;
+            break;
+        }
+        break;
+    }
   }
 }

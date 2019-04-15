@@ -7,7 +7,7 @@ import { AuthMode, Logout, LogoutSuccess } from './auth.actions';
 import { Store, Select } from '@ngxs/store';
 import { ROPCService } from './ropc.service';
 import { LoginComponent } from './components/login/login.component';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
 import { OAuthEvent } from '@xmlking/angular-oauth2-oidc-all/events';

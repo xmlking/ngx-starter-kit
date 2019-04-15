@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 
-import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MAT_DATE_FORMATS, MAT_DATE_LOCALE, MatDateFormats, MatNativeDateModule } from '@angular/material/core';
+import {MatDatepickerModule  } from '@angular/material/datepicker';
+
 
 const MODULE_EXPORTS = [MatDatepickerModule, MatNativeDateModule];
 

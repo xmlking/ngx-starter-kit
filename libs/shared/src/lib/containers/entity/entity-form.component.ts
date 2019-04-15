@@ -1,6 +1,6 @@
 import { Inject, OnInit } from '@angular/core';
 import { Entity } from './entity.model';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 
 export abstract class EntityFormComponent<TEntity extends Entity> implements OnInit {

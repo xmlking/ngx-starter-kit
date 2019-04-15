@@ -2,7 +2,7 @@ import { AfterViewInit, ChangeDetectorRef, Component, Inject } from '@angular/co
 import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
 
 import { ROPCService } from '../../ropc.service';

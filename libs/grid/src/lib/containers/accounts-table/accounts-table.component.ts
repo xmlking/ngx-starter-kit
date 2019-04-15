@@ -4,7 +4,8 @@ import { Account, Address, Gender } from '../../models/account.model';
 import { AccountService } from '../../services/account.service';
 import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
 import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 import { format } from 'date-fns/esm';
@@ -117,7 +118,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     const dialogRef = this.dialog.open(this.formRef, {
       width: '720px',
       disableClose: true,
-      data: { title: title, payload: entity },
+      data: { title, payload: entity },
     });
 
     dialogRef

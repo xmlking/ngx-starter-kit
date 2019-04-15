@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { EntityFormComponent } from '@ngx-starter-kit/shared';
 import { AppNotification, NotificationColor, NotificationIcon, TargetType } from '@ngx-starter-kit/notifications';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 

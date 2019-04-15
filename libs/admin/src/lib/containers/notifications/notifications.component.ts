@@ -1,7 +1,8 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { throwError } from 'rxjs';
 import { catchError, concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
 import { formatDistance } from 'date-fns/esm';

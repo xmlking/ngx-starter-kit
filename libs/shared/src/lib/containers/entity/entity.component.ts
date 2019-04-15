@@ -1,5 +1,7 @@
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { EntityService } from './entity.service';
 import { Entity, EntityColumnDef } from './entity.model';
@@ -197,7 +199,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   protected stringToDate(date: string | number | Date): number | Date {
-    const isString = s  => typeof(s) === 'string' || s instanceof String;
+    const isString = s => typeof s === 'string' || s instanceof String;
     return isString(date) ? parseISO(date) : date;
   }
 }
