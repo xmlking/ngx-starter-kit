@@ -11,7 +11,7 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { MenuItem, MenuService, SidenavState } from '@ngx-starter-kit/navigator';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { WINDOW } from '@ngx-starter-kit/core';

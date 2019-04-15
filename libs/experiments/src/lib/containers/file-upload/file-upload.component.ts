@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 import { FileUploadService } from './file-upload.service';
 

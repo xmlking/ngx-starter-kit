@@ -15,14 +15,12 @@ import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
 import { FeaturesComponent } from './containers/features/features.component';
 import { StickyHeaderDirective } from './components/header/sticky-header.directive';
 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatIconModule,
-  MatListModule,
-  MatMenuModule,
-  MatToolbarModule,
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatToolbarModule } from '@angular/material/toolbar';
 
 const matModules = [MatListModule, MatIconModule, MatButtonModule, MatMenuModule, MatToolbarModule, MatCardModule];
 
