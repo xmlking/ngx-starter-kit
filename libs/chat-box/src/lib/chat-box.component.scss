@@ -123,7 +123,7 @@
 }
 
 /* Custom mat-form-field-outline */
-:host /deep/ mat-form-field.mat-form-field-appearance-outline.custom-outline .mat-form-field-wrapper {
+:host ::ng-deep mat-form-field.mat-form-field-appearance-outline.custom-outline .mat-form-field-wrapper {
   padding-bottom: 0;
   margin: 0;
   //.mat-form-field-outline {

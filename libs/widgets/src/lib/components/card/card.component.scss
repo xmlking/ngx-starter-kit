@@ -24,7 +24,7 @@
   @include mat-elevation($card-elevation);
 }
 
-:host /deep/ {
+:host ::ng-deep {
   .ngx-card-header {
     padding: $spacing;
     display: flex;

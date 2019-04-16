@@ -28,7 +28,7 @@ mat-sidenav.quickpanel {
 /**
  * deep TODO
  */
-:host /deep/ {
+:host ::ng-deep {
   @media screen and (min-width: 960px) {
     .mat-drawer-backdrop {
       z-index: 50 !important;

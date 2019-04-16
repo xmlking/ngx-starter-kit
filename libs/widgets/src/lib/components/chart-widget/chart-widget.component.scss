@@ -24,7 +24,7 @@
   @include mat-elevation($card-elevation);
 }
 
-:host /deep/ {
+:host ::ng-deep {
   .ngx-chart-widget-header {
     padding: $spacing/1.5 $spacing;
     display: flex;
