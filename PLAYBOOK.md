@@ -545,7 +545,7 @@ ng update @angular/core
 ng update --all
 # interactively update non-ng modules, with `--latest` 
 # this will also update package.json file with information of the new versions of the updated packages
-yarn  upgrade-interactive --latest
+yarn upgrade-interactive --latest
 ```
 
 ### Build

@@ -4,12 +4,12 @@
   "peerDependencies": {
     "@angular/common": ">=7.0.0",
     "@angular/core": ">=7.0.0",
-    "@ngxs/store": ">=3.4.0",
+    "@ngxs-labs/immer-adapter": ">=3.0.1",
     "@ngxs/router-plugin": ">=3.4.0",
     "@ngxs/storage-plugin": ">=3.4.0",
-    "@ngxs-labs/immer-adapter": ">=3.0.1"
+    "@ngxs/store": ">=3.4.0"
   },
   "dependencies": {
-    "keycloak-js": ">=5.0.0"
+    "keycloak-js": ">=6.0.0"
   }
 }

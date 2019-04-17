@@ -87,6 +87,12 @@ node dist/apps/api/main.js
 ng build api --prod
 ```
 
+### Commands
+```bash
+# to run custom commands, `check api:sumo in angular.json`
+ng run api:sumo
+```
+
 ### Generate
 
 > scaffolding nest artifacts <br/>

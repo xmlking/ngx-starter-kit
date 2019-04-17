@@ -7,7 +7,10 @@
     "typeorm:seeds": "typeorm migration:run",
     "typeorm:flush": "typeorm migration:revert",
     "typeorm:create": "typeorm migration:create",
-    "typeorm:preserve": "yarn typeorm:sync -- -f=ormconfig && yarn typeorm:seeds -- -f=ormconfig"
+    "typeorm:preserve": "yarn typeorm:sync -- -f=ormconfig && yarn typeorm:seeds -- -f=ormconfig",
+    "start": "ts-node -r tsconfig-paths/register --project apps/api/tsconfig.app.json src/main.ts",
+    "start:dev": "nodemon",
+    "start:debug": "nodemon --config nodemon-debug.json"
   },
   "dependencies": {
     "@godaddy/terminus": "^4.1.0",
@@ -34,7 +37,7 @@
     "nodemailer": "^6.1.0",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
-    "pg": "^7.9.0",
+    "pg": "^7.10.0",
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.4.0",
@@ -53,7 +56,7 @@
     "@types/socket.io": "^2.1.0",
     "@types/supertest": "^2.0.0",
     "@types/web-push": "^3.3.0",
-    "mongoose": "^5.5.0"
+    "mongoose": "^5.5.2"
   },
   "optionalDependencies": {
     "@nestjs/schematics": "^6.1.0",

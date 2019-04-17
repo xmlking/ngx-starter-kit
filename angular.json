@@ -281,6 +281,18 @@
             "jestConfig": "apps/api/jest.config.js",
             "tsConfig": "apps/api/tsconfig.spec.json"
           }
+        },
+        "sumo": {
+          "builder": "@nrwl/builders:run-commands",
+          "options": {
+            "outputPath": "dist/apps/api",
+            "commands": [
+              {
+                "command": "ts-node -r tsconfig-paths/register --project apps/api/tsconfig.app.json apps/api/src/main.ts"
+              }
+            ],
+            "parallel": false
+          }
         }
       }
     },
