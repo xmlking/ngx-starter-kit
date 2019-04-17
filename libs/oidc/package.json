@@ -10,6 +10,6 @@
     "@ngxs-labs/immer-adapter": ">=3.0.1"
   },
   "dependencies": {
-    "keycloak-js": ">=5.0.0"
+    "keycloak-js": ">=6.0.0"
   }
 }
