@@ -68,6 +68,7 @@
   },
   "husky": {
     "hooks": {
+      "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
       "pre-commit": "lint-staged"
     }
@@ -111,7 +112,7 @@
     "@angular/material": "~8.0.0-beta.2",
     "@angular/platform-browser": "~8.0.0-beta.13",
     "@angular/platform-browser-dynamic": "~8.0.0-beta.13",
-    "@angular/pwa": "~0.800.0-beta.15",
+    "@angular/pwa": "~0.800.0-beta.16",
     "@angular/router": "~8.0.0-beta.13",
     "@angular/service-worker": "~8.0.0-beta.13",
     "@fortawesome/angular-fontawesome": "^0.3.0",
@@ -123,7 +124,7 @@
     "@ngx-lite/in-viewport": "^0.1.3",
     "@ngx-lite/input-star-rating": "^0.2.5",
     "@ngx-lite/input-tag": "^0.3.8",
-    "@ngxs-labs/immer-adapter": "^3.0.0",
+    "@ngxs-labs/immer-adapter": "^3.0.3",
     "@ngxs/devtools-plugin": "^3.4.0",
     "@ngxs/form-plugin": "^3.4.0",
     "@ngxs/router-plugin": "^3.4.0",
@@ -178,16 +179,16 @@
     "@types/hammerjs": "^2.0.36",
     "@types/jest": "^24.0.0",
     "@types/jquery": "^3.3.29",
-    "@types/node": "^11.13.5",
+    "@types/node": "^11.13.6",
     "@types/socket.io-client": "^1.4.32",
     "loaders.css": "^0.1.2",
     "rimraf": "^2.6.2",
-    "ts-loader": "^5.3.0",
+    "ts-loader": "^5.4.3",
     "ts-node": "~8.1.0",
     "tsconfig-paths": "^3.8.0",
     "tsickle": "^0.34.0",
     "tslint": "~5.16.0",
-    "typescript": "~3.4.3"
+    "typescript": "~3.4.4"
   },
   "optionalDependencies": {
     "@angular/language-service": "~8.0.0-beta.13",
@@ -202,11 +203,11 @@
     "@semantic-release/npm": "^5.1.0",
     "angular-cli-ghpages": "^0.5.3",
     "codelyzer": "^5.0.0",
-    "commitizen": "^3.0.7",
+    "commitizen": "^3.1.1",
     "cypress": "^3.2.0",
     "cz-conventional-changelog": "^2.1.0",
     "dotenv": "^7.0.0",
-    "husky": "^1.3.0",
+    "husky": "^1.3.1",
     "jest": "^24.7.0",
     "jest-preset-angular": "^7.1.0",
     "lint-staged": "^8.1.0",

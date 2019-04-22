@@ -98,7 +98,7 @@ services:
     container_name: transporter
     environment:
       DB_NAME: cockpit
-      MONGODB_URI: 'postgres://postgres:postgres321@postgres:5432'
+      POSTGRES_URI: 'postgres://postgres:postgres321@postgres:5432'
       ELASTICSEARCH_URI: 'http://elasticsearch:9200'
     links:
       - 'postgres'
@@ -107,7 +107,5 @@ services:
 volumes:
   uploads:
   postgres_data:
-  mongodb_primary_data:
-  mongodb_secondary_data:
   esdata1:
   esdata2:
