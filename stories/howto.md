@@ -110,7 +110,7 @@ npm run commit
 # or use following command if you install commitizen globally
 git cz
 # or skip git hooks with
-git cz --no-verify
+git commit --no-verify # git cz --no-verify
 ```
 
 > Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.

@@ -14,7 +14,7 @@ import { ConfigService } from '../../config';
 import { ClusterService } from '../cluster/cluster.service';
 import { KubeContext } from '../interfaces/kube-context';
 
-const Client = Api.Client1_10;
+const Client = Api.Client1_13;
 const config = Api.config;
 
 @Injectable()

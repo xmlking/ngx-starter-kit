@@ -28,6 +28,7 @@ brew install yarn
 #brew upgrade yarn
 yarn config set workspaces-experimental true
 yarn global add lerna
+brew cleanup
 ```
 
 Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
@@ -59,14 +60,16 @@ bazel clean --expunge
 #### Install Global Packages
 
 ```bash
+yarn global remove lerna
 yarn global remove @angular/cli
-yarn global remove @nrwl/schematics
+yarn global remove @nrwl/workspace
 yarn global remove @nestjs/cli
 yarn global remove semantic-release-cli
 yarn global remove commitizen
 
+yarn global add lerna
 yarn global add @angular/cli@next
-yarn global add @nrwl/schematics
+yarn global add @nrwl/workspace@next
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
 yarn global add commitizen
@@ -121,28 +124,30 @@ ng generate jest
 # make sure we are up-to-date
 ng update
 # and update as suggested. e.g.,
-ng update @nrwl/schematics
+ng update @nrwl/workspace
 ng update --all
 # also run `yarn outdated` and update versions in package.json then run `yarn install`
 
+ng add @nrwl/angular@next
+ng add @nrwl/nest@next
+
 # generate webapp app
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
+#ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
 # or with ivy renderer
-ng g app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d -- --experimental-ivy
+#ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d -- --experimental-ivy
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
 # generate micro-app `chat-box`
-
 ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
 arn add @webcomponents/custom-elements ?
 
 # generate api app with nestjs
-ng g node-app api --framework=nestjs --unit-test-runner=jest --tags=api-module -d
+ng g @nrwl/nest:app api --unit-test-runner=jest --tags=api-module -d
 # generate backend app with express
-ng g node-app backend --framework=express --unit-test-runner=jest --tags=api-module -d
+ng g @nrwl/node:app backend --unit-test-runner=jest --tags=api-module -d
 ```
 
 #### Dependencies
