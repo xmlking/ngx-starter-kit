@@ -41,7 +41,7 @@
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.1",
-    "sharp": "^0.22.0",
+    "sharp": "^0.22.1",
     "swagger-ui-express": "^4.0.2",
     "typeorm": "^0.2.16",
     "typeorm-express-query-builder": "^1.1.1",

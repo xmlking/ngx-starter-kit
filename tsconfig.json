@@ -10,11 +10,9 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "importHelpers": true,
-    "resolveJsonModule": true,
     "target": "es5",
     "typeRoots": ["node_modules/@types"],
-    "skipLibCheck": true,
-    "skipDefaultLibCheck": true,
+    "resolveJsonModule": true,
     "lib": ["es2018", "dom", "esnext.array"],
     "paths": {
       "@ngx-starter-kit/*": ["libs/*"],

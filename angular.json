@@ -4,7 +4,7 @@
   "newProjectRoot": "",
   "projects": {
     "webapp": {
-      "root": "apps/webapp/",
+      "root": "apps/webapp",
       "sourceRoot": "apps/webapp/src",
       "projectType": "application",
       "prefix": "ngx",
@@ -54,8 +54,7 @@
                 "lazy": true
               }
             ],
-            "scripts": [],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
