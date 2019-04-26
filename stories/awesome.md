@@ -16,6 +16,10 @@ A curated list of awesome Angular resources
 
 > Refer [here](https://medium.com/@amcdnl/custom-environments-for-angular-cli-4ce0b82da83b)
 
+- Differential Loading
+
+  Find what browsers are supported? `cd apps/webapp`,  `npx browserslist`
+
 - How do I design Landing page?
 
 - How to Profile Change Detection?
