@@ -105,10 +105,8 @@ git status
 git add -u
 # or stage all modified/deleted/ newly added files
 git add .
-# use git-cz interactive helper tool to commit
-npm run commit
 # or use following command if you install commitizen globally
-git cz
+git commit # git cz
 # or skip git hooks with
 git commit --no-verify # git cz --no-verify
 ```
