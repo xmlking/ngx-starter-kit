@@ -1,28 +1,28 @@
 import { Injectable, Optional } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { of as observableOf, Observable } from 'rxjs';
+import { of , Observable } from 'rxjs';
 import { catchError, finalize, map, share } from 'rxjs/operators';
 import { SvgViewerConfig } from './svg-viewer.config';
 
 /** @dynamic */
 @Injectable()
 export class SvgViewerService {
-  private static _cache: Map<string, SVGElement>;
-  private static _inProgressReqs: Map<string, Observable<SVGElement>>;
+  private static cache: Map<string, SVGElement>;
+  private static inProgressReqs: Map<string, Observable<SVGElement>>;
 
-  private static _baseUrl: string;
+  private static baseUrl: string;
 
-  constructor(@Optional() config: SvgViewerConfig, private _http: HttpClient) {
-    if (config && !SvgViewerService._baseUrl) {
+  constructor(@Optional() config: SvgViewerConfig, private http: HttpClient) {
+    if (config && !SvgViewerService.baseUrl) {
       this.setBaseUrl(config);
     }
 
-    if (!SvgViewerService._cache) {
-      SvgViewerService._cache = new Map<string, SVGElement>();
+    if (!SvgViewerService.cache) {
+      SvgViewerService.cache = new Map<string, SVGElement>();
     }
 
-    if (!SvgViewerService._inProgressReqs) {
-      SvgViewerService._inProgressReqs = new Map<string, Observable<SVGElement>>();
+    if (!SvgViewerService.inProgressReqs) {
+      SvgViewerService.inProgressReqs = new Map<string, Observable<SVGElement>>();
     }
   }
 
@@ -30,42 +30,42 @@ export class SvgViewerService {
     const absUrl = this.getAbsoluteUrl(url);
 
     // Return cached copy if it exists
-    if (cache && SvgViewerService._cache.has(absUrl)) {
-      return observableOf(this._cloneSVG(SvgViewerService._cache.get(absUrl)));
+    if (cache && SvgViewerService.cache.has(absUrl)) {
+      return of(this.cloneSVG(SvgViewerService.cache.get(absUrl)));
     }
 
     // Return existing fetch observable
-    if (SvgViewerService._inProgressReqs.has(absUrl)) {
-      return SvgViewerService._inProgressReqs.get(absUrl);
+    if (SvgViewerService.inProgressReqs.has(absUrl)) {
+      return SvgViewerService.inProgressReqs.get(absUrl);
     }
 
     // Otherwise, make the HTTP call to fetch
-    const req = this._http.get(absUrl, { responseType: 'text' }).pipe(
+    const req = this.http.get(absUrl, { responseType: 'text' }).pipe(
       catchError((err: any) => err),
-      finalize(() => SvgViewerService._inProgressReqs.delete(absUrl)),
+      finalize(() => SvgViewerService.inProgressReqs.delete(absUrl)),
       share(),
       map((svgText: string) => {
-        const svgEl = this._svgElementFromString(svgText);
-        SvgViewerService._cache.set(absUrl, svgEl);
-        return this._cloneSVG(svgEl);
+        const svgEl = this.svgElementFromString(svgText);
+        SvgViewerService.cache.set(absUrl, svgEl);
+        return this.cloneSVG(svgEl);
       }),
     );
 
-    SvgViewerService._inProgressReqs.set(absUrl, req);
+    SvgViewerService.inProgressReqs.set(absUrl, req);
 
     return req;
   }
 
   setBaseUrl(config: SvgViewerConfig): void {
     if (config) {
-      SvgViewerService._baseUrl = config.baseUrl;
+      SvgViewerService.baseUrl = config.baseUrl;
     }
   }
 
   getAbsoluteUrl(url: string): string {
     // Prepend user-configured base if present and URL doesn't seem to have its own
-    if (SvgViewerService._baseUrl && !/^https?:\/\//i.test(url)) {
-      url = SvgViewerService._baseUrl + url.slice(url.indexOf('assets/'));
+    if (SvgViewerService.baseUrl && !/^https?:\/\//i.test(url)) {
+      url = SvgViewerService.baseUrl + url.slice(url.indexOf('assets/'));
 
       // Convert leading "//" to "/" to prevent a malformed URL
       // See https://github.com/arkon/ng-inline-svg/issues/50
@@ -77,7 +77,7 @@ export class SvgViewerService {
     return url;
   }
 
-  private _svgElementFromString(str: string): SVGElement | never {
+  private svgElementFromString(str: string): SVGElement | never {
     const div: HTMLElement = document.createElement('DIV');
     div.innerHTML = str;
 
@@ -90,7 +90,7 @@ export class SvgViewerService {
     return svg;
   }
 
-  private _cloneSVG(svg: SVGElement): SVGElement {
+  private cloneSVG(svg: SVGElement): SVGElement {
     return svg.cloneNode(true) as SVGElement;
   }
 }

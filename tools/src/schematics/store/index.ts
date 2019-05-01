@@ -17,17 +17,18 @@ import { Schema as featureOptions } from './schema';
 
 import { getWorkspace } from '@schematics/angular/utility/config';
 import { parseName } from '@schematics/angular/utility/parse-name';
-import { buildDefaultPath } from '@schematics/angular/utility/project';
+import { getProject, buildDefaultPath } from '@schematics/angular/utility/project';
 import { findModuleFromOptions } from '@schematics/angular/utility/find-module';
 import { validateName } from '@schematics/angular/utility//validation';
+import { getProjectName } from '../../utils/workspace';
 
 export default function store(options: featureOptions): Rule {
   return (host: Tree, context: SchematicContext) => {
-    const workspace = getWorkspace(host);
     if (!options.project) {
       throw new SchematicsException('Option (project) is required.');
     }
-    const project = workspace.projects[options.project];
+    const id = getProjectName(options, getWorkspace(host));
+    const project = getProject(host, id);
 
     if (options.path === undefined) {
       options.path = buildDefaultPath(project);

@@ -26,6 +26,9 @@ oc delete all -l app=keycloak -n ngx
 oc delete all,configmap,secret -l app=keycloak -n ngx
 oc delete pvc --all -n ngx
 
+# force delete po
+oc delete po keycloak-5-x8nfc --grace-period=0 --force
+
 # redeploy
 From OpenShift Console UI
 Applications > Deployments > ngx > Deploy

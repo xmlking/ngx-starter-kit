@@ -74,7 +74,7 @@ PROXY_ADDRESS_FORWARDING="true"
 
 Refer https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match
 
-1. add `ngxapi_audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi_audience_mapper` and adding `ngxapi` Client under `Included Client Audience`.
+1. add `ngxapi_audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi_audience_mapper`, Mapper Type --> `audience` and adding `ngxapi` Client under `Included Client Audience`.
 2. for `ngxweb` client, add `ngxapi_audience` at **Client Scopes** tab
 3. for `ngxapi` client, add `ngxapi_audience` at **Client Scopes** tab (for Swagger API Docs)
 

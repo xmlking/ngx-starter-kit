@@ -4,8 +4,10 @@
     "outDir": "../dist/tools",
     "rootDir": ".",
     "module": "commonjs",
-    "target": "es5",
+    "moduleResolution": "node",
+    "target": "es6",
     "types": ["jest", "node"]
   },
-  "include": ["**/*.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": ["src/**/_files/**/*", "**/*.spec.ts"]
 }

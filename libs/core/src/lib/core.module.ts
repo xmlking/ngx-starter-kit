@@ -107,7 +107,7 @@ library.add(faTwitter, faGithub, faGoogle);
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
-      deps: [EventBusHandler, RouteHandler, AppHandler],
+      deps: [EventBusHandler, RouteHandler],
       multi: true,
     },
     {
@@ -122,6 +122,10 @@ export class CoreModule {
     @Optional()
     @SkipSelf()
     parentModule: CoreModule,
+    // HINT: AppHandler is injected here to initialize it as Module Run Block,
+    // APP_INITIALIZER is not an option when target to es2015
+    // https://github.com/ngxs/store/issues/773
+    appHandler: AppHandler,
   ) {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import it in the AppModule only');

@@ -14,7 +14,7 @@ COPY . .
 ARG NODE_OPTIONS="--max-old-space-size=1024"
 ENV NODE_OPTIONS $NODE_OPTIONS
 ENV NODE_ENV production
-RUN $(npm bin)/ng build webapp --prod
+RUN $(npm bin)/ng build webapp -c=production
 
 ######################################################################
 FROM nginxinc/nginx-unprivileged:1.15.10-alpine

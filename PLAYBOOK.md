@@ -12,7 +12,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Yarn                 | v1.15.2  |          |
 | Lerna                | v3.13.2  |          |
 | Angular CLI          | v8.0.0   |          |
-| @nrwl/schematics     | v7.7.2   |          |
+| @nrwl/workspace      | v8.0.0   |          |
 | @nestjs/cli          | v6.0.0   |          |
 | semantic-release-cli | v4.1.1   |          |
 | commitizen           | v3.0.7   |          |
@@ -79,10 +79,8 @@ yarn global list
 # find out which packages need to be updated
 yarn global upgrade-interactive
 # set scss as default css processor
-ng config -g schematics.@nrwl/schematics:component.styleext scss
+ng config -g schematics.@nrwl/workspace:component.styleext scss
 ng config -g cli.packageManager yarn
-# set jest as default TestRunner
-ng config -g schematics.@nrwl/schematics:library.unitTestRunner jest
 # set scss as default styleext for ngx-formly
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
@@ -109,9 +107,9 @@ for nx help `yarn run help`
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
 yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=yarn  --preset=empty --style=scss
 # or
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --verbose
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/schematics --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --bazel  --verbose
 cd ngx-starter-kit
 
 > remove all `ngrx` NPM pagages from package.json, we will use `ngxs`
@@ -142,7 +140,7 @@ ng add @nrwl/nest@next
 ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
-arn add @webcomponents/custom-elements ?
+yarn add @webcomponents/custom-elements ?
 
 # generate api app with nestjs
 ng g @nrwl/nest:app api --unit-test-runner=jest --tags=api-module -d
@@ -169,27 +167,27 @@ yarn add -D @types/hammerjs
 yarn add date-fns@next
 
 # Add Flex-Layout
-arn add @angular/flex-layout
+yarn add @angular/flex-layout
 # Add in-memory-web-api
-arn add angular-in-memory-web-api
+yarn add angular-in-memory-web-api
 # Add oauth2-oidc
-~arn add angular-oauth2-oidc~
-arn add @xmlking/angular-oauth2-oidc-all
+~yarn add angular-oauth2-oidc~
+yarn add @xmlking/angular-oauth2-oidc-all
 
 # Add NGXS
 ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
 # or add NGXS manually
-arn add @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
-arn add -D @ngxs/schematics
+yarn add @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
+yarn add -D @ngxs/schematics
 
-arn add @ngxs-labs/immer-adapter
-arn add immer
+yarn add @ngxs-labs/immer-adapter
+yarn add immer
 
 # Add formly
 ng add @ngx-formly/schematics --ui-theme=material
 
 # Add Filepond
-arn add ngx-filepond \
+yarn add ngx-filepond \
 filepond-plugin-file-encode \
 filepond-plugin-file-validate-size \
 filepond-plugin-file-validate-type \
@@ -197,38 +195,47 @@ filepond-plugin-image-crop \
 filepond-plugin-image-preview
 
 # Add Socket.io
-arn add socket.io-client
-arn add -D @types/socket.io-client
+yarn add socket.io-client
+yarn add -D @types/socket.io-client
 
 # add lite-server to test PWA locally
-arn add -D lite-server
+yarn add -D lite-server
 
 # Add miscellaneous
-arn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
+yarn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 
 # Add Dev Tools
-arn add -D standard-version
-arn add -D angular-cli-ghpages
-arn add -D @compodoc/compodoc
 
-arn add -D loaders.css
-arn add -D api-ai-javascript
+yarn add -D loaders.css
+yarn add -D api-ai-javascript
+
+yarn add -D @nrwl/nest
+yarn add -D @nrwl/web
 
 # install without saving
-arn add trianglify --no-save --no-lock
+yarn add trianglify --no-save --no-lock
 
+# Add Optional Tools
+yarn add -O angular-cli-ghpages
+yarn add -O standard-version
+yarn add -O @compodoc/compodoc
+yarn add -O semantic-release @semantic-release/{changelog,git,github,npm}
+yarn add -O commitizen cz-conventional-changelog
+yarn add -O @commitlint/{config-conventional,cli}
+yarn add -O husky
+yarn add -O lint-staged
 # install cypress for e2e testing and remove protractor
-arn add -D cypress @types/jquery
+yarn add -O cypress @types/jquery
+
 
 # for CI/CD automation and release
 # first time semantic-release setup
 semantic-release-cli setup
 
-arn add -D semantic-release @semantic-release/{changelog,git,github,npm}
-arn add -D commitizen cz-conventional-changelog
-arn add -D @commitlint/{config-conventional,cli}
-arn add -D husky
-arn add -D lint-staged
+yarn workspace @ngx-starter-kit/api add kubernetes-client @xmlking/jwks-rsa @nestjs/{terminus,cqrs}  
+yarn workspace @ngx-starter-kit/api add addnodemon supertest  -O
+
+yarn workspace @ngx-starter-kit/tools add cpx --dev
 ```
 
 > update 3rd party modules/schematics
@@ -241,7 +248,9 @@ ng update @angular/cli --next
 ng update @angular/material --force
 ng update @angular/pwa --next
 ng update @ngx-formly/schematics --ui-theme=material
-ng update @nrwl/schematics --force
+ng update @nrwl/workspace --next --force
+ng update @nrwl/angular --next
+ng update @nrwl/nest --next
 ```
 
 #### Generate Artifacts
@@ -533,6 +542,8 @@ ng g workspace-schematic store
 # run workspace-schematic `store`
 # *** always delete ./dist folder when you change schematic implementation ***
 yarn workspace-schematic store models/sumoDemo -- --project=grid  -d
+# build workspace tools
+yarn workspace tools schematic:build
 ```
 
 ### Install
@@ -685,6 +696,8 @@ lerna -v
 ng -v
 npx nx --version
 nest info
+# list workspaces
+yarn workspaces info
 ```
 
 ### Production build and deployment
