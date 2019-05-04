@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1556949896355,
+  "timestamp": 1557005375900,
   "index": "/ngx-starter-kit/index.html",
   "assetGroups": [
     {
@@ -32,7 +32,7 @@
         "/ngx-starter-kit/common.47c2c4fc53be3d36faf3.js",
         "/ngx-starter-kit/favicon.ico",
         "/ngx-starter-kit/index.html",
-        "/ngx-starter-kit/main.ef3ca9d38cb6a59617cb.js",
+        "/ngx-starter-kit/main.0151238e1afed405676f.js",
         "/ngx-starter-kit/polyfills.03cff6d095e8dd9968bb.js",
         "/ngx-starter-kit/runtime.d8975a3a258afc4f34aa.js",
         "/ngx-starter-kit/silent-refresh.html",
@@ -302,8 +302,8 @@
     "/ngx-starter-kit/city1.5ccf7022f41053fd8b67.jpg": "d767859c2b9d46937aa061f91c3c17da2b116e57",
     "/ngx-starter-kit/common.47c2c4fc53be3d36faf3.js": "a898d813d6f022be651ccab546867d91eb1053a1",
     "/ngx-starter-kit/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/ngx-starter-kit/index.html": "c4066d1c7e3cf8aa0b9a4da81aee9b5e93c3645c",
-    "/ngx-starter-kit/main.ef3ca9d38cb6a59617cb.js": "e2d1d07073efe7a70278741842c04556ed4743b3",
+    "/ngx-starter-kit/index.html": "56673438a11fb8eb1bb8ae23cb4c0a5dd0184896",
+    "/ngx-starter-kit/main.0151238e1afed405676f.js": "5e54173cbc9ffec884241c164b9b4af418aeee0c",
     "/ngx-starter-kit/polyfills.03cff6d095e8dd9968bb.js": "0db799e8d78b08ec5182cec55ecd24cab102f352",
     "/ngx-starter-kit/runtime.d8975a3a258afc4f34aa.js": "872103cf5ea23790becbef905c7670fcbd92d067",
     "/ngx-starter-kit/silent-refresh.html": "eaa115e4a3b3744cc352cbaae71d0b4cfa21e984",
