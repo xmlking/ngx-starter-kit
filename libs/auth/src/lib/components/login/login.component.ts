@@ -53,9 +53,9 @@ export class LoginComponent {
   }
 
   initSSO() {
-    this.store.dispatch(new ChangeAuthMode(AuthMode.CodeFLow)).subscribe(() => {
-      // this.oauthService.initImplicitFlow();
-      this.oauthService.initAuthorizationCodeFlow();
+    this.store.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
+      this.oauthService.initImplicitFlow();
+      // this.oauthService.initAuthorizationCodeFlow();
       console.log('initSSO');
     });
   }

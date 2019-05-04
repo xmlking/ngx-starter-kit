@@ -106,17 +106,17 @@ const matModules = [
           },
           {
             path: 'grid',
-            loadChildren: '@ngx-starter-kit/grid#GridModule',
+            loadChildren: () => import('@ngx-starter-kit/grid').then(m => m.GridModule),
             data: { title: 'Grid', depth: 2, preload: false },
           },
           {
             path: 'experiments',
-            loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
+            loadChildren: () => import('@ngx-starter-kit/experiments').then(m => m.ExperimentsModule),
             data: { title: 'Experiments', depth: 2, preload: false },
           },
           {
             path: 'widgets',
-            loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
+            loadChildren: () => import('@ngx-starter-kit/widgets').then(m => m.WidgetsModule),
             data: { title: 'Widgets', depth: '2', preload: false },
           },
         ],
