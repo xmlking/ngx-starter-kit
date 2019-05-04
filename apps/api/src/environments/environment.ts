@@ -36,8 +36,8 @@ export const environment: IEnvironment = {
 
   auth: {
     clientId: 'ngxapi',
-    // issuer: 'http://localhost:8080/auth/realms/ngx',
-    issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    // additionalQueryStringParams:  { scope: 'openid profile email', nonce: '1234578910' }
   },
 
   email: {

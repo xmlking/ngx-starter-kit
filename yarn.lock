@@ -2276,10 +2276,10 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xmlking/angular-oauth2-oidc-all@^6.0.0":
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/@xmlking/angular-oauth2-oidc-all/-/angular-oauth2-oidc-all-6.0.0.tgz#3be9755e399b701ca23a69fb7c91792352d3bc45"
-  integrity sha512-6ei0BkZbj1Xf474cBdyNlyU7ZN/gg9hYrTCFsoVGxDq6aZc09SQ85MVM1fMGj70Fv81IkU7W3hwEupUUGB8ShQ==
+"@xmlking/angular-oauth2-oidc-all@^6.0.1":
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/@xmlking/angular-oauth2-oidc-all/-/angular-oauth2-oidc-all-6.0.1.tgz#3c0c2bf2200b0536eb505c1ffebafe507bdb131f"
+  integrity sha512-viZEyNFUifMoqw13dAAhvE0FnHgl4rbRD9tmupN1rnO5L58wr4kFjbfVKUoQAhGdYVw9hmprCc56bdidfgIA/A==
   dependencies:
     js-sha256 "^0.9.0"
     jsrsasign "^8.0.12"

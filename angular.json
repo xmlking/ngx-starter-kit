@@ -252,6 +252,18 @@
                   "with": "apps/api/src/environments/environment.prod.ts"
                 }
               ]
+            },
+            "mock": {
+              "sourceMap": false,
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/api/src/environments/environment.ts",
+                  "with": "apps/api/src/environments/environment.mock.ts"
+                }
+              ]
             }
           }
         },
@@ -263,6 +275,9 @@
           "configurations": {
             "production": {
               "buildTarget": "api:build:production"
+            },
+            "mock": {
+              "buildTarget": "api:build:mock"
             }
           }
         },

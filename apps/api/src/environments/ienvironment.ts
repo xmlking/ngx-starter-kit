@@ -34,6 +34,12 @@ export interface IEnvironment {
     clientId: string;
     issuer: string;
     jwksUri?: string;
+    additionalQueryStringParams?: Partial<{
+      scope: string;
+      nonce: string;
+      audience: string
+      [key: string]: string
+    }>;
   };
 
   email: EmailModuleOptions;

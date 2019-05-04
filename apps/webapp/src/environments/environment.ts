@@ -14,12 +14,10 @@ export const environment: IEnvironment = {
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
 
   auth: {
-    // clientId: 'ngxweb',
-    // // issuer: 'http://localhost:8080/auth/realms/ngx',
-    // issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
-
-    clientId: '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
-    issuer: 'https://accounts.google.com'
+    clientId: 'ngxweb',
+    issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    // clientId: '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
+    // issuer: 'https://accounts.google.com'
   },
 };
 

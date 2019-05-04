@@ -25,7 +25,7 @@ helm ls
 helm ls -a --tiller-namespace=kube-system --debug
 
 # To uninstall/delete the postgres deployment:
-helm delete --purge postgres
+helm delete --purge ngxdb
 ```
 
 ### Without Tiller
@@ -45,6 +45,10 @@ kubectl apply --recursive -f generated/postgresql/* --namespace default
 ```
 
 ### Connect to Postgres
+
+PostgreSQL can be accessed via port 5432 on the following DNS name from within your cluster:
+
+    ngxdb-postgresql.default.svc.cluster.local - Read/Write connection
 
 To get the password for "postgres" run:
 

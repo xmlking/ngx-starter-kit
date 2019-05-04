@@ -106,19 +106,35 @@ const matModules = [
           },
           {
             path: 'grid',
-            loadChildren: () => import('@ngx-starter-kit/grid').then(m => m.GridModule),
+            loadChildren: '@ngx-starter-kit/grid#GridModule',
             data: { title: 'Grid', depth: 2, preload: false },
           },
           {
             path: 'experiments',
-            loadChildren: () => import('@ngx-starter-kit/experiments').then(m => m.ExperimentsModule),
+            loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
             data: { title: 'Experiments', depth: 2, preload: false },
           },
           {
             path: 'widgets',
-            loadChildren: () => import('@ngx-starter-kit/widgets').then(m => m.WidgetsModule),
+            loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
             data: { title: 'Widgets', depth: '2', preload: false },
           },
+          // TODO: uncomment after Ivy
+          // {
+          //   path: 'grid',
+          //   loadChildren: () => import('@ngx-starter-kit/grid').then(m => m.GridModule),
+          //   data: { title: 'Grid', depth: 2, preload: false },
+          // },
+          // {
+          //   path: 'experiments',
+          //   loadChildren: () => import('@ngx-starter-kit/experiments').then(m => m.ExperimentsModule),
+          //   data: { title: 'Experiments', depth: 2, preload: false },
+          // },
+          // {
+          //   path: 'widgets',
+          //   loadChildren: () => import('@ngx-starter-kit/widgets').then(m => m.WidgetsModule),
+          //   data: { title: 'Widgets', depth: '2', preload: false },
+          // },
         ],
       },
     ]),

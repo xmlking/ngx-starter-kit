@@ -27,26 +27,35 @@ export class MyHammerConfig extends HammerGestureConfig {
     RouterModule.forRoot(
       [
         { path: '', redirectTo: 'home', pathMatch: 'full' },
-        {
-          path: 'home',
-          loadChildren: () => import('@ngx-starter-kit/home').then(m => m.HomeModule),
-          data: { preload: true },
-        },
-        {
-          path: 'dashboard',
-          loadChildren: () => import('@ngx-starter-kit/dashboard').then(m => m.DashboardModule),
-          data: { preload: true },
-        },
-        {
-          path: 'admin',
-          loadChildren: () => import('@ngx-starter-kit/admin').then(m => m.AdminModule),
-          data: { preload: false },
-        },
+        { path: 'home', loadChildren: '@ngx-starter-kit/home#HomeModule', data: { preload: true } },
+        { path: 'dashboard', loadChildren: '@ngx-starter-kit/dashboard#DashboardModule', data: { preload: true } },
+        { path: 'admin', loadChildren: '@ngx-starter-kit/admin#AdminModule', data: { preload: false } },
         {
           path: '404',
-          loadChildren: () => import('@ngx-starter-kit/not-found').then(m => m.NotFoundModule),
+          loadChildren: '@ngx-starter-kit/not-found#NotFoundModule',
           data: { title: '404', preload: false },
         },
+        // TODO: uncomment after Ivy
+        // {
+        //   path: 'home',
+        //   loadChildren: () => import('@ngx-starter-kit/home').then(m => m.HomeModule),
+        //   data: { preload: true },
+        // },
+        // {
+        //   path: 'dashboard',
+        //   loadChildren: () => import('@ngx-starter-kit/dashboard').then(m => m.DashboardModule),
+        //   data: { preload: true },
+        // },
+        // {
+        //   path: 'admin',
+        //   loadChildren: () => import('@ngx-starter-kit/admin').then(m => m.AdminModule),
+        //   data: { preload: false },
+        // },
+        // {
+        //   path: '404',
+        //   loadChildren: () => import('@ngx-starter-kit/not-found').then(m => m.NotFoundModule),
+        //   data: { title: '404', preload: false },
+        // },
         // 404 should be last
         { path: '**', redirectTo: '404', pathMatch: 'full' },
       ],
