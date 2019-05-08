@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Gender, Profile } from '@ngx-starter-kit/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -9,6 +9,7 @@ import { ProfileService } from '@ngx-starter-kit/core';
   selector: 'ngx-app-profile',
   templateUrl: './app-profile.component.html',
   styleUrls: ['./app-profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppProfileComponent implements OnInit, OnDestroy {
   readonly genderOptions = Gender;
@@ -126,8 +127,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer,
-    private profileService: ProfileService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit() {

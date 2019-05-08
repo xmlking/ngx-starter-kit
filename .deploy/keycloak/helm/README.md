@@ -2,14 +2,19 @@
 
 Deploying `KeyCloak` to `Kubernetes` via `Helm`
 
+we will be using charts from [codecentric](https://github.com/codecentric/helm-charts) Repo.
+
 ### With Tiller
 
 ```bash
 cd .deploy/keycloak/helm
 
+# add KeyCloak Charts Repo
+helm repo add codecentric https://codecentric.github.io/helm-charts
+
 # To install the chart with the release name `keycloak`
 # --dry-run --debug flags help you to see before you really deploy
-helm install --name=keycloak --namespace=default -f values-dev.yaml stable/keycloak
+helm install --name keycloak --namespace=default -f values-dev.yaml codecentric/keycloak
 
 # verify deployment
 helm ls
@@ -25,7 +30,7 @@ echo | openssl s_client -showcerts -connect keycloak.traefik.k8s:443 2>/dev/null
 
 
 # To update
-helm upgrade --namespace=default -f values-dev.yaml keycloak stable/keycloak
+helm upgrade --namespace=default -f values-dev.yaml keycloak codecentric/keycloak
 
 # To uninstall/delete the `keycloak` deployment
 helm delete keycloak
@@ -40,9 +45,9 @@ kubectl scale statefulset keycloak --replicas=0
 ```bash
 cd .deploy/keycloak/helm
 
-helm fetch stable/keycloak
+helm fetch codecentric/keycloak
 
-helm template ./keycloak-4.7.0.tgz \
+helm template ./keycloak-4.11.1.tgz \
 --name keycloak \
 --namespace default \
 --values values-dev.yaml \

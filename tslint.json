@@ -1,6 +1,6 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": ["codelyzer"],
+  "rulesDirectory": ["codelyzer", "node_modules/@nrwl/workspace/src/tslint"],
   "rules": {
     "array-type": false,
     "arrow-parens": false,

@@ -1,10 +1,10 @@
 resources:
   limits:
     cpu: 4
-    memory: "4096Mi"
+    memory: '4096Mi'
   requests:
     cpu: 2
-    memory: "2048Mi"
+    memory: '2048Mi'
 
 livenessProbe:
   initialDelaySeconds: 200
@@ -19,6 +19,7 @@ test:
 keycloak:
   image:
     repository: jboss/keycloak
+    tag: 6.0.1
   username: admin
   password: admin123
   persistence:

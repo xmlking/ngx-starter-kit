@@ -74,9 +74,12 @@ PROXY_ADDRESS_FORWARDING="true"
 
 Refer https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match
 
-1. add `ngxapi_audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi_audience_mapper`, Mapper Type --> `audience` and adding `ngxapi` Client under `Included Client Audience`.
-2. for `ngxweb` client, add `ngxapi_audience` at **Client Scopes** tab
-3. for `ngxapi` client, add `ngxapi_audience` at **Client Scopes** tab (for Swagger API Docs)
+1. add `ngxapi-audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi-audience-mapper`, Mapper Type --> `audience` and adding `ngxapi` Client under `Included Client Audience`.
+2. for `ngxweb` client, add `ngxapi-audience` at **Client Scopes** tab
+3. for `ngxapi` client, add `ngxapi-audience` at **Client Scopes** tab (for Swagger API Docs)
+
+Refer https://www.kodnito.com/posts/microprofile-jwt-with-keycloak/
+4. Click on Clients and find the `ngxweb/ngxapi` and click on **Mappers** tab and click on **Add Builtin** button and add the **groups** mapper to the client. 
 
 ---
 
@@ -110,6 +113,15 @@ kubectl cp $POD_NAME:/tmp/sumo /Developer/Work/SPA/ngx-starter-kit/.deploy/keycl
 ```
 
 ---
+## MicroProfile JWT with Keycloak
+
+**how to secure API/services using MicroProfile JWT and Keycloak?**
+
+Follow [blog](https://kodnito.com/posts/microprofile-jwt-with-keycloak/)
+You find the public key here https://keycloak.traefik.k8s/auth/realms/ngx/
+
+---
+
 
 ## Troubleshooting
 

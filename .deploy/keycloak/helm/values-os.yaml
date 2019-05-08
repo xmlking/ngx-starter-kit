@@ -1,0 +1,19 @@
+test:
+  enabled: false
+
+keycloak:
+  image:
+    repository: jboss/keycloak
+    tag: 6.0.1
+  username: admin
+  password: species
+  securityContext: {}
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      memory: 512M
+  ingress:
+    enabled: true
+    hosts:
+      - keycloak-ngx.apps.us-west-1.online-starter.openshift.com

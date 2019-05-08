@@ -15,7 +15,9 @@ export const environment: IEnvironment = {
 
   auth: {
     clientId: 'ngxweb',
-    issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    issuer: 'https://keycloak-ngx.apps.us-west-1.online-starter.openshift.com/auth/realms/ngx',
+    // issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
+
     // clientId: '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
     // issuer: 'https://accounts.google.com'
   },

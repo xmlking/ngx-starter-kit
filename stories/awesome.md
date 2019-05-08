@@ -180,6 +180,8 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Use [shareReplay](https://blog.thoughtram.io/angular/2018/03/05/advanced-caching-with-rxjs.html)
 
+> Checkout **combineLatest** and **shareReplay** use in [DeborahK's](https://github.com/DeborahK/Angular-RxJS) Repo and her talk.
+
 - Angular Performance
 
 > Refer [here](https://blog.ninja-squad.com/)

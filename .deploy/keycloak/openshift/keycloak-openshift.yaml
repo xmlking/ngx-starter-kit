@@ -101,24 +101,6 @@ items:
                     name: keycloak-secrets
                 - configMapRef:
                     name: keycloak-config
-#              env:
-#                - name: POD_NAMESPACE
-#                  valueFrom:
-#                    fieldRef:
-#                      apiVersion: v1
-#                      fieldPath: metadata.namespace
-#                - name: PROXY_ADDRESS_FORWARDING
-#                  value: "true"
-#                - name: KEYCLOAK_USER
-#                  valueFrom:
-#                    configMapKeyRef:
-#                      name: keycloak-config
-#                      key: KEYCLOAK_USER
-#                - name: KEYCLOAK_PASSWORD
-#                  valueFrom:
-#                    secretKeyRef:
-#                      name: keycloak-secrets
-#                      key: KEYCLOAK_PASSWORD
               livenessProbe:
                 httpGet:
                   path: /auth/realms/master

@@ -1,0 +1,21 @@
+---
+# Source: keycloak/templates/http-service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: keycloak-http
+  labels:
+    app: keycloak
+    chart: keycloak-4.11.1
+    release: "keycloak"
+    heritage: "Tiller"
+spec:
+  type: ClusterIP
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+      protocol: TCP
+  selector:
+    app: keycloak
+    release: "keycloak"

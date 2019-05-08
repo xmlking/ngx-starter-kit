@@ -1,0 +1,122 @@
+---
+# Source: keycloak/templates/statefulset.yaml
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: keycloak
+  annotations:
+    checksum/config: 06a8b6a5c1b4f8b5e1632db3831d552906bfc2f27327594b50af59bf41a9ffef
+  labels:
+    app: keycloak
+    chart: keycloak-4.11.1
+    release: "keycloak"
+    heritage: "Tiller"
+spec:
+  selector:
+    matchLabels:
+      app: keycloak
+      release: "keycloak"
+  replicas: 1
+  serviceName: keycloak-headless
+  podManagementPolicy: Parallel
+  updateStrategy:
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: keycloak
+        release: "keycloak"
+    spec:
+      containers:
+        - name: keycloak
+          image: "jboss/keycloak:6.0.1"
+          imagePullPolicy: IfNotPresent
+          command:
+            - /scripts/keycloak.sh
+          lifecycle:
+            # postStart:
+            #   exec:
+            #     command: ["/bin/sh", "-c", "ls"]
+            
+          env:
+            - name: KEYCLOAK_USER
+              value: admin
+            - name: KEYCLOAK_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: keycloak-http
+                  key: password
+            
+            - name: DB_VENDOR
+              value: "h2"
+            # - name: KEYCLOAK_LOGLEVEL
+            #   value: DEBUG
+            # - name: WILDFLY_LOGLEVEL
+            #   value: DEBUG
+            # - name: CACHE_OWNERS
+            #   value: "2"
+            # - name: DB_QUERY_TIMEOUT
+            #   value: "60"
+            # - name: DB_VALIDATE_ON_MATCH
+            #   value: true
+            # - name: DB_USE_CAST_FAIL
+            #   value: false
+            
+          volumeMounts:
+            - name: scripts
+              mountPath: /scripts
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /auth/
+              port: http
+            initialDelaySeconds: 120
+            timeoutSeconds: 5
+          readinessProbe:
+            httpGet:
+              path: /auth/realms/master
+              port: http
+            initialDelaySeconds: 30
+            timeoutSeconds: 1
+          resources:
+            limits:
+              memory: 1G
+            requests:
+              memory: 512M
+            
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            - labelSelector:
+                matchLabels:
+                  app:  keycloak
+                  release: "keycloak"
+                matchExpressions:
+                  - key: role
+                    operator: NotIn
+                    values:
+                      - test
+              topologyKey: kubernetes.io/hostname
+          preferredDuringSchedulingIgnoredDuringExecution:
+            - weight: 100
+              podAffinityTerm:
+                labelSelector:
+                  matchLabels:
+                    app:  keycloak
+                    release: "keycloak"
+                  matchExpressions:
+                    - key: role
+                      operator: NotIn
+                      values:
+                        - test
+                topologyKey: failure-domain.beta.kubernetes.io/zone
+              
+      terminationGracePeriodSeconds: 60
+      volumes:
+        - name: scripts
+          configMap:
+            name: keycloak
+            defaultMode: 0555

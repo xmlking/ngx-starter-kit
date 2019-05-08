@@ -1,8 +1,4 @@
-# Postgres on OpenShift
-
-Deploying `Postgres` to `OpenShift` via `Helm`
-
-### Deploying to OpenShift
+### KeyCloak on OpenShift
 
 > Deploy KeyCloak to OpenShift
 
