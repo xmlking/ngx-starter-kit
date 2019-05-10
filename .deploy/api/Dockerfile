@@ -43,7 +43,7 @@ ENV NODE_ENV production
 RUN $(npm bin)/ng build api --prod
 
 ######################################################################
-FROM node:11-alpine as final
+FROM gcr.io/distroless/nodejs as final
 ######################################################################
 # Import the user and group files from the first stage.
 COPY --from=utils /user/group /user/passwd /etc/
