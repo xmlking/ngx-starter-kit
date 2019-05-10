@@ -2,14 +2,15 @@ import { Test, TestingModule } from '@nestjs/testing';
 
 import { AppController } from './app.controller';
 import { ConfigModule } from './config';
+import { HttpModule } from '@nestjs/common';
 
 describe('AppController', () => {
   let app: TestingModule;
 
   beforeAll(async () => {
     app = await Test.createTestingModule({
+      imports: [HttpModule, ConfigModule],
       controllers: [AppController],
-      imports: [ConfigModule],
     }).compile();
   });
 

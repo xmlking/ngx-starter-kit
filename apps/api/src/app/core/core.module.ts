@@ -8,6 +8,15 @@ import { RequestContextMiddleware } from './context';
 import { ConfigService } from '../config';
 import { environment as env } from '@env-api/environment';
 
+// Add all Entities
+import { User } from '../user';
+import { Image } from '../user/profile/image.entity';
+import { Profile } from '../user/profile/profile.entity';
+import { Project } from '../project/project.entity';
+import { Cluster } from '../project/cluster/cluster.entity';
+import { Notification } from '../notifications/notification/notification.entity';
+import { Subscription } from '../notifications/subscription/subscription.entity';
+
 // FIXME: temp workaround https://github.com/nrwl/nx/pull/1233
 // import { isClass } from '@ngx-starter-kit/utils';
 export function isClass(obj) {
@@ -21,11 +30,14 @@ function requireAllClasses(rc) {
     .filter(isClass);
 }
 
-const requireContext = (require as any).context('../..', true, /\.entity.ts/);
-const entities = requireAllClasses(requireContext);
+// const requireContext = (require as any).context('../..', true, /\.entity.ts/);
+// const entities = requireAllClasses(requireContext);
 
 // const migrationsRequireContext = (require as any).context('../../../migrations/', true, /\.ts/);
 // const migrations = requireAllClasses(migrationsRequireContext);
+
+// TODO: above `require.context` is not compatible with `Jest`, manually add all entities as workaround
+const entities = [User, Notification, Subscription, Profile, Image, Project, Cluster];
 
 @Module({
   imports: [
@@ -36,6 +48,7 @@ const entities = requireAllClasses(requireContext);
       useFactory: (config: ConfigService): TypeOrmModuleOptions => ({
         ...env.database,
         entities,
+        // subscribers,
         // migrations,
       }),
       inject: [ConfigService],
