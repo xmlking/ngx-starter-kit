@@ -12,16 +12,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "copy": "cpx '**/*.{json,d.ts,md}' ../dist/tools",
-    "build": "tsc -p tsconfig.tools.json && yarn run copy"
+    "build": "tsc -p tsconfig.lib.json && yarn run copy"
   },
   "peerDependencies": {
     "@nrwl/workspace": "*"
   },
   "devDependencies": {
-    "@angular-devkit/architect": ">=0.13.9",
-    "@angular-devkit/build-angular": ">=0.13.9",
-    "@angular-devkit/build-webpack": ">=0.13.9",
-    "@angular-devkit/core": ">=7.3.9",
+    "@angular-devkit/architect": "~0.800.0-rc.3",
+    "@angular-devkit/build-angular": "~0.800.0-rc.3",
+    "@angular-devkit/build-webpack": "~0.800.0-rc.3",
+    "@angular-devkit/core": "~8.0.0-rc.3",
     "@types/json-schema": "^7.0.3",
     "cpx": "^1.5.0"
   }
