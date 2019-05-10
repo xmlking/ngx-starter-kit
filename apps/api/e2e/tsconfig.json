@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "outDir": "../../../dist/apps/api-e2e",
+    "module": "commonjs",
+    "types": ["jest", "node"]
+  },
+  "include": ["src/**/*.e2e-spec.ts", "src/**/*.d.ts"]
+}

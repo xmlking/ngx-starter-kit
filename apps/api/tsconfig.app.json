@@ -6,6 +6,6 @@
     "target": "es2017",
     "types": ["node"]
   },
-  "exclude": ["**/*.spec.ts"],
-  "include": ["**/*.ts"]
+  "exclude": ["src/**/*.spec.ts"],
+  "include": ["src/**/*.ts"]
 }

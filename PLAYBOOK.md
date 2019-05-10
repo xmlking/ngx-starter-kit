@@ -543,7 +543,7 @@ ng g workspace-schematic store
 # *** always delete ./dist folder when you change schematic implementation ***
 yarn workspace-schematic store models/sumoDemo -- --project=grid  -d
 # build workspace tools
-yarn workspace tools schematic:build
+yarn workspace @ngx-starter-kit/tools build
 ```
 
 ### Install
@@ -607,13 +607,13 @@ ng test <module>
 ### E2E Test
 
 ```bash
-ng e2e webapp-e2e
+ng e2e webapp
 # headless tests (CI)
-ng e2e webapp-e2e --headless
+ng e2e webapp --headless
 # Production target
-ng e2e webapp-e2e --prod
+ng e2e webapp --prod
 # Watching for changes
-ng e2e webapp-e2e --watch
+ng e2e webapp --watch
 ```
 
 ### Serve from dist

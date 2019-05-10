@@ -6,9 +6,9 @@
   "angularCompilerOptions": {
     "enableIvy": false
   },
-  "exclude": ["src/test-setup.ts", "**/*.spec.ts"],
+  "exclude": ["src/test-setup.ts", "src/**/*.spec.ts"],
   "include": [
-    "**/*.ts",
+    "src/**/*.ts",
     "../../libs/home/src/index.ts",
     "../../libs/dashboard/src/index.ts",
     "../../libs/experiments/src/index.ts",

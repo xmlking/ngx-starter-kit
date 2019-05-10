@@ -11,16 +11,8 @@
     "webapp": {
       "tags": ["app-module"]
     },
-    "webapp-e2e": {
-      "tags": [],
-      "implicitDependencies": ["webapp"]
-    },
     "api": {
       "tags": ["api-module"]
-    },
-    "api-e2e": {
-      "tags": [],
-      "implicitDependencies": ["api"]
     },
     "backend": {
       "tags": ["api-module"]

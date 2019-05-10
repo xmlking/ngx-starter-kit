@@ -1,16 +1,15 @@
 import * as request from 'supertest';
-import { Test } from '@nestjs/testing';
+import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
-// @ts-ignore
-import { AppModule } from 'api/src/app/app.module';
-require('require-context/register');
+import { AppModule } from '../../src/app/app.module';
+
 jest.setTimeout(30000);
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
   beforeAll(async () => {
-    const moduleFixture = await Test.createTestingModule({
+    const moduleFixture: TestingModule = await Test.createTestingModule({
       imports: [AppModule],
     }).compile();
 

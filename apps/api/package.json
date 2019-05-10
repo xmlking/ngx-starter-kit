@@ -9,8 +9,8 @@
     "typeorm:create": "typeorm migration:create",
     "typeorm:preserve": "yarn typeorm:sync -- -f=ormconfig && yarn typeorm:seeds -- -f=ormconfig",
     "start": "ts-node -r tsconfig-paths/register --project apps/api/tsconfig.app.json src/main.ts",
-    "start:dev": "nodemon",
-    "start:debug": "nodemon --config nodemon-debug.json"
+    "build": "ng build api",
+    "build:prod": "ng build api --prod"
   },
   "dependencies": {
     "@godaddy/terminus": "^4.1.0",
@@ -40,7 +40,7 @@
     "pg": "^7.10.0",
     "pug": "^2.0.3",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "^6.5.1",
+    "rxjs": "^6.5.2",
     "sharp": "^0.22.1",
     "swagger-ui-express": "^4.0.2",
     "typeorm": "^0.2.17",

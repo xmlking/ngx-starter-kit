@@ -182,7 +182,11 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/webapp/tsconfig.app.json", "apps/webapp/tsconfig.spec.json"],
+            "tsConfig": [
+              "apps/webapp/tsconfig.app.json",
+              "apps/webapp/tsconfig.spec.json",
+              "apps/webapp/e2e/tsconfig.json"
+            ],
             "exclude": ["**/node_modules/**", "**/*.json"]
           }
         },
@@ -193,32 +197,18 @@
             "tsConfig": "apps/webapp/tsconfig.spec.json",
             "setupFile": "apps/webapp/src/test-setup.ts"
           }
-        }
-      }
-    },
-    "webapp-e2e": {
-      "root": "apps/webapp-e2e",
-      "sourceRoot": "apps/webapp-e2e/src",
-      "projectType": "application",
-      "architect": {
+        },
         "e2e": {
           "builder": "@nrwl/cypress:cypress",
           "options": {
-            "cypressConfig": "apps/webapp-e2e/cypress.json",
-            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
+            "cypressConfig": "apps/webapp/e2e/cypress.json",
+            "tsConfig": "apps/webapp/e2e/tsconfig.json",
             "devServerTarget": "webapp:serve"
           },
           "configurations": {
             "production": {
               "devServerTarget": "webapp:serve:production"
             }
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/webapp-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "**/*.json"]
           }
         }
       }
@@ -284,7 +274,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["apps/api/tsconfig.app.json", "apps/api/tsconfig.spec.json"],
+            "tsConfig": ["apps/api/tsconfig.app.json", "apps/api/tsconfig.spec.json", "apps/api/e2e/tsconfig.json"],
             "exclude": ["**/node_modules/**", "**/*.json"]
           }
         },
@@ -294,28 +284,26 @@
             "jestConfig": "apps/api/jest.config.js",
             "tsConfig": "apps/api/tsconfig.spec.json"
           }
-        }
-      }
-    },
-    "api-e2e": {
-      "root": "apps/api-e2e",
-      "sourceRoot": "apps/api-e2e/src",
-      "projectType": "application",
-      "prefix": "api",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": "apps/api-e2e/tsconfig.e2e.json",
-            "exclude": ["**/node_modules/**", "**/*.json"]
-          }
         },
         "e2e": {
           "builder": "@nrwl/jest:jest",
           "options": {
-            "jestConfig": "apps/api-e2e/jest.config.js",
-            "tsConfig": "apps/api-e2e/tsconfig.e2e.json"
+            "jestConfig": "apps/api/e2e/jest.config.js",
+            "tsConfig": "apps/api/e2e/tsconfig.json"
+          }
+        },
+        "typeorm": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "echo $PWD"
+              },
+              {
+                "command": "ts-node -r tsconfig-paths/register --project apps/api/tsconfig.app.json node_modules/.bin/typeorm migration:create"
+              }
+            ],
+            "parallel": false
           }
         }
       }

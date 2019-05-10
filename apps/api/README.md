@@ -85,12 +85,14 @@ node dist/apps/api/main.js
 
 ```bash
 ng build api --prod
+# or
+yarn workspace @ngx-starter-kit/api build:prod
 ```
 
 ### Commands
 ```bash
-# to run custom commands, `check api:sumo in angular.json`
-ng run api:sumo
+# to run custom commands, `check api:typeorm in angular.json`
+ng run api:typeorm
 ```
 
 ### Generate
@@ -126,11 +128,11 @@ ng test api --runInBand
 ### E2E Test
 
 ```bash
-ng e2e api-e2e
+ng e2e api
 # e2e test with watch mode
-ng e2e api-e2e --watch
+ng e2e api --watch
 # e2e test in CI env
-ng e2e api-e2e --forceExit --detectOpenHandles
+ng e2e api --forceExit --detectOpenHandles
 ```
 
 ### Reference
