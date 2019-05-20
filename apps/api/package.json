@@ -14,16 +14,16 @@
   },
   "dependencies": {
     "@godaddy/terminus": "^4.1.0",
-    "@nestjs/common": "^6.2.0",
-    "@nestjs/core": "^6.2.0",
+    "@nestjs/common": "^6.2.3",
+    "@nestjs/core": "^6.2.3",
     "@nestjs/cqrs": "^6.0.0",
     "@nestjs/passport": "^6.1.0",
-    "@nestjs/platform-express": "^6.1.0",
-    "@nestjs/platform-socket.io": "^6.1.0",
+    "@nestjs/platform-express": "^6.2.3",
+    "@nestjs/platform-socket.io": "^6.2.3",
     "@nestjs/swagger": "^3.0.0",
     "@nestjs/terminus": "^6.1.4",
     "@nestjs/typeorm": "^6.1.0",
-    "@nestjs/websockets": "^6.1.0",
+    "@nestjs/websockets": "^6.2.3",
     "@nestjsx/crud": "^3.2.0",
     "@xmlking/jwks-rsa": "^1.4.3",
     "cache-manager": "^2.9.0",
@@ -32,7 +32,7 @@
     "cli-ux": "4.9.3",
     "cls-hooked": "^4.2.2",
     "helmet": "^3.18.0",
-    "kubernetes-client": "^7.0.1",
+    "kubernetes-client": "^8.1.1",
     "nest-router": "^1.0.0",
     "nodemailer": "^6.1.1",
     "passport": "^0.4.0",
@@ -42,14 +42,14 @@
     "reflect-metadata": "^0.1.12",
     "rxjs": "^6.5.2",
     "sharp": "^0.22.1",
-    "swagger-ui-express": "^4.0.2",
+    "swagger-ui-express": "^4.0.4",
     "typeorm": "^0.2.17",
     "typeorm-express-query-builder": "^1.1.1",
-    "web-push": "^3.3.3"
+    "web-push": "^3.3.5"
   },
   "devDependencies": {
     "@types/helmet": "^0.0.43",
-    "@types/nodemailer": "^4.6.8",
+    "@types/nodemailer": "^6.1.0",
     "@types/passport": "1.0.0",
     "@types/passport-jwt": "^3.0.1",
     "@types/socket.io": "^2.1.0",
@@ -58,7 +58,7 @@
   },
   "optionalDependencies": {
     "@nestjs/schematics": "^6.2.0",
-    "@nestjs/testing": "^6.1.0",
+    "@nestjs/testing": "^6.2.3",
     "nodemon": "^1.19.0",
     "supertest": "^4.0.0"
   }

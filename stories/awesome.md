@@ -126,6 +126,11 @@ A curated list of awesome Angular resources
   > `{ enableTracing: true }`
   > Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
 
+
+* How to open Angular Material Dialog via route link?
+  > useful for sharing bookmarkable links. e.g., `/account/edit` `/account/add`
+  > [Routing to Angular Material Dialogs](https://medium.com/ngconf/routing-to-angular-material-dialogs-c3fb7231c177)
+ 
 * How to use new `providedIn` Dependency Injection?
 
   > Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)

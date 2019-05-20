@@ -9,7 +9,7 @@ import {
   OnModuleInit,
   UnauthorizedException,
 } from '@nestjs/common';
-import * as Api from 'kubernetes-client';
+import * as Api from 'kubernetes-client/backends/request';
 import { ConfigService } from '../../config';
 import { ClusterService } from '../cluster/cluster.service';
 import { KubeContext } from '../interfaces/kube-context';
