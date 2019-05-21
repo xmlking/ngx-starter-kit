@@ -77,6 +77,13 @@ export class NotificationService extends CrudService<Notification> implements On
     );
   }
 
+  async onMarkAllAsRead(command: NotificationsMarkAsReadCommand) {
+    await this.update(
+      { targetType: TargetType.USER, target: command.user.username },
+      { read: true },
+    );
+  }
+
   async onDeleteNotification(command: NotificationsDeleteCommand) {
     await this.update(
       { id: command.payload.id, targetType: TargetType.USER, target: command.user.username },

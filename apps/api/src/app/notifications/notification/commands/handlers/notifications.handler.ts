@@ -3,6 +3,7 @@ import { CommandHandler, ICommandHandler } from '@nestjs/cqrs';
 import { GenericCommand } from '../../../../shared';
 import { NotificationsDeleteCommand } from '../notifications-delete.command';
 import { NotificationsMarkAsReadCommand } from '../notifications-make-as-read.command';
+import { NotificationsMarkAllAsReadCommand } from '../notifications-make-all-as-read.command';
 import { Logger } from '@nestjs/common';
 
 @CommandHandler(GenericCommand)
@@ -14,10 +15,13 @@ export class NotificationsHandler implements ICommandHandler<GenericCommand> {
     const { type, payload, user } = command;
     switch (type) {
       case NotificationsDeleteCommand.type: {
-        return await this.notificationService.onMarkAsRead(new NotificationsDeleteCommand(payload, user));
+        return await this.notificationService.onDeleteNotification(new NotificationsDeleteCommand(payload, user));
       }
       case NotificationsMarkAsReadCommand.type: {
         return await this.notificationService.onMarkAsRead(new NotificationsMarkAsReadCommand(payload, user));
+      }
+      case NotificationsMarkAllAsReadCommand.type: {
+        return await this.notificationService.onMarkAllAsRead(new NotificationsMarkAllAsReadCommand(payload, user));
       }
       default: {
         this.logger.error('received unknown command: ', command.type);

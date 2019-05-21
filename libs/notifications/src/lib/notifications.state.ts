@@ -1,5 +1,6 @@
 import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
 import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
+import { append, patch, removeItem, updateItem } from '@ngxs/store/operators';
 import { tap } from 'rxjs/operators';
 import { AppNotification } from './app-notification.model';
 import { NotificationsService } from './notifications.service';
@@ -47,14 +48,19 @@ export class NotificationsState implements NgxsAfterBootstrap {
     return this.notificationsService.getAll().pipe(tap(res => setState(res)));
   }
 
-  @ImmutableContext()
+  // @ImmutableContext()
+  // @Action(DeleteNotification)
+  // delete(ctx: StateContext<AppNotification[]>, { payload }: DeleteNotification) {
+  //   ctx.setState((state: AppNotification[]) => {
+  //     return state.splice(state.findIndex(note => note.id === payload.id), 1);
+  //     // or (slower):
+  //     // return state.filter(note => note.id !== payload.id);
+  //   });
+  // }
+
   @Action(DeleteNotification)
-  delete(ctx: StateContext<AppNotification[]>, { payload }: AddNotification) {
-    ctx.setState((state: AppNotification[]) => {
-      return state.splice(state.findIndex(note => note.id === payload.id), 1);
-      // or (slower):
-      // return state.filter(note => note.id !== payload.id);
-    });
+  delete(ctx: StateContext<AppNotification[]>, { payload }: DeleteNotification) {
+    ctx.setState(removeItem<AppNotification>(note => note.id === payload.id));
   }
 
   @ImmutableContext()
