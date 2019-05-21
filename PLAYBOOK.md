@@ -249,7 +249,7 @@ ng update @angular/material --force
 ng update @angular/pwa --next
 ng update @ngx-formly/schematics --ui-theme=material
 ng update @nrwl/workspace --next --force
-ng update @nrwl/angular --next
+ng update @nrwl/angular --next --force
 ng update @nrwl/nest --next
 ```
 

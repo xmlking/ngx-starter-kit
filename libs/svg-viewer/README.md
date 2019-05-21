@@ -18,3 +18,7 @@ export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # publish
 npm publish dist/libs/svg-viewer --access public
 ```
+
+### TODO
+
+* Adopt Angular8's `SVG as template`
