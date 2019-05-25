@@ -19,7 +19,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
   editing = false;
   hasAvatar = true;
   formGroup: FormGroup;
-  @ViewChild('myPond') myPond: any;
+  @ViewChild('myPond', {static: true}) myPond: any;
   files = [];
   // files = [
   //   {
@@ -252,7 +252,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
 
   emitUpload(event: Event) {
     // this.myPond.emit();
-    console.log('emitUpload', event)
+    console.log('emitUpload', event);
   }
 
   removeAll() {

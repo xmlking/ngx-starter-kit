@@ -1,1 +1,1 @@
-export { LoadingOverlayModule } from './lib/loading-overlay.module';
+export * from './lib/loading-overlay.module';

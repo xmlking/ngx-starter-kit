@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'ngx-search',
@@ -8,8 +9,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 export class SearchComponent implements OnInit {
   isOpen: boolean;
 
-  @ViewChild('input', { read: ElementRef })
-  input: ElementRef;
+  @ViewChild('input', { read: ElementRef, static: true}) input: ElementRef;
 
   constructor() {}
 

@@ -8,6 +8,10 @@ npm i @ngx-starter-kit/draggable
 
 ### Usage
 
+## Running unit tests
+
+Run `ng test draggable` to execute the unit tests.
+
 ### Publish
 
 ```bash

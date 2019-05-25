@@ -10,6 +10,10 @@ npm i @ngx-starter-kit/json-diff
 
 ### Publish
 
+### Running unit tests
+
+Run `ng test app-confirm` to execute the unit tests.
+
 ```bash
 # build
 ng build json-diff

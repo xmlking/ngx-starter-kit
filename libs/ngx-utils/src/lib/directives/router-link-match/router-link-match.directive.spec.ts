@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterLinkMatchDirective } from './router-link-match.directive';
 import { RouterLinkMatchModule } from './router-link-match.module';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   template: `
@@ -59,8 +60,7 @@ class Test4Component {
     'test4-class': 'test1',
   };
 
-  @ViewChild(RouterLinkMatchDirective)
-  active: RouterLinkMatchDirective;
+  @ViewChild(RouterLinkMatchDirective, {static: true}) active: RouterLinkMatchDirective;
 
   other: any;
 }

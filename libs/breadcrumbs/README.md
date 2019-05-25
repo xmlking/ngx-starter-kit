@@ -9,6 +9,10 @@ npm i @ngx-starter-kit/breadcrumbs
 
 ### Usage
 
+## Running unit tests
+
+Run `ng test breadcrumbs` to execute the unit tests.
+
 ### Publish
 ```bash
 # build

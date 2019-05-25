@@ -1,7 +1,14 @@
+import { async, TestBed } from '@angular/core/testing';
 import { AppConfirmModule } from './app-confirm.module';
 
 describe('AppConfirmModule', () => {
-  it('should work', () => {
-    expect(new AppConfirmModule()).toBeDefined();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [AppConfirmModule]
+    }).compileComponents();
+  }));
+
+  it('should create', () => {
+    expect(AppConfirmModule).toBeDefined();
   });
 });

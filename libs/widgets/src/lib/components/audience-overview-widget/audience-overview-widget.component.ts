@@ -13,7 +13,7 @@ import { AudienceOverviewWidgetOptions } from './audience-overview-widget-option
   styleUrls: ['./audience-overview-widget.component.scss'],
 })
 export class AudienceOverviewWidgetComponent implements AfterViewInit {
-  @ViewChild('canvas', { read: ElementRef })
+  @ViewChild('canvas', { read: ElementRef, static: true})
   canvas: ElementRef;
   chart: Chart;
   isLoading: boolean;

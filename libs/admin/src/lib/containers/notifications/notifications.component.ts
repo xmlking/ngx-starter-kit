@@ -27,8 +27,8 @@ import { NotificationEditComponent } from '../../components/notification-edit/no
   ],
 })
 export class NotificationsComponent extends EntitiesComponent<AppNotification, NotificationService> {
-  @ViewChild('send') sendTpl: TemplateRef<any>;
-  // @ViewChild('editDelete') editDeleteTpl: TemplateRef<any>;
+  @ViewChild('send', {static: true}) sendTpl: TemplateRef<any>;
+  // @ViewChild('editDelete', {static: true}) editDeleteTpl: TemplateRef<any>;
   columns: EntityColumnDef<AppNotification>[];
 
   // optional
@@ -143,7 +143,7 @@ export class NotificationsComponent extends EntitiesComponent<AppNotification, N
     const dialogRef = this.dialog.open(this.formRef, {
       width: '720px',
       disableClose: true,
-      data: { title: title, payload: entity },
+      data: { title, payload: entity },
     });
 
     dialogRef

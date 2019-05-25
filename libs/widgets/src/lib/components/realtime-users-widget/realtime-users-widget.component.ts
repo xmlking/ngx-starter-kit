@@ -20,8 +20,7 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
   @Input()
   maxLength = 30;
 
-  @ViewChild('canvas', { read: ElementRef })
-  canvas: ElementRef;
+  @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
   chart: Chart;
 
   currentUsers: number;

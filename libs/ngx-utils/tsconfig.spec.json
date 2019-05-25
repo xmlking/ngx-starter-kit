@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/ngx-utils",
+    "outDir": "../../dist/out-tsc",
     "module": "commonjs",
     "allowJs": true,
     "types": ["jest", "node"]

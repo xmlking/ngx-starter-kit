@@ -16,7 +16,7 @@ export class BarChartWidgetComponent implements AfterViewInit {
   @Input()
   options: BarChartWidgetOptions;
 
-  @ViewChild('canvas', { read: ElementRef })
+  @ViewChild('canvas', { read: ElementRef, static: true})
   canvas: ElementRef;
 
   chart: Chart;

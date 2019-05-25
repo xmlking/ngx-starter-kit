@@ -1,5 +1,9 @@
 module.exports = {
   name: 'utils',
   preset: '../../jest.config.js',
-  coverageDirectory: '../../coverage/libs/utils',
+  transform: {
+    '^.+\\.[tj]sx?$': 'ts-jest'
+  },
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
+  coverageDirectory: '../../coverage/libs/utils'
 };

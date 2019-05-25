@@ -34,7 +34,7 @@ export class AspectRatioStyleBuilder extends StyleBuilder {
   `,
 })
 export class AspectRatioDirective extends BaseDirective implements OnInit, AfterContentInit, OnChanges, OnDestroy {
-  @ContentChild(AspectRatioContentDirective, { read: ElementRef })
+  @ContentChild(AspectRatioContentDirective, { read: ElementRef, static: true })
   contentElement: ElementRef;
   pseudoElement: any;
 

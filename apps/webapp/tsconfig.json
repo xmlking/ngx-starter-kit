@@ -1,4 +1,7 @@
 {
   "extends": "../../tsconfig.json",
-  "compilerOptions": {}
+  "compilerOptions": {
+    "types": ["node", "jest"]
+  },
+  "include": ["**/*.ts"]
 }

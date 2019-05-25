@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/oidc",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=7.0.0",
-    "@angular/core": ">=7.0.0",
+    "@angular/common": ">=8.0.0-rc.4",
+    "@angular/core": ">=8.0.0-rc.4",
     "@ngxs-labs/immer-adapter": ">=3.0.1",
     "@ngxs/router-plugin": ">=3.4.0",
     "@ngxs/storage-plugin": ">=3.4.0",

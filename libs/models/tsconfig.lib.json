@@ -1,26 +1,8 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc/libs/models",
-    "target": "es2015",
-    "module": "es2015",
-    "moduleResolution": "node",
-    "declaration": true,
-    "sourceMap": true,
-    "inlineSources": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "types": [],
-    "lib": ["dom", "es2018"]
+    "outDir": "../../dist/out-tsc"
   },
-  "angularCompilerOptions": {
-    "annotateForClosureCompiler": true,
-    "skipTemplateCodegen": true,
-    "strictMetadataEmit": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true,
-    "enableResourceInlining": true
-  },
-  "exclude": ["src/test.ts", "**/*.spec.ts"]
+  "exclude": ["**/*.spec.ts"],
+  "include": ["**/*.ts"]
 }

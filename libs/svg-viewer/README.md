@@ -8,6 +8,10 @@ npm i @ngx-starter-kit/svg-viewer
 
 ### Usage
 
+### Running unit tests
+
+Run `ng test app-confirm` to execute the unit tests.
+
 ### Publish
 
 ```bash

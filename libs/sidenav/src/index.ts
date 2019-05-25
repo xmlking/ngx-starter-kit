@@ -1,1 +1,1 @@
-export { SidenavModule } from './lib/sidenav.module';
+export * from './lib/sidenav.module';

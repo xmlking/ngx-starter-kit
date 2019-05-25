@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { distinctUntilChanged, filter, tap } from 'rxjs/operators';
 
+// tslint:disable-next-line:ban-types
+declare let ga: Function;
+
 export enum EventCategory {
   SideNav = 'sideNav',
   Outbound = 'outboundLink',

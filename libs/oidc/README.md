@@ -17,6 +17,9 @@
 ) for Implicit Flow
 2. Auto Refresh for Code Flow
 
+## Running unit tests
+
+Run `ng test breadcrumbs` to execute the unit tests.
 
 TODO
 https://github.com/damienbod/angular-auth-oidc-client

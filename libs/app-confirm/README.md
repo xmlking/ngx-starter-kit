@@ -35,6 +35,10 @@ delete(item: Account) {
 
 ```
 
+### Running unit tests
+
+Run `ng test app-confirm` to execute the unit tests.
+
 
 ### Publish
 ```bash

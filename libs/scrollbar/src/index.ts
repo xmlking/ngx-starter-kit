@@ -1,1 +1,1 @@
-export { ScrollbarModule } from './lib/scrollbar.module';
+export * from './lib/scrollbar.module';

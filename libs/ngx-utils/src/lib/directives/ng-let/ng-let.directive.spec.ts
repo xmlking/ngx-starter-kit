@@ -5,14 +5,14 @@ import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { NgLetDirective } from './ng-let.directive';
 import { NgLetModule } from './ng-let.module';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   template: '',
   selector: 'sand-test',
 })
 class TestComponent {
-  @ViewChild(NgLetDirective)
-  ngLetDirective: NgLetDirective;
+  @ViewChild(NgLetDirective, {static: true}) ngLetDirective: NgLetDirective;
   test$: Observable<number>;
   test = 10;
   nestedTest = 20;

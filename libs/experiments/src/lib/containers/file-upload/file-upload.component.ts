@@ -15,8 +15,7 @@ export class FileUploadComponent {
     { name: 'Experiments', link: '/dashboard/experiments' },
     { name: 'File Upload' },
   ];
-  @ViewChild('myPond')
-  myPond: any;
+  @ViewChild('myPond', {static: true}) myPond: any;
   myFiles = [];
 
   // Ref: https://pqina.nl/filepond/docs/patterns/api/server/

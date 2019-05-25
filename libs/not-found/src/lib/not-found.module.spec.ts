@@ -1,7 +1,14 @@
+import { async, TestBed } from '@angular/core/testing';
 import { NotFoundModule } from './not-found.module';
 
 describe('NotFoundModule', () => {
-  it('should work', () => {
-    expect(new NotFoundModule()).toBeDefined();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [NotFoundModule],
+    }).compileComponents();
+  }));
+
+  it('should create', () => {
+    expect(NotFoundModule).toBeDefined();
   });
 });

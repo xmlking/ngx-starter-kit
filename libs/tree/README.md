@@ -8,6 +8,10 @@ npm i @ngx-starter-kit/tree
 
 ### Usage
 
+## Running unit tests
+
+Run `ng test tree` to execute the unit tests via [Jest](https://jestjs.io).
+
 ### Publish
 
 ```bash

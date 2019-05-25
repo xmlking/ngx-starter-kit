@@ -291,8 +291,7 @@ export class StickyTableComponent implements AfterViewInit {
     'test8',
   ];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;

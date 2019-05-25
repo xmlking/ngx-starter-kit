@@ -1,1 +1,1 @@
-export { LedModule } from './lib/led.module';
+export * from './lib/led.module';

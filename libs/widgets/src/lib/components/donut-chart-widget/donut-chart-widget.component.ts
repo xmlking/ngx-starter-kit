@@ -17,8 +17,7 @@ export class DonutChartWidgetComponent implements AfterViewInit {
   @Input()
   options: LineChartWidgetOptions;
 
-  @ViewChild('canvas', { read: ElementRef })
-  canvas: ElementRef;
+  @ViewChild('canvas', { read: ElementRef, static: true}) canvas: ElementRef;
 
   chart: Chart;
 

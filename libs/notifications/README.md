@@ -8,8 +8,11 @@ npm i @ngx-starter-kit/notifications
 
 ### Usage
 
-### Publish
+## Running unit tests
 
+Run `ng test breadcrumbs` to execute the unit tests.
+
+### Publish
 ```bash
 # build
 ng build notifications

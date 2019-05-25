@@ -8,12 +8,12 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
-| Node                 | v11.13.0 |          |
-| Yarn                 | v1.15.2  |          |
-| Lerna                | v3.13.2  |          |
+| Node                 | v12.3.1  |          |
+| Yarn                 | v1.16.0  |          |
+| Lerna                | v3.14.1  |          |
 | Angular CLI          | v8.0.0   |          |
 | @nrwl/workspace      | v8.0.0   |          |
-| @nestjs/cli          | v6.0.0   |          |
+| @nestjs/cli          | v6.5.0   |          |
 | semantic-release-cli | v4.1.1   |          |
 | commitizen           | v3.0.7   |          |
 
@@ -105,47 +105,44 @@ for nx help `yarn run help`
 
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
-yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --package-manager=yarn  --preset=empty --style=scss
+yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --preset=empty --style=scss --skipInstall
 # or
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --verbose
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --package-manager=yarn --preset=empty --style=scss --bazel  --verbose
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --bazel  --verbose
 cd ngx-starter-kit
 
-> remove all `ngrx` NPM pagages from package.json, we will use `ngxs`
-
-# setup your workspace to run tests with jest.
-ng generate jest
-# Ref: https://nrwl.io/nx/unit-testing-with-jest
-# you may have to manually remove karma files (karma.conf.js) and dependencies from package.json
-
 # make sure we are up-to-date
-ng update
+ng update --next
+
 # and update as suggested. e.g.,
-ng update @nrwl/workspace
+ng update @angular/cli --next
+ng update @nrwl/workspace --next
+# or update all
 ng update --all
+
 # also run `yarn outdated` and update versions in package.json then run `yarn install`
 
-ng add @nrwl/angular@next
+ng add @nrwl/angular@next --defaults
 ng add @nrwl/nest@next
+# optional
+ng add @nrwl/web@next  
 
 # generate webapp app
-#ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d
+ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module
 # or with ivy renderer
-#ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=app-module -d -- --experimental-ivy
+ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module -- --experimental-ivy
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
-# generate micro-app `chat-box`
-ng g app chatApp --framework=web-components --routing --style=scss --prefix=ngx --unit-test-runner=jest --e2e-test-runner=cypress --tags=micro-app-module   -d
+# generate micro-app `chat-box` (optional)
+ng g @nrwl/web:app chatApp --routing --style=scss --prefix=ngx --tags=micro-app-module -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
 yarn add @webcomponents/custom-elements ?
 
 # generate api app with nestjs
-ng g @nrwl/nest:app api --unit-test-runner=jest --tags=api-module -d
-# generate backend app with express
-ng g @nrwl/node:app backend --unit-test-runner=jest --tags=api-module -d
+ng g @nrwl/nest:app api --frontendProject=webapp --tags=api-module
 ```
 
 #### Dependencies
@@ -156,7 +153,7 @@ ng g @nrwl/node:app backend --unit-test-runner=jest --tags=api-module -d
 cd ngx-starter-kit
 
 # Add PWA
-ng add @angular/pwa --project webapp
+ng add @angular/pwa@next --project webapp
 
 # Add Material
 # Ref: https://material.angular.io/guide/schematics
@@ -209,9 +206,6 @@ yarn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 yarn add -D loaders.css
 yarn add -D api-ai-javascript
 
-yarn add -D @nrwl/nest
-yarn add -D @nrwl/web
-
 # install without saving
 yarn add trianglify --no-save --no-lock
 
@@ -224,8 +218,6 @@ yarn add -O commitizen cz-conventional-changelog
 yarn add -O @commitlint/{config-conventional,cli}
 yarn add -O husky
 yarn add -O lint-staged
-# install cypress for e2e testing and remove protractor
-yarn add -O cypress @types/jquery
 
 
 # for CI/CD automation and release
@@ -259,20 +251,22 @@ ng update @nrwl/nest --next
 
 ```bash
 
-# generate `Lazy-loaded Feature Modules`
-ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
-ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
-ng g lib admin          --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest  --tags=layout,entry-module
-ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --unit-test-runner=jest --tags=entry-module
-ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
-ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
-ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --unit-test-runner=jest --tags=child-module
+## generate `Lazy-loaded Feature Modules` (angular framwork)
+ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib admin          --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=entry-module
+ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 
-ng g lib animations --framework=none -tags=utils --unit-test-runner=jest -d
-ng g lib Tree --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
-ng g lib utils --framework=none --publishable=true --tags=utils --unit-test-runner=jest -d
+
+## generate shared libs (with no framwork)
+ng g @nrwl/workspace:lib Tree       --tags=utils --defaults -d 
+ng g @nrwl/workspace:lib utils      --tags=utils --defaults -d
+ng g @nrwl/workspace:lib animations --tags=utils --defaults -d
 # system wide `models` module
-ng g lib models --framework=none --tags=utils --unit-test-runner=jest -d
+ng g @nrwl/workspace:lib models     --tags=utils --defaults -d 
 ng g interface User  --project=models --type=model -d
 ng g interface JwtToken  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
@@ -288,8 +282,10 @@ ng g interface ResourceQuota  --project=models --type=model -d
 ng g interface Project  --project=models --type=model -d
 ng g interface Cluster  --project=models --type=model -d
 
+## generate shared libs (with angular framwork)
+
 # add `core` module which will be only inported into root/app module.
-ng g lib core --tags=core-module --unit-test-runner=jest -d
+ng g lib core --tags=core-module --defaults -d
 # add  global services for `core` Module
 ng g service services/InMemoryData   --project=core   --skip-tests -d
 ng g service services/PageTitle      --project=core   -d
@@ -304,7 +300,7 @@ ng g @ngxs/schematics:state --name=preference --spec=false --project=core --sour
 ng g @ngxs/schematics:state --name=profile --spec=false --project=core --sourceRoot=libs/core/src/lib -d
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
-ng g lib shared --prefix=ngx --tags=shared-module --unit-test-runner=jest
+ng g lib shared --prefix=ngx --tags=shared-module --defaults -d
 # generate containers, components for `shared` Module
 ng g service containers/entity/entity --project=shared
 ng g component components/entityTable --project=shared  --export=true
@@ -318,61 +314,61 @@ ng g component containers/NotFound --project=not-found -d
 ### generate `Reusable lib Modules`
 
 # generate components for `AppConfirm` Module
-ng g lib AppConfirm --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib AppConfirm --tags=public-module --publishable=true --defaults -d
 ng g component AppConfirm --project=app-confirm  --flat  -d
 ng g service AppConfirm --project=app-confirm --skip-tests -d
 
 # generate components for `Draggable` Module
-ng g lib Draggable --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib Draggable --tags=public-module --publishable=true --defaults -d
 ng g directive directives/Draggable --project=draggable --export=true -d
 
 # generate components for `Breadcrumbs` Module
-ng g lib Breadcrumbs --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib Breadcrumbs --tags=public-module --publishable=true --defaults -d
 ng g component breadcrumbs --project=breadcrumbs --flat -d
 ng g service  breadcrumbs --project=breadcrumbs -d
 
 # generate components for `ScrollToTop` Module
-ng g lib ScrollToTop --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ScrollToTop --tags=public-module --publishable=true --defaults -d
 ng g component ScrollToTop --project=scroll-to-top --flat -d
 
-ng g lib scrollbar --tags=public-module --publishable=true
+ng g lib scrollbar --tags=public-module --publishable=true --defaults -d
 
 # generate components for `ContextMenu` Module
-ng g lib ContextMenu --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ContextMenu --tags=public-module --publishable=true --defaults -d
 ng g component ContextMenu --project=context-menu --flat -d
 ng g directive ContextMenuTrigger --project=context-menu --flat -d
 
 # generate components, services for `ThemePicker` Module
-ng g lib ThemePicker --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib ThemePicker --tags=public-module --publishable=true --defaults -d
 ng g component ThemePicker --project=theme-picker --flat -d
 ng g service  ThemeStorage --project=theme-picker -d
 ng g service  StyleManager --project=theme-picker -d
 ng g module ThemePickerService --project=theme-picker --flat -d
 
 # generate components for `Notifications` Module
-ng g lib Notifications --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib Notifications --tags=public-module --publishable=true --defaults -d
 ng g component notifications --project=notifications --flat -d
-ng g class    notification --type=model --project=notifications -d
+ng g class    notification --type=model --project=notifications --defaults -d
 ng g service  notifications --project=notifications -d
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel --prefix=ngx --tags=private-module --unit-test-runner=jest
+ng g lib Quickpanel --prefix=ngx --tags=private-module --defaults -d
 ng g component Quickpanel --project=quickpanel --flat -d
 
 # generate components for `LoadingOverlay` Module
-ng g lib LoadingOverlay --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib LoadingOverlay --tags=public-module --publishable=true --defaults -d
 ng g component LoadingOverlay --project=loading-overlay --flat -d
 
 # generate components for `svgViewer` Module
-ng g lib svgViewer --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib svgViewer --tags=public-module --publishable=true --defaults -d
 ng g component svgViewer --project=svg-viewer --flat -d
 
 # generate components for `led` Module
-ng g lib led --tags=public-module --publishable=true
+ng g lib led --tags=public-module --publishable=true --defaults -d
 ng g component led --project=led --flat -d
 
 # generate components for `chatBox` Module
-ng g lib chatBox --tags=public-module --publishable=true --unit-test-runner=jest -d
+ng g lib chatBox --tags=public-module --publishable=true --defaults -d
 ng g component chatBox --project=chat-box --flat -d
 ng g component components/typingIndicator --project=chat-box -d
 ng g component components/chatCard --project=chat-box -d
@@ -383,28 +379,28 @@ ng g service services/TextToSpeech --project=chat-box -d
 ng g service services/chat --project=chat-box -d
 
 # generate components for `socketioPlugin` Module
-ng g lib socketioPlugin --tags=public-module --publishable=true --spec=false --unit-test-runner=jest -d
+ng g lib socketioPlugin --tags=public-module --publishable=true --spec=false --defaults -d
 ng g service socketioSubject --project=socketio-plugin -d
 
 # generate components for `openTracing` Module
-ng g lib openTracing --tags=public-module  --publishable=true --spec=false --unit-test-runner=jest -d
+ng g lib openTracing --tags=public-module  --publishable=true --spec=false --defaults -d
 ng g service services/ZipkinTracing --project=open-tracing -d
 ng g interceptor interceptors/tracing  --project=open-tracing -d
 
 # generate components for `jsonDiff` Module
-ng g lib jsonDiff --tags=public-module --publishable=true --unit-test-runner=jest
+ng g lib jsonDiff --tags=public-module --publishable=true --defaults -d 
 ng g component jsonDiff --project=json-diff --flat -d
 ng g component jsonDiffTree --project=json-diff --flat -d
 
 # generate components for `clap` Module
-ng g lib clap --tags=public-module --skip-tests --publishable=true --unit-test-runner=jest
+ng g lib clap --tags=public-module --skip-tests --publishable=true --defaults -d 
 ng g component clap --project=clap  -s  -t --skip-tests --export --flat -d
 ng g component components/counterBubble --project=clap  -s  -t --skip-tests --flat  -d
 ng g component components/totalCounter --project=clap  -s  -t --skip-tests --flat  -d
 ng g component components/fab --project=clap  -s  -t --skip-tests --flat  -d
 
 # generate components for `ngx-utils` Module
-ng g lib ngxUtils --tags=public-module,utils --framework=none --publishable=true --unit-test-runner=jest
+ng g lib ngxUtils --tags=public-module,utils --framework=none --publishable=true --defaults -d
 ng g module pipes/truncate --project=ngx-utils --skip-tests -d
 ng g pipe pipes/truncate/Characters --project=ngx-utils --module=truncate --export -d
 ng g pipe pipes/truncate/Words --project=ngx-utils --module=truncate --export -d
@@ -430,7 +426,7 @@ ng g module directives/mask --project=ngx-utils --skip-tests -d
 ng g directive directives/mask/mask  --selector=ngxMask --project=ngx-utils --module=mask --export -d
 
 # generate components for `toolbar` Module
-ng g lib toolbar --tags=private-module --unit-test-runner=jest -d
+ng g lib toolbar --tags=private-module --defaults -d
 ng g component toolbar                        --project=toolbar --flat -d
 ng g component components/search              --project=toolbar -d
 ng g component components/searchBar           --project=toolbar -d
@@ -440,19 +436,19 @@ ng g component components/SidenavMobileToggle --project=toolbar -d
 ng g component components/QuickpanelToggle    --project=toolbar -d
 
 # generate components for `sidenav` Module
-ng g lib sidenav --tags=private-module --unit-test-runner=jest -d
+ng g lib sidenav --tags=private-module --defaults -d
 ng g component sidenav                --project=sidenav --flat -d
 ng g component components/sidenavItem --project=sidenav -d
 ng g directive  IconSidenav           --project=sidenav -d
 
 # generate components for `auth` Module
-ng g lib auth --tags=private-module,core-module --prefix=ngx --style=scss --unit-test-runner=jest -d
+ng g lib auth --tags=private-module,core-module --prefix=ngx --defaults -d
 ng g component components/login --project=auth -d
 ng g guard admin --project=auth --implements CanActivate -d
 ng g @ngxs/schematics:store --name=auth --spec --project=auth --sourceRoot=libs/auth/src/lib -d
 
 # generate components for `oidc` Module
-ng g lib oidc --tags=public-module --prefix=ngx --style=scss --unit-test-runner=jest --spec=false --publishable=true -d
+ng g lib oidc --tags=public-module --prefix=ngx --spec=false --publishable=true --defaults -d
 ng g service services/Auth  --project=oidc -d
 ng g service services/Keycloak  --project=oidc -d
 ng g service services/Generic  --project=oidc -d
@@ -466,7 +462,7 @@ ng g i interfaces/OidcInit config --project=oidc -d
 ng g i interfaces/OidcResourceInterceptor config --project=oidc -d
 
 # generate components for `navigator` Module
-ng g lib navigator --prefix=ngx --tags=private-module,core-module --unit-test-runner=jest -d
+ng g lib navigator --prefix=ngx --tags=private-module,core-module --defaults -d
 ng g service services/menu  --project=navigator -d
 ng g class models/menuItem  --project=navigator --type=model  -d
 ng g class state/menu       --project=navigator --type=state  -d
@@ -515,7 +511,7 @@ ng g component components/card                  --project=experiments -d
 ng g component containers/viewport              --project=experiments --skip-tests -d
 
 # generate components for `ImageComparison` Module
-ng g lib ImageComparison --tags=public-module --spec=false --publishable=true -d
+ng g lib ImageComparison --tags=public-module --spec=false --publishable=true --defaults -d
 ng g component ImageComparison --project=image-comparison --export --flat -d
 
 

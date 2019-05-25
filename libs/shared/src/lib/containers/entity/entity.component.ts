@@ -18,12 +18,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
-  @ViewChild(MatSort)
-  sort: MatSort;
-  @ViewChild('filter')
-  filterRef: ElementRef;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild('filter', {static: true}) filterRef: ElementRef;
 
   readonly loading$;
   readonly columns: Array<EntityColumnDef<TEntity>>;
