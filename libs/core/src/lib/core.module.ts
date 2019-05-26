@@ -21,10 +21,14 @@ import { MenuState, NavigatorModule } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
 
+import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { InMemoryDataService } from './services/in-memory-data.service';
+import { AppConfigService } from './services/app-config.service';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
 import { _window, WINDOW } from './services/window.token';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { HammerConfig } from './services/hammer.config';
 
 import { defaultMenu } from './menu-data';
 
@@ -35,7 +39,15 @@ import { ProfileState } from './state/profile.state';
 import { AppHandler } from './state/app.handler';
 import { RouteHandler } from './state/route.handler';
 import { EventBusHandler } from './state/eventbus.handler';
-import { GoogleAnalyticsService } from './services/google-analytics.service';
+
+
+
+// appConfig initializer factory function
+const appConfigInitializerFn = (appConfig: AppConfigService) => {
+  return () => {
+    return appConfig.load();
+  };
+};
 
 // Noop handler for factory function
 export function noop() {
@@ -106,9 +118,19 @@ library.add(faTwitter, faGithub, faGoogle);
     },
     {
       provide: APP_INITIALIZER,
+      useFactory: appConfigInitializerFn,
+      deps: [AppConfigService],
+      multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
       useFactory: noop,
       deps: [EventBusHandler, RouteHandler],
       multi: true,
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig,
     },
     {
       provide: RouterStateSerializer,

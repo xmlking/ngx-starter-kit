@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { RouterModule } from '@angular/router';
 import { ServiceWorkerModule } from '@angular/service-worker';
@@ -9,7 +8,6 @@ import { QuicklinkModule, QuicklinkStrategy } from '@xmlking/ngx-quicklink';
 import { CoreModule } from '@ngx-starter-kit/core';
 
 import { environment } from '@env/environment';
-import { HammerConfig } from './hammer.config';
 
 @NgModule({
   imports: [
@@ -53,12 +51,6 @@ import { HammerConfig } from './hammer.config';
     ),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     CoreModule, // IMP: Please keep CoreModule after RouterModule
-  ],
-  providers: [
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: HammerConfig,
-    },
   ],
   declarations: [AppComponent],
   bootstrap: [AppComponent],

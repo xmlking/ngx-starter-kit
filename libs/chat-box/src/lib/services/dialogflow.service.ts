@@ -22,7 +22,7 @@ export class DialogflowService {
 
   public getResponse(query: string): Observable<Dialogflow> {
     const data = {
-      query: query,
+      query,
       lang: 'en',
       sessionId: this.sessionId,
     };

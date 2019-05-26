@@ -249,9 +249,11 @@ ng update @nrwl/nest --next
 
 > Add `--dry-run` or `-d` option to following commands to see which artifacts will be created, without actually creating them.
 
-```bash
 
-## generate `Lazy-loaded Feature Modules` (angular framwork)
+##### generate Lazy-loaded Feature Modules
+>  with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
+
+```bash
 ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
 ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
 ng g lib admin          --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
@@ -259,12 +261,15 @@ ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webap
 ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+```
 
-
-## generate shared libs (with no framwork)
+##### generate shared neutral libs
+>  with no-framework  (a.k.a. @nrwl/workspace schematics)
+```bash
 ng g @nrwl/workspace:lib Tree       --tags=utils --defaults -d 
 ng g @nrwl/workspace:lib utils      --tags=utils --defaults -d
 ng g @nrwl/workspace:lib animations --tags=utils --defaults -d
+
 # system wide `models` module
 ng g @nrwl/workspace:lib models     --tags=utils --defaults -d 
 ng g interface User  --project=models --type=model -d
@@ -281,23 +286,28 @@ ng g interface Membership  --project=models --type=model -d
 ng g interface ResourceQuota  --project=models --type=model -d
 ng g interface Project  --project=models --type=model -d
 ng g interface Cluster  --project=models --type=model -d
+```
 
-## generate shared libs (with angular framwork)
-
+#####  generate shared angular libs
+>  with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
+```bash
 # add `core` module which will be only inported into root/app module.
 ng g lib core --tags=core-module --defaults -d
 # add  global services for `core` Module
-ng g service services/InMemoryData   --project=core   --skip-tests -d
-ng g service services/PageTitle      --project=core   -d
-ng g service services/ServiceWorker  --project=core   -d
-ng g service services/MediaQuery     --project=core   -d
-ng g service services/DeepLink       --project=core   -d
-ng g service services/Feature        --project=core   -d
-ng g service services/GoogleAnalytics --project=core  -d
-ng g service  PushNotification        --project=core  -d
-ng g service  services/Profile        --project=core  --skip-tests -d
-ng g @ngxs/schematics:state --name=preference --spec=false --project=core --sourceRoot=libs/core/src/lib -d
-ng g @ngxs/schematics:state --name=profile --spec=false --project=core --sourceRoot=libs/core/src/lib -d
+
+ng g service services/PageTitle       --project=core   -d
+ng g service services/ServiceWorker   --project=core   -d
+ng g service services/MediaQuery      --project=core   -d
+ng g service services/DeepLink        --project=core   -d
+ng g service services/Feature         --project=core   -d
+ng g service services/GoogleAnalytics --project=core   -d
+ng g service  PushNotification        --project=core   -d
+ng g service services/InMemoryData    --project=core   --skip-tests -d
+ng g service  services/Profile        --project=core   --skip-tests -d
+ng g service  services/hammer         --project=core   --skip-tests --type=config -d
+ng g service  services/AppConfig      --project=core   --skip-tests -d
+ng g @ngxs/schematics:state state/preference --spec=false --sourceRoot=libs/core/src/lib --project=core -d
+ng g @ngxs/schematics:state profile --path=state --spec=false --sourceRoot=libs/core/src/lib --project=core -d
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
 ng g lib shared --prefix=ngx --tags=shared-module --defaults -d
@@ -503,8 +513,8 @@ ng g component containers/virtualScroll         --project=experiments -d
 ng g component containers/StickyTable           --project=experiments -d
 ng g component containers/clapButton            --project=experiments -s  -t --skip-tests  -d
 ng g component containers/knobDemo              --project=experiments -d
-ng g component containers/ledDemo               --project=experiments  -d
-ng g component containers/ImageComp             --project=experiments  -d
+ng g component containers/ledDemo               --project=experiments -d
+ng g component containers/ImageComp             --project=experiments -d
 ng g component containers/layout                --project=experiments -d
 ng g component containers/dashing               --project=experiments -d
 ng g component components/card                  --project=experiments -d

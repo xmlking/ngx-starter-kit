@@ -4,6 +4,7 @@ export * from './lib/state/app.state';
 export * from './lib/state/profile.state';
 export { PageTitleService } from './lib/services/page-title.service';
 export { ProfileService } from './lib/services/profile.service';
+export { AppConfigService } from './lib/services/app-config.service';
 export { ServiceWorkerService } from './lib/services/service-worker.service';
 export { MediaQueryService } from './lib/services/media-query.service';
 export { DeepLinkService } from './lib/services/deep-link.service';

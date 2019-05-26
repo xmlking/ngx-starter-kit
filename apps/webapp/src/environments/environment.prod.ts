@@ -6,6 +6,7 @@ export const environment: IEnvironment = {
   production: true,
   envName: 'prod',
 
+  REMOTE_CONFIG_URL: '/assets/data/ui-config.json',
   DOCS_BASE_URL: 'http://localhost:8000',
   API_BASE_URL: 'https://ngxapi.traefik.k8s/api',
   WS_EVENT_BUS_URL: 'wss://ngxapi.traefik.k8s/eventbus',
