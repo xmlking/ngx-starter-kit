@@ -261,6 +261,8 @@ ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webap
 ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+
+# ng g worker app --project=webapp -d # TODO
 ```
 
 ##### generate shared neutral libs
