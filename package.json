@@ -125,7 +125,7 @@
     "@ngx-formly/material": "^5.1.6",
     "@ngx-lite/in-viewport": "^0.1.3",
     "@ngx-lite/input-star-rating": "^0.2.5",
-    "@ngx-lite/input-tag": "^0.3.8",
+    "@ngx-lite/input-tag": "^0.4.8",
     "@ngxs-labs/immer-adapter": "^3.0.3",
     "@ngxs/devtools-plugin": "^3.4.3",
     "@ngxs/form-plugin": "^3.4.3",
