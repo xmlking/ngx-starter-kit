@@ -192,6 +192,8 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 > Refer [here](https://blog.ninja-squad.com/)
 > Refer [angular performance checklist](https://github.com/mgechev/angular-performance-checklist)
 
+> Refer [Curated list of common mistakes made when developing Angular applications](https://angular-checklist.io/projects)
+
 - Server-side rendering(SSR) and Pre-rendering
 
   > [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)

@@ -68,8 +68,8 @@ yarn global remove semantic-release-cli
 yarn global remove commitizen
 
 yarn global add lerna
-yarn global add @angular/cli@next
-yarn global add @nrwl/workspace@next
+yarn global add @angular/cli
+yarn global add @nrwl/workspace
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
 yarn global add commitizen
@@ -131,7 +131,7 @@ ng add @nrwl/web@next
 # generate webapp app
 ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module
 # or with ivy renderer
-ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module -- --experimental-ivy
+ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module --enable-ivy 
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 

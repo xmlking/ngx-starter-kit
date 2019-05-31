@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/scroll-to-top",
   "version": "0.0.2",
   "peerDependencies": {
-    "@angular/common": "^8.0.0-rc.4",
-    "@angular/core": "^8.0.0-rc.4",
+    "@angular/common": ">=8.0.0",
+    "@angular/core": ">=8.0.0",
     "ngx-page-scroll-core": ">=6.0.0",
     "ngx-page-scroll": ">=7.2.0"
   }
