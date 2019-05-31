@@ -114,13 +114,6 @@ gcloud container clusters get-credentials ${CLUSTER_NAME} \
 gcloud container clusters get-credentials my-cluster
 ```
 
-> required?
-```
-kubectl create clusterrolebinding $(whoami)-cluster-admin-binding \
---clusterrole=cluster-admin \
---user=$(gcloud config get-value account)
-```
-
 > Verify if kubectl working
 ```bash
 kubectl cluster-info

@@ -16,4 +16,4 @@ keycloak:
   ingress:
     enabled: true
     hosts:
-      - keycloak-ngx.apps.us-west-1.online-starter.openshift.com
+      - keycloak-ngx.apps.us-east-2.online-starter.openshift.com
