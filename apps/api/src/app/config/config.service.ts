@@ -39,11 +39,15 @@ export class ConfigService {
 
   async getOpenIdConfiguration() {
     try {
-      const response = await axios.get(`${this.config.auth.issuer}/.well-known/openid-configuration`);
+      const response = await axios.get(`${this.config.auth.issuerExternalUrl}/.well-known/openid-configuration`);
       return response.data;
     } catch (err) {
-      this.logger.error(`Unable to fetch config from ${this.config.auth.issuer}/.well-known/openid-configuration, \nError: ${err}`);
-      this.logger.error('Check if Oauth Server is UP');
+      this.logger.error(
+        `Unable to fetch config from ${
+          this.config.auth.issuerExternalUrl
+        }/.well-known/openid-configuration, \nError: ${err}`,
+      );
+      this.logger.error('Check if OIDC Server is UP');
     }
   }
 

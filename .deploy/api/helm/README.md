@@ -1,4 +1,4 @@
-# NgxApi Helm
+# NgxApi with Helm
 
 Deploying `NgxApi` to `Kubernetes` via `Helm`
 
@@ -41,7 +41,7 @@ helm secrets install --name=ngxapi --namespace=default -f values-dev.yaml -f sec
 
 # verify deployment
 helm ls
-kubectl get all,configmap,secret,ingress,replicasets -lapp.kubernetes.io/instance=ngxapi
+kubectl get all,configmap,secret,ingress,replicasets,managedCertificate -lapp.kubernetes.io/instance=ngxapi
 kubectl describe pod ngxapi-nodeapp
 kubectl get deployment ngxapi-nodeapp -o yaml
 kubectl get ingress ngxapi-nodeapp  -o yaml

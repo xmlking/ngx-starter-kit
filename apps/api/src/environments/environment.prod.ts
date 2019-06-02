@@ -24,14 +24,14 @@ export const environment: IEnvironment = {
     password: process.env.TYPEORM_PASSWORD || 'postgres321',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
-    synchronize: false,
+    synchronize: process.env.TYPEORM_SYNCHRONIZE ? JSON.parse(process.env.TYPEORM_SYNCHRONIZE) : false,
     uuidExtension: 'pgcrypto',
   },
 
   auth: {
     clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
-    issuer: process.env.OIDC_ISSUER_URL || 'https://keycloak.traefik.k8s/auth/realms/ngx',
-    jwksUri: process.env.OIDC_JWKS_URL || 'http://keycloak-headless:8080/auth/realms/ngx/protocol/openid-connect/certs',
+    issuerExternalUrl: process.env.OIDC_ISSUER_EXTERNAL_URL || 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    issuerInternalUrl: process.env.OIDC_ISSUER_INTERNAL_URL || 'http://keycloak-headless:8080/auth/realms/ngx',
   },
 
   email: {

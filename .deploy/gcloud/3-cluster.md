@@ -7,9 +7,9 @@ Creating VPC-native private Kubernetes cluster
 
 1. Active Google Cloud Platform (GCP) Account.
 2. Working [gCloud SDK](cloud-sdk.md).
+3. Helm CLI installed i.e., `brew install kubernetes-helm`
 
-
-### Step 1: Set Env
+## Set Env
 
 ```bash
 export PROJECT_ID=ngx-starter-kit
@@ -32,7 +32,7 @@ gcloud config set project $PROJECT_ID
 gcloud config set compute/zone $COMPUTE_ZONE
 ```
 
-### Step 2: Create VPC network
+### Step 1: Create VPC network
 
 ```bash
 gcloud compute networks create ${NETWORK_NAME} \
@@ -40,7 +40,7 @@ gcloud compute networks create ${NETWORK_NAME} \
   --subnet-mode custom 
 ```
 
-### Step 3: Create a subnet for GKE cluster
+### Step 2: Create a subnet for GKE cluster
 
 ```bash
 gcloud compute networks subnets create ${SUBNET_NAME} \
@@ -55,7 +55,7 @@ gcloud compute networks subnets list --network ${NETWORK_NAME}
 gcloud compute networks subnets describe ${SUBNET_NAME}
 ```
 
-### Step 4: Create GKE cluster 
+### Step 3: Create GKE cluster 
 
 ```bash
 gcloud container clusters create ${CLUSTER_NAME} \
@@ -99,7 +99,7 @@ gcloud container clusters update ${CLUSTER_NAME} \
 --update-addons=KubernetesDashboard=ENABLED
 ```
 
-### Step 5: Setup Kubectl CLI
+### Step 4: Setup Kubectl CLI
 
 > Configure kubectl command line access by running the following command:
 
@@ -120,26 +120,30 @@ kubectl cluster-info
 kubectl get nodes --output wide
 ```
 
-### Step 6: Install And Configure Helm And Tiller
+### Step 5: Install Helm & Tiller
 
 ```bash
-brew install kubernetes-helm
- kubectl create serviceaccount -n kube-system tiller
+kubectl create serviceaccount -n kube-system tiller
 kubectl create clusterrolebinding tiller-cluster-rule --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
 helm init --service-account tiller
-# next step required?
-kubectl patch deploy --namespace kube-system tiller-deploy -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}'
-helm init --upgrade --service-account tiller 
 
 # verify that helm is installed in the cluster
 kubectl --namespace kube-system get pods | grep tiller
-kubectl get deploy,svc tiller-deploy -n kube-system
 
-
+# example installing a chart
 helm --tls --tls-verify --tiller-namespace kube-system install stable/nginx-ingress
 ```
 
-### Cleaning up
+### Step 6: Create Ingress
+
+> After installing `keycloak`, `ngxapi`, `ngxweb` Helm charts, as final step, install Global Ingress
+```bash
+kubectl apply -f gke-kashmora-ingress.yaml
+``` 
+
+> ***Ingress would consume a good amount of time to have the GCP load balancing functioning.
+
+## Cleaning up
 ```bash
 gcloud container clusters delete -q ${CLUSTER_NAME}
 gcloud compute networks subnets delete ${SUBNET_NAME}
@@ -147,12 +151,12 @@ gcloud compute networks delete ${NETWORK_NAME}
 ```
 
 
-### Tips
+## Tips
 ```bash
 gcloud compute machine-types list | grep us-west2
 ```
 
-### Ref
+## Ref
 
 1. https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-access-for-kubectl
 2. https://www.doxsey.net/blog/kubernetes--the-surprisingly-affordable-platform-for-personal-projects

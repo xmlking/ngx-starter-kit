@@ -6,7 +6,7 @@ Build and Deploy NgxWeb webapp.
 
 ```bash
 # build, optionally use `--no-cache`
-export VERSION=2.0.0-SNAPSHOT
+export VERSION=2.0.3-SNAPSHOT
 export DOCKER_BUILDKIT=1
 docker build \
 --build-arg VERSION=$VERSION \
@@ -15,7 +15,7 @@ docker build \
 
 # if you need more memory for build
 export NODE_OPTIONS=--max-old-space-size=4096
-export VERSION=2.0.0-SNAPSHOT
+export VERSION=2.0.3-SNAPSHOT
 export DOCKER_BUILDKIT=1
 docker build \
 --build-arg VERSION=$VERSION \
@@ -54,7 +54,7 @@ open  http://localhost:8080
 
 ### Deploy
 
-Follow instructions from [helm](./helm) or [OpenShift](./openshift)
+Follow instructions from [helm](./helm)
 
 ### Reference
 

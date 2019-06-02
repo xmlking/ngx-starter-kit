@@ -29,7 +29,9 @@ export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
         rateLimit: true,
         jwksRequestsPerMinute: 5,
         strictSsl: false,
-        jwksUri: env.auth.jwksUri || `${env.auth.issuer}/protocol/openid-connect/certs`,
+        jwksUri:
+          env.auth.jwksUri ||
+          `${env.auth.issuerInternalUrl || env.auth.issuerExternalUrl}/protocol/openid-connect/certs`,
       }),
       handleSigningKeyError: (err, cb) => {
         if (err instanceof SigningKeyNotFoundError) {
@@ -40,7 +42,7 @@ export class WsJwtStrategy extends PassportStrategy(Strategy, 'ws-jwt') {
 
       // Validate the audience and the issuer.
       audience: env.auth.clientId,
-      issuer: env.auth.issuer,
+      issuer: env.auth.issuerExternalUrl,
       algorithm: ['RS256'],
     });
   }

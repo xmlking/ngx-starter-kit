@@ -1,0 +1,10 @@
+# spec.domains list must contain only one domain
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: keycloak
+  labels:
+    app: keycloak
+spec:
+  domains:
+    - keycloak.kashmora.com

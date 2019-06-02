@@ -3,14 +3,12 @@ test:
 
 resources:
   limits:
-    cpu: 4
-    memory: "4096Mi"
+    memory: "1024Mi"
   requests:
-    cpu: 2
-    memory: "2048Mi"
+    memory: "512Mi"
 
 image:
-  repository: xmlking/ngxapi
+  repository: gcr.io/ngx-starter-kit/ngxapi
   tag: 2.0.3-SNAPSHOT
   pullPolicy: IfNotPresent
 
@@ -20,13 +18,13 @@ securityContext:
 
 initContainers:
   - name: wait-for-postgresql
-    image: alpine:3.6
+    image: gcr.io/google-containers/alpine-with-bash:1.0
     imagePullPolicy: IfNotPresent
     command:
       - sh
       - -c
       - |
-        until printf "." && nc -z -w 2 ngxdb-postgresql 5432; do
+        until printf "." && nc -z -w 2 10.141.176.3 5432; do
             sleep 2;
         done;
 
@@ -39,16 +37,16 @@ livenessProbe:
   timeoutSeconds: 20
 readinessProbe:
   path: /ready
-  initialDelaySeconds: 60
-  periodSeconds: 30
+  initialDelaySeconds: 120
+  periodSeconds: 60
 
 env:
   - name: NODE_TLS_REJECT_UNAUTHORIZED
     value: '0'
   - name: DOMAIN_URL
-    value: 'https://ngxapi.traefik.k8s'
+    value: 'https://api.kashmora.com'
   - name: TYPEORM_HOST
-    value: ngxdb-postgresql
+    value: '10.141.176.3'
   - name: TYPEORM_PORT
     value: '5432'
   - name: TYPEORM_DATABASE
@@ -58,9 +56,9 @@ env:
   - name: TYPEORM_LOGGING
     value: 'false'
   - name: TYPEORM_SYNCHRONIZE
-    value: 'false'
+    value: 'true'
   - name: OIDC_ISSUER_EXTERNAL_URL
-    value: 'https://keycloak.traefik.k8s/auth/realms/ngx'
+    value: 'https://keycloak.kashmora.com/auth/realms/ngx'
   - name: OIDC_ISSUER_INTERNAL_URL
     value: 'http://keycloak-headless:8080/auth/realms/ngx'
   - name: OIDC_CLIENT_ID
@@ -78,32 +76,21 @@ env:
   - name: VAPID_PUBLIC_KEY
     value: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'
 
+service:
+  type: NodePort
+  nodePort: 32050
+
+# make sure networking.gke.io/managed-certificates ===  nodeapp.fullname e.g.,  `ngxapi-nodeapp`
 ingress:
-  enabled: true
-  annotations:
-    kubernetes.io/ingress.class: traefik
-    traefik.frontend.passHostHeader: "true"
-  hosts:
-    - host: ngxapi.traefik.k8s
-      paths: [/]
-  tls:
-    - secretName: keycloak-secrets-tls
-      hosts:
-        - ngxapi.traefik.k8s
-
-autoscaling:
-  enabled: true
-
-networkPolicy:
-  enabled: true
-  egress:
-    - to:
-        - ipBlock: # Allow nodeapp to talk to external servers
-            cidr: 0.0.0.0/0
-
-istio:
   enabled: false
-  weight: 100
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
+    networking.gke.io/managed-certificates: ngxapi-nodeapp
+    kubernetes.io/ingress.allow-http: "false"
+  hosts:
+    - host: api.kashmora.com
+      paths: [/*]
 
-metrics:
+managedcertificate:
   enabled: true
+  host: api.kashmora.com

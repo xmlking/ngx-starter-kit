@@ -33,7 +33,7 @@ kubectl create secret tls keycloak-secrets-tls \
 kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 ```
 
-Follow instructions from [manual](./manual) or [helm](./helm) or [OpenShift](./openshift)
+Follow instructions from [manual](./manual) or [helm](./helm)
 
 Then continue steps below. 
  

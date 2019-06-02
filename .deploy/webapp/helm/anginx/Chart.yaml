@@ -4,7 +4,7 @@ description: NGINX HTTP server for Angular
 name: anginx
 sources:
   - https://github.com/xmlking/ngx-starter-kit/.deploy/webapp/helm/anginx
-version: 0.1.0
+version: 0.2.0
 maintainers:
   - name: sumanth
     email: xmlking@gmail.com

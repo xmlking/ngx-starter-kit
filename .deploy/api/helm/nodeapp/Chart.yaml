@@ -4,7 +4,7 @@ description: Helm chart for NodeJS server
 name: nodeapp
 sources:
   - https://github.com/xmlking/ngx-starter-kit/.deploy/api/helm/nodeapp
-version: 0.1.0
+version: 0.2.0
 maintainers:
   - name: sumanth
     email: xmlking@gmail.com

@@ -4,6 +4,8 @@ Deploying `KeyCloak` to `Kubernetes` via `Helm`
 
 we will be using charts from [codecentric](https://github.com/codecentric/helm-charts) Repo.
 
+> Follow extra instructions for [OPENSHIFT](./OPENSHIFT4.md) and  [GCLOUD](./GCLOUD.md)
+
 ### With Tiller
 
 ```bash
@@ -47,7 +49,7 @@ cd .deploy/keycloak/helm
 
 helm fetch codecentric/keycloak
 
-helm template ./keycloak-4.11.1.tgz \
+helm template ./keycloak-4.14.1.tgz \
 --name keycloak \
 --namespace default \
 --values values-dev.yaml \

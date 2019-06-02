@@ -85,3 +85,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+## Create GKE Managed Certificate resource.
+managedcertificate:
+  enabled: false
+#  host: www.mydomain.com

@@ -15,7 +15,7 @@ helm install --name=ngxweb --namespace=default -f values-dev.yaml ./anginx
 
 # verify deployment
 helm ls
-kubectl get all,configmap,secret,ingress,replicasets -lapp.kubernetes.io/instance=ngxweb
+kubectl get all,configmap,secret,ingress,replicasets,managedCertificate -lapp.kubernetes.io/instance=ngxweb
 kubectl describe pod ngxweb-anginx
 kubectl get deployment ngxweb-anginx -o yaml
 kubectl get ingress ngxweb-anginx  -o yaml

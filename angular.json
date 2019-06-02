@@ -1121,7 +1121,7 @@
                   "type": "bundle"
                 },
                 {
-                  "baseline": "1.8mb",
+                  "baseline": "5mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "minimumError": "20%",
@@ -1129,7 +1129,7 @@
                   "type": "allScript"
                 },
                 {
-                  "baseline": "1500kb",
+                  "baseline": "1800kb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "type": "initial"
@@ -1149,7 +1149,7 @@
                   "type": "bundle"
                 },
                 {
-                  "baseline": "6.5mb",
+                  "baseline": "10mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "type": "all"

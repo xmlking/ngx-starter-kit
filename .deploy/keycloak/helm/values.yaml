@@ -11,7 +11,7 @@ keycloak:
 
   image:
     repository: jboss/keycloak
-    tag: 6.0.1
+    tag: 5.0.0
     pullPolicy: IfNotPresent
 
     ## Optionally specify an array of imagePullSecrets.
@@ -26,9 +26,20 @@ keycloak:
   #    hostnames:
   #      - "my.host.com"
 
+  enableServiceLinks: false
+
+  serviceAccount:
+    # Specifies whether a service account should be created
+    create: false
+    # The name of the service account to use.
+    # If not set and create is true, a name is generated using the fullname template
+    name:
+
   securityContext:
-    runAsUser: 1000
     fsGroup: 1000
+
+  containerSecurityContext:
+    runAsUser: 1000
     runAsNonRoot: true
 
   ## The path keycloak will be served from. To serve keycloak from the root path, use two quotes (e.g. "").
@@ -50,23 +61,25 @@ keycloak:
     #     command: ["/bin/sh", "-c", "ls"]
 
   ## Additional arguments to start command e.g. -Dkeycloak.import= to load a realm
-  extraArgs: ''
+  extraArgs: ""
 
   ## Username for the initial Keycloak admin user
   username: keycloak
 
   ## Password for the initial Keycloak admin user. Applicable only if existingSecret is not set.
   ## If not set, a random 10 characters password will be used
-  password: ''
+  password: ""
 
   # Specifies an existing secret to be used for the admin password
-  existingSecret: ''
+  existingSecret: ""
 
   # The key in the existing secret that stores the password
   existingSecretKey: password
 
   ## Allows the specification of additional environment variables for Keycloak
   extraEnv: |
+    - name: PROXY_ADDRESS_FORWARDING
+      value: "true"
     # - name: KEYCLOAK_LOGLEVEL
     #   value: DEBUG
     # - name: WILDFLY_LOGLEVEL
@@ -108,7 +121,7 @@ keycloak:
             topologyKey: failure-domain.beta.kubernetes.io/zone
 
   nodeSelector: {}
-  priorityClassName: ''
+  priorityClassName: ""
   tolerations: []
 
   ## Additional pod labels
@@ -125,8 +138,7 @@ keycloak:
     initialDelaySeconds: 30
     timeoutSeconds: 1
 
-  resources:
-    {}
+  resources: {}
     # limits:
     #   cpu: "100m"
     #   memory: "1024Mi"
@@ -162,8 +174,7 @@ keycloak:
   ## Add additional ports, eg. for custom admin console
   extraPorts: |
 
-  podDisruptionBudget:
-    {}
+  podDisruptionBudget: {}
     # maxUnavailable: 1
     # minAvailable: 1
 
@@ -192,8 +203,7 @@ keycloak:
     enabled: false
     path: /
 
-    annotations:
-      {}
+    annotations: {}
       # kubernetes.io/ingress.class: nginx
       # kubernetes.io/tls-acme: "true"
       # ingress.kubernetes.io/affinity: cookie
@@ -211,6 +221,29 @@ keycloak:
     #     - keycloak.example.com
     #   secretName: tls-keycloak
 
+  ## OpenShift route configuration.
+  ## ref: https://docs.openshift.com/container-platform/3.11/architecture/networking/routes.html
+  route:
+    enabled: false
+    path: /
+
+    annotations: {}
+      # kubernetes.io/tls-acme: "true"
+      # haproxy.router.openshift.io/disable_cookies: "true"
+    # haproxy.router.openshift.io/balance: roundrobin
+
+    labels: {}
+    # key: value
+
+    # Host name for the route
+    host:
+
+    # TLS configuration
+    tls:
+      enabled: true
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+
   ## Persistence configuration
   persistence:
     # If true, the Postgres chart is deployed
@@ -222,7 +255,7 @@ keycloak:
     ## The following values only apply if "deployPostgres" is set to "false"
 
     # Specifies an existing secret to be used for the database password
-    existingSecret: ''
+    existingSecret: ""
 
     # The key in the existing secret that stores the password
     existingSecretKey: password
@@ -233,7 +266,7 @@ keycloak:
     dbUser: keycloak
 
     # Only used if no existing secret is specified. In this case a new secret is created
-    dbPassword: ''
+    dbPassword: ""
 
 postgresql:
   ### PostgreSQL User to create.
@@ -243,7 +276,7 @@ postgresql:
   ## PostgreSQL Password for the new user.
   ## If not set, a random 10 characters password will be used.
   ##
-  postgresPassword: ''
+  postgresPassword: ""
 
   ## PostgreSQL Database to create.
   ##
@@ -264,6 +297,7 @@ test:
     tag: v1
     pullPolicy: IfNotPresent
   securityContext:
-    runAsUser: 1000
     fsGroup: 1000
+  containerSecurityContext:
+    runAsUser: 1000
     runAsNonRoot: true

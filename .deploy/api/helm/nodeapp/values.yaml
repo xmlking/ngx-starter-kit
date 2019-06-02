@@ -142,3 +142,8 @@ istio:
 ## Enabled prometheus.
 metrics:
   enabled: false
+
+## Create GKE Managed Certificate resource.
+managedcertificate:
+  enabled: false
+#  host: api.mydomain.com

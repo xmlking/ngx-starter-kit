@@ -27,11 +27,6 @@ keycloak:
     dbHost: ngxdb-postgresql
     existingSecret: postgres-init-scripts
     existingSecretKey: keycloak-db-password
-  extraEnv: |
-    - name: ROOT_LOGLEVEL
-      value: INFO
-    - name: KEYCLOAK_LOGLEVEL
-      value: INFO
   extraInitContainers: |
     - name: wait-for-postgresql
       image: alpine:3.8

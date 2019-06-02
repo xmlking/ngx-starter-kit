@@ -24,13 +24,14 @@ export const environment: IEnvironment = {
     password: process.env.TYPEORM_PASSWORD || 'postgres321',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
-    synchronize: false,
+    synchronize: process.env.TYPEORM_SYNCHRONIZE ? JSON.parse(process.env.TYPEORM_SYNCHRONIZE) : false,
     uuidExtension: 'pgcrypto',
   },
 
   auth: {
     clientId: process.env.OIDC_CLIENT_ID || '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
-    issuer: process.env.OIDC_ISSUER_URL || 'https://accounts.google.com',
+    issuerExternalUrl: process.env.OIDC_ISSUER_EXTERNAL_URL || 'https://accounts.google.com',
+    issuerInternalUrl: process.env.OIDC_ISSUER_INTERNAL_URL || 'https://accounts.google.com',
     jwksUri: process.env.OIDC_JWKS_URL || 'https://www.googleapis.com/oauth2/v3/certs',
     additionalQueryStringParams:  { scope: 'openid profile email' }
   },
