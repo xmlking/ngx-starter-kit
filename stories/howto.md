@@ -109,6 +109,8 @@ git add .
 git commit # git cz
 # or skip git hooks with
 git commit --no-verify # git cz --no-verify
+# or
+HUSKY_SKIP_HOOKS=1 git commit 
 ```
 
 > Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.

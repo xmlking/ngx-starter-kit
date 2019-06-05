@@ -45,9 +45,6 @@
     {
       "name": "keycloak",
       "urls": [
-        "https://keycloak-ngx.apps.us-east-2.online-starter.openshift.com/auth/realms/ngx/.well-known/openid-configuration",
-        "https://keycloak-ngx.apps.us-east-2.online-starter.openshift.com/auth/realms/ngx/protocol/openid-connect/certs",
-        "https://keycloak-ngx.apps.us-east-2.online-starter.openshift.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html",
         "https://keycloak.kashmora.com/auth/realms/ngx/.well-known/openid-configuration",
         "https://keycloak.kashmora.com/auth/realms/ngx/protocol/openid-connect/certs",
         "https://keycloak.kashmora.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
