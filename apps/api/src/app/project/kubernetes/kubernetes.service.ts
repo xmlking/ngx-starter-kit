@@ -9,10 +9,12 @@ import {
   OnModuleInit,
   UnauthorizedException,
 } from '@nestjs/common';
-import * as Api from 'kubernetes-client/backends/request';
 import { ConfigService } from '../../config';
 import { ClusterService } from '../cluster/cluster.service';
 import { KubeContext } from '../interfaces/kube-context';
+
+import * as Api from 'kubernetes-client';
+const Request = require('kubernetes-client/backends/request');
 
 const Client = Api.Client1_13;
 const config = Api.config;
@@ -48,7 +50,7 @@ export class KubernetesService implements OnModuleInit {
       clusters.map<[string, Api.ApiRoot]>(cluster => [
         cluster.name,
         new Client({
-          config: {
+          backend: new Request({
             url: cluster.baseUrl,
             auth: {
               bearer: cluster.token,
@@ -56,7 +58,7 @@ export class KubernetesService implements OnModuleInit {
             insecureSkipTlsVerify: true,
             version: 'v1',
             promises: true,
-          },
+          }),
           version: cluster.version || '1.13',
         }),
       ]),
@@ -423,6 +425,66 @@ export class KubernetesService implements OnModuleInit {
       return namespaces.body.items;
     } catch (error) {
       this.handleError(error);
+    }
+  }
+
+  async scrape(context: KubeContext) {
+    const { cluster, namespace } = context;
+    const data: any = {};
+    try {
+      const services = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .services.get();
+      const endpoints = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .endpoints.get();
+      const ingresses = await this.clusters
+        .get(cluster)
+        .apis.extensions.v1beta1.namespaces(namespace)
+        .ingresses.get();
+      const pods = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .pods.get();
+      const deployments = await this.clusters
+        .get(cluster)
+        .apis.apps.v1.namespaces(namespace)
+        .deployments.get();
+      const replicasets = await this.clusters
+        .get(cluster)
+        .apis.apps.v1.namespaces(namespace)
+        .replicasets.get();
+      const daemonsets = await this.clusters
+        .get(cluster)
+        .apis.apps.v1.namespaces(namespace)
+        .daemonsets.get();
+      const statefulsets = await this.clusters
+        .get(cluster)
+        .apis.apps.v1.namespaces(namespace)
+        .statefulsets.get();
+      const persistentvolumeclaims = await this.clusters
+        .get(cluster)
+        .api.v1.namespaces(namespace)
+        .persistentvolumeclaims.get();
+      const persistentvolumes = await this.clusters.get(cluster).api.v1.persistentvolumes.get();
+
+      // Build response data and send
+      data.services = services.body.items;
+      data.endpoints = endpoints.body.items;
+      data.ingresses = ingresses.body.items;
+      data.pods = pods.body.items;
+      data.deployments = deployments.body.items;
+      data.replicasets = replicasets.body.items;
+      data.daemonsets = daemonsets.body.items;
+      data.statefulsets = statefulsets.body.items;
+      data.persistentvolumeclaims = persistentvolumeclaims.body.items;
+      data.persistentvolumes = persistentvolumes.body.items;
+      return data;
+    } catch (err) {
+      console.error(err);
+      throw err;
     }
   }
 

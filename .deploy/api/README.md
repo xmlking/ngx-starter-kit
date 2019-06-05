@@ -6,7 +6,7 @@ Build and Deploy NgxApi
 
 ```bash
 # build, optionally use `--no-cache`
-export VERSION=2.0.3-SNAPSHOT
+export VERSION=2.0.4-SNAPSHOT
 export DOCKER_BUILDKIT=1
 docker build \
 --build-arg VERSION=$VERSION \
@@ -56,4 +56,10 @@ curl -v -X GET \
 
 ### Deploy
 
-Follow instructions from [manual](./manual) or [helm](./helm)
+1.  Create `kubeview` Service Account
+
+```bash
+kubectl create -f kubeview-service-account.yaml
+```
+
+2. Follow instructions from [manual](./manual) or [helm](./helm)

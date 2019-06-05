@@ -6,7 +6,7 @@ Build and Deploy NgxWeb webapp.
 
 ```bash
 # build, optionally use `--no-cache`
-export VERSION=2.0.3-SNAPSHOT
+export VERSION=2.0.4-SNAPSHOT
 export DOCKER_BUILDKIT=1
 docker build \
 --build-arg VERSION=$VERSION \
@@ -15,7 +15,7 @@ docker build \
 
 # if you need more memory for build
 export NODE_OPTIONS=--max-old-space-size=4096
-export VERSION=2.0.3-SNAPSHOT
+export VERSION=2.0.4-SNAPSHOT
 export DOCKER_BUILDKIT=1
 docker build \
 --build-arg VERSION=$VERSION \

@@ -9,7 +9,7 @@ resources:
 
 image:
   repository: gcr.io/ngx-starter-kit/ngxweb
-  tag: 2.0.3-SNAPSHOT
+  tag: 2.0.4-SNAPSHOT
   pullPolicy: IfNotPresent
 
 securityContext:

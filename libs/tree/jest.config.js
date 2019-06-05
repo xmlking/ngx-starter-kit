@@ -5,5 +5,13 @@ module.exports = {
     '^.+\\.[tj]sx?$': 'ts-jest'
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
-  coverageDirectory: '../../coverage/libs/tree'
+  coverageDirectory: '../../coverage/libs/tree',
+
+  globals: {
+    'ts-jest': {
+      diagnostics: {
+        ignoreCodes: 'TS151001'
+      }
+    }
+  }
 };

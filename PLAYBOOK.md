@@ -252,6 +252,8 @@ yarn workspace @ngx-starter-kit/tools add cpx --dev
 
 > update 3rd party modules/schematics
 
+> use `--allow-dirty` `--next` --force` flags as needed
+
 ```bash
 ng update
 # ng update --next
@@ -261,7 +263,7 @@ ng update @angular/material --force
 ng update @angular/pwa --next
 ng update @ngx-formly/schematics --ui-theme=material
 ng update @nrwl/workspace --next --force
-ng update @nrwl/angular --next --force
+ng update @nrwl/angular --allow-dirty
 ng update @nrwl/nest --next
 ```
 

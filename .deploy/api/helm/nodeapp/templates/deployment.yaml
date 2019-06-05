@@ -33,6 +33,9 @@ spec:
       initContainers:
       {{- toYaml . | nindent 8 }}
     {{- end }}
+    {{- if .Values.serviceAccountName }}
+      serviceAccountName: {{ .Values.serviceAccountName }}
+    {{- end }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"

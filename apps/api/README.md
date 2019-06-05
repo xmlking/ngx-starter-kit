@@ -135,6 +135,12 @@ ng e2e api --watch
 ng e2e api --forceExit --detectOpenHandles
 ```
 
+### Health
+> check API App health 
+
+https://api.kashmora.com/live
+https://api.kashmora.com/ready
+
 ### Reference
 
 - Awesome Nest

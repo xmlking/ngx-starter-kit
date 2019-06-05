@@ -5,14 +5,15 @@ Deploying `NgxApi` to `Google Kubernetes Engine` via `Helm`
 ## Set Env
 ```bash
 export PROJECT_ID=ngx-starter-kit
+export BUILD_VERSION=2.0.4-SNAPSHOT
 ```
 
 ## Push NgxApi to GCR
 ```bash
 # Authenticate to the Google Container Registry (first time)
 gcloud auth configure-docker
-docker tag xmlking/ngxapi:2.0.3-SNAPSHOT gcr.io/${PROJECT_ID}/ngxapi:2.0.3-SNAPSHOT
-docker push gcr.io/${PROJECT_ID}/ngxapi:2.0.3-SNAPSHOT
+docker tag xmlking/ngxapi:${BUILD_VERSION} gcr.io/${PROJECT_ID}/ngxapi:${BUILD_VERSION}
+docker push gcr.io/${PROJECT_ID}/ngxapi:${BUILD_VERSION}
 ```
 
 ## Deploy

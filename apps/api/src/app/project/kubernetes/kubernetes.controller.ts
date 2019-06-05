@@ -40,4 +40,12 @@ export class KubernetesController {
   getNamespace(@Param('cluster') cluster: string, @Param('namespace') namespace: string): Promise<any> {
     return this.kubernetesService.getNamespace({ cluster, namespace });
   }
+
+  @ApiOperation({ title: 'Scrape all data in a cluster by namespace name' })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Found one record' /*, type: T*/ })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
+  @Get('scrape/:cluster/:namespace')
+  scrape(@Param('cluster') cluster: string, @Param('namespace') namespace: string): Promise<any> {
+    return this.kubernetesService.scrape({ cluster, namespace });
+  }
 }
