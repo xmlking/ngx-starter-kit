@@ -176,7 +176,7 @@
     "@angular/compiler-cli": "~8.0.0",
     "@angular/language-service": "~8.0.0",
     "@nrwl/angular": "~8.0.2",
-    "@nrwl/nest": "~8.0.2",
+    "@nrwl/nest": "~8.1.0",
     "@nrwl/workspace": "~8.0.2",
     "@types/google.analytics": "^0.0.39",
     "@types/hammerjs": "^2.0.36",
