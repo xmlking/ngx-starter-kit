@@ -17,7 +17,7 @@ import * as Api from 'kubernetes-client';
 const Request = require('kubernetes-client/backends/request');
 
 const Client = Api.Client1_13;
-const config = Api.config;
+const config = Request.config;
 
 @Injectable()
 export class KubernetesService implements OnModuleInit {
