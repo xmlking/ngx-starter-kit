@@ -160,7 +160,7 @@
     "ngx-filepond": "^5.0.1",
     "ngx-page-scroll": "^6.0.2",
     "ngx-page-scroll-core": "^6.0.2",
-    "ngx-perfect-scrollbar": "^7.2.0",
+    "ngx-perfect-scrollbar": "^8.0.0",
     "rxjs": "~6.5.2",
     "screenfull": "^4.2.0",
     "smooth-scrollbar": "^8.3.1",
