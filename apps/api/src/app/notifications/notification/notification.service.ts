@@ -1,6 +1,6 @@
 import { Injectable, Logger, OnModuleDestroy, OnModuleInit } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Any, In, Repository } from 'typeorm';
+import { Any, In, Raw, Repository } from 'typeorm';
 import { CrudService, IPagination } from '../../core';
 import { Notification, TargetType } from './notification.entity';
 import { CQRSGateway } from '../../shared';
@@ -57,7 +57,8 @@ export class NotificationService extends CrudService<Notification> implements On
       case TargetType.TOPIC:
         // FIXME: https://github.com/typeorm/typeorm/issues/3150
         subscriptions = await this.subscriptionRepository.find({
-          where: { topics: Any([notification.target]) },
+          // where: { topics: Any([notification.target]) },
+          where: { topics: Raw(alias => `${alias} && '{${notification.target}}'::text[]`) },
         });
         break;
       case TargetType.ALL:
@@ -78,10 +79,7 @@ export class NotificationService extends CrudService<Notification> implements On
   }
 
   async onMarkAllAsRead(command: NotificationsMarkAsReadCommand) {
-    await this.update(
-      { targetType: TargetType.USER, target: command.user.username },
-      { read: true },
-    );
+    await this.update({ targetType: TargetType.USER, target: command.user.username }, { read: true });
   }
 
   async onDeleteNotification(command: NotificationsDeleteCommand) {
