@@ -1,0 +1,27 @@
+{
+    "editor.fontFamily": "FiraCode-Retina",
+    "editor.fontLigatures": true,
+
+    // REST CLIENT
+    "rest-client.environmentVariables": {
+      "$shared": {
+          "client-id": "ngxapi",
+          "username": "sumo3",
+          "password": "demo"
+      },
+      "local": {
+        "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+        "api-url": "http://localhost:3000"
+      },
+      "local-admin": {
+        "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+        "api-url": "http://localhost:3000",
+        "username": "ngxadmin",
+        "password": "ngxadmin"
+      },
+      "production": {
+        "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+        "api-url": "https://api.kashmora.com"
+      }
+    }
+}
