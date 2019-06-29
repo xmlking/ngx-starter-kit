@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, HttpStatus, Param, Post, Put, Query } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpStatus, Param, ParseUUIDPipe, Post, Put, Query } from '@nestjs/common';
 import { CrudController } from '../../core';
 import { ApiExcludeEndpoint, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { Notification } from './notification.entity';
@@ -11,7 +11,6 @@ import { NotificationList } from './dto/notification-list.model';
 import { FindNotificationsDto } from './dto/find-notifications.dto';
 import { FindOwnNotificationsDto } from './dto/find-own-notifications.dto';
 import { User } from '@ngx-starter-kit/models';
-import { UUIDValidationPipe } from '../../shared';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Notifications')
@@ -34,7 +33,7 @@ export class NotificationController extends CrudController<Notification> {
     return this.notificationService.findAll(filter);
   }
 
-  @ApiOperation({ title: "find user's and global Notifications" })
+  @ApiOperation({ title: "find user's and global Notifications" }) // tslint:disable-line
   @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Notifications', type: NotificationList })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
   @Get('own')
@@ -49,7 +48,7 @@ export class NotificationController extends CrudController<Notification> {
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
-  async findById(@Param('id', UUIDValidationPipe) id: string): Promise<Notification> {
+  async findById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string): Promise<Notification> {
     return super.findById(id);
   }
 

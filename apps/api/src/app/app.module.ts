@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { RouterModule } from 'nest-router';
 import { CoreModule } from './core';
 import { AuthModule } from './auth';
@@ -28,6 +28,7 @@ import { AppHealthService } from './app-health.service';
       },
       { path: '/external', module: ExternalModule },
     ]),
+    HttpModule,
     CoreModule,
     CacheModule,
     AuthModule,

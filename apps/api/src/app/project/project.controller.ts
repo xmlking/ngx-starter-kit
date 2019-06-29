@@ -1,4 +1,16 @@
-import { Body, Controller, Get, HttpCode, HttpStatus, Logger, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Logger,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { ProjectService } from './project.service';
 import { KubernetesService } from './kubernetes/kubernetes.service';
@@ -11,7 +23,7 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 import { FindOwnProjectsDto } from './dto/find-own-projects.dto';
 import { ProjectList } from './dto/project-list.model';
 import { FindProjectsDto } from './dto/find-projects.dto';
-import { ORMQuery, UUIDValidationPipe } from '../shared';
+import { ORMQuery } from '../shared';
 import { User } from '@ngx-starter-kit/models';
 
 @ApiOAuth2Auth(['read'])
@@ -97,7 +109,10 @@ export class ProjectController extends CrudController<Project> {
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
   @Put(':id')
-  async update(@Param('id', UUIDValidationPipe) id: string, @Body() entity: UpdateProjectDto): Promise<any> {
+  async update(
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @Body() entity: UpdateProjectDto,
+  ): Promise<any> {
     // TODO check if owner
     return super.update(id, entity);
   }

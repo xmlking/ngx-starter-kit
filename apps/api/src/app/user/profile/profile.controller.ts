@@ -8,6 +8,7 @@ import {
   HttpStatus,
   NotFoundException,
   Param,
+  ParseUUIDPipe,
   Post,
   Put,
   UploadedFile,
@@ -23,7 +24,6 @@ import { ProfileService } from './profile.service';
 import { ProfileList } from './dto/profile-list.model';
 import { User } from '../user.entity';
 // UserModule -> SharedModule -> AuthModule -> UserModule, so
-import { UUIDValidationPipe } from '../../shared/pipes/uuid-validation.pipe';
 
 const ALLOWED_MIME_TYPES = ['image/gif', 'image/png', 'image/jpeg', 'image/bmp', 'image/webp'];
 
@@ -68,7 +68,7 @@ export class ProfileController extends CrudController<Profile> {
   @ApiUseTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
-  async findById(@Param('id', UUIDValidationPipe) id: string): Promise<Profile> {
+  async findById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string): Promise<Profile> {
     console.log('in findById', id);
     return this.profileService.findOne(id);
   }
