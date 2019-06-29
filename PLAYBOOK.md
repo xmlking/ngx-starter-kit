@@ -28,14 +28,14 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 | Software             | Version  | Optional |
 | -------------------- | -------- | -------- |
-| Node                 | v12.3.1  |          |
-| Yarn                 | v1.16.0  |          |
+| Node                 | v12.5.0  |          |
+| Yarn                 | v1.17.0  |          |
 | Lerna                | v3.14.1  |          |
-| Angular CLI          | v8.0.0   |          |
-| @nrwl/workspace      | v8.0.0   |          |
+| Angular CLI          | v8.1.0   |          |
+| @nrwl/workspace      | v8.2.0   |          |
 | @nestjs/cli          | v6.5.0   |          |
-| semantic-release-cli | v4.1.1   |          |
-| commitizen           | v3.0.7   |          |
+| semantic-release-cli | v5.1.1   |          |
+| commitizen           | v3.1.1   |          |
 
 ### Install Prerequisites
 
@@ -88,7 +88,7 @@ yarn global remove semantic-release-cli
 yarn global remove commitizen
 
 yarn global add lerna
-yarn global add @angular/cli
+yarn global add @angular/cli@next
 yarn global add @nrwl/workspace
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
