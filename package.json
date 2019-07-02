@@ -71,7 +71,7 @@
   "husky": {
     "hooks": {
       "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS HUSKY_USE_YARN",
       "pre-commit": "lint-staged"
     }
   },
@@ -202,18 +202,18 @@
     "@ngx-formly/schematics": "^5.1.9",
     "@ngxs/schematics": "0.0.1-alpha.5",
     "@semantic-release/changelog": "^3.0.4",
-    "@semantic-release/git": "^7.0.15",
-    "@semantic-release/github": "^5.4.0",
+    "@semantic-release/git": "^7.0.16",
+    "@semantic-release/github": "^5.4.2",
     "@semantic-release/npm": "^5.1.13",
     "angular-cli-ghpages": "^0.5.3",
     "commitizen": "^3.1.1",
     "cypress": "^3.3.2",
     "cz-conventional-changelog": "^2.1.0",
     "dotenv": "^8.0.0",
-    "husky": "^2.7.0",
+    "husky": "^3.0.0",
     "jest": "^24.8.0",
     "jest-preset-angular": "^7.1.1",
-    "lint-staged": "^8.2.1",
+    "lint-staged": "^9.0.1",
     "lite-server": "^2.5.3",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.18",
