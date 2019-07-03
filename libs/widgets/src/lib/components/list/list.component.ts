@@ -24,7 +24,7 @@ export class ListComponent implements AfterViewInit {
   @Input()
   columns: ListColumn[];
 
-  @ViewChild('filter', {static: true}) filter: ElementRef;
+  @ViewChild('filter', { static: true }) filter: ElementRef;
   @Output()
   filterChange = new EventEmitter<string>();
 

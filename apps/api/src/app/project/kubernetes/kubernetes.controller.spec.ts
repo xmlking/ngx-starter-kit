@@ -26,7 +26,7 @@ describe('Kubernetes Controller', () => {
           provide: getRepositoryToken(Cluster),
           useValue: mockRepository,
         },
-      ]
+      ],
     }).compile();
   });
   it('should be defined', () => {

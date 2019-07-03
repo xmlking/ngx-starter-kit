@@ -15,13 +15,12 @@ export class ProfileService {
   constructor(private httpClient: HttpClient) {}
 
   getMyProfile() {
-    return this.httpClient.get<Profile>(`${this.baseUrl}/${this.entityPath}/myprofile`).pipe(
-      catchError(this.handleError)
-    );
+    return this.httpClient
+      .get<Profile>(`${this.baseUrl}/${this.entityPath}/myprofile`)
+      .pipe(catchError(this.handleError));
   }
 
   create(entity: Partial<Profile>) {
-
     // const uploadData = new FormData();
     // uploadData.append('email', this.yourForm.get('email').value);
     // uploadData.append('file', this.yourForm.get('file').value);
@@ -31,9 +30,7 @@ export class ProfileService {
         reportProgress: true,
         observe: 'events',
       })
-      .pipe(
-        catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   update(id: number | string, entity: Partial<Profile>) {
@@ -42,15 +39,11 @@ export class ProfileService {
         reportProgress: true,
         observe: 'events',
       })
-      .pipe(
-        catchError(this.handleError)
-      );
+      .pipe(catchError(this.handleError));
   }
 
   delete(id: number | string) {
-    return this.httpClient.delete(`${this.baseUrl}/${this.entityPath}/${id}`).pipe(
-      catchError(this.handleError),
-    );
+    return this.httpClient.delete(`${this.baseUrl}/${this.entityPath}/${id}`).pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
@@ -73,5 +66,4 @@ export class ProfileService {
     // return an ErrorObservable with a user-facing error message
     return throwError(errorMessage);
   }
-
 }

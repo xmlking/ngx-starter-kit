@@ -4,7 +4,7 @@ import { WidgetsModule } from './widgets.module';
 describe('WidgetsModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [WidgetsModule]
+      imports: [WidgetsModule],
     }).compileComponents();
   }));
 

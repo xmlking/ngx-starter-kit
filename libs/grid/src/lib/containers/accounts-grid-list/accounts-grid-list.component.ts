@@ -16,8 +16,8 @@ import { Crumb } from '@ngx-starter-kit/breadcrumbs';
   styleUrls: ['./accounts-grid-list.component.scss'],
 })
 export class AccountsGridListComponent implements OnInit, OnDestroy {
-  @ViewChild('gridView', {static: true}) gridView: MatButtonToggleGroup;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild('gridView', { static: true }) gridView: MatButtonToggleGroup;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   crumbs: ReadonlyArray<Crumb> = [
     { name: 'Dashboard', link: '/dashboard' },

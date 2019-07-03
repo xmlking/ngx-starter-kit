@@ -78,7 +78,6 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
     // ])
     //   .then(() => process.exit(0))
     //   .catch((err) => process.exit(-1))
-
   }
 
   get status(): State {

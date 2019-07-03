@@ -23,5 +23,4 @@ export class AppConfigService {
   get config() {
     return this.configPrivate;
   }
-
 }

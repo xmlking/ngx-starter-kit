@@ -33,7 +33,7 @@ export const environment: IEnvironment = {
     issuerExternalUrl: process.env.OIDC_ISSUER_EXTERNAL_URL || 'https://accounts.google.com',
     issuerInternalUrl: process.env.OIDC_ISSUER_INTERNAL_URL || 'https://accounts.google.com',
     jwksUri: process.env.OIDC_JWKS_URL || 'https://www.googleapis.com/oauth2/v3/certs',
-    additionalQueryStringParams:  { scope: 'openid profile email' }
+    additionalQueryStringParams: { scope: 'openid profile email' },
   },
 
   email: {

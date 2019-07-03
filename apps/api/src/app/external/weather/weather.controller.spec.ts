@@ -11,7 +11,7 @@ describe('Weather Controller', () => {
     module = await Test.createTestingModule({
       imports: [HttpModule, CacheModule],
       controllers: [WeatherController],
-      providers: [WeatherService]
+      providers: [WeatherService],
     }).compile();
   });
   it('should be defined', () => {

@@ -17,8 +17,8 @@ import { CreateNewConversation, FetchConversations, SendMessage, StartVoiceComma
 export class ChatBoxComponent implements OnInit, OnDestroy {
   showChatBox = false;
   typing = false;
-  @ViewChild('bottom', {static: true}) bottom: ElementRef;
-  @ViewChild('input', {static: true}) input: ElementRef<HTMLInputElement>;
+  @ViewChild('bottom', { static: true }) bottom: ElementRef;
+  @ViewChild('input', { static: true }) input: ElementRef<HTMLInputElement>;
 
   @Select(ChatBoxState.getConversations) conversations$: Observable<Conversation[]>;
   @Select(ChatBoxState.getActiveConversation) activeConversation$: Observable<Conversation>;

@@ -1,4 +1,4 @@
-import { strings } from '@angular-devkit/core'
+import { strings } from '@angular-devkit/core';
 import {
   FilePredicate,
   Rule,
@@ -10,13 +10,13 @@ import {
   filter,
   noop,
   move,
-} from '@angular-devkit/schematics'
+} from '@angular-devkit/schematics';
 
 interface Options {
-  filter?: FilePredicate<boolean>
+  filter?: FilePredicate<boolean>;
   params?: {
-    [key: string]: any
-  }
+    [key: string]: any;
+  };
 }
 
 /**
@@ -39,5 +39,5 @@ export function renderTemplates(path: string, target: string, options: Options =
         move(target),
       ]),
     ),
-  ])
+  ]);
 }

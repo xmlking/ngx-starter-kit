@@ -90,6 +90,7 @@ yarn workspace @ngx-starter-kit/api build:prod
 ```
 
 ### Commands
+
 ```bash
 # to run custom commands, `check api:typeorm in angular.json`
 ng run api:typeorm
@@ -136,7 +137,8 @@ ng e2e api --forceExit --detectOpenHandles
 ```
 
 ### Health
-> check API App health 
+
+> check API App health
 
 https://api.kashmora.com/live
 https://api.kashmora.com/ready

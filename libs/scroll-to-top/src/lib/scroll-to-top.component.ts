@@ -34,7 +34,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.pageScrollInstance = this.pageScrollService.create({
       document: this.document,
-      scrollTarget: '#top'
+      scrollTarget: '#top',
     });
 
     const scroll$ = fromEvent(this.window, 'scroll').pipe(

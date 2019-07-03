@@ -12,7 +12,7 @@ import { MatPaginator } from '@angular/material';
   selector: 'sand-test',
 })
 class TestComponent {
-  @ViewChild(NgLetDirective, {static: true}) ngLetDirective: NgLetDirective;
+  @ViewChild(NgLetDirective, { static: true }) ngLetDirective: NgLetDirective;
   test$: Observable<number>;
   test = 10;
   nestedTest = 20;

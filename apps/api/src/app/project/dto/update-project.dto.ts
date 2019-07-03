@@ -1,4 +1,14 @@
-import { ArrayUnique, IsArray, IsBoolean, IsEmail, IsOptional, IsString, Length, Matches, ValidateNested } from 'class-validator';
+import {
+  ArrayUnique,
+  IsArray,
+  IsBoolean,
+  IsEmail,
+  IsOptional,
+  IsString,
+  Length,
+  Matches,
+  ValidateNested,
+} from 'class-validator';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Type } from 'class-transformer';
 import { Membership } from './membership';

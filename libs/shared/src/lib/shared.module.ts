@@ -14,7 +14,6 @@ import { SharedPerfectScrollbarModule } from './shared-perfect-scrollbar.module'
     RouterLinkMatchModule,
     SharedFlexLayoutModule,
     SharedPerfectScrollbarModule,
-
   ],
 })
 export class SharedModule {}

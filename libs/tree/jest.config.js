@@ -2,7 +2,7 @@ module.exports = {
   name: 'tree',
   preset: '../../jest.config.js',
   transform: {
-    '^.+\\.[tj]sx?$': 'ts-jest'
+    '^.+\\.[tj]sx?$': 'ts-jest',
   },
   moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'html'],
   coverageDirectory: '../../coverage/libs/tree',
@@ -10,8 +10,8 @@ module.exports = {
   globals: {
     'ts-jest': {
       diagnostics: {
-        ignoreCodes: 'TS151001'
-      }
-    }
-  }
+        ignoreCodes: 'TS151001',
+      },
+    },
+  },
 };

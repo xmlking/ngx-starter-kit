@@ -4,7 +4,7 @@ import { NavigatorModule } from './navigator.module';
 describe('NavigatorModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [NavigatorModule]
+      imports: [NavigatorModule],
     }).compileComponents();
   }));
 

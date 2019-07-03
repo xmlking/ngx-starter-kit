@@ -3,11 +3,13 @@ import {
   ChangeDetectorRef,
   ContentChild,
   Directive,
-  ElementRef, Injectable,
+  ElementRef,
+  Injectable,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, Optional,
+  OnInit,
+  Optional,
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
@@ -18,10 +20,10 @@ import { BaseDirective } from './base';
 export interface AspectRatioParent {
   inline: boolean;
 }
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AspectRatioStyleBuilder extends StyleBuilder {
   buildStyles(input: string, parent: AspectRatioParent) {
-    return {'xxx': 'xxx'};
+    return { xxx: 'xxx' };
   }
 }
 

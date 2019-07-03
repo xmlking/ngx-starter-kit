@@ -38,8 +38,8 @@ export interface IEnvironment {
     additionalQueryStringParams?: Partial<{
       scope: string;
       nonce: string;
-      audience: string
-      [key: string]: string
+      audience: string;
+      [key: string]: string;
     }>;
   };
 

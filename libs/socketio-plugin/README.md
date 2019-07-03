@@ -8,7 +8,6 @@ npm i @ngx-starter-kit/socketio-plugin
 
 ### Usage
 
-
 ### Running unit tests
 
 Run `ng test app-confirm` to execute the unit tests.

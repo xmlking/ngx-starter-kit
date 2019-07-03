@@ -28,7 +28,7 @@ describe('Cluster Controller', () => {
           provide: getRepositoryToken(Project),
           useValue: mockRepository,
         },
-      ]
+      ],
     }).compile();
   });
   it('should be defined', () => {

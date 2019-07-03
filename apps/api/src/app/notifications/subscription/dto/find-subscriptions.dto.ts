@@ -19,7 +19,7 @@ export class FindSubscriptionsDto extends PaginationParams<Subscription> {
   @IsOptional()
   @ArrayUnique()
   @IsString({ each: true })
-  @Transform(value => value ? value.split(',') : [])
+  @Transform(value => (value ? value.split(',') : []))
   readonly topics?: string[];
 
   @ApiModelPropertyOptional({ type: String, enum: ['ASC', 'DESC'] })

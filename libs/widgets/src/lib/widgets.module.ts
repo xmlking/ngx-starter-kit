@@ -68,7 +68,7 @@ const matModules = [
   MatSelectModule,
   MatDividerModule,
   MatTableModule,
-  MatPaginatorModule
+  MatPaginatorModule,
 ];
 
 const chartWidgetComponents = [

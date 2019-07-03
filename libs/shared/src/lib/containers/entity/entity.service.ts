@@ -27,8 +27,8 @@ export abstract class EntityService<T extends Entity> {
     );
   }
 
-    // findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<IPagination<T>> | Observable<never> {
-    findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<T[]> | Observable<never> {
+  // findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<IPagination<T>> | Observable<never> {
+  findAll(filter: Filter, order = 'DESC', skip = 0, take = 100): Observable<T[]> | Observable<never> {
     this.loadingSubject.next(true);
     return this.httpClient
       .get<T[]>(`${this.baseUrl}/${this.entityPath}`, {

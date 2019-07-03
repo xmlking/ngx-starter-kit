@@ -10,12 +10,11 @@ import { MediaMarshaller, MediaQuerySubscriber, StyleBuilder, StyleDefinition, S
 import { buildLayoutCSS } from './layout-validator';
 
 export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
-
   /** MediaQuery Activation Tracker */
   protected _mqActivation?: any; // ResponsiveActivation;
 
   /** Dictionary of input keys with associated values */
-  protected _inputMap: {[key: string]: any} = {};
+  protected _inputMap: { [key: string]: any } = {};
 
   /**
    * Has the `ngOnInit()` method fired
@@ -44,7 +43,8 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    *       other input values will NOT be affected.
    */
   set activatedValue(value: string | number) {
-    let key = 'baseKey', previousVal;
+    let key = 'baseKey',
+      previousVal;
 
     if (this._mqActivation) {
       key = this._mqActivation.activatedInputKey;
@@ -53,14 +53,15 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
     }
     const change = new SimpleChange(previousVal, value, false);
 
-    this.ngOnChanges({[key]: change} as SimpleChanges);
+    this.ngOnChanges({ [key]: change } as SimpleChanges);
   }
 
-  protected constructor(protected _mediaMarshaller: MediaMarshaller,
-                        protected _elementRef: ElementRef,
-                        protected _styler: StyleUtils,
-                        protected _styleBuilder: StyleBuilder) {
-  }
+  protected constructor(
+    protected _mediaMarshaller: MediaMarshaller,
+    protected _elementRef: ElementRef,
+    protected _styler: StyleUtils,
+    protected _styleBuilder: StyleBuilder,
+  ) {}
 
   /**
    * Does this directive have 1 or more responsive keys defined
@@ -69,7 +70,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   hasResponsiveAPI(baseKey: string) {
     const totalKeys = Object.keys(this._inputMap).length;
     const baseValue = this._inputMap[baseKey];
-    return (totalKeys - (!!baseValue ? 1 : 0)) > 0;
+    return totalKeys - (!!baseValue ? 1 : 0) > 0;
   }
 
   // *********************************************
@@ -137,8 +138,8 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    */
   protected _getDefaultVal(key: string, fallbackVal: any): string | boolean {
     const val = this._queryInput(key);
-    const hasDefaultVal = (val !== undefined && val !== null);
-    return (hasDefaultVal && val !== '') ? val : fallbackVal;
+    const hasDefaultVal = val !== undefined && val !== null;
+    return hasDefaultVal && val !== '' ? val : fallbackVal;
   }
 
   /**
@@ -152,8 +153,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   /** Quick accessor to raw attribute value on the target DOM element */
-  protected _getAttributeValue(attribute: string,
-                               source: HTMLElement = this.nativeElement): string {
+  protected _getAttributeValue(attribute: string, source: HTMLElement = this.nativeElement): string {
     return this._styler.lookupAttributeValue(source, attribute);
   }
 
@@ -180,9 +180,11 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   /** Applies styles given via string pair or object map to the directive element */
-  protected _applyStyleToElement(style: StyleDefinition,
-                                 value?: string | number,
-                                 element: HTMLElement = this.nativeElement) {
+  protected _applyStyleToElement(
+    style: StyleDefinition,
+    value?: string | number,
+    element: HTMLElement = this.nativeElement,
+  ) {
     this._styler.applyStyleToElement(element, style, value);
   }
 
@@ -212,9 +214,8 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    *  and intelligent lookup of the directive's property value that corresponds to that mediaQuery
    *  (or closest match).
    */
-  protected _listenForMediaQueryChanges(key: string,
-                                        defaultValue: any,
-                                        onMediaQueryChange: MediaQuerySubscriber) { // ResponsiveActivation {
+  protected _listenForMediaQueryChanges(key: string, defaultValue: any, onMediaQueryChange: MediaQuerySubscriber) {
+    // ResponsiveActivation {
     // if (!this._mqActivation) {
     //   let keyOptions = new KeyOptions(key, defaultValue, this._inputMap);
     //   this._mqActivation = new ResponsiveActivation(keyOptions, this._mediaMonitor,

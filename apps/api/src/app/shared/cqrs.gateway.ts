@@ -68,14 +68,13 @@ export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
   @SubscribeMessage(CQRSGateway.EVENTS)
   onEvent(client: ISocket, event: any) {
     // this.logger.log(`event  => ${client.id}  ${client.user.username} ${event.type} ${event.payload}`);
-    this.eventBus.publish(new GenericEvent(event.type, event.payload , client.user));
-
+    this.eventBus.publish(new GenericEvent(event.type, event.payload, client.user));
   }
 
   @SubscribeMessage(CQRSGateway.COMMANDS)
   onCommand(client: ISocket, command: any) {
     // this.logger.log(`command  => ${client.id}  ${client.user.username} ${command.type} ${command.payload}`);
-    this.commandBus.execute(new GenericCommand(command.type, command.payload, client.user ));
+    this.commandBus.execute(new GenericCommand(command.type, command.payload, client.user));
   }
 
   sendCommandToUser<T>(user: User, action: any): void {
@@ -103,7 +102,6 @@ export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     // FIXME: remove any. only needed for docker build
     this.clients.forEach(socket => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
   }
-
 
   private getSocketsForUser(user: User): ISocket[] {
     return this.clients.filter(c => c.user && c.user.username === user.username);

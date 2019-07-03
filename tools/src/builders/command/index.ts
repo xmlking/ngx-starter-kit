@@ -12,13 +12,13 @@ interface Options extends JsonObject {
 export default createBuilder<Options>((options: Partial<CommandBuilderSchema>, context: BuilderContext) => {
   return new Promise<BuilderOutput>((resolve, reject) => {
     context.reportStatus(`Executing "${options.command}"...`);
-    const { command, args} = options;
+    const { command, args } = options;
     const child = childProcess.spawn(command, args, { stdio: 'pipe' });
 
-    child.stdout.on('data', (data) => {
+    child.stdout.on('data', data => {
       context.logger.info(data.toString());
     });
-    child.stderr.on('data', (data) => {
+    child.stderr.on('data', data => {
       context.logger.error(data.toString());
       reject();
     });

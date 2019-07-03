@@ -27,7 +27,7 @@ import { NotificationEditComponent } from '../../components/notification-edit/no
   ],
 })
 export class NotificationsComponent extends EntitiesComponent<AppNotification, NotificationService> {
-  @ViewChild('send', {static: true}) sendTpl: TemplateRef<any>;
+  @ViewChild('send', { static: true }) sendTpl: TemplateRef<any>;
   // @ViewChild('editDelete', {static: true}) editDeleteTpl: TemplateRef<any>;
   columns: EntityColumnDef<AppNotification>[];
 

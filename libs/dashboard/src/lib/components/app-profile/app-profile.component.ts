@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Gender, Profile } from '@ngx-starter-kit/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,7 +27,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
   editing = false;
   hasAvatar = true;
   formGroup: FormGroup;
-  @ViewChild('myPond', {static: true}) myPond: any;
+  @ViewChild('myPond', { static: true }) myPond: any;
   files = [];
   // files = [
   //   {
@@ -124,11 +132,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     styleButtonProcessItemPosition: 'right bottom',
   };
 
-  constructor(
-    private fb: FormBuilder,
-    private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer
-  ) {}
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     if (this.appProfile) {
@@ -247,8 +251,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
 
   deleteProfile() {}
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   emitUpload(event: Event) {
     // this.myPond.emit();

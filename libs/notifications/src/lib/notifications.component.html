@@ -6,7 +6,7 @@
   fxLayoutAlign="start center"
 >
   <button class="button" type="button" mat-button (click)="toggleDropdown()" [class.open]="isOpen" fxFlex="grow">
-    <span *ngIf="(unReadCount$ | async) > 0; then: withBadge; else: withOutBadge"></span>
+    <span *ngIf="(unReadCount$ | async) > 0; then withBadge; else withOutBadge"></span>
     <ng-template #withBadge>
       <mat-icon matBadge="{{ unReadCount$ | async }}" matBadgePosition="above after" matBadgeColor="accent"
         >notifications_active</mat-icon
@@ -26,7 +26,7 @@
       </div>
 
       <ng-container *ngLet="(notifications$ | async) as notifications">
-        <ng-container *ngIf="notifications?.length !== 0; then: thenBlock; else: elseBlock"></ng-container>
+        <ng-container *ngIf="notifications?.length !== 0; then thenBlock; else elseBlock"></ng-container>
         <ng-template #thenBlock>
           <perfect-scrollbar class="content">
             <ng-container *ngFor="let notification of notifications; last as isLast; trackBy: trackById">

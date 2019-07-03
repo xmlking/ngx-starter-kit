@@ -9,7 +9,7 @@ import { MatPaginator } from '@angular/material';
 export class SearchComponent implements OnInit {
   isOpen: boolean;
 
-  @ViewChild('input', { read: ElementRef, static: true}) input: ElementRef;
+  @ViewChild('input', { read: ElementRef, static: true }) input: ElementRef;
 
   constructor() {}
 

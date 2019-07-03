@@ -13,7 +13,7 @@ import { AdvancedPieChartWidgetOptions } from './advanced-pie-chart-widget-optio
 export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
   @Input()
   options: AdvancedPieChartWidgetOptions;
-  @ViewChild('canvas', { read: ElementRef, static: true})
+  @ViewChild('canvas', { read: ElementRef, static: true })
   canvas: ElementRef;
   chart: Chart;
   total: number;

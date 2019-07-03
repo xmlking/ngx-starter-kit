@@ -4,7 +4,7 @@ import { AppConfirmModule } from './app-confirm.module';
 describe('AppConfirmModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [AppConfirmModule]
+      imports: [AppConfirmModule],
     }).compileComponents();
   }));
 

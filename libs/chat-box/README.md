@@ -29,13 +29,12 @@ npm publish dist/libs/chat-box --access public
 ```
 
 ### TODO
+
 multiple conversations inspired by
 https://www.weave.works/
 
-> implement polymorphic user supplied complements to render variety `messages` 
+> implement polymorphic user supplied complements to render variety `messages`
 
 ```html
-<Message data='messageObject'></Message>
-<ChoiceMessage data='messageObject'></ChoiceMessage>
+<Message data="messageObject"></Message> <ChoiceMessage data="messageObject"></ChoiceMessage>
 ```
-

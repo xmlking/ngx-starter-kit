@@ -25,4 +25,4 @@ npm publish dist/libs/svg-viewer --access public
 
 ### TODO
 
-* Adopt Angular8's `SVG as template`
+- Adopt Angular8's `SVG as template`

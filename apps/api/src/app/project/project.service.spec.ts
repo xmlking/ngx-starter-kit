@@ -8,7 +8,6 @@ import { KubernetesService } from './kubernetes/kubernetes.service';
 import { CacheModule } from '../cache';
 import { ConfigModule } from '../config';
 
-
 describe('ProjectService', () => {
   let service: ProjectService;
   const mockRepository = {

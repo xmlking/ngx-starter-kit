@@ -23,7 +23,7 @@ import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
   // encapsulation: ViewEncapsulation.None
 })
 export class DashboardLayoutComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav', {static: true}) sidenav;
+  @ViewChild('sidenav', { static: true }) sidenav;
   quickpanelOpen = false;
   sidenavOpen = true;
   sidenavMode = 'side';

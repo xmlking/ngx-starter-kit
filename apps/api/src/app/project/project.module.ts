@@ -12,7 +12,6 @@ import { KubernetesHealthIndicator } from './kubernetes/kubernetes.health';
 import { SharedModule } from '../shared';
 import { Constraints } from './validators';
 
-
 @Module({
   imports: [SharedModule, TypeOrmModule.forFeature([Cluster, Project])],
   controllers: [KubernetesController, ClusterController, ProjectController],

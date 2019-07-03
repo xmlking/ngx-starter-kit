@@ -4,7 +4,7 @@ import { DashboardModule } from './dashboard.module';
 describe('DashboardModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DashboardModule]
+      imports: [DashboardModule],
     }).compileComponents();
   }));
 

@@ -33,7 +33,7 @@ export class ProjectService extends CrudService<Project> implements OnModuleInit
   }
 
   async searchAll(query): Promise<IPagination<Project>> {
-    console.log(query)
+    console.log(query);
     return super.findAll(query);
   }
 

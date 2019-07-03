@@ -4,7 +4,7 @@ import { DraggableModule } from './draggable.module';
 describe('DraggableModule', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [DraggableModule]
+      imports: [DraggableModule],
     }).compileComponents();
   }));
 

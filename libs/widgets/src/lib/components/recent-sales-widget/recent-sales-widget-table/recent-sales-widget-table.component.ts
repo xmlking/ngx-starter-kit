@@ -27,8 +27,8 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   subject$: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
   data$: Observable<any[]> = this.subject$.asObservable();
   dataSource: MatTableDataSource<any> | null;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private dialog: MatDialog) {}
 

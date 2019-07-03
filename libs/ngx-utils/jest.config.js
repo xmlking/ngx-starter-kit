@@ -5,6 +5,6 @@ module.exports = {
   coverageDirectory: '../../coverage/libs/ngx-utils',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
-    'jest-preset-angular/HTMLCommentSerializer.js'
-  ]
+    'jest-preset-angular/HTMLCommentSerializer.js',
+  ],
 };

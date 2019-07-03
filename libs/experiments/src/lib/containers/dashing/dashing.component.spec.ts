@@ -8,9 +8,8 @@ describe('DashingComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DashingComponent ]
-    })
-    .compileComponents();
+      declarations: [DashingComponent],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

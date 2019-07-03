@@ -20,13 +20,13 @@ export class FindNotificationsDto extends PaginationParams<Notification> {
   readonly targetType?: string;
 
   @ApiModelPropertyOptional({ type: Boolean, default: false })
-  @Transform((val: string) => (  val === 'true'  ))
+  @Transform((val: string) => val === 'true')
   @IsOptional()
   @IsBoolean()
   readonly read = false;
 
   @ApiModelPropertyOptional({ type: Boolean, default: true })
-  @Transform((val: string) => (  val === 'true'  ))
+  @Transform((val: string) => val === 'true')
   @IsOptional()
   @IsBoolean()
   readonly isActive = true;

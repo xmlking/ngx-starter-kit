@@ -60,7 +60,7 @@ class Test4Component {
     'test4-class': 'test1',
   };
 
-  @ViewChild(RouterLinkMatchDirective, {static: true}) active: RouterLinkMatchDirective;
+  @ViewChild(RouterLinkMatchDirective, { static: true }) active: RouterLinkMatchDirective;
 
   other: any;
 }

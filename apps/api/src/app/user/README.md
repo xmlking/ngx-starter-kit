@@ -1,6 +1,5 @@
 # User Module
 
-
 ### Profile
 
 ```bash
@@ -8,7 +7,8 @@
 access_token=11111
 ```
 
-> create profile.  user with user e.g., `sumo3's` token
+> create profile. user with user e.g., `sumo3's` token
+
 ```bash
 curl -X POST "http://localhost:3000/api/user/profile" \
 -H "accept: application/json" \
@@ -19,7 +19,8 @@ curl -X POST "http://localhost:3000/api/user/profile" \
 -F "mobilePhone=1112223344"
 ```
 
-> get profile.  user with user e.g., `sumo3's` token
+> get profile. user with user e.g., `sumo3's` token
+
 ```bash
 curl -X GET "http://localhost:3000/api/user/profile/1" \
 -H "accept: application/json" \
@@ -27,16 +28,17 @@ curl -X GET "http://localhost:3000/api/user/profile/1" \
 ```
 
 > list profiles. user with admin e.g., `ngxadmin's` token
+
 ```bash
 curl -X GET "http://localhost:3000/api/user/profile" \
 -H "accept: application/json" \
 -H "authorization: Bearer $access_token"
 ```
 
+### Reference
 
-### Reference 
-* https://www.joshmorony.com/handling-multiple-file-uploads-with-nest-js/
-* https://www.joshmorony.com/displaying-upload-download-progress-in-an-ionic-application/
-* https://malcoded.com/posts/angular-file-upload-component-with-express
-* https://github.com/LukasMarx/angular-file-upload
-* https://github.com/apiel/wudo/blob/master/backend/src/resolver/auth.ts
+- https://www.joshmorony.com/handling-multiple-file-uploads-with-nest-js/
+- https://www.joshmorony.com/displaying-upload-download-progress-in-an-ionic-application/
+- https://malcoded.com/posts/angular-file-upload-component-with-express
+- https://github.com/LukasMarx/angular-file-upload
+- https://github.com/apiel/wudo/blob/master/backend/src/resolver/auth.ts

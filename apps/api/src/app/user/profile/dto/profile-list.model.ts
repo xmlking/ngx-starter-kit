@@ -1,4 +1,4 @@
-import { IPagination } from '../../../core'
+import { IPagination } from '../../../core';
 import { Profile } from '../profile.entity';
 import { ApiModelProperty } from '@nestjs/swagger';
 

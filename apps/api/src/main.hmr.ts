@@ -40,7 +40,7 @@ async function bootstrap() {
       'implicit',
       openIdConf.authorization_endpoint,
       openIdConf.token_endpoint,
-       // {openid: 'openid', profile: 'profile', email: 'email'}
+      // {openid: 'openid', profile: 'profile', email: 'email'}
     )
     .build();
   const document = SwaggerModule.createDocument(app, options);

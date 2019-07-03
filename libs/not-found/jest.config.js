@@ -4,6 +4,6 @@ module.exports = {
   coverageDirectory: '../../coverage/libs/not-found',
   snapshotSerializers: [
     'jest-preset-angular/AngularSnapshotSerializer.js',
-    'jest-preset-angular/HTMLCommentSerializer.js'
-  ]
+    'jest-preset-angular/HTMLCommentSerializer.js',
+  ],
 };

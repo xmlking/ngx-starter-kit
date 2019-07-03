@@ -2,7 +2,6 @@
 
 Workspace tools
 
-
 ### Build
 
 ```bash
@@ -15,7 +14,7 @@ yarn workspace @ngx-starter-kit/tools build
 
 ```bash
 ng add @ngx-starter-kit/tools
-# or add following to devDependencies in /package.json 
+# or add following to devDependencies in /package.json
 # "@ngx-starter-kit/tools": "file:./dist/tools"
 ```
 
@@ -38,6 +37,7 @@ ng add @ngx-starter-kit/tools
 ```
 
 ### Run
+
 ```bash
 ng run api:touch
 ```

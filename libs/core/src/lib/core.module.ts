@@ -40,8 +40,6 @@ import { AppHandler } from './state/app.handler';
 import { RouteHandler } from './state/route.handler';
 import { EventBusHandler } from './state/eventbus.handler';
 
-
-
 // appConfig initializer factory function
 const appConfigInitializerFn = (appConfig: AppConfigService) => {
   return () => {

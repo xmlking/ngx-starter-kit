@@ -132,8 +132,8 @@ curl -X POST \
     -H "Authorization: Bearer $access_token" \
     -d '{"id":"c938cdcc-20f6-4cf1-b4b7-989fa0c5188d", "topic":"sumo"}' \
   | jq .
-  
-  
+
+
 # Get User Profile
 curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/userinfo \
  -H "Content-Type: application/x-www-form-urlencoded" \

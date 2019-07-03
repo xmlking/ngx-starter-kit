@@ -3,8 +3,6 @@
   "dest": "../../dist/libs/chat-box",
   "lib": {
     "entryFile": "src/index.ts",
-    "styleIncludePaths": [
-      "../../apps/webapp/src/styles"
-    ]
+    "styleIncludePaths": ["../../apps/webapp/src/styles"]
   }
 }

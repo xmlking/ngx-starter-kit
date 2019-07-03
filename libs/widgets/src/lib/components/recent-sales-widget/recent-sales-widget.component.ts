@@ -24,7 +24,7 @@ export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
   @Input()
   options: RecentSalesWidgetOptions;
 
-  @ViewChild('canvas', { read: ElementRef , static: true}) canvas: ElementRef;
+  @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
 
   chart: Chart;
 

@@ -26,7 +26,7 @@ import { Subscription } from '../../models/subscription.model';
   ],
 })
 export class SubscriptionsComponent extends EntitiesComponent<Subscription, SubscriptionService> {
-  @ViewChild('deleteButton', {static: true}) deleteTpl: TemplateRef<any>;
+  @ViewChild('deleteButton', { static: true }) deleteTpl: TemplateRef<any>;
   columns: EntityColumnDef<Subscription>[];
 
   // optional

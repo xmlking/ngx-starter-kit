@@ -31,7 +31,7 @@ import { ScrollbarModule } from '@ngx-starter-kit/scrollbar';
     RouterModule,
     PerfectScrollbarModule,
     FlexLayoutModule,
-    ScrollbarModule
+    ScrollbarModule,
   ],
   exports: [SidenavComponent, IconSidenavDirective],
   declarations: [SidenavItemComponent, MenuItemComponent, SidenavComponent, IconSidenavDirective],

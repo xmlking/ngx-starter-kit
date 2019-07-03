@@ -16,7 +16,7 @@ declare var Trianglify: any;
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  @ViewChild('trianglify', {static: true}) trianglifyCanvasRef: ElementRef;
+  @ViewChild('trianglify', { static: true }) trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
   private _sub: Subscription;
   constructor(private elementRef: ElementRef, @Inject(WINDOW) private window: Window) {}

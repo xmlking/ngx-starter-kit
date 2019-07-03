@@ -73,7 +73,7 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
   }
 
   private stringToDate(date: string | number | Date): number | Date {
-    const isString = s  => typeof(s) === 'string' || s instanceof String;
+    const isString = s => typeof s === 'string' || s instanceof String;
     return isString(date) ? parseISO(date) : date;
   }
 }
