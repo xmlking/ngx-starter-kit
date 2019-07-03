@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 import { Profile } from '@ngx-starter-kit/models';
 import { environment } from '@env/environment';
 import { catchError } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { EMPTY, throwError } from 'rxjs';
+import { retryWithBackoff } from '@ngx-starter-kit/utils';
 
 @Injectable({
   providedIn: 'root',
@@ -15,9 +16,14 @@ export class ProfileService {
   constructor(private httpClient: HttpClient) {}
 
   getMyProfile() {
-    return this.httpClient
-      .get<Profile>(`${this.baseUrl}/${this.entityPath}/myprofile`)
-      .pipe(catchError(this.handleError));
+    return this.httpClient.get<Profile>(`${this.baseUrl}/${this.entityPath}/myprofile`).pipe(
+      retryWithBackoff(1000, 3),
+      catchError(error => {
+        this.handleError(error);
+        return EMPTY;
+      }),
+      // catchError(this.handleError)
+    );
   }
 
   create(entity: Partial<Profile>) {

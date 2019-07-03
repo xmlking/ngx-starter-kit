@@ -77,7 +77,7 @@
   },
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,scss,html}": [
-      "yarn affected:lint  --uncommitted --parallel --fix",
+      "yarn affected:lint  --uncommitted --parallel -- --fix",
       "yarn format:write --uncommitted",
       "git add"
     ]
