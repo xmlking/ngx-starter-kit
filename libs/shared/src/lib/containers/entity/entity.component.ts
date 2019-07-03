@@ -155,17 +155,17 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   get displayedColumns(): string[] {
     // prettier-ignore
-    let _displayedColumns = this.columns
+    let displayedColumns = this.columns
       .filter(column => column.visible)
       .map(x => x.property);
 
     if (this.maxSelectable > 0) {
-      _displayedColumns.unshift(this.selectColumn);
+      displayedColumns.unshift(this.selectColumn);
     }
     if (this.showActionColumn) {
-      _displayedColumns = _displayedColumns.concat(this.actionColumn);
+      displayedColumns = displayedColumns.concat(this.actionColumn);
     }
-    return _displayedColumns;
+    return displayedColumns;
   }
 
   selectRow(entity: TEntity) {
@@ -180,7 +180,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   getRouteAnimation(outlet) {
-    return outlet.activatedRouteData['depth'] || 5;
+    return outlet.activatedRouteData.depth || 5;
     // return outlet.isActivated ? outlet.activatedRoute : ''
   }
 

@@ -133,7 +133,7 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
    * For @Input changes on the current mq activation property, see onMediaQueryChanges()
    */
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['aspectRatio'] != null || this._mqActivation) {
+    if (changes.aspectRatio != null || this.mqActivation) {
       this._updateStyle();
     }
   }
@@ -182,8 +182,8 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
   protected _updateStyle(value?: string | number) {
     let compensation: string;
     let aspectRatio = value || this._queryInput('aspectRatio') || '';
-    if (this._mqActivation) {
-      aspectRatio = this._mqActivation.activatedInput;
+    if (this.mqActivation) {
+      aspectRatio = this.mqActivation.activatedInput;
     }
 
     if (aspectRatio) {

@@ -13,14 +13,14 @@ export interface MatchExp {
   selector: '[routerLinkMatch]',
 })
 export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
-  private _curRoute: string;
-  private _matchExp: MatchExp;
-  private _onChangesHook = new Subject<MatchExp>();
+  private curRoute: string;
+  private matchExp: MatchExp;
+  private onChangesHook = new Subject<MatchExp>();
 
   @Input('routerLinkMatch')
   set routerLinkMatch(v: MatchExp) {
     if (v && typeof v === 'object') {
-      this._matchExp = v;
+      this.matchExp = v;
     } else {
       throw new TypeError(
         `Unexpected type '${typeof v}' of value for ` + `input of routerLinkMatch directive, expected 'object'`,
@@ -28,23 +28,23 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
     }
   }
 
-  constructor(router: Router, private _renderer: Renderer2, private _ngEl: ElementRef) {
-    combineLatest(router.events, this._onChangesHook)
+  constructor(router: Router, private renderer: Renderer2, private ngEl: ElementRef) {
+    combineLatest([router.events, this.onChangesHook])
       .pipe(
         map(([e]) => e),
         filter(e => e instanceof NavigationEnd),
         untilDestroy(this),
       )
       .subscribe(e => {
-        this._curRoute = (e as NavigationEnd).urlAfterRedirects;
+        this.curRoute = (e as NavigationEnd).urlAfterRedirects;
 
-        this._updateClass(this._matchExp);
+        this._updateClass(this.matchExp);
       });
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['routerLinkMatch']) {
-      this._onChangesHook.next(changes['routerLinkMatch'].currentValue);
+    if (changes.routerLinkMatch) {
+      this.onChangesHook.next(changes.routerLinkMatch.currentValue);
     }
   }
 
@@ -52,7 +52,7 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
     Object.keys(v).forEach(cls => {
       if (v[cls] && typeof v[cls] === 'string') {
         const regexp = new RegExp(v[cls]);
-        if (this._curRoute.match(regexp)) {
+        if (this.curRoute.match(regexp)) {
           this._toggleClass(cls, true);
         } else {
           this._toggleClass(cls, false);
@@ -72,9 +72,9 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
 
     classes.split(/\s+/g).forEach(cls => {
       if (enabled) {
-        this._renderer.addClass(this._ngEl.nativeElement, cls);
+        this.renderer.addClass(this.ngEl.nativeElement, cls);
       } else {
-        this._renderer.removeClass(this._ngEl.nativeElement, cls);
+        this.renderer.removeClass(this.ngEl.nativeElement, cls);
       }
     });
   }

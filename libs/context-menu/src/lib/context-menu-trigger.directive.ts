@@ -22,16 +22,16 @@ export class ContextMenuTriggerDirective implements OnDestroy {
   @Input()
   contextMenu: TemplateRef<any>;
 
-  constructor(private _overlay: Overlay, private _elementRef: ElementRef, private _vcr: ViewContainerRef) {}
+  constructor(private overlay: Overlay, private elementRef: ElementRef, private vcr: ViewContainerRef) {}
 
   @HostListener('contextmenu', ['$event'])
   onContextMenu(event: MouseEvent) {
     event.preventDefault();
     event.stopPropagation();
 
-    const positionStrategy = this._overlay
+    const positionStrategy = this.overlay
       .position()
-      .flexibleConnectedTo(this._elementRef)
+      .flexibleConnectedTo(this.elementRef)
       .withPositions([
         {
           overlayX: 'start',
@@ -41,8 +41,8 @@ export class ContextMenuTriggerDirective implements OnDestroy {
         },
       ]);
 
-    const overlayRef = this._overlay.create({ positionStrategy });
-    const templatePortal = new TemplatePortal(this.contextMenu, this._vcr);
+    const overlayRef = this.overlay.create({ positionStrategy });
+    const templatePortal = new TemplatePortal(this.contextMenu, this.vcr);
     overlayRef.attach(templatePortal);
 
     fromEvent(document, 'click')

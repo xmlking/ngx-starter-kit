@@ -101,15 +101,15 @@ export class ResizableComponent implements OnInit, OnChanges {
   ratio: number = null;
 
   constructor(
-    private _el: ElementRef,
-    private _store: Store,
-    private _renderer: Renderer2,
+    private el: ElementRef,
+    private store: Store,
+    private renderer: Renderer2,
     private rState: ResizableState,
   ) {}
 
   ngOnInit() {
-    this._renderer.addClass(this._el.nativeElement, 'ngresizable');
-    const css = getComputedStyle(this._el.nativeElement);
+    this.renderer.addClass(this.el.nativeElement, 'ngresizable');
+    const css = getComputedStyle(this.el.nativeElement);
     this.width = css.width ? parseInt(css.width, 10) : this.width;
     this.height = css.height ? parseInt(css.height, 10) : this.height;
     this.minWidth = css.minWidth ? parseInt(css.minWidth, 10) : this.minWidth;
@@ -123,7 +123,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     // console.log(this.maxWidth);
     // console.log(this.maxHeight);
 
-    this._store.addReducer(resizeReducer);
+    this.store.addReducer(resizeReducer);
     this.setSize({ width: this.width, height: this.height }, { x: this.x, y: this.y });
   }
 
@@ -158,12 +158,12 @@ export class ResizableComponent implements OnInit, OnChanges {
         y: e.clientY,
       },
       {
-        x: this._el.nativeElement.offsetLeft,
-        y: this._el.nativeElement.offsetTop,
+        x: this.el.nativeElement.offsetLeft,
+        y: this.el.nativeElement.offsetTop,
       },
       {
-        width: this._el.nativeElement.offsetWidth,
-        height: this._el.nativeElement.offsetHeight,
+        width: this.el.nativeElement.offsetWidth,
+        height: this.el.nativeElement.offsetHeight,
       },
       dir,
     );
@@ -176,7 +176,7 @@ export class ResizableComponent implements OnInit, OnChanges {
   }
 
   private emitAction(
-    action: String,
+    action: string,
     mousePosition: IPoint,
     startPosition?: IPoint,
     startSize?: ISize,
@@ -191,7 +191,7 @@ export class ResizableComponent implements OnInit, OnChanges {
       directions: this.directions,
       bound: this.bound || defaultBound,
     };
-    this._store.emitAction(action, mousePosition, startPosition, options, startSize, startDirection);
+    this.store.emitAction(action, mousePosition, startPosition, options, startSize, startDirection);
   }
 
   private emitEvent(output: EventEmitter<IResizeEvent>) {
@@ -203,7 +203,7 @@ export class ResizableComponent implements OnInit, OnChanges {
   }
 
   private get _state(): IResizeState {
-    return this._store.state;
+    return this.store.state;
   }
 
   private setSize(size: ISize, pos: IPoint) {
@@ -211,9 +211,9 @@ export class ResizableComponent implements OnInit, OnChanges {
     this.height = size.height;
     this.x = pos.x;
     this.y = pos.y;
-    this._renderer.setStyle(this._el.nativeElement, 'width', this.width + 'px');
-    this._renderer.setStyle(this._el.nativeElement, 'height', this.height + 'px');
-    this._renderer.setStyle(this._el.nativeElement, 'left', this.x + 'px');
-    this._renderer.setStyle(this._el.nativeElement, 'top', this.y + 'px');
+    this.renderer.setStyle(this.el.nativeElement, 'width', this.width + 'px');
+    this.renderer.setStyle(this.el.nativeElement, 'height', this.height + 'px');
+    this.renderer.setStyle(this.el.nativeElement, 'left', this.x + 'px');
+    this.renderer.setStyle(this.el.nativeElement, 'top', this.y + 'px');
   }
 }

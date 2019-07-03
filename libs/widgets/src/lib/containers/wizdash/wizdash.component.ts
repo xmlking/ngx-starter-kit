@@ -79,10 +79,10 @@ export class WizdashComponent implements OnInit {
 
   audienceOverviewOptions: AudienceOverviewWidgetOptions[] = [];
 
-  private _realtimeUsersDataSubject = new ReplaySubject<RealtimeUsersWidgetData>(30);
-  realtimeUsersData$: Observable<RealtimeUsersWidgetData> = this._realtimeUsersDataSubject.asObservable();
-  private _realtimeUsersPagesSubject = new ReplaySubject<RealtimeUsersWidgetPages[]>(1);
-  realtimeUsersPages$: Observable<RealtimeUsersWidgetPages[]> = this._realtimeUsersPagesSubject.asObservable();
+  private realtimeUsersDataSubject = new ReplaySubject<RealtimeUsersWidgetData>(30);
+  realtimeUsersData$: Observable<RealtimeUsersWidgetData> = this.realtimeUsersDataSubject.asObservable();
+  private realtimeUsersPagesSubject = new ReplaySubject<RealtimeUsersWidgetPages[]>(1);
+  realtimeUsersPages$: Observable<RealtimeUsersWidgetPages[]> = this.realtimeUsersPagesSubject.asObservable();
 
   recentSalesData$: Observable<ChartData>;
   recentSalesOptions: RecentSalesWidgetOptions = {
@@ -124,11 +124,11 @@ export class WizdashComponent implements OnInit {
   /**
    * Needed for the Layout
    */
-  private _gap = 16;
-  gap = `${this._gap}px`;
+  private gapPrivate = 16;
+  gap = `${this.gapPrivate}px`;
 
   col(colAmount: number) {
-    return `1 1 calc(${100 / colAmount}% - ${this._gap - this._gap / colAmount}px)`;
+    return `1 1 calc(${100 / colAmount}% - ${this.gapPrivate - this.gapPrivate / colAmount}px)`;
   }
 
   /**
@@ -184,7 +184,7 @@ export class WizdashComponent implements OnInit {
 
     // Prefill realtimeUsersData with 30 random values
     for (let i = 0; i < 30; i++) {
-      this._realtimeUsersDataSubject.next({
+      this.realtimeUsersDataSubject.next({
         label: formatDistance(new Date(), new Date()),
         value: Math.round(Math.random() * (100 - 10) + 10),
       } as RealtimeUsersWidgetData);
@@ -192,7 +192,7 @@ export class WizdashComponent implements OnInit {
 
     // Simulate incoming values for Realtime Users Widget
     setInterval(() => {
-      this._realtimeUsersDataSubject.next({
+      this.realtimeUsersDataSubject.next({
         label: formatDistance(new Date(), new Date()),
         value: Math.round(Math.random() * (100 - 10) + 10),
       } as RealtimeUsersWidgetData);
@@ -218,7 +218,7 @@ export class WizdashComponent implements OnInit {
         demoPages.push(nextPossibleValue);
       }
 
-      this._realtimeUsersPagesSubject.next(
+      this.realtimeUsersPagesSubject.next(
         demoPages.map(pages => {
           return { page: pages } as RealtimeUsersWidgetPages;
         }),
@@ -237,7 +237,7 @@ export class WizdashComponent implements OnInit {
         demoPages.splice(Math.round(Math.random() * demoPages.length), 1);
       }
 
-      this._realtimeUsersPagesSubject.next(
+      this.realtimeUsersPagesSubject.next(
         demoPages.map(pages => {
           return { page: pages } as RealtimeUsersWidgetPages;
         }),

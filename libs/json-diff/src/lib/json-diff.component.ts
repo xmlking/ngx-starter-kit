@@ -167,9 +167,9 @@ export class JsonDiffComponent implements OnInit, OnChanges {
     newItem.status = status;
   }
   private unify(leftSide: JsonDiffNode[], rightSide: JsonDiffNode[]) {
-    let i = 0,
-      j = 0,
-      looping = true;
+    let i = 0;
+    let j = 0;
+    let looping = true;
 
     while (looping) {
       let leftItemInRightSide: JsonDiffNode =

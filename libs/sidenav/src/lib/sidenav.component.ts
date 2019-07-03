@@ -26,7 +26,7 @@ import { WINDOW } from '@ngx-starter-kit/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  private _destroyed$ = new Subject<void>();
+  private destroyed$ = new Subject<void>();
 
   items: MenuItem[];
 
@@ -64,9 +64,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     this.menuService.isIconSidenav = !this.menuService.isIconSidenav;
 
-    const snackBarConfig: MatSnackBarConfig = <MatSnackBarConfig>{
+    const snackBarConfig: MatSnackBarConfig = {
       duration: 10000,
-    };
+    } as MatSnackBarConfig;
 
     if (this.menuService.isIconSidenav) {
       this.snackBar.open(

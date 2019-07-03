@@ -42,7 +42,7 @@ export const labelColors: Color[] = [
   },
 ];
 
-export const inboxMails: Mail[] = <Mail[]>[
+export const inboxMails: Mail[] = [
   {
     id: '5aaa797a5416f2348280d365',
     from: {
@@ -1986,4 +1986,4 @@ export const inboxMails: Mail[] = <Mail[]>[
     group: 'social',
     attachments: ['assets/img/attachments/1.jpg', 'assets/img/attachments/5.jpg', 'assets/img/attachments/4.jpg'],
   },
-];
+] as Mail[];

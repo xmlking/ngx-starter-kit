@@ -18,14 +18,14 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
   @ViewChild('trianglify', { static: true }) trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
-  private _sub: Subscription;
+  private sub: Subscription;
   constructor(private elementRef: ElementRef, @Inject(WINDOW) private window: Window) {}
 
   ngOnInit() {
     fromEvent<Event>(this.window, 'resize')
       .pipe(
         debounceTime(100),
-        map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
+        map(event => [(event.target as Window).innerWidth, (event.target as Window).innerHeight]),
         distinctUntilChanged(),
         untilDestroy(this),
       )

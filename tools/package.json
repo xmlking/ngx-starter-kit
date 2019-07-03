@@ -18,10 +18,10 @@
     "@nrwl/workspace": "*"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "~0.801.0-rc.0",
-    "@angular-devkit/build-angular": "~0.801.0-rc.0",
-    "@angular-devkit/build-webpack": "~0.801.0-rc.0",
-    "@angular-devkit/core": "~8.1.0-rc.0",
+    "@angular-devkit/architect": "~0.801.0",
+    "@angular-devkit/build-angular": "~0.801.0",
+    "@angular-devkit/build-webpack": "~0.801.0",
+    "@angular-devkit/core": "~8.1.0",
     "@types/json-schema": "^7.0.3",
     "cpx": "^1.5.0"
   }

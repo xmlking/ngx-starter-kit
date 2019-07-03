@@ -21,8 +21,8 @@ export class AccountDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.accountService.getById(params['id']).subscribe(data => {
-        this.animationTrigger$.next(params['id']);
+      this.accountService.getById(params.id).subscribe(data => {
+        this.animationTrigger$.next(params.id);
         this.account = data;
       });
     });

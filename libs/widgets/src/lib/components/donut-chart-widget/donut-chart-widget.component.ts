@@ -26,7 +26,7 @@ export class DonutChartWidgetComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'pie',
       data: this.data,
       options: defaultsDeep(
@@ -48,7 +48,7 @@ export class DonutChartWidgetComponent implements AfterViewInit {
         },
         defaultChartOptions,
       ),
-    });
+    } as ChartConfiguration);
   }
 
   reload() {

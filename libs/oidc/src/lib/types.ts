@@ -145,8 +145,8 @@ export class OidcProviderConfig {
 
 @Injectable()
 export class OidcResourceInterceptorConfig {
-  bearerPrefix? = 'bearer';
-  authorizationHeaderName? = 'Authorization';
+  bearerPrefix ? = 'bearer';
+  authorizationHeaderName ? = 'Authorization';
   allowedUrls?: Array<string>;
 }
 
@@ -164,7 +164,7 @@ export class OidcInitConfig {
   responseMode?: OidcResponseMode;
   redirectUri?: string;
   flow?: OidcFlow;
-  promiseType? = 'native';
+  promiseType ? = 'native';
 }
 
 @Injectable()
@@ -174,5 +174,5 @@ export class OidcModuleConfig {
   resourceInterceptorConfig?: OidcResourceInterceptorConfig;
   postLoginRedirectUri?: string;
   postLogoutRedirectUri?: string;
-  loadUserProfileAtStartUp? = true;
+  loadUserProfileAtStartUp ? = true;
 }

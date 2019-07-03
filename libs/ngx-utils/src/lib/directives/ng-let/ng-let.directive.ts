@@ -9,16 +9,16 @@ export class NgLetContext {
   selector: '[ngLet]',
 })
 export class NgLetDirective implements OnInit {
-  private _context = new NgLetContext();
+  private context = new NgLetContext();
 
   @Input()
   set ngLet(value: any) {
-    this._context.$implicit = this._context.ngLet = value;
+    this.context.$implicit = this.context.ngLet = value;
   }
 
-  constructor(private _vcr: ViewContainerRef, private _templateRef: TemplateRef<NgLetContext>) {}
+  constructor(private vcr: ViewContainerRef, private templateRef: TemplateRef<NgLetContext>) {}
 
   ngOnInit() {
-    this._vcr.createEmbeddedView(this._templateRef, this._context);
+    this.vcr.createEmbeddedView(this.templateRef, this.context);
   }
 }

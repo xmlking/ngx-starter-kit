@@ -7,7 +7,7 @@ export class ClickOutsideDirective {
   @Output()
   public ngxClickOutside = new EventEmitter<MouseEvent>();
 
-  constructor(private _elementRef: ElementRef) {}
+  constructor(private elementRef: ElementRef) {}
 
   @HostListener('document:click', ['$event', '$event.target'])
   public onClick(event: MouseEvent, targetElement: HTMLElement): void {
@@ -15,7 +15,7 @@ export class ClickOutsideDirective {
       return;
     }
 
-    const clickedInside = this._elementRef.nativeElement.contains(targetElement);
+    const clickedInside = this.elementRef.nativeElement.contains(targetElement);
     if (!clickedInside) {
       this.ngxClickOutside.emit(event);
     }

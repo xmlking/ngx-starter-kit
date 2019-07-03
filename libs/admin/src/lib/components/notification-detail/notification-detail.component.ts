@@ -21,8 +21,8 @@ export class NotificationDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.notificationService.getById(params['id']).subscribe(data => {
-        this.animationTrigger$.next(params['id']);
+      this.notificationService.getById(params.id).subscribe(data => {
+        this.animationTrigger$.next(params.id);
         this.notification = data;
       });
     });

@@ -14,11 +14,11 @@ export class LedComponent implements OnInit {
   speed = 1000;
   public size = '24px';
   // @HostBinding('class.active') @Input() active: boolean = false;
-  constructor(@Attribute('size') public readonly _size: string) {}
+  constructor(@Attribute('size') public readonly sizePrivate: string) {}
 
   ngOnInit() {
-    if (this._size) {
-      this.size = this._size;
+    if (this.sizePrivate) {
+      this.size = this.sizePrivate;
     }
   }
 

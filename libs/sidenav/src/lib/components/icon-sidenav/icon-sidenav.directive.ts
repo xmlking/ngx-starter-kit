@@ -3,12 +3,13 @@ import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { Subscription } from 'rxjs';
 import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
 import { Store } from '@ngxs/store';
+import { filter, map } from 'rxjs/operators';
 
 @Directive({
   selector: '[ngxIconSidenav]',
 })
 export class IconSidenavDirective implements OnInit, OnDestroy {
-  private _mediaSubscription: Subscription;
+  private mediaSubscription: Subscription;
   isMobile = false;
 
   @HostBinding('class.icon-sidenav')
@@ -47,12 +48,18 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
   constructor(private store: Store, private menuService: MenuService, private mediaObserver: MediaObserver) {}
 
   ngOnInit() {
-    this._mediaSubscription = this.mediaObserver.media$.subscribe((change: MediaChange) => {
-      this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
-    });
+    this.mediaSubscription = this.mediaObserver
+      .asObservable()
+      .pipe(
+        filter((changes: MediaChange[]) => changes.length > 0),
+        map((changes: MediaChange[]) => changes[0]),
+      )
+      .subscribe((change: MediaChange) => {
+        this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+      });
   }
 
   ngOnDestroy() {
-    this._mediaSubscription.unsubscribe();
+    this.mediaSubscription.unsubscribe();
   }
 }

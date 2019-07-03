@@ -103,7 +103,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
    *  openPopUp() is used in entity.component.html
    *  if you want different implantation (e.g., add-new-line instead of popup, inline edit)
    *  make a copy of entity.component.html as <entity>.component.html and implement your own add/edit logic.
-   **/
+   */
   openPopUp(entity: Account) {
     let isNew = false;
     let id;

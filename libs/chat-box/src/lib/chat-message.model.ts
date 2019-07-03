@@ -54,7 +54,7 @@ export class ChatMessage<T extends UiAction | string> {
       direction: DirectionType.INCOMING,
       from: new Subject(SubjectType.BOT),
       to: new Subject(SubjectType.USER),
-      content: content,
+      content,
       timestamp: new Date(),
       isRead: false,
     });
@@ -65,10 +65,10 @@ export class ChatMessage<T extends UiAction | string> {
       direction: DirectionType.OUTGOING,
       from: new Subject(SubjectType.USER),
       to: new Subject(SubjectType.BOT),
-      content: content,
+      content,
       timestamp: new Date(),
       isRead: true,
-      mode: mode,
+      mode,
     });
   }
 

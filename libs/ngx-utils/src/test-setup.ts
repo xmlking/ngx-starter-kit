@@ -13,7 +13,7 @@ class FakeIntersectionObserver {
       rootBounds: undefined,
       time: 60,
       intersectionRatio: 1,
-      target: target,
+      target,
       isIntersecting: true,
     };
     ary[0] = obj;

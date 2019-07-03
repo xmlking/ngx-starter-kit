@@ -7,7 +7,7 @@ import { NavigationEnd, Router } from '@angular/router';
 import { SidenavState } from './sidenav-state.enum';
 import { MENU_ITEMS } from '../symbols';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
-import { map } from 'rxjs/operators';
+import { filter, map } from 'rxjs/operators';
 
 @Injectable()
 export class MenuService {
@@ -77,8 +77,11 @@ export class MenuService {
       }
     });
 
-    mediaObserver.media$
-      .pipe(map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'))
+    mediaObserver.asObservable().pipe(
+        filter((changes: MediaChange[]) => changes.length > 0),
+        map((changes: MediaChange[]) => changes[0]),
+        map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'),
+      )
       .subscribe(isLowerThanLarge => {
         this.isLowerThanLarge = isLowerThanLarge;
         if (

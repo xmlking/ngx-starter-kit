@@ -44,12 +44,12 @@ export class LineChartWidgetComponent implements AfterViewInit {
       }
     };
 
-    this.chart = new Chart(canvas, <ChartConfiguration>{
+    this.chart = new Chart(canvas, {
       type: 'line',
       data: this.data,
       options: defaultsDeep(
         {
-          onResize: onResize,
+          onResize,
           layout: {
             padding: {
               left: 24,
@@ -68,7 +68,7 @@ export class LineChartWidgetComponent implements AfterViewInit {
         },
         defaultChartOptions,
       ),
-    });
+    } as ChartConfiguration);
   }
 
   reload() {

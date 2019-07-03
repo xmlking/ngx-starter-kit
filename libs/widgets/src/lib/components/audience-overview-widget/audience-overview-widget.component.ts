@@ -18,16 +18,16 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
   chart: Chart;
   isLoading: boolean;
 
-  private _options: AudienceOverviewWidgetOptions[];
+  private optionsPrivate: AudienceOverviewWidgetOptions[];
 
   get options() {
-    return this._options;
+    return this.optionsPrivate;
   }
 
   @Input()
   set options(options: AudienceOverviewWidgetOptions[]) {
     if (options) {
-      this._options = options;
+      this.optionsPrivate = options;
 
       options.forEach(option => {
         if (!option.sum) {
@@ -49,16 +49,16 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
     }
   }
 
-  private _activeOptions = new BehaviorSubject<AudienceOverviewWidgetOptions>({
+  private activeOptionsPrivate = new BehaviorSubject<AudienceOverviewWidgetOptions>({
     label: '',
   });
 
   get activeOptions() {
-    return this._activeOptions.getValue();
+    return this.activeOptionsPrivate.getValue();
   }
 
   set activeOptions(options) {
-    this._activeOptions.next(options);
+    this.activeOptionsPrivate.next(options);
   }
 
   timeframe: FormControl;
@@ -68,7 +68,7 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'line',
       data: this.activeOptions ? this.activeOptions.data : { labels: [], datasets: [] },
       options: defaultsDeep(
@@ -119,9 +119,9 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
         },
         defaultChartOptions,
       ),
-    });
+    } as ChartConfiguration);
 
-    this._activeOptions.asObservable().subscribe(value => {
+    this.activeOptionsPrivate.asObservable().subscribe(value => {
       this.chart.data = value.data;
       this.chart.update(1000);
     });

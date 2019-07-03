@@ -11,10 +11,10 @@ export class ScrollbarComponent implements OnInit {
   scrollbarRef: Scrollbar;
   element: ElementRef;
 
-  constructor(private _element: ElementRef, private zone: NgZone) {}
+  constructor(private elementPrivate: ElementRef, private zone: NgZone) {}
 
   ngOnInit() {
-    this.element = this._element;
+    this.element = this.elementPrivate;
 
     const options = scrollbarOptions;
 
