@@ -77,7 +77,9 @@ export class MenuService {
       }
     });
 
-    mediaObserver.asObservable().pipe(
+    mediaObserver
+      .asObservable()
+      .pipe(
         filter((changes: MediaChange[]) => changes.length > 0),
         map((changes: MediaChange[]) => changes[0]),
         map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'),

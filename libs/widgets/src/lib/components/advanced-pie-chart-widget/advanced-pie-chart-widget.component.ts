@@ -48,7 +48,10 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
   }
 
   getLegendBackground(index: number) {
-    return this.dataPrivate && this.dataPrivate.datasets && this.dataPrivate.datasets[0] && this.dataPrivate.datasets[0].backgroundColor
+    return this.dataPrivate &&
+      this.dataPrivate.datasets &&
+      this.dataPrivate.datasets[0] &&
+      this.dataPrivate.datasets[0].backgroundColor
       ? this.dataPrivate.datasets[0].backgroundColor[index]
       : null;
   }

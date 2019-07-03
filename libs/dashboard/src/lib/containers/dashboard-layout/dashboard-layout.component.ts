@@ -1,8 +1,7 @@
 import { Component, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { Subscription } from 'rxjs';
 import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { NavigationEnd, Router } from '@angular/router';
-import { routeAnimation, hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
+import { hierarchicalRouteAnimation } from '@ngx-starter-kit/animations';
 import { Actions, Store } from '@ngxs/store';
 import { ConnectWebSocket, DisconnectWebSocket } from '@ngx-starter-kit/socketio-plugin';
 import { environment } from '@env/environment';
@@ -11,6 +10,7 @@ import { filter, map } from 'rxjs/operators';
 import { RouterStateData, WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+
 // import { AuthService } from '@ngx-starter-kit/oidc';
 
 /** @dynamic */
@@ -49,17 +49,20 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
 
     this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map(state => state.data.depth));
 
-    this.mediaObserver.asObservable().pipe(
-      untilDestroy(this),
-    filter((changes: MediaChange[]) => changes.length > 0),
-      map((changes: MediaChange[]) => changes[0])
-    ).subscribe((change: MediaChange) => {
-      const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
+    this.mediaObserver
+      .asObservable()
+      .pipe(
+        untilDestroy(this),
+        filter((changes: MediaChange[]) => changes.length > 0),
+        map((changes: MediaChange[]) => changes[0]),
+      )
+      .subscribe((change: MediaChange) => {
+        const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
 
-      this.isMobile = isMobile;
-      this.sidenavMode = isMobile ? 'over' : 'side';
-      this.sidenavOpen = !isMobile;
-    });
+        this.isMobile = isMobile;
+        this.sidenavMode = isMobile ? 'over' : 'side';
+        this.sidenavOpen = !isMobile;
+      });
 
     this.router.events.pipe(untilDestroy(this)).subscribe(event => {
       if (event instanceof NavigationEnd && this.isMobile) {
