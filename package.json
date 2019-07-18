@@ -206,7 +206,7 @@
     "@semantic-release/github": "^5.4.2",
     "@semantic-release/npm": "^5.1.13",
     "angular-cli-ghpages": "^0.5.3",
-    "commitizen": "^3.1.1",
+    "commitizen": "^4.0.0",
     "cypress": "^3.4.0",
     "cz-conventional-changelog": "^2.1.0",
     "dotenv": "^8.0.0",
