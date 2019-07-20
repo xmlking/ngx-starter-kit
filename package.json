@@ -134,7 +134,7 @@
     "@ngxs/store": "^3.4.3",
     "@xmlking/angular-oauth2-oidc-all": "^6.0.1",
     "@xmlking/api-ai-javascript": "^2.0.0-beta.22",
-    "@xmlking/ngx-knob": "^0.2.0",
+    "@xmlking/ngx-knob": "^0.3.0",
     "@xmlking/ngx-quicklink": "^0.0.11",
     "angular-in-memory-web-api": "^0.8.0",
     "chart.js": "^2.8.0",
