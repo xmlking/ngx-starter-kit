@@ -2,7 +2,7 @@
 
 Do-it-yourself step-by-step instructions to create this project structure from scratch.
 
-### What you got
+## What you got
 
 - [x] Code formatting via prettier, tslint
 
@@ -12,7 +12,7 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 - [x] **Cypress** e2e tests
 
-- [ ] **Postman** API tests
+- [x] [REST Client](apps/api/test-rest-api-vs-code.http) for API tests
 
 - [x] Containerized builds
 
@@ -26,16 +26,16 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 > you need following tools. versions listed here are minimal versions tested.
 
-| Software             | Version  | Optional |
-| -------------------- | -------- | -------- |
-| Node                 | v12.5.0  |          |
-| Yarn                 | v1.17.0  |          |
-| Lerna                | v3.14.1  |          |
-| Angular CLI          | v8.1.0   |          |
-| @nrwl/workspace      | v8.2.0   |          |
-| @nestjs/cli          | v6.5.0   |          |
-| semantic-release-cli | v5.1.1   |          |
-| commitizen           | v3.1.1   |          |
+| Software             | Version | Optional |
+| -------------------- | ------- | -------- |
+| Node                 | v12.5.0 |          |
+| Yarn                 | v1.17.0 |          |
+| Lerna                | v3.14.1 |          |
+| Angular CLI          | v8.1.0  |          |
+| @nrwl/workspace      | v8.2.0  |          |
+| @nestjs/cli          | v6.5.0  |          |
+| semantic-release-cli | v5.1.1  |          |
+| commitizen           | v3.1.1  |          |
 
 ### Install Prerequisites
 
@@ -53,7 +53,7 @@ brew cleanup
 
 Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
 
-### Install Kubernetes (optional)
+#### Install Kubernetes (optional)
 
 follow instructions [here](https://gist.github.com/xmlking/62ab53753c0f0f5247d0e174b31dab21) to install kubernetes toolchain:
 
@@ -109,6 +109,11 @@ cat ~/.angular-config.json
 yarn why jasmine-marbles
 ```
 
+#### Install Chrome Extensions
+
+1. [Redux DevTools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en)
+2. [Angular Tracer for View Updates](https://chrome.google.com/webstore/detail/angular-tracer-for-view-u/bdneljfoigfojeenmmgahnkjnkpbellg)
+
 ### Scaffold Project
 
 > steps below are for setting up a new project from the scratch.
@@ -146,12 +151,12 @@ ng update --all
 ng add @nrwl/angular@next --defaults
 ng add @nrwl/nest@next
 # optional
-ng add @nrwl/web@next  
+ng add @nrwl/web@next
 
 # generate webapp app
 ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module
 # or with ivy renderer
-ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module --enable-ivy 
+ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module --enable-ivy
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
@@ -244,7 +249,7 @@ yarn add -O lint-staged
 # first time semantic-release setup
 semantic-release-cli setup
 
-yarn workspace @ngx-starter-kit/api add kubernetes-client @xmlking/jwks-rsa @nestjs/{terminus,cqrs}  
+yarn workspace @ngx-starter-kit/api add kubernetes-client @xmlking/jwks-rsa @nestjs/{terminus,cqrs}
 yarn workspace @ngx-starter-kit/api add addnodemon supertest  -O
 
 yarn workspace @ngx-starter-kit/tools add cpx --dev
@@ -271,9 +276,9 @@ ng update @nrwl/nest --next
 
 > Add `--dry-run` or `-d` option to following commands to see which artifacts will be created, without actually creating them.
 
-
 ##### generate Lazy-loaded Feature Modules
->  with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
+
+> with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
 
 ```bash
 ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
@@ -288,14 +293,16 @@ ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashb
 ```
 
 ##### generate shared neutral libs
->  with no-framework  (a.k.a. @nrwl/workspace schematics)
+
+> with no-framework (a.k.a. @nrwl/workspace schematics)
+
 ```bash
-ng g @nrwl/workspace:lib Tree       --tags=utils --defaults -d 
+ng g @nrwl/workspace:lib Tree       --tags=utils --defaults -d
 ng g @nrwl/workspace:lib utils      --tags=utils --defaults -d
 ng g @nrwl/workspace:lib animations --tags=utils --defaults -d
 
 # system wide `models` module
-ng g @nrwl/workspace:lib models     --tags=utils --defaults -d 
+ng g @nrwl/workspace:lib models     --tags=utils --defaults -d
 ng g interface User  --project=models --type=model -d
 ng g interface JwtToken  --project=models --type=model -d
 ng g interface Profile  --project=models --type=model -d
@@ -312,8 +319,10 @@ ng g interface Project  --project=models --type=model -d
 ng g interface Cluster  --project=models --type=model -d
 ```
 
-#####  generate shared angular libs
->  with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
+##### generate shared angular libs
+
+> with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
+
 ```bash
 # add `core` module which will be only inported into root/app module.
 ng g lib core --tags=core-module --defaults -d
@@ -422,12 +431,12 @@ ng g service services/ZipkinTracing --project=open-tracing -d
 ng g interceptor interceptors/tracing  --project=open-tracing -d
 
 # generate components for `jsonDiff` Module
-ng g lib jsonDiff --tags=public-module --publishable=true --defaults -d 
+ng g lib jsonDiff --tags=public-module --publishable=true --defaults -d
 ng g component jsonDiff --project=json-diff --flat -d
 ng g component jsonDiffTree --project=json-diff --flat -d
 
 # generate components for `clap` Module
-ng g lib clap --tags=public-module --skip-tests --publishable=true --defaults -d 
+ng g lib clap --tags=public-module --skip-tests --publishable=true --defaults -d
 ng g component clap --project=clap  -s  -t --skip-tests --export --flat -d
 ng g component components/counterBubble --project=clap  -s  -t --skip-tests --flat  -d
 ng g component components/totalCounter --project=clap  -s  -t --skip-tests --flat  -d
@@ -589,7 +598,7 @@ ng update
 ng update @angular/cli
 ng update @angular/core
 ng update --all
-# interactively update non-ng modules, with `--latest` 
+# interactively update non-ng modules, with `--latest`
 # this will also update package.json file with information of the new versions of the updated packages
 yarn upgrade-interactive --latest
 ```
@@ -738,10 +747,10 @@ It is self-contained, and can therefore be pushed to a Docker registry to be dep
 To start the container, use:
 
 ```bash
-$ docker-compose up web   # optional: --build, see below
+docker-compose up web   # optional: --build, see below
 ```
 
-Now open your browser at http://localhost:80
+Now open your browser at `http://localhost:80`
 
 ### IntelliJ/WebStorm
 
@@ -753,7 +762,5 @@ Right click on `coverage` in project view --> Make Directory as --> Excluded.
 
 ### Reference
 
-- Nx and Angular CLI
-  - https://github.com/nrwl/nx/wiki/Nx-and-Angular-CLI
-- NPM vs Yarn Cheat Sheet
-  - https://shift.infinite.red/npm-vs-yarn-cheat-sheet-8755b092e5cc
+- [Nx and Angular CLI](https://github.com/nrwl/nx/wiki/Nx-and-Angular-CLI)
+- [NPM vs Yarn Cheat Sheet](https://shift.infinite.red/npm-vs-yarn-cheat-sheet-8755b092e5cc)

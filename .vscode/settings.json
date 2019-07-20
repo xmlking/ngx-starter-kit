@@ -1,20 +1,77 @@
 {
   "window.zoomLevel": 1,
-  "workbench.editor.highlightModifiedTabs": true,
-  "files.autoSave": "afterDelay",
   "explorer.sortOrder": "type",
-  // editor
-  "editor.fontFamily": "FiraCode-Retina",
+  // Editor
+  "editor.autoIndent": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": false
+  },
+  "editor.codeLens": false,
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "line",
+  // "editor.fontSize": 16,
+  "editor.fontFamily": "SourceCodePro-Regular, FiraCode-Retina, Menlo",
   "editor.fontLigatures": true,
-  "editor.fontSize": 14,
   "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
   "editor.formatOnSave": true,
-  // REST CLIENT
+  "editor.letterSpacing": 0.5,
+  "editor.lineHeight": 25,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  // Terminal
+  "terminal.integrated.fontFamily": "'SourceCodePro+Powerline+Awesome Regular', Source Code Pro for Powerline, monospace, Meslo LG M for Powerline",
+  // "terminal.integrated.fontSize": 16,
+  // Workbench
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.colorCustomizations": {
+    "terminal.foreground": "#839496",
+    "terminal.background": "#121a21",
+    "activityBar.background": "#fbed80",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#06b9a5",
+    "activityBarBadge.foreground": "#15202b",
+    "statusBar.background": "#f9e64f",
+    "statusBarItem.hoverBackground": "#f7df1e",
+    "statusBar.foreground": "#15202b"
+  },
+  // File settings
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": {
+      "when": "$(basename)"
+    }
+  },
+  // "files.hotExit": "onExit",
+  "files.defaultLanguage": "typescript",
+  "files.trimTrailingWhitespace": true,
+  // Prettier settings
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 100,
+  // Peacock Settings
+  "peacock.affectActivityBar": true,
+  "peacock.affectStatusBar": true,
+  "peacock.affectTitleBar": false,
+  "peacock.keepBadgeColor": false,
+  "peacock.keepForegroundColor": false,
+  // REST client
   "rest-client.environmentVariables": {
     "$shared": {
       "client-id": "ngxapi",
       "username": "sumo3",
-      "password": "demo"
+      "password": "demo",
+      "api-gateway-url": "http://localhost:8080"
     },
     "local": {
       "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
@@ -30,6 +87,5 @@
       "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
       "api-url": "https://api.kashmora.com"
     }
-  },
-  "vsicons.presets.angular": true
+  }
 }

@@ -1,15 +1,11 @@
 {
-    "recommendations": [
-      "nrwl.angular-console",
-      "angular.ng-template",
-      "ms-vscode.vscode-typescript-tslint-plugin",
-      "esbenp.prettier-vscode",
-      "googlecloudtools.cloudcode",
-      "DavidAnson.vscode-markdownlint",
-      "ms-azuretools.vscode-docker",
-      "EditorConfig.EditorConfig",
-      "donjayamanne.githistory",
-      "eamodio.gitlens",
-      "humao.rest-client"
-    ]
+  "recommendations": [
+    "johnpapa.angular-essentials",
+    "googlecloudtools.cloudcode",
+    "DavidAnson.vscode-markdownlint",
+    "ms-azuretools.vscode-docker",
+    "donjayamanne.githistory",
+    "eamodio.gitlens",
+    "humao.rest-client"
+  ]
 }
