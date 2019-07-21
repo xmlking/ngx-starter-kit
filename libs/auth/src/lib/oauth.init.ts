@@ -1,11 +1,11 @@
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { Store } from '@ngxs/store';
 import { LoginSuccess } from './auth.actions';
 import { AuthorizationErrorResponse } from './oauth.errors';
 import { authConfigImplicit, authConfigCodeFlow } from './oauth.config';
 
 export function initializeAuth(oauthService: OAuthService, store: Store) {
-  // use appropriate authConfig, matching to initSSO() in login.component.ts
+  // HINT: use appropriate authConfig, matching to initSSO() in login.component.ts
   // oauthService.configure(authConfigCodeFlow);
   oauthService.configure(authConfigImplicit);
   oauthService.setStorage(sessionStorage);

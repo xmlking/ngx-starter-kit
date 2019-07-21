@@ -9,7 +9,7 @@ import { RouterState } from '@ngxs/router-plugin';
 import { filter, map } from 'rxjs/operators';
 import { RouterStateData, WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 // import { AuthService } from '@ngx-starter-kit/oidc';
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { OAuthService } from 'angular-oauth2-oidc';
 import { Store } from '@ngxs/store';
 import { Login } from './auth.actions';
 // import { waitUntil } from '@ngx-starter-kit/utils';

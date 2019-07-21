@@ -3,7 +3,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { OAuthService } from 'angular-oauth2-oidc';
 
 import { ROPCService } from '../../ropc.service';
 import { ChangeAuthMode, AuthMode } from '../../auth.actions';
@@ -53,9 +53,8 @@ export class LoginComponent {
   }
 
   initSSO() {
-    this.store.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow)).subscribe(() => {
-      this.oauthService.initImplicitFlow();
-      // this.oauthService.initAuthorizationCodeFlow();
+    this.store.dispatch(new ChangeAuthMode(AuthMode.ImplicitFLow /* HINT: AuthMode.CodeFLow*/)).subscribe(() => {
+      this.oauthService.initLoginFlow();
       console.log('initSSO');
     });
   }

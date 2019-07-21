@@ -18,7 +18,7 @@ A curated list of awesome Angular resources
 
 - Differential Loading
 
-  Find what browsers are supported? `cd apps/webapp`,  `npx browserslist`
+  Find what browsers are supported? `cd apps/webapp`, `npx browserslist`
 
 - How do I design Landing page?
 
@@ -126,16 +126,15 @@ A curated list of awesome Angular resources
   > `{ enableTracing: true }`
   > Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
 
+- How to open Angular Material Dialog via route link?
 
-* How to open Angular Material Dialog via route link?
-  > useful for sharing bookmarkable links. e.g., `/account/edit` `/account/add`
-  > [Routing to Angular Material Dialogs](https://medium.com/ngconf/routing-to-angular-material-dialogs-c3fb7231c177)
- 
-* How to use new `providedIn` Dependency Injection?
+  > useful for sharing bookmarkable links. e.g., `/account/edit` `/account/add` > [Routing to Angular Material Dialogs](https://medium.com/ngconf/routing-to-angular-material-dialogs-c3fb7231c177)
+
+- How to use new `providedIn` Dependency Injection?
 
   > Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
 
-* How to manage state in the front-end?
+- How to manage state in the front-end?
 
 > use [NGXS](https://amcdnl.gitbooks.io/ngxs/)
 > Read [Immer with NGXS](https://blog.angularindepth.com/simple-state-mutations-in-ngxs-with-immer-48b908874a5e)
@@ -198,6 +197,10 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
   > [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
   > Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5) <br/> > [nest-next](https://github.com/kyle-mccarthy/nest-next) <br/> > [nuxt/vue.js + nest](https://github.com/chanlito/nuxt-ts-starter) <br/> > [nest + angular](https://github.com/kamilmysliwiec/universal-nest)<br/>
+
+- dynamic form group builder with class-validator
+
+  > todo [ngx-dynamic-form-builder](https://github.com/EndyKaufman/ngx-dynamic-form-builde)
 
 - How to configure nginx?
 

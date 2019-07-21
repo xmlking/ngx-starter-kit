@@ -2816,15 +2816,6 @@
     "@webassemblyjs/wast-parser" "1.8.5"
     "@xtuc/long" "4.2.2"
 
-"@xmlking/angular-oauth2-oidc-all@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@xmlking/angular-oauth2-oidc-all/-/angular-oauth2-oidc-all-6.0.1.tgz#3c0c2bf2200b0536eb505c1ffebafe507bdb131f"
-  integrity sha512-viZEyNFUifMoqw13dAAhvE0FnHgl4rbRD9tmupN1rnO5L58wr4kFjbfVKUoQAhGdYVw9hmprCc56bdidfgIA/A==
-  dependencies:
-    js-sha256 "^0.9.0"
-    jsrsasign "^8.0.12"
-    tslib "^1.9.0"
-
 "@xmlking/api-ai-javascript@^2.0.0-beta.22":
   version "2.0.0-beta.22"
   resolved "https://registry.yarnpkg.com/@xmlking/api-ai-javascript/-/api-ai-javascript-2.0.0-beta.22.tgz#36799dda95515b4010e5381d11fc37cc602c53fc"
@@ -2842,10 +2833,10 @@
     ms "^2.1.1"
     request "^2.88.0"
 
-"@xmlking/ngx-knob@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@xmlking/ngx-knob/-/ngx-knob-0.2.0.tgz#8d87881e45b1e7ef04fa2a28a350ba156c32c84a"
-  integrity sha512-orGZTH+rZjZxhfBeuBkJbuLZO5bJAuTM3ucfOEcIN23tMf8WfEgWLhTLBwOZ8Knc6kzBTwXG7QkCinJdvPpE1Q==
+"@xmlking/ngx-knob@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@xmlking/ngx-knob/-/ngx-knob-0.3.0.tgz#68fd9cb236858985fac2c0320c58122dcf9bfc08"
+  integrity sha512-nCtk88sGu/MhMGbKsqwGZinT2vnXjbbALlvF3V7CWb1rQDtoszHJ9CSFmazKGQDsx96wJs9u6IsfLYzXsjKb1g==
   dependencies:
     tslib "^1.9.0"
 
@@ -3101,6 +3092,14 @@ angular-in-memory-web-api@^0.8.0:
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.8.0.tgz#6cb63c9e8e22c59383dfcccaf0512791400bf4e1"
   integrity sha512-2n0YtCLFxZo4JePHvH6q8b7JmBmhZq44Ic8VaBPRSXE4vAmlKXHU+kI2quNa612EAETDRkZcvLOU8K8CkhIZgQ==
+
+angular-oauth2-oidc@8.0.1:
+  version "8.0.1"
+  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-8.0.1.tgz#b5326874297362957d1da9e70a07243d6e249800"
+  integrity sha512-EHy/jxAJtkNrZ8sjDsSLPZ4qCXIDyCj7SBDpHzyUAdxMklGRoTkyWnjLdC8j0jYC6nEycaaVe06k1esm54XPAg==
+  dependencies:
+    jsrsasign "^8.0.12"
+    tslib "^1.9.0"
 
 ansi-align@^2.0.0:
   version "2.0.0"
@@ -10251,11 +10250,6 @@ js-levenshtein@^1.1.3:
   version "1.1.6"
   resolved "https://registry.yarnpkg.com/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
   integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
-
-js-sha256@^0.9.0:
-  version "0.9.0"
-  resolved "https://registry.yarnpkg.com/js-sha256/-/js-sha256-0.9.0.tgz#0b89ac166583e91ef9123644bd3c5334ce9d0966"
-  integrity sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==
 
 js-stringify@^1.0.1:
   version "1.0.2"

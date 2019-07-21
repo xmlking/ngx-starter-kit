@@ -29,13 +29,13 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | Software             | Version | Optional |
 | -------------------- | ------- | -------- |
 | Node                 | v12.5.0 |          |
-| Yarn                 | v1.17.0 |          |
+| Yarn                 | v1.17.3 |          |
 | Lerna                | v3.14.1 |          |
-| Angular CLI          | v8.1.0  |          |
-| @nrwl/workspace      | v8.2.0  |          |
+| Angular CLI          | v8.2.0  |          |
+| @nrwl/workspace      | v8.3.0  |          |
 | @nestjs/cli          | v6.5.0  |          |
 | semantic-release-cli | v5.1.1  |          |
-| commitizen           | v3.1.1  |          |
+| commitizen           | v4.0.3  |          |
 
 ### Install Prerequisites
 
@@ -89,7 +89,7 @@ yarn global remove commitizen
 
 yarn global add lerna
 yarn global add @angular/cli@next
-yarn global add @nrwl/workspace
+yarn global add @nrwl/workspace@next
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
 yarn global add commitizen
@@ -180,6 +180,9 @@ cd ngx-starter-kit
 # Add PWA
 ng add @angular/pwa@next --project webapp
 
+# Add architect for gh-pages deployment
+ng add ngx-gh
+
 # Add Material
 # Ref: https://material.angular.io/guide/schematics
 # Ref: https://material.angular.io/guide/getting-started
@@ -194,7 +197,7 @@ yarn add @angular/flex-layout
 yarn add angular-in-memory-web-api
 # Add oauth2-oidc
 ~yarn add angular-oauth2-oidc~
-yarn add @xmlking/angular-oauth2-oidc-all
+yarn add angular-oauth2-oidc
 
 # Add NGXS
 ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
@@ -679,15 +682,26 @@ npx compodoc -s -d docs
 
 ### Deploy
 
-> deploy demo to gh-pages
+#### deploy this app with mock config to gh-pages
+
+This command will
+
+1. build with mock config
+2. compress
+3. and push build to gh-pages
 
 ```bash
-# build for gh-pages
-yarn build:mock
-# maybe compress
-gzip -k -r dist/apps/webapp/*.js
-# push gh-pages
-npx ngh --dir dist/apps/webapp
+deploy:mock
+```
+
+#### CI/CD Pipeline
+
+```bash
+# deploy only `webapp` app
+ng run webapp:deploy
+# ng run webapp:deploy --base-href /ngx-starter-kit/
+# deploy all affected apps
+nx affected --target deploy
 ```
 
 ### Release

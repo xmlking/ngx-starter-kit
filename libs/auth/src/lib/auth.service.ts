@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
+import { OAuthService, OAuthEvent } from 'angular-oauth2-oidc';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, Subscription, throwError } from 'rxjs';
 import { catchError, filter, mergeMap, tap } from 'rxjs/operators';
@@ -10,7 +10,6 @@ import { LoginComponent } from './components/login/login.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { fromPromise } from 'rxjs/internal/observable/fromPromise';
-import { OAuthEvent } from '@xmlking/angular-oauth2-oidc-all/events';
 
 @Injectable()
 export class AuthService {
