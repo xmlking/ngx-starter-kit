@@ -175,7 +175,7 @@
     "@angular/cli": "~8.2.0-next.1",
     "@angular/compiler-cli": "~8.2.0-next.2",
     "@angular/language-service": "~8.2.0-next.2",
-    "@nrwl/angular": "~8.3.0-beta.3",
+    "@nrwl/angular": "~8.4.0",
     "@nrwl/nest": "~8.3.0-beta.3",
     "@nrwl/workspace": "~8.3.0-beta.3",
     "@types/google.analytics": "^0.0.40",
