@@ -13,7 +13,7 @@ Deploying **KeyCloak** on kubernetes and/or OpenShift
 ## Deploy
 
 ### TLS Certs
-> first time only: generate a self-signed certificate to configure Ingress 
+> first time only: generate a self-signed certificate to configure Ingress
 
 ```bash
 cd .deploy/keycloak/manual
@@ -35,8 +35,8 @@ kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 
 Follow instructions from [manual](./manual) or [helm](./helm)
 
-Then continue steps below. 
- 
+Then continue steps below.
+
 
 #### Environment Variables
 
@@ -52,7 +52,7 @@ PROXY_ADDRESS_FORWARDING="true"
 ## Configuration
 
 > Access Keycloak Admin Console
- 
+
 ### Keycloak automatic configuration
 
 > Open Keycloak WebConsole
@@ -72,14 +72,14 @@ PROXY_ADDRESS_FORWARDING="true"
 
 #### Configure audience in Keycloak
 
-Refer https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match
+Refer <https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match>
 
 1. add `ngxapi-audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi-audience-mapper`, Mapper Type --> `audience` and adding `ngxapi` Client under `Included Client Audience`.
 2. for `ngxweb` client, add `ngxapi-audience` at **Client Scopes** tab
 3. for `ngxapi` client, add `ngxapi-audience` at **Client Scopes** tab (for Swagger API Docs)
 
-Refer https://www.kodnito.com/posts/microprofile-jwt-with-keycloak/
-4. Click on Clients and find the `ngxweb/ngxapi` and click on **Mappers** tab and click on **Add Builtin** button and add the **groups** mapper to the client. 
+Refer <https://www.kodnito.com/posts/microprofile-jwt-with-keycloak/>
+4. Click on Clients and find the `ngxweb/ngxapi` and click on **Mappers** tab and click on **Add Builtin** button and add the **groups** mapper to the client.
 
 ---
 

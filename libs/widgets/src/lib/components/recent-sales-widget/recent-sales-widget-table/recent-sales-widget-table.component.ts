@@ -44,7 +44,7 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
 
-    this.data$.pipe(filter(Boolean)).subscribe(values => (this.dataSource.data = values));
+    this.data$.pipe(filter(Boolean)).subscribe((values: any[]) => (this.dataSource.data = values));
   }
 
   ngAfterViewInit() {

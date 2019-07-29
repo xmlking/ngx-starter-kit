@@ -1100,7 +1100,10 @@
                 }
               ],
               "namedChunks": false,
-              "optimization": true,
+              "optimization": {
+                "scripts": true,
+                "styles": true
+              },
               "outputHashing": "all",
               "serviceWorker": true,
               "sourceMap": {

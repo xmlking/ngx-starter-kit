@@ -30,10 +30,10 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 | -------------------- | ------- | -------- |
 | Node                 | v12.5.0 |          |
 | Yarn                 | v1.17.3 |          |
-| Lerna                | v3.14.1 |          |
+| Lerna                | v3.16.4 |          |
 | Angular CLI          | v8.2.0  |          |
-| @nrwl/workspace      | v8.3.0  |          |
-| @nestjs/cli          | v6.5.0  |          |
+| @nrwl/workspace      | v8.4.0  |          |
+| @nestjs/cli          | v6.6.3  |          |
 | semantic-release-cli | v5.1.1  |          |
 | commitizen           | v4.0.3  |          |
 
