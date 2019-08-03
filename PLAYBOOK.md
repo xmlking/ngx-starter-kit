@@ -181,7 +181,9 @@ cd ngx-starter-kit
 ng add @angular/pwa@next --project webapp
 
 # Add architect for gh-pages deployment
+# ng add [provider] [ngx-gh, @angular/fire, @zeit/ng-deploy, @azure/ng-deploy, @netlify-builder/deploy]
 ng add ngx-gh
+ng deploy
 
 # Add Material
 # Ref: https://material.angular.io/guide/schematics
@@ -692,6 +694,7 @@ This command will
 
 ```bash
 deploy:mock
+# ng deploy
 ```
 
 #### CI/CD Pipeline

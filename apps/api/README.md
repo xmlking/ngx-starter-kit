@@ -33,6 +33,9 @@ This project uses [@nestjsx/crud](https://github.com/nestjsx/crud) to simplify a
 docker-compose up postgres
 docker-compose up -V postgres #remove volumes
 
+# start local keycloak
+docker-compose up keycloak
+
 # stop local postgres before restart again
 docker-compose down
 docker-compose down -v #remove volumes
