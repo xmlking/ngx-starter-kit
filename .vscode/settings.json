@@ -4,9 +4,8 @@
   // Editor
   "editor.autoIndent": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": false
+    "source.organizeImports": true
   },
-  "editor.codeLens": false,
   "editor.cursorBlinking": "solid",
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "line",
@@ -36,6 +35,10 @@
     "activityBar.inactiveForeground": "#15202b99",
     "activityBarBadge.background": "#06b9a5",
     "activityBarBadge.foreground": "#15202b",
+    "titleBar.activeBackground": "#f9e64f",
+    "titleBar.inactiveBackground": "#f9e64f99",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#15202b99",
     "statusBar.background": "#f9e64f",
     "statusBarItem.hoverBackground": "#f7df1e",
     "statusBar.foreground": "#15202b"
@@ -56,15 +59,11 @@
   // "files.hotExit": "onExit",
   "files.defaultLanguage": "typescript",
   "files.trimTrailingWhitespace": true,
+  // Peacock Settings
+  "peacock.color": "#f9e64f",
   // Prettier settings
   "prettier.singleQuote": true,
   "prettier.printWidth": 100,
-  // Peacock Settings
-  "peacock.affectActivityBar": true,
-  "peacock.affectStatusBar": true,
-  "peacock.affectTitleBar": false,
-  "peacock.keepBadgeColor": false,
-  "peacock.keepForegroundColor": false,
   // REST client
   "rest-client.environmentVariables": {
     "$shared": {
