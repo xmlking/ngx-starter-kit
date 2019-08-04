@@ -59,6 +59,9 @@
   // "files.hotExit": "onExit",
   "files.defaultLanguage": "typescript",
   "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "renovate.json": "jsonc"
+  },
   // Peacock Settings
   "peacock.color": "#f9e64f",
   // Prettier settings
