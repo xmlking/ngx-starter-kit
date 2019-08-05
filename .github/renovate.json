@@ -1,5 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["config:base", ":preserveSemverRanges"],
   // "ignoreDeps": ["d3", "cli-ux", "d3-selection-multi", "core-js", "d3-selection"],
   "labels": ["dependencies"],
   // "schedule": ["after 10pm every weekday", "before 4am every weekday", "every weekend"],
