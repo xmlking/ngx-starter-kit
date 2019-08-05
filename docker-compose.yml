@@ -85,7 +85,7 @@ services:
     links:
       - 'postgres'
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.4.0
+    image: docker.elastic.co/kibana/kibana:6.8.2
     container_name: kibana
     #    volumes:
     #    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
