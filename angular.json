@@ -1284,6 +1284,10 @@
             "setupFile": "apps/webapp/src/test-setup.ts",
             "tsConfig": "apps/webapp/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       },
       "prefix": "ngx",

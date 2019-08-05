@@ -181,9 +181,8 @@ cd ngx-starter-kit
 ng add @angular/pwa@next --project webapp
 
 # Add architect for gh-pages deployment
-# ng add [provider] [ngx-gh, @angular/fire, @zeit/ng-deploy, @azure/ng-deploy, @netlify-builder/deploy]
-ng add ngx-gh
-ng deploy
+# ng add [provider] [ngx-gh, angular-cli-ghpages, @angular/fire, @zeit/ng-deploy, @azure/ng-deploy, @netlify-builder/deploy]
+ng add angular-cli-ghpages
 
 # Add Material
 # Ref: https://material.angular.io/guide/schematics
@@ -248,7 +247,6 @@ yarn add -O commitizen cz-conventional-changelog
 yarn add -O @commitlint/{config-conventional,cli}
 yarn add -O husky
 yarn add -O lint-staged
-
 
 # for CI/CD automation and release
 # first time semantic-release setup
@@ -686,25 +684,23 @@ npx compodoc -s -d docs
 
 #### deploy this app with mock config to gh-pages
 
-This command will
-
-1. build with mock config
-2. compress
-3. and push build to gh-pages
-
 ```bash
-deploy:mock
-# ng deploy
-```
-
-#### CI/CD Pipeline
-
-```bash
+# ng deploy --dry-run
+ng deploy --base-href=/ngx-starter-kit/ --configuration=mock
 # deploy only `webapp` app
-ng run webapp:deploy
-# ng run webapp:deploy --base-href /ngx-starter-kit/
+# ng run webapp:deploy
+ng run webapp:deploy --base-href=/ngx-starter-kit/ --configuration=mock
 # deploy all affected apps
 nx affected --target deploy
+```
+
+#### Continuous Delivery
+
+> You may need to set an environment variable called GH_TOKEN in our CI/CD environment
+
+```bash
+ng deploy --base-href=/ngx-starter-kit/ --configuration=mock \
+--repo=https://github.com/<username>/<repositoryname>.git --name="Your Git Username" --email=your.mail@example.org
 ```
 
 ### Release

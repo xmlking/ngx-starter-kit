@@ -15,6 +15,7 @@ action "Select master branch" {
 action "Install dependencies" {
   uses = "actions/npm@master"
   needs = ["Select master branch"]
+  runs = "yarn"
   args = "install"
 }
 
@@ -46,6 +47,7 @@ action "Tag" {
   needs = "Build"
   uses = "actions/bin/filter@master"
   args = "tag"
+  secrets = ["GITHUB_TOKEN"]
 }
 
 action "Publish" {
