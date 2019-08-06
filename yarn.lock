@@ -3323,10 +3323,10 @@ amqplib@0.5.3:
     safe-buffer "~5.1.2"
     url-parse "~1.4.3"
 
-angular-cli-ghpages@^0.6.0-rc.0:
-  version "0.6.0-rc.0"
-  resolved "https://registry.yarnpkg.com/angular-cli-ghpages/-/angular-cli-ghpages-0.6.0-rc.0.tgz#bde6253b6b11426326546c4ade9322c16c5cdf5b"
-  integrity sha512-2zqgy2im8GFrlT/pVH/hTmjx0vRFGxrKOGvLJ/gYuOEU3Aa+jfvNHuCAyCo6hZCD9t3yn0bSn1pbsMTbZ4hLTg==
+angular-cli-ghpages@^0.6.0-rc.1:
+  version "0.6.0-rc.1"
+  resolved "https://registry.yarnpkg.com/angular-cli-ghpages/-/angular-cli-ghpages-0.6.0-rc.1.tgz#f32a414c0a80ceacb5ac28f56eeba6e8238ae9ba"
+  integrity sha512-Hk4h0MpnWrgbIkJDCDeM8uy9xE3EkGUMTHR+62wjWC7syPwIeP/SC4DrSg8qxUmyuOjkXBLaw4bnOV1WZOqlRw==
   dependencies:
     commander "^3.0.0-0"
     fs-extra "^8.1.0"
@@ -6557,10 +6557,10 @@ date-fns@^1.27.2:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-date-fns@~v2.0.0-beta.3:
-  version "2.0.0-beta.3"
-  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.0.0-beta.3.tgz#2e28f5af945930f774ddd778e184d68227101d55"
-  integrity sha512-z5O262BvHPhwUvA1weXH+AZodygnZUcORERw8hjwBUrRPGrAo2e/rjXfC8Ykf1OGJZGDuLnK/WXbEZBIc0exGQ==
+date-fns@~v2.0.0-beta.4:
+  version "2.0.0-beta.4"
+  resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.0.0-beta.4.tgz#3e1bf33a15da69481f81972c4a50aad762a81f2c"
+  integrity sha512-xekjYm7ZDBuzePM/GBodhi3hW3P8dd2RbuIOLBjet2E6EGFR82wHTTXCSGuDEoapqlDvsx88ymRsq85lbM7dDw==
 
 date-now@^0.1.4:
   version "0.1.4"
