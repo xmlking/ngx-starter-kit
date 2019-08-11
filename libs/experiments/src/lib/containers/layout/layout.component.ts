@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
+// TODO: https://svelte-grid.now.sh/
 @Component({
   selector: 'ngx-layout',
   templateUrl: './layout.component.html',
