@@ -117,7 +117,7 @@
     "@angular/pwa": "~0.803.0-next.1",
     "@angular/router": "~9.0.0-next.1",
     "@angular/service-worker": "~9.0.0-next.1",
-    "@fortawesome/angular-fontawesome": "^0.4.0",
+    "@fortawesome/angular-fontawesome": "^0.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.21",
     "@fortawesome/free-brands-svg-icons": "^5.10.1",
     "@fortawesome/free-solid-svg-icons": "^5.10.1",
