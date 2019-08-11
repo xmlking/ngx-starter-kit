@@ -4,14 +4,12 @@ import {
   Component,
   ContentChildren,
   ElementRef,
-  HostBinding,
-  Input,
   OnInit,
   QueryList,
   Renderer2,
   ViewEncapsulation,
 } from '@angular/core';
-import * as ImageComparison from './image-comparison';
+import { ImageComparison } from './image-comparison';
 
 @Component({
   selector: 'ngx-image-comparison',
