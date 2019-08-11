@@ -99,7 +99,7 @@ yarn global list
 # find out which packages need to be updated
 yarn global upgrade-interactive
 # set scss as default css processor
-ng config -g schematics.@nrwl/workspace:component.styleext scss
+ng config -g schematics.@nrwl/angular:component.styleext scss
 ng config -g cli.packageManager yarn
 # set scss as default styleext for ngx-formly
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
