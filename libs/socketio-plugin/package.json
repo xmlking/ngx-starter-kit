@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/socketio-plugin",
   "version": "0.0.2",
   "peerDependencies": {
-    "@angular/common": ">=8.2.1",
-    "@angular/core": ">=8.2.1"
+    "@angular/common": ">=8.2.2",
+    "@angular/core": ">=8.2.2"
   },
   "dependencies": {
     "@ngxs/store": ">=3.5.0",

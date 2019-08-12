@@ -2,7 +2,7 @@
   "name": "@ngx-starter-kit/svg-viewer",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=8.2.1",
-    "@angular/core": ">=8.2.1"
+    "@angular/common": ">=8.2.2",
+    "@angular/core": ">=8.2.2"
   }
 }
