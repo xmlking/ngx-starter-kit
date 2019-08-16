@@ -126,6 +126,12 @@ A curated list of awesome Angular resources
   > `{ enableTracing: true }`
   > Read [debugging router](https://dzone.com/articles/note-to-self-debugging-angular-4-routing)
 
+- How to Debug Angular apps in production without revealing source maps?
+
+  > Read [Debug Angular apps in production](https://blog.angularindepth.com/debug-angular-apps-in-production-without-revealing-source-maps-ab4a235edd85) <br/>
+  > attach local SourceMaps on laptop via Chrome dev tools
+  > ![Chrome dev tools](https://miro.medium.com/max/1400/1*r-z3m96e9rxdos3EDvvehg.gif)
+
 - How to open Angular Material Dialog via route link?
 
   > useful for sharing bookmarkable links. e.g., `/account/edit` `/account/add` > [Routing to Angular Material Dialogs](https://medium.com/ngconf/routing-to-angular-material-dialogs-c3fb7231c177)
