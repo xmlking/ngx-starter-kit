@@ -187,7 +187,7 @@
     "codelyzer": "^5.1.0",
     "loaders.css": "^0.1.2",
     "ng-packagr": "^5.4.3",
-    "rimraf": "^2.6.2",
+    "rimraf": "^3.0.0",
     "ts-loader": "^6.0.4",
     "ts-node": "~8.3.0",
     "tsconfig-paths": "^3.8.0",
