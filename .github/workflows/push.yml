@@ -1,0 +1,25 @@
+on: push
+name: Main
+jobs:
+  selectMasterBranch:
+    name: Select master branch
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Select master branch
+      uses: actions/bin/filter@master
+      with:
+        args: branch master
+    - name: Install dependencies
+      uses: actions/npm@master
+      with:
+        entrypoint: yarn
+        args: install
+    - name: Prebuild libraries
+      uses: actions/npm@master
+      with:
+        args: run prebuild
+    - name: Test
+      uses: actions/npm@master
+      with:
+        args: run test
