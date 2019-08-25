@@ -16,7 +16,7 @@ export class BarChartWidgetComponent implements AfterViewInit {
   @Input()
   options: BarChartWidgetOptions;
 
-  @ViewChild('canvas', { read: ElementRef })
+  @ViewChild('canvas', { read: ElementRef, static: true })
   canvas: ElementRef;
 
   chart: Chart;
@@ -26,7 +26,7 @@ export class BarChartWidgetComponent implements AfterViewInit {
   constructor() {}
 
   ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'bar',
       data: this.data,
       options: defaultsDeep(
@@ -56,7 +56,7 @@ export class BarChartWidgetComponent implements AfterViewInit {
         },
         defaultChartOptions,
       ),
-    });
+    } as ChartConfiguration);
   }
 
   reload() {

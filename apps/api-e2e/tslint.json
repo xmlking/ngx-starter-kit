@@ -1,7 +1,0 @@
-{
-  "extends": "../../tslint.json",
-  "rules": {},
-  "jsRules":{
-    "object-literal-sort-keys": false
-  }
-}

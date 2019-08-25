@@ -1,0 +1,152 @@
+# Default values for nodeapp.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+replicaCount: 1
+revisionHistoryLimit: 1
+
+image:
+  repository: nodeapp
+  tag: stable
+  pullPolicy: IfNotPresent
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 3000
+
+## Use either ingress or NodePort
+ingress:
+  enabled: false
+  annotations: {}
+    ## If you do want to specify ingress, uncomment the following
+    ## lines, adjust them as necessary, and remove the curly braces after 'ingress:'.
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: nodeapp.local
+      paths: [/]
+
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - nodeapp.local
+
+initContainers: {}
+## If you do want to specify initContainers, uncomment the following
+## lines, adjust them as necessary, and remove the curly braces after 'initContainers:'.
+#  - name: wait-for-postgresql
+#    image: alpine:3.8
+#    imagePullPolicy: IfNotPresent
+#    command:
+#      - sh
+#      - -c
+#      - |
+#        until printf "." && nc -z -w 2 ngxdb-postgresql 5432; do
+#            sleep 2;
+#        done;
+#
+#        echo 'PostgreSQL OK ✓'
+
+env: []
+## If you do want to specify env, uncomment the following
+## lines, adjust them as necessary, and remove the array braces after 'extraEnv:'.
+#  - name: TYPEORM_HOST
+#    value: ngxdb-postgresql
+#  - name: TYPEORM_PORT
+#    value: '5432'
+#  - name: TYPEORM_DATABASE
+#    value: postgres
+#  - name: TYPEORM_USERNAME
+#    value: postgres
+#  - name: TYPEORM_LOGGING
+#    value: 'false'
+
+envSecrets: []
+## If you do want to specify env from secrets, uncomment the following
+## lines, adjust them as necessary, and remove the array braces after 'extraSecrets:'.
+#  - name: TYPEORM_PASSWORD
+#    value: postgres321
+#  - name: EMAIL_AUTH_PASS
+#    value: auth_pass
+#  - name: VAPID_PRIVATE_KEY
+#    value: cwh2CYK5h_B_Gobnv8Ym9x61B3qFE2nTeb9BeiZbtMI
+
+resources: {}
+## We usually recommend not to specify default resources and to leave this as a conscious
+## choice for the user. This also increases chances charts run on environments with little
+## resources, such as Minikube. If you do want to specify resources, uncomment the following
+## lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+# limits:
+#   cpu: 200m
+#   memory: 256Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+livenessProbe:
+  path: /
+  initialDelaySeconds: 120
+  periodSeconds: 30
+readinessProbe:
+  path: /
+  initialDelaySeconds: 60
+  periodSeconds: 20
+
+securityContext: {}
+## We usually recommend to specify securityContext for containers
+## This increases chances charts run on restricted environments such as OpenShift.
+## If you do want to specify securityContext, uncomment the following
+## lines, adjust them as necessary, and remove the curly braces after 'securityContext:'.
+#  fsGroup: 65534
+#  runAsUser: 65534
+
+## Create HorizontalPodAutoscaler object.
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 2
+  metrics:
+    cpu:
+      targetAverageUtilization: 70
+    memory:
+      targetAverageUtilization: 70
+
+## Create NetworkPolicy resources.
+networkPolicy:
+  enabled: false
+## If you do want to specify egress, uncomment the following
+#  egress:
+#    - to:
+#        - ipBlock: # Allow nodeapp to talk to external servers
+#            cidr: 0.0.0.0/0
+#    - ports: # Allow nodeapp to talk with the api server
+#        - port: 6443
+#          protocol: TCP
+#        - port: 6443
+#          protocol: UDP
+
+## Enabled istio.
+istio:
+  enabled: false
+  weight: 100
+
+## Enabled prometheus.
+metrics:
+  enabled: false
+
+## Create GKE Managed Certificate resource.
+managedcertificate:
+  enabled: false
+#  host: api.mydomain.com
+
+## Add serviceAccount
+serviceAccountName:

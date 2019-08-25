@@ -30,7 +30,6 @@ export class AuthState {
     return state.profile;
   }
 
-
   @Action(Login)
   login({ getState }: StateContext<AuthStateModel>) {
     return this.authService.login();
@@ -59,5 +58,4 @@ export class AuthState {
     // this.authService.stopAutoRefreshToken();
     // this.zone.run(() => this.router.navigate(['/home']));
   }
-
 }

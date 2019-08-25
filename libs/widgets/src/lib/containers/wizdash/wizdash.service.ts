@@ -51,10 +51,9 @@ export class WizdashService {
   getSales() {
     /**
      * Example for real request
-
-     return this.http.get(this.url + '/sales').pipe(
-     map(response => this.toSalesChartData(response))
-     );
+     * return this.http.get(this.url + '/sales').pipe(
+     * map(response => this.toSalesChartData(response))
+     * );
      */
 
     // Simulating request from local data

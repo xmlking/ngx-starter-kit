@@ -1,13 +1,23 @@
-import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  Input,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { Gender, Profile } from '@ngx-starter-kit/models';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ProfileService } from '@ngx-starter-kit/core';
 
+// TODO: https://netbasal.com/how-to-implement-file-uploading-in-angular-reactive-forms-89a3fffa1a03
 @Component({
   selector: 'ngx-app-profile',
   templateUrl: './app-profile.component.html',
   styleUrls: ['./app-profile.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppProfileComponent implements OnInit, OnDestroy {
   readonly genderOptions = Gender;
@@ -17,7 +27,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
   editing = false;
   hasAvatar = true;
   formGroup: FormGroup;
-  @ViewChild('myPond') myPond: any;
+  @ViewChild('myPond', { static: true }) myPond: any;
   files = [];
   // files = [
   //   {
@@ -122,12 +132,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     styleButtonProcessItemPosition: 'right bottom',
   };
 
-  constructor(
-    private fb: FormBuilder,
-    private cd: ChangeDetectorRef,
-    private sanitizer: DomSanitizer,
-    private profileService: ProfileService,
-  ) {}
+  constructor(private fb: FormBuilder, private cd: ChangeDetectorRef, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     if (this.appProfile) {
@@ -246,12 +251,11 @@ export class AppProfileComponent implements OnInit, OnDestroy {
 
   deleteProfile() {}
 
-  ngOnDestroy() {
-  }
+  ngOnDestroy() {}
 
   emitUpload(event: Event) {
     // this.myPond.emit();
-    console.log('emitUpload', event)
+    console.log('emitUpload', event);
   }
 
   removeAll() {

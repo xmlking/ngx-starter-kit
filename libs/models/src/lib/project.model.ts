@@ -4,7 +4,7 @@ import { Labels } from './labels.model';
 import { Membership } from './membership.model';
 
 export interface Project {
-  id?: number | string;
+  id?: string;
   name: string;
   description: string;
   namespace: string;
@@ -20,7 +20,7 @@ export interface Project {
   resourceQuota: ResourceQuota;
   createdAt?: Date;
   updatedAt?: Date;
-  readonly clusterId?: number;
-  readonly createdById?:  number | string;
-  readonly updatedById?:  number | string;
+  readonly clusterId?: string;
+  readonly createdById?: string;
+  readonly updatedById?: string;
 }

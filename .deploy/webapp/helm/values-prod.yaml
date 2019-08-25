@@ -1,0 +1,39 @@
+test:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 2
+    memory: 2048Mi
+  requests:
+    cpu: 1
+    memory: 1024Mi
+
+image:
+  repository: xmlking/ngxweb
+  tag: 2.0.4-SNAPSHOT
+  pullPolicy: IfNotPresent
+
+securityContext:
+  runAsUser: 1001
+
+serverName: ngxweb.traefik.k8s
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.passHostHeader: "true"
+  hosts:
+    - host: ngxweb.traefik.k8s
+      paths: [/]
+  tls:
+    - secretName: keycloak-secrets-tls
+      hosts:
+        - ngxweb.traefik.k8s
+
+autoscaling:
+  enabled: true
+
+networkPolicy:
+  enabled: true

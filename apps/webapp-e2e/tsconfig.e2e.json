@@ -1,8 +1,0 @@
-{
-  "extends": "./tsconfig.json",
-  "compilerOptions": {
-    "sourceMap": false,
-    "outDir": "../../dist/apps/webapp-e2e/src"
-  },
-  "include": ["src/**/*.ts"]
-}

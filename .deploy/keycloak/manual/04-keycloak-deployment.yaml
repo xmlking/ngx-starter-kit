@@ -18,7 +18,7 @@ spec:
       terminationGracePeriodSeconds: 60
       initContainers:
         - name: wait-for-postgresql
-          image: busybox
+          image: alpine:3.8
           imagePullPolicy: IfNotPresent
           command:
             - sh
@@ -31,7 +31,7 @@ spec:
               echo 'PostgreSQL OK ✓'
       containers:
         - name: keycloak
-          image: jboss/keycloak:4.8.3.Final
+          image: jboss/keycloak:6.0.1
           imagePullPolicy: IfNotPresent
           ports:
             - name: http

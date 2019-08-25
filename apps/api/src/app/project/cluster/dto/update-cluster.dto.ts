@@ -10,7 +10,7 @@ export class UpdateClusterDto {
 
   @ApiModelPropertyOptional({ type: String, minLength: 10, maxLength: 256 })
   @IsOptional()
-  @IsUrl()
+  @IsUrl({ require_tld: false })
   @MinLength(10)
   @MaxLength(256)
   baseUrl?: string;

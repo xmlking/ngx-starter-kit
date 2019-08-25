@@ -31,7 +31,7 @@ export class MaskDirective implements OnInit, ControlValueAccessor {
   @Input() public displayValuePipe: PipeTransform;
   @Input() public focusedValuePipe: PipeTransform;
   @Input() private dataValue: string;
-  @Output() public onValueChange = new EventEmitter<IMaskEventArgs>();
+  @Output() public valueChange = new EventEmitter<IMaskEventArgs>();
   private get value() {
     return this.nativeElement.value;
   }
@@ -169,7 +169,7 @@ export class MaskDirective implements OnInit, ControlValueAccessor {
     this.dataValue = this.includeLiterals ? this.value : rawVal;
     this.onChangeCallback(this.dataValue);
 
-    this.onValueChange.emit({ rawValue: rawVal, formattedValue: this.value });
+    this.valueChange.emit({ rawValue: rawVal, formattedValue: this.value });
   }
 
   @HostListener('focus', ['$event.target.value'])
@@ -214,7 +214,7 @@ export class MaskDirective implements OnInit, ControlValueAccessor {
     this.dataValue = this.includeLiterals ? this.value : value;
     this.onChangeCallback(this.dataValue);
 
-    this.onValueChange.emit({ rawValue: value, formattedValue: this.value });
+    this.valueChange.emit({ rawValue: value, formattedValue: this.value });
   }
 
   public registerOnChange(fn: (_: any) => void) {

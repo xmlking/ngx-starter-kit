@@ -5,9 +5,9 @@ import { Subscription } from './subscription.entity';
 import { FindConditions, Repository } from 'typeorm';
 import { setVapidDetails } from 'web-push';
 import { environment as env } from '@env-api/environment';
-import { User } from '../../auth';
 import { FindOwnSubscriptionsDto } from './dto/find-own-subscriptions.dto';
 import { FindSubscriptionsDto } from './dto/find-subscriptions.dto';
+import { User } from '@ngx-starter-kit/models';
 
 @Injectable()
 export class SubscriptionService extends CrudService<Subscription> {

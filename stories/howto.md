@@ -105,12 +105,12 @@ git status
 git add -u
 # or stage all modified/deleted/ newly added files
 git add .
-# use git-cz interactive helper tool to commit
-npm run commit
 # or use following command if you install commitizen globally
-git cz
+git commit # git cz
 # or skip git hooks with
-git cz --no-verify
+git commit --no-verify # git cz --no-verify
+# or
+HUSKY_SKIP_HOOKS=1 git commit 
 ```
 
 > Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
@@ -297,6 +297,15 @@ NODE_DEBUG=request  npm run api:start:dev
 1. [NGXS with HMR Plugin](https://medium.com/ngxs/ngxs-with-hmr-plugin-c2004bcf576d)
 
 </details>
+
+<details>
+<summary>🏷 How to Build and Deploy a Cloud Native Node.js?</summary>
+
+1. Refer[1](https://cloudnativejs.wordpress.com/2019/03/19/how-to-build-and-deploy-a-cloud-native-node-js-app-in-15-minutes/)
+
+</details>
+
+
 
 Build Error: No name was provided for external module 'date-fns/esm' in output.globals – guessing 'esm'
 Solution: Add umdModuleIds to `ng-package.json`

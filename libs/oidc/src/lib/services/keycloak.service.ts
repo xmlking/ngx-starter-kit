@@ -21,8 +21,8 @@ export class KeycloakService extends AuthService {
     const segments = providerConfig.issuer.split('/');
     const realm = segments.pop() || segments.pop();
     segments.pop();
-    const url =  segments.join('/');
-    this.instance = Keycloak({...providerConfig, url, realm});
+    const url = segments.join('/');
+    this.instance = Keycloak({ ...providerConfig, url, realm });
     this.bindsKeycloakEvents();
     console.log('moduleConfig', this.moduleConfig);
     console.log('initConfig', this.initConfig);

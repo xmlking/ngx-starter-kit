@@ -1,5 +1,10 @@
 import { AfterViewInit, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatDialog, MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
 import { filter } from 'rxjs/operators';
@@ -22,10 +27,8 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   subject$: ReplaySubject<any[]> = new ReplaySubject<any[]>(1);
   data$: Observable<any[]> = this.subject$.asObservable();
   dataSource: MatTableDataSource<any> | null;
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
-  @ViewChild(MatSort)
-  sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   constructor(private dialog: MatDialog) {}
 
@@ -41,7 +44,7 @@ export class RecentSalesWidgetTableComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource();
 
-    this.data$.pipe(filter(Boolean)).subscribe(values => (this.dataSource.data = values));
+    this.data$.pipe(filter(Boolean)).subscribe((values: any[]) => (this.dataSource.data = values));
   }
 
   ngAfterViewInit() {

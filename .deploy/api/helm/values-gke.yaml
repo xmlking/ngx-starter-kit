@@ -1,0 +1,98 @@
+test:
+  enabled: false
+
+resources:
+  limits:
+    memory: "1024Mi"
+  requests:
+    memory: "512Mi"
+
+image:
+  repository: gcr.io/ngx-starter-kit/ngxapi
+  tag: 2.0.4-SNAPSHOT
+  pullPolicy: IfNotPresent
+
+securityContext:
+  fsGroup: 65534
+  runAsUser: 65534
+
+initContainers:
+  - name: wait-for-postgresql
+    image: gcr.io/google-containers/alpine-with-bash:1.0
+    imagePullPolicy: IfNotPresent
+    command:
+      - sh
+      - -c
+      - |
+        until printf "." && nc -z -w 2 10.141.176.3 5432; do
+            sleep 2;
+        done;
+
+        echo 'PostgreSQL OK ✓'
+
+livenessProbe:
+  path: /live
+  initialDelaySeconds: 180
+  periodSeconds: 60
+  timeoutSeconds: 20
+readinessProbe:
+  path: /ready
+  initialDelaySeconds: 120
+  periodSeconds: 60
+
+env:
+  - name: NODE_TLS_REJECT_UNAUTHORIZED
+    value: '0'
+  - name: DOMAIN_URL
+    value: 'https://api.kashmora.com'
+  - name: TYPEORM_HOST
+    value: '10.141.176.3'
+  - name: TYPEORM_PORT
+    value: '5432'
+  - name: TYPEORM_DATABASE
+    value: postgres
+  - name: TYPEORM_USERNAME
+    value: postgres
+  - name: TYPEORM_LOGGING
+    value: 'false'
+  - name: TYPEORM_SYNCHRONIZE
+    value: 'true'
+  - name: OIDC_ISSUER_EXTERNAL_URL
+    value: 'https://keycloak.kashmora.com/auth/realms/ngx'
+  - name: OIDC_ISSUER_INTERNAL_URL
+    value: 'http://keycloak-headless:8080/auth/realms/ngx'
+  - name: OIDC_CLIENT_ID
+    value: ngxapi
+  - name: EMAIL_HOST
+    value: mail.google.com
+  - name: EMAIL_PORT
+    value: '25'
+  - name: EMAIL_SECURE
+    value: 'false'
+  - name: EMAIL_AUTH_USER
+    value: auth_user
+  - name: EMAIL_FROM
+    value: '"sumo demo" <sumo@demo.com>'
+  - name: VAPID_PUBLIC_KEY
+    value: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'
+
+service:
+  type: NodePort
+  nodePort: 32050
+
+# make sure networking.gke.io/managed-certificates ===  nodeapp.fullname e.g.,  `ngxapi-nodeapp`
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
+    networking.gke.io/managed-certificates: ngxapi-nodeapp
+    kubernetes.io/ingress.allow-http: "false"
+  hosts:
+    - host: api.kashmora.com
+      paths: [/*]
+
+managedcertificate:
+  enabled: true
+  host: api.kashmora.com
+
+serviceAccountName: kubeview

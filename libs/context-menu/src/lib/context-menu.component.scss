@@ -9,7 +9,7 @@
     0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
-:host /deep/ button {
+:host ::ng-deep button {
   display: block;
   width: 100%;
   text-align: left;

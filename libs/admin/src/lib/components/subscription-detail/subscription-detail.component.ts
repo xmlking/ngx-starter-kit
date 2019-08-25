@@ -21,8 +21,8 @@ export class SubscriptionDetailComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-      this.subscriptionService.getById(params['id']).subscribe(data => {
-        this.animationTrigger$.next(params['id']);
+      this.subscriptionService.getById(params.id).subscribe(data => {
+        this.animationTrigger$.next(params.id);
         this.subscription = data;
       });
     });

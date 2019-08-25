@@ -1,5 +1,5 @@
 import { Column, CreateDateColumn, Entity, Index, UpdateDateColumn, VersionColumn } from 'typeorm';
-import { Base } from '../../core/entities/base.entity';
+import { Base } from '../../core/entities/base';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 

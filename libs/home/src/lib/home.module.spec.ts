@@ -1,7 +1,14 @@
+import { async, TestBed } from '@angular/core/testing';
 import { HomeModule } from './home.module';
 
 describe('HomeModule', () => {
-  it('should work', () => {
-    expect(new HomeModule()).toBeDefined();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [HomeModule],
+    }).compileComponents();
+  }));
+
+  it('should create', () => {
+    expect(HomeModule).toBeDefined();
   });
 });

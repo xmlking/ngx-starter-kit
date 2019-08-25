@@ -1,4 +1,3 @@
-import { CustomValue } from '@nestjs/core/injector/module';
 import { DynamicModule, Module, Global } from '@nestjs/common';
 import { EmailService } from './email.service';
 
@@ -23,7 +22,7 @@ export class EmailCoreModule {
   static forRoot(userConfig: EmailModuleOptions): DynamicModule {
     const config: EmailModuleOptions = { ...defaultConfig, ...userConfig };
 
-    const EmailConfig: CustomValue = {
+    const EmailConfig = {
       name: 'EMAIL_CONFIG',
       provide: 'EMAIL_CONFIG',
       useValue: {

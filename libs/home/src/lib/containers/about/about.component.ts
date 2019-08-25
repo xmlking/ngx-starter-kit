@@ -4,6 +4,7 @@ import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { WINDOW } from '@ngx-starter-kit/core';
+import { MatPaginator } from '@angular/material';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 
@@ -15,17 +16,16 @@ declare var Trianglify: any;
 })
 export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
   routeAnimationsElements = ROUTE_ANIMATIONS_ELEMENTS;
-  @ViewChild('trianglify')
-  trianglifyCanvasRef: ElementRef;
+  @ViewChild('trianglify', { static: true }) trianglifyCanvasRef: ElementRef;
   color = 'YlGnBu'; // 'random'
-  private _sub: Subscription;
+  private sub: Subscription;
   constructor(private elementRef: ElementRef, @Inject(WINDOW) private window: Window) {}
 
   ngOnInit() {
     fromEvent<Event>(this.window, 'resize')
       .pipe(
         debounceTime(100),
-        map(event => [(<Window>event.target).innerWidth, (<Window>event.target).innerHeight]),
+        map(event => [(event.target as Window).innerWidth, (event.target as Window).innerHeight]),
         distinctUntilChanged(),
         untilDestroy(this),
       )
@@ -61,8 +61,8 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
       color_space: 'lab',
       color_function: false,
       stroke_width: 1.51,
-      width: width,
-      height: height,
+      width,
+      height,
       seed: Math.random(),
     });
     pattern.canvas(this.trianglifyCanvasRef.nativeElement);

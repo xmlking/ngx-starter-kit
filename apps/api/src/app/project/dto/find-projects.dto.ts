@@ -1,10 +1,19 @@
 import { OrderType, PaginationParams } from '../../core';
-import { User } from '../../auth';
 import { Project } from '../project.entity';
-import { ArrayUnique, IsAscii, IsBoolean, IsOptional, IsString, Length, Matches, ValidateNested } from 'class-validator';
+import {
+  ArrayUnique,
+  IsAscii,
+  IsBoolean,
+  IsOptional,
+  IsString,
+  Length,
+  Matches,
+  ValidateNested,
+} from 'class-validator';
 import { ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Labels } from './labels.dto';
 import { Transform, Type } from 'class-transformer';
+import { User } from '../../user';
 
 export class FindProjectsDto extends PaginationParams<Project> {
   @ApiModelPropertyOptional({ type: String })
@@ -25,7 +34,7 @@ export class FindProjectsDto extends PaginationParams<Project> {
   @IsOptional()
   @ArrayUnique()
   @IsString({ each: true })
-  @Transform(value => value ? value.split(',') : [])
+  @Transform(value => (value ? value.split(',') : []))
   readonly groups?: string[];
 
   @ApiModelPropertyOptional({ type: String })
@@ -49,11 +58,10 @@ export class FindProjectsDto extends PaginationParams<Project> {
   readonly labels?: Labels;
 
   @ApiModelPropertyOptional({ type: Boolean, default: true })
-  @Transform((val: string) => (  val === 'true'  ))
+  @Transform((val: string) => val === 'true')
   @IsOptional()
   @IsBoolean()
   readonly isActive = true;
-
 
   @ApiModelPropertyOptional({ type: String, enum: ['ASC', 'DESC'] })
   @IsOptional()

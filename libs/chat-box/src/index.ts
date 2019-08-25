@@ -1,1 +1,1 @@
-export { ChatBoxModule } from './lib/chat-box.module';
+export * from './lib/chat-box.module';

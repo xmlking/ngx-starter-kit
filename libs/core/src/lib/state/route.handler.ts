@@ -14,7 +14,6 @@ export class RouteHandler {
   constructor(
     private router: Router,
     private actions$: Actions,
-    private store: Store,
     private analytics: GoogleAnalyticsService,
     private pageTitle: PageTitleService,
   ) {

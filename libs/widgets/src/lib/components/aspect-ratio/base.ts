@@ -10,12 +10,11 @@ import { MediaMarshaller, MediaQuerySubscriber, StyleBuilder, StyleDefinition, S
 import { buildLayoutCSS } from './layout-validator';
 
 export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
-
   /** MediaQuery Activation Tracker */
-  protected _mqActivation?: any; // ResponsiveActivation;
+  protected mqActivation?: any; // ResponsiveActivation;
 
   /** Dictionary of input keys with associated values */
-  protected _inputMap: {[key: string]: any} = {};
+  protected inputMap: { [key: string]: any } = {};
 
   /**
    * Has the `ngOnInit()` method fired
@@ -23,17 +22,17 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    * Used to allow *ngFor tasks to finish and support queries like
    * getComputedStyle() during ngOnInit()
    */
-  protected _hasInitialized = false;
+  protected hasInitializedPrivate = false;
 
   /** Cache map for style computation */
-  protected _styleCache: Map<string, StyleDefinition> = new Map();
+  protected styleCache: Map<string, StyleDefinition> = new Map();
 
   /**
    * Imperatively determine the current activated [input] value;
    * if called before ngOnInit() this will return `undefined`
    */
   get activatedValue(): string | number {
-    return this._mqActivation ? this._mqActivation.activatedInput : undefined;
+    return this.mqActivation ? this.mqActivation.activatedInput : undefined;
   }
 
   /**
@@ -44,32 +43,34 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    *       other input values will NOT be affected.
    */
   set activatedValue(value: string | number) {
-    let key = 'baseKey', previousVal;
+    let key = 'baseKey';
+    let previousVal;
 
-    if (this._mqActivation) {
-      key = this._mqActivation.activatedInputKey;
-      previousVal = this._inputMap[key];
-      this._inputMap[key] = value;
+    if (this.mqActivation) {
+      key = this.mqActivation.activatedInputKey;
+      previousVal = this.inputMap[key];
+      this.inputMap[key] = value;
     }
     const change = new SimpleChange(previousVal, value, false);
 
-    this.ngOnChanges({[key]: change} as SimpleChanges);
+    this.ngOnChanges({ [key]: change } as SimpleChanges);
   }
 
-  protected constructor(protected _mediaMarshaller: MediaMarshaller,
-                        protected _elementRef: ElementRef,
-                        protected _styler: StyleUtils,
-                        protected _styleBuilder: StyleBuilder) {
-  }
+  protected constructor(
+    protected mediaMarshaller: MediaMarshaller,
+    protected elementRef: ElementRef,
+    protected styler: StyleUtils,
+    protected styleBuilder: StyleBuilder,
+  ) {}
 
   /**
    * Does this directive have 1 or more responsive keys defined
    * Note: we exclude the 'baseKey' key (which is NOT considered responsive)
    */
   hasResponsiveAPI(baseKey: string) {
-    const totalKeys = Object.keys(this._inputMap).length;
-    const baseValue = this._inputMap[baseKey];
-    return (totalKeys - (!!baseValue ? 1 : 0)) > 0;
+    const totalKeys = Object.keys(this.inputMap).length;
+    const baseValue = this.inputMap[baseKey];
+    return totalKeys - (!!baseValue ? 1 : 0) > 0;
   }
 
   // *********************************************
@@ -81,7 +82,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    * querying such as computed Display style
    */
   ngOnInit() {
-    this._hasInitialized = true;
+    this.hasInitializedPrivate = true;
   }
 
   ngOnChanges(change: SimpleChanges) {
@@ -89,10 +90,10 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnDestroy() {
-    if (this._mqActivation) {
-      this._mqActivation.destroy();
+    if (this.mqActivation) {
+      this.mqActivation.destroy();
     }
-    delete this._mediaMarshaller;
+    delete this.mediaMarshaller;
   }
 
   // *********************************************
@@ -101,24 +102,25 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
 
   /** Access to host element's parent DOM node */
   protected get parentElement(): any {
-    return this._elementRef.nativeElement.parentNode;
+    return this.elementRef.nativeElement.parentNode;
   }
 
   protected get nativeElement(): HTMLElement {
-    return this._elementRef.nativeElement;
+    return this.elementRef.nativeElement;
   }
 
   /** Add styles to the element using predefined style builder */
-  protected addStyles(input: string, parent?: Object) {
-    const builder = this._styleBuilder!;
+  protected addStyles(input: string, parent?: object) {
+    // const builder = this.styleBuilder!;
+    const builder = this.styleBuilder;
     const useCache = builder.shouldCache;
 
-    let genStyles: StyleDefinition | undefined = this._styleCache.get(input);
+    let genStyles: StyleDefinition | undefined = this.styleCache.get(input);
 
     if (!genStyles || !useCache) {
       genStyles = builder.buildStyles(input, parent);
       if (useCache) {
-        this._styleCache.set(input, genStyles);
+        this.styleCache.set(input, genStyles);
       }
     }
 
@@ -128,7 +130,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
 
   /** Access the current value (if any) of the @Input property */
   protected _queryInput(key: string) {
-    return this._inputMap[key];
+    return this.inputMap[key];
   }
 
   /**
@@ -137,8 +139,8 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    */
   protected _getDefaultVal(key: string, fallbackVal: any): string | boolean {
     const val = this._queryInput(key);
-    const hasDefaultVal = (val !== undefined && val !== null);
-    return (hasDefaultVal && val !== '') ? val : fallbackVal;
+    const hasDefaultVal = val !== undefined && val !== null;
+    return hasDefaultVal && val !== '' ? val : fallbackVal;
   }
 
   /**
@@ -148,13 +150,12 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    */
   protected _getDisplayStyle(source: HTMLElement = this.nativeElement): string {
     const query = 'display';
-    return this._styler.lookupStyle(source, query);
+    return this.styler.lookupStyle(source, query);
   }
 
   /** Quick accessor to raw attribute value on the target DOM element */
-  protected _getAttributeValue(attribute: string,
-                               source: HTMLElement = this.nativeElement): string {
-    return this._styler.lookupAttributeValue(source, attribute);
+  protected _getAttributeValue(attribute: string, source: HTMLElement = this.nativeElement): string {
+    return this.styler.lookupAttributeValue(source, attribute);
   }
 
   /**
@@ -165,12 +166,12 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    */
   protected _getFlexFlowDirection(target: HTMLElement, addIfMissing = false): string {
     if (target) {
-      const [value, hasInlineValue] = this._styler.getFlowDirection(target);
+      const [value, hasInlineValue] = this.styler.getFlowDirection(target);
 
       if (!hasInlineValue && addIfMissing) {
         const style = buildLayoutCSS(value);
         const elements = [target];
-        this._styler.applyStyleToElements(style, elements);
+        this.styler.applyStyleToElements(style, elements);
       }
 
       return value.trim();
@@ -180,15 +181,17 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   /** Applies styles given via string pair or object map to the directive element */
-  protected _applyStyleToElement(style: StyleDefinition,
-                                 value?: string | number,
-                                 element: HTMLElement = this.nativeElement) {
-    this._styler.applyStyleToElement(element, style, value);
+  protected _applyStyleToElement(
+    style: StyleDefinition,
+    value?: string | number,
+    element: HTMLElement = this.nativeElement,
+  ) {
+    this.styler.applyStyleToElement(element, style, value);
   }
 
   /** Applies styles given via string pair or object map to the directive's element */
   protected _applyStyleToElements(style: StyleDefinition, elements: HTMLElement[]) {
-    this._styler.applyStyleToElements(style, elements);
+    this.styler.applyStyleToElements(style, elements);
   }
 
   /**
@@ -198,11 +201,13 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   protected _cacheInput(key?: string, source?: any) {
     if (typeof source === 'object') {
       for (const prop in source) {
-        this._inputMap[prop] = source[prop];
+        if (prop) {
+          this.inputMap[prop] = source[prop];
+        }
       }
     } else {
       if (!!key) {
-        this._inputMap[key] = source;
+        this.inputMap[key] = source;
       }
     }
   }
@@ -212,15 +217,14 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
    *  and intelligent lookup of the directive's property value that corresponds to that mediaQuery
    *  (or closest match).
    */
-  protected _listenForMediaQueryChanges(key: string,
-                                        defaultValue: any,
-                                        onMediaQueryChange: MediaQuerySubscriber) { // ResponsiveActivation {
-    // if (!this._mqActivation) {
-    //   let keyOptions = new KeyOptions(key, defaultValue, this._inputMap);
-    //   this._mqActivation = new ResponsiveActivation(keyOptions, this._mediaMonitor,
+  protected _listenForMediaQueryChanges(key: string, defaultValue: any, onMediaQueryChange: MediaQuerySubscriber) {
+    // ResponsiveActivation {
+    // if (!this.mqActivation) {
+    //   let keyOptions = new KeyOptions(key, defaultValue, this.inputMap);
+    //   this.mqActivation = new ResponsiveActivation(keyOptions, this._mediaMonitor,
     //     (change) => onMediaQueryChange(change));
     // }
-    // return this._mqActivation;
+    // return this.mqActivation;
   }
 
   /** Special accessor to query for all child 'element' nodes regardless of type, class, etc */
@@ -236,6 +240,6 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   }
 
   protected get hasInitialized() {
-    return this._hasInitialized;
+    return this.hasInitializedPrivate;
   }
 }

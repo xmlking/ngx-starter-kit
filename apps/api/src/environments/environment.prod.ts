@@ -5,7 +5,7 @@ export const environment: IEnvironment = {
   envName: 'prod',
 
   env: {
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+    NODE_TLS_REJECT_UNAUTHORIZED: '0',
   },
 
   server: {
@@ -24,13 +24,14 @@ export const environment: IEnvironment = {
     password: process.env.TYPEORM_PASSWORD || 'postgres321',
     keepConnectionAlive: true,
     logging: process.env.TYPEORM_LOGGING ? JSON.parse(process.env.TYPEORM_LOGGING) : false,
-    synchronize: false,
+    synchronize: process.env.TYPEORM_SYNCHRONIZE ? JSON.parse(process.env.TYPEORM_SYNCHRONIZE) : false,
+    uuidExtension: 'pgcrypto',
   },
 
   auth: {
-    issuer:
-      process.env.OIDC_ISSUER_URL || 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
     clientId: process.env.OIDC_CLIENT_ID || 'ngxapi',
+    issuerExternalUrl: process.env.OIDC_ISSUER_EXTERNAL_URL || 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    issuerInternalUrl: process.env.OIDC_ISSUER_INTERNAL_URL || 'http://keycloak-headless:8080/auth/realms/ngx',
   },
 
   email: {

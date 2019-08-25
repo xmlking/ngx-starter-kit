@@ -24,7 +24,7 @@ code {
   font-size: 100%;
 }
 
-// These styles are for controlling SVGs without using the /deep/ selector
+// These styles are for controlling SVGs without using the ::ng-deep selector
 
 .default-component-category-list-card-image svg {
   width: 100%;

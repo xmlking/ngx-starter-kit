@@ -20,8 +20,8 @@ enum ShowStatus {
   animations: [scrollFabAnimation],
 })
 export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
-  private _stateSubject = new BehaviorSubject<string>(ShowStatus.hide);
-  state$ = this._stateSubject.asObservable();
+  private stateSubject = new BehaviorSubject<string>(ShowStatus.hide);
+  state$ = this.stateSubject.asObservable();
 
   pageScrollInstance: PageScrollInstance;
 
@@ -34,7 +34,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
   ngAfterViewInit() {
     this.pageScrollInstance = this.pageScrollService.create({
       document: this.document,
-      scrollTarget: '#top'
+      scrollTarget: '#top',
     });
 
     const scroll$ = fromEvent(this.window, 'scroll').pipe(
@@ -49,7 +49,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
       }),
       distinctUntilChanged(),
       share(),
-      tap(state => this._stateSubject.next(state)),
+      tap(state => this.stateSubject.next(state)),
       untilDestroy(this),
     );
     scroll$.subscribe();

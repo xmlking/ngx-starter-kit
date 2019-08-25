@@ -11,7 +11,7 @@ import {
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, Subject, Subscription } from 'rxjs';
 
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { MenuItem, MenuService, SidenavState } from '@ngx-starter-kit/navigator';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { WINDOW } from '@ngx-starter-kit/core';
@@ -26,7 +26,7 @@ import { WINDOW } from '@ngx-starter-kit/core';
   encapsulation: ViewEncapsulation.None,
 })
 export class SidenavComponent implements OnInit, OnDestroy {
-  private _destroyed$ = new Subject<void>();
+  private destroyed$ = new Subject<void>();
 
   items: MenuItem[];
 
@@ -64,9 +64,9 @@ export class SidenavComponent implements OnInit, OnDestroy {
 
     this.menuService.isIconSidenav = !this.menuService.isIconSidenav;
 
-    const snackBarConfig: MatSnackBarConfig = <MatSnackBarConfig>{
+    const snackBarConfig: MatSnackBarConfig = {
       duration: 10000,
-    };
+    } as MatSnackBarConfig;
 
     if (this.menuService.isIconSidenav) {
       this.snackBar.open(

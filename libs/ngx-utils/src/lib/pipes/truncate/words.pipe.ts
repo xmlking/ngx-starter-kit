@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'words',
 })
 export class WordsPipe implements PipeTransform {
-  transform(value: string, limit: number = 40, trail: String = '…'): string {
+  transform(value: string, limit: number = 40, trail: string = '…'): string {
     let result = value || '';
 
     if (value) {

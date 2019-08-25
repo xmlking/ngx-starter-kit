@@ -20,8 +20,7 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
   @Input()
   maxLength = 30;
 
-  @ViewChild('canvas', { read: ElementRef })
-  canvas: ElementRef;
+  @ViewChild('canvas', { read: ElementRef, static: true }) canvas: ElementRef;
   chart: Chart;
 
   currentUsers: number;
@@ -29,7 +28,7 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
   constructor(private cd: ChangeDetectorRef) {}
 
   ngAfterViewInit() {
-    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), <ChartConfiguration>{
+    this.chart = new Chart(this.canvas.nativeElement.getContext('2d'), {
       type: 'bar',
       data: {
         labels: [],
@@ -51,7 +50,7 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
         } as ChartOptions,
         defaultChartOptions,
       ),
-    });
+    } as ChartConfiguration);
 
     const first = true;
     this.data$.subscribe(newData => {

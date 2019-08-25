@@ -1,13 +1,14 @@
-API
-===
+# API
+
 Build and Deploy NgxApi
 
 ### Build
+
 ```bash
-# build
-VERSION=1.5.0-SNAPSHOT
+# build, optionally use `--no-cache`
+export VERSION=2.0.4-SNAPSHOT
+export DOCKER_BUILDKIT=1
 docker build \
---no-cache \
 --build-arg VERSION=$VERSION \
 --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') \
 -t xmlking/ngxapi -f .deploy/api/Dockerfile .
@@ -25,10 +26,18 @@ docker image prune -f
 ```
 
 ### Run
+
 ```bash
+# start ngxapi pod in interative mode.  Use 'Ctrl+C' to terminate pod and delete temp service.
+kubectl run -it --rm ngxapi  --port 3000 --hostport=3000 --expose=true --image=xmlking/ngxapi:$VERSION --restart=Never --env TYPEORM_HOST=ngxdb-postgresql
+kubectl port-forward ngxapi 3000:3000
+#kubectl exec -it ngxapi /bin/busybox sh
+kubectl exec -it ngxapi -- /bin/sh
+
+# if you are using `docker-compose` instead of `Kubernetes`
 docker-compose up api
 # docker run -it --env TYPEORM_HOST=postgres -p 3000:3000  xmlking/ngxapi
-# to see ditectory content:
+# to see ditectory content: (as we are using scratch container, we dont have any unix commands to interact with)
 docker-compose exec api node
 docker-compose exec api node -e 'console.log(__dirname);'
 docker-compose exec api node -e 'const fs = require('fs'); fs.readdirSync('.').forEach(file => { console.log(file);})
@@ -47,10 +56,10 @@ curl -v -X GET \
 
 ### Deploy
 
-Follow instructions from [manual](./manual) or [helm](./helm) or [OpenShift](./openshift)
+1.  Create `kubeview` Service Account
 
-### Test API
 ```bash
-curl -X  GET "https://ngxapi.traefik.k8s/" -k -H  "accept: application/json"
-curl -X  GET "https://ngxapi.traefik.k8s/echo?sumo=demo" -k -H  "accept: application/json"
+kubectl create -f kubeview-service-account.yaml
 ```
+
+2. Follow instructions from [manual](./manual) or [helm](./helm)

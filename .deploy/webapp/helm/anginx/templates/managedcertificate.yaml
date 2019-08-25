@@ -1,0 +1,18 @@
+{{- if .Values.managedcertificate.enabled -}}
+apiVersion: networking.gke.io/v1beta1
+kind: ManagedCertificate
+metadata:
+  name: {{ include "anginx.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "anginx.name" . }}
+    helm.sh/chart: {{ include "anginx.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+  {{- with .Values.managedcertificate.annotations }}
+  annotations:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+spec:
+  domains:
+    -  {{ .Values.managedcertificate.host }}
+{{- end }}

@@ -13,7 +13,8 @@ Deploying **KeyCloak** on Kubernetes
 ## Deploy
 
 ### TLS Certs
-> first time only: generate a self-signed certificate to configure Ingress 
+
+> first time only: generate a self-signed certificate to configure Ingress
 
 ```bash
 cd .deploy/keycloak/manual
@@ -32,7 +33,6 @@ kubectl create secret tls keycloak-secrets-tls \
 # apply tls secret
 kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 ```
-
 
 ### Deploying to Kubernetes
 
@@ -84,7 +84,7 @@ kubectl create -f 05-keycloak-service-nodeport.yaml
 kubectl get svc keycloak -o wide
 kubectl get ep
 
-# create network policy (if your k8s enabled with network policies) 
+# create network policy (if your k8s enabled with network policies)
 kubectl create -f 06-keycloak-network-policy.yaml
 kubectl create -f 06-keycloak-helm-network-policy.yaml
 # test network policy
@@ -95,6 +95,9 @@ open http://node2:32080
 open http://node3:32080
 
 kubectl get all,configmap,secret,ingress -l app=keycloak
+
+# Scale to zero
+kubectl scale deploy keycloak --replicas=0
 ```
 
 #### Delete Keycloak Deployment

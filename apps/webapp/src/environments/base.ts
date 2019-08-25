@@ -1,5 +1,4 @@
-// src/environments/base.ts
-const packageJson = require('../../../../package.json');
+import * as packageJson from '../../../../package.json';
 
 const base = document.querySelector('base');
 

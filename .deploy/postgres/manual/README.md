@@ -58,6 +58,9 @@ kubectl get svc -lapp=postgresql
 kubectl get ep
 
 kubectl get all,configmap,secret -l app=postgresql
+
+# Scale to zero
+kubectl scale statefulset ngxdb-postgresql --replicas=0
 ```
 
 ### Connect to PostgreSQL
@@ -76,7 +79,6 @@ kubectl delete configmap postgres
 kubectl delete secret postgres
 kubectl delete persistentvolumeclaim postgres
 ```
-
 
 #### TODO
 

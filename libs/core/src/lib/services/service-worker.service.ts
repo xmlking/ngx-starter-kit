@@ -2,7 +2,7 @@ import { Inject, Injectable } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { environment } from '@env/environment';
 import { WINDOW } from './window.token';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 /** @dynamic */
 @Injectable({

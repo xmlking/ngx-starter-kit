@@ -1,6 +1,7 @@
 //https://github.com/angular/material2/blob/master/guides/typography.md
 @import '~@angular/material/theming';
 
+/* prettier-ignore */
 $custom-typography: mat-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif'
   //$display-4:     mat-typography-level(112px, 112px, 300),
@@ -15,5 +16,5 @@ $custom-typography: mat-typography-config(
   //$body-1:        mat-typography-level(14px, 20px, 300),
   //$caption:       mat-typography-level(12px, 20px, 300),
   //$button:        mat-typography-level(14px, 14px, 300),
-  //$input:         mat-typography-level(16px, 1.125, 300),
+  //$input:         mat-typography-level(16px, 1.125, 300)
 );

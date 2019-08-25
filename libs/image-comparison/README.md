@@ -21,6 +21,10 @@ npm i @ngx-starter-kit/image-comparison
 
 ### Publish
 
+## Running unit tests
+
+Run `ng test app-confirm` to execute the unit tests.
+
 ```bash
 # build
 ng build image-comparison

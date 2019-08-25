@@ -1,7 +1,14 @@
+import { async, TestBed } from '@angular/core/testing';
 import { WidgetsModule } from './widgets.module';
 
 describe('WidgetsModule', () => {
-  it('should work', () => {
-    expect(new WidgetsModule()).toBeDefined();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [WidgetsModule],
+    }).compileComponents();
+  }));
+
+  it('should create', () => {
+    expect(WidgetsModule).toBeDefined();
   });
 });

@@ -2,7 +2,7 @@
   font-weight: bold;
 }
 
-:host /deep/ {
+:host ::ng-deep {
   /*
    * FilePond Custom Styles
    */

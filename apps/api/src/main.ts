@@ -6,6 +6,7 @@ import { ConfigService } from './app/config';
 import * as helmet from 'helmet';
 import { join } from 'path';
 import { environment as env } from '@env-api/environment';
+import { useContainer } from 'class-validator';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -21,8 +22,13 @@ async function bootstrap() {
     }),
   );
 
-  // app.useStaticAssets(join(__dirname, './../public')); // for uploaded images
+  // Link DI container to class-validator
+  useContainer(app.select(AppModule), { fallbackOnErrors: true });
 
+  // for uploaded images
+  // app.useStaticAssets(join(__dirname, './../public'));
+
+  const openIdConf = await config.getOpenIdConfiguration();
   const options = new DocumentBuilder()
     .setTitle('Sumo API Docs')
     .setDescription('Sumo API for Ngx Starter Kit')
@@ -31,11 +37,13 @@ async function bootstrap() {
     .setSchemes(config.isProd() ? 'https' : 'http')
     .addOAuth2(
       'implicit',
-      `${env.auth.issuer}/protocol/openid-connect/auth`,
-      `${env.auth.issuer}/protocol/openid-connect/token`,
+      openIdConf.authorization_endpoint,
+      openIdConf.token_endpoint,
+      // {openid: 'openid', profile: 'profile', email: 'email'}
     )
     .build();
   const document = SwaggerModule.createDocument(app, options);
+  const { additionalQueryStringParams } = config.getAuth();
   SwaggerModule.setup('docs', app, document, {
     swaggerOptions: {
       oauth2RedirectUrl: `${env.server.domainUrl}/docs/oauth2-redirect.html`,
@@ -43,10 +51,13 @@ async function bootstrap() {
         clientId: env.auth.clientId,
         appName: 'Sumo API',
         // scopeSeparator: ' ',
-        // additionalQueryStringParams: {audience: env.oidc.audience},
+        additionalQueryStringParams,
       },
     },
   });
+
+  // Starts listening to shutdown hooks
+  app.enableShutdownHooks();
 
   await app.listen(env.server.port || 3000, env.server.host || '0.0.0.0');
 }

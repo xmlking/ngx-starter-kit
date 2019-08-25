@@ -2,7 +2,13 @@ import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { NgxsModule, Store } from '@ngxs/store';
-import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from '@xmlking/angular-oauth2-oidc-all';
+import {
+  JwksValidationHandler,
+  NullValidationHandler,
+  OAuthModule,
+  OAuthService,
+  ValidationHandler,
+} from 'angular-oauth2-oidc';
 
 import { environment } from '@env/environment';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -17,17 +23,15 @@ import { AuthHandler } from './auth.handler';
 import { initializeAuth } from './oauth.init';
 import { LoginComponent } from './components/login/login.component';
 
-import {
-  MatIconModule,
-  MatButtonModule,
-  MatCardModule,
-  MatCheckboxModule,
-  MatDialogModule,
-  MatInputModule,
-  MatFormFieldModule,
-  MatToolbarModule,
-  MatTooltipModule,
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const matModules = [
   MatIconModule,
@@ -59,7 +63,14 @@ const matModules = [
   ],
   declarations: [LoginComponent],
   entryComponents: [LoginComponent],
-  providers: [ROPCService, AuthService, AuthGuard, { provide: ValidationHandler, useClass: JwksValidationHandler }],
+  providers: [
+    ROPCService,
+    AuthService,
+    AuthGuard,
+    { provide: ValidationHandler, useClass: JwksValidationHandler },
+    // NOTE: for CodeFlow use NullValidationHandler
+    // { provide: ValidationHandler, useClass: NullValidationHandler },
+  ],
 })
 export class AuthModule {
   static forRoot(): ModuleWithProviders {

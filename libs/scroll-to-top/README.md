@@ -8,6 +8,10 @@ npm i @ngx-starter-kit/scroll-to-top
 
 ### Usage
 
+## Running unit tests
+
+Run `ng test scroll-to-top` to execute the unit tests.
+
 ### Publish
 
 ```bash

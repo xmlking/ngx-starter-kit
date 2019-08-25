@@ -1,7 +1,8 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { Navigate } from '@ngxs/router-plugin';
-import { MatDialog, MatSnackBar } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { throwError } from 'rxjs';
 import { catchError, concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
 import { formatDistance } from 'date-fns/esm';
@@ -26,8 +27,8 @@ import { NotificationEditComponent } from '../../components/notification-edit/no
   ],
 })
 export class NotificationsComponent extends EntitiesComponent<AppNotification, NotificationService> {
-  @ViewChild('send') sendTpl: TemplateRef<any>;
-  // @ViewChild('editDelete') editDeleteTpl: TemplateRef<any>;
+  @ViewChild('send', { static: true }) sendTpl: TemplateRef<any>;
+  // @ViewChild('editDelete', {static: true}) editDeleteTpl: TemplateRef<any>;
   columns: EntityColumnDef<AppNotification>[];
 
   // optional
@@ -142,7 +143,7 @@ export class NotificationsComponent extends EntitiesComponent<AppNotification, N
     const dialogRef = this.dialog.open(this.formRef, {
       width: '720px',
       disableClose: true,
-      data: { title: title, payload: entity },
+      data: { title, payload: entity },
     });
 
     dialogRef

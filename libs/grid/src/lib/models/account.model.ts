@@ -2,7 +2,9 @@ import { Entity } from '@ngx-starter-kit/shared';
 
 export class Account extends Entity {
   public id = 0;
+  // tslint:disable-next-line:variable-name
   public first_name?: string;
+  // tslint:disable-next-line:variable-name
   public last_name?: string;
   public gender?: Gender;
   public dob?: Date;

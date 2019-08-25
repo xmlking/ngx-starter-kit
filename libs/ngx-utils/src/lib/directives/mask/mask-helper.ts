@@ -1,12 +1,12 @@
-export const MASK_FLAGS = [ 'C', '&', 'a', 'A', '?', 'L', '9', '0', '#' ];
+export const MASK_FLAGS = ['C', '&', 'a', 'A', '?', 'L', '9', '0', '#'];
 
 export const KEYS = {
-  Ctrl : 17,
-  Z : 90,
-  Y : 89,
-  X : 88,
-  BACKSPACE : 8,
-  DELETE : 46
+  Ctrl: 17,
+  Z: 90,
+  Y: 89,
+  X: 88,
+  BACKSPACE: 8,
+  DELETE: 46,
 };
 
 export class MaskHelper {
@@ -23,7 +23,8 @@ export class MaskHelper {
     const literalKeys: number[] = Array.from(literals.keys());
     const nonLiteralIndeces: number[] = this.getNonLiteralIndeces(mask, literalKeys);
 
-    if (inputValue.length < mask.length) { // BACKSPACE, DELETE
+    if (inputValue.length < mask.length) {
+      // BACKSPACE, DELETE
       if (inputValue === '' && cursor === -1) {
         this.cursorPrivate = 0;
         return this.parseValueByMaskOnInit(value, maskOptions);
@@ -172,15 +173,17 @@ export class MaskHelper {
       this.cursorPrivate = cursor < 0 ? ++cursor : cursor;
       if (nonLiteralIndeces.indexOf(this.cursorPrivate) !== -1) {
         isCharValid = this.validateCharOnPostion(char, this.cursorPrivate, mask);
-        inputValue = isCharValid ? this.replaceCharAt(inputValue, this.cursorPrivate++, char) :
-          inputValue = this.replaceCharAt(inputValue, this.cursorPrivate++, maskOptions.promptChar);
+        inputValue = isCharValid
+          ? this.replaceCharAt(inputValue, this.cursorPrivate++, char)
+          : (inputValue = this.replaceCharAt(inputValue, this.cursorPrivate++, maskOptions.promptChar));
         selection--;
         if (selection > 0) {
           for (let i = 0; i < selection; i++) {
             cursor++;
-            inputValue = nonLiteralIndeces.indexOf(cursor) !== -1 ?
-              this.insertCharAt(inputValue, cursor, maskOptions.promptChar) :
-              this.insertCharAt(inputValue, cursor, mask[cursor]);
+            inputValue =
+              nonLiteralIndeces.indexOf(cursor) !== -1
+                ? this.insertCharAt(inputValue, cursor, maskOptions.promptChar)
+                : this.insertCharAt(inputValue, cursor, mask[cursor]);
           }
         }
       } else {

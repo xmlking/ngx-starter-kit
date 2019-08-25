@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 import { FileUploadService } from './file-upload.service';
 
@@ -15,8 +15,7 @@ export class FileUploadComponent {
     { name: 'Experiments', link: '/dashboard/experiments' },
     { name: 'File Upload' },
   ];
-  @ViewChild('myPond')
-  myPond: any;
+  @ViewChild('myPond', { static: true }) myPond: any;
   myFiles = [];
 
   // Ref: https://pqina.nl/filepond/docs/patterns/api/server/

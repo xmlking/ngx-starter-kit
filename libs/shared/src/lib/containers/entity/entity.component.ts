@@ -1,5 +1,7 @@
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 
 import { EntityService } from './entity.service';
 import { Entity, EntityColumnDef } from './entity.model';
@@ -16,12 +18,9 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
-  @ViewChild(MatSort)
-  sort: MatSort;
-  @ViewChild('filter')
-  filterRef: ElementRef;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
+  @ViewChild('filter', { static: true }) filterRef: ElementRef;
 
   readonly loading$;
   readonly columns: Array<EntityColumnDef<TEntity>>;
@@ -156,17 +155,17 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   get displayedColumns(): string[] {
     // prettier-ignore
-    let _displayedColumns = this.columns
+    let displayedColumns = this.columns
       .filter(column => column.visible)
       .map(x => x.property);
 
     if (this.maxSelectable > 0) {
-      _displayedColumns.unshift(this.selectColumn);
+      displayedColumns.unshift(this.selectColumn);
     }
     if (this.showActionColumn) {
-      _displayedColumns = _displayedColumns.concat(this.actionColumn);
+      displayedColumns = displayedColumns.concat(this.actionColumn);
     }
-    return _displayedColumns;
+    return displayedColumns;
   }
 
   selectRow(entity: TEntity) {
@@ -181,7 +180,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   getRouteAnimation(outlet) {
-    return outlet.activatedRouteData['depth'] || 5;
+    return outlet.activatedRouteData.depth || 5;
     // return outlet.isActivated ? outlet.activatedRoute : ''
   }
 
@@ -197,7 +196,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   protected stringToDate(date: string | number | Date): number | Date {
-    const isString = s  => typeof(s) === 'string' || s instanceof String;
+    const isString = s => typeof s === 'string' || s instanceof String;
     return isString(date) ? parseISO(date) : date;
   }
 }

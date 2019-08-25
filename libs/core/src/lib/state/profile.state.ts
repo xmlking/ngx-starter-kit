@@ -1,7 +1,11 @@
 import { State, Selector, Action, StateContext, NgxsAfterBootstrap } from '@ngxs/store';
+import { patch } from '@ngxs/store/operators';
 import { Profile } from '@ngx-starter-kit/models';
 import { ProfileService } from '../services/profile.service';
-import { tap } from 'rxjs/operators';
+import { catchError, finalize, last, map, tap } from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { finishedLoading, setProgress, startLoading } from './state.operators';
+import { HttpEventType, HttpResponse } from '@angular/common/http';
 
 export class FetchProfile {
   static readonly type = '[Profile] Fetch';
@@ -20,15 +24,19 @@ export class DeleteProfile {
 }
 
 export interface ProfileStateModel {
-  profile: Profile;
-  loading: boolean;
+  profile?: Profile;
+  error?: string;
+  loading?: boolean;
+  progress?: number;
 }
 
 @State<ProfileStateModel>({
   name: 'profile',
   defaults: {
     profile: undefined,
+    error: undefined,
     loading: false,
+    progress: undefined,
   },
 })
 export class ProfileState implements NgxsAfterBootstrap {
@@ -46,32 +54,105 @@ export class ProfileState implements NgxsAfterBootstrap {
   public static loading(state: ProfileStateModel) {
     return state.loading;
   }
+  @Selector()
+  public static error(state: ProfileStateModel) {
+    return state.error;
+  }
 
   ngxsAfterBootstrap({ setState, dispatch }: StateContext<ProfileStateModel>) {
-    console.log('in ProfileState: ngxsAfterBootstrap')
+    console.log('in ProfileState: ngxsAfterBootstrap');
     // dispatch(new FetchProfile());
   }
 
   @Action(FetchProfile, { cancelUncompleted: true })
-  fetchNotifications(ctx: StateContext<ProfileStateModel>) {
-    // ctx.setState( startLoading() );
-    return this.profileService.getMyProfile().pipe(tap(profile => ctx.patchState({ profile })));
+  fetchProfile(ctx: StateContext<ProfileStateModel>) {
+    ctx.setState(startLoading());
+    return this.profileService.getMyProfile().pipe(
+      tap(profile => ctx.setState(patch({ profile }))),
+      catchError(error => {
+        ctx.setState(patch({ error }));
+        return throwError(error);
+      }),
+      finalize(() => ctx.setState(finishedLoading())),
+    );
   }
 
   @Action(CreateProfile)
   public createProfile(ctx: StateContext<ProfileStateModel>, { payload }: CreateProfile) {
-    return this.profileService.create(payload).pipe(tap((profile: Profile) => ctx.patchState({ profile })));
+    ctx.setState(setProgress(0));
+    ctx.setState(startLoading());
+    return this.profileService.create(payload).pipe(
+      map(event => event.type),
+      map(event => this.getStatusMessage(ctx, event)),
+      tap({
+        next: message => console.log(message),
+        complete: () => console.log('competed request!'),
+      }),
+      last(),
+      tap((profile: Profile) => ctx.setState(patch({ profile }))),
+      catchError(error => {
+        ctx.setState(patch({ error }));
+        return throwError(error);
+      }),
+      finalize(() => ctx.setState(finishedLoading())),
+    );
   }
 
   @Action(UpdateProfile)
   public UpdateProfile(ctx: StateContext<ProfileStateModel>, { payload }: UpdateProfile) {
-    return this.profileService
-      .update(payload.id, payload.profile)
-      .pipe(tap((profile: Profile) => ctx.patchState({ profile })));
+    ctx.setState(setProgress(0));
+    ctx.setState(startLoading());
+    return this.profileService.update(payload.id, payload.profile).pipe(
+      map(event => this.getStatusMessage(ctx, event)),
+      tap({
+        next: message => console.log(message),
+        complete: () => console.log('competed request!'),
+      }),
+      last(),
+      tap((profile: Profile) => ctx.setState(patch({ profile }))),
+      catchError(error => {
+        ctx.setState(patch({ error }));
+        return throwError(error);
+      }),
+      finalize(() => ctx.setState(finishedLoading())),
+    );
   }
 
   @Action(DeleteProfile)
   public deleteProfile(ctx: StateContext<ProfileStateModel>, { payload }: DeleteProfile) {
-    return this.profileService.delete(payload).pipe(tap(_ => ctx.patchState({ profile: undefined })));
+    ctx.setState(startLoading());
+    return this.profileService.delete(payload).pipe(
+      tap(_ => ctx.setState(patch({ profile: undefined }))),
+      catchError(error => {
+        ctx.setState(patch({ error }));
+        return throwError(error);
+      }),
+      finalize(() => ctx.setState(finishedLoading())),
+    );
+  }
+
+  private getStatusMessage(ctx, event) {
+    let status: number;
+
+    switch (event.type) {
+      case HttpEventType.Sent:
+        return `Uploading Files`;
+
+      case HttpEventType.UploadProgress:
+        status = Math.round((100 * event.loaded) / event.total);
+        ctx.setState(setProgress(status));
+        return `Files are ${status}% uploaded`;
+
+      case HttpEventType.DownloadProgress:
+        status = Math.round((100 * event.loaded) / event.total);
+        ctx.setState(setProgress(status)); // NOTE: The Content-Length header must be set on the server to calculate this
+        return `Files are ${status}% downloaded`;
+
+      case HttpEventType.Response:
+        return (event as HttpResponse<Profile>).body; // `Done`;
+
+      default:
+        return `Something went wrong`;
+    }
   }
 }

@@ -1,6 +1,6 @@
 @import 'fu/var';
 
-:host /deep/ {
+:host ::ng-deep {
   .ngx-list-table {
     display: flex;
     flex-direction: column;

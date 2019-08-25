@@ -16,7 +16,7 @@ export class SalesSummaryWidgetComponent implements AfterViewInit {
   @Input()
   options: SalesSummaryWidgetOptions;
 
-  @ViewChild('canvas', { read: ElementRef })
+  @ViewChild('canvas', { read: ElementRef, static: true })
   canvas: ElementRef;
 
   chart: Chart;

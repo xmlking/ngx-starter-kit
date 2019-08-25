@@ -1,6 +1,6 @@
 # NgxApi
 
-Deploying **NgxApi** on Kubernetes
+Deploying **NgxApi** on Kubernetes manually
 
 ## Prerequisites
 
@@ -45,6 +45,8 @@ kubectl get deployment ngxapi -o yaml
 kubectl get po -o wide --watch
 POD_NAME=$(kubectl get pods  -lapp=ngxapi -o jsonpath='{.items[0].metadata.name}')
 kubectl logs $POD_NAME -f
+# awesome for interactive debugging, or even sending ctrl-c to misbehaving app
+kubectl attach  $POD_NAME -i
 
 # create service (use -service.yaml and -ingress.yaml for development, -nodeport.yaml for prod)
 kubectl create -f 05-ngxapi-service.yaml
@@ -58,35 +60,28 @@ kubectl create -f 06-ngxapi-ingress.yaml
 
 kubectl get all,configmap,secret,ingress -l app=ngxapi
 
-## delete
-kubectl delete service ngxapi
-kubectl delete deployment ngxapi
-kubectl delete configmap ngxapi
-kubectl delete secret ngxapi
-
 ## redeploy (new image)
-update tag in 04-ngxapi-deployment.yaml and delete and create again.
+update tag in 04-ngxapi-deployment.yaml and delete and create deployment again.
 
 ## Scale to zero
 kubectl scale deploy ngxapi --replicas=0
 ```
 
-### Deleting NgxApi Deployment
+### Deleting Deployment
 
 ```bash
-kubectl delete ingress keycloak
-kubectl delete service keycloak
-kubectl delete deployment keycloak
-kubectl delete configmap keycloak
-kubectl delete secret keycloak
-kubectl delete persistentvolumeclaim keycloak
-kubectl delete networkpolicy -lapp=keycloak
+kubectl delete ingress ngxapi
+kubectl delete service ngxapi
+kubectl delete deployment ngxapi
+kubectl delete configmap ngxapi
+kubectl delete secret ngxapi
+kubectl delete persistentvolumeclaim ngxapi
+kubectl delete networkpolicy -lapp=ngxapi
 ```
 
----
-## Test API
+## Test
+
 ```bash
 curl -X  GET "https://ngxapi.traefik.k8s/" -k -H  "accept: application/json"
 curl -X  GET "https://ngxapi.traefik.k8s/echo?sumo=demo" -k -H  "accept: application/json"
 ```
-

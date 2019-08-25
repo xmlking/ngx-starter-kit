@@ -13,4 +13,3 @@ export class SentryErrorHandler implements ErrorHandler {
     throw error;
   }
 }
-

@@ -1,4 +1,4 @@
-export { NgxsWebsocketPluginModule } from './lib/websocket.module';
+export * from './lib/websocket.module';
 export {
   NgxsWebsocketPluginOptions,
   NGXS_WEBSOCKET_OPTIONS,

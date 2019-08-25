@@ -9,7 +9,7 @@ export const environment: IEnvironment = {
 
   env: {
     LOG_LEVEL: 'debug',
-    NODE_TLS_REJECT_UNAUTHORIZED: '0'
+    NODE_TLS_REJECT_UNAUTHORIZED: '0',
   },
 
   ALLOW_WHITE_LIST: ['::ffff:127.0.0.1', '::1'],
@@ -31,12 +31,15 @@ export const environment: IEnvironment = {
     keepConnectionAlive: true,
     logging: true,
     synchronize: true,
+    uuidExtension: 'pgcrypto',
   },
 
   auth: {
     clientId: 'ngxapi',
-    // issuer: 'http://localhost:8080/auth/realms/ngx',
-    issuer: 'https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx',
+    // issuerExternalUrl: 'https://keycloak.traefik.k8s/auth/realms/ngx',
+    issuerExternalUrl: 'http://localhost:8080/auth/realms/ngx',
+    // issuerExternalUrl: 'https://keycloak.kashmora.com/auth/realms/ngx',
+    // additionalQueryStringParams:  { scope: 'openid profile email', nonce: '1234578910' }
   },
 
   email: {

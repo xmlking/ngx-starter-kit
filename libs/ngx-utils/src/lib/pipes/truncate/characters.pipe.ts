@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'characters',
 })
 export class CharactersPipe implements PipeTransform {
-  transform(value: string, limit: number = 40, trail: String = '…'): string {
+  transform(value: string, limit: number = 40, trail: string = '…'): string {
     if (!value) {
       value = '';
     }

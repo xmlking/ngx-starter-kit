@@ -91,8 +91,8 @@ export class VirtualScrollComponent implements OnInit {
       this.states
         .map(s => ({ ...s }))
         .sort((a, b) => {
-          const aProp = a[prop],
-            bProp = b[prop];
+          const aProp = a[prop];
+          const bProp = b[prop];
           if (aProp < bProp) {
             return -1;
           } else if (aProp > bProp) {

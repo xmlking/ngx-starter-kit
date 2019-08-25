@@ -1,0 +1,37 @@
+test:
+  enabled: false
+
+resources:
+  limits:
+    memory: "1024Mi"
+  requests:
+    memory: "512Mi"
+
+image:
+  repository: gcr.io/ngx-starter-kit/ngxweb
+  tag: 2.0.4-SNAPSHOT
+  pullPolicy: IfNotPresent
+
+securityContext:
+  runAsUser: 1001
+
+serverName: kashmora.com
+
+service:
+  type: NodePort
+  nodePort: 32040
+
+# make sure networking.gke.io/managed-certificates ===  webapp.fullname e.g.,  `ngxweb-webapp`
+ingress:
+  enabled: false
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
+    networking.gke.io/managed-certificates: ngxweb-anginx
+    kubernetes.io/ingress.allow-http: "false"
+  hosts:
+    - host: kashmora.com
+      paths: [/*]
+
+managedcertificate:
+  enabled: true
+  host: kashmora.com

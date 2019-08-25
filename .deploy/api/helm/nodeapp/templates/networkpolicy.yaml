@@ -1,0 +1,29 @@
+{{- if .Values.networkPolicy.enabled }}
+kind: NetworkPolicy
+apiVersion: networking.k8s.io/v1
+metadata:
+  name: {{ include "nodeapp.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "nodeapp.name" . }}
+    helm.sh/chart: {{ include "nodeapp.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/name: {{ include "nodeapp.name" . }}
+      app.kubernetes.io/instance: {{ .Release.Name }}
+  policyTypes:
+    - Ingress
+  {{- with .Values.networkPolicy.egress }}
+    - Egress
+  {{- end }}
+  ingress:
+    # Allow inbound connections
+    - ports:
+        - port: {{ .Values.service.port}}
+{{- with .Values.networkPolicy.egress }}
+  egress:
+  {{- toYaml . | nindent 4 }}
+{{- end }}
+{{- end }}

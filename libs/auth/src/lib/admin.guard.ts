@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
-import { OAuthService } from '@xmlking/angular-oauth2-oidc-all';
-import { MatSnackBar } from '@angular/material';
+import { OAuthService } from 'angular-oauth2-oidc';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root',

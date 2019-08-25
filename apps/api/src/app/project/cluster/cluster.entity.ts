@@ -2,23 +2,22 @@ import { Column, Entity, Index, OneToMany, RelationId } from 'typeorm';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
 import { IsAscii, IsNotEmpty, IsUrl } from 'class-validator';
-import { AuditBase } from '../../core/entities/audit-base.entity';
+import { AuditBase } from '../../core/entities/audit-base';
 import { Project } from '../project.entity';
 import { Cluster as ICluster } from '@ngx-starter-kit/models';
 
 @Entity('cluster')
 export class Cluster extends AuditBase implements ICluster {
-
   @ApiModelProperty({ type: String, minLength: 3, maxLength: 15 })
   @IsNotEmpty()
   @IsAscii()
   @Index({ unique: true })
-  @Column({length: 15 })
+  @Column({ length: 15 })
   name: string;
 
   @ApiModelProperty({ type: String, minLength: 3, maxLength: 6 })
   @IsNotEmpty()
-  @Column({length: 6 })
+  @Column({ length: 6 })
   ver: string;
 
   @ApiModelProperty({ type: String, minLength: 10, maxLength: 256 })
@@ -37,11 +36,11 @@ export class Cluster extends AuditBase implements ICluster {
   @OneToMany(_ => Project, project => project.cluster)
   projects?: Project[];
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((cluster: Cluster) => cluster.createdBy)
-  readonly createdById?: number;
+  readonly createdById?: string;
 
-  @ApiModelProperty({ type: Number, readOnly: true })
+  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((cluster: Cluster) => cluster.updatedBy)
-  readonly updatedById?: number;
+  readonly updatedById?: string;
 }

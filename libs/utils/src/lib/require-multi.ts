@@ -7,9 +7,11 @@ export function requireAll(rc) {
 }
 
 export function requireAllClasses(rc) {
-  return rc
-    .keys()
-    // .filter(filePath => !filePath.includes('base'))
-    .flatMap(key => Object.values(rc(key)))
-    .filter(isClass);
+  return (
+    rc
+      .keys()
+      // .filter(filePath => !filePath.includes('base'))
+      .flatMap(key => Object.values(rc(key)))
+      .filter(isClass)
+  );
 }

@@ -25,7 +25,7 @@ export class InViewportDirective implements OnInit, OnDestroy {
   constructor(
     private readonly elementRef: ElementRef,
     private viewportService: ViewportService,
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: object,
   ) {}
 
   public ngOnInit() {

@@ -4,12 +4,12 @@ import { CrudController } from '../../core';
 import { Subscription } from './subscription.entity';
 import { SubscriptionService } from './subscription.service';
 import { CurrentUser, Roles, RolesEnum } from '../../auth/decorators';
-import { User } from '../../auth';
 import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
 import { SubscriptionList } from './dto/subscription-list.model';
 import { FindSubscriptionsDto } from './dto/find-subscriptions.dto';
 import { FindOwnSubscriptionsDto } from './dto/find-own-subscriptions.dto';
+import { User } from '@ngx-starter-kit/models';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Subscription')
@@ -88,7 +88,7 @@ export class SubscriptionController extends CrudController<Subscription> {
     if (id.startsWith('http')) {
       return this.subscriptionService.update({ endpoint: id, username: user.username }, entity);
     } else {
-      return this.subscriptionService.update({ id: parseInt(id, 10), username: user.username }, entity);
+      return this.subscriptionService.update({ id, username: user.username }, entity);
     }
   }
 
@@ -100,7 +100,7 @@ export class SubscriptionController extends CrudController<Subscription> {
     if (id.startsWith('http')) {
       return this.subscriptionService.delete({ endpoint: id, username: user.username });
     } else {
-      return this.subscriptionService.delete({ id: parseInt(id, 10), username: user.username });
+      return this.subscriptionService.delete({ id, username: user.username });
     }
   }
 }

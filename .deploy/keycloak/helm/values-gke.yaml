@@ -1,0 +1,33 @@
+test:
+  enabled: false
+
+keycloak:
+  image:
+    repository: gcr.io/ngx-starter-kit/keycloak
+    tag: 6.0.1
+  username: admin
+  password: admin123
+  securityContext: {}
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      memory: 512M
+  persistence:
+    dbVendor: postgres
+    dbHost: 10.141.176.3
+    existingSecret: postgres-init-scripts
+    existingSecretKey: keycloak-db-password
+# service.type has to be NodePort and ingress.path has to be /* for GKE
+  service:
+    type: NodePort
+    nodePort: 32080
+  ingress:
+    enabled: false
+    path: /*
+    annotations:
+      kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
+      networking.gke.io/managed-certificates: keycloak-certificate
+      kubernetes.io/ingress.allow-http: "false"
+    hosts:
+      - keycloak.kashmora.com

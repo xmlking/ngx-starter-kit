@@ -1,0 +1,70 @@
+{
+  "extends": [
+    "config:base",
+    ":timezone(America/Los_Angeles)",
+    ":preserveSemverRanges",
+    ":semanticCommits",
+    ":pinSkipCi"
+  ],
+  "labels": ["dependencies"],
+  // "schedule": ["after 10pm every weekday", "before 4am every weekday", "every weekend"],
+  "packageRules": [
+    {
+      "packageNames": ["typescript", "d3", "cli-ux", "d3-selection-multi"],
+      "masterIssueApproval": true,
+      "updateTypes": ["patch"]
+    },
+    {
+      "packagePatterns": ["^@angular/", "^@nrwl/"],
+      "rangeStrategy": "bump"
+    },
+    {
+      "packagePatterns": ["^@nrwl/"],
+      "groupName": "nrwl packages",
+      "schedule": ["after 9pm on sunday"]
+    },
+    {
+      "packageNames": ["^@ngxs.*"],
+      "groupName": "@ngxs"
+    },
+    {
+      "packageNames": ["^@types/.*"],
+      "groupName": "@types"
+    },
+    {
+      "branchPrefix": "renovate/server-",
+      "paths": ["apps/api/package.json"],
+      "labels": ["dependencies", "dep:server"],
+      "ignoreDeps": ["cli-ux", "sharp"]
+    }
+  ],
+  "major": {
+    "packageRules": [
+      {
+        "packagePatterns": [".*"],
+        "semanticCommitType": "feat",
+        "labels": ["dependencies", "dep:major"]
+      }
+    ]
+  },
+  "minor": {
+    "packageRules": [
+      {
+        "packagePatterns": [".*"],
+        "semanticCommitType": "fix",
+        "labels": ["dependencies", "dep:minor"],
+        "automerge": true
+      }
+    ]
+  },
+  "patch": {
+    "packageRules": [
+      {
+        "packagePatterns": [".*"],
+        "semanticCommitType": "chore",
+        "labels": ["dependencies", "dep:patch"],
+        "automerge": true
+      }
+    ]
+  }
+}

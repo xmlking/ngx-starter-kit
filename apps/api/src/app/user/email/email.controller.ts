@@ -3,7 +3,7 @@ import { EmailService } from '../../email';
 import { EmailDto } from './dto/email.dto';
 import { ApiOAuth2Auth, ApiUseTags, ApiExcludeEndpoint } from '@nestjs/swagger';
 import { CurrentUser } from '../../auth/decorators';
-import { User } from '../../auth';
+import { User } from '../user.entity';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Email', 'User')
@@ -19,12 +19,12 @@ export class EmailController {
       to: user.email,
       subject: email.title,
       template: 'welcome', // The `.pug` extension is appended automatically.
-      context: {  // Data to be sent to PugJS template files.
+      context: {
+        // Data to be sent to PugJS template files.
         title: email.title,
         comments: email.comments,
         name: email.name,
       },
     });
   }
-
 }

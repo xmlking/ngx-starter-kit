@@ -1,4 +1,4 @@
-import { User } from './user';
+import { User } from '@ngx-starter-kit/models';
 
 export class Message {
   message: string;

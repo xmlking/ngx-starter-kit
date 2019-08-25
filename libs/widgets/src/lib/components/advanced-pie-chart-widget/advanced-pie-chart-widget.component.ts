@@ -13,7 +13,7 @@ import { AdvancedPieChartWidgetOptions } from './advanced-pie-chart-widget-optio
 export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
   @Input()
   options: AdvancedPieChartWidgetOptions;
-  @ViewChild('canvas', { read: ElementRef })
+  @ViewChild('canvas', { read: ElementRef, static: true })
   canvas: ElementRef;
   chart: Chart;
   total: number;
@@ -22,10 +22,10 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
 
   constructor() {}
 
-  private _data: ChartData;
+  private dataPrivate: ChartData;
 
   get data() {
-    return this._data;
+    return this.dataPrivate;
   }
 
   @Input()
@@ -35,21 +35,24 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
       total += dataset.data.reduce((pv, cv) => pv + cv, 0);
     });
 
-    this._data = data;
+    this.dataPrivate = data;
     this.total = total;
   }
 
   get legendData() {
-    return this._data.datasets[0].data;
+    return this.dataPrivate.datasets[0].data;
   }
 
   getLegendLabel(index: number) {
-    return this._data && this._data.labels.length > 0 ? this._data.labels[index] : null;
+    return this.dataPrivate && this.dataPrivate.labels.length > 0 ? this.dataPrivate.labels[index] : null;
   }
 
   getLegendBackground(index: number) {
-    return this._data && this._data.datasets && this._data.datasets[0] && this._data.datasets[0].backgroundColor
-      ? this._data.datasets[0].backgroundColor[index]
+    return this.dataPrivate &&
+      this.dataPrivate.datasets &&
+      this.dataPrivate.datasets[0] &&
+      this.dataPrivate.datasets[0].backgroundColor
+      ? this.dataPrivate.datasets[0].backgroundColor[index]
       : null;
   }
 

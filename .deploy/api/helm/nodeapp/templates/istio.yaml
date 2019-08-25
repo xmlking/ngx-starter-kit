@@ -1,0 +1,24 @@
+{{- if .Values.istio.enabled }}
+apiVersion: config.istio.io/v1alpha2
+kind: RouteRule
+metadata:
+  name: {{ include "nodeapp.fullname" . }}
+  labels:
+    app.kubernetes.io/name: {{ include "nodeapp.name" . }}
+    helm.sh/chart: {{ include "nodeapp.chart" . }}
+    app.kubernetes.io/instance: {{ .Release.Name }}
+    app.kubernetes.io/managed-by: {{ .Release.Service }}
+spec:
+  destination:
+    name: {{ include "nodeapp.fullname" . }}
+  precedence: 1
+  route:
+  - labels:
+      version: "current"
+    weight: {{ .Values.istio.weight }}
+{{- if .Values.base.enabled }}
+  - labels:
+      version: "base"
+    weight: {{ .Values.base.weight }}
+{{- end }}
+{{- end }}

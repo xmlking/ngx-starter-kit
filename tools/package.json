@@ -1,0 +1,28 @@
+{
+  "name": "@ngx-starter-kit/tools",
+  "version": "0.0.1",
+  "description": "Extra for Nx Workspace",
+  "main": "src/index.js",
+  "schematics": "./collection.json",
+  "builders": "./builders.json",
+  "ng-update": {
+    "requirements": {},
+    "migrations": "./migrations.json"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "copy": "cpx '**/*.{json,d.ts,md}' ../dist/tools",
+    "build": "tsc -p tsconfig.lib.json && yarn run copy"
+  },
+  "peerDependencies": {
+    "@nrwl/workspace": "*"
+  },
+  "devDependencies": {
+    "@angular-devkit/architect": "~0.803.0",
+    "@angular-devkit/build-angular": "~0.803.0",
+    "@angular-devkit/build-webpack": "~0.803.0",
+    "@angular-devkit/core": "~8.3.0",
+    "@types/json-schema": "^7.0.3",
+    "cpx": "^1.5.0"
+  }
+}

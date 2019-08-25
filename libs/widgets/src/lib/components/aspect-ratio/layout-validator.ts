@@ -30,7 +30,7 @@ export function validateValue(value: string): [string, string, boolean] {
   }
 
   if (wrap === INLINE) {
-    wrap = (inline !== INLINE) ? inline : '';
+    wrap = inline !== INLINE ? inline : '';
     inline = INLINE;
   }
 
@@ -42,7 +42,7 @@ export function validateValue(value: string): [string, string, boolean] {
  * a horizontal/row flow.
  */
 export function isFlowHorizontal(value: string): boolean {
-  const [flow, ] = validateValue(value);
+  const [flow] = validateValue(value);
   return flow.indexOf('row') > -1;
 }
 
@@ -84,9 +84,9 @@ export function validateWrapValue(value: string) {
  */
 function buildCSS(direction: string, wrap: string | null = null, inline = false) {
   return {
-    'display': inline ? 'inline-flex' : 'flex',
+    display: inline ? 'inline-flex' : 'flex',
     'box-sizing': 'border-box',
     'flex-direction': direction,
-    'flex-wrap': !!wrap ? wrap : null
+    'flex-wrap': !!wrap ? wrap : null,
   };
 }

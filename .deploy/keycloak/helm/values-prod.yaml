@@ -1,10 +1,10 @@
 resources:
   limits:
     cpu: 4
-    memory: "4096Mi"
+    memory: '4096Mi'
   requests:
     cpu: 2
-    memory: "2048Mi"
+    memory: '2048Mi'
 
 livenessProbe:
   initialDelaySeconds: 200
@@ -19,6 +19,7 @@ test:
 keycloak:
   image:
     repository: jboss/keycloak
+    tag: 6.0.1
   username: admin
   password: admin123
   persistence:
@@ -26,13 +27,19 @@ keycloak:
     dbHost: ngxdb-postgresql
     existingSecret: postgres-init-scripts
     existingSecretKey: keycloak-db-password
-  extraEnv: |
-    - name: PROXY_ADDRESS_FORWARDING
-      value: 'true'
-    - name: ROOT_LOGLEVEL
-      value: INFO
-    - name: KEYCLOAK_LOGLEVEL
-      value: INFO
+  extraInitContainers: |
+    - name: wait-for-postgresql
+      image: alpine:3.8
+      imagePullPolicy: IfNotPresent
+      command:
+        - sh
+        - -c
+        - |
+          until printf "." && nc -z -w 2 ngxdb-postgresql 5432; do
+              sleep 2;
+          done;
+
+          echo 'PostgreSQL OK ✓'
 
 # use `service` for prod and `ingress` for dev. Comment other before install.
   service:

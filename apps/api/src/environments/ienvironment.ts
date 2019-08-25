@@ -32,8 +32,15 @@ export interface IEnvironment {
   database: TypeOrmModuleOptions;
   auth: {
     clientId: string;
-    issuer: string;
+    issuerExternalUrl: string;
+    issuerInternalUrl?: string;
     jwksUri?: string;
+    additionalQueryStringParams?: Partial<{
+      scope: string;
+      nonce: string;
+      audience: string;
+      [key: string]: string;
+    }>;
   };
 
   email: EmailModuleOptions;

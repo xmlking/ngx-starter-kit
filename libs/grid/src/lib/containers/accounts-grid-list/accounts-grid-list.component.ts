@@ -1,7 +1,10 @@
 import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { MatButtonToggleGroup, MatPaginator, MatSort, MatTableDataSource, PageEvent } from '@angular/material';
+import { MatButtonToggleGroup } from '@angular/material/button-toggle';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
 import { SelectionModel } from '@angular/cdk/collections';
 
 import { RandomAccount, RandomAccountService } from '../../services/random-account.service';
@@ -13,10 +16,8 @@ import { Crumb } from '@ngx-starter-kit/breadcrumbs';
   styleUrls: ['./accounts-grid-list.component.scss'],
 })
 export class AccountsGridListComponent implements OnInit, OnDestroy {
-  @ViewChild('gridView')
-  public gridView: MatButtonToggleGroup;
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
+  @ViewChild('gridView', { static: true }) gridView: MatButtonToggleGroup;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   crumbs: ReadonlyArray<Crumb> = [
     { name: 'Dashboard', link: '/dashboard' },
@@ -51,7 +52,7 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
 
   async onClick(account: Partial<RandomAccount>) {
     this.selection.toggle(account);
-    const _account = await this.accountService.getById(account.id.value).toPromise();
-    console.log(_account);
+    const accountP = await this.accountService.getById(account.id.value).toPromise();
+    console.log(accountP);
   }
 }

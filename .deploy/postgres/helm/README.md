@@ -5,6 +5,7 @@ Deploying `Postgres` to `Kubernetes` via `Helm`
 ### Init Scripts
 
 > first install `postgres-init-scripts`
+
 ```bash
 cd .deploy/postgres/helm
 kubectl create -f postgres-init-scripts.yaml
@@ -21,11 +22,11 @@ cd .deploy/postgres/helm
 helm install --name=ngxdb --namespace=default --tiller-namespace=kube-system -f  values-dev.yaml stable/postgresql
 
 # Verify the installation
-helm ls 
+helm ls
 helm ls -a --tiller-namespace=kube-system --debug
 
 # To uninstall/delete the postgres deployment:
-helm delete --purge postgres
+helm delete --purge ngxdb
 ```
 
 ### Without Tiller
@@ -34,7 +35,7 @@ helm delete --purge postgres
 cd .deploy/postgres/helm
 
 helm fetch stable/postgresql
-helm template ./postgresql-3.11.7.tgz \
+helm template ./postgresql-6.2.1.tgz \
 --name ngxdb \
 --namespace default \
 --values values-dev.yaml  \
@@ -45,6 +46,10 @@ kubectl apply --recursive -f generated/postgresql/* --namespace default
 ```
 
 ### Connect to Postgres
+
+PostgreSQL can be accessed via port 5432 on the following DNS name from within your cluster:
+
+    ngxdb-postgresql.default.svc.cluster.local - Read/Write connection
 
 To get the password for "postgres" run:
 
@@ -60,8 +65,6 @@ To connect to your database from outside the cluster execute the following comma
     export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services ngxdb-postgresql)
     PGPASSWORD="postgres321" psql --host $NODE_IP --port $NODE_PORT -U postgres
 
-
-
-
 ### Reference
+
 1. [Create A Production-Ready PostgreSQL Cluster With Bitnami, Kubernetes And Helm](https://engineering.bitnami.com/articles/create-a-production-ready-postgresql-cluster-bitnami-kubernetes-and-helm.html)

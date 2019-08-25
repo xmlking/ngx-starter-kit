@@ -1,16 +1,30 @@
-import { Body, Controller, Get, HttpStatus, Logger, Param, Post, Put, Query } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  HttpCode,
+  HttpStatus,
+  Logger,
+  Param,
+  ParseUUIDPipe,
+  Post,
+  Put,
+  Query,
+} from '@nestjs/common';
 import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
 import { ProjectService } from './project.service';
 import { KubernetesService } from './kubernetes/kubernetes.service';
 import { CrudController } from '../core';
 import { Project } from './project.entity';
 import { CreateProjectDto } from './dto/create-project.dto';
-import { CurrentUser, Roles, RolesEnum, Token, User } from '../auth';
+import { CurrentUser, Roles, RolesEnum, Token } from '../auth';
 import { KubeContext } from './interfaces/kube-context';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { FindOwnProjectsDto } from './dto/find-own-projects.dto';
 import { ProjectList } from './dto/project-list.model';
 import { FindProjectsDto } from './dto/find-projects.dto';
+import { ORMQuery } from '../shared';
+import { User } from '@ngx-starter-kit/models';
 
 @ApiOAuth2Auth(['read'])
 @ApiUseTags('Project')
@@ -34,6 +48,20 @@ export class ProjectController extends CrudController<Project> {
     return this.projectService.findAll(filter);
   }
 
+  @ApiOperation({
+    title: 'Search all Projects. Admins only',
+    description: 'Ref: https://github.com/rjlopezdev/typeorm-express-query-builder',
+  })
+  @ApiResponse({ status: HttpStatus.OK, description: 'Find matching Projects', type: ProjectList })
+  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
+  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiUseTags('Admin')
+  @Roles(RolesEnum.ADMIN)
+  @Get('/search')
+  async searchAll(@ORMQuery() query: any): Promise<ProjectList> {
+    return this.projectService.searchAll(query);
+  }
+
   @ApiOperation({ title: 'find all user Projects' })
   @ApiResponse({ status: HttpStatus.OK, description: 'Found matching records', type: ProjectList })
   @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
@@ -53,7 +81,11 @@ export class ProjectController extends CrudController<Project> {
 
   @ApiOperation({ title: 'Create new record, Self use only' })
   @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully created.', type: Project })
-  @ApiResponse({ status: HttpStatus.BAD_REQUEST, description: 'Invalid input, The response body may contain clues as to what went wrong', })
+  @ApiResponse({
+    status: HttpStatus.BAD_REQUEST,
+    description: 'Invalid input, The response body may contain clues as to what went wrong',
+  })
+  @HttpCode(HttpStatus.CREATED)
   @Post()
   async create(@Body() entity: CreateProjectDto, @CurrentUser() user: User, @Token() token): Promise<Project> {
     const context: KubeContext = { cluster: entity.clusterName, namespace: entity.namespace, labels: entity.labels };
@@ -77,7 +109,10 @@ export class ProjectController extends CrudController<Project> {
     description: 'Invalid input, The response body may contain clues as to what went wrong',
   })
   @Put(':id')
-  async update(@Param('id') id: string, @Body() entity: UpdateProjectDto): Promise<any> {
+  async update(
+    @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
+    @Body() entity: UpdateProjectDto,
+  ): Promise<any> {
     // TODO check if owner
     return super.update(id, entity);
   }

@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {Observable} from 'rxjs';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment } from '@env/environment';
 import { Dialogflow } from './dialogflow';
 
@@ -22,7 +22,7 @@ export class DialogflowService {
 
   public getResponse(query: string): Observable<Dialogflow> {
     const data = {
-      query: query,
+      query,
       lang: 'en',
       sessionId: this.sessionId,
     };

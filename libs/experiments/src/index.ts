@@ -1,1 +1,1 @@
-export { ExperimentsModule } from './lib/experiments.module';
+export * from './lib/experiments.module';

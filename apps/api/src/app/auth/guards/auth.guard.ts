@@ -1,6 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable, UnauthorizedException } from '@nestjs/common';
 import * as passport from 'passport';
 import { HttpAuthException } from '../auth.exception';
+import { User, JwtToken } from '@ngx-starter-kit/models';
 
 export const defaultOptions = {
   session: false,
@@ -16,7 +17,7 @@ export const defaultOptions = {
 };
 
 const createPassportContext = (request, response) => (type, options) =>
-  new Promise((resolve, reject) =>
+  new Promise<{ user: User; info: JwtToken }>((resolve, reject) =>
     passport.authenticate(type, options, (err, user, info) => {
       try {
         return resolve(options.callback(err, user, info));
@@ -36,8 +37,8 @@ export class AuthGuard implements CanActivate {
     const [request, response] = [httpContext.getRequest(), httpContext.getResponse()];
     const passportFn = createPassportContext(request, response);
     const userAndInfo = await passportFn('jwt', defaultOptions);
-    request[defaultOptions.property] = (userAndInfo as any).user;
-    request[defaultOptions.infoProperty] = (userAndInfo as any).info;
+    request[defaultOptions.property] = userAndInfo.user;
+    request[defaultOptions.infoProperty] = userAndInfo.info;
     return true;
   }
 }

@@ -10,8 +10,7 @@ import {
   StateContext,
   Store,
 } from '@ngxs/store';
-import { produce } from '@ngxs-labs/immer-adapter';
-import { produce as produceOri } from 'immer';
+import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
 import { NlpService } from '../services/nlp.service';
 import { ChatService } from '../services/chat.service';
 import { TextToSpeechService } from '../services/text-to-speech.service';
@@ -186,23 +185,27 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     // );
   }
 
+  @ImmutableContext()
   @Action(CreateNewConversation)
   createConversation(ctx: StateContext<ChatBoxStateModel>) {
     const newConversation = new Conversation('payload.conversationId'); // TODO create with UUID. from server?
-    produce(ctx, (draft: ChatBoxStateModel) => {
-      draft.conversations.push(newConversation);
-      draft.activeConversationId = newConversation.id;
+    ctx.setState((state: ChatBoxStateModel) => {
+      state.conversations.push(newConversation);
+      state.activeConversationId = newConversation.id;
+      return state;
     });
   }
 
+  @ImmutableContext()
   @Action(SwitchConversation)
   switchConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: SwitchConversation) {
     const state = ctx.getState();
     const switchedConversation =
       state.conversations[state.conversations.findIndex(con => con.id === state.activeConversationId)];
     if (switchedConversation) {
-      produce(ctx, (draft: ChatBoxStateModel) => {
-        draft.activeConversationId = switchedConversation.id;
+      ctx.setState((state2: ChatBoxStateModel) => {
+        state2.activeConversationId = switchedConversation.id;
+        return state2;
       });
     }
   }
@@ -214,30 +217,34 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     // return this.chat.saveConversation(conversation);
   }
 
+  @ImmutableContext()
   @Action(CloseConversation)
   closeConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: CloseConversation) {
     console.log(`close conversation ${payload.conversationId}`);
     const closingConversation = ctx.getState().conversations.find(con => con.id === payload.conversationId);
     ctx.dispatch(new SaveConversation({ conversationId: payload.conversationId })).pipe(
       tap(_ => {
-        produce(ctx, (draft: ChatBoxStateModel) => {
-          draft.conversations.splice(draft.conversations.findIndex(con => con.id === payload.conversationId), 1);
-          draft.activeConversationId = draft.conversations[draft.conversations.length - 1].id;
+        ctx.setState((state: ChatBoxStateModel) => {
+          state.conversations.splice(state.conversations.findIndex(con => con.id === payload.conversationId), 1);
+          state.activeConversationId = state.conversations[state.conversations.length - 1].id;
+          return state;
         });
       }),
     );
   }
 
+  @ImmutableContext()
   @Action(AddMessage, { cancelUncompleted: true })
   addMessage(ctx: StateContext<ChatBoxStateModel>, { payload }: AddMessage) {
-    produce(ctx, (draft: ChatBoxStateModel) => {
-      // draft.conversations[draft.conversations.findIndex(con => con.id === payload.conversationId)].messages.push(
+    ctx.setState((state: ChatBoxStateModel) => {
+      // state.conversations[draft.conversations.findIndex(con => con.id === payload.conversationId)].messages.push(
       //   payload.message,
       // );
-      const convIdx = draft.conversations.findIndex(con => con.id === payload.conversationId);
-      const conv = draft.conversations[convIdx];
-      draft.conversations[convIdx] = new Conversation(conv.id, [...conv.messages, payload.message]);
-      draft.activeConversationId = draft.conversations[convIdx].id;
+      const convIdx = state.conversations.findIndex(con => con.id === payload.conversationId);
+      const conv = state.conversations[convIdx];
+      state.conversations[convIdx] = new Conversation(conv.id, [...conv.messages, payload.message]);
+      state.activeConversationId = state.conversations[convIdx].id;
+      return state;
     });
   }
 

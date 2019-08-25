@@ -3,9 +3,9 @@ import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { IsEnum, IsOptional } from 'class-validator';
 import { Transform } from 'class-transformer';
 
-import { Base } from '../../core/entities/base.entity';
-import { User } from '../../auth/user.entity';
+import { Base } from '../../core/entities/base';
 import { Image as IImage, ImageType } from '@ngx-starter-kit/models';
+import { User } from '../user.entity';
 
 @Entity('image')
 export class Image extends Base implements IImage {

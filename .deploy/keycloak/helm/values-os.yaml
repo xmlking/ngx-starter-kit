@@ -1,0 +1,26 @@
+test:
+  enabled: false
+
+keycloak:
+  image:
+    repository: jboss/keycloak
+    tag: 6.0.1
+  username: admin
+  password: admin123
+  securityContext: {}
+  resources:
+    limits:
+      memory: 1G
+    requests:
+      memory: 512M
+  route:
+    enabled: true
+    annotations: {}
+      # kubernetes.io/tls-acme: "true"
+      # haproxy.router.openshift.io/disable_cookies: "true"
+      # haproxy.router.openshift.io/balance: roundrobin
+    tls:
+      enabled: true
+      insecureEdgeTerminationPolicy: Redirect
+      termination: edge
+

@@ -1,53 +1,49 @@
-import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { FormlyModule } from '@ngx-formly/core';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
-import { NgxsModule } from '@ngxs/store';
-import { NgxsFormPluginModule } from '@ngxs/form-plugin';
-import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
-import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsRouterPluginModule, RouterStateSerializer } from '@ngxs/router-plugin';
-
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
+import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+import { environment } from '@env/environment';
+import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
-
+import { FormlyModule } from '@ngx-formly/core';
 import { AuthModule } from '@ngx-starter-kit/auth';
 // import { OidcFlow, OidcModule, OidcOnLoad, OidcProvider } from '@ngx-starter-kit/oidc';
 import { MenuState, NavigatorModule } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
-import { environment } from '@env/environment';
-
-import { InMemoryDataService } from './services/in-memory-data.service';
+import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
+import { NgxsFormPluginModule } from '@ngxs/form-plugin';
+import { NgxsRouterPluginModule, RouterStateSerializer } from '@ngxs/router-plugin';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
+import { NgxsModule } from '@ngxs/store';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { NgxPageScrollCoreModule } from 'ngx-page-scroll-core';
 import { ErrorInterceptor } from './interceptors/error.interceptor';
-import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
-import { _window, WINDOW } from './services/window.token';
-
 import { defaultMenu } from './menu-data';
-
+import { AppConfigService } from './services/app-config.service';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
+import { HammerConfig } from './services/hammer.config';
+import { InMemoryDataService } from './services/in-memory-data.service';
+import { WINDOW, _window } from './services/window.token';
+import { AppHandler } from './state/app.handler';
 import { AppState } from './state/app.state';
+import { CustomRouterStateSerializer } from './state/custom-router-state.serializer';
+import { EventBusHandler } from './state/eventbus.handler';
 import { PreferenceState } from './state/preference.state';
 import { ProfileState } from './state/profile.state';
-
-import { AppHandler } from './state/app.handler';
 import { RouteHandler } from './state/route.handler';
-import { EventBusHandler } from './state/eventbus.handler';
-import { GoogleAnalyticsService } from './services/google-analytics.service';
+
+// appConfig initializer factory function
+const appConfigInitializerFn = (appConfig: AppConfigService) => {
+  return () => {
+    return appConfig.load();
+  };
+};
 
 // Noop handler for factory function
 export function noop() {
   return () => {};
 }
-
-/**
- * add icons that are needed during app boot up here.
- * if more icons are needed, load them in respective modules and add FontAwesomeModule to it.
- * for convenience, we also added FontAwesomeModule to SharedModule.
- */
-library.add(faTwitter, faGithub, faGoogle);
 
 /** @dynamic */
 @NgModule({
@@ -106,9 +102,19 @@ library.add(faTwitter, faGithub, faGoogle);
     },
     {
       provide: APP_INITIALIZER,
-      useFactory: noop,
-      deps: [EventBusHandler, RouteHandler, AppHandler],
+      useFactory: appConfigInitializerFn,
+      deps: [AppConfigService],
       multi: true,
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: noop,
+      deps: [EventBusHandler, RouteHandler],
+      multi: true,
+    },
+    {
+      provide: HAMMER_GESTURE_CONFIG,
+      useClass: HammerConfig,
     },
     {
       provide: RouterStateSerializer,
@@ -119,10 +125,22 @@ library.add(faTwitter, faGithub, faGoogle);
 })
 export class CoreModule {
   constructor(
+    library: FaIconLibrary,
     @Optional()
     @SkipSelf()
     parentModule: CoreModule,
+    // HINT: AppHandler is injected here to initialize it as Module Run Block,
+    // APP_INITIALIZER is not an option when target to es2015
+    // https://github.com/ngxs/store/issues/773
+    appHandler: AppHandler,
   ) {
+    /**
+     * add icons that are needed during app boot up here.
+     * if more icons are needed, load them in respective modules and add FontAwesomeModule to it.
+     * for convenience, we also added FontAwesomeModule to SharedModule.
+     */
+    library.addIcons(faTwitter, faGithub, faGoogle);
+
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import it in the AppModule only');
     }

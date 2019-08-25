@@ -1,26 +1,43 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { EmailModule } from '../email';
 import { ConfigModule } from '../config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { LoggingInterceptor, TransformInterceptor } from './interceptors';
 import { RequestContextMiddleware } from './context';
 import { ConfigService } from '../config';
-import { ConnectionOptions } from 'typeorm';
 import { environment as env } from '@env-api/environment';
-import { isClass } from '@ngx-starter-kit/utils';
+
+// Add all Entities
+import { User } from '../user';
+import { Image } from '../user/profile/image.entity';
+import { Profile } from '../user/profile/profile.entity';
+import { Project } from '../project/project.entity';
+import { Cluster } from '../project/cluster/cluster.entity';
+import { Notification } from '../notifications/notification/notification.entity';
+import { Subscription } from '../notifications/subscription/subscription.entity';
+
+// FIXME: temp workaround https://github.com/nrwl/nx/pull/1233
+// import { isClass } from '@ngx-starter-kit/utils';
+export function isClass(obj) {
+  return !!obj.prototype && !!obj.prototype.constructor.name;
+}
 
 function requireAllClasses(rc) {
   return rc
     .keys()
-    .filter(filePath => !filePath.includes('base'))
     .flatMap(key => Object.values(rc(key)))
     .filter(isClass);
 }
 
-const requireContext = (require as any).context('../..', true, /\.entity.ts/);
-// const requireContext = (require as any).context('../..', true, /^\.\/.*\/.*\/(?!(base|audit-base)).*\.entity.ts$/);
-const entities = requireAllClasses(requireContext);
+// const requireContext = (require as any).context('../..', true, /\.entity.ts/);
+// const entities = requireAllClasses(requireContext);
+
+// const migrationsRequireContext = (require as any).context('../../../migrations/', true, /\.ts/);
+// const migrations = requireAllClasses(migrationsRequireContext);
+
+// TODO: above `require.context` is not compatible with `Jest`, manually add all entities as workaround
+const entities = [User, Notification, Subscription, Profile, Image, Project, Cluster];
 
 @Module({
   imports: [
@@ -28,11 +45,12 @@ const entities = requireAllClasses(requireContext);
     EmailModule.forRoot(env.email),
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
-      useFactory: async (config: ConfigService) =>
-        ({
-          ...env.database,
-          entities,
-        } as ConnectionOptions),
+      useFactory: (config: ConfigService): TypeOrmModuleOptions => ({
+        ...env.database,
+        entities,
+        // subscribers,
+        // migrations,
+      }),
       inject: [ConfigService],
     }),
   ],

@@ -13,7 +13,7 @@ Deploying **KeyCloak** on kubernetes and/or OpenShift
 ## Deploy
 
 ### TLS Certs
-> first time only: generate a self-signed certificate to configure Ingress 
+> first time only: generate a self-signed certificate to configure Ingress
 
 ```bash
 cd .deploy/keycloak/manual
@@ -33,10 +33,10 @@ kubectl create secret tls keycloak-secrets-tls \
 kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 ```
 
-Follow instructions from [manual](./manual) or [helm](./helm) or [OpenShift](./openshift)
+Follow instructions from [manual](./manual) or [helm](./helm)
 
-Then continue steps below. 
- 
+Then continue steps below.
+
 
 #### Environment Variables
 
@@ -52,7 +52,7 @@ PROXY_ADDRESS_FORWARDING="true"
 ## Configuration
 
 > Access Keycloak Admin Console
- 
+
 ### Keycloak automatic configuration
 
 > Open Keycloak WebConsole
@@ -65,18 +65,21 @@ PROXY_ADDRESS_FORWARDING="true"
 > Open Keycloak WebConsole
 
 1. Create a Keycloak realm called `ngx` via `Master > Add realm` menu, and switch to `ngx` realm
-2. Create a public client called `ngxapp` and `ngxapi` under realm `ngx`
+2. Create a public client called `ngxweb` and `ngxapi` under realm `ngx`
 3. Create a role `ROLE_USER` , `ROLE_ADMIN` under realm `ngx`
 4. Add a user `sumo`, `sumo1` , `sumo2` , `sumo3` under realm `ngx` and add the user to user role `ROLE_USER`
 5. Add a user `ngxadmin` under realm `ngx` and add the user to user role `ROLE_ADMIN`
 
 #### Configure audience in Keycloak
 
-Refer https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match
+Refer <https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-claim-and-client-id-do-not-match>
 
-1. add `ngxapi_audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi_audience_mapper` and adding `ngxapi` Client under `Included Client Audience`.
-2. for `ngxapp` client, add `ngxapi_audience` at **Client Scopes** tab
-3. for `ngxapi` client, add `ngxapi_audience` at **Client Scopes** tab (for Swagger API Docs)
+1. add `ngxapi-audience` **Client Scopes** at Realm `ngx` with Audience mapper name: `ngxapi-audience-mapper`, Mapper Type --> `audience` and adding `ngxapi` Client under `Included Client Audience`.
+2. for `ngxweb` client, add `ngxapi-audience` at **Client Scopes** tab
+3. for `ngxapi` client, add `ngxapi-audience` at **Client Scopes** tab (for Swagger API Docs)
+
+Refer <https://www.kodnito.com/posts/microprofile-jwt-with-keycloak/>
+4. Click on Clients and find the `ngxweb/ngxapi` and click on **Mappers** tab and click on **Add Builtin** button and add the **groups** mapper to the client.
 
 ---
 
@@ -110,6 +113,15 @@ kubectl cp $POD_NAME:/tmp/sumo /Developer/Work/SPA/ngx-starter-kit/.deploy/keycl
 ```
 
 ---
+## MicroProfile JWT with Keycloak
+
+**how to secure API/services using MicroProfile JWT and Keycloak?**
+
+Follow [blog](https://kodnito.com/posts/microprofile-jwt-with-keycloak/)
+You find the public key here https://keycloak.traefik.k8s/auth/realms/ngx/
+
+---
+
 
 ## Troubleshooting
 

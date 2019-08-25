@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, HttpModule } from '@nestjs/common';
 import { RouterModule } from 'nest-router';
 import { CoreModule } from './core';
 import { AuthModule } from './auth';
@@ -10,6 +10,8 @@ import { NotificationsModule } from './notifications';
 import { ExternalModule } from './external';
 import { CacheModule } from './cache';
 import { ProjectModule } from './project';
+import { TerminusModule } from '@nestjs/terminus';
+import { AppHealthService } from './app-health.service';
 
 @Module({
   imports: [
@@ -26,6 +28,7 @@ import { ProjectModule } from './project';
       },
       { path: '/external', module: ExternalModule },
     ]),
+    HttpModule,
     CoreModule,
     CacheModule,
     AuthModule,
@@ -35,6 +38,10 @@ import { ProjectModule } from './project';
     ExternalModule,
     NotificationsModule,
     ProjectModule,
+    TerminusModule.forRootAsync({
+      imports: [ProjectModule],
+      useClass: AppHealthService,
+    }),
   ],
   controllers: [AppController],
 })

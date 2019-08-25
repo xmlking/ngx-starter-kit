@@ -1,0 +1,109 @@
+test:
+  enabled: false
+
+resources:
+  limits:
+    cpu: 4
+    memory: "4096Mi"
+  requests:
+    cpu: 2
+    memory: "2048Mi"
+
+image:
+  repository: xmlking/ngxapi
+  tag: 2.0.4-SNAPSHOT
+  pullPolicy: IfNotPresent
+
+securityContext:
+  fsGroup: 65534
+  runAsUser: 65534
+
+initContainers:
+  - name: wait-for-postgresql
+    image: alpine:3.6
+    imagePullPolicy: IfNotPresent
+    command:
+      - sh
+      - -c
+      - |
+        until printf "." && nc -z -w 2 ngxdb-postgresql 5432; do
+            sleep 2;
+        done;
+
+        echo 'PostgreSQL OK ✓'
+
+livenessProbe:
+  path: /live
+  initialDelaySeconds: 180
+  periodSeconds: 60
+  timeoutSeconds: 20
+readinessProbe:
+  path: /ready
+  initialDelaySeconds: 60
+  periodSeconds: 30
+
+env:
+  - name: NODE_TLS_REJECT_UNAUTHORIZED
+    value: '0'
+  - name: DOMAIN_URL
+    value: 'https://ngxapi.traefik.k8s'
+  - name: TYPEORM_HOST
+    value: ngxdb-postgresql
+  - name: TYPEORM_PORT
+    value: '5432'
+  - name: TYPEORM_DATABASE
+    value: postgres
+  - name: TYPEORM_USERNAME
+    value: postgres
+  - name: TYPEORM_LOGGING
+    value: 'false'
+  - name: TYPEORM_SYNCHRONIZE
+    value: 'false'
+  - name: OIDC_ISSUER_EXTERNAL_URL
+    value: 'https://keycloak.traefik.k8s/auth/realms/ngx'
+  - name: OIDC_ISSUER_INTERNAL_URL
+    value: 'http://keycloak-headless:8080/auth/realms/ngx'
+  - name: OIDC_CLIENT_ID
+    value: ngxapi
+  - name: EMAIL_HOST
+    value: mail.google.com
+  - name: EMAIL_PORT
+    value: '25'
+  - name: EMAIL_SECURE
+    value: 'false'
+  - name: EMAIL_AUTH_USER
+    value: auth_user
+  - name: EMAIL_FROM
+    value: '"sumo demo" <sumo@demo.com>'
+  - name: VAPID_PUBLIC_KEY
+    value: 'BAJq-yHlSNjUqKW9iMY0hG96X9WdVwetUFDa5rQIGRPqOHKAL_fkKUe_gUTAKnn9IPAltqmlNO2OkJrjdQ_MXNg'
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: traefik
+    traefik.frontend.passHostHeader: "true"
+  hosts:
+    - host: ngxapi.traefik.k8s
+      paths: [/]
+  tls:
+    - secretName: keycloak-secrets-tls
+      hosts:
+        - ngxapi.traefik.k8s
+
+autoscaling:
+  enabled: true
+
+networkPolicy:
+  enabled: true
+  egress:
+    - to:
+        - ipBlock: # Allow nodeapp to talk to external servers
+            cidr: 0.0.0.0/0
+
+istio:
+  enabled: false
+  weight: 100
+
+metrics:
+  enabled: true

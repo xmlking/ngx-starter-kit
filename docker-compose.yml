@@ -1,7 +1,7 @@
 version: '3'
 services:
   keycloak:
-    image: jboss/keycloak:4.8.3.Final
+    image: jboss/keycloak:6.0.1
     container_name: keycloak
     environment:
       DB_VENDOR: POSTGRES
@@ -38,6 +38,9 @@ services:
       - postgres_data:/var/lib/postgresql/data
       - .deploy/postgres/scripts/create_databases.sh:/docker-entrypoint-initdb.d/10-create_databases.sh:ro
 
+  redis:
+    image: redis:alpine
+
   api:
     build:
       context: .
@@ -55,7 +58,7 @@ services:
     build:
       context: .
       dockerfile: .deploy/webapp/prod.dockerfile
-    image: xmlking/ngxapp:latest
+    image: xmlking/ngxweb:latest
     container_name: web
     command: nginx-debug -g 'daemon off;'
     volumes:
@@ -67,7 +70,7 @@ services:
       - api
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.4.0
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.2
     container_name: elasticsearch
     #    ulimits:
     #      memlock:
@@ -82,7 +85,7 @@ services:
     links:
       - 'postgres'
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.4.0
+    image: docker.elastic.co/kibana/kibana:6.8.2
     container_name: kibana
     #    volumes:
     #    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
@@ -95,7 +98,7 @@ services:
     container_name: transporter
     environment:
       DB_NAME: cockpit
-      MONGODB_URI: 'postgres://postgres:postgres321@postgres:5432'
+      POSTGRES_URI: 'postgres://postgres:postgres321@postgres:5432'
       ELASTICSEARCH_URI: 'http://elasticsearch:9200'
     links:
       - 'postgres'
@@ -104,7 +107,5 @@ services:
 volumes:
   uploads:
   postgres_data:
-  mongodb_primary_data:
-  mongodb_secondary_data:
   esdata1:
   esdata2:

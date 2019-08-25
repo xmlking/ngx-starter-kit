@@ -1,7 +1,14 @@
+import { async, TestBed } from '@angular/core/testing';
 import { ExperimentsModule } from './experiments.module';
 
 describe('ExperimentsModule', () => {
-  it('should work', () => {
-    expect(new ExperimentsModule()).toBeDefined();
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [ExperimentsModule],
+    }).compileComponents();
+  }));
+
+  it('should create', () => {
+    expect(ExperimentsModule).toBeDefined();
   });
 });

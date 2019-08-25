@@ -26,7 +26,8 @@
         placeholder="Usernames:  sumo, sumo1, sumo2, sumo3"
         formControlName="username"
       />
-      <mat-hint>Usernames: sumo, sumo1, sumo2, sumo3</mat-hint>
+      <!--      <mat-hint>Usernames: sumo, sumo1, sumo2, sumo3</mat-hint>-->
+      <mat-hint>now supports Google Login only. Click Google button below</mat-hint>
       <mat-error *ngIf="loginForm.get('username').hasError('required')">We need an username to log you in</mat-error>
     </mat-form-field>
 
@@ -76,7 +77,7 @@
       <button mat-mini-fab (click)="initSSO()" matTooltip="Login with KeyCloak" matTooltipPosition="above">
         <mat-icon>security</mat-icon>
       </button>
-      <button mat-mini-fab matTooltip="Login with Google" matTooltipPosition="above">
+      <button mat-mini-fab (click)="initSSO()" matTooltip="Login with Google" matTooltipPosition="above">
         <fa-icon [icon]="['fab', 'google']"></fa-icon>
       </button>
       <button mat-mini-fab matTooltip="Login with Twitter" matTooltipPosition="above">

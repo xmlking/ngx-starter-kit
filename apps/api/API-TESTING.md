@@ -89,7 +89,8 @@ curl -v -X POST \
 ### Token
 
 ```bash
-OIDC_ISSUER_URL=https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx
+# OIDC_ISSUER_URL=https://keycloak.traefik.k8s/auth/realms/ngx
+OIDC_ISSUER_URL=https://keycloak.kashmora.com/auth/realms/ngx
 OIDC_CLIENT_ID=ngxapi
 
 USERNAME=sumo3
@@ -124,6 +125,14 @@ curl -X GET \
     -H "accept: application/json" \
     -H "Authorization: Bearer $access_token" \
   | jq .
+
+curl -X POST \
+  http://localhost:3000/api/notifications/send \
+    -H "content-type: application/jsonn" \
+    -H "Authorization: Bearer $access_token" \
+    -d '{"id":"c938cdcc-20f6-4cf1-b4b7-989fa0c5188d", "topic":"sumo"}' \
+  | jq .
+
 
 # Get User Profile
 curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/userinfo \

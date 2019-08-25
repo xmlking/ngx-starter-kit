@@ -2,7 +2,7 @@ import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { DOCUMENT } from '@angular/common';
+
 describe('AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
@@ -17,7 +17,7 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
 
     // get test component from the fixture
-    component = fixture.componentInstance;
+    component = fixture.debugElement.componentInstance;
   }));
 
   it('should create the webapp', async(() => {

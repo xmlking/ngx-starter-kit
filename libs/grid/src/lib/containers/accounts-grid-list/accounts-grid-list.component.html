@@ -16,7 +16,7 @@
     </mat-button-toggle-group>
   </mat-toolbar>
 
-  <ng-container *ngIf="gridView.value === 'grid'; then: grid; else: list"> </ng-container>
+  <ng-container *ngIf="gridView.value === 'grid'; then grid; else list"> </ng-container>
 
   <mat-paginator
     #paginator
@@ -43,7 +43,7 @@
       <mat-card (click)="onClick(account)" [class.active]="selection.isSelected(account)">
         <mat-card-header>
           <!-- <img mat-card-avatar src="https://source.unsplash.com/random/200x200"> -->
-          <img mat-card-avatar src="{{account.picture.thumbnail}}" />
+          <img mat-card-avatar src="{{ account.picture.thumbnail }}" />
           <mat-card-title>{{ account.name.title }} {{ account.name.first }} {{ account.name.last }}</mat-card-title>
           <mat-card-subtitle> {{ account.email }}</mat-card-subtitle>
         </mat-card-header>
@@ -72,7 +72,7 @@
       >
         <mat-icon matListIcon>{{ account.gender == 'male' ? 'person' : 'face' }}</mat-icon>
         <!-- <img mat-list-avatar src="https://source.unsplash.com/random/200x200"> -->
-        <img mat-card-avatar src="{{account.picture.thumbnail}}" />
+        <img mat-card-avatar src="{{ account.picture.thumbnail }}" />
         <h3 matLine>{{ account.name.first }} {{ account.name.last }}</h3>
         <p matLine>
           <span> {{ account.email }} </span><span class="subline">-- {{ account.phone }} </span>

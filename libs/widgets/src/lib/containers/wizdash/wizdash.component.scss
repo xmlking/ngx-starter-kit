@@ -1,7 +1,7 @@
 @import '~@angular/material/theming';
 @import 'fu/var';
 
-:host /deep/ {
+:host ::ng-deep {
   @import 'fu/calendar';
   @import 'fu/cards';
   @import 'fu/inbox';

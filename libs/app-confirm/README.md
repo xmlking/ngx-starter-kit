@@ -1,7 +1,6 @@
-Conform Popup
-=============
-confirm popup dialog to get user's choice.
+# Conform Popup
 
+confirm popup dialog to get user's choice.
 
 ### Install
 
@@ -35,8 +34,12 @@ delete(item: Account) {
 
 ```
 
+### Running unit tests
+
+Run `ng test app-confirm` to execute the unit tests.
 
 ### Publish
+
 ```bash
 # build
 ng build app-confirm

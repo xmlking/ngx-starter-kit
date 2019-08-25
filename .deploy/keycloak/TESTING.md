@@ -4,7 +4,7 @@ KeyCloak Testing
 Pre-configured KeyCloak OpenID Connect server for testing.
 
 * **Realm**: ngx
-* **Client ID**: ngxapp, ngxapi
+* **Client ID**: ngxweb, ngxapi
 * **Accounts**:
   * *ROLE_ADMIN*
     1. ngxadmin : ngxadmin

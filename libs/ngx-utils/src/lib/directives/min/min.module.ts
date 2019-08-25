@@ -4,9 +4,7 @@ import { MinValidatorDirective } from './min-validator.directive';
 
 @NgModule({
   declarations: [MinValidatorDirective],
-  imports: [
-    CommonModule
-  ],
-  exports: [MinValidatorDirective]
+  imports: [CommonModule],
+  exports: [MinValidatorDirective],
 })
-export class MinModule { }
+export class MinModule {}

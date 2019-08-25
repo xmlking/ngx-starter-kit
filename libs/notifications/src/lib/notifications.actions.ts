@@ -12,7 +12,6 @@ export class AddNotification {
 
 export class DeleteNotification {
   static readonly type = '[Notifications] Delete';
-
   constructor(public readonly payload: AppNotification) {}
 }
 

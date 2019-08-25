@@ -19,18 +19,17 @@ import { SidenavModule } from '@ngx-starter-kit/sidenav';
 import { environment } from '@env/environment';
 import { ProfileComponent } from './containers/profile/profile.component';
 
-import {
-  MatButtonModule,
-  MatCardModule,
-  MatDividerModule,
-  MatIconModule,
-  MatInputModule,
-  MatListModule,
-  MatRadioModule,
-  MatSidenavModule,
-  MatSlideToggleModule,
-  MatSelectModule,
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 import { AppProfileComponent } from './components/app-profile/app-profile.component';
 
 // Registering plugins
@@ -107,17 +106,17 @@ const matModules = [
           },
           {
             path: 'grid',
-            loadChildren: '@ngx-starter-kit/grid#GridModule',
+            loadChildren: () => import('@ngx-starter-kit/grid').then(module => module.GridModule),
             data: { title: 'Grid', depth: 2, preload: false },
           },
           {
             path: 'experiments',
-            loadChildren: '@ngx-starter-kit/experiments#ExperimentsModule',
+            loadChildren: () => import('@ngx-starter-kit/experiments').then(module => module.ExperimentsModule),
             data: { title: 'Experiments', depth: 2, preload: false },
           },
           {
             path: 'widgets',
-            loadChildren: '@ngx-starter-kit/widgets#WidgetsModule',
+            loadChildren: () => import('@ngx-starter-kit/widgets').then(module => module.WidgetsModule),
             data: { title: 'Widgets', depth: '2', preload: false },
           },
         ],

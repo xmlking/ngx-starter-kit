@@ -3,11 +3,13 @@ import {
   ChangeDetectorRef,
   ContentChild,
   Directive,
-  ElementRef, Injectable,
+  ElementRef,
+  Injectable,
   Input,
   OnChanges,
   OnDestroy,
-  OnInit, Optional,
+  OnInit,
+  Optional,
   Renderer2,
   SimpleChanges,
 } from '@angular/core';
@@ -18,10 +20,10 @@ import { BaseDirective } from './base';
 export interface AspectRatioParent {
   inline: boolean;
 }
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class AspectRatioStyleBuilder extends StyleBuilder {
   buildStyles(input: string, parent: AspectRatioParent) {
-    return {'xxx': 'xxx'};
+    return { xxx: 'xxx' };
   }
 }
 
@@ -34,7 +36,7 @@ export class AspectRatioStyleBuilder extends StyleBuilder {
   `,
 })
 export class AspectRatioDirective extends BaseDirective implements OnInit, AfterContentInit, OnChanges, OnDestroy {
-  @ContentChild(AspectRatioContentDirective, { read: ElementRef })
+  @ContentChild(AspectRatioContentDirective, { read: ElementRef, static: true })
   contentElement: ElementRef;
   pseudoElement: any;
 
@@ -131,7 +133,7 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
    * For @Input changes on the current mq activation property, see onMediaQueryChanges()
    */
   ngOnChanges(changes: SimpleChanges) {
-    if (changes['aspectRatio'] != null || this._mqActivation) {
+    if (changes.aspectRatio != null || this.mqActivation) {
       this._updateStyle();
     }
   }
@@ -180,8 +182,8 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
   protected _updateStyle(value?: string | number) {
     let compensation: string;
     let aspectRatio = value || this._queryInput('aspectRatio') || '';
-    if (this._mqActivation) {
-      aspectRatio = this._mqActivation.activatedInput;
+    if (this.mqActivation) {
+      aspectRatio = this.mqActivation.activatedInput;
     }
 
     if (aspectRatio) {

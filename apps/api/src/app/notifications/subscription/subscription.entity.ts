@@ -1,7 +1,7 @@
 import { Column, CreateDateColumn, Entity, Index, UpdateDateColumn, VersionColumn } from 'typeorm';
 import { ApiModelProperty } from '@nestjs/swagger';
 import { Exclude } from 'class-transformer';
-import { Base } from '../../core/entities/base.entity';
+import { Base } from '../../core/entities/base';
 
 @Entity('subscription')
 export class Subscription extends Base {

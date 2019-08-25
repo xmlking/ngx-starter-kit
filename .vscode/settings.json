@@ -1,0 +1,93 @@
+{
+  "window.zoomLevel": 1,
+  "explorer.sortOrder": "type",
+  // Editor
+  "editor.autoIndent": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+  "editor.cursorBlinking": "solid",
+  "editor.cursorSmoothCaretAnimation": true,
+  "editor.cursorStyle": "line",
+  // "editor.fontSize": 16,
+  "editor.fontFamily": "SourceCodePro-Regular, FiraCode-Retina, Menlo",
+  "editor.fontLigatures": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.letterSpacing": 0.5,
+  "editor.lineHeight": 25,
+  "editor.minimap.enabled": false,
+  "editor.renderWhitespace": "none",
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.wordWrap": "off",
+  // Terminal
+  "terminal.integrated.fontFamily": "'SourceCodePro+Powerline+Awesome Regular', Source Code Pro for Powerline, monospace, Meslo LG M for Powerline",
+  // "terminal.integrated.fontSize": 16,
+  // Workbench
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.colorCustomizations": {
+    "terminal.foreground": "#839496",
+    "terminal.background": "#121a21",
+    "activityBar.background": "#fbed80",
+    "activityBar.foreground": "#15202b",
+    "activityBar.inactiveForeground": "#15202b99",
+    "activityBarBadge.background": "#06b9a5",
+    "activityBarBadge.foreground": "#15202b",
+    "titleBar.activeBackground": "#f9e64f",
+    "titleBar.inactiveBackground": "#f9e64f99",
+    "titleBar.activeForeground": "#15202b",
+    "titleBar.inactiveForeground": "#15202b99",
+    "statusBar.background": "#f9e64f",
+    "statusBarItem.hoverBackground": "#f7df1e",
+    "statusBar.foreground": "#15202b"
+  },
+  // File settings
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "**/*.js": {
+      "when": "$(basename).ts"
+    },
+    "**/*.js.map": {
+      "when": "$(basename)"
+    }
+  },
+  // "files.hotExit": "onExit",
+  "files.defaultLanguage": "typescript",
+  "files.trimTrailingWhitespace": true,
+  "files.associations": {
+    "renovate.json5": "jsonc"
+  },
+  // Peacock Settings
+  "peacock.color": "#f9e64f",
+  // Prettier settings
+  "prettier.singleQuote": true,
+  "prettier.printWidth": 100,
+  // REST client
+  "rest-client.environmentVariables": {
+    "$shared": {
+      "client-id": "ngxapi",
+      "username": "sumo3",
+      "password": "demo",
+      "api-gateway-url": "http://localhost:8080"
+    },
+    "local": {
+      "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+      "api-url": "http://localhost:3000"
+    },
+    "local-admin": {
+      "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+      "api-url": "http://localhost:3000",
+      "username": "ngxadmin",
+      "password": "ngxadmin"
+    },
+    "production": {
+      "oidc-issuer-url": "https://keycloak.kashmora.com/auth/realms/ngx",
+      "api-url": "https://api.kashmora.com"
+    }
+  }
+}

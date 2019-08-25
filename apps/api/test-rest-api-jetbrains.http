@@ -1,0 +1,45 @@
+### Generate JWT access token
+POST {{oidc-issuer-url}}/protocol/openid-connect/token
+Content-Type: application/x-www-form-urlencoded
+
+username={{username}}&password={{password}}&client_id={{client-id}}&grant_type=password&scope=openid
+
+> {%
+    client.global.set("access_token", response.body.access_token);
+%}
+
+### Test create notification
+POST {{api-url}}/api/notifications
+content-type: application/json; charset=utf-8
+Authorization: Bearer {{access_token}}
+
+{"title":"test123","body":"test12345","target":"sumo-topic","targetType":"topic","icon":"notifications","color":"warn","native":true}
+
+### Test list notifications
+GET {{api-url}}/api/notifications
+Accept: application/json
+Authorization: Bearer {{access_token}}
+
+> {%
+    client.global.set("firstNotificationId", response.body.items[0].id);
+    client.log("firstNotificationId: " + response.body.items[0].id );
+    client.assert(response.status === 200, "Response status is not 200");
+%}
+
+### Test findById notification
+# @name findByIdNotification
+GET {{api-url}}/api/notifications/{{firstNotificationId}}
+Accept: application/json
+Authorization: Bearer {{access_token}}
+
+### Test send notification
+POST {{api-url}}/api/notifications/send
+content-type: application/json; charset=utf-8
+Authorization: Bearer {{access_token}}
+
+{ "id" : "6a06cb98-1a3f-43ac-84e1-2312097decf9", "target": "sumo-topic" }
+
+###
+
+
+

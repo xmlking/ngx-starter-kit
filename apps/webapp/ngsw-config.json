@@ -1,4 +1,5 @@
 {
+  "$schema": "../../node_modules/@angular/service-worker/config/schema.json",
   "index": "/index.html",
   "assetGroups": [
     {
@@ -44,9 +45,9 @@
     {
       "name": "keycloak",
       "urls": [
-        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/.well-known/openid-configuration",
-        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/certs",
-        "https://keycloak-ngx1.1d35.starter-us-east-1.openshiftapps.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
+        "https://keycloak.kashmora.com/auth/realms/ngx/.well-known/openid-configuration",
+        "https://keycloak.kashmora.com/auth/realms/ngx/protocol/openid-connect/certs",
+        "https://keycloak.kashmora.com/auth/realms/ngx/protocol/openid-connect/login-status-iframe.html"
       ],
       "cacheConfig": {
         "strategy": "performance",

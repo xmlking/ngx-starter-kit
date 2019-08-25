@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, ViewChild } from '@angular/core';
-import { MatPaginator, MatTableDataSource } from '@angular/material';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
+
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
 /* tslint:disable:max-line-length */
@@ -289,8 +291,7 @@ export class StickyTableComponent implements AfterViewInit {
     'test8',
   ];
   dataSource = new MatTableDataSource<Element>(ELEMENT_DATA);
-  @ViewChild(MatPaginator)
-  paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -312,7 +313,3 @@ export interface Element {
   test7: string;
   test8: string;
 }
-
-/**  Copyright 2018 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license */

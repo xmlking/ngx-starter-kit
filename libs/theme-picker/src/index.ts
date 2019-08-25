@@ -1,1 +1,1 @@
-export { ThemePickerModule } from './lib/theme-picker.module';
+export * from './lib/theme-picker.module';

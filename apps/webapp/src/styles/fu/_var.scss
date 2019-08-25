@@ -40,6 +40,7 @@ $color-warn: map-get($theme, warn);
   }
 */
 
+/* prettier-ignore */
 $config: mat-typography-config(
   $font-family: 'Roboto, "Helvetica Neue", sans-serif',
   $display-4: mat-typography-level(112px, 112px, 300),

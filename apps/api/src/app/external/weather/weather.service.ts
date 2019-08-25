@@ -26,21 +26,25 @@ export class WeatherService extends BaseRemoteService {
   }
 
   getWeatherByZip(zip: string, countryCode: string = 'us'): Observable<any> {
-    return this.http.get(`${this.baseUrl}/weather?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders()).pipe(
-      tap(res => this.logger.log(`Status: ${res.status}`)),
-      map(res => res.data ),
-      catchError(this.handleError),
-    );
+    return this.http
+      .get(`${this.baseUrl}/weather?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders())
+      .pipe(
+        tap(res => this.logger.log(`Status: ${res.status}`)),
+        map(res => res.data),
+        catchError(this.handleError),
+      );
   }
 
   // 5 day / 3 hour forecast data
-  @Cache<any>({ ttl: 60 * 60 * 3})
+  @Cache<any>({ ttl: 60 * 60 * 3 })
   getForecastByZip(zip: string, countryCode: string = 'us'): Observable<any> {
-    return this.http.get(`${this.baseUrl}/forecast?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders()).pipe(
-      tap(res => this.logger.log(`Status: ${res.status}`)),
-      map(res => res.data ),
-      catchError(this.handleError),
-    );
+    return this.http
+      .get(`${this.baseUrl}/forecast?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders())
+      .pipe(
+        tap(res => this.logger.log(`Status: ${res.status}`)),
+        map(res => res.data),
+        catchError(this.handleError),
+      );
   }
 
   getHeaders() {
