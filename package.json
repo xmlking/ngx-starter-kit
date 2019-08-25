@@ -1,6 +1,6 @@
 {
   "name": "ngx-starter-kit",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "description": "Angular-NestJS Starter Kit Monorepo",
   "author": "Sumanth Chinthagunta <xmlking@gmail.com>",
   "license": "MIT",
@@ -70,7 +70,6 @@
   },
   "husky": {
     "hooks": {
-      "prepare-commit-msg": "exec < /dev/tty && git cz --hook",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS HUSKY_USE_YARN",
       "pre-commit": "lint-staged"
     }

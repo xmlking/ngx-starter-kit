@@ -1,3 +1,53 @@
+# [2.1.0](https://github.com/xmlking/ngx-starter-kit/compare/v2.0.0...v2.1.0) (2019-08-25)
+
+
+### Bug Fixes
+
+* **404:** fix 404 page to redirect to home ([b59f7d9](https://github.com/xmlking/ngx-starter-kit/commit/b59f7d9))
+* **api:** Project Module: using kubeview service account to enable k8s queries ([dfcca18](https://github.com/xmlking/ngx-starter-kit/commit/dfcca18))
+* **api:** testing a fix for NotificationService.send() ([3ce2827](https://github.com/xmlking/ngx-starter-kit/commit/3ce2827))
+* **build:** fix -E HUSKY_USE_YARN ([3f55590](https://github.com/xmlking/ngx-starter-kit/commit/3f55590))
+* **core:** fix husky hooks ([d94e514](https://github.com/xmlking/ngx-starter-kit/commit/d94e514))
+* **deps:** update angular monorepo ([28a5904](https://github.com/xmlking/ngx-starter-kit/commit/28a5904))
+* **deps:** update angular monorepo ([63b3a54](https://github.com/xmlking/ngx-starter-kit/commit/63b3a54))
+* **deps:** update angular monorepo to >=8.2.3 ([6b1e276](https://github.com/xmlking/ngx-starter-kit/commit/6b1e276))
+* **deps:** update angularcli monorepo ([8e54471](https://github.com/xmlking/ngx-starter-kit/commit/8e54471))
+* **deps:** update angularcli monorepo ([0da303a](https://github.com/xmlking/ngx-starter-kit/commit/0da303a))
+* **deps:** update angularcli monorepo ([775360b](https://github.com/xmlking/ngx-starter-kit/commit/775360b))
+* **deps:** update angularmaterial monorepo to >=8.1.3 ([e8d06b4](https://github.com/xmlking/ngx-starter-kit/commit/e8d06b4))
+* **deps:** update dependency @fortawesome/angular-fontawesome to ^0.5.0 ([6a5c7f5](https://github.com/xmlking/ngx-starter-kit/commit/6a5c7f5))
+* **deps:** update nginxinc/nginx-unprivileged docker tag to v1.17.2 ([ab7e050](https://github.com/xmlking/ngx-starter-kit/commit/ab7e050))
+* **notifications:** fix notifications delete and make-all-as-read commands ([fc3e683](https://github.com/xmlking/ngx-starter-kit/commit/fc3e683))
+* **styles:** fix scss imports issues with latest sass-loader ([0050e9d](https://github.com/xmlking/ngx-starter-kit/commit/0050e9d))
+
+
+### Features
+
+* **api:** added rest-client tests for VS Code ([521ddc3](https://github.com/xmlking/ngx-starter-kit/commit/521ddc3))
+* **api:** adding jetbrain rest/http client testing tool ([15ef31d](https://github.com/xmlking/ngx-starter-kit/commit/15ef31d))
+* **api:** API DOCKER:  ADD TINI FOR SIGNAL HANDLING ([456397d](https://github.com/xmlking/ngx-starter-kit/commit/456397d))
+* **api:** enhanced search options for projects ([f34a3bf](https://github.com/xmlking/ngx-starter-kit/commit/f34a3bf))
+* **api:** experimenting with @nestjs/cqrs ([c2b69f4](https://github.com/xmlking/ngx-starter-kit/commit/c2b69f4))
+* **api:** merged e2e projects into parent project ([195ef66](https://github.com/xmlking/ngx-starter-kit/commit/195ef66))
+* **api:** now using built-in ParseUUIDPipe ([4710cbb](https://github.com/xmlking/ngx-starter-kit/commit/4710cbb))
+* **api:** refactored to share more code between frontend and backend ([ddb088d](https://github.com/xmlking/ngx-starter-kit/commit/ddb088d))
+* **api:** renamed drawio file ([be48be6](https://github.com/xmlking/ngx-starter-kit/commit/be48be6))
+* **api:** trying typeorm's value transformers ([65bfdce](https://github.com/xmlking/ngx-starter-kit/commit/65bfdce))
+* **auth:** switching back to angular-oauth2-oidc ([14e7f17](https://github.com/xmlking/ngx-starter-kit/commit/14e7f17))
+* **auth:** switching OpenID Connect provider to Google ([e5d052a](https://github.com/xmlking/ngx-starter-kit/commit/e5d052a))
+* **auth:** switching OpenID Connect provider to Google for API ([eff9ad5](https://github.com/xmlking/ngx-starter-kit/commit/eff9ad5))
+* **core:** adding AppConfigService to support remote dynamic config ([fc82a8e](https://github.com/xmlking/ngx-starter-kit/commit/fc82a8e))
+* **core:** adding custom rxjs operator  retryWithBackoff ([37dffcf](https://github.com/xmlking/ngx-starter-kit/commit/37dffcf))
+* **core:** prepare for differential-loading ([6353e4b](https://github.com/xmlking/ngx-starter-kit/commit/6353e4b))
+* **deploy:** added OpenShift4 deployment files ([bca7f73](https://github.com/xmlking/ngx-starter-kit/commit/bca7f73))
+* **deploy:** using google's distroless base image for node apps ([7f53ed7](https://github.com/xmlking/ngx-starter-kit/commit/7f53ed7))
+* **deploy:** using Helm for API deployment ([92add74](https://github.com/xmlking/ngx-starter-kit/commit/92add74))
+* **image-comparison:** converted image-comparison js-->ts ([8c285e1](https://github.com/xmlking/ngx-starter-kit/commit/8c285e1)), closes [#121](https://github.com/xmlking/ngx-starter-kit/issues/121)
+* **tools:** lib update ([4bb35b3](https://github.com/xmlking/ngx-starter-kit/commit/4bb35b3))
+* **utils:** adding new operator 'toClass' ([9d12f8d](https://github.com/xmlking/ngx-starter-kit/commit/9d12f8d))
+* **vscode:** fix VS Code settings ([1ba568c](https://github.com/xmlking/ngx-starter-kit/commit/1ba568c))
+* **webapp:** added helm chart for angular webapp deployment ([a87dd79](https://github.com/xmlking/ngx-starter-kit/commit/a87dd79))
+
 # [2.0.0](https://github.com/xmlking/ngx-starter-kit/compare/v1.5.0...v2.0.0) (2019-03-21)
 
 
