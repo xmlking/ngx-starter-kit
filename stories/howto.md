@@ -110,7 +110,7 @@ git commit # git cz
 # or skip git hooks with
 git commit --no-verify # git cz --no-verify
 # or
-HUSKY_SKIP_HOOKS=1 git commit 
+HUSKY_SKIP_HOOKS=1 git commit
 ```
 
 > Note: the optional commit `-a` command line option will automatically "add" and "rm" edited files.
@@ -134,11 +134,15 @@ HUSKY_SKIP_HOOKS=1 git commit
 
     https://github.com/atlassian/lerna-semantic-release
 
+> temporarily remove `"prepare-commit-msg": "exec < /dev/tty && git cz --hook"` from `package.json`
+
 ```bash
 export GH_TOKEN=<my_github_token>
 export CI=true
-npm run semantic-release
+yarn semantic-release -b develop
 ```
+
+> rollback `prepare-commit-msg` change. then send **PR** to merge to `master` branch.
 
 </details>
 
@@ -304,8 +308,6 @@ NODE_DEBUG=request  npm run api:start:dev
 1. Refer[1](https://cloudnativejs.wordpress.com/2019/03/19/how-to-build-and-deploy-a-cloud-native-node-js-app-in-15-minutes/)
 
 </details>
-
-
 
 Build Error: No name was provided for external module 'date-fns/esm' in output.globals – guessing 'esm'
 Solution: Add umdModuleIds to `ng-package.json`
