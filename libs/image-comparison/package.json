@@ -2,7 +2,7 @@
   "name": "@ngx-starter-kit/image-comparison",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=8.2.2",
-    "@angular/core": ">=8.2.2"
+    "@angular/common": ">=8.2.3",
+    "@angular/core": ">=8.2.3"
   }
 }
