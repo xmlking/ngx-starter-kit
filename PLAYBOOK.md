@@ -190,7 +190,7 @@ ng add angular-cli-ghpages
 ng add @angular/material
 yarn add hammerjs
 yarn add -D @types/hammerjs
-yarn add date-fns@next
+yarn add date-fns
 
 # Add Flex-Layout
 yarn add @angular/flex-layout

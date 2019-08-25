@@ -1132,7 +1132,7 @@
                   "type": "allScript"
                 },
                 {
-                  "baseline": "2mb",
+                  "baseline": "2.5mb",
                   "maximumError": "20%",
                   "maximumWarning": "10%",
                   "type": "initial"
@@ -1211,22 +1211,22 @@
               {
                 "bundleName": "assets/themes/deeppurple-amber",
                 "input": "apps/webapp/src/styles/themes/deeppurple-amber.scss",
-                "lazy": true
+                "inject": false
               },
               {
                 "bundleName": "assets/themes/indigo-pink",
                 "input": "apps/webapp/src/styles/themes/indigo-pink.scss",
-                "lazy": true
+                "inject": false
               },
               {
                 "bundleName": "assets/themes/pink-bluegrey",
                 "input": "apps/webapp/src/styles/themes/pink-bluegrey.scss",
-                "lazy": true
+                "inject": false
               },
               {
                 "bundleName": "assets/themes/purple-green",
                 "input": "apps/webapp/src/styles/themes/purple-green.scss",
-                "lazy": true
+                "inject": false
               }
             ],
             "tsConfig": "apps/webapp/tsconfig.app.json"
@@ -1287,7 +1287,10 @@
         },
         "deploy": {
           "builder": "angular-cli-ghpages:deploy",
-          "options": {}
+          "options": {
+            "baseHref": "/ngx-starter-kit/",
+            "configuration": "mock"
+          }
         }
       },
       "prefix": "ngx",

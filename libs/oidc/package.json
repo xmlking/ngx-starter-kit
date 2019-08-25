@@ -10,6 +10,6 @@
     "@ngxs/store": ">=3.4.0"
   },
   "dependencies": {
-    "keycloak-js": ">=6.0.1"
+    "keycloak-js": ">=7.0.0"
   }
 }

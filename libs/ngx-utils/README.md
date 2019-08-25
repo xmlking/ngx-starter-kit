@@ -11,7 +11,7 @@ same as [@ngrx-utils/store](https://github.com/ngrx-utils/ngrx-utils) without de
 ```bash
 npm i @ngx-starter-kit/ngx-utils
 # install peer dependencies
-npm i date-fns@^2.0.0-alpha.27
+npm i date-fns
 ```
 
 ## Usage
