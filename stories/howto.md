@@ -134,15 +134,14 @@ HUSKY_SKIP_HOOKS=1 git commit
 
     https://github.com/atlassian/lerna-semantic-release
 
-> temporarily remove `"prepare-commit-msg": "exec < /dev/tty && git cz --hook"` from `package.json`
-
 ```bash
 export GH_TOKEN=<my_github_token>
 export CI=true
+export HUSKY_SKIP_HOOKS=1
 yarn semantic-release -b develop
 ```
 
-> rollback `prepare-commit-msg` change. then send **PR** to merge to `master` branch.
+> then send **PR** to merge to `master` branch.
 
 </details>
 
