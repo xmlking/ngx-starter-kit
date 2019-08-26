@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/xmlking/ngx-starter-kit/compare/v2.1.0...v3.0.0) (2019-08-26)
+
+
+### Bug Fixes
+
+* **release:** testing semantic-release ([c9d9155](https://github.com/xmlking/ngx-starter-kit/commit/c9d9155))
+
+
+### BREAKING CHANGES
+
+* **release:** next changes will be upgrading angular to 9.0.0
+
 # [2.1.0](https://github.com/xmlking/ngx-starter-kit/compare/v2.0.0...v2.1.0) (2019-08-25)
 
 
