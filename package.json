@@ -213,7 +213,7 @@
     "husky": "^3.0.4",
     "jest": "^24.9.0",
     "jest-preset-angular": "^7.1.1",
-    "lint-staged": "^9.2.3",
+    "lint-staged": "^9.2.4",
     "lite-server": "^2.5.4",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.24",
