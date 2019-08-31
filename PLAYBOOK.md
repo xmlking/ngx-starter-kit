@@ -82,14 +82,14 @@ bazel clean --expunge
 ```bash
 yarn global remove lerna
 yarn global remove @angular/cli
-yarn global remove @nrwl/workspace
+yarn global remove @nrwl/cli
 yarn global remove @nestjs/cli
 yarn global remove semantic-release-cli
 yarn global remove commitizen
 
 yarn global add lerna
 yarn global add @angular/cli@next
-yarn global add @nrwl/workspace@next
+yarn global add @nrwl/cli@next
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
 yarn global add commitizen
@@ -131,6 +131,7 @@ for nx help `yarn run help`
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
 yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --preset=empty --style=scss --skipInstall
+yarn create nx-workspace myworkspace --npm-scope=ngx-starter-kit
 # or
 ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
