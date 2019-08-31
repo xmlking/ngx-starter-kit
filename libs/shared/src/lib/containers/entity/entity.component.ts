@@ -1,17 +1,16 @@
+import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
+import { ComponentType } from '@angular/cdk/portal/typings/portal';
 import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
-import { EntityService } from './entity.service';
-import { Entity, EntityColumnDef } from './entity.model';
-import { concatMap, filter, map } from 'rxjs/operators';
-import { Observable } from 'rxjs';
-import { EntityFormComponent } from './entity-form.component';
-import { ComponentType } from '@angular/cdk/portal/typings/portal';
-import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { parseISO } from 'date-fns/esm';
+import { Observable } from 'rxjs';
+import { concatMap, filter, map } from 'rxjs/operators';
+import { EntityFormComponent } from './entity-form.component';
+import { Entity, EntityColumnDef } from './entity.model';
+import { EntityService } from './entity.service';
 
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
