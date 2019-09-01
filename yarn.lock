@@ -13067,10 +13067,10 @@ ngx-filepond@^5.0.1:
   dependencies:
     tslib "^1.9.0"
 
-ngx-page-scroll-core@^6.0.2:
-  version "6.0.2"
-  resolved "https://registry.yarnpkg.com/ngx-page-scroll-core/-/ngx-page-scroll-core-6.0.2.tgz#8c9c0a1663fd1ec915168d53138a552dc21a34a3"
-  integrity sha512-/kke5pvoxZJzfQikhfd5kv8YxcYoqpOhOjMi4SME1VjO2lQg/48942YmouJhm1B2UT8UMtytDRHeh+p8hnydhA==
+ngx-page-scroll-core@^7.0.0:
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-page-scroll-core/-/ngx-page-scroll-core-7.0.0.tgz#2f5967a680a78a164944d4e6b3b4214d79b5a757"
+  integrity sha512-RRKKsGmat+wkhrE69hLl/KmWloAnsnGKzIx3Lb9eIIOQSXvxo0aJZ+iNcfLT1vS8P6gn+u8URIOKfqHEWPdykA==
   dependencies:
     tslib "^1.9.0"
 
