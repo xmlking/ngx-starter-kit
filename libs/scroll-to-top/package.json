@@ -5,6 +5,6 @@
     "@angular/common": ">=8.2.3",
     "@angular/core": ">=8.2.3",
     "ngx-page-scroll-core": ">=6.0.0",
-    "ngx-page-scroll": "6.0.2"
+    "ngx-page-scroll": "7.0.0"
   }
 }

@@ -158,7 +158,7 @@
     "intersection-observer": "^0.7.0",
     "keycloak-js": "^7.0.0",
     "ngx-filepond": "^5.0.1",
-    "ngx-page-scroll": "^6.0.2",
+    "ngx-page-scroll": "^7.0.0",
     "ngx-page-scroll-core": "^6.0.2",
     "ngx-perfect-scrollbar": "^8.0.0",
     "rxjs": "~6.5.2",
