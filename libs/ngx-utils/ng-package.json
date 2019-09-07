@@ -4,7 +4,7 @@
   "lib": {
     "entryFile": "src/index.ts",
     "umdModuleIds": {
-      "date-fns/esm": "date-fns/esm"
+      "date-fns": "date-fns"
     }
   }
 }

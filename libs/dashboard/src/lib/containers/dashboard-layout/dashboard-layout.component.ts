@@ -11,8 +11,6 @@ import { RouterStateData, WINDOW } from '@ngx-starter-kit/core';
 import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { OAuthService } from 'angular-oauth2-oidc';
 
-// import { AuthService } from '@ngx-starter-kit/oidc';
-
 /** @dynamic */
 @Component({
   selector: 'ngx-dashboard-layout',

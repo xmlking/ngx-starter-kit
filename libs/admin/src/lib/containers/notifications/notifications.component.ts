@@ -1,16 +1,16 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { Navigate } from '@ngxs/router-plugin';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
-import { catchError, concatMap, filter, map, mergeMap, tap } from 'rxjs/operators';
-import { formatDistance } from 'date-fns/esm';
 import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
+import { AppNotification, NotificationColor, NotificationIcon, TargetType } from '@ngx-starter-kit/notifications';
 import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
-import { AppNotification, TargetType, NotificationColor, NotificationIcon } from '@ngx-starter-kit/notifications';
-import { NotificationService } from '../../services/notification.service';
+import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { formatDistance } from 'date-fns';
+import { throwError } from 'rxjs';
+import { catchError, concatMap, filter, mergeMap, tap } from 'rxjs/operators';
 import { NotificationEditComponent } from '../../components/notification-edit/notification-edit.component';
+import { NotificationService } from '../../services/notification.service';
 
 // const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
 // const cellHtmlTpl = require('./cell.templates.html');

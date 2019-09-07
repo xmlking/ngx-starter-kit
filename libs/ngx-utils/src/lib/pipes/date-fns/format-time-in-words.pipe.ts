@@ -1,11 +1,8 @@
-import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
+import { ChangeDetectorRef, OnDestroy, Pipe, PipeTransform } from '@angular/core';
+import { differenceInMinutes, formatDistance, parseISO } from 'date-fns';
 import { interval, Observable, of } from 'rxjs';
 import { delayWhen, map, repeatWhen, takeWhile, tap } from 'rxjs/operators';
-
-import { differenceInMinutes, formatDistance } from 'date-fns/esm';
-import { parseISO } from 'date-fns/esm';
-
 const defaultConfig = { addSuffix: true };
 /**
  * impure pipe, which in general can lead to bad performance
@@ -73,7 +70,9 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
   }
 
   private stringToDate(date: string | number | Date): number | Date {
-    const isString = s => typeof s === 'string' || s instanceof String;
-    return isString(date) ? parseISO(date) : date;
+    function isString(x: any) {
+      return Object.prototype.toString.call(x) === '[object String]';
+    }
+    return isString(date) ? parseISO(date as string) : (date as number | Date);
   }
 }

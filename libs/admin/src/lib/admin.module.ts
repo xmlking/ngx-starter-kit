@@ -4,7 +4,6 @@ import { FormlyModule } from '@ngx-formly/core';
 import { FormlyMaterialModule } from '@ngx-formly/material';
 
 import { AdminGuard } from '@ngx-starter-kit/auth';
-// import { AuthGuard } from '@ngx-starter-kit/oidc';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ToolbarModule } from '@ngx-starter-kit/toolbar';

@@ -2,8 +2,10 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
+    "emitDecoratorMetadata": true,
     "module": "commonjs",
     "target": "es2017",
+    "incremental": true,
     "types": ["node"]
   },
   "exclude": ["src/**/*.spec.ts"],

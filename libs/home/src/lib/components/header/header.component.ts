@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { AuthState, Login, Logout, Signup } from '@ngx-starter-kit/auth';
-// import { AuthState, Login, Logout, Signup } from '@ngx-starter-kit/oidc';
 
 @Component({
   selector: 'ngx-home-header',

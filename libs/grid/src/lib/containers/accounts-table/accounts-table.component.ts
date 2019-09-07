@@ -1,18 +1,17 @@
 import { Component } from '@angular/core';
-
-import { Account, Address, Gender } from '../../models/account.model';
-import { AccountService } from '../../services/account.service';
-import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
-import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { catchError, tap, concatMap, filter, map, mergeMap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { format } from 'date-fns/esm';
-import { AccountEditComponent } from '../../components/account-edit/account-edit.component';
+import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
+import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
 import { Navigate } from '@ngxs/router-plugin';
 import { Store } from '@ngxs/store';
-import { Crumb } from '@ngx-starter-kit/breadcrumbs';
+import { format } from 'date-fns';
+import { throwError } from 'rxjs';
+import { catchError, concatMap, filter, mergeMap, tap } from 'rxjs/operators';
+import { AccountEditComponent } from '../../components/account-edit/account-edit.component';
+import { Account, Address } from '../../models/account.model';
+import { AccountService } from '../../services/account.service';
 
 // TODO: search with facets https://github.com/sfeir-open-source/angular-search-experience
 // https://ngx.tools/#/search?q=Go

@@ -1,7 +1,7 @@
-import { inject, TestBed } from '@angular/core/testing';
-import { FormatTimeInWordsPipe } from './format-time-in-words.pipe';
-import { DateFnsModule } from './date-fns.module';
 import { ChangeDetectorRef } from '@angular/core';
+import { inject, TestBed } from '@angular/core/testing';
+import { DateFnsModule } from './date-fns.module';
+import { FormatTimeInWordsPipe } from './format-time-in-words.pipe';
 
 class MockChangeDetector {
   markForCheck(): void {}
@@ -52,10 +52,18 @@ describe('FormatTimeInWordsPipe', () => {
     expect(pipe.transform(yesterday)).toBe('1 day ago');
   }));
 
+  it('should return `over 23 years ago` when date is 1995-12-17T03:24:00', inject(
+    [FormatTimeInWordsPipe],
+    (pipe: FormatTimeInWordsPipe) => {
+      expect(pipe.transform('1995-12-17T03:24:00')).toBe('over 23 years ago');
+    },
+  ));
+
   it('should return `Invalid Date` when date is invalid', inject(
     [FormatTimeInWordsPipe],
     (pipe: FormatTimeInWordsPipe) => {
-      expect(pipe.transform('err')).toBe('Invalid Date');
+      // expect(pipe.transform('2018-13-32')).toBe('Invalid Date');
+      expect(pipe.transform('2018-13-32')).toBeNull();
     },
   ));
 

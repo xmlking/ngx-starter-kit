@@ -121,9 +121,6 @@
     },
     "models": {
       "tags": ["utils"]
-    },
-    "oidc": {
-      "tags": ["public-module"]
     }
   }
 }

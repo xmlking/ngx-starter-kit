@@ -91,17 +91,20 @@ export class ViewportDemoComponent implements OnInit, OnDestroy {
 }
 ```
 
-## Publish
+## Development
+
+### Running unit tests
+
+Run `ng test ngx-utils` to execute the unit tests.
+
+### Publish
 
 ```bash
-# build
-ng build ngx-utils
-# replace your npm key
-export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
-# publish
-npm publish dist/libs/ngx-utils --access public
+# bump version in package.json
+ng deploy ngx-utils --dry-run
+ng deploy ngx-utils
 ```
 
-### Reference
+## Reference
 
 - [Improve Performance With Lazy Components](https://blog.angularindepth.com/improve-performance-with-lazy-components-f3c5ff4597d2)

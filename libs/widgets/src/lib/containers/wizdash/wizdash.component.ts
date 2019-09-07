@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ChartData } from 'chart.js';
+import { formatDistance } from 'date-fns';
 import { Observable } from 'rxjs/internal/Observable';
 import { ReplaySubject } from 'rxjs/internal/ReplaySubject';
-import { fadeOutAnimation } from '@ngx-starter-kit/animations';
 import { AdvancedPieChartWidgetOptions } from '../../components/advanced-pie-chart-widget/advanced-pie-chart-widget-options.interface';
 import { AudienceOverviewWidgetOptions } from '../../components/audience-overview-widget/audience-overview-widget-options.interface';
 import { BarChartWidgetOptions } from '../../components/bar-chart-widget/bar-chart-widget-options.interface';
@@ -16,7 +16,6 @@ import {
 import { RecentSalesWidgetOptions } from '../../components/recent-sales-widget/recent-sales-widget-options.interface';
 import { SalesSummaryWidgetOptions } from '../../components/sales-summary-widget/sales-summary-widget-options.interface';
 import { WizdashService } from './wizdash.service';
-import { formatDistance } from 'date-fns/esm';
 
 @Component({
   selector: 'ngx-wizdash',

@@ -1,4 +1,4 @@
-import { format, subDays, subMinutes, formatDistance } from 'date-fns/esm';
+import { format, formatDistance, subDays, subMinutes } from 'date-fns';
 
 export const salesChartDemoValues = [
   193,

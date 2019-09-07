@@ -1,13 +1,12 @@
 import { Component, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { EntityFormComponent } from '@ngx-starter-kit/shared';
+import { subYears } from 'date-fns';
+import { Observable } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
-
 import { Account, Gender } from '../../models/account.model';
 import { states } from './states';
-import { Observable } from 'rxjs';
-import { EntityFormComponent } from '@ngx-starter-kit/shared';
-import { subYears } from 'date-fns/esm';
 
 @Component({
   selector: 'ngx-account-edit',

@@ -1,10 +1,10 @@
 import { All, Controller, Get, HttpService, Req } from '@nestjs/common';
 import { ApiOperation } from '@nestjs/swagger';
-import { ConfigService } from './config';
-import { Allow } from './auth';
+import * as https from 'https';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import * as https from 'https';
+import { Allow } from './auth';
+import { ConfigService } from './config';
 
 const url = 'https://httpbin.org/anything';
 const httpsAgent = new https.Agent({

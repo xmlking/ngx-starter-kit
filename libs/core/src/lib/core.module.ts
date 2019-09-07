@@ -8,7 +8,6 @@ import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontaweso
 import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FormlyModule } from '@ngx-formly/core';
 import { AuthModule } from '@ngx-starter-kit/auth';
-// import { OidcFlow, OidcModule, OidcOnLoad, OidcProvider } from '@ngx-starter-kit/oidc';
 import { MenuState, NavigatorModule } from '@ngx-starter-kit/navigator';
 import { NgxsWebsocketPluginModule } from '@ngx-starter-kit/socketio-plugin';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
