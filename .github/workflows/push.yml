@@ -21,8 +21,12 @@ jobs:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Linting
         run: yarn ng lint ngx-utils
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Testing
         run: yarn ng test ngx-utils
+        env:
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
           -F unittests
