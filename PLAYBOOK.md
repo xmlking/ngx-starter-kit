@@ -712,28 +712,32 @@ npx standard-version
 "release": "standard-version && git push — follow-tags origin master && yarn publish"
 ```
 
-#### build library
+#### Build Library
 
 ```bash
 ng build socketio-plugin
 ```
 
-#### publish library
+#### Publish Library
 
-> from workspace root
+> bump `version` in `libs/ngx-utils/package.json` e.g., `0.0.6-alpha` for _alpha_ release or `0.0.6` for _latest_ release.
+> Set your _NPM_TOKEN_
 
 ```bash
-# check who-am-i
+# Check who-am-i
 npm whoami
-export TAG=dev
+
+export TAG=alpha
 export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
-# new style
-ng deploy ngx-utils --tag $TAG --dry-run
+# Alpha Release
+ng deploy ngx-utils --tag $TAG --otp $NPM_TOKEN --dry-run
+# Latest Release
+ng deploy ngx-utils --otp $NPM_TOKEN
 # old style
-yarn publish dist/libs/socketio-plugin --tag $TAG --access public
+yarn publish dist/libs/ngx-utils --tag $TAG --access public
 ```
 
-#### publish code coverage
+#### Publish Code Coverage
 
 ```bash
 export CODECOV_TOKEN="my token"

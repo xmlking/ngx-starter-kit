@@ -5,27 +5,43 @@ jobs:
     name: Lint and Test
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js 12.x
+      - name: Dump GitHub context for debug
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Set up Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      # - name: Setup Angular CLI
-      #   run: yarn global add @angular/cli
-      #   env:
-      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # registry-url: <registry url>
+        id: node
+      - name: Setup Tools
+        run: |
+          # yarn global add lerna
+          yarn global add @angular/cli
+          ng version
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Check out Code
+        uses: actions/checkout@v1
       - name: Install Dependencies
         run: yarn install
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Linting
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Lint
         run: yarn ng lint ngx-utils
+        # run: yarn affected:lint --all
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Testing
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Unit Test
         run: yarn ng test ngx-utils
+        # run: yarn affected:test --all
         env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Integration Test
+      #   run: yarn affected:e2e --all
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
           -F unittests
@@ -40,3 +56,4 @@ jobs:
           CODECOV_ENV: github-action
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
           CODECOV_PR: ${{ github.event.number }}
+          CODECOV_SHA: ${{ github.sha }}

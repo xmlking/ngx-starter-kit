@@ -757,9 +757,6 @@
           "options": {
             "project": "libs/ngx-utils/ng-package.json",
             "tsConfig": "libs/ngx-utils/tsconfig.lib.json"
-          },
-          "configurations": {
-            "production": {}
           }
         },
         "lint": {

@@ -12592,10 +12592,10 @@ ng-packagr@^5.5.0:
     terser "^4.1.2"
     update-notifier "^3.0.0"
 
-ngx-deploy-npm@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.0.0.tgz#a5a5599e60357c703e8494d7ff99c362b84d286c"
-  integrity sha512-X0Z8hCgBytp4viUycuHt5Z7+aTSeS+fAdoqOsgHroCRUQdWBmA37nd0e5RAR/M0WR5vgro2Zqc2V1SxKrSCZrA==
+ngx-deploy-npm@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.0.1.tgz#a640e991d9fc927f717a0fe48cdefde2f6155182"
+  integrity sha512-YGckWmal7u7uDafjkbWnn/syWrjoUOc1hTbcKnpoNcyzBJHTH3jR93ZUE/NPJrSQ8aPDyvEA9lB8sIMa42etrw==
 
 ngx-filepond@^5.0.1:
   version "5.0.1"

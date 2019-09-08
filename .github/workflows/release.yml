@@ -1,0 +1,52 @@
+name: Build on Release
+on: [release]
+# on:
+#   push:
+#     branches:
+#       - master
+#       - 'releases/*'
+#     tags:
+#     - 'v*'
+#   pull_request:
+#     branches:
+#       - master
+jobs:
+  build-deploy:
+    name: Build and Deploy/Publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+          # registry-url: <registry url>
+        id: node
+      - name: Setup Tools
+        run: |
+          # yarn global add lerna
+          yarn global add @angular/cli
+          yarn global add semantic-release-cli
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Check out Code
+        uses: actions/checkout@v1
+      - name: Install Dependencies
+        run: yarn install
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Unit Test
+        run: yarn affected:lint --all
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Integration Test
+        run: yarn affected:test --all
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      # - name: Build
+      #   run: yarn affected:build --all --prod
+      #   env:
+      #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish
+        run: yarn affected:deploy --all --prod
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
