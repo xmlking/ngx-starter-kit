@@ -10,31 +10,15 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      # - name: Setup Angular CLI
-      #   run: yarn global add @angular/cli
-      #   env:
-      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Install Dependencies
-        run: yarn install
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Linting
-        run: yarn ng lint ngx-utils
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Testing
-        run: yarn ng test ngx-utils
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
-        run: bash <(curl -s https://codecov.io/bash)
+        run: echo
           -F unittests
           -n codecov-ngx
           -f ./coverage/libs/ngx-utils/coverage-final.json
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"
           -C "${GITHUB_SHA}"
-          -P ${CODECOV_PR:1000}
+          -P "${CODECOV_PR:1000}"
           -Z || echo 'Codecov upload failed'
         env:
           CI: true
