@@ -18,7 +18,6 @@ jobs:
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"
           -C "${GITHUB_SHA}"
-          -P "${CODECOV_PR:1000}"
           -Z || echo 'Codecov upload failed'
         env:
           CI: true
