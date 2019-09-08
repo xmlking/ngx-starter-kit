@@ -31,7 +31,7 @@ jobs:
           -F unittests
           -n codecov-ngx
           -f ./coverage/libs/ngx-utils/coverage-final.json
-          -B ${{ github.head_ref }}
+          -B ${{ github.GITHUB_REF }}
           -C ${{ github.event.after }}
           -P ${{ github.event.number }}
           -Z || echo 'Codecov upload failed'
