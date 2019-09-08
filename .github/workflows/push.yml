@@ -2,7 +2,7 @@ on: push
 name: Main
 jobs:
   lint-test:
-    name: Lint and Test
+    name: WebApp Lint and Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -14,20 +14,6 @@ jobs:
       #   run: yarn global add @angular/cli
       #   env:
       #     NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Run a multi-line script
-        run: |
-          set -x
-          echo $GITHUB_WORKFLOW
-          echo $GITHUB_ACTION
-          echo $GITHUB_ACTOR
-          echo $GITHUB_REPOSITORY
-          echo $GITHUB_EVENT_NAME
-          echo $GITHUB_EVENT_PATH
-          echo $GITHUB_WORKSPACE
-          echo $GITHUB_SHA
-          echo $GITHUB_REF
-          echo $GITHUB_HEAD_REF
-          echo $GITHUB_BASE_REF
       - name: Install Dependencies
         run: yarn install
         env:
@@ -45,11 +31,13 @@ jobs:
           -F unittests
           -n codecov-ngx
           -f ./coverage/libs/ngx-utils/coverage-final.json
-          -B ${{ github.GITHUB_REF }}
-          -C ${{ github.event.after }}
-          -P ${{ github.event.number }}
+          -B "${GITHUB_REF//refs\/heads\//}"
+          -T "${GITHUB_REF//refs\/tags\//}"
+          -C "${GITHUB_SHA}"
+          -P ${CODECOV_PR:1000}
           -Z || echo 'Codecov upload failed'
         env:
           CI: true
           CODECOV_ENV: github-action
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+          CODECOV_PR: ${{ github.event.number }}
