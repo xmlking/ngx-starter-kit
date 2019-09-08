@@ -13,7 +13,7 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-          # registry-url: <registry url>
+          # registry-url:  <registry url>
         id: node
       - name: Setup Tools
         run: |
