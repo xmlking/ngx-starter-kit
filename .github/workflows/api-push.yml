@@ -1,11 +1,11 @@
+name: Test on Push for API
 on:
   push:
     paths:
       - "apps/api/*"
-name: Main
 jobs:
   lint-test:
-    name: API Lint and Test
+    name: Lint and Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1

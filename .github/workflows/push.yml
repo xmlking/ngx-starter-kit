@@ -1,8 +1,8 @@
+name: Test on Push for WebApp
 on: push
-name: Main
 jobs:
   lint-test:
-    name: WebApp Lint and Test
+    name: Lint and Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
