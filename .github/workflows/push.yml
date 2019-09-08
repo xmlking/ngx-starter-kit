@@ -18,7 +18,8 @@ jobs:
       - name: Setup Tools
         run: |
           # yarn global add lerna
-          yarn global add @angular/cli
+          npm install -g @angular/cli
+          # yarn global add @angular/cli
           ng version
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
