@@ -20,8 +20,8 @@ jobs:
         id: node
       - name: Setup Tools
         run: |
-          # yarn global add lerna
-          yarn global add @angular/cli
+          # npm install -g lerna
+          npm install -g @angular/cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Check out Code
@@ -44,8 +44,8 @@ jobs:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-          -F unittests
-          -n codecov-ngx-api
+          -F "unittests"
+          -n "codecov-ngx-api"
           -f ./coverage/apps/api/coverage-final.json
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"

@@ -23,9 +23,10 @@ jobs:
         id: node
       - name: Setup Tools
         run: |
-          # yarn global add lerna
-          yarn global add @angular/cli
-          yarn global add semantic-release-cli
+          # npm install -g lerna
+          npm install -g @angular/cli
+          # npm install -g compodoc
+          npm install -g semantic-release-cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Check out Code
