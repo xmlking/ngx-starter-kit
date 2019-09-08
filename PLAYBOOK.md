@@ -192,7 +192,7 @@ ng add @angular/material
 yarn add hammerjs
 yarn add -D @types/hammerjs
 yarn add date-fns
-
+yarn add -D codecov
 # Add Flex-Layout
 yarn add @angular/flex-layout
 # Add in-memory-web-api
@@ -723,11 +723,22 @@ ng build socketio-plugin
 > from workspace root
 
 ```bash
-export TAG=dev
-export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
 # check who-am-i
 npm whoami
+export TAG=dev
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# new style
+ng deploy ngx-utils --tag $TAG --dry-run
+# old style
 yarn publish dist/libs/socketio-plugin --tag $TAG --access public
+```
+
+#### publish code coverage
+
+```bash
+export CODECOV_TOKEN="my token"
+yarn codecov -t $CODECOV_TOKEN \
+--branch=develop --file=coverage/libs/ngx-utils/coverage-final.json
 ```
 
 ### Analyze
