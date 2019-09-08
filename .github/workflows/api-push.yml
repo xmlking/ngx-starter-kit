@@ -1,8 +1,11 @@
-on: push
+on:
+  push:
+    paths:
+      - "apps/api/*"
 name: Main
 jobs:
   lint-test:
-    name: WebApp Lint and Test
+    name: API Lint and Test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
@@ -10,27 +13,23 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      # - name: Setup Angular CLI
-      #   run: yarn global add @angular/cli
-      #   env:
-      #     NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Install Dependencies
         run: yarn install
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Linting
-        run: yarn ng lint ngx-utils
+        run: yarn ng lint api
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Testing
-        run: yarn ng test ngx-utils
+        run: yarn ng test api
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-          -F unittests
-          -n codecov-ngx
-          -f ./coverage/libs/ngx-utils/coverage-final.json
+          -F api-unittests
+          -n codecov-ngx-api
+          -f ./coverage/apps/api/coverage-final.json
           -B ${{ github.head_ref }}
           -C ${{ github.event.after }}
           -P ${{ github.event.number }}
