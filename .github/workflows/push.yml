@@ -10,20 +10,19 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-      - name: Setup Angular CLI
-        run: yarn global add @angular/cli &&
-          ng --version
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+#       - name: Setup Angular CLI
+#         run: yarn global add @angular/cli
+#         env:
+#           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Install Dependencies
         # run: yarn install
         run: yarn --ignore-optional --frozen-lockfile
         env:
           NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Linting
-        run: ng lint ngx-utils
+        run: yarn ng lint ngx-utils
       - name: Testing
-        run: ng test ngx-utils
+        run: yarn ng test ngx-utils
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
           -F unittests
