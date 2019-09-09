@@ -8,10 +8,6 @@ jobs:
     name: Lint and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context for debug
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Set up Node.js 12.x
         uses: actions/setup-node@v1
         with:
@@ -44,8 +40,8 @@ jobs:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-          -F "unittests"
-          -n "codecov-ngx-api"
+          -F unittests
+          -n codecov-ngx-api
           -f ./coverage/apps/api/coverage-final.json
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"
@@ -55,5 +51,5 @@ jobs:
           CI: true
           CODECOV_ENV: github-action
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-          CODECOV_PR: ${{ github.event.number }}
+          CODECOV_PR: ${{ github.event.after }}
           CODECOV_SHA: ${{ github.sha }}

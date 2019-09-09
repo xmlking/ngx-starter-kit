@@ -5,19 +5,15 @@ jobs:
     name: Lint and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context for debug
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Set up Node.js 12.x
         uses: actions/setup-node@v1
         with:
           node-version: 12.x
-          # registry-url:  <registry url>
+          # registry-url: <registry url>
         id: node
       - name: Setup Tools
         run: |
-          npm install -g lerna
+          # npm install -g lerna
           npm install -g @angular/cli
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -43,8 +39,8 @@ jobs:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
-          -F "unittests"
-          -n "codecov-ngx"
+          -F unittests
+          -n codecov-ngx
           -f ./coverage/libs/ngx-utils/coverage-final.json
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"
@@ -54,5 +50,5 @@ jobs:
           CI: true
           CODECOV_ENV: github-action
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-          CODECOV_PR: ${{ github.event.number }}
+          CODECOV_PR: ${{ github.event.after }}
           CODECOV_SHA: ${{ github.sha }}
