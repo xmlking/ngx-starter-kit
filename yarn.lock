@@ -6658,11 +6658,6 @@ diff-sequences@^24.9.0:
   resolved "https://registry.yarnpkg.com/diff-sequences/-/diff-sequences-24.9.0.tgz#5715d6244e2aa65f48bba0bc972db0b0b11e95b5"
   integrity sha512-Dj6Wk3tWyTE+Fo1rW8v0Xhwk80um6yFYKbuAxc9c3EZxIHFDYwbi34Uk42u1CdnIiVorvt4RmlSDjIPyzGC2ew==
 
-diff@^3.2.0:
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
-  integrity sha512-A46qtFgd+g7pDZinpnwiRJtxbC1hpgf0uzP3iG89scHk0AUC7A1TGxf5OiiOUv/JMZR8GOt8hL900hV0bOy5xA==
-
 diff@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/diff/-/diff-4.0.1.tgz#0c667cb467ebbb5cea7f14f135cc2dba7780a8ff"
@@ -7896,10 +7891,10 @@ filepond-plugin-image-transform@^3.4.3:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.4.3.tgz#97a1317b2ce065d993c366dbdfe17a00cbc63485"
   integrity sha512-dX98KjSrsN6Td5ewSem9GEk2hL8u4/BBbL7sp3MolmB/pE/JQOeH+bmKlaQar2dCkdctONPkNWBM1K6HIUphig==
 
-filepond@^4.6.1:
-  version "4.6.1"
-  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.6.1.tgz#2e1b5d17b2fd586c3bf96b343db38238145b6ab5"
-  integrity sha512-wCEVc+PkmaVlGPWcuCQAsL9hF03fjbTZLhwlwHy0s5ByFoaCINnva9+K95lcj4boV2WoNBUrlBTZxF25iXkNpQ==
+filepond@^4.7.0:
+  version "4.7.0"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.7.0.tgz#b80e49cfe7900844cc3bf7c321b3cd9eeed4cefc"
+  integrity sha512-sZcxuZp9rrJho8/4HlkEHmAkGE7DpnCR8VtmSAj3PV/4X6pUD/4thU3vPBuAqGpfOsSfsqQ33DbY3j0e/FVsGw==
 
 filesize@^3.6.1:
   version "3.6.1"
@@ -12592,10 +12587,10 @@ ng-packagr@^5.5.0:
     terser "^4.1.2"
     update-notifier "^3.0.0"
 
-ngx-deploy-npm@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.0.1.tgz#a640e991d9fc927f717a0fe48cdefde2f6155182"
-  integrity sha512-YGckWmal7u7uDafjkbWnn/syWrjoUOc1hTbcKnpoNcyzBJHTH3jR93ZUE/NPJrSQ8aPDyvEA9lB8sIMa42etrw==
+ngx-deploy-npm@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.0.2.tgz#e2953c5c10a5b7638ba478f8eb67e962253ebaa1"
+  integrity sha512-95TC4H4e3NIO4N8SoQkHXH97CH0+p73P7xKl79V4qXg7oUTDsHhA7aeJRCuBBqgLUi3/euSi8NDPC2zUYsHjoA==
 
 ngx-filepond@^5.0.1:
   version "5.0.1"
@@ -15802,10 +15797,10 @@ scope-analyzer@^2.0.1:
     estree-is-function "^1.0.0"
     get-assigned-identifiers "^1.1.0"
 
-screenfull@^4.2.1:
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-4.2.1.tgz#3245b7bc73d2b7c9a15bd8caaf6965db7cbc7f04"
-  integrity sha512-PLSp6f5XdhvjCCCO8OjavRfzkSGL3Qmdm7P82bxyU8HDDDBhDV3UckRaYcRa/NDNTYt8YBpzjoLWHUAejmOjLg==
+screenfull@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/screenfull/-/screenfull-5.0.0.tgz#5c2010c0e84fd4157bf852877698f90b8cbe96f6"
+  integrity sha512-yShzhaIoE9OtOhWVyBBffA6V98CDCoyHTsp8228blmqYy1Z5bddzE/4FPiJKlr8DVR4VBiiUyfPzIQPIYDkeMA==
 
 secure-json-parse@^1.0.0:
   version "1.0.0"
@@ -17644,16 +17639,16 @@ tslib@1.10.0, tslib@^1.10.0, tslib@^1.7.1, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.10.0.tgz#c3c19f95973fb0a62973fb09d90d961ee43e5c8a"
   integrity sha512-qOebF53frne81cf0S9B41ByenJ3/IuH8yJKngAX35CmiZySA0khhkovshKK+jGCaMnVomla7gVlIcc3EvKPbTQ==
 
-tslint@~5.19.0:
-  version "5.19.0"
-  resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.19.0.tgz#a2cbd4a7699386da823f6b499b8394d6c47bb968"
-  integrity sha512-1LwwtBxfRJZnUvoS9c0uj8XQtAnyhWr9KlNvDIdB+oXyT+VpsOAaEhEgKi1HrZ8rq0ki/AAnbGSv4KM6/AfVZw==
+tslint@~5.20.0:
+  version "5.20.0"
+  resolved "https://registry.yarnpkg.com/tslint/-/tslint-5.20.0.tgz#fac93bfa79568a5a24e7be9cdde5e02b02d00ec1"
+  integrity sha512-2vqIvkMHbnx8acMogAERQ/IuINOq6DFqgF8/VDvhEkBqQh/x6SP0Y+OHnKth9/ZcHQSroOZwUQSN18v8KKF0/g==
   dependencies:
     "@babel/code-frame" "^7.0.0"
     builtin-modules "^1.1.1"
     chalk "^2.3.0"
     commander "^2.12.1"
-    diff "^3.2.0"
+    diff "^4.0.1"
     glob "^7.1.1"
     js-yaml "^3.13.1"
     minimatch "^3.0.4"
