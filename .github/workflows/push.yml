@@ -16,7 +16,8 @@ jobs:
           # npm install -g lerna
           npm install -g @angular/cli
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          # NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Check out Code
         uses: actions/checkout@v1
       - name: Install Dependencies
