@@ -44,10 +44,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # - name: Build
-      #   run: yarn affected:build --all --prod
+      #   run: yarn affected:build --all
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish
-        run: yarn affected:deploy --all --prod
+        run: yarn affected --target=deploy --all --dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
