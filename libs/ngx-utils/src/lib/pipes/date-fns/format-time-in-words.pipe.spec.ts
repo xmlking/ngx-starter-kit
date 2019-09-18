@@ -52,10 +52,10 @@ describe('FormatTimeInWordsPipe', () => {
     expect(pipe.transform(yesterday)).toBe('1 day ago');
   }));
 
-  it('should return `over 23 years ago` when date is 1995-12-17T03:24:00', inject(
+  it('should return `almost 24 years ago` when date is 1995-12-17T03:24:00', inject(
     [FormatTimeInWordsPipe],
     (pipe: FormatTimeInWordsPipe) => {
-      expect(pipe.transform('1995-12-17T03:24:00')).toBe('over 23 years ago');
+      expect(pipe.transform('1995-12-17T03:24:00')).toBe('almost 24 years ago');
     },
   ));
 
