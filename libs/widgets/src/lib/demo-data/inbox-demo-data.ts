@@ -1,6 +1,6 @@
+import { subDays, subHours, subMinutes, subWeeks } from 'date-fns';
 import { Color } from './color.interface';
 import { Mail } from './mail.interface';
-import { subMinutes, subHours, subDays, subWeeks, subYears } from 'date-fns/esm';
 
 /* tslint:disable:max-line-length */
 export const labelColors: Color[] = [

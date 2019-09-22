@@ -70,7 +70,7 @@ services:
       - api
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.8.3
     container_name: elasticsearch
     #    ulimits:
     #      memlock:
@@ -85,7 +85,7 @@ services:
     links:
       - 'postgres'
   kibana:
-    image: docker.elastic.co/kibana/kibana:6.8.2
+    image: docker.elastic.co/kibana/kibana:6.8.3
     container_name: kibana
     #    volumes:
     #    - ./kibana.yml:/usr/share/kibana/config/kibana.yml

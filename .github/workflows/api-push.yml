@@ -1,5 +1,8 @@
-name: Test on Push for WebApp
-on: push
+name: Test on Push for API
+on:
+  push:
+    paths:
+      - "apps/api/*"
 jobs:
   lint-test:
     name: Lint and Test
@@ -24,24 +27,22 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Lint
-        run: ng lint ngx-utils
-        # run: yarn affected:lint --all
+        run: yarn ng lint api
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Unit Test
-        run: ng test ngx-utils
-        # run: yarn affected:test --all
+        run: yarn ng test api
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # - name: Integration Test
-      #   run: yarn affected:e2e --all
+      #   run: yarn ng e2e api
       #   env:
       #     NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Upload coverage to Codecov
         run: bash <(curl -s https://codecov.io/bash)
           -F unittests
-          -n codecov-ngx
-          -f ./coverage/libs/ngx-utils/coverage-final.json
+          -n codecov-ngx-api
+          -f ./coverage/apps/api/coverage-final.json
           -B "${GITHUB_REF//refs\/heads\//}"
           -T "${GITHUB_REF//refs\/tags\//}"
           -C "${GITHUB_SHA}"

@@ -14,8 +14,8 @@ export class FullscreenToggleComponent implements OnInit {
   ngOnInit() {}
 
   toggleFullscreen() {
-    if ((screenfull as any).enabled) {
-      (screenfull as any).toggle();
+    if (screenfull.isEnabled) {
+      screenfull.toggle();
       this.isFullscreen = !this.isFullscreen;
     }
   }

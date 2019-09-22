@@ -4,7 +4,6 @@ import { FilePondModule, registerPlugin } from 'ngx-filepond';
 
 import { MaskModule, DateFnsModule } from '@ngx-starter-kit/ngx-utils';
 import { AuthGuard } from '@ngx-starter-kit/auth';
-// import { AuthGuard } from '@ngx-starter-kit/oidc';
 import { ChatBoxModule } from '@ngx-starter-kit/chat-box';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';

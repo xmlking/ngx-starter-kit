@@ -276,11 +276,11 @@ NODE_DEBUG=request  npm run api:start:dev
 </details>
 
 <details>
-<summary>
+  <summary>
 
 #### How to setup IDE for Best Angular Dev Environment?
 
-</summary>
+  </summary>
 
 1. [Transform VSCode Into Best Angular Dev Environment](https://blog.feathersjs.com/design-patterns-for-modern-web-apis-1f046635215)
 
@@ -305,6 +305,18 @@ NODE_DEBUG=request  npm run api:start:dev
 <summary>🏷 How to Build and Deploy a Cloud Native Node.js?</summary>
 
 1. Refer[1](https://cloudnativejs.wordpress.com/2019/03/19/how-to-build-and-deploy-a-cloud-native-node-js-app-in-15-minutes/)
+
+</details>
+
+<details>
+  <summary>
+
+#### How to add badges to github README page?
+
+  </summary>
+
+1. use [atrox](https://actions-badge.atrox.dev/) to generate `GitHub Actions Badge`
+2. use [codecov](https://codecov.io/gh/xmlking/ngx-starter-kit/settings/badge) to generate `Codecov Badge`
 
 </details>
 

@@ -4,6 +4,51 @@ const defaultOptions = {
   data: null,
 };
 
+class Utils {
+  static extend(target, objects, { clearEmpty }) {
+    for (const object in objects) {
+      if (objects.hasOwnProperty(object)) {
+        recursiveMerge(target, objects[object]);
+      }
+    }
+
+    function recursiveMerge(target2, object) {
+      for (const property in object) {
+        if (object.hasOwnProperty(property)) {
+          const current = object[property];
+          if (Utils.getConstructor(current) === 'Object') {
+            if (!target2[property]) {
+              target2[property] = {};
+            }
+            recursiveMerge(target2[property], current);
+          } else {
+            // clearEmpty
+            if (clearEmpty) {
+              if (current == null) {
+                continue;
+              }
+            }
+            target2[property] = current;
+          }
+        }
+      }
+    }
+
+    return target;
+  }
+
+  static setMultiEvents(element, events, func) {
+    // tslint:disable-next-line: prefer-for-of
+    for (let i = 0; i < events.length; i++) {
+      element.addEventListener(events[i], func);
+    }
+  }
+
+  static getConstructor(object) {
+    return Object.prototype.toString.call(object).slice(8, -1);
+  }
+}
+
 export class ImageComparison {
   options: any;
   container: any;
@@ -170,50 +215,5 @@ export class ImageComparison {
 
   _setImageSize() {
     this.images[0].style.width = `${this.container.offsetWidth}px`;
-  }
-}
-
-class Utils {
-  static extend(target, objects, { clearEmpty }) {
-    for (const object in objects) {
-      if (objects.hasOwnProperty(object)) {
-        recursiveMerge(target, objects[object]);
-      }
-    }
-
-    function recursiveMerge(target2, object) {
-      for (const property in object) {
-        if (object.hasOwnProperty(property)) {
-          const current = object[property];
-          if (Utils.getConstructor(current) === 'Object') {
-            if (!target2[property]) {
-              target2[property] = {};
-            }
-            recursiveMerge(target2[property], current);
-          } else {
-            // clearEmpty
-            if (clearEmpty) {
-              if (current == null) {
-                continue;
-              }
-            }
-            target2[property] = current;
-          }
-        }
-      }
-    }
-
-    return target;
-  }
-
-  static setMultiEvents(element, events, func) {
-    // tslint:disable-next-line: prefer-for-of
-    for (let i = 0; i < events.length; i++) {
-      element.addEventListener(events[i], func);
-    }
-  }
-
-  static getConstructor(object) {
-    return Object.prototype.toString.call(object).slice(8, -1);
   }
 }

@@ -1,3 +1,4 @@
+import { isPlatformBrowser } from '@angular/common';
 import {
   Directive,
   ElementRef,
@@ -9,10 +10,9 @@ import {
   Output,
   PLATFORM_ID,
 } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { filter, take } from 'rxjs/operators';
 import { untilDestroy } from '../../operators/untilDestroy';
 import { ViewportService } from './viewport.service';
-import { filter, take } from 'rxjs/operators';
 
 @Directive({
   selector: '[inViewport]',
@@ -25,7 +25,8 @@ export class InViewportDirective implements OnInit, OnDestroy {
   constructor(
     private readonly elementRef: ElementRef,
     private viewportService: ViewportService,
-    @Inject(PLATFORM_ID) private platformId: object,
+    // tslint:disable-next-line: ban-types
+    @Inject(PLATFORM_ID) private platformId: Object,
   ) {}
 
   public ngOnInit() {

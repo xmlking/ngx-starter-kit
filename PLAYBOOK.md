@@ -82,14 +82,14 @@ bazel clean --expunge
 ```bash
 yarn global remove lerna
 yarn global remove @angular/cli
-yarn global remove @nrwl/workspace
+yarn global remove @nrwl/cli
 yarn global remove @nestjs/cli
 yarn global remove semantic-release-cli
 yarn global remove commitizen
 
 yarn global add lerna
 yarn global add @angular/cli@next
-yarn global add @nrwl/workspace@next
+yarn global add @nrwl/cli@next
 yarn global add @nestjs/cli
 yarn global add semantic-release-cli
 yarn global add commitizen
@@ -131,6 +131,7 @@ for nx help `yarn run help`
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
 yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --preset=empty --style=scss --skipInstall
+yarn create nx-workspace myworkspace --npm-scope=ngx-starter-kit
 # or
 ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --verbose
 # or if you want *bazel* builds instead of *webpack*
@@ -191,7 +192,7 @@ ng add @angular/material
 yarn add hammerjs
 yarn add -D @types/hammerjs
 yarn add date-fns
-
+yarn add -D codecov
 # Add Flex-Layout
 yarn add @angular/flex-layout
 # Add in-memory-web-api
@@ -711,22 +712,37 @@ npx standard-version
 "release": "standard-version && git push — follow-tags origin master && yarn publish"
 ```
 
-#### build library
+#### Build Library
 
 ```bash
 ng build socketio-plugin
 ```
 
-#### publish library
+#### Publish Library
 
-> from workspace root
+> bump `version` in `libs/ngx-utils/package.json` e.g., `0.0.6-alpha` for _alpha_ release or `0.0.6` for _latest_ release.
+> Set your _NPM_TOKEN_
 
 ```bash
-export TAG=dev
-export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
-# check who-am-i
+# Check who-am-i
 npm whoami
-yarn publish dist/libs/socketio-plugin --tag $TAG --access public
+
+export TAG=alpha
+export NPM_TOKEN="00000000-0000-0000-0000-000000000000"
+# Alpha Release
+ng deploy ngx-utils --tag $TAG --otp $NPM_TOKEN --dry-run
+# Latest Release
+ng deploy ngx-utils --otp $NPM_TOKEN
+# old style
+yarn publish dist/libs/ngx-utils --tag $TAG --access public
+```
+
+#### Publish Code Coverage
+
+```bash
+export CODECOV_TOKEN="my token"
+yarn codecov -t $CODECOV_TOKEN \
+--branch=develop --file=coverage/libs/ngx-utils/coverage-final.json
 ```
 
 ### Analyze

@@ -2,7 +2,7 @@
   <!-- FIRST ROW -->
   <div fxFlex="noshrink" fxLayout="column" [fxLayoutGap]="gap" fxLayout.gt-lg="row">
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)" fxLayout.gt-sm="row">
-      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" fxFlex.gt-sm="col(4)">
         <ngx-bar-chart-widget
           ngxAspectRatioContent
           class="widget"
@@ -11,7 +11,7 @@
         ></ngx-bar-chart-widget>
       </div>
 
-      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" fxFlex.gt-sm="col(4)">
         <ngx-line-chart-widget
           ngxAspectRatioContent
           class="widget"
@@ -22,7 +22,7 @@
     </div>
 
     <div fxLayout="column" [fxLayoutGap]="gap" [fxFlex]="col(2)" fxLayout.gt-sm="row">
-      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" fxFlex.gt-sm="col(4)">
         <ngx-line-chart-widget
           ngxAspectRatioContent
           [data]="clicksData$ | async"
@@ -30,7 +30,7 @@
         ></ngx-line-chart-widget>
       </div>
 
-      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" [fxFlex.gt-sm]="col(4)">
+      <div ngxAspectRatio="2:1" ngxAspectRatio.sm="3:1" fxFlex="auto" fxFlex.gt-sm="col(4)">
         <ngx-line-chart-widget
           ngxAspectRatioContent
           [data]="conversionsData$ | async"

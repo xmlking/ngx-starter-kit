@@ -1,8 +1,14 @@
-import { Injectable, Logger, OnApplicationBootstrap, OnApplicationShutdown } from '@nestjs/common';
 import {
+  BeforeApplicationShutdown,
+  Injectable,
+  Logger,
+  OnApplicationBootstrap,
+  OnApplicationShutdown,
+} from '@nestjs/common';
+import {
+  DiskHealthIndicator,
   DNSHealthIndicator,
   MemoryHealthIndicator,
-  DiskHealthIndicator,
   TerminusEndpoint,
   TerminusModuleOptions,
   TerminusOptionsFactory,
@@ -22,7 +28,8 @@ enum State {
 }
 
 @Injectable()
-export class AppHealthService implements TerminusOptionsFactory, OnApplicationBootstrap, OnApplicationShutdown {
+export class AppHealthService
+  implements TerminusOptionsFactory, OnApplicationBootstrap, OnApplicationShutdown, BeforeApplicationShutdown {
   readonly logger = new Logger(AppHealthService.name);
   private statusP = State.UNKNOWN;
 
@@ -61,6 +68,17 @@ export class AppHealthService implements TerminusOptionsFactory, OnApplicationBo
     this.status = State.UP;
     // DO some async task
     this.logger.log('in ApplicationBootstrap, done');
+  }
+
+  async beforeApplicationShutdown(): Promise<void> {
+    this.logger.log('beforeApplicationShutdown called');
+    return new Promise(resolve => {
+      this.logger.log('starting shutdown...');
+      setTimeout(() => {
+        this.logger.log('shutdown complete...');
+        resolve();
+      }, 5000);
+    });
   }
 
   onApplicationShutdown(signal: string) {

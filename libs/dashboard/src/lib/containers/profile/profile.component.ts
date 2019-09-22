@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 import { Select, Store } from '@ngxs/store';
 import { AuthState } from '@ngx-starter-kit/auth';
-// import { AuthState } from '@ngx-starter-kit/oidc';
 import { ProfileState } from '@ngx-starter-kit/core';
 import { Observable } from 'rxjs';
 import { Profile } from '@ngx-starter-kit/models';

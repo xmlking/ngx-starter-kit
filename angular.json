@@ -1,5 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
   "cli": {
     "defaultCollection": "@nrwl/angular",
     "packageManager": "yarn",
@@ -174,6 +175,12 @@
             "setupFile": "libs/app-confirm/src/test-setup.ts",
             "tsConfig": "libs/app-confirm/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -276,6 +283,12 @@
             "setupFile": "libs/breadcrumbs/src/test-setup.ts",
             "tsConfig": "libs/breadcrumbs/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -305,6 +318,12 @@
             "jestConfig": "libs/chat-box/jest.config.js",
             "setupFile": "libs/chat-box/src/test-setup.ts",
             "tsConfig": "libs/chat-box/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -336,6 +355,12 @@
             "setupFile": "libs/clap/src/test-setup.ts",
             "tsConfig": "libs/clap/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -365,6 +390,12 @@
             "jestConfig": "libs/context-menu/jest.config.js",
             "setupFile": "libs/context-menu/src/test-setup.ts",
             "tsConfig": "libs/context-menu/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -441,6 +472,12 @@
             "jestConfig": "libs/draggable/jest.config.js",
             "setupFile": "libs/draggable/src/test-setup.ts",
             "tsConfig": "libs/draggable/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -541,6 +578,12 @@
             "setupFile": "libs/image-comparison/src/test-setup.ts",
             "tsConfig": "libs/image-comparison/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -570,6 +613,12 @@
             "jestConfig": "libs/json-diff/jest.config.js",
             "setupFile": "libs/json-diff/src/test-setup.ts",
             "tsConfig": "libs/json-diff/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -601,6 +650,12 @@
             "setupFile": "libs/led/src/test-setup.ts",
             "tsConfig": "libs/led/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -630,6 +685,12 @@
             "jestConfig": "libs/loading-overlay/jest.config.js",
             "setupFile": "libs/loading-overlay/src/test-setup.ts",
             "tsConfig": "libs/loading-overlay/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -676,6 +737,12 @@
             "setupFile": "libs/navigator/src/test-setup.ts",
             "tsConfig": "libs/navigator/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -705,6 +772,12 @@
             "jestConfig": "libs/ngx-utils/jest.config.js",
             "setupFile": "libs/ngx-utils/src/test-setup.ts",
             "tsConfig": "libs/ngx-utils/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -759,42 +832,18 @@
             "setupFile": "libs/notifications/src/test-setup.ts",
             "tsConfig": "libs/notifications/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
       "projectType": "library",
       "root": "libs/notifications",
       "sourceRoot": "libs/notifications/src"
-    },
-    "oidc": {
-      "architect": {
-        "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
-          "options": {
-            "project": "libs/oidc/ng-package.json",
-            "tsConfig": "libs/oidc/tsconfig.lib.json"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "exclude": ["**/node_modules/**", "!libs/oidc/**"],
-            "tsConfig": ["libs/oidc/tsconfig.lib.json", "libs/oidc/tsconfig.spec.json"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/oidc/jest.config.js",
-            "setupFile": "libs/oidc/src/test-setup.ts",
-            "tsConfig": "libs/oidc/tsconfig.spec.json"
-          }
-        }
-      },
-      "prefix": "ngx",
-      "projectType": "library",
-      "root": "libs/oidc",
-      "sourceRoot": "libs/oidc/src"
     },
     "quickpanel": {
       "architect": {
@@ -842,6 +891,12 @@
             "setupFile": "libs/scroll-to-top/src/test-setup.ts",
             "tsConfig": "libs/scroll-to-top/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -871,6 +926,12 @@
             "jestConfig": "libs/scrollbar/jest.config.js",
             "setupFile": "libs/scrollbar/src/test-setup.ts",
             "tsConfig": "libs/scrollbar/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -948,6 +1009,12 @@
             "setupFile": "libs/socketio-plugin/src/test-setup.ts",
             "tsConfig": "libs/socketio-plugin/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -978,6 +1045,12 @@
             "setupFile": "libs/svg-viewer/src/test-setup.ts",
             "tsConfig": "libs/svg-viewer/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "prefix": "ngx",
@@ -1007,6 +1080,12 @@
             "jestConfig": "libs/theme-picker/jest.config.js",
             "setupFile": "libs/theme-picker/src/test-setup.ts",
             "tsConfig": "libs/theme-picker/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -1053,6 +1132,12 @@
             "jestConfig": "libs/tree/jest.config.js",
             "tsConfig": "libs/tree/tsconfig.spec.json"
           }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
+          }
         }
       },
       "projectType": "library",
@@ -1074,6 +1159,12 @@
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "tsConfig": "libs/utils/tsconfig.spec.json"
+          }
+        },
+        "deploy": {
+          "builder": "ngx-deploy-npm:deploy",
+          "options": {
+            "access": "public"
           }
         }
       },
@@ -1337,6 +1428,5 @@
     "@nrwl/angular:library": {
       "unitTestRunner": "jest"
     }
-  },
-  "version": 1
+  }
 }

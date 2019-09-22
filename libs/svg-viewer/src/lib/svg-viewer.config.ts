@@ -1,10 +1,11 @@
-import { Inject, Optional } from '@angular/core';
+import { Inject, Optional, Injectable } from '@angular/core';
 import { PlatformLocation, APP_BASE_HREF } from '@angular/common';
 
 export class SvgViewerConfig {
   baseUrl: string;
 }
 
+@Injectable()
 export class SvgViewerDefaultConfig extends SvgViewerConfig {
   constructor(
     @Optional()

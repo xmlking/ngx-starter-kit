@@ -5,7 +5,6 @@ import { EventCategory, GoogleAnalyticsService } from '../services/google-analyt
 import { AppState, ChangeInstallStatus, ChangeOnlineStatus, IsOffline, IsOnline, SetInstallPrompt } from './app.state';
 import { WINDOW } from '../services/window.token';
 import { LoginSuccess } from '@ngx-starter-kit/auth';
-// import { LoginSuccess } from '@ngx-starter-kit/oidc';
 import { FetchProfile } from '../state/profile.state';
 
 /** @dynamic */

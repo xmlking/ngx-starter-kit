@@ -1,15 +1,15 @@
 import { Component, TemplateRef, ViewChild } from '@angular/core';
-import { Store } from '@ngxs/store';
-import { Navigate } from '@ngxs/router-plugin';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { throwError } from 'rxjs';
-import { catchError, filter, mergeMap, tap } from 'rxjs/operators';
-import { formatDistance } from 'date-fns/esm';
 import { AppConfirmService } from '@ngx-starter-kit/app-confirm';
 import { EntitiesComponent, EntityColumnDef } from '@ngx-starter-kit/shared';
-import { SubscriptionService } from '../../services/subscription.service';
+import { Navigate } from '@ngxs/router-plugin';
+import { Store } from '@ngxs/store';
+import { formatDistance } from 'date-fns';
+import { throwError } from 'rxjs';
+import { catchError, filter, mergeMap, tap } from 'rxjs/operators';
 import { Subscription } from '../../models/subscription.model';
+import { SubscriptionService } from '../../services/subscription.service';
 
 // const entityHtmlTpl = require('../../../../../shared/src/lib/containers/entity/entity.component.html');
 // const cellHtmlTpl = require('./cell.templates.html');

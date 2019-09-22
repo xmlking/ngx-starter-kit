@@ -5,7 +5,7 @@
     "entryFile": "src/index.ts",
     "styleIncludePaths": ["../../apps/webapp/src/styles"],
     "umdModuleIds": {
-      "date-fns/esm": "date-fns/esm"
+      "date-fns": "date-fns"
     }
   }
 }
