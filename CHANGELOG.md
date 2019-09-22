@@ -1,3 +1,35 @@
+# [3.1.0](https://github.com/xmlking/ngx-starter-kit/compare/v3.0.0...v3.1.0) (2019-09-22)
+
+
+### Bug Fixes
+
+* **actions:** fix github actions workflow ([f91fdcf](https://github.com/xmlking/ngx-starter-kit/commit/f91fdcf))
+* **actions:** rollback to NODE_AUTH_TOKEN ([1748538](https://github.com/xmlking/ngx-starter-kit/commit/1748538))
+* **actions:** rollback to NODE_AUTH_TOKEN ([567482a](https://github.com/xmlking/ngx-starter-kit/commit/567482a))
+* **actions:** updating github actions with NPM_AUTH_TOKEN ([66b2d93](https://github.com/xmlking/ngx-starter-kit/commit/66b2d93))
+* **deps:** update angular monorepo to >=8.2.5 ([0b6046d](https://github.com/xmlking/ngx-starter-kit/commit/0b6046d))
+* **deps:** update angular monorepo to ~8.2.6 ([4f9c0b7](https://github.com/xmlking/ngx-starter-kit/commit/4f9c0b7))
+* **deps:** update angular monorepo to ~8.2.7 ([8f534b5](https://github.com/xmlking/ngx-starter-kit/commit/8f534b5))
+* **deps:** update angularcli monorepo ([c44073e](https://github.com/xmlking/ngx-starter-kit/commit/c44073e))
+* **deps:** update angularcli monorepo ([9016f00](https://github.com/xmlking/ngx-starter-kit/commit/9016f00))
+* **deps:** update angularmaterial monorepo to >=8.1.4 ([e1dacae](https://github.com/xmlking/ngx-starter-kit/commit/e1dacae))
+* **deps:** update angularmaterial monorepo to >=8.2.0 ([70447b4](https://github.com/xmlking/ngx-starter-kit/commit/70447b4))
+* **deps:** update dependency date-fns to ~2.2.0 ([99b37cb](https://github.com/xmlking/ngx-starter-kit/commit/99b37cb))
+* **deps:** update dependency ts-node to ~8.4.0 ([f33653d](https://github.com/xmlking/ngx-starter-kit/commit/f33653d))
+* **deps:** update dependency tslint to ~5.20.0 ([bd221fb](https://github.com/xmlking/ngx-starter-kit/commit/bd221fb))
+* **deps:** update dependency typescript to ~3.6.0 ([c5e809b](https://github.com/xmlking/ngx-starter-kit/commit/c5e809b))
+* **deps:** update docker.elastic.co/elasticsearch/elasticsearch docker tag to v6.8.3 ([aa916bb](https://github.com/xmlking/ngx-starter-kit/commit/aa916bb))
+* **deps:** update docker.elastic.co/kibana/kibana docker tag to v6.8.3 ([5d73896](https://github.com/xmlking/ngx-starter-kit/commit/5d73896))
+* **docs:** fix github actions badge ([55da6b0](https://github.com/xmlking/ngx-starter-kit/commit/55da6b0))
+
+
+### Features
+
+* **actions:** adding CI workflow for API ([3c55a0d](https://github.com/xmlking/ngx-starter-kit/commit/3c55a0d))
+* **cicd:** adding report-coverage ([f0c476f](https://github.com/xmlking/ngx-starter-kit/commit/f0c476f))
+* **deploy:** now publishing with ngx-deploy-npm ([34018cc](https://github.com/xmlking/ngx-starter-kit/commit/34018cc))
+* **docs:** adding GitHub Actions Build Status ([c6b4451](https://github.com/xmlking/ngx-starter-kit/commit/c6b4451))
+
 # [3.0.0](https://github.com/xmlking/ngx-starter-kit/compare/v2.1.0...v3.0.0) (2019-08-26)
 
 
