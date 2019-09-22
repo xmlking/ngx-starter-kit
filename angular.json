@@ -1254,6 +1254,10 @@
                   "maximumWarning": "10%",
                   "name": "main",
                   "type": "bundle"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ],
               "buildOptimizer": true,

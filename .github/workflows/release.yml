@@ -36,11 +36,11 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Unit Test
-        run: yarn affected:lint --all
+        run: yarn affected:test --all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Integration Test
-        run: yarn affected:test --all
+        run: yarn affected:e2e --all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       # - name: Build
