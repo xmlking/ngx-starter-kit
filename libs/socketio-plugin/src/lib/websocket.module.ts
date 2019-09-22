@@ -1,9 +1,8 @@
-import { NgModule, ModuleWithProviders, APP_INITIALIZER, InjectionToken } from '@angular/core';
+import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
-import { NgxsWebsocketPluginOptions, NGXS_WEBSOCKET_OPTIONS } from './symbols';
+import { NgxsWebsocketPluginOptions, NGXS_WEBSOCKET_OPTIONS, noop } from './symbols';
 import { WebSocketHandler } from './websocket-handler';
 import { WebSocketSubject } from './websocket-subject';
-import { noop } from './symbols';
 
 export function websocketOptionsFactory(options: NgxsWebsocketPluginOptions) {
   return {

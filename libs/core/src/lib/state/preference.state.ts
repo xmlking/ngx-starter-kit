@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext, Store } from '@ngxs/store';
 
 export type Language = 'en' | 'es' | 'de' | 'fr' | 'cn';
@@ -86,6 +87,9 @@ export interface PreferenceStateModel {
     activeThemeName: ThemeName.INDIGO_PINK,
     enableNotifications: false,
   },
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class PreferenceState {
   constructor(private store: Store) {}

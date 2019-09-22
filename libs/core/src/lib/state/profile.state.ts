@@ -1,11 +1,12 @@
-import { State, Selector, Action, StateContext, NgxsAfterBootstrap } from '@ngxs/store';
-import { patch } from '@ngxs/store/operators';
-import { Profile } from '@ngx-starter-kit/models';
-import { ProfileService } from '../services/profile.service';
-import { catchError, finalize, last, map, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { finishedLoading, setProgress, startLoading } from './state.operators';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Profile } from '@ngx-starter-kit/models';
+import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
+import { patch } from '@ngxs/store/operators';
+import { throwError } from 'rxjs';
+import { catchError, finalize, last, map, tap } from 'rxjs/operators';
+import { ProfileService } from '../services/profile.service';
+import { finishedLoading, setProgress, startLoading } from './state.operators';
 
 export class FetchProfile {
   static readonly type = '[Profile] Fetch';
@@ -38,6 +39,9 @@ export interface ProfileStateModel {
     loading: false,
     progress: undefined,
   },
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class ProfileState implements NgxsAfterBootstrap {
   constructor(private profileService: ProfileService) {}

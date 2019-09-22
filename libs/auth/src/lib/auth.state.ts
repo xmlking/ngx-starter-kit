@@ -1,20 +1,20 @@
-import { NgZone } from '@angular/core';
-import { Action, Select, Selector, State, StateContext } from '@ngxs/store';
-import {
-  Login,
-  LoginCanceled,
-  AuthMode,
-  ChangeAuthMode,
-  LogoutSuccess,
-  LoginSuccess,
-  Logout,
-  AuthModeChanged,
-} from './auth.actions';
-import { AuthService } from './auth.service';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
-import { authConfigCodeFlow, authConfigHybridFlow, authConfigImplicit, authConfigPassword } from './oauth.config';
+import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { OAuthService } from 'angular-oauth2-oidc';
 import { map } from 'rxjs/operators';
+import {
+  AuthMode,
+  AuthModeChanged,
+  ChangeAuthMode,
+  Login,
+  LoginCanceled,
+  LoginSuccess,
+  Logout,
+  LogoutSuccess,
+} from './auth.actions';
+import { AuthService } from './auth.service';
+import { authConfigCodeFlow, authConfigHybridFlow, authConfigImplicit, authConfigPassword } from './oauth.config';
 
 export interface AuthStateModel {
   isLoggedIn: boolean;
@@ -22,7 +22,6 @@ export interface AuthStateModel {
   authMode: AuthMode;
 }
 
-/** @dynamic */
 @State<AuthStateModel>({
   name: 'auth',
   defaults: {
@@ -30,6 +29,9 @@ export interface AuthStateModel {
     profile: {},
     authMode: AuthMode.ImplicitFLow,
   },
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class AuthState {
   constructor(
