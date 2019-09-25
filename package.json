@@ -116,7 +116,7 @@
     "@angular/material": "~8.2.1",
     "@angular/platform-browser": "~8.2.8",
     "@angular/platform-browser-dynamic": "~8.2.8",
-    "@angular/pwa": "~0.803.5",
+    "@angular/pwa": "~0.803.6",
     "@angular/router": "~8.2.8",
     "@angular/service-worker": "~8.2.8",
     "@fortawesome/angular-fontawesome": "^0.5.0",
@@ -174,7 +174,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.803.5",
     "@angular-devkit/build-ng-packagr": "~0.803.5",
-    "@angular/cli": "~8.3.5",
+    "@angular/cli": "~8.3.6",
     "@angular/compiler-cli": "~8.2.8",
     "@angular/language-service": "~8.2.8",
     "@nrwl/angular": "~8.5.0",
