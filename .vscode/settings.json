@@ -10,7 +10,7 @@
   "editor.cursorSmoothCaretAnimation": true,
   "editor.cursorStyle": "line",
   // "editor.fontSize": 16,
-  "editor.fontFamily": "SourceCodePro-Regular, FiraCode-Retina, Menlo",
+  "editor.fontFamily": "FiraCode-Retina, SourceCodePro-Regular, Menlo",
   "editor.fontLigatures": true,
   "editor.formatOnPaste": true,
   "editor.formatOnType": false,
@@ -23,13 +23,11 @@
   "editor.tabSize": 2,
   "editor.wordWrap": "off",
   // Terminal
-  "terminal.integrated.fontFamily": "'SourceCodePro+Powerline+Awesome Regular', Source Code Pro for Powerline, monospace, Meslo LG M for Powerline",
+  "terminal.integrated.fontFamily": "MesloLGS NF, 'SourceCodePro+Powerline+Awesome Regular', Source Code Pro for Powerline, monospace, Meslo LG M for Powerline",
   // "terminal.integrated.fontSize": 16,
   // Workbench
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.colorCustomizations": {
-    "terminal.foreground": "#839496",
-    "terminal.background": "#121a21",
     "activityBar.background": "#fbed80",
     "activityBar.foreground": "#15202b",
     "activityBar.inactiveForeground": "#15202b99",
