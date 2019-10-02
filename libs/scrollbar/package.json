@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/scrollbar",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=8.2.8",
-    "@angular/core": ">=8.2.8"
+    "@angular/common": ">=8.2.9",
+    "@angular/core": ">=8.2.9"
   },
   "dependencies": {
     "smooth-scrollbar": ">=8.4.1"
