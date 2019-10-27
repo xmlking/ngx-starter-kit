@@ -116,7 +116,7 @@
     "@angular/material": "~8.2.3",
     "@angular/platform-browser": "~8.2.12",
     "@angular/platform-browser-dynamic": "~8.2.12",
-    "@angular/pwa": "~0.803.9",
+    "@angular/pwa": "~0.803.14",
     "@angular/router": "~8.2.12",
     "@angular/service-worker": "~8.2.12",
     "@fortawesome/angular-fontawesome": "^0.5.0",
