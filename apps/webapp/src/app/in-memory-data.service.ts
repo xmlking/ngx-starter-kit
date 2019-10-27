@@ -1,13 +1,5 @@
-import {
-  getStatusText,
-  InMemoryDbService,
-  ParsedRequestUrl,
-  RequestInfo,
-  RequestInfoUtilities,
-  ResponseOptions,
-  STATUS,
-} from 'angular-in-memory-web-api';
 import { Injectable } from '@angular/core';
+import { getStatusText, InMemoryDbService, ParsedRequestUrl, RequestInfo, RequestInfoUtilities, ResponseOptions, STATUS } from 'angular-in-memory-web-api';
 
 // /api/accounts/1
 // /api/symbols/1

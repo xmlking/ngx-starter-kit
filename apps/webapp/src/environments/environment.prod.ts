@@ -1,5 +1,5 @@
-import sharedEnvironment from './base';
 import { IEnvironment } from '@env/ienvironment';
+import sharedEnvironment from './base';
 
 export const environment: IEnvironment = {
   ...sharedEnvironment,
@@ -12,6 +12,8 @@ export const environment: IEnvironment = {
   // WS_EVENT_BUS_URL: 'wss://ngxapi.traefik.k8s/eventbus',
   API_BASE_URL: 'https://api.kashmora.com/api',
   WS_EVENT_BUS_URL: 'wss://api.kashmora.com/eventbus',
+
+  plugins: [],
 
   auth: {
     clientId: 'ngxweb',
