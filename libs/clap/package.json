@@ -2,7 +2,7 @@
   "name": "@ngx-starter-kit/clap",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=8.2.10",
-    "@angular/core": ">=8.2.10"
+    "@angular/common": ">=8.2.12",
+    "@angular/core": ">=8.2.12"
   }
 }

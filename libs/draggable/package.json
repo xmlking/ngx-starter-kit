@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/draggable",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=8.2.10",
-    "@angular/core": ">=8.2.10",
+    "@angular/common": ">=8.2.12",
+    "@angular/core": ">=8.2.12",
     "@angular/cdk": ">=8.2.3",
     "@angular/material": ">=8.2.3"
   }
