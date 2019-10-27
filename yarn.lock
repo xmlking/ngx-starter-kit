@@ -266,7 +266,7 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/pwa@~0.803.9":
+"@angular/pwa@~0.803.14":
   version "0.803.14"
   resolved "https://registry.yarnpkg.com/@angular/pwa/-/pwa-0.803.14.tgz#f6c582497bbf572348e442e808908e008e25b94a"
   integrity sha512-2QzbsWmS28vXPOQNFaTldl9WUuQW6QmY2v+ftSEsUGrUyoM6zzQjiYoJUKK5J+8I7M8CL6yaODhkZKOAs0Rpdg==
