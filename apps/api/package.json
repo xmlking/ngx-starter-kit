@@ -48,7 +48,7 @@
     "web-push": "^3.4.0"
   },
   "devDependencies": {
-    "@types/helmet": "^0.0.44",
+    "@types/helmet": "^0.0.45",
     "@types/nodemailer": "^6.2.1",
     "@types/passport": "1.0.1",
     "@types/passport-jwt": "^3.0.2",
