@@ -2,25 +2,7 @@
 
 Do-it-yourself step-by-step instructions to create this project structure from scratch.
 
-## What you got
-
-- [x] Code formatting via prettier, tslint
-
-- [x] **Monorepo** sharing code between apps
-
-- [x] **Jest** unit tests
-
-- [x] **Cypress** e2e tests
-
-- [x] [REST Client](apps/api/test-rest-api-vs-code.http) for API tests
-
-- [x] Containerized builds
-
-- [x] **Kubernetes** deployment
-
-- [x] Conventional git commits
-
-- [x] PR => CI quality checks => master
+## Setup
 
 ### Prerequisites
 
