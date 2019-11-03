@@ -1,4 +1,4 @@
-<div class="user-container" #userButton (ngxClickOutside)="onClickOutside()">
+<div class="user-container" #userButton (clickOutside)="onClickOutside()">
   <button class="user-button" mat-button (click)="toggleDropdown()" [class.open]="isOpen">
     <span fxLayout="row" fxLayoutAlign="start center">
       <img class="user-avatar" [src]="currentUser?.photoURL || 'assets/img/avatars/noavatar.png'" />

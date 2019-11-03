@@ -3,7 +3,7 @@
   fxLayout="row"
   [ngClass]="{ focus: focused, 'has-input': input }"
   fxFlex
-  (ngxClickOutside)="closeDropdown()"
+  (clickOutside)="closeDropdown()"
 >
   <mat-icon class="search-icon">search</mat-icon>
   <input

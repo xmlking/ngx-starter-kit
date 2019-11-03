@@ -26,16 +26,16 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 > you need following tools. versions listed here are minimal versions tested.
 
-| Software             | Version | Optional |
-| -------------------- | ------- | -------- |
-| Node                 | v12.5.0 |          |
-| Yarn                 | v1.17.3 |          |
-| Lerna                | v3.16.4 |          |
-| Angular CLI          | v8.2.0  |          |
-| @nrwl/workspace      | v8.4.0  |          |
-| @nestjs/cli          | v6.6.3  |          |
-| semantic-release-cli | v5.1.1  |          |
-| commitizen           | v4.0.3  |          |
+| Software             | Version  | Optional |
+| -------------------- | -------- | -------- |
+| Node                 | v12.12.0 |          |
+| Yarn                 | v1.19.1  |          |
+| Lerna                | v3.16.4  |          |
+| Angular CLI          | v8.2.12  |          |
+| @nrwl/workspace      | v8.7.0   |          |
+| @nestjs/cli          | v6.6.3   |          |
+| semantic-release-cli | v5.1.1   |          |
+| commitizen           | v4.0.3   |          |
 
 ### Install Prerequisites
 
@@ -200,6 +200,8 @@ yarn add angular-in-memory-web-api
 # Add oauth2-oidc
 ~yarn add angular-oauth2-oidc~
 yarn add angular-oauth2-oidc
+# alternative build for nestjs
+yarn add -D ts-node-builder
 
 # Add NGXS
 ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
@@ -466,7 +468,7 @@ ng g module directives/inViewport --project=ngx-utils --skip-tests -d
 ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
 ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
 ng g module directives/clickOutside --project=ngx-utils --skip-tests -d
-ng g directive directives/click-outside/clickOutside  --selector=ngxClickOutside --project=ngx-utils --module=click-outside --export -d
+ng g directive directives/click-outside/clickOutside  --selector=clickOutside --project=ngx-utils --module=click-outside --export -d
 ng g module directives/min --project=ngx-utils --skip-tests -d
 ng g directive directives/min/MinValidator  --selector=appMin --project=ngx-utils --module=min --export -d
 ng g module directives/mask --project=ngx-utils --skip-tests -d
