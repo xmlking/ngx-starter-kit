@@ -1,31 +1,22 @@
-import { Directive, ElementRef, EventEmitter, HostListener, OnInit } from '@angular/core';
-import { fromEvent } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
   selector: '[clickOutside]',
 })
-export class ClickOutsideDirective implements OnInit {
+export class ClickOutsideDirective {
+  @Output()
   public clickOutside = new EventEmitter<MouseEvent>();
-
-  captured = false;
 
   constructor(private elementRef: ElementRef) {}
 
   @HostListener('document:click', ['$event', '$event.target'])
   public onClick(event: MouseEvent, targetElement: HTMLElement): void {
-    if (!this.captured) {
+    if (!targetElement) {
       return;
     }
 
     if (!this.elementRef.nativeElement.contains(targetElement)) {
       this.clickOutside.emit(event);
     }
-  }
-
-  ngOnInit() {
-    fromEvent(document, 'click', { capture: true })
-      .pipe(take(1))
-      .subscribe(() => (this.captured = true));
   }
 }
