@@ -1,7 +1,7 @@
 # Ngx Starter Kit
 
-![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20WebApp/badge.svg?branch=develop)
-![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20API/badge.svg?branch=develop)
+[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20WebApp/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+WebApp%22)
+[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20API/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+API%22)
 [![Codecov](https://codecov.io/gh/xmlking/ngx-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/xmlking/ngx-starter-kit)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
