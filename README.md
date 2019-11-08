@@ -22,6 +22,7 @@
 - [x] PR => CI quality checks => master
 - [x] Code formatting via prettier, tslint
 - [ ] Try [MikroORM](https://mikro-orm.io/)
+- [ ] [feature flags](https://netbasal.com/the-ultimate-guide-to-implementing-feature-flags-in-angular-applications-d4ae1fd33684)
 
 This project was generated using [Nx](https://nx.dev).
 
