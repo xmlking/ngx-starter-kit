@@ -197,7 +197,7 @@
     "ngx-deploy-npm": "^1.0.5",
     "rimraf": "^3.0.0",
     "ts-loader": "^6.2.0",
-    "ts-node": "~8.4.1",
+    "ts-node": "~8.5.0",
     "tsconfig-paths": "^3.9.0",
     "tsickle": "^0.37.0",
     "tslint": "~5.20.0",
