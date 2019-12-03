@@ -8,16 +8,16 @@ Do-it-yourself step-by-step instructions to create this project structure from s
 
 > you need following tools. versions listed here are minimal versions tested.
 
-| Software             | Version  | Optional |
-| -------------------- | -------- | -------- |
-| Node                 | v12.12.0 |          |
-| Yarn                 | v1.19.1  |          |
-| Lerna                | v3.16.4  |          |
-| Angular CLI          | v8.2.12  |          |
-| @nrwl/workspace      | v8.7.0   |          |
-| @nestjs/cli          | v6.6.3   |          |
-| semantic-release-cli | v5.1.1   |          |
-| commitizen           | v4.0.3   |          |
+| Software             | Version | Optional |
+| -------------------- | ------- | -------- |
+| Node                 | v13.1.0 |          |
+| Yarn                 | v1.19.1 |          |
+| Lerna                | v3.19.0 |          |
+| Angular CLI          | v8.3.20 |          |
+| @nrwl/workspace      | v8.8.3  |          |
+| @nestjs/cli          | v6.12.6 |          |
+| semantic-release-cli | v5.2.3  |          |
+| commitizen           | v4.0.3  |          |
 
 ### Install Prerequisites
 
@@ -78,7 +78,7 @@ yarn global add commitizen
 
 # verify globally installed packages
 yarn global list
-# find out which packages need to be updated
+# find out which packages need to be updated. Options: `--latest`
 yarn global upgrade-interactive
 # set scss as default css processor
 ng config -g schematics.@nrwl/angular:component.styleext scss
@@ -86,7 +86,7 @@ ng config -g cli.packageManager yarn
 # set scss as default styleext for ngx-formly
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
-cat ~/.angular-config.json
+ng config -g
 # find reverse dependencies for a package
 yarn why jasmine-marbles
 ```
@@ -112,12 +112,9 @@ for nx help `yarn run help`
 
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
-yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --preset=empty --style=scss --skipInstall
-yarn create nx-workspace myworkspace --npm-scope=ngx-starter-kit
-# or
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --verbose
-# or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --bazel  --verbose
+# Options: --bazel  --verbose --strict
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty \
+--style=scss --package-manager=yarn --strict --verbose --skipInstall
 cd ngx-starter-kit
 
 # make sure we are up-to-date
@@ -131,15 +128,13 @@ ng update --all
 
 # also run `yarn outdated` and update versions in package.json then run `yarn install`
 
-ng add @nrwl/angular@next --defaults
-ng add @nrwl/nest@next
+yarn add --dev @nrwl/angular@next --defaults
+yarn add --dev @nrwl/nest@next
 # optional
-ng add @nrwl/web@next
+yarn add --dev @nrwl/web@next
 
 # generate webapp app
 ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module
-# or with ivy renderer
-ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module --enable-ivy
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
