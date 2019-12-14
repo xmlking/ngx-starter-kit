@@ -1337,7 +1337,7 @@
           "options": {
             "cypressConfig": "apps/webapp/e2e/cypress.json",
             "devServerTarget": "webapp:serve",
-            "tsConfig": "apps/webapp/e2e/tsconfig.json"
+            "tsConfig": "apps/webapp/e2e/tsconfig.e2e.json"
           }
         },
         "extract-i18n": {

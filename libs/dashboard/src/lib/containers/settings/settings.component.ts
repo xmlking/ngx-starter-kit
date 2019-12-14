@@ -1,7 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Store } from '@ngxs/store';
 import {
   ChangeLanguage,
   ChangeTheme,
@@ -13,8 +12,10 @@ import {
   PushNotificationService,
   ThemeName,
 } from '@ngx-starter-kit/core';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { Store } from '@ngxs/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'ngx-settings',
   templateUrl: './settings.component.html',
@@ -40,26 +41,21 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     this.settingsForm
       .get('selectedLanguage')
-      .valueChanges.pipe(untilDestroy(this))
-      .subscribe(selectedLanguage => this.store.dispatch(new ChangeLanguage(selectedLanguage)));
+      .valueChanges.subscribe(selectedLanguage => this.store.dispatch(new ChangeLanguage(selectedLanguage)));
 
     this.settingsForm
       .get('selectedTheme')
-      .valueChanges.pipe(untilDestroy(this))
-      .subscribe(selectedTheme => this.store.dispatch(new ChangeTheme(selectedTheme)));
+      .valueChanges.subscribe(selectedTheme => this.store.dispatch(new ChangeTheme(selectedTheme)));
 
-    this.settingsForm
-      .get('enableNotifications')
-      .valueChanges.pipe(untilDestroy(this))
-      .subscribe(async enableNotifications => {
-        if (enableNotifications) {
-          await this.pnServ.register();
-          this.store.dispatch(new EnableNotifications());
-        } else {
-          await this.pnServ.unregister();
-          this.store.dispatch(new DisableNotifications());
-        }
-      });
+    this.settingsForm.get('enableNotifications').valueChanges.subscribe(async enableNotifications => {
+      if (enableNotifications) {
+        await this.pnServ.register();
+        this.store.dispatch(new EnableNotifications());
+      } else {
+        await this.pnServ.unregister();
+        this.store.dispatch(new DisableNotifications());
+      }
+    });
   }
 
   ngOnDestroy() {}

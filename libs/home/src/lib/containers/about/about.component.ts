@@ -1,14 +1,14 @@
 import { AfterViewInit, Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ROUTE_ANIMATIONS_ELEMENTS } from '@ngx-starter-kit/animations';
+import { WINDOW } from '@ngx-starter-kit/core';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { fromEvent, Subscription } from 'rxjs';
 import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
-import { WINDOW } from '@ngx-starter-kit/core';
-import { MatPaginator } from '@angular/material';
 // import * as Trianglify from 'trianglify';
 declare var Trianglify: any;
 
 /** @dynamic */
+@AutoUnsubscribe()
 @Component({
   selector: 'ngx-about',
   templateUrl: './about.component.html',
@@ -27,7 +27,6 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
         debounceTime(100),
         map(event => [(event.target as Window).innerWidth, (event.target as Window).innerHeight]),
         distinctUntilChanged(),
-        untilDestroy(this),
       )
       .subscribe(res => {
         // setTimeout(() => {this.renderCanvas() }, 1000)

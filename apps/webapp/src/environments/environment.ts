@@ -19,13 +19,13 @@ export const environment: IEnvironment = {
   plugins: [NgxsReduxDevtoolsPluginModule.forRoot({ maxAge: 10 }), NgxsLoggerPluginModule.forRoot()],
 
   auth: {
-    clientId: 'ngxweb',
-    issuer: 'http://localhost:8080/auth/realms/ngx',
+    // clientId: 'ngxweb',
+    // issuer: 'http://localhost:8080/auth/realms/ngx',
     //  issuer: 'https://keycloak.kashmora.com/auth/realms/ngx',
     // issuer: 'https://keycloak.traefik.k8s/auth/realms/ngx',
 
-    // clientId: '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
-    // issuer: 'https://accounts.google.com'
+    clientId: '791772336084-vkt37abstm1du92ofdmhgi30vgd7t0oa.apps.googleusercontent.com',
+    issuer: 'https://accounts.google.com',
   },
 };
 

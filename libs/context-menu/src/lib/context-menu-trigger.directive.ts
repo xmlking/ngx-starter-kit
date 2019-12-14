@@ -1,18 +1,19 @@
-import {
-  Directive,
-  HostListener,
-  TemplateRef,
-  Input,
-  ViewContainerRef,
-  ElementRef,
-  OnDestroy,
-  HostBinding,
-} from '@angular/core';
 import { Overlay } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
-import { Subject, fromEvent } from 'rxjs';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import {
+  Directive,
+  ElementRef,
+  HostBinding,
+  HostListener,
+  Input,
+  OnDestroy,
+  TemplateRef,
+  ViewContainerRef,
+} from '@angular/core';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { fromEvent } from 'rxjs';
 
+@AutoUnsubscribe()
 @Directive({
   selector: '[contextMenu]',
 })
@@ -47,7 +48,6 @@ export class ContextMenuTriggerDirective implements OnDestroy {
 
     fromEvent(document, 'click')
       /** Automatically unsubscribe on destroy */
-      .pipe(untilDestroy(this))
       .subscribe(() => overlayRef.detach());
   }
 

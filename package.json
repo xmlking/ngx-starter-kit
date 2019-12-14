@@ -163,6 +163,7 @@
     "immer": "^5.0.1",
     "intersection-observer": "^0.7.0",
     "keycloak-js": "^8.0.1",
+    "ngx-auto-unsubscribe": "^3.0.1",
     "ngx-filepond": "^5.0.1",
     "ngx-page-scroll": "^7.0.0",
     "ngx-page-scroll-core": "^7.0.0",

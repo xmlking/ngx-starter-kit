@@ -200,6 +200,9 @@ filepond-plugin-file-validate-type \
 filepond-plugin-image-crop \
 filepond-plugin-image-preview
 
+# Add @AutoUnsubscribe() to auto unsubscribe rxjs
+yarn add ngx-auto-unsubscribe
+
 # Add Socket.io
 yarn add socket.io-client
 yarn add -D @types/socket.io-client
