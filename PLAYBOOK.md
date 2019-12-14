@@ -233,7 +233,7 @@ yarn add -O lint-staged
 semantic-release-cli setup
 
 yarn workspace @ngx-starter-kit/api add kubernetes-client @xmlking/jwks-rsa @nestjs/{terminus,cqrs}
-yarn workspace @ngx-starter-kit/api add addnodemon supertest  -O
+yarn workspace @ngx-starter-kit/api add nodemon supertest  -O
 
 yarn workspace @ngx-starter-kit/tools add cpx --dev
 ```

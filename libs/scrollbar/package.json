@@ -6,6 +6,6 @@
     "@angular/core": ">=8.2.14"
   },
   "dependencies": {
-    "smooth-scrollbar": ">=8.4.1"
+    "smooth-scrollbar": ">=8.5.1"
   }
 }

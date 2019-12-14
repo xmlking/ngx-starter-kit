@@ -59,7 +59,8 @@
   "files.defaultLanguage": "typescript",
   "files.trimTrailingWhitespace": true,
   "files.associations": {
-    "renovate.json5": "jsonc"
+    "renovate.json5": "jsonc",
+    "tslint.json": "jsonc"
   },
   // Peacock Settings
   "peacock.color": "#f9e64f",
