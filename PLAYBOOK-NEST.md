@@ -4,6 +4,10 @@ creating NestJS project and generate nest artifacts with-in monorepo.
 
 > An Introduction to [NestJS](https://www.joshmorony.com/an-introduction-to-nestjs-for-ionic-developers/)
 
+## Workspace
+
+[monorepo mode](https://docs.nestjs.com/cli/monorepo#monorepo-mode)
+
 ### Prerequisites
 
 #### Install Global Packages

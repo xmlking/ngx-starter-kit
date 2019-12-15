@@ -1,23 +1,19 @@
-import { IsNotEmpty, IsNumber, IsOptional, Max, Min } from 'class-validator';
-import { ApiModelProperty, ApiModelPropertyOptional } from '@nestjs/swagger';
 import { Requests as IRequests } from '@ngx-starter-kit/models';
+import { IsNotEmpty, IsNumber, IsOptional, Max, Min } from 'class-validator';
 
 export class Requests implements IRequests {
-  @ApiModelProperty({ type: Number, minimum: 0, maximum: 10156, default: 1 })
   @IsNumber()
   @IsNotEmpty()
   @Min(0)
   @Max(10156)
-  cpu: number;
+  cpu = 1;
 
-  @ApiModelProperty({ type: Number, minimum: 0, maximum: 10720, default: 1 })
   @IsNumber()
   @IsNotEmpty()
   @Min(0)
   @Max(10720)
-  memory: number;
+  memory = 1;
 
-  @ApiModelPropertyOptional({ type: Number, minimum: 0, maximum: 25, default: 5 })
   @IsNumber()
   @IsOptional()
   @Min(0)

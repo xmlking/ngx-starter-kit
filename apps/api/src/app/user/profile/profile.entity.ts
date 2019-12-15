@@ -1,30 +1,29 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, UpdateDateColumn, VersionColumn } from 'typeorm';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { ApiProperty } from '@nestjs/swagger';
+import { Gender, Profile as IProfile } from '@ngx-starter-kit/models';
 import { Exclude } from 'class-transformer';
-import { Image } from './image.entity';
+import { Length } from 'class-validator';
+import { Column, CreateDateColumn, Entity, JoinColumn, OneToOne, UpdateDateColumn, VersionColumn } from 'typeorm';
 import { Base } from '../../core/entities/base';
-import { Profile as IProfile, Gender } from '@ngx-starter-kit/models';
+import { Image } from './image.entity';
 
 @Entity('profile')
 export class Profile extends Base implements IProfile {
-  @ApiModelProperty({ type: Image })
   @OneToOne(_ => Image, { cascade: ['insert', 'update'], eager: true, nullable: true, onDelete: 'SET NULL' })
   @JoinColumn()
   avatar?: Image;
 
-  @ApiModelProperty({ type: String, enum: Gender, default: Gender.UNKNOW })
   @Column({ type: 'enum', enum: Gender, default: Gender.UNKNOW })
-  gender?: Gender;
+  gender?: Gender = Gender.UNKNOW;
 
-  @ApiModelProperty({ type: String, minLength: 10, maxLength: 20 })
   @Column({ nullable: true })
+  @Length(10, 20)
   mobilePhone?: string;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
+  @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt?: Date;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
+  @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt?: Date;
 

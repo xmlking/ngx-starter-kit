@@ -278,6 +278,8 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > <br/>
 > Refer [Getting Started with Nest.js](https://scotch.io/tutorials/getting-started-with-nestjs)
 
+> [What’s new in NestJS Swagger 4 ?](https://trilon.io/blog/nestjs-swagger-4-whats-new)
+
 - Shoud I use mergeMap or concatMap or switchMap or forkJoin for my usecase?
 
 > _Short Answer_: concatMap for writes, mergeMap for reads, switchMap when you have to cancel http call.

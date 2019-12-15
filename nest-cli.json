@@ -1,5 +1,25 @@
 {
-  "language": "ts",
   "collection": "@nestjs/schematics",
-  "sourceRoot": "apps/api/src"
+  "sourceRoot": "apps/api/src",
+  "root": "apps/api",
+  "monorepo": true,
+  "compilerOptions": {
+    "webpack": true,
+    "plugins": [
+      {
+        "name": "@nestjs/swagger/plugin"
+      }
+    ]
+  },
+  "projects": {
+    "api": {
+      "type": "application",
+      "root": "apps/api",
+      "entryFile": "main",
+      "sourceRoot": "apps/api/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/api/tsconfig.app.json"
+      }
+    }
+  }
 }

@@ -1,3 +1,5 @@
+import { ApiProperty } from '@nestjs/swagger';
+import { Exclude } from 'class-transformer';
 import {
   BeforeInsert,
   BeforeUpdate,
@@ -7,27 +9,23 @@ import {
   UpdateDateColumn,
   VersionColumn,
 } from 'typeorm';
-import { Exclude } from 'class-transformer';
-import { ApiModelProperty } from '@nestjs/swagger';
-import { RequestContext } from '../context';
 import { User } from '../../user';
+import { RequestContext } from '../context';
 
 // TODO: Implement Soft Delete
 
 export abstract class AuditBase {
-  @ApiModelProperty({ type: String })
   @PrimaryGeneratedColumn('uuid')
   id?: string;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
+  @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })
   createdAt?: Date;
 
-  @ApiModelProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
+  @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt?: Date;
 
-  @ApiModelProperty({ type: User })
   @ManyToOne(type => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
@@ -35,7 +33,6 @@ export abstract class AuditBase {
   })
   createdBy?: User;
 
-  @ApiModelProperty({ type: User })
   @ManyToOne(type => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',

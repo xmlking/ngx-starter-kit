@@ -1,37 +1,26 @@
-import { Body, Controller, HttpStatus, Param, Post, Put } from '@nestjs/common';
-import { ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
+import { Body, Controller, Param, Post, Put } from '@nestjs/common';
+import { ApiOAuth2, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { CrudController } from '../core';
+import { CreateUserDto } from './dto/create-user.dto';
+import { UpdateUserDto } from './dto/update-user.dto';
 import { User } from './user.entity';
 import { UserService } from './user.service';
-import { CrudController } from '../core';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { CreateUserDto } from './dto/create-user.dto';
 
-@ApiOAuth2Auth(['read'])
-@ApiUseTags('User')
+@ApiOAuth2(['read'])
+@ApiTags('User')
 @Controller()
 export class UserController extends CrudController<User> {
   constructor(private readonly userService: UserService) {
     super(userService);
   }
 
-  @ApiOperation({ title: 'Create new record' })
-  @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully created.', type: User })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input, The response body may contain clues as to what went wrong',
-  })
+  @ApiOperation({ summary: 'Create new record' })
   @Post()
   async create(@Body() entity: CreateUserDto): Promise<User> {
     return super.create(entity);
   }
 
-  @ApiOperation({ title: 'Update an existing record' })
-  @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully edited.' })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input, The response body may contain clues as to what went wrong',
-  })
+  @ApiOperation({ summary: 'Update an existing record' })
   @Put(':id')
   async update(@Param('id') id: string, @Body() entity: UpdateUserDto): Promise<any> {
     return super.update(id, entity);
