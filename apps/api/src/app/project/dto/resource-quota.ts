@@ -20,11 +20,11 @@ export class ResourceQuota implements IResourceQuota {
   @IsNumber()
   @Min(0)
   @Max(10156)
-  cpu?: number = 1;
+  cpu ? = 1;
 
   @IsOptional()
   @IsNumber()
   @Min(0)
   @Max(10720)
-  memory?: number = 1;
+  memory ? = 1;
 }
