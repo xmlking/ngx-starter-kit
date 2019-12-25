@@ -15,7 +15,6 @@ import { ApiOAuth2, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from '@ngx-starter-kit/models';
 import { CurrentUser, Roles, RolesEnum, Token } from '../auth';
 import { CrudController } from '../core';
-import { ORMQuery } from '../shared';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { FindOwnProjectsDto } from './dto/find-own-projects.dto';
 import { FindProjectsDto } from './dto/find-projects.dto';
@@ -51,7 +50,7 @@ export class ProjectController extends CrudController<Project> {
   @ApiTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get('/search')
-  async searchAll(@ORMQuery() query: any): Promise<ProjectList> {
+  async searchAll(query: any): Promise<ProjectList> {
     return this.projectService.searchAll(query);
   }
 

@@ -2,7 +2,7 @@
   "window.zoomLevel": 1,
   "explorer.sortOrder": "type",
   // Editor
-  "editor.autoIndent": true,
+  "editor.autoIndent": "full",
   "editor.codeActionsOnSave": {
     "source.organizeImports": true
   },
@@ -25,6 +25,7 @@
   // Terminal
   "terminal.integrated.fontFamily": "MesloLGS NF, 'SourceCodePro+Powerline+Awesome Regular', Source Code Pro for Powerline, monospace, Meslo LG M for Powerline",
   // "terminal.integrated.fontSize": 16,
+  "terminal.integrated.rendererType": "experimentalWebgl",
   // Workbench
   "workbench.editor.highlightModifiedTabs": true,
   "workbench.colorCustomizations": {

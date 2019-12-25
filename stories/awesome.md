@@ -310,6 +310,7 @@ https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/src/app
 
 - How to i18n?
   https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package.json
+  [Angular9 i18n with @angular/localize](https://blog.ninja-squad.com/2019/12/10/angular-localize/)
 
 - how to link local npm projects when you o patch a npm module locally?
   > Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)
