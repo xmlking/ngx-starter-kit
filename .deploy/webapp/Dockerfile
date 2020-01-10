@@ -17,7 +17,7 @@ ENV NODE_ENV production
 RUN $(npm bin)/ng build webapp -c=production
 
 ######################################################################
-FROM nginxinc/nginx-unprivileged:1.17.5-alpine
+FROM nginxinc/nginx-unprivileged:1.17.7-alpine
 ######################################################################
 ## Remove default nginx website
 USER root
