@@ -1,4 +1,6 @@
-# How to
+# Yeti FAQ
+
+## Table of Contents
 
 <details>
   <summary>
@@ -124,9 +126,14 @@ HUSKY_SKIP_HOOKS=1 git commit
 
   </summary>
 
-> `semantic-release` is a fully automated library/system for versioning, changelog generation, git tagging, and publishing to the npm registry.
+> use [NGX-SEMANTIC-VERSION: ENHANCE YOUR GIT AND RELEASE WORKFLOW](http://d-koppenhagen.de/blog/2019-11-ngx-semantic-version)
 
-> Read [introduction-to-semantic-release](https://blog.greenkeeper.io/introduction-to-semantic-release-33f73b117c8)
+    standard-version will now do the following:
+
+    1. "Bump" the version in package.json
+    2. Update the CHANGELOG.md file
+    3. Commit the package.json and CHANGELOG.md files
+    4. Tag a new release in the git history
 
     https://adrianperez.codes/enforcing-commit-conventions/
 

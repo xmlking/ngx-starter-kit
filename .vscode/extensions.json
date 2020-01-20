@@ -1,7 +1,6 @@
 {
   "recommendations": [
     "johnpapa.angular-essentials",
-    "googlecloudtools.cloudcode",
     "DavidAnson.vscode-markdownlint",
     "ms-azuretools.vscode-docker",
     "donjayamanne.githistory",

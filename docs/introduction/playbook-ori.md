@@ -200,8 +200,8 @@ filepond-plugin-file-validate-type \
 filepond-plugin-image-crop \
 filepond-plugin-image-preview
 
-# Add @AutoUnsubscribe() to auto unsubscribe rxjs
-yarn add ngx-auto-unsubscribe
+# Add @UntilDestroy() to auto unsubscribe rxjs
+yarn add @ngneat/until-destroy
 
 # Add Socket.io
 yarn add socket.io-client
@@ -775,3 +775,4 @@ Right click on `coverage` in project view --> Make Directory as --> Excluded.
 
 - [Nx and Angular CLI](https://github.com/nrwl/nx/wiki/Nx-and-Angular-CLI)
 - [NPM vs Yarn Cheat Sheet](https://shift.infinite.red/npm-vs-yarn-cheat-sheet-8755b092e5cc)
+- [Step by Step in a series of online tutorials](https://github.com/laas-sh/laas-sh-app)

@@ -75,4 +75,4 @@ Analyzing bundle size `yarn bundle-report`
 
 Analyzing and Visualizing the Dependency Graph (affected modules by uncommitted changes)
 
-`yarn affected -- --target dep-graph --uncommitted`
+`nx affected:dep-graph`
