@@ -1,6 +1,6 @@
 # Table of Contents
 
-- [NGX-Starter-Kit](../README.md)
+- [NGX Starter Kit](../README.md)
 - Getting Started
   - [Why](introduction/why.md)
   - [Installation](introduction/installation.md)
