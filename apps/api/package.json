@@ -60,6 +60,6 @@
     "@nestjs/schematics": "6.8.2",
     "@nestjs/testing": "6.10.14",
     "nodemon": "2.0.2",
-    "supertest": "4.0.0"
+    "supertest": "4.0.2"
   }
 }
