@@ -10,25 +10,13 @@
 
 <!-- [![Sourcegraph](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit/-/badge.svg)](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit?badge) -->
 
-## What you got
-
-- [x] **Monorepo** sharing code between apps
-- [x] **Jest** unit tests
-- [x] **Cypress** e2e tests
-- [x] [REST Client](apps/api/test-rest-api-vs-code.http) for API tests
-- [x] Containerized builds
-- [x] **Kubernetes** deployment
-- [x] Conventional git commits
-- [x] PR => CI quality checks => master
-- [x] Code formatting via prettier, tslint
-- [ ] Try [MikroORM](https://mikro-orm.io/)
-- [ ] [feature flags](https://netbasal.com/the-ultimate-guide-to-implementing-feature-flags-in-angular-applications-d4ae1fd33684)
-
 This project was generated using [Nx](https://nx.dev).
 
 🔎 **Nx is a set of Angular CLI power-ups for modern development.**
 
-live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
+Live [Demo](https://xmlking.github.io/ngx-starter-kit/index.html)
+
+Docs on [GitBook](https://xmlking.gitbook.io/ngx-starter-kit/v/develop/)
 
 If you are interested in smaller example project: [Mini-starter-kit](https://github.com/xmlking/connect4)
 
