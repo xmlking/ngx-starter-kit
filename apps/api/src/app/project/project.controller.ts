@@ -9,7 +9,7 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
-  Query,
+  Query
 } from '@nestjs/common';
 import { ApiOAuth2, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from '@ngx-starter-kit/models';
@@ -45,7 +45,7 @@ export class ProjectController extends CrudController<Project> {
 
   @ApiOperation({
     summary: 'Search all Projects. Admins only',
-    description: 'Ref: https://github.com/rjlopezdev/typeorm-express-query-builder',
+    description: 'Ref: https://github.com/rjlopezdev/typeorm-express-query-builder'
   })
   @ApiTags('Admin')
   @Roles(RolesEnum.ADMIN)
@@ -76,7 +76,8 @@ export class ProjectController extends CrudController<Project> {
     // const rs1 = await this.kservice.createNamespace(context);
     // const rs2 = await this.kservice.createNetworkPolicy(context);
     // const rs3 = await this.kservice.createServiceAccount(context, entity.serviceAccountName);
-    // const rs4 = await this.kservice.createClusterRoleBindingForServiceAccount(context, entity.serviceAccountName, RoleType.Admin);
+    // const rs4 = await
+    // this.kservice.createClusterRoleBindingForServiceAccount(context, entity.serviceAccountName, RoleType.Admin);
     // const rs5 = await this.kservice.createClusterRoleBindingForDashboardUsers(context, user.username);
     // const rs6 = await this.kservice.createResourceQuotaForNamespace(context);
     // const rs7 = await this.kservice.createResourceLimitRangeForNamespace(context);
@@ -88,7 +89,7 @@ export class ProjectController extends CrudController<Project> {
   @Put(':id')
   async update(
     @Param('id', new ParseUUIDPipe({ version: '4' })) id: string,
-    @Body() entity: UpdateProjectDto,
+    @Body() entity: UpdateProjectDto
   ): Promise<any> {
     // TODO check if owner
     return super.update(id, entity);

@@ -1,12 +1,12 @@
 import { Inject, Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { SwUpdate } from '@angular/service-worker';
 import { environment } from '@env/environment';
 import { WINDOW } from './window.token';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 /** @dynamic */
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ServiceWorkerService {
   constructor(private swUpdate: SwUpdate, @Inject(WINDOW) private window: Window, private snackBar: MatSnackBar) {}
@@ -22,7 +22,7 @@ export class ServiceWorkerService {
         const snackBarRef = this.snackBar.open('Newer version of the app is available', 'Refresh');
 
         snackBarRef.onAction().subscribe(() => {
-          window.location.reload(true);
+          window.location.reload();
         });
       });
 

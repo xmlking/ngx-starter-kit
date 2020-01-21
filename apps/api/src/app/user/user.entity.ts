@@ -1,7 +1,18 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { User as IUser } from '@ngx-starter-kit/models';
 import { IsAscii, IsEmail, IsNotEmpty, IsString, Length } from 'class-validator';
-import { Column, CreateDateColumn, Entity, Index, JoinColumn, OneToMany, OneToOne, RelationId, UpdateDateColumn, VersionColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  Index,
+  JoinColumn,
+  OneToMany,
+  OneToOne,
+  RelationId,
+  UpdateDateColumn,
+  VersionColumn
+} from 'typeorm';
 import { Base } from '../core/entities/base';
 import { Image } from './profile/image.entity';
 import { Profile } from './profile/profile.entity';
@@ -47,7 +58,7 @@ export class User extends Base implements IUser {
 
   @OneToMany(
     _ => Image,
-    image => image.user,
+    image => image.user
   )
   images?: Image[];
 

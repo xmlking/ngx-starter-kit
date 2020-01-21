@@ -37,11 +37,11 @@ export interface ProfileStateModel {
     profile: undefined,
     error: undefined,
     loading: false,
-    progress: undefined,
-  },
+    progress: undefined
+  }
 })
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ProfileState implements NgxsAfterBootstrap {
   constructor(private profileService: ProfileService) {}
@@ -77,7 +77,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -90,7 +90,7 @@ export class ProfileState implements NgxsAfterBootstrap {
       map(event => this.getStatusMessage(ctx, event)),
       tap({
         next: message => console.log(message),
-        complete: () => console.log('competed request!'),
+        complete: () => console.log('competed request!')
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
@@ -98,7 +98,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -110,7 +110,7 @@ export class ProfileState implements NgxsAfterBootstrap {
       map(event => this.getStatusMessage(ctx, event)),
       tap({
         next: message => console.log(message),
-        complete: () => console.log('competed request!'),
+        complete: () => console.log('competed request!')
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
@@ -118,7 +118,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -131,7 +131,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -149,7 +149,8 @@ export class ProfileState implements NgxsAfterBootstrap {
 
       case HttpEventType.DownloadProgress:
         status = Math.round((100 * event.loaded) / event.total);
-        ctx.setState(setProgress(status)); // NOTE: The Content-Length header must be set on the server to calculate this
+        // NOTE: The Content-Length header must be set on the server to calculate this
+        ctx.setState(setProgress(status));
         return `Files are ${status}% downloaded`;
 
       case HttpEventType.Response:

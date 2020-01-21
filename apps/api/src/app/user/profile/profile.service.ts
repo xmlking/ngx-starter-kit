@@ -1,22 +1,21 @@
-import { BadRequestException, Injectable, UploadedFile } from '@nestjs/common';
-import { DeepPartial, Repository, UpdateResult } from 'typeorm';
+import { BadRequestException, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import * as sharp from 'sharp';
-import * as crypto from 'crypto';
-
 import { ImageType } from '@ngx-starter-kit/models';
+import * as crypto from 'crypto';
+import * as sharp from 'sharp';
+import { Repository, UpdateResult } from 'typeorm';
 import { CrudService } from '../../core';
-import { Profile } from './profile.entity';
-import { Image } from './image.entity';
-import { CreateProfileDto } from './dto/create-profile.dto';
 import { User } from '../user.entity';
+import { CreateProfileDto } from './dto/create-profile.dto';
+import { Image } from './image.entity';
+import { Profile } from './profile.entity';
 
 @Injectable()
 export class ProfileService extends CrudService<Profile> {
   constructor(
     @InjectRepository(Profile) private readonly profileRepository: Repository<Profile>,
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-    @InjectRepository(Image) private readonly imageRepository: Repository<Image>,
+    @InjectRepository(Image) private readonly imageRepository: Repository<Image>
   ) {
     super(profileRepository);
   }
@@ -37,7 +36,7 @@ export class ProfileService extends CrudService<Profile> {
           .update(file.buffer)
           .digest('hex'),
         mimeType: file.mimetype,
-        size: file.size,
+        size: file.size
       };
       profile = await super.create({ avatar, ...entity });
     } else {
@@ -67,7 +66,7 @@ export class ProfileService extends CrudService<Profile> {
             .update(file.buffer)
             .digest('hex'),
           mimeType: file.mimetype,
-          size: file.size,
+          size: file.size
         }
       : {
           title: file.originalname,
@@ -81,14 +80,15 @@ export class ProfileService extends CrudService<Profile> {
             .update(file.buffer)
             .digest('hex'),
           mimeType: file.mimetype,
-          size: file.size,
+          size: file.size
         };
 
     return this.profileRepository.save({ id, ...entity, avatar });
   }
 
   async delete(id: number, user: User): Promise<any> {
-    // TODO: no cascade OneToOne delete yet. so manually delete image first. https://github.com/typeorm/typeorm/issues/3218
+    // TODO: no cascade OneToOne delete yet. so manually delete image first.
+    // https://github.com/typeorm/typeorm/issues/3218
     await this.imageRepository.delete({ user: { id: user.id }, type: ImageType.Profile });
     return super.delete(id);
   }
