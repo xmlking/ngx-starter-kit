@@ -34,7 +34,7 @@
     "// - DOCS": "Generate and serve docs",
     "doc:build": "compodoc -p tsconfig.json -d dist/docs",
     "doc:serve": "compodoc -s -d dist/docs",
-    "doc:build-serve": "compodoc -p tsconfig.json -d docs -s",
+    "doc:build-serve": "compodoc -p tsconfig.json -d dist/docs -s",
     "// - TEST": "Test unit and e2e",
     "test": "ng test webapp",
     "test:ci": "ng test webapp --ci --max-workers=4",
