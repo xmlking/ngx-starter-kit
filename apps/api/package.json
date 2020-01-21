@@ -39,7 +39,7 @@
     "passport-jwt": "4.0.0",
     "pg": "7.17.1",
     "pug": "2.0.4",
-    "reflect-metadata": "0.1.12",
+    "reflect-metadata": "0.1.13",
     "rxjs": "6.5.4",
     "sharp": "0.24.0",
     "swagger-ui-express": "4.1.3",
