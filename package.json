@@ -189,7 +189,7 @@
     "@types/jquery": "3.3.31",
     "@types/node": "13.1.8",
     "@types/socket.io-client": "1.4.32",
-    "codecov": "3.6.1",
+    "codecov": "3.6.2",
     "codelyzer": "5.2.1",
     "loaders.css": "0.1.2",
     "ng-packagr": "5.7.1",
