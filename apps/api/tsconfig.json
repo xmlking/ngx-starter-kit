@@ -1,7 +1,7 @@
 {
   "extends": "../../tsconfig.json",
   "compilerOptions": {
-    // TODO: Temp fix https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23976
+    // FIXME: Temp fix https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23976
     "skipLibCheck": true,
     //
     "types": ["node", "jest"]
