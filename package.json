@@ -210,7 +210,7 @@
     "@ngxs/schematics": "0.0.1-alpha.5",
     "@semantic-release/changelog": "3.0.6",
     "@semantic-release/git": "8.0.0",
-    "@semantic-release/github": "6.0.1",
+    "@semantic-release/github": "6.0.2",
     "@semantic-release/npm": "6.0.0",
     "angular-cli-ghpages": "0.6.2",
     "commitizen": "4.0.3",
@@ -223,7 +223,7 @@
     "lint-staged": "10.0.1",
     "lite-server": "2.5.4",
     "prettier": "1.19.1",
-    "semantic-release": "16.0.2",
+    "semantic-release": "16.0.3",
     "ts-jest": "24.3.0",
     "webpack-bundle-analyzer": "3.6.0"
   }
