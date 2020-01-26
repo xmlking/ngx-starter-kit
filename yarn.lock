@@ -1774,10 +1774,10 @@
     socket.io "2.3.0"
     tslib "1.10.0"
 
-"@nestjs/schematics@6.9.0":
-  version "6.9.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-6.9.0.tgz#d4467b7f1355f1829c1d9f7880b739c0dc41f8e4"
-  integrity sha512-51DXSBVzeAXS5qM0zOUSV2xI/CIUq0bUG2vbvMPbVroVepWOwSkEeEEEQ6OXZMqrbp+F25Md0ND4Z9ha4HYexg==
+"@nestjs/schematics@6.9.1":
+  version "6.9.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-6.9.1.tgz#113b39dd9a293af60cd2b9029c6ef11b1606e5cd"
+  integrity sha512-tblebZ2pMtaHKyyvWfFmOmzRTq2j8X1v782KjEZSBAY+4009GBcLE4HJW9BdXmaJ5NFqqo125+OcShfQi06r8Q==
   dependencies:
     "@angular-devkit/core" "7.3.8"
     "@angular-devkit/schematics" "7.3.8"
