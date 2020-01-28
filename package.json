@@ -194,7 +194,7 @@
     "loaders.css": "0.1.2",
     "ng-packagr": "5.7.1",
     "ngx-deploy-npm": "1.2.0",
-    "rimraf": "3.0.0",
+    "rimraf": "3.0.1",
     "ts-loader": "6.2.1",
     "ts-node": "8.6.2",
     "tsconfig-paths": "3.9.0",
