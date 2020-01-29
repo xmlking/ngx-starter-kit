@@ -187,7 +187,7 @@
     "@types/hammerjs": "2.0.36",
     "@types/jest": "24.9.1",
     "@types/jquery": "3.3.31",
-    "@types/node": "13.5.1",
+    "@types/node": "13.5.2",
     "@types/socket.io-client": "1.4.32",
     "codecov": "3.6.2",
     "codelyzer": "5.2.1",
