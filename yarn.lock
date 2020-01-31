@@ -4728,10 +4728,10 @@ cache-base@^1.0.1:
     union-value "^1.0.0"
     unset-value "^1.0.0"
 
-cache-manager@2.10.3:
-  version "2.10.3"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.10.3.tgz#2618d002074381c4e343af7634a1120a27067ed4"
-  integrity sha512-HKZrOj72BU2XUXiB9BLTBrO+sy2vRfYkCY2UnL4XqgeIuz0U4S/qeUDSRHHt2VDhoJJyjLt8YD2qz3rAnz8SDg==
+cache-manager@2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-2.11.0.tgz#5ce7515a0079e73106c5e9eb80290cc1a0c87db3"
+  integrity sha512-eKmGx69rnSBfT0eEDX6WhfxOG00LqvosnTmLpf8SNhvVFbOh1aHSsox1Tp3feNZ5tdkLCBZkmhQpaDfh0gDNTA==
   dependencies:
     async "1.5.2"
     deepmerge "4.2.2"
