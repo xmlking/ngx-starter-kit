@@ -773,8 +773,8 @@ npx compodoc -s -d docs
 
 ```bash
 # ng deploy --dry-run
-ng deploy --base-href=/ngx-starter-kit/ --configuration=mock # for gh-pages
-ng deploy # for firebase
+ng deploy --base-href=/ngx-starter-kit/ --configuration=mock # to gh-pages
+ng deploy --buildTarget=project:browser:staging # to firebase
 # deploy all affected apps
 nx affected --target deploy
 # deploy `dist/apps/webapp` manually to firebase
