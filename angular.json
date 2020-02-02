@@ -155,7 +155,7 @@
     "app-confirm": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/app-confirm/ng-package.json",
             "tsConfig": "libs/app-confirm/tsconfig.lib.json"
@@ -263,7 +263,7 @@
     "breadcrumbs": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/breadcrumbs/ng-package.json",
             "tsConfig": "libs/breadcrumbs/tsconfig.lib.json"
@@ -299,7 +299,7 @@
     "chat-box": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/chat-box/ng-package.json",
             "tsConfig": "libs/chat-box/tsconfig.lib.json"
@@ -335,7 +335,7 @@
     "clap": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/clap/ng-package.json",
             "tsConfig": "libs/clap/tsconfig.lib.json"
@@ -371,7 +371,7 @@
     "context-menu": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/context-menu/ng-package.json",
             "tsConfig": "libs/context-menu/tsconfig.lib.json"
@@ -453,7 +453,7 @@
     "draggable": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/draggable/ng-package.json",
             "tsConfig": "libs/draggable/tsconfig.lib.json"
@@ -558,7 +558,7 @@
     "image-comparison": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/image-comparison/ng-package.json",
             "tsConfig": "libs/image-comparison/tsconfig.lib.json"
@@ -594,7 +594,7 @@
     "json-diff": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/json-diff/ng-package.json",
             "tsConfig": "libs/json-diff/tsconfig.lib.json"
@@ -630,7 +630,7 @@
     "led": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/led/ng-package.json",
             "tsConfig": "libs/led/tsconfig.lib.json"
@@ -666,7 +666,7 @@
     "loading-overlay": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/loading-overlay/ng-package.json",
             "tsConfig": "libs/loading-overlay/tsconfig.lib.json"
@@ -753,7 +753,7 @@
     "ngx-utils": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/ngx-utils/ng-package.json",
             "tsConfig": "libs/ngx-utils/tsconfig.lib.json"
@@ -812,7 +812,7 @@
     "notifications": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/notifications/ng-package.json",
             "tsConfig": "libs/notifications/tsconfig.lib.json"
@@ -871,7 +871,7 @@
     "scroll-to-top": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/scroll-to-top/ng-package.json",
             "tsConfig": "libs/scroll-to-top/tsconfig.lib.json"
@@ -907,7 +907,7 @@
     "scrollbar": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/scrollbar/ng-package.json",
             "tsConfig": "libs/scrollbar/tsconfig.lib.json"
@@ -989,7 +989,7 @@
     "socketio-plugin": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/socketio-plugin/ng-package.json",
             "tsConfig": "libs/socketio-plugin/tsconfig.lib.json"
@@ -1025,7 +1025,7 @@
     "svg-viewer": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/svg-viewer/ng-package.json",
             "tsConfig": "libs/svg-viewer/tsconfig.lib.json"
@@ -1061,7 +1061,7 @@
     "theme-picker": {
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-ng-packagr:build",
+          "builder": "@nrwl/angular:package",
           "options": {
             "project": "libs/theme-picker/ng-package.json",
             "tsConfig": "libs/theme-picker/tsconfig.lib.json"

@@ -290,7 +290,7 @@ yarn add trianglify --no-save --no-lock
 # tools you only needed on Dev laptop
 yarn add -O lint-staged
 yarn add -O webpack-bundle-analyzer
-
+yarn add -O prettier
 # alternative builder for nestjs (optional)
 yarn add -D ts-node-builder
 

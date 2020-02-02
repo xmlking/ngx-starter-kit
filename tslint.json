@@ -58,8 +58,12 @@
             "sourceTag": "child-module",
             "onlyDependOnLibsWithTags": ["utils", "public-module", "private-module", "shared-module"]
           },
-          { "sourceTag": "*", "onlyDependOnLibsWithTags": ["*"] }
-        ]
+          {
+            "sourceTag": "*",
+            "onlyDependOnLibsWithTags": ["*"]
+          }
+        ],
+        "enforceBuildableLibDependency": true
       }
     ]
   }
