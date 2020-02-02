@@ -11,7 +11,7 @@ export class ResizableState extends StateDef<IResizeState> {
       currentPosition: { x: 0, y: 0 },
       startPosition: { x: 0, y: 0 },
       isResizing: false,
-      direction: null,
+      direction: null
     });
   }
 }
