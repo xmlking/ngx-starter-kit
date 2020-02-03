@@ -1899,10 +1899,10 @@
   dependencies:
     tslib "^1.7.1"
 
-"@ngx-formly/material@5.5.10":
-  version "5.5.10"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.5.10.tgz#95da81e423ad8b3fa95a79e08cf546275fbfb652"
-  integrity sha512-Fxdd1u7YS0eni9y0EUk+bJe5FFUmmeGX2jru15Fwp5NEeYEXGwWzfNqD0ROgKz6x0m/PLt49QKhr5teOWYn/yg==
+"@ngx-formly/material@5.5.11":
+  version "5.5.11"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.5.11.tgz#47d6a8fb05e1ef1394c3fe9aa7e3e4cebb2921d4"
+  integrity sha512-3nlOiUTE1RzIEJIiSWkYTdll3arhfwEHECdM5p02OoaSeIncV6mMRBbPzfa9iA3DdsIv2FzTIJd8pNlf1xNtXg==
   dependencies:
     tslib "^1.9.0"
 
