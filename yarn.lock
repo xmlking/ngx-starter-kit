@@ -1892,10 +1892,10 @@
     tree-kill "1.2.2"
     webpack-sources "1.4.3"
 
-"@ngx-formly/core@5.5.10":
-  version "5.5.10"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.10.tgz#0353b0f4c97f5afe887909d0dc5dd8303e7f0a10"
-  integrity sha512-nKtO8zvztBjB6MMmszXZqb95gmG4xjJIMphzFqRN15PjCxNSXDDlYH/ljm7proGBmt1gMz/liwTP7Hf2TcwydA==
+"@ngx-formly/core@5.5.11":
+  version "5.5.11"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.5.11.tgz#a46c5d433076f4d83ff8574f2ae560077cea75f1"
+  integrity sha512-/1HyYhM3aLuTwwn/Ul5WZ/1ASa4bZkSnmKFtz2/2iw7XFUVdA8M3vmdpZzuOwHR+1cJ0TgDfnZ7QWyl49gxB5A==
   dependencies:
     tslib "^1.7.1"
 
