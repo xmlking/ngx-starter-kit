@@ -207,7 +207,7 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "@compodoc/compodoc": "1.1.11",
-    "@ngx-formly/schematics": "5.5.10",
+    "@ngx-formly/schematics": "5.5.11",
     "@ngxs/schematics": "0.0.1-alpha.5",
     "@semantic-release/changelog": "5.0.0",
     "@semantic-release/git": "9.0.0",
