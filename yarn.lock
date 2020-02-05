@@ -9620,10 +9620,10 @@ image-size@~0.5.0:
   resolved "https://registry.yarnpkg.com/image-size/-/image-size-0.5.5.tgz#09dfd4ab9d20e29eb1c3e80b8990378df9e3cb9c"
   integrity sha1-Cd/Uq50g4p6xw+gLiZA3jfnjy5w=
 
-immer@5.3.3:
-  version "5.3.3"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-5.3.3.tgz#9964a5b88e54da208e56f22f2cf79f498fed521b"
-  integrity sha512-9fgZqRU5BRPSFmz1oWyIwkWq6mmTWugW4hvMb6OoUa2dgwHrkiJDBpfYcQMj/6v3UPt/ghYY61wFv8Kfy7LZEw==
+immer@5.3.4:
+  version "5.3.4"
+  resolved "https://registry.yarnpkg.com/immer/-/immer-5.3.4.tgz#84edcfc0033e0db076a986fa9cdf28d035e97a67"
+  integrity sha512-2SmrJY1MviStaIM+nGWGQVrSxICx5QnzrgtDQgIv0vAka9urVnOR4ZGNFFXo04cnZUqQ2T1W7MjHVTVJoYujFg==
 
 immutable@^3:
   version "3.8.2"
