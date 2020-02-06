@@ -347,10 +347,10 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/flex-layout@9.0.0-beta.28":
-  version "9.0.0-beta.28"
-  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-9.0.0-beta.28.tgz#d040493781739ec9f1dfc3171aaaa35d800ad17d"
-  integrity sha512-VWyZ8NVtzS6pVkmTViVwzc8GWdUxql3FGtiVvdnqflr2/hnBaTxBjVJWBTZxQVJyzAwbi9WezarnfETMExsEkA==
+"@angular/flex-layout@9.0.0-beta.29":
+  version "9.0.0-beta.29"
+  resolved "https://registry.yarnpkg.com/@angular/flex-layout/-/flex-layout-9.0.0-beta.29.tgz#a334ffd15c272e2d48cdaef3879625aadcc13a54"
+  integrity sha512-93sxR+kYfYMOdnlWL0Q77FZ428gg8XnBu0YZm6GsCdkw/vLggIT/G1ZAqHlCPIODt6pxmCJ5KXh4ShvniIYDsA==
 
 "@angular/forms@8.2.14":
   version "8.2.14"
