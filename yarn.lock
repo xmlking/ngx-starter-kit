@@ -1821,20 +1821,20 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.11.5.tgz#02d8b85e1c494ec866fc8cec78a9f7b2d950767e"
-  integrity sha512-pCM3aK876ubnJS9g/ni44BpzNU3sja+dTw61H3VkYJTq1tBWjhn50fAe5ezTXEZPND4pG8HAO3gjdHFanEXH2g==
+"@nestjs/common@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-6.11.6.tgz#b0bca24a30f6822c2a7e885fef699f6bac99b44f"
+  integrity sha512-KUqXIklIivO7O7V7bELZLRthBqK+KPzCy4Zt0CWHfmoW3fuxnBKEE3hEqt9awWP3l2GeLCakYi472F3BFLGL5Q==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
     tslib "1.10.0"
     uuid "3.4.0"
 
-"@nestjs/core@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.11.5.tgz#13747f512175cc6253b774e7471019506b67dc0a"
-  integrity sha512-UFtMZBFXeNdSH3wdv9czCSZMO47nPcsauANf8xrzYP9m3amEOhhEMR+FIjwuFXZ5RralsLuz+U2LcaChWZjSHg==
+"@nestjs/core@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-6.11.6.tgz#7a482a571f9b67e9589d60248cb2d4ef78f8dafd"
+  integrity sha512-jFMpr2wspGMVs7ddhkIG0vjXt+4OdOb5wLBCw1+D7P01FxeC2XB9et1BWwx9prHo0uScePfkIkgTIRjlxwkPZg==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.7"
@@ -1877,10 +1877,10 @@
     express "4.17.1"
     multer "1.4.2"
 
-"@nestjs/platform-express@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-6.11.5.tgz#c8c863ae1aacdc3e77dcd5155d7147a2134ab096"
-  integrity sha512-kPbUzlo7eN68LesTQ3Y1siJ1BJZo2DUINqdrv92hPv834nTX9P36+Ee4LNGHmO8I4vCdRweudrurxAYntuN+gw==
+"@nestjs/platform-express@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-6.11.6.tgz#fcb1c2a654ee0d3164fbe1bea203261c3a9a9584"
+  integrity sha512-+W63WZA1n8Z6xLGjDsahk21xJU11L1s/1dYDD5DYYt7di7h6JNlKAluwfp57eUbbRN6usT+wr0rGLYU8vbRJQA==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -1898,10 +1898,10 @@
     fastify-formbody "3.1.0"
     path-to-regexp "3.2.0"
 
-"@nestjs/platform-socket.io@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-6.11.5.tgz#c7c1929ca44b713bf44d98dcd6548f5999e85512"
-  integrity sha512-6Fe7KYJ5n/enXMAxyJYKFH+HM7LRJvf57dllYc8nBoO8x7oTC35ufkAdzNrzbKLw+z0iluYCjJQb4NUgQJFGYQ==
+"@nestjs/platform-socket.io@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-6.11.6.tgz#e550cac439b92c3491170f613aa231a3aa6ae16e"
+  integrity sha512-zlfgcpyNtyggd3kXHB2CsMhyBVsDYqke2X7t/nDQbasL2UX0ciZDqgcpfbqyNz1nApqAVYuUOS7DtrW7N7mOOg==
   dependencies:
     socket.io "2.3.0"
     tslib "1.10.0"
@@ -1945,10 +1945,10 @@
     redis "2.8.0"
     typeorm "0.2.21"
 
-"@nestjs/testing@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.11.5.tgz#877b4cc78f39dfb9c01cf28c6176d6d9124ed2f9"
-  integrity sha512-/EhYQgyItK7wOzBmE61OvVE+45jfM05OqOGVj3RqClFJ95hBjp/7TTsNFRpYCWWwsJjDrkrHYaWbpaCotdrw9Q==
+"@nestjs/testing@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-6.11.6.tgz#d5c770f45a9b5bed96034cc7fe36112b35d3100d"
+  integrity sha512-PKVmK/oOUAlbi9MSRZLQ0Q1BCtXypymeDTHfR+NtXbyonDuhF8muzBYSwV6+JfU/sMH5HqsF8MDY3eY/iHqzhA==
   dependencies:
     optional "0.1.4"
     tslib "1.10.0"
@@ -1960,10 +1960,10 @@
   dependencies:
     uuid "3.3.3"
 
-"@nestjs/websockets@6.11.5":
-  version "6.11.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.11.5.tgz#73d73f3c484589d8f7d6cc6af862f5bbf2ffb545"
-  integrity sha512-QSwTrOOgltKrAinidCUb4/mZZ0rSGILMTCsT8rjHPpkzDpOJHYNcMU2WsXl8lZyR3mgCV+l3CiboF30QQyMxZQ==
+"@nestjs/websockets@6.11.6":
+  version "6.11.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.11.6.tgz#adda79bce254e7e843cbada0c79a4f641d4d9dfb"
+  integrity sha512-/UaB7wOlQxAdZ5TAgIPAsLhRgMw57a6E+SD8iHHiDf5bppQglIT13D8xAcjEx9lqM2UN8naVePQAJ7HI0s3RVw==
   dependencies:
     iterare "1.2.0"
     tslib "1.10.0"
