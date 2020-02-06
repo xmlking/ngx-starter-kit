@@ -201,7 +201,7 @@
     "tsconfig-paths": "3.9.0",
     "tsickle": "0.38.0",
     "tslint": "5.20.1",
-    "typescript": "3.5.3"
+    "typescript": "3.7.5"
   },
   "optionalDependencies": {
     "@commitlint/cli": "8.3.5",
