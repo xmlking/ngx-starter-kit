@@ -186,7 +186,7 @@
     "@nrwl/workspace": "8.12.1",
     "@types/google.analytics": "0.0.40",
     "@types/hammerjs": "2.0.36",
-    "@types/jest": "25.1.1",
+    "@types/jest": "25.1.2",
     "@types/jquery": "3.3.32",
     "@types/node": "13.7.0",
     "@types/socket.io-client": "1.4.32",
