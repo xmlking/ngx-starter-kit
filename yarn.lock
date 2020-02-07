@@ -2113,31 +2113,31 @@
   dependencies:
     tslib "^1.9.0"
 
-"@ngxs/devtools-plugin@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/devtools-plugin/-/devtools-plugin-3.6.1.tgz#e3baea72df7d6c7d6875f1d6f2e602a845555304"
-  integrity sha512-4FbIJsvg/uKhARrInGoXHNjZTdTZ94rWF81Bo2pLEWk1+Ma88x3Xspva+Y4HDMXYCswPFIwh3r3AJRBhAxQ1OA==
+"@ngxs/devtools-plugin@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/devtools-plugin/-/devtools-plugin-3.6.2.tgz#aa0a4835f90fb905951d7712dc3ce508cbc15a2c"
+  integrity sha512-0UUZlpXgEtrHoWNeVQXEvUyC6pW8nTACpqJgecuBjYJMa5imCCUSXdrpear8ztJuWwpLqMUSGk5cICNhKqK59g==
   dependencies:
     tslib "^1.9.0"
 
-"@ngxs/form-plugin@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/form-plugin/-/form-plugin-3.6.1.tgz#6c6ab51b590294639cb53c4fd54248ad2bc0846d"
-  integrity sha512-qq6cRgB+ZrQvWnQ0RK6NSeF6tY/5Zz/hr2A25VfZnE4PYk6P/D5T0/nZvcjkYh0hFZ4qTa5HXfcshoIyJlFejQ==
+"@ngxs/form-plugin@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/form-plugin/-/form-plugin-3.6.2.tgz#b188485ae43997d9c822edebcd2ba37838de0920"
+  integrity sha512-1ksH4j84HRuCvKLsDrWRLeezmx54qYcGIxZyPRUJqoMRD//Tb07VIHtNHwpCrZBloV1ajP5thaMx3xHWjbkBLw==
   dependencies:
     tslib "^1.9.0"
 
-"@ngxs/logger-plugin@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-3.6.1.tgz#a1515bca9d08fe60949a69f06761866c669084e4"
-  integrity sha512-2qax2Wj83oO/Q0bEqZcfCkvL9y8F+ifHZASPiGx68xxq2pmdmyOM4VInYoudNpCB0Gqo9898JIy1ODo98sUf+g==
+"@ngxs/logger-plugin@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/logger-plugin/-/logger-plugin-3.6.2.tgz#1a8132a0b1eb95cad79736120fd50a331fe7347b"
+  integrity sha512-qF4ci9Ua7jL7r5EhZBEb0JB0HuGsTgFShK3OVTYSXU9+XfSb+5vrDLtmTshmBqQy6dWCd+2xq4LzBgc8IKMRuQ==
   dependencies:
     tslib "^1.9.0"
 
-"@ngxs/router-plugin@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/router-plugin/-/router-plugin-3.6.1.tgz#e491d1b2afb451cc035a3f812c071f9c3578b3ed"
-  integrity sha512-0jXCBRHjGWHGxnPI+jBI4yPlmtIynSAeolyLPsUv1IwDpaAsY8L/pW1QYThxcFUC+adwq2lYdpNyESn6R9vhfA==
+"@ngxs/router-plugin@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/router-plugin/-/router-plugin-3.6.2.tgz#058b09565011203bbf52294f16f29f9337aeaa27"
+  integrity sha512-5J3G9+Qsy/s7iqFivzAN1S6EmaZYTb9hqz7Xjn3c0u3Y44VMP5VWiz77jZ/eowXX0slJywcMxk6oCEFPwz4lXQ==
   dependencies:
     tslib "^1.9.0"
 
@@ -2150,14 +2150,21 @@
     "@angular-devkit/schematics" "^7.1.0"
     typescript "^3.2.1"
 
-"@ngxs/storage-plugin@3.6.1":
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/@ngxs/storage-plugin/-/storage-plugin-3.6.1.tgz#978f59d195c585c01bfb2c725236724eb39fcea9"
-  integrity sha512-uUWcb6bMkt0iRh5VqOEOSX5bnqfmxLgw/AV77za35BXWjUbhkpVaBZXbCe3349d6JXODxjfJlUp3qbBL2aYHlQ==
+"@ngxs/storage-plugin@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/storage-plugin/-/storage-plugin-3.6.2.tgz#6fe2168891382c635406df02308f67b585efc60a"
+  integrity sha512-x9CATYmXDH9bWmKW4uQxt5xxb51naSAmMkhvv1QHIrE9hG4uYNqiV3ERAM1wZvZbu2MJB9iXEN0cBziTgrwe2Q==
   dependencies:
     tslib "^1.9.0"
 
-"@ngxs/store@3.6.1", "@ngxs/store@>=3.6.1":
+"@ngxs/store@3.6.2":
+  version "3.6.2"
+  resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-3.6.2.tgz#cfba63dc1e5bd422e89e54b3332cd69818510624"
+  integrity sha512-al7GU618SAuz2Ul4rFYVDgS1DM0gHReGOGvbnE7LBt4Etz3gsJERNYXPp2bSA7lZGaRPRaFfIHJN+Lm/GikFJw==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngxs/store@>=3.6.1":
   version "3.6.1"
   resolved "https://registry.yarnpkg.com/@ngxs/store/-/store-3.6.1.tgz#3349fe91580cbb704bb5063fe8215db0868d5140"
   integrity sha512-q8SsQ2/GwUz1bdQTm6KvuorRlUu2EbhqYznZAtOvaes81Ntd9RftUAfiiMu+NlrZ3bU3859kUIW3Po65sj/sNA==
