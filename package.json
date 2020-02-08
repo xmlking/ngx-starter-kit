@@ -118,7 +118,7 @@
     "@angular/material": "8.2.3",
     "@angular/platform-browser": "8.2.14",
     "@angular/platform-browser-dynamic": "8.2.14",
-    "@angular/pwa": "0.803.24",
+    "@angular/pwa": "0.900.1",
     "@angular/router": "8.2.14",
     "@angular/service-worker": "8.2.14",
     "@fortawesome/angular-fontawesome": "0.5.0",
@@ -159,7 +159,7 @@
     "filepond-plugin-image-transform": "3.7.1",
     "formidable": "1.2.1",
     "hammerjs": "2.0.8",
-    "immer": "5.1.0",
+    "immer": "5.3.4",
     "intersection-observer": "0.7.0",
     "keycloak-js": "8.0.2",
     "ngx-auto-unsubscribe": "3.0.1",
@@ -201,7 +201,7 @@
     "tsconfig-paths": "3.9.0",
     "tsickle": "0.38.0",
     "tslint": "5.20.1",
-    "typescript": "3.5.3"
+    "typescript": "3.7.5"
   },
   "optionalDependencies": {
     "@commitlint/cli": "8.3.5",
@@ -225,11 +225,11 @@
     "lite-server": "2.5.4",
     "prettier": "1.19.1",
     "semantic-release": "17.0.2",
-    "ts-jest": "25.1.0",
+    "ts-jest": "25.2.0",
     "webpack-bundle-analyzer": "3.6.0"
   },
   "resolutions": {
     "d3": "4.13.0",
-    "immer": "5.1.0"
+    "immer": "5.3.4"
   }
 }
