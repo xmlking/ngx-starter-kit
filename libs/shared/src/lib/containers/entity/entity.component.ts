@@ -1,6 +1,6 @@
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
-import { ComponentType } from '@angular/cdk/portal/typings/portal';
-import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, Directive } from '@angular/core';
+import { ComponentType } from '@angular/cdk/portal';
+import { AfterViewInit, Directive, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -11,7 +11,6 @@ import { concatMap, filter, map } from 'rxjs/operators';
 import { EntityFormComponent } from './entity-form.component';
 import { Entity, EntityColumnDef } from './entity.model';
 import { EntityService } from './entity.service';
-
 @Directive()
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
@@ -57,7 +56,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
           // tap(console.log),
           filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
           filter(_ => this.selection.selected.length > this.maxSelectable),
-          untilDestroy(this),
+          untilDestroy(this)
         )
         .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
     }
@@ -112,7 +111,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
         this.dataSource.paginator = this.paginator;
         // return nothing as we don't need.
         // return result
-      }),
+      })
     );
   }
 

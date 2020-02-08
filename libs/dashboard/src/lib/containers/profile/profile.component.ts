@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthState } from '@ngx-starter-kit/auth';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 import { ProfileState } from '@ngx-starter-kit/core';
@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   selector: 'ngx-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   crumbs: ReadonlyArray<Crumb> = [{ name: 'Dashboard', link: '/dashboard' }, { name: 'Profile' }];
