@@ -166,8 +166,6 @@ ng add angular-cli-ghpages
 # Ref: https://material.angular.io/guide/schematics
 # Ref: https://material.angular.io/guide/getting-started
 ng add @angular/material
-yarn add hammerjs
-yarn add -D @types/hammerjs
 yarn add date-fns
 yarn add -D codecov
 # Add Flex-Layout

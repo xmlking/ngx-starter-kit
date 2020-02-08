@@ -2,7 +2,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { APP_INITIALIZER, NgModule, Optional, SkipSelf } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { environment } from '@env/environment';
 import { FaIconLibrary, FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { faGithub, faGoogle, faTwitter } from '@fortawesome/free-brands-svg-icons';
@@ -19,7 +18,6 @@ import { ErrorInterceptor } from './interceptors/error.interceptor';
 import { defaultMenu } from './menu-data';
 import { AppConfigService } from './services/app-config.service';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
-import { HammerConfig } from './services/hammer.config';
 import { WINDOW, _window } from './services/window.token';
 import { AppHandler } from './state/app.handler';
 import { AppState } from './state/app.state';
@@ -52,15 +50,15 @@ export function noop() {
     NavigatorModule.forRoot(defaultMenu),
     // NOTE: NGXS: If you have feature modules they need to be imported after the root module.
     NgxsModule.forRoot([MenuState, PreferenceState, ProfileState, AppState], {
-      developmentMode: !environment.production,
+      developmentMode: !environment.production
     }),
     NgxsStoragePluginModule.forRoot({
       // FIXME:  https://github.com/ngxs/store/issues/902
-      key: ['preference', 'app.installed', 'auth.isLoggedIn'],
+      key: ['preference', 'app.installed', 'auth.isLoggedIn']
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsWebsocketPluginModule.forRoot({
-      url: environment.WS_EVENT_BUS_URL,
+      url: environment.WS_EVENT_BUS_URL
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
@@ -77,37 +75,33 @@ export function noop() {
     //   postLogoutRedirectUri: environment.baseUrl + 'home',
     // }),
     FormlyModule.forRoot(),
-    environment.plugins,
+    environment.plugins
   ],
   providers: [
     GoogleAnalyticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true,
+      multi: true
     },
     {
       provide: APP_INITIALIZER,
       useFactory: appConfigInitializerFn,
       deps: [AppConfigService],
-      multi: true,
+      multi: true
     },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
       deps: [EventBusHandler, RouteHandler],
-      multi: true,
-    },
-    {
-      provide: HAMMER_GESTURE_CONFIG,
-      useClass: HammerConfig,
+      multi: true
     },
     {
       provide: RouterStateSerializer,
-      useClass: CustomRouterStateSerializer,
+      useClass: CustomRouterStateSerializer
     },
-    { provide: WINDOW, useFactory: _window },
-  ],
+    { provide: WINDOW, useFactory: _window }
+  ]
 })
 export class CoreModule {
   constructor(
@@ -118,7 +112,7 @@ export class CoreModule {
     // HINT: AppHandler is injected here to initialize it as Module Run Block,
     // APP_INITIALIZER is not an option when target to es2015
     // https://github.com/ngxs/store/issues/773
-    appHandler: AppHandler,
+    appHandler: AppHandler
   ) {
     /**
      * add icons that are needed during app boot up here.
