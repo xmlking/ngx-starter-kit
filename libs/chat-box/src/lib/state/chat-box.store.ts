@@ -1,23 +1,21 @@
+import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import {
   Action,
   Actions,
   createSelector,
   NgxsAfterBootstrap,
-  NgxsOnInit,
   ofActionDispatched,
   Selector,
   State,
   StateContext,
-  Store,
+  Store
 } from '@ngxs/store';
-import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
-import { NlpService } from '../services/nlp.service';
-import { ChatService } from '../services/chat.service';
-import { TextToSpeechService } from '../services/text-to-speech.service';
-import { SpeechToTextService } from '../services/speech-to-text.service';
-
 import { tap } from 'rxjs/operators';
 import { ChatMessage, Conversation, ModeType, SubjectType } from '../chat-message.model';
+import { ChatService } from '../services/chat.service';
+import { NlpService } from '../services/nlp.service';
+import { SpeechToTextService } from '../services/speech-to-text.service';
+import { TextToSpeechService } from '../services/text-to-speech.service';
 import {
   AddMessage,
   CloseConversation,
@@ -27,7 +25,7 @@ import {
   SendMessage,
   StartVoiceCommand,
   SwitchConversation,
-  SynthesisVoice,
+  SynthesisVoice
 } from './chat-box.actions';
 
 export class ChatBoxStateModel {
@@ -60,15 +58,15 @@ export class ChatBoxStateModel {
         voice: null,
         volume: 1, // 0 to 1
         rate: 1, // 0.1 to 10
-        pitch: 1, // 0 to 2
+        pitch: 1 // 0 to 2
       },
       dirty: false,
       status: 'VALID',
-      errors: {},
+      errors: {}
     },
     activeUsersBots: [],
-    loading: false,
-  },
+    loading: false
+  }
 })
 export class ChatBoxState implements NgxsAfterBootstrap {
   constructor(
@@ -77,7 +75,7 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     private tts: TextToSpeechService,
     private chat: ChatService,
     private store: Store,
-    private actions$: Actions,
+    private actions$: Actions
   ) {
     this.actions$.pipe(ofActionDispatched(AddMessage)).subscribe((action: AddMessage) => {
       switch (action.payload.message.to.type) {
@@ -86,8 +84,8 @@ export class ChatBoxState implements NgxsAfterBootstrap {
             store.dispatch(
               new AddMessage({
                 conversationId: action.payload.conversationId,
-                message: ChatMessage.fromBotMessage(speech),
-              }),
+                message: ChatMessage.fromBotMessage(speech)
+              })
             );
             if (action.payload.message.mode === ModeType.SPEAK) {
               this.tts.synthesisVoice(speech, this.store.selectSnapshot(ChatBoxState.getVoicePreference));
@@ -131,12 +129,9 @@ export class ChatBoxState implements NgxsAfterBootstrap {
 
   @Selector()
   static getConversationById(id: string) {
-    return createSelector(
-      [ChatBoxState],
-      (state: ChatBoxStateModel) => {
-        return state.conversations.find(con => con.id === id);
-      },
-    );
+    return createSelector([ChatBoxState], (state: ChatBoxStateModel) => {
+      return state.conversations.find(con => con.id === id);
+    });
   }
 
   @Selector()
@@ -162,12 +157,12 @@ export class ChatBoxState implements NgxsAfterBootstrap {
             voice: voices[48],
             volume: 1,
             rate: 1,
-            pitch: 1,
+            pitch: 1
           },
           dirty: false,
           status: 'VALID',
-          errors: {},
-        },
+          errors: {}
+        }
       });
     }
     dispatch(new FetchConversations());
@@ -213,7 +208,8 @@ export class ChatBoxState implements NgxsAfterBootstrap {
   @Action(SaveConversation)
   saveConversation(ctx: StateContext<ChatBoxStateModel>, { payload }: SaveConversation) {
     console.log(`saving conversation ${payload.conversationId}`);
-    // const conversation = ctx.getState().conversations[ctx.getState().conversations.findIndex(con => con.id === payload.conversationId)];
+    // const conversation = ctx.getState()
+    // .conversations[ctx.getState().conversations.findIndex(con => con.id === payload.conversationId)];
     // return this.chat.saveConversation(conversation);
   }
 
@@ -225,11 +221,14 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     ctx.dispatch(new SaveConversation({ conversationId: payload.conversationId })).pipe(
       tap(_ => {
         ctx.setState((state: ChatBoxStateModel) => {
-          state.conversations.splice(state.conversations.findIndex(con => con.id === payload.conversationId), 1);
+          state.conversations.splice(
+            state.conversations.findIndex(con => con.id === payload.conversationId),
+            1
+          );
           state.activeConversationId = state.conversations[state.conversations.length - 1].id;
           return state;
         });
-      }),
+      })
     );
   }
 
@@ -253,8 +252,8 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     ctx.dispatch(
       new AddMessage({
         conversationId: ctx.getState().activeConversationId,
-        message: ChatMessage.fromUserMessage(payload.message, ModeType.TYPE),
-      }),
+        message: ChatMessage.fromUserMessage(payload.message, ModeType.TYPE)
+      })
     );
   }
 
@@ -264,8 +263,8 @@ export class ChatBoxState implements NgxsAfterBootstrap {
     ctx.dispatch(
       new AddMessage({
         conversationId: ctx.getState().activeConversationId,
-        message: ChatMessage.fromUserMessage(message, ModeType.SPEAK),
-      }),
+        message: ChatMessage.fromUserMessage(message, ModeType.SPEAK)
+      })
     );
   }
 }

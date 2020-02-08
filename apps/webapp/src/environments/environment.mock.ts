@@ -1,5 +1,7 @@
-import sharedEnvironment from './base';
 import { IEnvironment } from '@env/ienvironment';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { InMemoryDataService } from '../app/in-memory-data.service';
+import sharedEnvironment from './base';
 
 export const environment: IEnvironment = {
   ...sharedEnvironment,
@@ -10,6 +12,14 @@ export const environment: IEnvironment = {
   DOCS_BASE_URL: 'http://localhost:8000',
   API_BASE_URL: 'http://localhost:3000/api',
   WS_EVENT_BUS_URL: 'ws://localhost:3000/eventbus',
+
+  plugins: [
+    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService, {
+      passThruUnknownUrl: true,
+      delay: 1000,
+      // apiBase: 'api'
+    }),
+  ],
 
   auth: {
     // clientId: 'ngxweb',

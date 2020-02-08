@@ -1,11 +1,12 @@
-import { State, Selector, Action, StateContext, NgxsAfterBootstrap } from '@ngxs/store';
-import { patch } from '@ngxs/store/operators';
-import { Profile } from '@ngx-starter-kit/models';
-import { ProfileService } from '../services/profile.service';
-import { catchError, finalize, last, map, tap } from 'rxjs/operators';
-import { throwError } from 'rxjs';
-import { finishedLoading, setProgress, startLoading } from './state.operators';
 import { HttpEventType, HttpResponse } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { Profile } from '@ngx-starter-kit/models';
+import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
+import { patch } from '@ngxs/store/operators';
+import { throwError } from 'rxjs';
+import { catchError, finalize, last, map, tap } from 'rxjs/operators';
+import { ProfileService } from '../services/profile.service';
+import { finishedLoading, setProgress, startLoading } from './state.operators';
 
 export class FetchProfile {
   static readonly type = '[Profile] Fetch';
@@ -36,8 +37,11 @@ export interface ProfileStateModel {
     profile: undefined,
     error: undefined,
     loading: false,
-    progress: undefined,
-  },
+    progress: undefined
+  }
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class ProfileState implements NgxsAfterBootstrap {
   constructor(private profileService: ProfileService) {}
@@ -73,7 +77,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -86,7 +90,7 @@ export class ProfileState implements NgxsAfterBootstrap {
       map(event => this.getStatusMessage(ctx, event)),
       tap({
         next: message => console.log(message),
-        complete: () => console.log('competed request!'),
+        complete: () => console.log('competed request!')
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
@@ -94,7 +98,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -106,7 +110,7 @@ export class ProfileState implements NgxsAfterBootstrap {
       map(event => this.getStatusMessage(ctx, event)),
       tap({
         next: message => console.log(message),
-        complete: () => console.log('competed request!'),
+        complete: () => console.log('competed request!')
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
@@ -114,7 +118,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -127,7 +131,7 @@ export class ProfileState implements NgxsAfterBootstrap {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
-      finalize(() => ctx.setState(finishedLoading())),
+      finalize(() => ctx.setState(finishedLoading()))
     );
   }
 
@@ -145,7 +149,8 @@ export class ProfileState implements NgxsAfterBootstrap {
 
       case HttpEventType.DownloadProgress:
         status = Math.round((100 * event.loaded) / event.total);
-        ctx.setState(setProgress(status)); // NOTE: The Content-Length header must be set on the server to calculate this
+        // NOTE: The Content-Length header must be set on the server to calculate this
+        ctx.setState(setProgress(status));
         return `Files are ${status}% downloaded`;
 
       case HttpEventType.Response:

@@ -13,11 +13,12 @@ import { Observable, Subject, Subscription } from 'rxjs';
 
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { MenuItem, MenuService, SidenavState } from '@ngx-starter-kit/navigator';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
 import { WINDOW } from '@ngx-starter-kit/core';
 // import { sidenavAnimation } from '@ngx-starter-kit/animations';
 
 /** @dynamic */
+@AutoUnsubscribe()
 @Component({
   selector: 'ngx-sidenav',
   templateUrl: './sidenav.component.html',
@@ -39,11 +40,11 @@ export class SidenavComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit() {
-    this.menuService.items$.pipe(untilDestroy(this)).subscribe((items: MenuItem[]) => {
+    this.menuService.items$.subscribe((items: MenuItem[]) => {
       this.items = items;
     });
 
-    // this.router.events.pipe(untilDestroy(this))
+    // this.router.events
     //   .subscribe(event => {
     //   if (event instanceof NavigationEnd) {
     //     this.menuService.setCurrentlyOpenByRoute(event.url);

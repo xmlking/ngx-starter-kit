@@ -4,7 +4,15 @@ import { AppNotification } from './app-notification.model';
 export class FetchNotifications {
   static readonly type = '[Notifications] Fetch';
 }
-// new AddNotification({ id: 6, icon: 'notifications', message: 'sumo',createdAt: new Date(Date.now() - 864e5), read: false, native: true}),
+// new AddNotification(
+//   { id: 6,
+//     icon: 'notifications',
+//      message: 'sumo',
+//      createdAt: new Date(Date.now() - 864e5),
+//      read: false,
+//      native: true
+//     }
+//   ),
 export class AddNotification {
   static readonly type = '[Notifications] Add';
   constructor(public readonly payload: AppNotification) {}

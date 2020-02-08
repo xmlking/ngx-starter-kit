@@ -1,13 +1,14 @@
 import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
-import { Crumb } from '@ngx-starter-kit/breadcrumbs';
-import { Select, Store } from '@ngxs/store';
-import { AuthState } from '@ngx-starter-kit/auth';
-import { ProfileState } from '@ngx-starter-kit/core';
-import { Observable } from 'rxjs';
-import { Profile } from '@ngx-starter-kit/models';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { MatSnackBar } from '@angular/material';
+import { AuthState } from '@ngx-starter-kit/auth';
+import { Crumb } from '@ngx-starter-kit/breadcrumbs';
+import { ProfileState } from '@ngx-starter-kit/core';
+import { Profile } from '@ngx-starter-kit/models';
+import { Select } from '@ngxs/store';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { Observable } from 'rxjs';
 
+@AutoUnsubscribe()
 @Component({
   selector: 'ngx-profile',
   templateUrl: './profile.component.html',
@@ -20,13 +21,11 @@ export class ProfileComponent implements OnInit, OnDestroy {
   @Select(AuthState.profile) oidcProfile$: Observable<any>;
   @Select(ProfileState.profile) appProfile$: Observable<Profile>;
   @Select(ProfileState.loading) loading$: Observable<boolean>;
-  @Select(ProfileState.error) error$: Observable<boolean>;
+  @Select(ProfileState.error) error$: Observable<string>;
   constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.error$
-      .pipe(untilDestroy(this))
-      .subscribe(err => this.snackBar.open(`Profile Error: ${err}`, '', { duration: 3000 }));
+    this.error$.subscribe(err => this.snackBar.open(`Profile Error: ${err}`, '', { duration: 3000 }));
   }
 
   ngOnDestroy() {}

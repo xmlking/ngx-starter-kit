@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import {
   getStatusText,
   InMemoryDbService,
@@ -5,9 +6,8 @@ import {
   RequestInfo,
   RequestInfoUtilities,
   ResponseOptions,
-  STATUS,
+  STATUS
 } from 'angular-in-memory-web-api';
-import { Injectable } from '@angular/core';
 
 // /api/accounts/1
 // /api/symbols/1
@@ -29,18 +29,18 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 1,
         code: 'MSFT',
-        entity: 'Microsoft',
+        entity: 'Microsoft'
       },
       {
         id: 2,
         code: 'AAPL',
-        entity: 'Apple',
+        entity: 'Apple'
       },
       {
         id: 3,
         code: 'GOOG',
-        entity: 'Google',
-      },
+        entity: 'Google'
+      }
     ];
 
     return { accounts, symbols, notifications, subscription };
@@ -71,7 +71,7 @@ export class InMemoryDataService implements InMemoryDbService {
         return item;
       });
       const options: ResponseOptions = {
-        status: STATUS.ACCEPTED,
+        status: STATUS.ACCEPTED
       };
       return reqInfo.utils.createResponse$(() => {
         return this.finishOptions(options, reqInfo);
@@ -87,7 +87,7 @@ export class InMemoryDataService implements InMemoryDbService {
       reqInfo.collection[0].push((reqInfo.req as any).body);
       reqInfo.collection[1] = reqInfo.collection[1] + 1;
       const options: ResponseOptions = {
-        status: STATUS.CREATED,
+        status: STATUS.CREATED
       };
       return reqInfo.utils.createResponse$(() => {
         return this.finishOptions(options, reqInfo);

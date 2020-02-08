@@ -9,8 +9,8 @@ RUN chmod +x /tini
 # Create the user and group files that will be used in the running container to
 # run the process as an unprivileged user.
 RUN mkdir /user && \
-    echo 'nobody:x:65534:65534:nobody:/:' > /user/passwd && \
-    echo 'nobody:x:65534:' > /user/group
+  echo 'nobody:x:65534:65534:nobody:/:' > /user/passwd && \
+  echo 'nobody:x:65534:' > /user/group
 
 ######################################################################
 FROM node:12-alpine as prod-dependencies
@@ -27,7 +27,7 @@ WORKDIR /app
 COPY apps/api/package.json apps/api/package.json
 COPY package.json yarn.lock ./
 RUN yarn --no-cache --ignore-optional --frozen-lockfile && \
-  yarn add typescript@3.1.6 -W
+  yarn add typescript@3.7.0-beta -W
 
 ######################################################################
 FROM node:12-alpine as builder
@@ -70,16 +70,16 @@ ARG VENDOR=sumo
 
 # Metadata
 LABEL maintainer="Sumanth <xmlking@gmail.com>"  \
-      org.label-schema.build-date=$BUILD_DATE \
-      org.label-schema.name=$NAME \
-      org.label-schema.description="NGX Api" \
-      org.label-schema.url="https://example.com" \
-      org.label-schema.vcs-url=https://github.com/xmlking/$VCS_URL \
-      org.label-schema.vcs-ref=$VCS_REF \
-      org.label-schema.vendor=$VENDOR \
-      org.label-schema.version=$VERSION \
-      org.label-schema.docker.schema-version="1.0" \
-      org.label-schema.docker.cmd="docker run -it -p 3000:3000  xmlking/ngxapi"
+  org.label-schema.build-date=$BUILD_DATE \
+  org.label-schema.name=$NAME \
+  org.label-schema.description="NGX Api" \
+  org.label-schema.url="https://example.com" \
+  org.label-schema.vcs-url=https://github.com/xmlking/$VCS_URL \
+  org.label-schema.vcs-ref=$VCS_REF \
+  org.label-schema.vendor=$VENDOR \
+  org.label-schema.version=$VERSION \
+  org.label-schema.docker.schema-version="1.0" \
+  org.label-schema.docker.cmd="docker run -it -p 3000:3000  xmlking/ngxapi"
 
 # Set tini as entrypoint
 ENTRYPOINT ["tini", "--"]

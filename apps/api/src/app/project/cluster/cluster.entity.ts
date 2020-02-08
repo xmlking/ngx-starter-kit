@@ -1,46 +1,48 @@
-import { Column, Entity, Index, OneToMany, RelationId } from 'typeorm';
-import { ApiModelProperty } from '@nestjs/swagger';
+import { Cluster as ICluster } from '@ngx-starter-kit/models';
 import { Exclude } from 'class-transformer';
-import { IsAscii, IsNotEmpty, IsUrl } from 'class-validator';
+import { IsAscii, IsNotEmpty, IsUrl, MaxLength, MinLength } from 'class-validator';
+import { Column, Entity, Index, OneToMany, RelationId } from 'typeorm';
 import { AuditBase } from '../../core/entities/audit-base';
 import { Project } from '../project.entity';
-import { Cluster as ICluster } from '@ngx-starter-kit/models';
 
 @Entity('cluster')
 export class Cluster extends AuditBase implements ICluster {
-  @ApiModelProperty({ type: String, minLength: 3, maxLength: 15 })
   @IsNotEmpty()
   @IsAscii()
+  @MinLength(3)
+  @MaxLength(20)
   @Index({ unique: true })
   @Column({ length: 15 })
   name: string;
 
-  @ApiModelProperty({ type: String, minLength: 3, maxLength: 6 })
   @IsNotEmpty()
+  @MinLength(3)
+  @MaxLength(6)
   @Column({ length: 6 })
   ver: string;
 
-  @ApiModelProperty({ type: String, minLength: 10, maxLength: 256 })
   @IsNotEmpty()
   @IsUrl()
+  @MinLength(10)
+  @MaxLength(256)
   @Column()
   baseUrl: string;
 
-  @ApiModelProperty({ type: String, minLength: 256 })
   @Exclude()
   @IsNotEmpty()
+  @MaxLength(256)
   @Column()
   token: string;
 
-  @ApiModelProperty({ type: Project, isArray: true })
-  @OneToMany(_ => Project, project => project.cluster)
+  @OneToMany(
+    _ => Project,
+    project => project.cluster,
+  )
   projects?: Project[];
 
-  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((cluster: Cluster) => cluster.createdBy)
   readonly createdById?: string;
 
-  @ApiModelProperty({ type: String, readOnly: true })
   @RelationId((cluster: Cluster) => cluster.updatedBy)
   readonly updatedById?: string;
 }

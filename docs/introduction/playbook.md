@@ -2,40 +2,21 @@
 
 Do-it-yourself step-by-step instructions to create this project structure from scratch.
 
-## What you got
-
-- [x] Code formatting via prettier, tslint
-
-- [x] **Monorepo** sharing code between apps
-
-- [x] **Jest** unit tests
-
-- [x] **Cypress** e2e tests
-
-- [x] [REST Client](apps/api/test-rest-api-vs-code.http) for API tests
-
-- [x] Containerized builds
-
-- [x] **Kubernetes** deployment
-
-- [x] Conventional git commits
-
-- [x] PR => CI quality checks => master
+## Setup
 
 ### Prerequisites
 
 > you need following tools. versions listed here are minimal versions tested.
 
-| Software             | Version | Optional |
-| -------------------- | ------- | -------- |
-| Node                 | v12.5.0 |          |
-| Yarn                 | v1.17.3 |          |
-| Lerna                | v3.16.4 |          |
-| Angular CLI          | v8.2.0  |          |
-| @nrwl/workspace      | v8.4.0  |          |
-| @nestjs/cli          | v6.6.3  |          |
-| semantic-release-cli | v5.1.1  |          |
-| commitizen           | v4.0.3  |          |
+| Software        | Version | Optional |
+| --------------- | ------- | -------- |
+| Node            | v13.5.0 |          |
+| Yarn            | v1.21.1 |          |
+| Lerna           | v3.20.2 |          |
+| Angular CLI     | v9.0.0  |          |
+| @nrwl/workspace | v9.0.0  |          |
+| @nestjs/cli     | v6.13.2 |          |
+| commitizen      | v4.0.3  |          |
 
 ### Install Prerequisites
 
@@ -49,6 +30,17 @@ brew install yarn
 yarn config set workspaces-experimental true
 yarn global add lerna
 brew cleanup
+```
+
+#### Editor Configuration
+
+Codelyzer should work out of the box with Atom but for VSCode you will have to open `Code > Preferences > User Settings`, and enter the following config:
+
+```json
+{
+  "tslint.rulesDirectory": "./node_modules/codelyzer",
+  "typescript.tsdk": "node_modules/typescript/lib"
+}
 ```
 
 Install [redux-devtools](https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd?hl=en) for Chrome (optional)
@@ -84,27 +76,28 @@ yarn global remove lerna
 yarn global remove @angular/cli
 yarn global remove @nrwl/cli
 yarn global remove @nestjs/cli
-yarn global remove semantic-release-cli
-yarn global remove commitizen
+yarn global remove bloomrpc-mock
+yarn global remove gitbook-cli
 
 yarn global add lerna
 yarn global add @angular/cli@next
 yarn global add @nrwl/cli@next
 yarn global add @nestjs/cli
-yarn global add semantic-release-cli
-yarn global add commitizen
+yarn global add bloomrpc-mock
+yarn global add gitbook-cli
 
 # verify globally installed packages
 yarn global list
-# find out which packages need to be updated
+# find out which packages need to be updated. Options: `--latest`
 yarn global upgrade-interactive
 # set scss as default css processor
-ng config -g schematics.@nrwl/angular:component.styleext scss
+ng config -g defaults.styleExt=scss
+ng config -g schematics.@schematics/angular:component.style scss
 ng config -g cli.packageManager yarn
 # set scss as default styleext for ngx-formly
 ng config -g schematics@ngx-formly/schematics:component.styleext scss
 # check your global defaults
-cat ~/.angular-config.json
+ng config -g
 # find reverse dependencies for a package
 yarn why jasmine-marbles
 ```
@@ -130,13 +123,16 @@ for nx help `yarn run help`
 
 ```bash
 # create workspace Ref: https://nx.dev/tutorial/01-create-application
-yarn create nx-workspace ngx-starter-kit --npm-scope=ngx-starter-kit --preset=empty --style=scss --skipInstall
-yarn create nx-workspace myworkspace --npm-scope=ngx-starter-kit
-# or
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --verbose
-# or if you want *bazel* builds instead of *webpack*
-ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty --style=scss --bazel  --verbose
+# Options: --bazel  --verbose --strict
+ng new ngx-starter-kit --collection=@nrwl/workspace --npm-scope=ngx-starter-kit --preset=empty \
+--style=scss --package-manager=yarn --strict --verbose --skipInstall
 cd ngx-starter-kit
+
+# Set workspace defaults
+ng config cli.packageManager yarn
+ng config schematics.@schematics/angular:component.style scss
+ng config schematics.@schematics/angular:component.prefix yeti
+ng config schematics.@schematics/angular:component.changeDetection OnPush
 
 # make sure we are up-to-date
 ng update --next
@@ -148,21 +144,17 @@ ng update @nrwl/workspace --next
 ng update --all
 
 # also run `yarn outdated` and update versions in package.json then run `yarn install`
+yarn add --dev @nrwl/angular@next --defaults
+yarn add --dev @nrwl/nest@next
 
-ng add @nrwl/angular@next --defaults
-ng add @nrwl/nest@next
-# optional
-ng add @nrwl/web@next
 
 # generate webapp app
-ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module
-# or with ivy renderer
-ng g @nrwl/angular:app webapp --routing --style=scss --prefix=ngx --tags=app-module --enable-ivy
+ng g @nrwl/angular:app webapp --routing --style=scss  --tags=app-module
 
 # NOTE: Remove `"types": []` from apps/webapp/tsconfig.app.json to allow global types.
 
 # generate micro-app `chat-box` (optional)
-ng g @nrwl/web:app chatApp --routing --style=scss --prefix=ngx --tags=micro-app-module -d
+ng g @nrwl/web:app chatApp --routing --style=scss  --tags=micro-app-module -d
 ng add ngx-build-plus --project chat-box
 ng add @angular/elements --project chat-box ?
 yarn add @webcomponents/custom-elements ?
@@ -171,6 +163,23 @@ yarn add @webcomponents/custom-elements ?
 ng g @nrwl/nest:app api --frontendProject=webapp --tags=api-module
 ```
 
+#### Add nx plugins
+
+Below are some nx plugins which you can add to your workspace:
+
+- [Angular](https://angular.io)
+  - `ng add @nrwl/angular`
+- [React](https://reactjs.org)
+  - `ng add @nrwl/react`
+- Web (no framework frontends)
+  - `ng add @nrwl/web`
+- [Nest](https://nestjs.com)
+  - `ng add @nrwl/nest`
+- [Express](https://expressjs.com)
+  - `ng add @nrwl/express`
+- [Node](https://nodejs.org)
+  - `ng add @nrwl/node`
+
 #### Dependencies
 
 > adding 3rd party modules/libs
@@ -178,41 +187,62 @@ ng g @nrwl/nest:app api --frontendProject=webapp --tags=api-module
 ```bash
 cd ngx-starter-kit
 
+# Add i18n
+ng add @angular/localize
 # Add PWA
 ng add @angular/pwa@next --project webapp
 
-# Add architect for gh-pages deployment
-# ng add [provider] [ngx-gh, angular-cli-ghpages, @angular/fire, @zeit/ng-deploy, @azure/ng-deploy, @netlify-builder/deploy]
-ng add angular-cli-ghpages
+# `ng deploy`
+# Add architect for deploying webapp
+# ng add [provider] [angular-cli-ghpages, @angular/fire, @zeit/ng-deploy, @azure/ng-deploy, @netlify-builder/deploy]
+# gh-pages deployment
+# ng add angular-cli-ghpages
+# firebase deploy
+ng add @angular/fire
+# Add architect for npm release
+ng add ngx-deploy-npm
+# Add ngx-semantic-version (http://d-koppenhagen.de/blog/2019-11-ngx-semantic-version)
+ng add ngx-semantic-version
+#---------------------------
+# Add nebular
+ng add @nebular/theme@next
+yarn add @nebular/auth@next
+yarn add @nebular/security@next
+yarn add -D @fortawesome/fontawesome-free
+#---------------------------------
+# Add scullyio for SSG(Static Site Generator) and Content Management
+ng add @scullyio/init
+yarn add prismjs
+# Add universal for SSR
+ng add @nguniversal/express-engine@next
+#---------------------------
 
-# Add Material
+# Use either above nebular or below Material
+#  Add Material
 # Ref: https://material.angular.io/guide/schematics
 # Ref: https://material.angular.io/guide/getting-started
+#---------------------------------
 ng add @angular/material
-yarn add hammerjs
-yarn add -D @types/hammerjs
 yarn add date-fns
-yarn add -D codecov
 # Add Flex-Layout
 yarn add @angular/flex-layout
 # Add in-memory-web-api
 yarn add angular-in-memory-web-api
-# Add oauth2-oidc
-~yarn add angular-oauth2-oidc~
-yarn add angular-oauth2-oidc
-
-# Add NGXS
-ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
-# or add NGXS manually
+#---------------------------------
+# Add NGXS manually (prefered)
 yarn add @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
-yarn add -D @ngxs/schematics
+# Or Add NGXS Automatically
+ng add @ngxs/schematics # makesure "defaultCollection" is set back to "@nrwl/schematics" in angular.json
 
 yarn add @ngxs-labs/immer-adapter
+yarn add @ngxs-labs/select-snapshot
 yarn add immer
+#---------------------------------
 
 # Add formly
 ng add @ngx-formly/schematics --ui-theme=material
 
+#---------------------------------
 # Add Filepond
 yarn add ngx-filepond \
 filepond-plugin-file-encode \
@@ -220,6 +250,20 @@ filepond-plugin-file-validate-size \
 filepond-plugin-file-validate-type \
 filepond-plugin-image-crop \
 filepond-plugin-image-preview
+#---------------------------------
+
+# Add @UntilDestroy() to auto unsubscribe rxjs
+yarn add @ngneat/until-destroy
+
+#---------------------------------
+# Add gRPC
+yarn add google-protobuf
+yarn add -D @types/google-protobuf
+yarn add grpc-web
+
+# to generate TS interfaces from proto
+yarn add -O ts-proto
+#---------------------------------
 
 # Add Socket.io
 yarn add socket.io-client
@@ -232,31 +276,31 @@ yarn add -D lite-server
 yarn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 
 # Add Dev Tools
-
+# tools you needed in CI/CD inv
 yarn add -D loaders.css
 yarn add -D api-ai-javascript
+yarn add -D @compodoc/compodoc
+yarn add -D codecov
+yarn add -D rimraf
 
 # install without saving
 yarn add trianglify --no-save --no-lock
 
 # Add Optional Tools
-yarn add -O angular-cli-ghpages
-yarn add -O standard-version
-yarn add -O @compodoc/compodoc
-yarn add -O semantic-release @semantic-release/{changelog,git,github,npm}
-yarn add -O commitizen cz-conventional-changelog
-yarn add -O @commitlint/{config-conventional,cli}
-yarn add -O husky
+# tools you only needed on Dev laptop
 yarn add -O lint-staged
+yarn add -O webpack-bundle-analyzer
+yarn add -O prettier
+# alternative builder for nestjs (optional)
+yarn add -D ts-node-builder
 
-# for CI/CD automation and release
-# first time semantic-release setup
-semantic-release-cli setup
+yarn workspace @yeti/api add  @xmlking/jwks-rsa @nestjsx/crud @nestjs/{terminus,cqrs,passport,swagger}
+yarn workspace @yeti/api add nodemon supertest  -O
+yarn workspace @yeti/api add @types/{helmet,passport,passport-jwt,supertest,nodemailer} -D
 
-yarn workspace @ngx-starter-kit/api add kubernetes-client @xmlking/jwks-rsa @nestjs/{terminus,cqrs}
-yarn workspace @ngx-starter-kit/api add addnodemon supertest  -O
+yarn workspace @yeti/api add @grpc/proto-loader
 
-yarn workspace @ngx-starter-kit/tools add cpx --dev
+yarn workspace @yeti/tools add cpx --dev
 ```
 
 > update 3rd party modules/schematics
@@ -274,6 +318,8 @@ ng update @ngx-formly/schematics --ui-theme=material
 ng update @nrwl/workspace --next --force
 ng update @nrwl/angular --allow-dirty
 ng update @nrwl/nest --next
+ng update @scullyio/init --next
+ng update @nguniversal/express-engine —-next
 ```
 
 #### Generate Artifacts
@@ -285,13 +331,14 @@ ng update @nrwl/nest --next
 > with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
 
 ```bash
-ng g lib home           --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
-ng g lib dashboard      --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
-ng g lib admin          --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
-ng g lib NotFound       --routing --lazy --prefix=ngx --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=entry-module
-ng g lib experiments    --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
-ng g lib widgets        --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
-ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+# ng g @nrwl/angular:lib ...
+ng g lib home           --routing --lazy --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib dashboard      --routing --lazy  --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib admin          --routing --lazy  --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=layout,entry-module
+ng g lib NotFound       --routing --lazy  --parent-module=apps/webapp/src/app/app.module.ts             --defaults --tags=entry-module
+ng g lib experiments    --routing --lazy  --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+ng g lib widgets        --routing --lazy  --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
+ng g lib grid           --routing --lazy  --parent-module=libs/dashboard/src/lib/dashboard.module.ts    --defaults --tags=child-module
 
 # ng g worker app --project=webapp -d # TODO
 ```
@@ -301,7 +348,8 @@ ng g lib grid           --routing --lazy --prefix=ngx --parent-module=libs/dashb
 > with no-framework (a.k.a. @nrwl/workspace schematics)
 
 ```bash
-ng g @nrwl/workspace:lib Tree       --tags=utils --defaults -d
+ng g @nrwl/workspace:lib gen        --tags=utils --defaults -d
+ng g @nrwl/workspace:lib tree       --tags=utils --defaults -d
 ng g @nrwl/workspace:lib utils      --tags=utils --defaults -d
 ng g @nrwl/workspace:lib animations --tags=utils --defaults -d
 
@@ -328,26 +376,35 @@ ng g interface Cluster  --project=models --type=model -d
 > with angular schematics (a.k.a. @nrwl/angular which is default in `angular.json`)
 
 ```bash
-# add `core` module which will be only inported into root/app module.
+# add `core` angular module which will be only inported into root/app module.
 ng g lib core --tags=core-module --defaults -d
 # add  global services for `core` Module
 
+
+ng g service services/Layout          --project=core   -d
 ng g service services/PageTitle       --project=core   -d
 ng g service services/ServiceWorker   --project=core   -d
 ng g service services/MediaQuery      --project=core   -d
 ng g service services/DeepLink        --project=core   -d
 ng g service services/Feature         --project=core   -d
-ng g service services/GoogleAnalytics --project=core   -d
-ng g service  PushNotification        --project=core   -d
+ng g service services/Analytics       --project=core   -d
+ng g service services/PushNotification --project=core  -d
 ng g service services/InMemoryData    --project=core   --skip-tests -d
-ng g service  services/Profile        --project=core   --skip-tests -d
-ng g service  services/hammer         --project=core   --skip-tests --type=config -d
-ng g service  services/AppConfig      --project=core   --skip-tests -d
+ng g service services/Profile         --project=core   --skip-tests -d
+ng g service services/hammer          --project=core   --skip-tests --type=config -d
+ng g service services/AppConfig       --project=core   --skip-tests -d
+ng g service services/Auth            --project=core   --skip-tests -d
+ng g @ngxs/schematics:state state/auth --spec=false --sourceRoot=libs/core/src/lib --project=core -d
 ng g @ngxs/schematics:state state/preference --spec=false --sourceRoot=libs/core/src/lib --project=core -d
 ng g @ngxs/schematics:state profile --path=state --spec=false --sourceRoot=libs/core/src/lib --project=core -d
+ng g guard guard/auth --project=core --implements CanActivate -d
+ng g guard guard/admin --project=core --implements CanActivate -d
+ng g @ngxs/schematics:store --name=auth --spec --project=core --sourceRoot=libs/core/src/lib -d
+ng g i interfaces/RouterStateData --project=core -d
+ng g i interfaces/UserInfo --project=core -d
 
 # add `shared` module which will encapsulate angular and 3rd party modules, needed for all `Lazy-loaded Feature Modules`
-ng g lib shared --prefix=ngx --tags=shared-module --defaults -d
+ng g lib shared  --tags=shared-module --defaults -d
 # generate containers, components for `shared` Module
 ng g service containers/entity/entity --project=shared
 ng g component components/entityTable --project=shared  --export=true
@@ -399,7 +456,7 @@ ng g class    notification --type=model --project=notifications --defaults -d
 ng g service  notifications --project=notifications -d
 
 # generate components for `Quickpanel` Module
-ng g lib Quickpanel --prefix=ngx --tags=private-module --defaults -d
+ng g lib Quickpanel  --tags=private-module --defaults -d
 ng g component Quickpanel --project=quickpanel --flat -d
 
 # generate components for `LoadingOverlay` Module
@@ -466,11 +523,18 @@ ng g module directives/inViewport --project=ngx-utils --skip-tests -d
 ng g directive directives/in-viewport/inViewport  --selector=inViewport --project=ngx-utils --module=in-viewport --export -d
 ng g service directives/in-viewport/Viewport --project=ngx-utils --module=in-viewport -d
 ng g module directives/clickOutside --project=ngx-utils --skip-tests -d
-ng g directive directives/click-outside/clickOutside  --selector=ngxClickOutside --project=ngx-utils --module=click-outside --export -d
+ng g directive directives/click-outside/clickOutside  --selector=clickOutside --project=ngx-utils --module=click-outside --export -d
 ng g module directives/min --project=ngx-utils --skip-tests -d
 ng g directive directives/min/MinValidator  --selector=appMin --project=ngx-utils --module=min --export -d
 ng g module directives/mask --project=ngx-utils --skip-tests -d
 ng g directive directives/mask/mask  --selector=ngxMask --project=ngx-utils --module=mask --export -d
+
+# generate components for `blog` Module
+ng g lib blog --routing --lazy --parent-module=libs/home/src/lib/home.module.ts --tags=private-module --defaults -d
+ng g component containers/BlogOverview    --project=blog -d
+ng g component components/BlogPreview     --project=blog -d
+ng g component containers/BlogPost        --project=blog -d
+ng g service services/highlight           --project=blog --skip-tests -d
 
 # generate components for `toolbar` Module
 ng g lib toolbar --tags=private-module --defaults -d
@@ -489,13 +553,13 @@ ng g component components/sidenavItem --project=sidenav -d
 ng g directive  IconSidenav           --project=sidenav -d
 
 # generate components for `auth` Module
-ng g lib auth --tags=private-module,core-module --prefix=ngx --defaults -d
+ng g lib auth --tags=private-module,core-module  --defaults -d
 ng g component components/login --project=auth -d
 ng g guard admin --project=auth --implements CanActivate -d
 ng g @ngxs/schematics:store --name=auth --spec --project=auth --sourceRoot=libs/auth/src/lib -d
 
 # generate components for `oidc` Module
-ng g lib oidc --tags=public-module --prefix=ngx --spec=false --publishable=true --defaults -d
+ng g lib oidc --tags=public-module  --spec=false --publishable=true --defaults -d
 ng g service services/Auth  --project=oidc -d
 ng g service services/Keycloak  --project=oidc -d
 ng g service services/Generic  --project=oidc -d
@@ -509,25 +573,30 @@ ng g i interfaces/OidcInit config --project=oidc -d
 ng g i interfaces/OidcResourceInterceptor config --project=oidc -d
 
 # generate components for `navigator` Module
-ng g lib navigator --prefix=ngx --tags=private-module,core-module --defaults -d
+ng g lib navigator  --tags=private-module,core-module --defaults -d
 ng g service services/menu  --project=navigator -d
 ng g class models/menuItem  --project=navigator --type=model  -d
 ng g class state/menu       --project=navigator --type=state  -d
 
 # generate containers, components for `home` Module
 ng g component components/header      --project=home
+ng g component components/footer      --project=home
+ng g component components/login       --project=home
+ng g component components/callback    --project=home
 ng g component containers/homeLayout  --project=home
 ng g component containers/landing     --project=home
 ng g component containers/blog        --project=home
 ng g component containers/about       --project=home
 
 # generate containers, components for `dashboard` Module
-ng g component components/rainbow         --project=dashboard -d
-ng g component components/OidcProfile         --project=dashboard -d
-ng g component containers/dashboardLayout --project=dashboard -d
-ng g component containers/overview        --project=dashboard -d
-ng g component containers/profile         --project=dashboard -d
-ng g component containers/settings        --project=dashboard -d
+ng g component components/rainbow         --project=dashboard
+ng g component components/OidcProfile     --project=dashboard
+ng g component components/header          --project=dashboard
+ng g component components/footer          --project=dashboard
+ng g component containers/dashboardLayout --project=dashboard
+ng g component containers/overview        --project=dashboard
+ng g component containers/profile         --project=dashboard
+ng g component containers/settings        --project=dashboard
 
 # generate containers, components for `widgets` Module
 ng g component containers/wizdash --project=widgets -d
@@ -563,6 +632,8 @@ ng g component ImageComparison --project=image-comparison --export --flat -d
 
 
 # generate containers, components for `admin` Module
+ng g component components/header              --project=admin -d
+ng g component components/footer              --project=admin -d
 ng g component containers/overview            --project=admin -d
 ng g component containers/adminLayout         --project=admin -d
 
@@ -670,6 +741,21 @@ ng build --prod --watch
 npx lite-server
 ```
 
+### Scullyio
+
+```bash
+# First time blog CMS setup
+ng g @scullyio/init:markdown --name=blog --slug=id -d
+# Generate new blog post
+ng g @scullyio/init:post --name="blog 1" -d
+# build
+# scully-routes.json is generated when you run `yarn run scully`
+ng build && yarn run scully
+# run static server. use either scully CLI or lite-server
+yarn run lite-server
+yarn run scully serve
+```
+
 ### Docs
 
 > generate docs
@@ -687,12 +773,12 @@ npx compodoc -s -d docs
 
 ```bash
 # ng deploy --dry-run
-ng deploy --base-href=/ngx-starter-kit/ --configuration=mock
-# deploy only `webapp` app
-# ng run webapp:deploy
-ng run webapp:deploy --base-href=/ngx-starter-kit/ --configuration=mock
+ng deploy --base-href=/ngx-starter-kit/ --configuration=mock # to gh-pages
+ng deploy --buildTarget=project:browser:staging # to firebase
 # deploy all affected apps
 nx affected --target deploy
+# deploy `dist/apps/webapp` manually to firebase
+firebase deploy
 ```
 
 #### Continuous Delivery
@@ -706,11 +792,30 @@ ng deploy --base-href=/ngx-starter-kit/ --configuration=mock \
 
 ### Release
 
+`"release": "standard-version && git push — follow-tags origin master && yarn publish"`
+
 ```bash
 npm whoami
-npx standard-version
-"release": "standard-version && git push — follow-tags origin master && yarn publish"
+# create the initial release and create the `CHANGELOG.md`
+npx release -- --first-release
+# This will tag a release without bumping the version in package.json (et al.).
+# Cut a Release
+npx release -- --dry-run
+npx release
+# create a pre-release instead of a regular one
+npx release -- --prereleas
+# cut a new alpha release version
+npx release -- --prerelease alpha
+# fource a version
+npx release -- --release-as 1.1.0
 ```
+
+standard-version will now do the following:
+
+1. "Bump" the version in package.json
+2. Update the CHANGELOG.md file
+3. Commit the package.json and CHANGELOG.md files
+4. Tag a new release in the git history
 
 #### Build Library
 

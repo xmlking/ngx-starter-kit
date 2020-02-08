@@ -15,7 +15,7 @@ const httpsAgent = new https.Agent({
 export class AppController {
   constructor(private readonly config: ConfigService, private readonly http: HttpService) {}
 
-  @ApiOperation({ title: 'Welcome' })
+  @ApiOperation({ summary: 'Welcome' })
   @Allow()
   @Get()
   root(): string {
@@ -24,7 +24,7 @@ export class AppController {
             <br/><code>Version: ${this.config.getVersion()}</code>`;
   }
 
-  @ApiOperation({ title: 'echo service for testing' })
+  @ApiOperation({ summary: 'echo service for testing' })
   @Allow()
   @All('echo')
   echo(@Req() req): Observable<any> {

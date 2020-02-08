@@ -5,7 +5,6 @@ import {
   Delete,
   ForbiddenException,
   Get,
-  HttpStatus,
   NotFoundException,
   Param,
   ParseUUIDPipe,
@@ -15,30 +14,27 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { ApiConsumes, ApiImplicitFile, ApiOAuth2Auth, ApiOperation, ApiResponse, ApiUseTags } from '@nestjs/swagger';
-import { CrudController } from '../../core';
+import { ApiBody, ApiConsumes, ApiOAuth2, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CurrentUser, Roles, RolesEnum } from '../../auth/decorators';
-import { Profile } from './profile.entity';
-import { CreateProfileDto } from './dto/create-profile.dto';
-import { ProfileService } from './profile.service';
-import { ProfileList } from './dto/profile-list.model';
+import { CrudController } from '../../core';
 import { User } from '../user.entity';
+import { CreateProfileDto } from './dto/create-profile.dto';
+import { ProfileList } from './dto/profile-list.model';
+import { Profile } from './profile.entity';
+import { ProfileService } from './profile.service';
 // UserModule -> SharedModule -> AuthModule -> UserModule, so
 
 const ALLOWED_MIME_TYPES = ['image/gif', 'image/png', 'image/jpeg', 'image/bmp', 'image/webp'];
 
-@ApiOAuth2Auth(['read'])
-@ApiUseTags('Profile', 'User')
+@ApiOAuth2(['read'])
+@ApiTags('Profile', 'User')
 @Controller('profile')
-@ApiResponse({ status: HttpStatus.UNAUTHORIZED, description: 'Unauthorized' })
 export class ProfileController extends CrudController<Profile> {
   constructor(private readonly profileService: ProfileService) {
     super(profileService);
   }
 
-  @ApiOperation({ title: 'get CurrentUser Profile' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'Found user record', type: Profile })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
+  @ApiOperation({ summary: 'get CurrentUser Profile' })
   @Get('myprofile')
   async myProfile(@CurrentUser() user: User): Promise<Profile> {
     console.log('in myprofile', user.profileId);
@@ -50,22 +46,16 @@ export class ProfileController extends CrudController<Profile> {
     }
   }
 
-  @ApiOperation({ title: 'find all Profiles. Admins only' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'All Profiles', type: ProfileList })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'No matching records found' })
-  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
-  @ApiUseTags('Admin')
+  @ApiOperation({ summary: 'find all Profiles. Admins only' })
+  @ApiTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get()
   async findAll(): Promise<ProfileList> {
     return this.profileService.findAll();
   }
 
-  @ApiOperation({ title: 'Find Profile by id. Admins only' })
-  @ApiResponse({ status: HttpStatus.OK, description: 'Found one record', type: Profile })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
-  @ApiUseTags('Admin')
+  @ApiOperation({ summary: 'Find Profile by id. Admins only' })
+  @ApiTags('Admin')
   @Roles(RolesEnum.ADMIN)
   @Get(':id')
   async findById(@Param('id', new ParseUUIDPipe({ version: '4' })) id: string): Promise<Profile> {
@@ -73,18 +63,13 @@ export class ProfileController extends CrudController<Profile> {
     return this.profileService.findOne(id);
   }
 
-  @ApiOperation({ title: 'Create new Profile.' })
-  @ApiResponse({
-    status: HttpStatus.CREATED,
-    description: 'The record has been successfully created.',
-    type: Profile,
-  })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input, The response body may contain clues as to what went wrong',
-  })
+  @ApiOperation({ summary: 'Create new Profile.' })
   @ApiConsumes('multipart/form-data')
-  @ApiImplicitFile({ name: 'file', required: true, description: 'Profile Picture' })
+  // TODO @ApiImplicitFile({ name: 'file', required: true, description: 'Profile Picture' })
+  // @ApiBody({
+  //   description: 'Profile Picture',
+  //   type: CreateProfileDto,
+  // })
   @UseInterceptors(
     FileInterceptor('file', {
       fileFilter: (req, file, cb) => {
@@ -111,16 +96,9 @@ export class ProfileController extends CrudController<Profile> {
     return this.profileService.create(entity, file, user);
   }
 
-  @ApiOperation({ title: 'Update an existing record' })
-  @ApiResponse({ status: HttpStatus.CREATED, description: 'The record has been successfully edited.' })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiResponse({
-    status: HttpStatus.BAD_REQUEST,
-    description: 'Invalid input, The response body may contain clues as to what went wrong',
-  })
-  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiOperation({ summary: 'Update an existing record' })
   @ApiConsumes('multipart/form-data')
-  @ApiImplicitFile({ name: 'file', required: false, description: 'Profile Picture' })
+  // TODO @ApiImplicitFile({ name: 'file', required: false, description: 'Profile Picture' })
   @UseInterceptors(
     FileInterceptor('file', {
       fileFilter: (req, file, cb) => {
@@ -156,10 +134,7 @@ export class ProfileController extends CrudController<Profile> {
     return this.profileService.update(id, entity, file, user);
   }
 
-  @ApiOperation({ title: 'Delete Profile' })
-  @ApiResponse({ status: HttpStatus.NO_CONTENT, description: 'The record has been successfully deleted' })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, description: 'Record not found' })
-  @ApiResponse({ status: HttpStatus.FORBIDDEN, description: 'Forbidden' })
+  @ApiOperation({ summary: 'Delete Profile' })
   @Delete(':id')
   async delete(@Param('id') id: string, @CurrentUser() user: User): Promise<any> {
     if (!user.profileId) {

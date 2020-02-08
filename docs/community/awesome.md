@@ -85,6 +85,12 @@ A curated list of awesome Angular resources
 
   > Refer [Opinionated guidelines for large nx angular projects](https://blog.strongbrew.io//opinionated-guidelines-for-large-nx-angular-projects/)
 
+- How do I add `Content Management` to my angular app?
+
+  Using `Scully` you can add blogs, about, FAQ content on `markdown`, and it will generate static html and integrate with your Angular App.
+
+  > Refer [Exploring Blogging With Scully - the Angular Static Site Generator](https://owlypixel.com/exploring-blog-feature-with-scully-angular-static-site-generator/)
+
 - internationalization ?
 
   > Refer [Angular Internationalization](https://angular-templates.io/tutorials/about/angular-internationalization-i18n-multi-language-app)
@@ -99,6 +105,7 @@ A curated list of awesome Angular resources
 
 - Micro-Interactions
 
+  > [routing animations](https://blog.laas.sh/bonus-step-3-5-routing-animations/)
   > Read [medium-clap](https://medium.com/@yonatandoron/how-i-implemented-the-medium-clap-from-scratch-4a16ac90ad3b)
   > Read [Must-have animations for Chatbots](https://uxdesign.cc/must-have-animations-for-chatbots-15c031fd6bd3)
   > Read [The ultimate guide to proper use of animation in UX](https://uxdesign.cc/the-ultimate-guide-to-proper-use-of-animation-in-ux-10bd98614fa9)
@@ -143,7 +150,15 @@ A curated list of awesome Angular resources
 
 - How to use new `providedIn` Dependency Injection?
 
-  > Read Total Guide To Angular 6+ Dependency Injection — : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
+> about new Angular 9 [providedIn scopes 'any' and 'platform'](https://dev.to/christiankohler/improved-dependeny-injection-with-the-new-providedin-scopes-any-and-platform-30bb)
+
+    **'Root'** will still be the default for most services. It makes it very convenient to create tree-shakable services which are singleton within an application.
+
+    **'Platform'** is most likely used for creating shared services for Angular Elements. If you know another use case, please let me know an create a PR on this article.
+
+    **'Any'** is very helpful to make sure a service is a singleton within module boundaries. It's a robust alternative to 'root' to make sure the individual modules don't have a side effect on each other.
+
+> Read Total Guide To Angular 6+ Dependency Injection  : [providedIn vs providers: []](https://medium.com/@tomastrajan/total-guide-to-angular-6-dependency-injection-providedin-vs-providers-85b7a347b59f)
 
 - How to manage state in the front-end?
 
@@ -162,7 +177,7 @@ A curated list of awesome Angular resources
 > Refer [here](https://coryrylan.com/blog/introduction-to-angular-router-animations)
 > Refer [here](https://medium.com/frontend-coach/angular-router-animations-what-they-dont-tell-you-3d2737a7f20b)
 
-Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
+- Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Refer [here](https://medium.com/@tomastrajan/total-guide-to-dynamic-angular-animations-that-can-be-toggled-at-runtime-be5bb6778a0a)
 
@@ -197,6 +212,10 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 > Checkout **combineLatest** and **shareReplay** use in [DeborahK's](https://github.com/DeborahK/Angular-RxJS) Repo and her talk.
 
+-- ngadd
+
+> https://ngadd.com/
+
 - Angular Performance
 
 > Refer [here](https://blog.ninja-squad.com/)
@@ -206,8 +225,11 @@ Total Guide To Dynamic Angular Animations That Can Be Customized At Runtime
 
 - Server-side rendering(SSR) and Pre-rendering
 
-  > [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web)
-  > Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5) <br/> > [nest-next](https://github.com/kyle-mccarthy/nest-next) <br/> > [nuxt/vue.js + nest](https://github.com/chanlito/nuxt-ts-starter) <br/> > [nest + angular](https://github.com/kamilmysliwiec/universal-nest)<br/>
+  [Rendering on the Web](https://developers.google.com/web/updates/2019/02/rendering-on-the-web) <br/>
+  Refer [Angular Universal v9: What's New ?](https://trilon.io/blog/angular-universal-v9-whats-new) <br/>
+  Refer [here](https://blog.angularindepth.com/creating-an-angular-universal-app-with-the-angular-cli-5ef26c9fd9a5) <br/>
+  [nest-next](https://github.com/kyle-mccarthy/nest-next) <br/> > [nuxt/vue.js + nest](https://github.com/chanlito/nuxt-ts-starter) <br/>
+  [nest + angular](https://github.com/kamilmysliwiec/universal-nest)<br/>
 
 - dynamic form group builder with class-validator
 
@@ -278,6 +300,8 @@ semantic-release is a fully automated library/system for versioning, changelog g
 > <br/>
 > Refer [Getting Started with Nest.js](https://scotch.io/tutorials/getting-started-with-nestjs)
 
+> [What’s new in NestJS Swagger 4 ?](https://trilon.io/blog/nestjs-swagger-4-whats-new)
+
 - Shoud I use mergeMap or concatMap or switchMap or forkJoin for my usecase?
 
 > _Short Answer_: concatMap for writes, mergeMap for reads, switchMap when you have to cancel http call.
@@ -308,6 +332,7 @@ https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/src/app
 
 - How to i18n?
   https://github.com/SchweizerischeBundesbahnen/api-devportal/blob/develop/package.json
+  [Angular9 i18n with @angular/localize](https://blog.ninja-squad.com/2019/12/10/angular-localize/)
 
 - how to link local npm projects when you o patch a npm module locally?
   > Ref [blog](https://medium.com/@the1mills/how-to-test-your-npm-module-without-publishing-it-every-5-minutes-1c4cb4b369be)

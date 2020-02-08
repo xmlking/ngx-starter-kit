@@ -1,7 +1,8 @@
-import { Action, NgxsAfterBootstrap, NgxsOnInit, Selector, State, StateContext, Store } from '@ngxs/store';
+import { Injectable } from '@angular/core';
+import { Tree } from '@ngx-starter-kit/tree';
+import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
 import { MenuItem } from '../models/menu-item.model';
 import { MenuService } from '../services/menu.service';
-import { Tree } from '@ngx-starter-kit/tree';
 
 export class NextCurrentlyOpened {
   static readonly type = '[Menu] Next Currently Opened';
@@ -37,6 +38,9 @@ export interface MenuStateModel {
     currentlyOpened: [],
     iconMode: false,
   },
+})
+@Injectable({
+  providedIn: 'root',
 })
 export class MenuState implements NgxsAfterBootstrap {
   constructor(private menuService: MenuService) {}

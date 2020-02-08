@@ -30,8 +30,9 @@ npm publish dist/libs/chat-box --access public
 
 ### TODO
 
-multiple conversations inspired by
-https://www.weave.works/
+Implement as `dialogBox` and use this [show/hide](https://github.com/angular/components/blob/master/src/dev-app/dialog/dialog-demo.ts#L131) trick
+
+multiple conversations inspired by [weave.works](https://www.weave.works/)
 
 > implement polymorphic user supplied complements to render variety `messages`
 

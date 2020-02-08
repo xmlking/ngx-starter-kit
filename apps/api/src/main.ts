@@ -34,13 +34,17 @@ async function bootstrap() {
     .setDescription('Sumo API for Ngx Starter Kit')
     .setExternalDoc('Github Repo', 'https://github.com/xmlking/ngx-starter-kit/tree/master/apps/api')
     .setVersion(config.getVersion())
-    .setSchemes(config.isProd() ? 'https' : 'http')
-    .addOAuth2(
-      'implicit',
-      openIdConf.authorization_endpoint,
-      openIdConf.token_endpoint,
-      // {openid: 'openid', profile: 'profile', email: 'email'}
-    )
+    .addOAuth2({
+      type: 'oauth2',
+      scheme: config.isProd() ? 'https' : 'http',
+      flows: {
+        implicit: {
+          authorizationUrl: openIdConf.authorization_endpoint,
+          tokenUrl: openIdConf.token_endpoint,
+          scopes: { opened: 'openid', profile: 'profile', email: 'email' },
+        },
+      },
+    })
     .build();
   const document = SwaggerModule.createDocument(app, options);
   const { additionalQueryStringParams } = config.getAuth();

@@ -1,11 +1,11 @@
-import { NestFactory } from '@nestjs/core';
+import { environment as env } from '@env-api/environment';
 import { ValidationPipe } from '@nestjs/common';
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { useContainer } from 'class-validator';
+import * as helmet from 'helmet';
 import { AppModule } from './app/app.module';
 import { ConfigService } from './app/config';
-import * as helmet from 'helmet';
-import { environment as env } from '@env-api/environment';
-import { useContainer } from 'class-validator';
 
 declare const module: any;
 
@@ -35,13 +35,14 @@ async function bootstrap() {
     .setDescription('Sumo API for Ngx Starter Kit')
     .setExternalDoc('Github Repo', 'https://github.com/xmlking/ngx-starter-kit/tree/master/apps/api')
     .setVersion(config.getVersion())
-    .setSchemes(config.isProd() ? 'https' : 'http')
-    .addOAuth2(
-      'implicit',
-      openIdConf.authorization_endpoint,
-      openIdConf.token_endpoint,
-      // {openid: 'openid', profile: 'profile', email: 'email'}
-    )
+    .addServer('/docs')
+    // .addOAuth2(
+    //   'implicit',
+    //   openIdConf.authorization_endpoint,
+    //   openIdConf.token_endpoint,
+    // }
+    //   // {openid: 'openid', profile: 'profile', email: 'email'}
+    // )
     .build();
   const document = SwaggerModule.createDocument(app, options);
   const { additionalQueryStringParams } = config.getAuth();

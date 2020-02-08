@@ -1,4 +1,5 @@
 // import { OidcProviderConfig } from '@ngx-starter-kit/oidc';
+import { ModuleWithProviders } from '@angular/core';
 
 export type LogLevel = 'debug' | 'info' | 'warn' | 'error';
 
@@ -12,4 +13,5 @@ export interface IEnvironment {
   logLevel?: LogLevel;
   // auth?: OidcProviderConfig;
   [key: string]: any;
+  plugins: ModuleWithProviders<any>[];
 }

@@ -1,12 +1,12 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
-import { EmailService } from '../../email';
-import { EmailDto } from './dto/email.dto';
-import { ApiOAuth2Auth, ApiUseTags, ApiExcludeEndpoint } from '@nestjs/swagger';
+import { ApiOAuth2, ApiTags } from '@nestjs/swagger';
 import { CurrentUser } from '../../auth/decorators';
+import { EmailService } from '../../email';
 import { User } from '../user.entity';
+import { EmailDto } from './dto/email.dto';
 
-@ApiOAuth2Auth(['read'])
-@ApiUseTags('Email', 'User')
+@ApiOAuth2(['read'])
+@ApiTags('Email', 'User')
 @Controller('email')
 export class EmailController {
   constructor(private readonly emailService: EmailService) {}

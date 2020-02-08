@@ -1,11 +1,11 @@
 import { Directive, ElementRef, EventEmitter, HostListener, Output } from '@angular/core';
 
 @Directive({
-  selector: '[ngxClickOutside]',
+  selector: '[clickOutside]',
 })
 export class ClickOutsideDirective {
   @Output()
-  public ngxClickOutside = new EventEmitter<MouseEvent>();
+  public clickOutside = new EventEmitter<MouseEvent>();
 
   constructor(private elementRef: ElementRef) {}
 
@@ -15,9 +15,8 @@ export class ClickOutsideDirective {
       return;
     }
 
-    const clickedInside = this.elementRef.nativeElement.contains(targetElement);
-    if (!clickedInside) {
-      this.ngxClickOutside.emit(event);
+    if (!this.elementRef.nativeElement.contains(targetElement)) {
+      this.clickOutside.emit(event);
     }
   }
 }

@@ -1,6 +1,6 @@
 <div
   class="notification-container"
-  (ngxClickOutside)="onClickOutside()"
+  (clickOutside)="onClickOutside()"
   fxFlex="grow"
   fxLayout="row"
   fxLayoutAlign="start center"
@@ -25,7 +25,7 @@
         <button type="button" mat-icon-button><mat-icon class="icon">settings</mat-icon></button>
       </div>
 
-      <ng-container *ngLet="(notifications$ | async) as notifications">
+      <ng-container *ngLet="notifications$ | async as notifications">
         <ng-container *ngIf="notifications?.length !== 0; then thenBlock; else elseBlock"></ng-container>
         <ng-template #thenBlock>
           <perfect-scrollbar class="content">

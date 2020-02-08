@@ -1,5 +1,4 @@
-export * from './shared.module';
-export { CQRSGateway } from './cqrs.gateway';
-export { ORMQuery } from './decorators/orm-query';
 export { GenericCommand } from './commands/generic.command';
+export { CQRSGateway } from './cqrs.gateway';
 export { GenericEvent } from './events/generic.event';
+export * from './shared.module';

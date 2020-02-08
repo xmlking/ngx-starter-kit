@@ -50,12 +50,13 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
       repeatWhen(notify => notify.pipe(delayWhen(() => interval(nextBackoff)))),
       takeWhile(_ => !this.isDestroyed),
       map(_ => formatDistance(this.stringToDate(date), new Date(), options)),
-      tap(_ => (nextBackoff = this.backoff(date))),
+      tap(_ => (nextBackoff = this.backoff(date)))
     );
   }
 
   private backoff(date: string | number | Date): number {
-    const minutesElapsed = Math.abs(differenceInMinutes(new Date(), this.stringToDate(date))); // this will always be positive
+    // this will always be positive
+    const minutesElapsed = Math.abs(differenceInMinutes(new Date(), this.stringToDate(date)));
     let backoffAmountInSeconds: number;
     if (minutesElapsed < 2) {
       backoffAmountInSeconds = 5;

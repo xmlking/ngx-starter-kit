@@ -1,5 +1,9 @@
 # Led
 
+**Led** is a [micro interaction](http://microinteractions.com/what-is-a-microinteraction/) built as SCAM _(Single Component Angular Module)_
+
+See [more](https://github.com/vitaliy-bobrov/js-rocks/tree/master/src/app/stage) SCAMs
+
 ### Install
 
 ```bash

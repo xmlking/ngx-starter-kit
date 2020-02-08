@@ -5,19 +5,18 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewChild,
+  ViewChild
 } from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { Gender, Profile } from '@ngx-starter-kit/models';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProfileService } from '@ngx-starter-kit/core';
 
 // TODO: https://netbasal.com/how-to-implement-file-uploading-in-angular-reactive-forms-89a3fffa1a03
 @Component({
   selector: 'ngx-app-profile',
   templateUrl: './app-profile.component.html',
   styleUrls: ['./app-profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppProfileComponent implements OnInit, OnDestroy {
   readonly genderOptions = Gender;
@@ -78,7 +77,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         abort: () => {
           request.abort();
           abort();
-        },
+        }
       };
     },
 
@@ -104,9 +103,9 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         abort: () => {
           request.abort();
           // abort();
-        },
+        }
       };
-    },
+    }
   };
 
   pondOptions = {
@@ -119,7 +118,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     server: {
       timeout: 7000,
       load: this.loadHandler.bind(this),
-      process: this.processHandler.bind(this),
+      process: this.processHandler.bind(this)
     },
     imagePreviewHeight: 170,
     imageCropAspectRatio: '1:1',
@@ -129,7 +128,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     styleLoadIndicatorPosition: 'center bottom',
     styleProgressIndicatorPosition: 'right bottom',
     styleButtonRemoveItemPosition: 'left bottom',
-    styleButtonProcessItemPosition: 'right bottom',
+    styleButtonProcessItemPosition: 'right bottom'
   };
 
   constructor(private fb: FormBuilder, private cd: ChangeDetectorRef, private sanitizer: DomSanitizer) {}
@@ -139,13 +138,13 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       this.formGroup = this.fb.group({
         file: [],
         gender: [this.appProfile.gender],
-        mobilePhone: [this.appProfile.mobilePhone],
+        mobilePhone: [this.appProfile.mobilePhone]
       });
     } else {
       this.formGroup = this.fb.group({
         file: [],
         gender: [],
-        mobilePhone: [],
+        mobilePhone: []
       });
     }
 
@@ -154,13 +153,13 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         {
           source: this.appProfile.avatar.title,
           options: {
-            type: 'local',
-          },
-        },
+            type: 'local'
+          }
+        }
       ];
 
       this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl(
-        `data:${this.appProfile.avatar.mimeType};base64,${this.appProfile.avatar.data}`,
+        `data:${this.appProfile.avatar.mimeType};base64,${this.appProfile.avatar.data}`
       );
     } else {
       this.hasAvatar = false;
@@ -176,7 +175,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       return { abort };
     } else {
       return {
-        abort,
+        abort
       };
     }
   }
@@ -209,7 +208,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       abort: () => {
         request.abort();
         abort();
-      },
+      }
     };
   }
 
@@ -264,4 +263,5 @@ export class AppProfileComponent implements OnInit, OnDestroy {
 }
 
 // TODO: https://www.joshmorony.com/displaying-upload-download-progress-in-an-ionic-application/
-// https://github.com/ErazerBrecht/ErazerCQRS/blob/master/Erazer.Web.Angular/src/app/components/image-uploader/image-uploader.component.ts
+// https://github.com/ErazerBrecht/ErazerCQRS/blob/master/
+// Erazer.Web.Angular/src/app/components/image-uploader/image-uploader.component.ts

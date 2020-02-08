@@ -2,10 +2,10 @@ export enum AuthMode {
   ImplicitFLow = 'ImplicitFLow',
   PasswordFlow = 'ROPCFlow',
   CodeFLow = 'CodeFLow',
-  HybridFlow = 'HybridFlow',
+  HybridFlow = 'HybridFlow'
 }
 
-//  Actions
+//  Commands
 export class Login {
   static readonly type = '[Auth] Login';
   constructor(public readonly payload?: { infoMsg?: string }) {}
@@ -25,7 +25,7 @@ export class ChangeAuthMode {
   constructor(public readonly payload: AuthMode) {}
 }
 
-// Mutation Actions
+// Events
 export class LoginSuccess {
   static readonly type = '[Auth] Login Success';
   constructor(public readonly payload: any) {}

@@ -1,11 +1,11 @@
-import { AfterViewInit, Component, Inject, OnDestroy } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { AfterViewInit, Component, Inject, OnDestroy } from '@angular/core';
 import { scrollFabAnimation } from '@ngx-starter-kit/animations';
-import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
-import { distinctUntilChanged, map, share, tap, throttleTime } from 'rxjs/operators';
-import { BehaviorSubject, fromEvent } from 'rxjs';
-import { untilDestroy } from '@ngx-starter-kit/ngx-utils';
 import { WINDOW } from '@ngx-starter-kit/core';
+import { AutoUnsubscribe } from 'ngx-auto-unsubscribe';
+import { PageScrollInstance, PageScrollService } from 'ngx-page-scroll-core';
+import { BehaviorSubject, fromEvent } from 'rxjs';
+import { distinctUntilChanged, map, share, tap, throttleTime } from 'rxjs/operators';
 
 enum ShowStatus {
   show = 'show',
@@ -13,6 +13,7 @@ enum ShowStatus {
 }
 
 /** @dynamic */
+@AutoUnsubscribe()
 @Component({
   selector: 'scroll-to-top',
   templateUrl: './scroll-to-top.component.html',
@@ -50,7 +51,6 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
       distinctUntilChanged(),
       share(),
       tap(state => this.stateSubject.next(state)),
-      untilDestroy(this),
     );
     scroll$.subscribe();
   }

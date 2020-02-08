@@ -15,13 +15,13 @@ function drinkFlavor(flavor) {
 
 describe('FormatTimeInWordsPipe', () => {
   const fakeChangeDetectorRef = {
-    markForCheck: () => {},
+    markForCheck: () => {}
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [FormatTimeInWordsPipe, { provide: ChangeDetectorRef, useValue: fakeChangeDetectorRef }],
-      imports: [DateFnsModule],
+      imports: [DateFnsModule]
     });
   });
 
@@ -33,7 +33,7 @@ describe('FormatTimeInWordsPipe', () => {
     [FormatTimeInWordsPipe],
     (pipe: FormatTimeInWordsPipe) => {
       expect(pipe.transform(new Date(), { addSuffix: false })).toBe('less than a minute');
-    },
+    }
   ));
 
   it('should transform future date to words', inject([FormatTimeInWordsPipe], (pipe: FormatTimeInWordsPipe) => {
@@ -52,11 +52,11 @@ describe('FormatTimeInWordsPipe', () => {
     expect(pipe.transform(yesterday)).toBe('1 day ago');
   }));
 
-  it('should return `almost 24 years ago` when date is 1995-12-17T03:24:00', inject(
+  it('should return `about 24 years ago` when date is 1995-12-17T03:24:00', inject(
     [FormatTimeInWordsPipe],
     (pipe: FormatTimeInWordsPipe) => {
-      expect(pipe.transform('1995-12-17T03:24:00')).toBe('almost 24 years ago');
-    },
+      expect(pipe.transform('1995-12-17T03:24:00')).toBe('about 24 years ago');
+    }
   ));
 
   it('should return `Invalid Date` when date is invalid', inject(
@@ -64,7 +64,7 @@ describe('FormatTimeInWordsPipe', () => {
     (pipe: FormatTimeInWordsPipe) => {
       // expect(pipe.transform('2018-13-32')).toBe('Invalid Date');
       expect(pipe.transform('2018-13-32')).toBeNull();
-    },
+    }
   ));
 
   it('should throw error when date is null', inject([FormatTimeInWordsPipe], (pipe: FormatTimeInWordsPipe) => {

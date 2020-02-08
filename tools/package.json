@@ -18,12 +18,12 @@
     "@nrwl/workspace": "*"
   },
   "devDependencies": {
-    "@angular-devkit/architect": "~0.803.5",
-    "@angular-devkit/build-angular": "~0.803.5",
-    "@angular-devkit/build-webpack": "~0.803.5",
-    "@angular-devkit/core": "~8.3.5",
-    "@angular-devkit/schematics": "~8.3.5",
-    "@types/json-schema": "^7.0.3",
+    "@angular-devkit/architect": "~0.803.24",
+    "@angular-devkit/build-angular": "~0.803.24",
+    "@angular-devkit/build-webpack": "~0.803.24",
+    "@angular-devkit/core": "~8.3.24",
+    "@angular-devkit/schematics": "~8.3.24",
+    "@types/json-schema": "^7.0.4",
     "cpx": "^1.5.0"
   }
 }

@@ -1,27 +1,28 @@
-import { FormGroup } from '@angular/forms';
 import { Injectable } from '@angular/core';
-import { ActivatedRoute, Router, Params } from '@angular/router';
+import { FormGroup } from '@angular/forms';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 export interface QueryParams {
   q: string;
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class DeepLinkService {
   constructor(private router: Router, private route: ActivatedRoute) {}
 
   /**
    * Register a given FormGroup instance with the current "q" queryParams Observbale. Every time the
-   * "q" queryParams changes, the "query" FormControl (of the given FormGroup instance) will be updated, reflecting the same value.
+   * "q" queryParams changes, the "query" FormControl (of the given FormGroup instance) will be updated,
+   * reflecting the same value.
    * @param form The given FormGroup to register.
    */
   registerFormGroup(form: FormGroup) {
     this.route.queryParams.subscribe((query: QueryParams) => {
       if (query.q) {
         form.setValue({
-          query: query.q,
+          query: query.q
         });
       }
     });
@@ -35,7 +36,7 @@ export class DeepLinkService {
   syncUrl(queryParams: Params) {
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams,
+      queryParams
     });
   }
 }

@@ -1,9 +1,7 @@
 {
   "extends": "../../../tsconfig.json",
   "compilerOptions": {
-    "sourceMap": false,
-    "outDir": "../../../dist/apps/webapp-e2e/src",
     "types": ["cypress", "node"]
   },
-  "include": ["src/**/*.ts"]
+  "include": ["**/*.ts"]
 }
