@@ -193,7 +193,7 @@
     "codecov": "3.6.5",
     "codelyzer": "5.2.1",
     "loaders.css": "0.1.2",
-    "ng-packagr": "5.7.1",
+    "ng-packagr": "9.0.0",
     "ngx-deploy-npm": "1.2.0",
     "rimraf": "3.0.1",
     "ts-loader": "6.2.1",
