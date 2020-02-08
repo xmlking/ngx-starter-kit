@@ -3,9 +3,12 @@
   "compilerOptions": {
     "outDir": "../../dist/out-tsc"
   },
-  "exclude": ["src/test-setup.ts", "src/**/*.spec.ts"],
+  "files": [
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
   "include": [
-    "src/**/*.ts",
+    "src/**/*.d.ts",
     "../../libs/home/src/index.ts",
     "../../libs/dashboard/src/index.ts",
     "../../libs/experiments/src/index.ts",

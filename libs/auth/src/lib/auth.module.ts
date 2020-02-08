@@ -64,7 +64,7 @@ const matModules = [
   ],
 })
 export class AuthModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<AuthModule> {
     return {
       ngModule: AuthModule,
       providers: [{ provide: APP_INITIALIZER, useFactory: initializeAuth, deps: [OAuthService, Store], multi: true }],

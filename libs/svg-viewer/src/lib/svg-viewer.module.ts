@@ -11,7 +11,7 @@ import { SvgViewerConfig, SvgViewerDefaultConfig } from './svg-viewer.config';
   declarations: [SvgViewerComponent],
 })
 export class SvgViewerModule {
-  static forRoot(config: SvgViewerConfig): ModuleWithProviders {
+  static forRoot(config: SvgViewerConfig): ModuleWithProviders<SvgViewerModule> {
     return {
       ngModule: SvgViewerModule,
       providers: [{ provide: SvgViewerConfig, useValue: config }],

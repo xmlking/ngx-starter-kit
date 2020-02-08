@@ -1,6 +1,6 @@
 import { SelectionChange, SelectionModel } from '@angular/cdk/collections';
 import { ComponentType } from '@angular/cdk/portal/typings/portal';
-import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, ElementRef, OnDestroy, OnInit, ViewChild, Directive } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
@@ -12,6 +12,7 @@ import { EntityFormComponent } from './entity-form.component';
 import { Entity, EntityColumnDef } from './entity.model';
 import { EntityService } from './entity.service';
 
+@Directive()
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
   dataSource = new MatTableDataSource<TEntity>([]);

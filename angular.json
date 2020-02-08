@@ -1181,6 +1181,12 @@
             "mock": {
               "aot": true,
               "baseHref": "/ngx-starter-kit/",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "buildOptimizer": true,
               "extractCss": true,
               "extractLicenses": true,
@@ -1282,11 +1288,18 @@
               "vendorChunk": false
             },
             "serve": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "extractCss": true,
               "preserveSymlinks": true
             }
           },
           "options": {
+            "aot": true,
             "assets": [
               "apps/webapp/src/assets",
               "apps/webapp/src/favicon.ico",

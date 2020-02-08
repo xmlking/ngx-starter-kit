@@ -72,7 +72,7 @@ export interface DialogFlowTokenInterface {
   providers: [ChatService, NlpService, TextToSpeechService, SpeechToTextService],
 })
 export class ChatBoxModule {
-  static forRoot(config: DialogFlowTokenInterface): ModuleWithProviders {
+  static forRoot(config: DialogFlowTokenInterface): ModuleWithProviders<ChatBoxModule> {
     return {
       ngModule: ChatBoxModule,
       providers: [

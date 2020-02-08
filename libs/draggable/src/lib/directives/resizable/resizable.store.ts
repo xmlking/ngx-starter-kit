@@ -1,3 +1,4 @@
+import { Injectable } from "@angular/core";
 export interface IPoint {
   x: number;
   y: number;
@@ -52,6 +53,7 @@ export const defaultBound: IRectangle = {
   height: Infinity,
 };
 
+@Injectable()
 export class Store {
   state: IResizeState = {
     currentSize: { width: 0, height: 0 },

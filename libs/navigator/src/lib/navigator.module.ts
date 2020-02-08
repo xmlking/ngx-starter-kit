@@ -8,7 +8,7 @@ import { MENU_ITEMS } from './symbols';
   imports: [CommonModule],
 })
 export class NavigatorModule {
-  static forRoot(menuItems: MenuItem[]): ModuleWithProviders {
+  static forRoot(menuItems: MenuItem[]): ModuleWithProviders<NavigatorModule> {
     return {
       ngModule: NavigatorModule,
       providers: [MenuService, { provide: MENU_ITEMS, useValue: menuItems }],
