@@ -1,0 +1,41 @@
+name: Deploy to GitHub Pages via angular-cli-ghpages
+
+on:
+  pull_request:
+    branches:
+      - master
+
+  push:
+    branches:
+      - master
+
+jobs:
+  build_lint_test_deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Build the app
+        uses: actions/checkout@v2
+
+      - name: Use Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+
+      - name: Install
+        run: CYPRESS_INSTALL_BINARY=0 yarn install
+
+      - name: Lint
+        if: success()
+        run: yarn run lint
+
+      - name: Test
+        if: success()
+        run: yarn run test
+
+      - name: Deploy
+        if: success() && github.event_name == 'push'
+        run: yarn run deploy
+        env:
+          CI: true
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN}}

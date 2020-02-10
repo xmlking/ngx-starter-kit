@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-
 import { FeatureService } from './feature.service';
 
 describe('FeatureService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: FeatureService = TestBed.get(FeatureService);
+    const service: FeatureService = TestBed.inject(FeatureService);
     expect(service).toBeTruthy();
   });
 });

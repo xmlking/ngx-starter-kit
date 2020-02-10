@@ -180,6 +180,10 @@
           "builder": "ngx-deploy-npm:deploy",
           "options": {
             "access": "public"
+            // "cname": "xmlking.gitbook.io",
+            // "name": "deploymock",
+            // "email": "sumo@demo.com",
+            // "message": "Deploying: ngx-starter-kit"
           }
         }
       },

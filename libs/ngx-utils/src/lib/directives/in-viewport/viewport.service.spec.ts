@@ -6,7 +6,7 @@ describe('ViewportService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ViewportService = TestBed.get(ViewportService);
+    const service: ViewportService = TestBed.inject(ViewportService);
     expect(service).toBeTruthy();
   });
 });

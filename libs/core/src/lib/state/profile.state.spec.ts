@@ -1,4 +1,4 @@
-import { TestBed, async } from '@angular/core/testing';
+import { async, TestBed } from '@angular/core/testing';
 import { NgxsModule, Store } from '@ngxs/store';
 import { ProfileState, ProfileStateModel } from './profile.state';
 
@@ -8,7 +8,7 @@ describe('Profile state', () => {
     TestBed.configureTestingModule({
       imports: [NgxsModule.forRoot([ProfileState])],
     }).compileComponents();
-    store = TestBed.get(Store);
+    store = TestBed.inject(Store);
   }));
 
   it('should create an empty state', () => {

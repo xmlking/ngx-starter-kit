@@ -5,6 +5,10 @@
     "ms-azuretools.vscode-docker",
     "donjayamanne.githistory",
     "eamodio.gitlens",
-    "humao.rest-client"
+    "humao.rest-client",
+    "nrwl.angular-console",
+    "angular.ng-template",
+    "ms-vscode.vscode-typescript-tslint-plugin",
+    "esbenp.prettier-vscode"
   ]
 }
