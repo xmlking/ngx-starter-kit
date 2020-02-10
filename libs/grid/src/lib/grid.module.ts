@@ -1,21 +1,7 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
-
-import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
-import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
-import { TruncateModule, HelperModule, NgLetModule } from '@ngx-starter-kit/ngx-utils';
-import { SharedMaterialDateModule, SharedFlexLayoutModule } from '@ngx-starter-kit/shared';
-
-import { AccountsGridListComponent } from './containers/accounts-grid-list/accounts-grid-list.component';
-import { AccountsTableComponent } from './containers/accounts-table/accounts-table.component';
-import { AccountService } from './services/account.service';
-import { RandomAccountService } from './services/random-account.service';
-import { AccountDetailComponent } from './components/account-detail/account-detail.component';
-import { AccountEditComponent } from './components/account-edit/account-edit.component';
-
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { CommonModule } from '@angular/common';
+import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
@@ -35,6 +21,20 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
+import { HelperModule, NgLetModule, TruncateModule } from '@ngx-starter-kit/ngx-utils';
+import { SharedFlexLayoutModule, SharedMaterialDateModule } from '@ngx-starter-kit/shared';
+import { AccountDetailComponent } from './components/account-detail/account-detail.component';
+import { AccountEditComponent } from './components/account-edit/account-edit.component';
+import { AccountsGridListComponent } from './containers/accounts-grid-list/accounts-grid-list.component';
+import { AccountsTableComponent } from './containers/accounts-table/accounts-table.component';
+import { AccountService } from './services/account.service';
+import { RandomAccountService } from './services/random-account.service';
+
+
+
 
 const matModules = [
   DragDropModule,
@@ -95,7 +95,6 @@ const matModules = [
     ]),
   ],
   declarations: [AccountsTableComponent, AccountsGridListComponent, AccountDetailComponent, AccountEditComponent],
-  entryComponents: [AccountEditComponent],
   providers: [AccountService, RandomAccountService],
 })
-export class GridModule {}
+export class GridModule { }

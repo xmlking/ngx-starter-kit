@@ -1,25 +1,5 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-import { FormlyModule } from '@ngx-formly/core';
-import { FormlyMaterialModule } from '@ngx-formly/material';
-
-import { AdminGuard } from '@ngx-starter-kit/auth';
-import { SharedModule } from '@ngx-starter-kit/shared';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { ToolbarModule } from '@ngx-starter-kit/toolbar';
-import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
-import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
-import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
-import { HelperModule, TruncateModule } from '@ngx-starter-kit/ngx-utils';
-
-import { OverviewComponent } from './containers/overview/overview.component';
-import { SubscriptionsComponent } from './containers/subscriptions/subscriptions.component';
-import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
-import { NotificationsComponent } from './containers/notifications/notifications.component';
-import { NotificationDetailComponent } from './components/notification-detail/notification-detail.component';
-import { NotificationEditComponent } from './components/notification-edit/notification-edit.component';
-import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
-
+import { NgModule } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatCardModule } from '@angular/material/card';
@@ -36,6 +16,26 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
+import { FormlyModule } from '@ngx-formly/core';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { AppConfirmModule } from '@ngx-starter-kit/app-confirm';
+import { AdminGuard } from '@ngx-starter-kit/auth';
+import { BreadcrumbsModule } from '@ngx-starter-kit/breadcrumbs';
+import { HelperModule, TruncateModule } from '@ngx-starter-kit/ngx-utils';
+import { QuickpanelModule } from '@ngx-starter-kit/quickpanel';
+import { SharedModule } from '@ngx-starter-kit/shared';
+import { ToolbarModule } from '@ngx-starter-kit/toolbar';
+import { NotificationDetailComponent } from './components/notification-detail/notification-detail.component';
+import { NotificationEditComponent } from './components/notification-edit/notification-edit.component';
+import { SubscriptionDetailComponent } from './components/subscription-detail/subscription-detail.component';
+import { AdminLayoutComponent } from './containers/admin-layout/admin-layout.component';
+import { NotificationsComponent } from './containers/notifications/notifications.component';
+import { OverviewComponent } from './containers/overview/overview.component';
+import { SubscriptionsComponent } from './containers/subscriptions/subscriptions.component';
+
+
+
 
 const matModules = [
   MatCardModule,
@@ -115,7 +115,6 @@ const matModules = [
     NotificationDetailComponent,
     NotificationEditComponent,
     AdminLayoutComponent,
-  ],
-  entryComponents: [NotificationEditComponent],
+  ]
 })
-export class AdminModule {}
+export class AdminModule { }

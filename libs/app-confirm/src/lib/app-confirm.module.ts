@@ -1,15 +1,14 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AppConfirmComponent } from './app-confirm.component';
-import { AppConfirmService } from './app-confirm.service';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
-import { FlexLayoutModule } from '@angular/flex-layout';
+import { AppConfirmComponent } from './app-confirm.component';
+import { AppConfirmService } from './app-confirm.service';
 
 @NgModule({
   imports: [CommonModule, MatDialogModule, MatButtonModule, FlexLayoutModule],
   declarations: [AppConfirmComponent],
-  providers: [AppConfirmService],
-  entryComponents: [AppConfirmComponent],
+  providers: [AppConfirmService]
 })
-export class AppConfirmModule {}
+export class AppConfirmModule { }

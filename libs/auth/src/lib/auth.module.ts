@@ -53,7 +53,6 @@ const matModules = [
     }),
   ],
   declarations: [LoginComponent],
-  entryComponents: [LoginComponent],
   providers: [
     ROPCService,
     AuthService,
@@ -71,5 +70,5 @@ export class AuthModule {
     };
   }
   // HINT: AuthHandler is injected here to initialize it as Module Run Block
-  constructor(authHandler: AuthHandler) {}
+  constructor(authHandler: AuthHandler) { }
 }
