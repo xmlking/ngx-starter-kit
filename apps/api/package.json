@@ -20,7 +20,7 @@
     "@nestjs/passport": "6.1.1",
     "@nestjs/platform-express": "6.11.6",
     "@nestjs/platform-socket.io": "6.11.6",
-    "@nestjs/swagger": "4.2.6",
+    "@nestjs/swagger": "4.2.7",
     "@nestjs/terminus": "6.5.6",
     "@nestjs/typeorm": "6.2.0",
     "@nestjs/websockets": "6.11.6",
