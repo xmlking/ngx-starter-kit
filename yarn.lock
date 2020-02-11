@@ -1815,6 +1815,13 @@
   dependencies:
     uuid "3.3.3"
 
+"@nestjs/typeorm@6.3.1":
+  version "6.3.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/typeorm/-/typeorm-6.3.1.tgz#65e1a666a06290bfe3007293c6aa78152f109056"
+  integrity sha512-Au40kKTpRU8p0Z45psrGTdKKJeIIXNt/2iwSUtA1RODCQZfJQrr/Sg6aLo2373LU9FY4GHGTaI3hmadYCL5Pdg==
+  dependencies:
+    uuid "3.4.0"
+
 "@nestjs/websockets@6.11.6":
   version "6.11.6"
   resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-6.11.6.tgz#adda79bce254e7e843cbada0c79a4f641d4d9dfb"
