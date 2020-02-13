@@ -2421,7 +2421,26 @@
     p-retry "^4.0.0"
     url-join "^4.0.0"
 
-"@semantic-release/npm@7.0.2", "@semantic-release/npm@^7.0.0":
+"@semantic-release/npm@7.0.3":
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-7.0.3.tgz#0831f837c8e63cafd3c8a9e052b5aaf99a5a4921"
+  integrity sha512-3wOXMtAdJkaAnW5183iSmWSimtUmOx7m6g/DWPYRs2Gq6iyB+ztMmhgwbn6luNcM9t6pGbgHvRPEXpWkygMxCA==
+  dependencies:
+    "@semantic-release/error" "^2.2.0"
+    aggregate-error "^3.0.0"
+    execa "^4.0.0"
+    fs-extra "^8.0.0"
+    lodash "^4.17.15"
+    nerf-dart "^1.0.0"
+    normalize-url "^5.0.0"
+    npm "^6.10.3"
+    rc "^1.2.8"
+    read-pkg "^5.0.0"
+    registry-auth-token "^4.0.0"
+    semver "^7.1.2"
+    tempy "^0.4.0"
+
+"@semantic-release/npm@^7.0.0":
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/@semantic-release/npm/-/npm-7.0.2.tgz#e48d4f3213a41a5c4944058e96ee5cf3a9212b55"
   integrity sha512-lugR8jvP81tDb5lmmRL7khntSIew9jsGrNac4ec381mU+CsuBbaKgpvOMEYys0QC0CXrN4yU8Ltpq+RQD5Mc+g==
@@ -16309,10 +16328,10 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "0.9.0"
 
-semantic-release@17.0.2:
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.0.2.tgz#0b6ca76b17092ba0697a9bd3d210178b57a232d7"
-  integrity sha512-f2466mNS/TpY32Jvoqgu3ricIDX/TRZXuthcyJo3ZIfdI14uMfiOu5R2dFKnPwgJh4wa9/2ckL44AFmIXAhiyg==
+semantic-release@17.0.3:
+  version "17.0.3"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.0.3.tgz#8c1f91e8ebe5bfa8764de5dbde8ee79f18c61ac6"
+  integrity sha512-hOwW6rfC8oRFyIamsW1LACIG6epVGND9ZxFOilKcM72ZgqMAxS+jN2996gCYBJmMizpYRu7orNaEkbd98ppRTg==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
@@ -17764,6 +17783,11 @@ temp-dir@^1.0.0:
   resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-1.0.0.tgz#0a7c0ea26d3a39afa7e0ebea9c1fc0bc4daa011d"
   integrity sha1-CnwOom06Oa+n4OvqnB/AvE2qAR0=
 
+temp-dir@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/temp-dir/-/temp-dir-2.0.0.tgz#bde92b05bdfeb1516e804c9c00ad45177f31321e"
+  integrity sha512-aoBAniQmmwtcKp/7BzsH8Cxzv8OL736p7v1ihGb5e9DJ9kTwGWHrQrVB5+lfVDzfGrdRzXch+ig7LHaY1JTOrg==
+
 tempy@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/tempy/-/tempy-0.3.0.tgz#6f6c5b295695a16130996ad5ab01a8bd726e8bf8"
@@ -17772,6 +17796,15 @@ tempy@^0.3.0:
     temp-dir "^1.0.0"
     type-fest "^0.3.1"
     unique-string "^1.0.0"
+
+tempy@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/tempy/-/tempy-0.4.0.tgz#2240e944cbb6b843415b7ef10b6dff9cda7297d0"
+  integrity sha512-mKnScm8aXv+cG6l1Nzp6mERGgC4UblbPnSDeQp83JgZ7xqDcnl+7u3+6zXnf1UE7YluDUTEIna1iKYwCSaOk9g==
+  dependencies:
+    temp-dir "^2.0.0"
+    type-fest "^0.10.0"
+    unique-string "^2.0.0"
 
 term-size@^1.2.0:
   version "1.2.0"
@@ -18321,6 +18354,11 @@ type-detect@4.0.8:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/type-detect/-/type-detect-4.0.8.tgz#7646fb5f18871cfbb7749e69bd39a6388eb7450c"
   integrity sha512-0fr/mIH1dlO+x7TlcMy+bIDqKPsw/70tVyeHW787goQjhmqaZe10uwLujubK9q9Lg6Fiho1KUKDYz0Z7k7g5/g==
+
+type-fest@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.10.0.tgz#7f06b2b9fbfc581068d1341ffabd0349ceafc642"
+  integrity sha512-EUV9jo4sffrwlg8s0zDhP0T2WD3pru5Xi0+HTE3zTUmBaZNhfkite9PdSJwdXLwPVW0jnAHT56pZHIOYckPEiw==
 
 type-fest@^0.3.1:
   version "0.3.1"
