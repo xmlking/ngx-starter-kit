@@ -14,16 +14,16 @@
   },
   "dependencies": {
     "@godaddy/terminus": "4.3.1",
-    "@nestjs/common": "6.11.6",
-    "@nestjs/core": "6.11.6",
+    "@nestjs/common": "6.11.8",
+    "@nestjs/core": "6.11.8",
     "@nestjs/cqrs": "6.1.0",
     "@nestjs/passport": "6.1.1",
-    "@nestjs/platform-express": "6.11.6",
-    "@nestjs/platform-socket.io": "6.11.6",
+    "@nestjs/platform-express": "6.11.8",
+    "@nestjs/platform-socket.io": "6.11.8",
     "@nestjs/swagger": "4.2.7",
     "@nestjs/terminus": "6.5.6",
     "@nestjs/typeorm": "6.3.1",
-    "@nestjs/websockets": "6.11.6",
+    "@nestjs/websockets": "6.11.8",
     "@nestjsx/crud": "4.4.1",
     "@xmlking/jwks-rsa": "1.4.3",
     "cache-manager": "2.11.1",
@@ -58,7 +58,7 @@
   },
   "optionalDependencies": {
     "@nestjs/schematics": "6.9.3",
-    "@nestjs/testing": "6.11.6",
+    "@nestjs/testing": "6.11.8",
     "nodemon": "2.0.2",
     "supertest": "4.0.2"
   }
