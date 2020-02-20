@@ -2101,6 +2101,18 @@
   dependencies:
     "@octokit/types" "^2.0.0"
 
+"@octokit/core@^2.4.0":
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/@octokit/core/-/core-2.4.1.tgz#8bd31c93c1f77ab24950cf349422364329c9b239"
+  integrity sha512-cpMyyiD5R0jDoYwtSKcbZYn4xFOw5f72jq/NcnOHt8DV584ff4C1t4whPI8jhXqaSu5vUGVvoke/mUdtO/T2Fg==
+  dependencies:
+    "@octokit/auth-token" "^2.4.0"
+    "@octokit/graphql" "^4.3.1"
+    "@octokit/request" "^5.3.1"
+    "@octokit/types" "^2.0.0"
+    before-after-hook "^2.1.0"
+    universal-user-agent "^4.0.0"
+
 "@octokit/endpoint@^5.5.0":
   version "5.5.2"
   resolved "https://registry.yarnpkg.com/@octokit/endpoint/-/endpoint-5.5.2.tgz#ed19d01fe85ac58bc2b774661658f9e5429b8164"
@@ -2110,10 +2122,26 @@
     is-plain-object "^3.0.0"
     universal-user-agent "^4.0.0"
 
+"@octokit/graphql@^4.3.1":
+  version "4.3.1"
+  resolved "https://registry.yarnpkg.com/@octokit/graphql/-/graphql-4.3.1.tgz#9ee840e04ed2906c7d6763807632de84cdecf418"
+  integrity sha512-hCdTjfvrK+ilU2keAdqNBWOk+gm1kai1ZcdjRfB30oA3/T6n53UVJb7w0L5cR3/rhU91xT3HSqCd+qbvH06yxA==
+  dependencies:
+    "@octokit/request" "^5.3.0"
+    "@octokit/types" "^2.0.0"
+    universal-user-agent "^4.0.0"
+
 "@octokit/plugin-paginate-rest@^1.1.1":
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-1.1.2.tgz#004170acf8c2be535aba26727867d692f7b488fc"
   integrity sha512-jbsSoi5Q1pj63sC16XIUboklNw+8tL9VOnJsWycWYR78TKss5PVpIPb1TUUcMQ+bBh7cY579cVAWmf5qG+dw+Q==
+  dependencies:
+    "@octokit/types" "^2.0.1"
+
+"@octokit/plugin-paginate-rest@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-paginate-rest/-/plugin-paginate-rest-2.0.1.tgz#8df1092b1f5442898be82aad6bf29681255574f9"
+  integrity sha512-xtW3AQoGDD0un/AkPjIndTdFO+O/My0I15TArvrbJirBCV91R1ElrE3gRcsUJENP3t/vveiQ9C6XQjo9sS2xQg==
   dependencies:
     "@octokit/types" "^2.0.1"
 
@@ -2130,6 +2158,14 @@
     "@octokit/types" "^2.0.1"
     deprecation "^2.3.1"
 
+"@octokit/plugin-rest-endpoint-methods@^3.0.0":
+  version "3.1.1"
+  resolved "https://registry.yarnpkg.com/@octokit/plugin-rest-endpoint-methods/-/plugin-rest-endpoint-methods-3.1.1.tgz#6cf4d939cca7af4a05d1861385d20ce86a112dc8"
+  integrity sha512-mQT+6FL4dqOaUpzLbi6HW38DkLuOf4b303ryvMsciMbAMLLJr6iWsShWjCUFUsc9NXz49sZNuOMGTNym94Krag==
+  dependencies:
+    "@octokit/types" "^2.0.1"
+    deprecation "^2.3.1"
+
 "@octokit/request-error@^1.0.1", "@octokit/request-error@^1.0.2":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@octokit/request-error/-/request-error-1.2.1.tgz#ede0714c773f32347576c25649dc013ae6b31801"
@@ -2139,7 +2175,7 @@
     deprecation "^2.0.0"
     once "^1.4.0"
 
-"@octokit/request@^5.2.0":
+"@octokit/request@^5.2.0", "@octokit/request@^5.3.0", "@octokit/request@^5.3.1":
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/@octokit/request/-/request-5.3.1.tgz#3a1ace45e6f88b1be4749c5da963b3a3b4a2f120"
   integrity sha512-5/X0AL1ZgoU32fAepTfEoggFinO3rxsMLtzhlUX+RctLrusn/CApJuGFCd0v7GMFhF+8UiCsTTfsu7Fh1HnEJg==
@@ -2174,6 +2210,16 @@
     octokit-pagination-methods "^1.1.0"
     once "^1.4.0"
     universal-user-agent "^4.0.0"
+
+"@octokit/rest@^17.0.0":
+  version "17.0.0"
+  resolved "https://registry.yarnpkg.com/@octokit/rest/-/rest-17.0.0.tgz#1f44d96005f5946665fd42a85cd3e428172f01dc"
+  integrity sha512-nSlmyy1DBEOsC4voRbk/SN56V/iuZfxZzjFFz+ocb2MAYwHC+z1TyVOMV9W630dVn9ukioJO34VD5NSYwcgFWg==
+  dependencies:
+    "@octokit/core" "^2.4.0"
+    "@octokit/plugin-paginate-rest" "^2.0.0"
+    "@octokit/plugin-request-log" "^1.0.0"
+    "@octokit/plugin-rest-endpoint-methods" "^3.0.0"
 
 "@octokit/types@^2.0.0", "@octokit/types@^2.0.1":
   version "2.1.1"
@@ -2343,7 +2389,29 @@
     micromatch "^4.0.0"
     p-reduce "^2.0.0"
 
-"@semantic-release/github@7.0.3", "@semantic-release/github@^7.0.0":
+"@semantic-release/github@7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-7.0.4.tgz#6a62c020d086b84e723e143c78b4d72078e87d28"
+  integrity sha512-qQi41eGIa/tne7T8rvQK+xJNoyadOmd5mVsNZUUqZCVueiUkCItspJ7Mgy5ZWuhwlo28+hKeT/4zJ6MIG6er2Q==
+  dependencies:
+    "@octokit/rest" "^17.0.0"
+    "@semantic-release/error" "^2.2.0"
+    aggregate-error "^3.0.0"
+    bottleneck "^2.18.1"
+    debug "^4.0.0"
+    dir-glob "^3.0.0"
+    fs-extra "^8.0.0"
+    globby "^11.0.0"
+    http-proxy-agent "^4.0.0"
+    https-proxy-agent "^5.0.0"
+    issue-parser "^6.0.0"
+    lodash "^4.17.4"
+    mime "^2.4.3"
+    p-filter "^2.0.0"
+    p-retry "^4.0.0"
+    url-join "^4.0.0"
+
+"@semantic-release/github@^7.0.0":
   version "7.0.3"
   resolved "https://registry.yarnpkg.com/@semantic-release/github/-/github-7.0.3.tgz#53d5ad985d7ebfaa533f64784d1ac00ff22a2231"
   integrity sha512-4Y2nqruKHsdoayq/H/lMWudONXHLbYtSBDZPktoTrvdJZNQkLhjnxCwDUTKo8G29aI81RuoYKUHv6GSgyJDtGQ==
@@ -3970,7 +4038,7 @@ bcryptjs@^2.3.0:
   resolved "https://registry.yarnpkg.com/bcryptjs/-/bcryptjs-2.4.3.tgz#9ab5627b93e60621ff7cdac5da9733027df1d0cb"
   integrity sha1-mrVie5PmBiH/fNrF2pczAn3x0Ms=
 
-before-after-hook@^2.0.0:
+before-after-hook@^2.0.0, before-after-hook@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/before-after-hook/-/before-after-hook-2.1.0.tgz#b6c03487f44e24200dd30ca5e6a1979c5d2fb635"
   integrity sha512-IWIbu7pMqyw3EAJHzzHbWa85b6oud/yfKYg5rqB5hNE8CeMi3nX+2C2sj0HswfblST86hpVEOAb9x34NZd6P7A==
@@ -16210,10 +16278,10 @@ selfsigned@^1.10.7:
   dependencies:
     node-forge "0.9.0"
 
-semantic-release@17.0.3:
-  version "17.0.3"
-  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.0.3.tgz#8c1f91e8ebe5bfa8764de5dbde8ee79f18c61ac6"
-  integrity sha512-hOwW6rfC8oRFyIamsW1LACIG6epVGND9ZxFOilKcM72ZgqMAxS+jN2996gCYBJmMizpYRu7orNaEkbd98ppRTg==
+semantic-release@17.0.4:
+  version "17.0.4"
+  resolved "https://registry.yarnpkg.com/semantic-release/-/semantic-release-17.0.4.tgz#4ca739b2bf80f8ce5e49b05f12c15f49ca233d6d"
+  integrity sha512-5y9QRSrZtdvACmlpX5DvEVsvFuKRDUVn7JVJFxPVLGrGofDf1d0M/+hA1wFmCjiJZ+VCY8bYaSqVqF14KCF9rw==
   dependencies:
     "@semantic-release/commit-analyzer" "^8.0.0"
     "@semantic-release/error" "^2.2.0"
