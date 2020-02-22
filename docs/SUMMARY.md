@@ -14,7 +14,6 @@
   * [State](concepts/state.md)
   * [Select](concepts/select.md)
 * [Advanced](advanced/README.md)
-  * [Test123](advanced/test123.md)
   * [Action Handlers](advanced/action-handlers.md)
   * [Actions Life Cycle](advanced/actions-life-cycle.md)
   * [Envoy Proxy](advanced/envoy-proxy.md)

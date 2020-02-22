@@ -50,6 +50,14 @@ Thumbs.db
 # Environment variables
 .env
 
+# Book build output
+_book/
+
+# eBook build output
+*.epub
+*.mobi
+*.pdf
+
 =======
 # Local
 todo
