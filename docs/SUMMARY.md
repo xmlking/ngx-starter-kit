@@ -2,6 +2,7 @@
 
 * [NGX Starter Kit](../README.md)
 * [Getting Started](getting-started/README.md)
+  * [FAQ2](getting-started/faq2.md)
   * [Why](introduction/why.md)
   * [Installation](getting-started/installation.md)
   * [Playbook](introduction/playbook.md)
