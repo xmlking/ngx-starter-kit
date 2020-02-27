@@ -227,10 +227,6 @@
   },
   "resolutions": {
     "d3": "4.13.0",
-    "immer": "5.1.0",
-    "@angular-devkit/architect": "0.900.2",
-    "@angular-devkit/core": "9.0.2",
-    "@angular-devkit/schematics": "9.0.2",
-    "@schematics/angular": "9.0.2"
+    "immer": "5.1.0"
   }
 }
