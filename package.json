@@ -171,7 +171,7 @@
     "smooth-scrollbar": "8.5.1",
     "socket.io-client": "2.3.0",
     "tslib": "^1.11.0",
-    "uuid": "7.0.1",
+    "uuid": "7.0.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
