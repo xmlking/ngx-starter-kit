@@ -3455,12 +3455,10 @@ angular-in-memory-web-api@0.9.0:
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.9.0.tgz#6c98d9494fadc6b98f54e68376a1998ccfff04bc"
   integrity sha512-//PiJ5qb1+Yf/N7270ioQqR2laf4/Irjavg+M+WEn8y4At9LUoYgbQ5HVwvM5xUTlVlL0XkbJRLxREcGGNdIEw==
 
-angular-oauth2-oidc@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.0.0.tgz#f96469e157e6873b9c09b4dc73fa3145f26bdc16"
-  integrity sha512-BCbfVIQqCPzjHXwXbYcsis0Hd+xYnOMYnH1smW1A3i9n6TA97rnqzF8dHjpddt+2ECqUSVCgBwJjj3qvBm2TQA==
-  dependencies:
-    tslib "^1.9.0"
+angular-oauth2-oidc@9.0.1:
+  version "9.0.1"
+  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.0.1.tgz#8e51bb7e42c680ae37a09e2da86f5b04e5193bb4"
+  integrity sha512-ZDGdlWo6BPWkNHOqf4mFQLm4fUDIt5UNUsdx+brELjpsPeSnUsfKnsBh+vdKXHFyBv24Agzz+rsQE85EwhTKrA==
 
 ansi-align@^2.0.0:
   version "2.0.0"

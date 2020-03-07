@@ -142,7 +142,7 @@
     "@xmlking/ngx-knob": "0.3.0",
     "@xmlking/ngx-quicklink": "0.0.11",
     "angular-in-memory-web-api": "0.9.0",
-    "angular-oauth2-oidc": "9.0.0",
+    "angular-oauth2-oidc": "9.0.1",
     "chart.js": "2.9.3",
     "chart.piecelabel.js": "0.15.0",
     "core-js": "3.6.4",
