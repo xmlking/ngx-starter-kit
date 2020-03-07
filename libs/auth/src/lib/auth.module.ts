@@ -15,7 +15,7 @@ import { RouterModule } from '@angular/router';
 import { environment } from '@env/environment';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { NgxsModule, Store } from '@ngxs/store';
-import { JwksValidationHandler, OAuthModule, OAuthService, ValidationHandler } from 'angular-oauth2-oidc';
+import { NullValidationHandler, OAuthModule, OAuthService, ValidationHandler } from 'angular-oauth2-oidc';
 import { AuthGuard } from './auth.guard';
 import { AuthHandler } from './auth.handler';
 import { AuthService } from './auth.service';
@@ -57,9 +57,8 @@ const matModules = [
     ROPCService,
     AuthService,
     AuthGuard,
-    { provide: ValidationHandler, useClass: JwksValidationHandler },
     // NOTE: for CodeFlow use NullValidationHandler
-    // { provide: ValidationHandler, useClass: NullValidationHandler },
+    { provide: ValidationHandler, useClass: NullValidationHandler },
   ],
 })
 export class AuthModule {
