@@ -1,6 +1,5 @@
+import { Injectable } from '@angular/core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
-import { Inject } from '@angular/core';
-import { WINDOW } from '../services/window.token';
 
 export interface BeforeInstallPromptEvent extends Event {
   readonly platforms: string[]; // ["web", "android", "windows"]
@@ -42,8 +41,11 @@ export interface AppStateModel {
   defaults: {
     online: window.navigator.onLine,
     installPrompt: null,
-    installed: false,
-  },
+    installed: false
+  }
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class AppState {
   constructor(/*@Inject(WINDOW) private readonly window: Window*/) {}
@@ -66,21 +68,21 @@ export class AppState {
   @Action(SetInstallPrompt)
   setInstallPrompt({ patchState }: StateContext<AppStateModel>, { payload }: SetInstallPrompt) {
     patchState({
-      installPrompt: payload,
+      installPrompt: payload
     });
   }
 
   @Action(ChangeInstallStatus)
   changeInstallStatus({ patchState }: StateContext<AppStateModel>, { payload }: ChangeInstallStatus) {
     patchState({
-      installed: payload,
+      installed: payload
     });
   }
 
   @Action(ChangeOnlineStatus)
   changeOnlineStatus({ patchState }: StateContext<AppStateModel>) {
     patchState({
-      online: window.navigator.onLine,
+      online: window.navigator.onLine
     });
   }
 }

@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import {
   Action,
@@ -67,6 +68,9 @@ export class ChatBoxStateModel {
     activeUsersBots: [],
     loading: false
   }
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class ChatBoxState implements NgxsAfterBootstrap {
   constructor(

@@ -1,21 +1,25 @@
+import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import { Action, NgxsAfterBootstrap, Selector, State, StateContext } from '@ngxs/store';
-import { ImmutableContext, ImmutableSelector } from '@ngxs-labs/immer-adapter';
-import { append, patch, removeItem, updateItem } from '@ngxs/store/operators';
+import { removeItem } from '@ngxs/store/operators';
 import { tap } from 'rxjs/operators';
 import { AppNotification } from './app-notification.model';
-import { NotificationsService } from './notifications.service';
 import {
-  FetchNotifications,
   AddNotification,
   DeleteNotification,
-  MarkAsRead,
+  FetchNotifications,
   MarkAllAsRead,
+  MarkAsRead
 } from './notifications.actions';
+import { NotificationsService } from './notifications.service';
+import { Injectable } from '@angular/core';
 
 /** @dynamic */
 @State<AppNotification[]>({
   name: 'notifications',
-  defaults: [],
+  defaults: []
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class NotificationsState implements NgxsAfterBootstrap {
   constructor(private notificationsService: NotificationsService) {}

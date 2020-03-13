@@ -3,5 +3,8 @@
   "rules": {
     "directive-selector": [true, "attribute", ["svg", "ngx"], "camelCase"],
     "component-selector": [true, "element", ["svg", "ngx"], "kebab-case"]
+  },
+  "linterOptions": {
+    "exclude": ["!**/*"]
   }
 }
