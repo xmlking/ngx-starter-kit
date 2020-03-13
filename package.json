@@ -150,7 +150,7 @@
     "d3-selection-multi": "1.0.1",
     "date-fns": "2.10.0",
     "filepond": "4.12.2",
-    "filepond-plugin-file-encode": "2.1.4",
+    "filepond-plugin-file-encode": "2.1.5",
     "filepond-plugin-file-validate-size": "2.2.0",
     "filepond-plugin-file-validate-type": "1.2.4",
     "filepond-plugin-image-crop": "2.0.3",
