@@ -132,17 +132,6 @@
     rxjs "^6.0.0"
     source-map "^0.5.6"
 
-"@angular-devkit/core@7.3.8":
-  version "7.3.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-7.3.8.tgz#702b0944a69c71cce3a1492e0d62de18df22a993"
-  integrity sha512-3X9uzaZXFpm5o2TSzhD6wEOtVU32CgeytKjD1Scxj+uMMVo48SWLlKiFh312T+smI9ko7tOT8VqxglwYkWosgg==
-  dependencies:
-    ajv "6.9.1"
-    chokidar "2.0.4"
-    fast-json-stable-stringify "2.0.0"
-    rxjs "6.3.3"
-    source-map "0.7.3"
-
 "@angular-devkit/core@7.3.9", "@angular-devkit/core@^7.1.0":
   version "7.3.9"
   resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-7.3.9.tgz#bef2aaa0be7219c546fb99ea0ba9dd3a6dcd288a"
@@ -183,14 +172,6 @@
   dependencies:
     "@angular-devkit/core" "0.6.8"
     rxjs "^6.0.0"
-
-"@angular-devkit/schematics@7.3.8":
-  version "7.3.8"
-  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-7.3.8.tgz#70bfc7876f7924ff53ab9310a00b62f20acf2f5c"
-  integrity sha512-mvaKoORZIaW/h0VNZ3IQWP0qThRCZRX6869FNlzV0jlW0mhn07XbiIGHCGGSCDRxS7qJ0VbuIVnKXntF+iDeWw==
-  dependencies:
-    "@angular-devkit/core" "7.3.8"
-    rxjs "6.3.3"
 
 "@angular-devkit/schematics@9.0.3", "@angular-devkit/schematics@~9.0.1":
   version "9.0.3"
@@ -1784,13 +1765,13 @@
     socket.io "2.3.0"
     tslib "1.11.1"
 
-"@nestjs/schematics@6.9.4":
-  version "6.9.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-6.9.4.tgz#4624c35da771fbb9a346cbd77aebd747d9348fd9"
-  integrity sha512-tZoLDboqXQT+DcWUFTJyDsOIg9Qt6ilXYWWbrbbEPCP2+UKjfsqZPsEnG31DOj0IbovFS5g+Mbn3IanVsEcIsQ==
+"@nestjs/schematics@7.0.0":
+  version "7.0.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.0.0.tgz#7b48bdcd50dad430957b2c112d555a5147c2e60e"
+  integrity sha512-R7Yw7wbRk5FNLyeJhvnAys+6ZXymIQWD6vKHOMRbSlR5LV8Q2F0st0EVw/sMmBOtp0EYAwGiXjwNV4ye/znmHA==
   dependencies:
-    "@angular-devkit/core" "7.3.8"
-    "@angular-devkit/schematics" "7.3.8"
+    "@angular-devkit/core" "9.0.6"
+    "@angular-devkit/schematics" "9.0.6"
     fs-extra "8.1.0"
 
 "@nestjs/swagger@4.3.2":
