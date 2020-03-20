@@ -1,14 +1,21 @@
 # Ngx Starter Kit
 
-[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20WebApp/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+WebApp%22)
-[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20API/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+API%22)
-[![Codecov](https://codecov.io/gh/xmlking/ngx-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/xmlking/ngx-starter-kit)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 [![Semantic Release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
 [![Renovate dependency Status](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com/)
 [![MIT license](https://img.shields.io/badge/license-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Sourcegraph](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit/-/badge.svg)](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit?badge)
 
-<!-- [![Sourcegraph](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit/-/badge.svg)](https://sourcegraph.com/github.com/xmlking/ngx-starter-kit?badge) -->
+### Quality
+
+[![Codecov](https://codecov.io/gh/xmlking/ngx-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/xmlking/ngx-starter-kit)
+[![Total alerts](https://img.shields.io/lgtm/alerts/g/xmlking/ngx-starter-kit.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xmlking/ngx-starter-kit/alerts/)
+[![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/xmlking/ngx-starter-kit.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xmlking/ngx-starter-kit/context:javascript)
+
+### Build Status
+
+[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20WebApp/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+WebApp%22)
+[![Build Status](https://github.com/xmlking/ngx-starter-kit/workflows/Test%20on%20Push%20for%20API/badge.svg?branch=develop)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3A%22Test+on+Push+for+API%22)
 
 This project was generated using [Nx](https://nx.dev).
 
