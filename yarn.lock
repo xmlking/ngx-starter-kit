@@ -16205,8 +16205,9 @@ request@^2.83.0, request@^2.88.0:
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
-"request@github:cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16":
+request@cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16:
   version "2.88.1"
+  uid b5af0d1fa47eec97ba980cde90a13e69a2afcd16
   resolved "https://codeload.github.com/cypress-io/request/tar.gz/b5af0d1fa47eec97ba980cde90a13e69a2afcd16"
   dependencies:
     aws-sign2 "~0.7.0"
@@ -18612,10 +18613,10 @@ ts-nkeys@^1.0.8:
   dependencies:
     tweetnacl "^1.0.3"
 
-ts-node@8.7.0:
-  version "8.7.0"
-  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.7.0.tgz#266186947596bef9f3a034687595b30e31b20976"
-  integrity sha512-s659CsHrsxaRVDEleuOkGvbsA0rWHtszUNEt1r0CgAFN5ZZTQtDzpsluS7W5pOGJIa1xZE8R/zK4dEs+ldFezg==
+ts-node@8.8.1:
+  version "8.8.1"
+  resolved "https://registry.yarnpkg.com/ts-node/-/ts-node-8.8.1.tgz#7c4d3e9ed33aa703b64b28d7f9d194768be5064d"
+  integrity sha512-10DE9ONho06QORKAaCBpPiFCdW+tZJuY/84tyypGtl6r+/C7Asq0dhqbRZURuUlLQtZxxDvT8eoj8cGW0ha6Bg==
   dependencies:
     arg "^4.1.0"
     diff "^4.0.1"
