@@ -1697,20 +1697,20 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.3.tgz#89258b411b2f1a1704ba0289473f2ed8e32423db"
-  integrity sha512-ENfgocjBC8aWAvvjjCq/JFN94CIVX4FrXr12r66UEcw/GtCW/qAc/BVWGX//7MRtk95me82hBEQQx2kovL91bA==
+"@nestjs/common@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.0.5.tgz#244069292d4bbdc338a6700e86e7775f2168260d"
+  integrity sha512-9h7FDyg3rSjztTe9mLhvdIeGpqoNf2uwpJIeyizRcQFAdQfJWiPsV2mRkt/VYdit+nrv6C1ADtvQD47qqUuj6A==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
     tslib "1.11.1"
     uuid "7.0.2"
 
-"@nestjs/core@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.0.3.tgz#4e2e653d640b9dff4d0574cb7147f12c1322bbd8"
-  integrity sha512-uIIcM+a2IoV2aqHHMtnDGOy81CMNNNm3xpJIFLjS74OqCGpE4skqiFIZRsB1cIeip1EtVh7IzU0xXo0JrIZEQA==
+"@nestjs/core@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.0.5.tgz#6fc07527f7b1434cac088322c231539c8a41a416"
+  integrity sha512-imIkdGOeraURKLGAGB5UT/9Lz5Hvujn6wJ0ONEXb7MvbmkbmIe1K4Mj8hngQc9/PXMssslVE7tbFLNsiG2Rubg==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.7"
@@ -1755,10 +1755,10 @@
     multer "1.4.2"
     tslib "1.10.0"
 
-"@nestjs/platform-express@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.3.tgz#319a672343f389d04a2e5e975d2f159d96e03b5e"
-  integrity sha512-epWK3NcywQclcWF/JrCdq4H1PH7v2h/HVOH2GtYEoKLr5Y4KrTcgaeyZfIzh6t+Vm8w8/N4Jqk2mIUltGtu2ug==
+"@nestjs/platform-express@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.0.5.tgz#0c84487b0daa006b4062e60a404227cb911806a3"
+  integrity sha512-8o6+mTuIuOMJTwftS9y/bcFmnyp5uQMMZWSE7tjxdtPuQiZl7v0P00NdsUeBpwUmATJax07KH1zuSrcok57+KA==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -1777,10 +1777,10 @@
     path-to-regexp "3.2.0"
     tslib "1.10.0"
 
-"@nestjs/platform-socket.io@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.0.3.tgz#c9353cd4a75a4d2d8822f4800d1172380ddb5838"
-  integrity sha512-fQoZ6BSXsVEmu/3E05ib71TO40oOgW4ZLV01lgB6vbFTRFd3faHqJ7tr7VEII4DhqwwHhp/m5QqUvGOfQLfxiA==
+"@nestjs/platform-socket.io@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.0.5.tgz#7812c20b42103abebcd0e7685e072956867ff122"
+  integrity sha512-B2f86Xma5D3bqXQStg1eEYkPMQh066bgTogbH5HjY3mnXII3yW79WzBW/NQ/dpvvOTge5YwzfPM9GqDRHL/okg==
   dependencies:
     socket.io "2.3.0"
     tslib "1.11.1"
@@ -1824,10 +1824,10 @@
     redis "2.8.0"
     typeorm "0.2.22"
 
-"@nestjs/testing@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.3.tgz#a53a8e56e59d6d5036ab427cd35db305abb0b9a4"
-  integrity sha512-2LTSigaiCO1AiZcJtdRlElCOhO3+AX4hWfgly46sDhJftx57E0AX3HHnrESwuMZAONYzp1QEXjEi5bpY24j2rw==
+"@nestjs/testing@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.0.5.tgz#b6d6ee4de31669e87e231d18b73f2f76e358719c"
+  integrity sha512-pk30gGvgcymftm6PJELTSpOd9txYl11YgTwU1WOXjTtHxzYQscIMU2+eUi5JOZlKcC9/tVMZ5K/G6IxS9UWDPQ==
   dependencies:
     optional "0.1.4"
     tslib "1.11.1"
@@ -1846,10 +1846,10 @@
   dependencies:
     uuid "7.0.2"
 
-"@nestjs/websockets@7.0.3":
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-7.0.3.tgz#5879176685e7bfb925a22969474b8dde2624007f"
-  integrity sha512-i3JGbLI6th4WI98GP66/wpaaYRa+EScGUq7zUh0z08TgflUnM5bfspVCHQNQcQbk/bz9WqiMhMRfpI4FlZMxNg==
+"@nestjs/websockets@7.0.5":
+  version "7.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-7.0.5.tgz#ec56e1a5a7bfb5abb66710f2eb5d34c016cc4c1c"
+  integrity sha512-3vNPFmq5HsZlIHHPx47IaJ/QaBfLsS8fS7f+jTff+d2+QJ5UYi/1k4pqy5Gv+/CEvHAPIxdPKQhVzLNpxwGHgw==
   dependencies:
     iterare "1.2.0"
     tslib "1.11.1"
@@ -16205,8 +16205,9 @@ request@^2.83.0, request@^2.88.0:
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
-"request@github:cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16":
+request@cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16:
   version "2.88.1"
+  uid b5af0d1fa47eec97ba980cde90a13e69a2afcd16
   resolved "https://codeload.github.com/cypress-io/request/tar.gz/b5af0d1fa47eec97ba980cde90a13e69a2afcd16"
   dependencies:
     aws-sign2 "~0.7.0"
