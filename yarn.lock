@@ -16205,8 +16205,9 @@ request@^2.83.0, request@^2.88.0:
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
-"request@github:cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16":
+request@cypress-io/request#b5af0d1fa47eec97ba980cde90a13e69a2afcd16:
   version "2.88.1"
+  uid b5af0d1fa47eec97ba980cde90a13e69a2afcd16
   resolved "https://codeload.github.com/cypress-io/request/tar.gz/b5af0d1fa47eec97ba980cde90a13e69a2afcd16"
   dependencies:
     aws-sign2 "~0.7.0"
@@ -17111,7 +17112,16 @@ smart-buffer@^4.1.0:
   resolved "https://registry.yarnpkg.com/smart-buffer/-/smart-buffer-4.1.0.tgz#91605c25d91652f4661ea69ccf45f1b331ca21ba"
   integrity sha512-iVICrxOzCynf/SNaBQCw34eM9jROU/s5rzIhpOvzhzuYHfJR/DhZfDkXiZSgKXfgv26HT3Yni3AV/DGw0cGnnw==
 
-smooth-scrollbar@8.5.1, smooth-scrollbar@>=8.5.1:
+smooth-scrollbar@8.5.2:
+  version "8.5.2"
+  resolved "https://registry.yarnpkg.com/smooth-scrollbar/-/smooth-scrollbar-8.5.2.tgz#e61a3ec2f8ae63449adfb1f5f970c46ddd546e85"
+  integrity sha512-8Uxb40zP5W5Vrd6AaHmn8OzCrJ1+EzSNKQXtTqby1m23x6RC8d1tUP+rlH4oJisPO2cgU+Jxjp0HLGqbOJc9BQ==
+  dependencies:
+    core-js "^2.6.9"
+    lodash-es "^4.17.15"
+    tslib "^1.10.0"
+
+smooth-scrollbar@>=8.5.1:
   version "8.5.1"
   resolved "https://registry.yarnpkg.com/smooth-scrollbar/-/smooth-scrollbar-8.5.1.tgz#826b567deaf6257c17d69e1dbddf72923f4b7c44"
   integrity sha512-SSL3j6aMq59hCbtwYOnY37qMLAVCBM0MfCuvpaLuhe8a5BuM5GnmBHuGSuxU7zLbF2pOkiyX9SkNBlrrptCHcA==
