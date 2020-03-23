@@ -221,7 +221,7 @@
     "jest-preset-angular": "8.1.2",
     "lint-staged": "10.0.8",
     "lite-server": "2.5.4",
-    "prettier": "2.0.1",
+    "prettier": "2.0.2",
     "semantic-release": "17.0.4",
     "ts-jest": "25.2.1",
     "webpack-bundle-analyzer": "3.6.1"
