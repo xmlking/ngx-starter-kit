@@ -17,10 +17,10 @@ jobs:
       - name: Build the app
         uses: actions/checkout@v2
 
-      - name: Use Node.js 12.x
+      - name: Use Node.js 13.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 13.x
 
       - name: Install
         run: CYPRESS_INSTALL_BINARY=0 yarn install

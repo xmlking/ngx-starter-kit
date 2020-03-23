@@ -15,10 +15,10 @@ jobs:
     name: Build and Deploy/Publish
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node.js 12.x
+      - name: Set up Node.js 13.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 13.x
           # registry-url: <registry url>
         id: node
       - name: Setup Tools

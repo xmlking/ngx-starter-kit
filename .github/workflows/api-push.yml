@@ -2,16 +2,16 @@ name: Test on Push for API
 on:
   push:
     paths:
-      - "apps/api/*"
+      - 'apps/api/*'
 jobs:
   lint-test:
     name: Lint and Test
     runs-on: ubuntu-latest
     steps:
-      - name: Set up Node.js 12.x
+      - name: Set up Node.js 13.x
         uses: actions/setup-node@v1
         with:
-          node-version: 12.x
+          node-version: 13.x
           # registry-url: <registry url>
         id: node
       - name: Setup Tools
@@ -21,17 +21,20 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Check out Code
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn cache dir)"
       - name: Cache node modules
-        id: cache
-        uses: actions/cache@preview
+        id: yarn-cache
+        uses: actions/cache@v1
         with:
-          path: ~/.cache/yarn
-          key: ${{ runner.os }}-yarn-${{ hashFiles(format('{0}{1}', github.workspace, '/yarn.lock')) }}
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             ${{ runner.os }}-yarn-
       - name: Install Dependencies
-        if: steps.cache.outputs.cache-hit != 'true'
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
