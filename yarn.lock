@@ -3284,10 +3284,12 @@ angular-in-memory-web-api@0.10.0:
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.10.0.tgz#6b56a9b355ce073bca0daf2e097742647bd9e2bb"
   integrity sha512-GzY4lHPR8suREYfgiYiJSBrgq0bdCiFw/LuqW5IsOQfRx98AvS69A5Ehz12oMLy9ABzoGpqmNC5fcFtClDAPqQ==
 
-angular-oauth2-oidc@9.0.1:
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.0.1.tgz#8e51bb7e42c680ae37a09e2da86f5b04e5193bb4"
-  integrity sha512-ZDGdlWo6BPWkNHOqf4mFQLm4fUDIt5UNUsdx+brELjpsPeSnUsfKnsBh+vdKXHFyBv24Agzz+rsQE85EwhTKrA==
+angular-oauth2-oidc@9.1.0:
+  version "9.1.0"
+  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.1.0.tgz#86eb87758c3d2a5470d330b7f6ee6d6cebda053c"
+  integrity sha512-WPsLtJoYCoEiVlBlMiHQlRixs7pfNSbeN1uddj4bS/bLX2PZvZxzJyuky7jexz1TQ5TbkszyOb2L4Nm8XFUzCg==
+  dependencies:
+    js-sha256 "^0.9.0"
 
 ansi-align@^2.0.0:
   version "2.0.0"
@@ -11100,7 +11102,7 @@ js-levenshtein@^1.1.3:
   resolved "https://registry.yarnpkg.com/js-levenshtein/-/js-levenshtein-1.1.6.tgz#c6cee58eb3550372df8deb85fad5ce66ce01d59d"
   integrity sha512-X2BB11YZtrRqY4EnQcLX5Rh373zbK4alC1FW7D7MBhL2gtcC17cTnr6DmfHZeS0s2rTHjUTMMHfG7gO8SSdw+g==
 
-js-sha256@0.9.0:
+js-sha256@0.9.0, js-sha256@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/js-sha256/-/js-sha256-0.9.0.tgz#0b89ac166583e91ef9123644bd3c5334ce9d0966"
   integrity sha512-sga3MHh9sgQN2+pJ9VYZ+1LPwXOxuBJBA5nrR5/ofPfuiJBE2hnjsaN8se8JznOmGLN2p49Pe5U/ttafcs/apA==
