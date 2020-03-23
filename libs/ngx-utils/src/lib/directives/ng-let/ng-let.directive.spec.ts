@@ -5,7 +5,6 @@ import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { NgLetDirective } from './ng-let.directive';
 import { NgLetModule } from './ng-let.module';
-import { MatPaginator } from '@angular/material';
 
 @Component({
   template: '',
@@ -24,7 +23,7 @@ class TestComponent {
   imports: [NgLetModule, CommonModule],
   exports: [NgLetModule, TestComponent],
 })
-class TestModule {}
+class TestModule { }
 
 describe('ngLet directive', () => {
   let fixture: ComponentFixture<TestComponent>;

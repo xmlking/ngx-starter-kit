@@ -4,7 +4,7 @@ import { DateFnsModule } from './date-fns.module';
 import { FormatTimeInWordsPipe } from './format-time-in-words.pipe';
 
 class MockChangeDetector {
-  markForCheck(): void {}
+  markForCheck(): void { }
 }
 
 function drinkFlavor(flavor) {
@@ -15,7 +15,7 @@ function drinkFlavor(flavor) {
 
 describe('FormatTimeInWordsPipe', () => {
   const fakeChangeDetectorRef = {
-    markForCheck: () => {}
+    markForCheck: () => { }
   };
 
   beforeEach(() => {
@@ -52,10 +52,10 @@ describe('FormatTimeInWordsPipe', () => {
     expect(pipe.transform(yesterday)).toBe('1 day ago');
   }));
 
-  it('should return `about 24 years ago` when date is 1995-12-17T03:24:00', inject(
+  it('should return `over 24 years ago` when date is 1995-12-17T03:24:00', inject(
     [FormatTimeInWordsPipe],
     (pipe: FormatTimeInWordsPipe) => {
-      expect(pipe.transform('1995-12-17T03:24:00')).toBe('about 24 years ago');
+      expect(pipe.transform('1995-12-17T03:24:00')).toBe('over 24 years ago');
     }
   ));
 

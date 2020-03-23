@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { RouterLinkMatchDirective } from './router-link-match.directive';
 import { RouterLinkMatchModule } from './router-link-match.module';
-import { MatPaginator } from '@angular/material';
 
 @Component({
   template: `
@@ -18,7 +17,7 @@ import { MatPaginator } from '@angular/material';
   `,
   selector: 'test-1',
 })
-class Test1Component {}
+class Test1Component { }
 
 @Component({
   template: `
@@ -32,7 +31,7 @@ class Test1Component {}
   `,
   selector: 'test-2',
 })
-class Test2Component {}
+class Test2Component { }
 
 @Component({
   template: `
@@ -47,7 +46,7 @@ class Test2Component {}
   `,
   selector: 'test-3',
 })
-class Test3Component {}
+class Test3Component { }
 
 @Component({
   template: `
@@ -71,7 +70,7 @@ class Test4Component {
     <router-outlet></router-outlet><test-3></test-3><test-4></test-4>
   `,
 })
-class RootComponent {}
+class RootComponent { }
 
 function advance(fixture: ComponentFixture<any>): void {
   tick();
