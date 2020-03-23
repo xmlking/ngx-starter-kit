@@ -151,7 +151,7 @@
     "date-fns": "2.11.0",
     "filepond": "4.13.0",
     "filepond-plugin-file-encode": "2.1.5",
-    "filepond-plugin-file-validate-size": "2.2.0",
+    "filepond-plugin-file-validate-size": "2.2.1",
     "filepond-plugin-file-validate-type": "1.2.5",
     "filepond-plugin-image-crop": "2.0.3",
     "filepond-plugin-image-exif-orientation": "1.0.6",
