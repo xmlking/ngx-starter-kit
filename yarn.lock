@@ -11340,10 +11340,10 @@ karma-source-map-support@1.4.0:
   dependencies:
     source-map-support "^0.5.5"
 
-keycloak-js@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/keycloak-js/-/keycloak-js-9.0.0.tgz#a8913f929c6e346e3abf670bab2399acbd513118"
-  integrity sha512-YvxPWKScIrSWCdxfuibTN0HauscsnKJBFhjXk7WAHmcxuEMyR1wRmSjwfxErWlHknJPLNDON5yrK/FDv0CiXlw==
+keycloak-js@9.0.2:
+  version "9.0.2"
+  resolved "https://registry.yarnpkg.com/keycloak-js/-/keycloak-js-9.0.2.tgz#c8c9721b43b7401b9ac2384afc84a07e8e29095c"
+  integrity sha512-1QKNYw1+wHGrbjiK2zxJzG5krq4VBhsQazCQOe1958ODWIwoUo4wLu9wgkBPwMtkl3y3osQnVSeCpYdpBLtq+A==
   dependencies:
     base64-js "1.3.1"
     js-sha256 "0.9.0"
