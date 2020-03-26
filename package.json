@@ -186,7 +186,7 @@
     "@nrwl/workspace": "9.1.2",
     "@types/google.analytics": "0.0.40",
     "@types/jest": "25.1.4",
-    "@types/jquery": "3.3.33",
+    "@types/jquery": "3.3.34",
     "@types/node": "^13.9.3",
     "@types/socket.io-client": "1.4.32",
     "codecov": "3.6.5",
