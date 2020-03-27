@@ -1354,10 +1354,10 @@
     is-absolute "^1.0.0"
     is-negated-glob "^1.0.0"
 
-"@fortawesome/angular-fontawesome@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.6.0.tgz#6d72a9379707cf29543c0b7056b08d23a48c72b4"
-  integrity sha512-FcWwnEAshaLI8o1b08935OuXo8K3jSUInDDtkRwO+GtZy3VspOujpiOjxDU/gw6hNUEGsFDppqnRl2Prh6OWBw==
+"@fortawesome/angular-fontawesome@0.6.1":
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/@fortawesome/angular-fontawesome/-/angular-fontawesome-0.6.1.tgz#1ebe5db16bfdd4be44bdde61f78c760eb4e219fa"
+  integrity sha512-ARQjtRuT+ZskzJDJKPwuiGO3+7nS0iyNLU/uHVJHfG4LwGJxwVIGldwg1SU957sra0Z0OtWEajHMhiS4vB9LwQ==
 
 "@fortawesome/fontawesome-common-types@^0.2.28":
   version "0.2.28"
