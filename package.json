@@ -139,8 +139,7 @@
     "@ngxs/storage-plugin": "3.6.2",
     "@ngxs/store": "3.6.2",
     "@xmlking/api-ai-javascript": "2.0.0-beta.22",
-    "@xmlking/ngx-knob": "1.0.0",
-    "@xmlking/ngx-quicklink": "0.0.11",
+    "@xmlking/ngx-knob": "1.0.1",
     "angular-in-memory-web-api": "0.10.0",
     "angular-oauth2-oidc": "9.1.0",
     "chart.js": "2.9.3",
@@ -167,6 +166,7 @@
     "ngx-page-scroll": "7.0.1",
     "ngx-page-scroll-core": "7.0.1",
     "ngx-perfect-scrollbar": "9.0.0",
+    "ngx-quicklink": "^0.2.1",
     "rxjs": "6.5.4",
     "screenfull": "5.0.2",
     "smooth-scrollbar": "8.5.2",
@@ -228,6 +228,7 @@
   },
   "resolutions": {
     "d3": "4.13.0",
+    "d3-selection": "1.3.0",
     "immer": "5.3.6"
   }
 }
