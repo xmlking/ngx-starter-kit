@@ -139,7 +139,7 @@
     "@ngxs/storage-plugin": "3.6.2",
     "@ngxs/store": "3.6.2",
     "@xmlking/api-ai-javascript": "2.0.0-beta.22",
-    "@xmlking/ngx-knob": "0.3.0",
+    "@xmlking/ngx-knob": "1.0.1",
     "@xmlking/ngx-quicklink": "0.0.11",
     "angular-in-memory-web-api": "0.10.0",
     "angular-oauth2-oidc": "9.1.0",
