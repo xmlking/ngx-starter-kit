@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
   selector: 'ngx-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   crumbs: ReadonlyArray<Crumb> = [{ name: 'Dashboard', link: '/dashboard' }, { name: 'Profile' }];
@@ -25,7 +25,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   constructor(private snackBar: MatSnackBar) {}
 
   ngOnInit() {
-    this.error$.subscribe(err => this.snackBar.open(`Profile Error: ${err}`, '', { duration: 3000 }));
+    this.error$.subscribe((err) => this.snackBar.open(`Profile Error: ${err}`, '', { duration: 3000 }));
   }
 
   ngOnDestroy() {}

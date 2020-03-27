@@ -5,8 +5,7 @@ describe('GoogleAnalyticsService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: GoogleAnalyticsService =
-      TestBed.inject(GoogleAnalyticsService);
+    const service: GoogleAnalyticsService = TestBed.inject(GoogleAnalyticsService);
     expect(service).toBeTruthy();
   });
 });

@@ -50,15 +50,15 @@ export function noop() {
     NavigatorModule.forRoot(defaultMenu),
     // NOTE: NGXS: If you have feature modules they need to be imported after the root module.
     NgxsModule.forRoot([MenuState, PreferenceState, ProfileState, AppState], {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
     }),
     NgxsStoragePluginModule.forRoot({
       // FIXME:  https://github.com/ngxs/store/issues/902
-      key: ['preference', 'app.installed', 'auth.isLoggedIn']
+      key: ['preference', 'app.installed', 'auth.isLoggedIn'],
     }),
     NgxsFormPluginModule.forRoot(),
     NgxsWebsocketPluginModule.forRoot({
-      url: environment.WS_EVENT_BUS_URL
+      url: environment.WS_EVENT_BUS_URL,
     }),
     NgxsRouterPluginModule.forRoot(),
     AuthModule.forRoot(),
@@ -75,33 +75,33 @@ export function noop() {
     //   postLogoutRedirectUri: environment.baseUrl + 'home',
     // }),
     FormlyModule.forRoot(),
-    environment.plugins
+    environment.plugins,
   ],
   providers: [
     GoogleAnalyticsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: APP_INITIALIZER,
       useFactory: appConfigInitializerFn,
       deps: [AppConfigService],
-      multi: true
+      multi: true,
     },
     {
       provide: APP_INITIALIZER,
       useFactory: noop,
       deps: [EventBusHandler, RouteHandler],
-      multi: true
+      multi: true,
     },
     {
       provide: RouterStateSerializer,
-      useClass: CustomRouterStateSerializer
+      useClass: CustomRouterStateSerializer,
     },
-    { provide: WINDOW, useFactory: _window }
-  ]
+    { provide: WINDOW, useFactory: _window },
+  ],
 })
 export class CoreModule {
   constructor(

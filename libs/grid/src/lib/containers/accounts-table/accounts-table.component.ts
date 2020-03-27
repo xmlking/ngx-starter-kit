@@ -18,13 +18,13 @@ import { AccountService } from '../../services/account.service';
 @Component({
   selector: 'ngx-accounts-table',
   templateUrl: '../../../../../shared/src/lib/containers/entity/entity.component.html',
-  styleUrls: ['../../../../../shared/src/lib/containers/entity/entity.component.scss']
+  styleUrls: ['../../../../../shared/src/lib/containers/entity/entity.component.scss'],
 })
 export class AccountsTableComponent extends EntitiesComponent<Account, AccountService> {
   crumbs: ReadonlyArray<Crumb> = [
     { name: 'Dashboard', link: '/dashboard' },
     { name: 'Grid', link: '/dashboard/grid' },
-    { name: 'CRUD Table' }
+    { name: 'CRUD Table' },
   ];
 
   // readonly columns = [
@@ -35,19 +35,19 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
   // ] as EntityColumnDef<Account>[];
   readonly columns = [
     // prettier-ignore
-    new EntityColumnDef<Account>({ property: 'userId',  header: 'No.',    displayFn: (entity) => `${entity.id}` }),
+    new EntityColumnDef<Account>({ property: 'userId', header: 'No.', displayFn: (entity) => `${entity.id}` }),
     // prettier-ignore
     // tslint:disable:max-line-length
-    new EntityColumnDef<Account>({ property: 'Name',    header: 'Name',   displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
+    new EntityColumnDef<Account>({ property: 'Name', header: 'Name', displayFn: (entity) => `${entity.first_name} ${entity.last_name}` }),
     new EntityColumnDef<Account>({ property: 'gender', header: 'Gender' }),
     // prettier-ignore
-    new EntityColumnDef<Account>({ property: 'dob',     header: 'DoB',    displayFn: (entity) => `${format(this.stringToDate(entity.dob), 'MMMM dd, yyyy')}` }),
-    new EntityColumnDef<Account>({ property: 'city', header: 'City', displayFn: entity => `${entity.address.city}` }),
+    new EntityColumnDef<Account>({ property: 'dob', header: 'DoB', displayFn: (entity) => `${format(this.stringToDate(entity.dob), 'MMMM dd, yyyy')}` }),
+    new EntityColumnDef<Account>({ property: 'city', header: 'City', displayFn: (entity) => `${entity.address.city}` }),
     new EntityColumnDef<Account>({
       property: 'state',
       header: 'State',
-      displayFn: entity => `${entity.address.state}`
-    })
+      displayFn: (entity) => `${entity.address.state}`,
+    }),
   ] as EntityColumnDef<Account>[];
 
   // optional
@@ -70,13 +70,13 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
   // optional
   delete(item: Account) {
     return this.confirmService.confirm('Confirm', `Delete ${item.first_name} ${item.last_name}?`).pipe(
-      filter(confirmed => confirmed === true),
-      mergeMap(_ => super.delete(item)),
-      tap(_ => {
+      filter((confirmed) => confirmed === true),
+      mergeMap((_) => super.delete(item)),
+      tap((_) => {
         this.snack.open('Member Deleted!', 'OK', { duration: 5000 });
         this.store.dispatch(new Navigate([`/dashboard/grid/crud-table`]));
       }),
-      catchError(error => {
+      catchError((error) => {
         this.snack.open(error, 'OK', { duration: 10000 });
         return throwError('Ignore Me!');
       })
@@ -108,7 +108,7 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
    *  if you want different implantation (e.g., add-new-line instead of popup, inline edit)
    *  make a copy of entity.component.html as <entity>.component.html and implement your own add/edit logic.
    */
-  openPopUp(entity: Account) {
+  openPopUp(entity?: Account) {
     let isNew = false;
     let id;
     if (!entity) {
@@ -122,22 +122,22 @@ export class AccountsTableComponent extends EntitiesComponent<Account, AccountSe
     const dialogRef = this.dialog.open(this.formRef, {
       width: '720px',
       disableClose: true,
-      data: { title, payload: entity }
+      data: { title, payload: entity },
     });
 
     dialogRef
       .afterClosed()
       .pipe(
-        filter(res => res !== false),
+        filter((res) => res !== false),
         // tap(res => console.log(res)),
         concatMap((res: Account) => super.updateOrCreate(res, id))
       )
       .subscribe(
-        _ => {
+        (_) => {
           this.snack.open(isNew ? 'Member Created!' : 'Member Updated!', 'OK', { duration: 5000 });
           this.store.dispatch(new Navigate([`/dashboard/grid/crud-table`]));
         },
-        error => this.snack.open(error, 'OK', { duration: 10000 })
+        (error) => this.snack.open(error, 'OK', { duration: 10000 })
       );
   }
 }

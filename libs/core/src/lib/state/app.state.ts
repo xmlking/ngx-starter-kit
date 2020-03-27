@@ -41,11 +41,11 @@ export interface AppStateModel {
   defaults: {
     online: window.navigator.onLine,
     installPrompt: null,
-    installed: false
-  }
+    installed: false,
+  },
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppState {
   constructor(/*@Inject(WINDOW) private readonly window: Window*/) {}
@@ -68,21 +68,21 @@ export class AppState {
   @Action(SetInstallPrompt)
   setInstallPrompt({ patchState }: StateContext<AppStateModel>, { payload }: SetInstallPrompt) {
     patchState({
-      installPrompt: payload
+      installPrompt: payload,
     });
   }
 
   @Action(ChangeInstallStatus)
   changeInstallStatus({ patchState }: StateContext<AppStateModel>, { payload }: ChangeInstallStatus) {
     patchState({
-      installed: payload
+      installed: payload,
     });
   }
 
   @Action(ChangeOnlineStatus)
   changeOnlineStatus({ patchState }: StateContext<AppStateModel>) {
     patchState({
-      online: window.navigator.onLine
+      online: window.navigator.onLine,
     });
   }
 }

@@ -15,6 +15,7 @@ import { ImageComparison } from './image-comparison';
   selector: 'ngx-image-comparison',
   templateUrl: './image-comparison.component.html',
   styleUrls: ['./image-comparison.component.scss'],
+  // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None,
 })
 export class ImageComparisonComponent implements AfterViewInit, OnInit {
@@ -26,7 +27,7 @@ export class ImageComparisonComponent implements AfterViewInit, OnInit {
   constructor(
     @Attribute('startPosition') public readonly startPosition: number,
     private hostElement: ElementRef,
-    private renderer: Renderer2,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit() {}

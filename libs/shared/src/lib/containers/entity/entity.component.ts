@@ -12,6 +12,7 @@ import { EntityFormComponent } from './entity-form.component';
 import { Entity, EntityColumnDef } from './entity.model';
 import { EntityService } from './entity.service';
 @Directive()
+// tslint:disable-next-line: directive-class-suffix
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
   implements OnInit, OnDestroy, AfterViewInit {
   dataSource = new MatTableDataSource<TEntity>([]);
@@ -55,10 +56,10 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
         .pipe(
           // tap(console.log),
           filter((sc: SelectionChange<TEntity>) => sc.added.length > 0),
-          filter(_ => this.selection.selected.length > this.maxSelectable),
+          filter((_) => this.selection.selected.length > this.maxSelectable),
           untilDestroy(this)
         )
-        .subscribe(_ => this.selection.deselect(this.selection.selected.shift()));
+        .subscribe((_) => this.selection.deselect(this.selection.selected.shift()));
     }
 
     // fromEvent(this.filterRef.nativeElement, 'keyup')
@@ -85,14 +86,14 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
   }
 
   delete(item: TEntity) {
-    return this.entityService.delete(item.id).pipe(concatMap(_ => this.update()));
+    return this.entityService.delete(item.id).pipe(concatMap((_) => this.update()));
   }
 
   updateOrCreate(entity: TEntity, id: number) {
     if (id) {
-      return this.entityService.put(id, entity).pipe(concatMap(_ => this.update()));
+      return this.entityService.put(id, entity).pipe(concatMap((_) => this.update()));
     } else {
-      return this.entityService.post(entity).pipe(concatMap(_ => this.update()));
+      return this.entityService.post(entity).pipe(concatMap((_) => this.update()));
     }
   }
 
@@ -105,7 +106,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   protected update() {
     return this.getData().pipe(
-      map(result => {
+      map((result) => {
         this.dataSource = new MatTableDataSource<TEntity>(result);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
@@ -117,7 +118,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
 
   /** Whether all filtered rows are selected. */
   isAllFilteredRowsSelected() {
-    return this.dataSource.filteredData.every(data => this.selection.isSelected(data));
+    return this.dataSource.filteredData.every((data) => this.selection.isSelected(data));
   }
 
   /** Whether the selection it totally matches the filtered rows. */
@@ -142,7 +143,7 @@ export abstract class EntitiesComponent<TEntity extends Entity, TService extends
     if (this.isMasterToggleChecked()) {
       this.selection.clear();
     } else {
-      this.dataSource.filteredData.forEach(data => this.selection.select(data));
+      this.dataSource.filteredData.forEach((data) => this.selection.select(data));
     }
   }
 

@@ -9,6 +9,6 @@ import { AppConfirmService } from './app-confirm.service';
 @NgModule({
   imports: [CommonModule, MatDialogModule, MatButtonModule, FlexLayoutModule],
   declarations: [AppConfirmComponent],
-  providers: [AppConfirmService]
+  providers: [AppConfirmService],
 })
-export class AppConfirmModule { }
+export class AppConfirmModule {}

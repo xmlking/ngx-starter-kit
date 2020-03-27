@@ -10,6 +10,7 @@ import { StyleManagerService } from './style-manager.service';
   templateUrl: './theme-picker.component.html',
   styleUrls: ['./theme-picker.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
+  // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None,
   // host: { 'aria-hidden': 'true' }
 })
@@ -27,7 +28,7 @@ export class ThemePickerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     // this.installTheme(this.store.selectSnapshot(PreferenceState.activeThemeName));
-    this.activeThemeName$.subscribe(themeName => {
+    this.activeThemeName$.subscribe((themeName) => {
       this.installTheme(themeName);
     });
   }

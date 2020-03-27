@@ -33,9 +33,6 @@ import { AccountsTableComponent } from './containers/accounts-table/accounts-tab
 import { AccountService } from './services/account.service';
 import { RandomAccountService } from './services/random-account.service';
 
-
-
-
 const matModules = [
   DragDropModule,
   MatButtonModule,
@@ -97,4 +94,4 @@ const matModules = [
   declarations: [AccountsTableComponent, AccountsGridListComponent, AccountDetailComponent, AccountEditComponent],
   providers: [AccountService, RandomAccountService],
 })
-export class GridModule { }
+export class GridModule {}

@@ -34,9 +34,6 @@ import { NotificationsComponent } from './containers/notifications/notifications
 import { OverviewComponent } from './containers/overview/overview.component';
 import { SubscriptionsComponent } from './containers/subscriptions/subscriptions.component';
 
-
-
-
 const matModules = [
   MatCardModule,
   MatButtonModule,
@@ -115,6 +112,6 @@ const matModules = [
     NotificationDetailComponent,
     NotificationEditComponent,
     AdminLayoutComponent,
-  ]
+  ],
 })
-export class AdminModule { }
+export class AdminModule {}

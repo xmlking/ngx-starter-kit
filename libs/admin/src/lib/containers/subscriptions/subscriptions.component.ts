@@ -38,7 +38,7 @@ export class SubscriptionsComponent extends EntitiesComponent<Subscription, Subs
     private store: Store,
     private dialog: MatDialog,
     private snack: MatSnackBar,
-    private confirmService: AppConfirmService,
+    private confirmService: AppConfirmService
   ) {
     super(subscriptionService);
   }
@@ -53,30 +53,34 @@ export class SubscriptionsComponent extends EntitiesComponent<Subscription, Subs
       new EntityColumnDef<Subscription>({
         property: 'createdAt',
         header: 'Created',
-        displayFn: entity => `${formatDistance(this.stringToDate(entity.createdAt), new Date(), { addSuffix: true })}`,
+        displayFn: (entity) =>
+          `${formatDistance(this.stringToDate(entity.createdAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<Subscription>({
         property: 'updatedAt',
         header: 'Updated',
-        displayFn: entity => `${formatDistance(this.stringToDate(entity.updatedAt), new Date(), { addSuffix: true })}`,
+        displayFn: (entity) =>
+          `${formatDistance(this.stringToDate(entity.updatedAt), new Date(), { addSuffix: true })}`,
       }),
       new EntityColumnDef<Subscription>({ property: 'actions', header: 'Actions', template: this.deleteTpl }),
     ] as EntityColumnDef<Subscription>[];
   }
 
+  // optional FIXME: remove
+  openPopUp(entity?: Subscription) {}
   // optional
   delete(item: Subscription) {
     return this.confirmService.confirm('Confirm', `Delete Sub(${item.id}) for ${item.username}?`).pipe(
-      filter(confirmed => confirmed === true),
-      mergeMap(_ => super.delete(item)),
-      tap(_ => {
+      filter((confirmed) => confirmed === true),
+      mergeMap((_) => super.delete(item)),
+      tap((_) => {
         this.snack.open('Subscription Deleted!', 'OK', { duration: 5000 });
         this.store.dispatch(new Navigate([`/admin/subscriptions`]));
       }),
-      catchError(error => {
+      catchError((error) => {
         this.snack.open(error, 'OK', { duration: 10000 });
         return throwError('Ignore Me!');
-      }),
+      })
     );
   }
 

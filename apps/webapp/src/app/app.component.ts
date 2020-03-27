@@ -1,11 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Meta } from '@angular/platform-browser';
 import { ServiceWorkerService } from '@ngx-starter-kit/core';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'ngx-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  // tslint:disable-next-line: use-component-view-encapsulation
   encapsulation: ViewEncapsulation.None,
 })
 export class AppComponent implements OnInit {

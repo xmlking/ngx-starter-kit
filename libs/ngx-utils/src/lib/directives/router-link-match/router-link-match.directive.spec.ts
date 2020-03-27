@@ -17,7 +17,7 @@ import { RouterLinkMatchModule } from './router-link-match.module';
   `,
   selector: 'test-1',
 })
-class Test1Component { }
+class Test1Component {}
 
 @Component({
   template: `
@@ -31,7 +31,7 @@ class Test1Component { }
   `,
   selector: 'test-2',
 })
-class Test2Component { }
+class Test2Component {}
 
 @Component({
   template: `
@@ -46,12 +46,10 @@ class Test2Component { }
   `,
   selector: 'test-3',
 })
-class Test3Component { }
+class Test3Component {}
 
 @Component({
-  template: `
-    <a [routerLinkMatch]="test4" class="origin-class">Test4</a>
-  `,
+  template: ` <a [routerLinkMatch]="test4" class="origin-class">Test4</a> `,
   selector: 'test-4',
 })
 class Test4Component {
@@ -66,11 +64,9 @@ class Test4Component {
 
 @Component({
   selector: 'root-cmp',
-  template: `
-    <router-outlet></router-outlet><test-3></test-3><test-4></test-4>
-  `,
+  template: ` <router-outlet></router-outlet><test-3></test-3><test-4></test-4> `,
 })
-class RootComponent { }
+class RootComponent {}
 
 function advance(fixture: ComponentFixture<any>): void {
   tick();
@@ -108,7 +104,7 @@ describe('RouterLinkMatchDirective', () => {
       const el = fixture.debugElement.query(By.directive(Test1Component));
       const aTag = el.query(By.css('a'));
       expect(aTag.nativeElement.classList.contains('test1-class')).toBe(true);
-    }),
+    })
   ));
 
   it('should add class to element including origin classes when route is match', fakeAsync(
@@ -121,7 +117,7 @@ describe('RouterLinkMatchDirective', () => {
       const aTag = el.query(By.css('a'));
       expect(aTag.nativeElement.classList.contains('test2-class')).toBe(true);
       expect(aTag.nativeElement.classList.contains('origin-class')).toBe(true);
-    }),
+    })
   ));
 
   it('should remove classes when url not match', fakeAsync(
@@ -139,7 +135,7 @@ describe('RouterLinkMatchDirective', () => {
 
       expect(aTag.nativeElement.classList.contains('test1-class')).toBe(false);
       expect(aTag.nativeElement.classList.contains('test2-class')).toBe(true);
-    }),
+    })
   ));
 
   it('should throw error when receive wrong type of value input', fakeAsync(
@@ -151,7 +147,7 @@ describe('RouterLinkMatchDirective', () => {
       const comp: Test4Component = el.componentInstance;
       comp.test4 = true;
       expect(() => fixture.detectChanges()).toThrowError();
-    }),
+    })
   ));
 
   it('should throw error when value of key in @Input is not non-empty string', fakeAsync(
@@ -164,7 +160,7 @@ describe('RouterLinkMatchDirective', () => {
       comp.test4 = { 'test-class': '' };
       expect(true).toBe(true);
       // expect(() => fixture.detectChanges()).toThrowError();
-    }),
+    })
   ));
 
   it('should not call update class when there are no change in routerLinkMatch input', fakeAsync(
@@ -180,6 +176,6 @@ describe('RouterLinkMatchDirective', () => {
       comp.other = false;
       fixture.detectChanges();
       expect(comp.active.ngOnChanges).not.toHaveBeenCalled();
-    }),
+    })
   ));
 });

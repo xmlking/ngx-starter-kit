@@ -4,7 +4,7 @@ import { DateFnsModule } from './date-fns.module';
 import { FormatTimeInWordsPipe } from './format-time-in-words.pipe';
 
 class MockChangeDetector {
-  markForCheck(): void { }
+  markForCheck(): void {}
 }
 
 function drinkFlavor(flavor) {
@@ -15,13 +15,13 @@ function drinkFlavor(flavor) {
 
 describe('FormatTimeInWordsPipe', () => {
   const fakeChangeDetectorRef = {
-    markForCheck: () => { }
+    markForCheck: () => {},
   };
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       providers: [FormatTimeInWordsPipe, { provide: ChangeDetectorRef, useValue: fakeChangeDetectorRef }],
-      imports: [DateFnsModule]
+      imports: [DateFnsModule],
     });
   });
 

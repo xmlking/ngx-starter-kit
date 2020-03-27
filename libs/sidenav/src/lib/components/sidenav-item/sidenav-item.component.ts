@@ -5,7 +5,8 @@ import { MenuItem, MenuService } from '@ngx-starter-kit/navigator';
   selector: 'ngx-sidenav-item',
   templateUrl: './sidenav-item.component.html',
   styleUrls: ['./sidenav-item.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  // tslint:disable-next-line: use-component-view-encapsulation
+  encapsulation: ViewEncapsulation.None,
 })
 export class SidenavItemComponent implements OnInit {
   @Input()
@@ -42,7 +43,7 @@ export class SidenavItemComponent implements OnInit {
     if (item.children && item.children.length > 0 && this.menuService.isOpen(item)) {
       count += item.children.length;
 
-      item.children.forEach(subItem => {
+      item.children.forEach((subItem) => {
         count += this.getOpenSubItemsCount(subItem);
       });
     }

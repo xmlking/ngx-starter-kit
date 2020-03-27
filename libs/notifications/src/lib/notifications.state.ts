@@ -8,7 +8,7 @@ import {
   DeleteNotification,
   FetchNotifications,
   MarkAllAsRead,
-  MarkAsRead
+  MarkAsRead,
 } from './notifications.actions';
 import { NotificationsService } from './notifications.service';
 import { Injectable } from '@angular/core';
@@ -16,17 +16,17 @@ import { Injectable } from '@angular/core';
 /** @dynamic */
 @State<AppNotification[]>({
   name: 'notifications',
-  defaults: []
+  defaults: [],
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class NotificationsState implements NgxsAfterBootstrap {
   constructor(private notificationsService: NotificationsService) {}
 
   @Selector()
   static unReadCount(state: AppNotification[]) {
-    return state.filter(note => !note.read).length;
+    return state.filter((note) => !note.read).length;
   }
 
   ngxsAfterBootstrap(ctx: StateContext<AppNotification[]>) {
@@ -49,7 +49,7 @@ export class NotificationsState implements NgxsAfterBootstrap {
 
   @Action(FetchNotifications, { cancelUncompleted: true })
   fetchNotifications({ getState, patchState, setState }: StateContext<AppNotification[]>) {
-    return this.notificationsService.getAll().pipe(tap(res => setState(res)));
+    return this.notificationsService.getAll().pipe(tap((res) => setState(res)));
   }
 
   // @ImmutableContext()
@@ -64,14 +64,14 @@ export class NotificationsState implements NgxsAfterBootstrap {
 
   @Action(DeleteNotification)
   delete(ctx: StateContext<AppNotification[]>, { payload }: DeleteNotification) {
-    ctx.setState(removeItem<AppNotification>(note => note.id === payload.id));
+    ctx.setState(removeItem<AppNotification>((note) => note.id === payload.id));
   }
 
   @ImmutableContext()
   @Action(MarkAsRead)
   markAsRead(ctx: StateContext<AppNotification[]>, { payload }: MarkAsRead) {
     ctx.setState((state: AppNotification[]) => {
-      state[state.findIndex(note => note.id === payload.id)].read = true;
+      state[state.findIndex((note) => note.id === payload.id)].read = true;
       return state;
     });
   }
@@ -80,7 +80,7 @@ export class NotificationsState implements NgxsAfterBootstrap {
   @Action(MarkAllAsRead)
   markAllAsRead(ctx: StateContext<AppNotification[]>) {
     ctx.setState((state: AppNotification[]) => {
-      state.forEach(item => {
+      state.forEach((item) => {
         item.read = true;
       });
       return state;

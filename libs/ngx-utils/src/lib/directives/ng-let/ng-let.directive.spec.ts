@@ -23,7 +23,7 @@ class TestComponent {
   imports: [NgLetModule, CommonModule],
   exports: [NgLetModule, TestComponent],
 })
-class TestModule { }
+class TestModule {}
 
 describe('ngLet directive', () => {
   let fixture: ComponentFixture<TestComponent>;
