@@ -3039,12 +3039,10 @@
     ms "^2.1.1"
     request "^2.88.0"
 
-"@xmlking/ngx-knob@0.3.0":
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/@xmlking/ngx-knob/-/ngx-knob-0.3.0.tgz#68fd9cb236858985fac2c0320c58122dcf9bfc08"
-  integrity sha512-nCtk88sGu/MhMGbKsqwGZinT2vnXjbbALlvF3V7CWb1rQDtoszHJ9CSFmazKGQDsx96wJs9u6IsfLYzXsjKb1g==
-  dependencies:
-    tslib "^1.9.0"
+"@xmlking/ngx-knob@1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@xmlking/ngx-knob/-/ngx-knob-1.0.0.tgz#b5df8a7b47f29272b321431f477f628b2d8b92e2"
+  integrity sha512-Fm7ngXFW0SAWSqj556s8ByyatoAjpV1S/WsIuliznE7R7C8wjOsto1Ra3D8vtCUOJ9lvwHxkDwp82/k0K7irhA==
 
 "@xmlking/ngx-quicklink@0.0.11":
   version "0.0.11"
