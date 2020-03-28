@@ -1710,10 +1710,10 @@
     lodash "4.17.15"
     path-to-regexp "3.2.0"
 
-"@nestjs/terminus@7.0.0-pre.3":
-  version "7.0.0-pre.3"
-  resolved "https://registry.yarnpkg.com/@nestjs/terminus/-/terminus-7.0.0-pre.3.tgz#96e3eae1f16fe7946d5f3e31483c6adc2377cc66"
-  integrity sha512-NEJ3G4aXxb7/2dzwHmtQOuLUL/1Kb758zMRlvVg1/tUHu01qGtN8L6uOyq9Ouzm0RfwV+Fmzbne1M4eU9J/GCg==
+"@nestjs/terminus@7.0.0-pre.4":
+  version "7.0.0-pre.4"
+  resolved "https://registry.yarnpkg.com/@nestjs/terminus/-/terminus-7.0.0-pre.4.tgz#79338dc47ad6a8b22d30fcde8ccdf440f14a5d9d"
+  integrity sha512-B+TOyeKo1cgW1CQ33LvPQKyWFc7wlRsdQRWRix/MTn1XuYnc1pDu+lIyD7fbH6jHvx+yWLOvSqJHVxbGXiS9gg==
   dependencies:
     "@grpc/proto-loader" "^0.5.3"
     "@nestjs/platform-express" "^7.0.5"
