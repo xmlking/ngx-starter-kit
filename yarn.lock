@@ -3293,10 +3293,10 @@ angular-in-memory-web-api@0.10.0:
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.10.0.tgz#6b56a9b355ce073bca0daf2e097742647bd9e2bb"
   integrity sha512-GzY4lHPR8suREYfgiYiJSBrgq0bdCiFw/LuqW5IsOQfRx98AvS69A5Ehz12oMLy9ABzoGpqmNC5fcFtClDAPqQ==
 
-angular-oauth2-oidc@9.1.0:
-  version "9.1.0"
-  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.1.0.tgz#86eb87758c3d2a5470d330b7f6ee6d6cebda053c"
-  integrity sha512-WPsLtJoYCoEiVlBlMiHQlRixs7pfNSbeN1uddj4bS/bLX2PZvZxzJyuky7jexz1TQ5TbkszyOb2L4Nm8XFUzCg==
+angular-oauth2-oidc@9.2.0:
+  version "9.2.0"
+  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-9.2.0.tgz#392c8bac0df446cf6beb165e09b95279ca7e64e8"
+  integrity sha512-RrMLO2nQiwjz29bt/Lbp7QpPRZ6Lr6ssUzByRtoosKvJKXNUpMuQR4qAT5Whp6jWxOqpImLJS+VkLTgT1/SjKA==
   dependencies:
     js-sha256 "^0.9.0"
 
