@@ -1,14 +1,5 @@
 {
   "npmScope": "ngx-starter-kit",
-  // FIXME: Till Nx 10
-  "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/src/tasks-runner/tasks-runner-v2",
-      "options": {
-        "cacheableOperations": ["build", "test", "serve", "lint"]
-      }
-    }
-  },
   "implicitDependencies": {
     "angular.json": "*",
     "package.json": "*",
@@ -130,6 +121,14 @@
     },
     "models": {
       "tags": ["utils"]
+    }
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
     }
   }
 }
