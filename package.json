@@ -185,7 +185,7 @@
     "@nrwl/nest": "9.2.1",
     "@nrwl/workspace": "9.2.1",
     "@types/google.analytics": "0.0.40",
-    "@types/jest": "25.1.4",
+    "@types/jest": "25.1.5",
     "@types/jquery": "3.3.34",
     "@types/node": "^13.9.8",
     "@types/socket.io-client": "1.4.32",
