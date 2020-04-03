@@ -167,7 +167,7 @@
     "ngx-page-scroll-core": "7.0.1",
     "ngx-perfect-scrollbar": "9.0.0",
     "ngx-quicklink": "^0.2.1",
-    "rxjs": "6.5.4",
+    "rxjs": "6.5.5",
     "screenfull": "5.0.2",
     "smooth-scrollbar": "8.5.2",
     "socket.io-client": "2.3.0",
