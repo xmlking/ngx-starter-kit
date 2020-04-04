@@ -5085,10 +5085,10 @@ class-utils@^0.3.5:
     isobject "^3.0.0"
     static-extend "^0.1.1"
 
-class-validator@0.12.0-refactor.4:
-  version "0.12.0-refactor.4"
-  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.12.0-refactor.4.tgz#8e51e0c84422b3a3f2f55517c0ec2b9c41ef8df8"
-  integrity sha512-c9zvvaY6QbasRUH5535q7UvkZgYRTZRbnwSvkWIBkvwi2Ei1J+tw6dtJOm9MlqkN13kPr5o0bXnwu26mLVFYuw==
+class-validator@0.12.0-refactor.5:
+  version "0.12.0-refactor.5"
+  resolved "https://registry.yarnpkg.com/class-validator/-/class-validator-0.12.0-refactor.5.tgz#7eb4cf2d7707d88b9c445464af050c043f27ecb0"
+  integrity sha512-UXEL5V5ahgDFBYDA373C8JH9tCPn1OFRDBw7sckiwXXe30TPZ9j19J1tK/I4GLTvB/3BMVgQsm1SGrarWi0RWQ==
   dependencies:
     "@types/validator" "12.0.1"
     google-libphonenumber "^3.2.8"
