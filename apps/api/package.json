@@ -32,7 +32,7 @@
     "cli-ux": "4.9.3",
     "cls-hooked": "4.2.2",
     "helmet": "3.22.0",
-    "kubernetes-client": "8.3.6",
+    "kubernetes-client": "8.3.7",
     "nest-router": "1.0.9",
     "nodemailer": "6.4.6",
     "passport": "0.4.1",
