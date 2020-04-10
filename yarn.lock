@@ -1742,10 +1742,10 @@
     lodash "4.17.15"
     path-to-regexp "3.2.0"
 
-"@nestjs/terminus@7.0.0":
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/@nestjs/terminus/-/terminus-7.0.0.tgz#54019c4f3155a3ce61dfa47efce7bd51f37f20bc"
-  integrity sha512-XRt9tBrdNJgeg+ooC6j5C5vFC8FWD+GXXMqzJtfKJeaAJ8gZcUE6NkD01YCKBaT/W4Fej7s2HMy50f3dX/msGg==
+"@nestjs/terminus@7.0.1":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/terminus/-/terminus-7.0.1.tgz#7d748f8c18973d60023a8ab16760d0adab145b8b"
+  integrity sha512-OKg1QQDb+whHJM3Xt+3RRUPiyZSyD0qLacfldK0TXcFpKyexA0yyY3GKeaBNApf01FEzJgkK3ARCUoELnAfXDA==
   dependencies:
     check-disk-space "2.1.0"
     deprecate "^1.1.1"
