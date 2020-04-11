@@ -7,7 +7,7 @@
       "installMode": "prefetch",
       "resources": {
         "files": ["/favicon.ico", "/index.html", "/silent-refresh.html", "/*.css", "/*.js", "/manifest.webmanifest"],
-        "urls": ["https://cdnjs.cloudflare.com/ajax/libs/trianglify/1.2.0/trianglify.min.js"]
+        "urls": ["https://cdnjs.cloudflare.com/ajax/libs/trianglify/3.0.0/trianglify.min.js"]
       }
     },
     {

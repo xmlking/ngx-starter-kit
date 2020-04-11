@@ -22,7 +22,7 @@ Pre-configured KeyCloak OpenID Connect server for testing.
 ```json
   auth: {
     clientId: 'cockpit',
-    issuer: 'http://localhost:9080/auth/realms/kubernetes'
+    issuer: 'http://localhost:8080/auth/realms/kubernetes'
   }
 ```
 
@@ -49,14 +49,14 @@ docker cp <containerId>:/tmp/sumo  /Developer/Work/SPA/ngx-starter-ki/.deploy/ke
 
 ### Use
 
-http://localhost:9080/
+http://localhost:8080/
 > admin: admin123
 
 ### Test
 
 ```bash
 # Environment variable. change as per your server setup
-OIDC_BASE_URL=http://localhost:9080/auth/realms/ngx
+OIDC_BASE_URL=http://localhost:8080/auth/realms/ngx
 CLIENT_ID=kube-tenant
 
 USERNAME=sumo
@@ -104,7 +104,7 @@ curl -X POST  $OIDC_BASE_URL/protocol/openid-connect/logout \
   "exp": 1529217929,
   "nbf": 0,
   "iat": 1529217629,
-  "iss": "http://localhost:9080/auth/realms/kubernetes",
+  "iss": "http://localhost:8080/auth/realms/kubernetes",
   "aud": "kube-tenant",
   "sub": "8602c118-9778-4eda-98a0-673382934688",
   "typ": "Bearer",

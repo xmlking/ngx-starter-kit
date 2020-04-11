@@ -145,10 +145,10 @@ logic();
 
 ```bash
 curl -d "client_id=admin-cli" -d "username=admin" -d "password=admin" -d
-"grant_type=password" "http://localhost:9080/auth/realms/master/protocol/openid-connect/token"
+"grant_type=password" "http://localhost:8080/auth/realms/master/protocol/openid-connect/token"
 
 curl -H "Authorization: Bearer eyJh........MY3g" 
-"http://localhost:9080/auth/admin/realms/master/users"
+"http://localhost:8080/auth/admin/realms/master/users"
 
 
 curl -H "Authorization: Bearer eyJh........MY3g"
