@@ -25,6 +25,7 @@ export enum NotificationIcon {
   CODE = 'code',
 }
 
+// TODO : use  CLI plugin https://docs.nestjs.com/recipes/swagger#plugin
 @Entity('notification')
 export class Notification extends Base {
   @MinLength(10)
