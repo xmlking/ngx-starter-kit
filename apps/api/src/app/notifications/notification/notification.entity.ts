@@ -52,16 +52,16 @@ export class Notification extends Base {
   color?: NotificationColor = NotificationColor.PRIMARY;
 
   @Index()
-  @Column({ default: false })
-  read ? = false;
+  @Column({ default: false, type: 'boolean' })
+  read? = false;
 
   @Index()
-  @Column({ default: false })
-  native ? = false;
+  @Column({ default: false, type: 'boolean' })
+  native? = false;
 
   @Index()
-  @Column({ default: true })
-  isActive ? = true;
+  @Column({ default: true, type: 'boolean' })
+  isActive? = true;
 
   @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })

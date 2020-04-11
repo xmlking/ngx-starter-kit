@@ -37,7 +37,8 @@ export const environment: IEnvironment = {
   auth: {
     clientId: 'ngxapi',
     // issuerExternalUrl: 'https://keycloak.traefik.k8s/auth/realms/ngx',
-    issuerExternalUrl: 'http://localhost:8080/auth/realms/ngx',
+    // issuerExternalUrl: 'http://localhost:8080/auth/realms/ngx',
+    issuerExternalUrl: 'https://accounts.google.com',
     // issuerExternalUrl: 'https://keycloak.kashmora.com/auth/realms/ngx',
     // additionalQueryStringParams:  { scope: 'openid profile email', nonce: '1234578910' }
   },

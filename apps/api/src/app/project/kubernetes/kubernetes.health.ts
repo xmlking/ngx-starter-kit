@@ -10,11 +10,14 @@ export interface Dog {
 
 @Injectable()
 export class KubernetesHealthIndicator extends HealthIndicator {
-  private readonly dogs: Dog[] = [{ name: 'Fido', type: 'goodboy' }, { name: 'Rex', type: 'badboy' }];
+  private dogs: Dog[] = [
+    { name: 'Fido', type: 'goodboy' },
+    { name: 'Rex', type: 'badboy' },
+  ];
 
-  async pingCheck(key: string): Promise<HealthIndicatorResult> {
-    const badboys = this.dogs.filter(dog => dog.type === 'badboy');
-    const isHealthy = badboys.length > 0;
+  async isHealthy(key: string): Promise<HealthIndicatorResult> {
+    const badboys = this.dogs.filter((dog) => dog.type === 'badboy');
+    const isHealthy = badboys.length === 0;
     const result = this.getStatus(key, isHealthy, { badboys: badboys.length });
 
     if (isHealthy) {

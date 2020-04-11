@@ -5,16 +5,6 @@ import {
   OnApplicationBootstrap,
   OnApplicationShutdown,
 } from '@nestjs/common';
-import {
-  DiskHealthIndicator,
-  DNSHealthIndicator,
-  MemoryHealthIndicator,
-  TerminusEndpoint,
-  TerminusModuleOptions,
-  TerminusOptionsFactory,
-  TypeOrmHealthIndicator,
-} from '@nestjs/terminus';
-import { KubernetesHealthIndicator } from './project';
 
 // TODO: https://github.com/CloudNativeJS/cloud-health/blob/master/src/healthcheck/HealthChecker.ts
 // https://console.bluemix.net/docs/java-spring/healthcheck.html#healthcheck
@@ -28,41 +18,11 @@ enum State {
 }
 
 @Injectable()
-export class AppHealthService
-  implements TerminusOptionsFactory, OnApplicationBootstrap, OnApplicationShutdown, BeforeApplicationShutdown {
-  readonly logger = new Logger(AppHealthService.name);
+export class AppService implements OnApplicationBootstrap, OnApplicationShutdown, BeforeApplicationShutdown {
+  readonly logger = new Logger(AppService.name);
   private statusP = State.UNKNOWN;
 
-  constructor(
-    private readonly db: TypeOrmHealthIndicator,
-    private readonly dns: DNSHealthIndicator,
-    private readonly memory: MemoryHealthIndicator,
-    private readonly disk: DiskHealthIndicator,
-    private readonly kubernetes: KubernetesHealthIndicator,
-  ) {}
-
-  createTerminusOptions(): TerminusModuleOptions {
-    const endpoints: TerminusEndpoint[] = [
-      {
-        url: '/ready', // Non-OK causes no load
-        healthIndicators: [
-          async () => this.memory.checkHeap('memory_heap', 200 * 1024 * 1024),
-          async () => this.memory.checkRSS('memory_rss', 3000 * 1024 * 1024),
-          // async () => this.disk.checkStorage('storage', {  thresholdPercent: 0.8, path: '/' }),
-          async () => this.dns.pingCheck('weather', 'https://samples.openweathermap.org'),
-          async () => this.kubernetes.pingCheck('kubernetes'),
-        ],
-      },
-      {
-        // Unlike a readiness probe, it is not idiomatic to check dependencies in a liveness probe.
-        url: '/live', // Non-OK causes restart
-        healthIndicators: [async () => this.db.pingCheck('database', { timeout: 300 })],
-      },
-    ];
-    return {
-      endpoints,
-    };
-  }
+  constructor() {}
 
   async onApplicationBootstrap(): Promise<void> {
     this.status = State.UP;
@@ -72,7 +32,7 @@ export class AppHealthService
 
   async beforeApplicationShutdown(): Promise<void> {
     this.logger.log('beforeApplicationShutdown called');
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       this.logger.log('starting shutdown...');
       setTimeout(() => {
         this.logger.log('shutdown complete...');

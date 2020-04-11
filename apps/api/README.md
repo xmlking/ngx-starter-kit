@@ -31,13 +31,15 @@ This project uses [@nestjsx/crud](https://github.com/nestjsx/crud) to simplify a
 ```bash
 # start local postgres
 docker-compose up postgres
+# (or) start local postgres with data reset
 docker-compose up -V postgres #remove volumes
 
-# start local keycloak
+# (optional) start local keycloak
 docker-compose up keycloak
 
 # stop local postgres before restart again
 docker-compose down
+# (or) stop local postgres with data reset
 docker-compose down -v #remove volumes
 ```
 
@@ -142,6 +144,13 @@ ng e2e api --forceExit --detectOpenHandles
 ### Health
 
 > check API App health
+
+#### local
+
+http://localhost:3000/health/live
+http://localhost:3000/health/ready
+
+#### prod
 
 https://api.kashmora.com/live
 https://api.kashmora.com/ready

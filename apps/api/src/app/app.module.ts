@@ -11,7 +11,8 @@ import { ExternalModule } from './external';
 import { CacheModule } from './cache';
 import { ProjectModule } from './project';
 import { TerminusModule } from '@nestjs/terminus';
-import { AppHealthService } from './app-health.service';
+import { AppService } from './app.service';
+import { HealthController } from './health.controller';
 
 @Module({
   imports: [
@@ -38,11 +39,9 @@ import { AppHealthService } from './app-health.service';
     ExternalModule,
     NotificationsModule,
     ProjectModule,
-    TerminusModule.forRootAsync({
-      imports: [ProjectModule],
-      useClass: AppHealthService,
-    }),
+    TerminusModule,
   ],
-  controllers: [AppController],
+  controllers: [AppController, HealthController],
+  providers: [AppService],
 })
 export class AppModule {}
