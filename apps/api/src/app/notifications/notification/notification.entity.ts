@@ -9,6 +9,7 @@ export enum TargetType {
   USER = 'user',
   TOPIC = 'topic',
 }
+
 export enum NotificationColor {
   WARN = 'warn',
   ACCENT = 'accent',
