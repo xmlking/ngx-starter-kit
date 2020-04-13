@@ -8004,10 +8004,10 @@ filepond-plugin-image-transform@3.7.2:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.7.2.tgz#21bc84a375fb06bbdf8a746be2815e815e13acef"
   integrity sha512-6cel9LE6rUzd2V1xuXkkti83exzYZYazM6NZD46cc4l8gmfNYtRpkUTSK+s6XUs8uUwU/a1vOGDrfa5iPJy2Sg==
 
-filepond@4.13.1:
-  version "4.13.1"
-  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.13.1.tgz#be3ebb9b55d2d0e812ead3f7c849182c1c0d351b"
-  integrity sha512-ReduH/kiYIB9pma9jZdvaWudVx68Sj3MdtzAGQGKUpMyfVeVtYGQvK0TJ8cugvfAcXBa+4CSAQDz89F/j3ZU0A==
+filepond@4.13.2:
+  version "4.13.2"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.13.2.tgz#bed905adbd3f24d65db54a6150d4f3e0c1ee4953"
+  integrity sha512-8FGP5cUwYW5udS7p0YcwNskpA3b17K9lmvCzH9U7uUFJwo66pNwtDJjR0gJLqJkLtsM942/Pfq8JygTw2nv7GQ==
 
 filesize@^3.6.1:
   version "3.6.1"
