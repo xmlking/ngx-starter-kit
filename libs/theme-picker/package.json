@@ -4,7 +4,7 @@
   "peerDependencies": {
     "@angular/common": ">=9.1.1",
     "@angular/core": ">=9.1.1",
-    "@angular/cdk": ">=9.2.0",
-    "@angular/material": ">=9.2.0"
+    "@angular/cdk": ">=9.2.1",
+    "@angular/material": ">=9.2.1"
   }
 }
