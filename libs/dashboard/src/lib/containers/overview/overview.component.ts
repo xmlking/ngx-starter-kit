@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Crumb } from '@ngx-starter-kit/breadcrumbs';
 
+// card layout inspection: https://cloud.google.com/deployment-manager/docs
 @Component({
   selector: 'ngx-overview',
   templateUrl: './overview.component.html',
