@@ -1720,6 +1720,11 @@
   resolved "https://registry.yarnpkg.com/@nestjs/cqrs/-/cqrs-6.1.0.tgz#84529cfcdffa43624e251b1a71d61591fd4c3cad"
   integrity sha512-J1csaa2LdodZtwXOoYNcnqvFzk+G3RAR+G0N8k1/dlP7GvDJT3OakS2YXPiOSl7fEMOD40eS4+9sQMs8xqiegw==
 
+"@nestjs/mapped-types@0.0.1":
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.0.1.tgz#ff82149301d3d08bcacae2b392d85e24e5bee02b"
+  integrity sha512-4G4Ui7Sj0UqXiZsUFk/6cPD3K7uZEFSElzkOftaJ3/lXW+HUi1/vfWXabF53qrzO1enTRQDxt1plDbP6SsqXEg==
+
 "@nestjs/passport@7.0.0":
   version "7.0.0"
   resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-7.0.0.tgz#c59617779b7e5888a0c72039a6980e28fd659518"
@@ -1753,11 +1758,12 @@
     "@angular-devkit/schematics" "9.0.6"
     fs-extra "8.1.0"
 
-"@nestjs/swagger@4.5.1":
-  version "4.5.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.5.1.tgz#ffdd585580f5493ea18760ec05f3b1f89725f7d6"
-  integrity sha512-P7jaAUjGEviBQO67wNaAy7zinetsPbl/6DfJiIS7I9f9tevGQ1hTj49uLLDYuuTecK2JOt3RbEefFdrpD475Rw==
+"@nestjs/swagger@4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.5.2.tgz#0cbf3e8fd6322f10626c0905f991632a27fe78ee"
+  integrity sha512-ZqzgxaL+S1ftUgvh11F57r9w6rYMRnA4w858Uk2zDPpFHFojdH7QC7jrkwgI+tGDWg4e54+AVJvHvmckgQ+6yw==
   dependencies:
+    "@nestjs/mapped-types" "0.0.1"
     lodash "4.17.15"
     path-to-regexp "3.2.0"
 
