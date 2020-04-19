@@ -31,6 +31,7 @@ A curated list of awesome Angular resources
 
   > Refer [here](https://blog.thoughtram.io/angular/2017/05/23/custom-themes-with-angular-material.html)
   > Refer [here](https://medium.com/@tomastrajan/the-complete-guide-to-angular-material-themes-4d165a9d24d1)
+  > [Multiple Themes Without Killing Bundle Size](https://medium.com/better-programming/angular-multiple-themes-without-killing-bundle-size-with-material-or-not-5a80849b6b34)
 
 - How do I Make Site Responsive?
 
