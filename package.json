@@ -213,7 +213,7 @@
     "@semantic-release/npm": "7.0.5",
     "angular-cli-ghpages": "0.6.2",
     "commitizen": "4.0.4",
-    "cypress": "4.4.0",
+    "cypress": "4.4.1",
     "cz-conventional-changelog": "3.1.0",
     "dotenv": "8.2.0",
     "husky": "4.2.5",
