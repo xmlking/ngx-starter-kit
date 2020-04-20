@@ -55,15 +55,15 @@ export class Notification extends Base {
 
   @Index()
   @Column({ default: false, type: 'boolean' })
-  read? = false;
+  read ?= false;
 
   @Index()
   @Column({ default: false, type: 'boolean' })
-  native? = false;
+  native ?= false;
 
   @Index()
   @Column({ default: true, type: 'boolean' })
-  isActive? = true;
+  isActive ?= true;
 
   @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
   @CreateDateColumn({ type: 'timestamptz' })
