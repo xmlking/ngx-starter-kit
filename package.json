@@ -195,7 +195,7 @@
     "ng-packagr": "^9.1.1",
     "ngx-deploy-npm": "1.2.0",
     "rimraf": "3.0.2",
-    "ts-loader": "7.0.0",
+    "ts-loader": "7.0.1",
     "ts-node": "8.8.2",
     "tsconfig-paths": "3.9.0",
     "tslint": "6.1.1",
