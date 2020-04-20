@@ -20,7 +20,7 @@
     "@nestjs/passport": "7.0.0",
     "@nestjs/platform-express": "7.0.8",
     "@nestjs/platform-socket.io": "7.0.8",
-    "@nestjs/swagger": "4.5.2",
+    "@nestjs/swagger": "4.5.3",
     "@nestjs/terminus": "7.0.1",
     "@nestjs/typeorm": "7.0.0",
     "@nestjs/websockets": "7.0.8",
