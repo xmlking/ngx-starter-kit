@@ -159,7 +159,7 @@
     "filepond-plugin-image-transform": "3.7.2",
     "formidable": "1.2.2",
     "immer": "5.3.6",
-    "intersection-observer": "0.9.0",
+    "intersection-observer": "0.10.0",
     "keycloak-js": "9.0.3",
     "ngx-auto-unsubscribe": "3.0.1",
     "ngx-filepond": "5.0.1",
