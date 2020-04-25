@@ -13,6 +13,7 @@ This project uses [@nestjsx/crud](https://github.com/nestjsx/crud) to simplify a
 | Base           | [NestJS](https://nestjs.com)                                                                     |
 | ORM            | [TypeORM](http://typeorm.io/)                                                                    |
 | CRUD           | [@nestjsx/crud](https://github.com/nestjsx/crud)                                                 |
+| nest-router    | [@nestjsx/nest-router](https://github.com/nestjsx/nest-router)                                   |
 | File Upload    | [Multer](https://github.com/expressjs/multer)                                                    |
 | Validation     | [Class-Validator](https://github.com/typestack/class-validator)                                  |
 | Documentation  | [Open API(Swagger)](https://swagger.io)                                                          |

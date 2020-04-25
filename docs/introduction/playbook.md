@@ -294,7 +294,7 @@ yarn add -O prettier
 # alternative builder for nestjs (optional)
 yarn add -D ts-node-builder
 
-yarn workspace @yeti/api add  @xmlking/jwks-rsa @nestjsx/crud @nestjs/{terminus,cqrs,passport,swagger}
+yarn workspace @yeti/api add  @xmlking/jwks-rsa @nestjsx/crud nest-router @nestjs/{terminus,cqrs,passport,swagger}
 yarn workspace @yeti/api add nodemon supertest  -O
 yarn workspace @yeti/api add @types/{helmet,passport,passport-jwt,supertest,nodemailer} -D
 
