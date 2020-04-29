@@ -193,7 +193,7 @@
     "codelyzer": "^5.2.2",
     "loaders.css": "0.1.2",
     "ng-packagr": "^9.1.1",
-    "ngx-deploy-npm": "1.2.0",
+    "ngx-deploy-npm": "1.2.2",
     "rimraf": "3.0.2",
     "ts-loader": "7.0.1",
     "ts-node": "8.9.0",

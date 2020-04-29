@@ -12407,10 +12407,10 @@ ngx-auto-unsubscribe@3.0.1:
   resolved "https://registry.yarnpkg.com/ngx-auto-unsubscribe/-/ngx-auto-unsubscribe-3.0.1.tgz#b4970bb2c1289411a5e6a1e5ab175593cc9e76eb"
   integrity sha512-Yp3o2HxjGYNv2yZ0QwR5Wkh6Al3b07J3v7hhcdZhqm7DTJuXMmisaNi5zhnXq2+7rtCg0jaTBsA/SWhtS7zZbw==
 
-ngx-deploy-npm@1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.2.0.tgz#8eeac47696971ea74b7cf994a04e64f7ee7cb2e9"
-  integrity sha512-PF96bO2hcybl/ytC4HbEIdDbgpCJ15iUBI0jrycNqYdN5PUxvcpM7bO8bsfLKnpNXt+ldwylEcd0jwdgDpH7Kg==
+ngx-deploy-npm@1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.2.2.tgz#054c4c11db2160e1f1a055404f00abb1f32904e9"
+  integrity sha512-ricBgnV+WxfdrnvHkanMAEAXJrnGPbXjix/EIhdSXJimTUhIIyUWhb8A6x/Oxv998wn2YGOw5ZbxhTWzY8Be5w==
 
 ngx-filepond@5.0.1:
   version "5.0.1"
