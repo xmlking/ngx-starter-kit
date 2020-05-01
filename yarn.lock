@@ -10934,10 +10934,10 @@ kleur@^3.0.3:
   resolved "https://registry.yarnpkg.com/kleur/-/kleur-3.0.3.tgz#a79c9ecc86ee1ce3fa6206d1216c501f147fc07e"
   integrity sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w==
 
-kubernetes-client@8.3.7:
-  version "8.3.7"
-  resolved "https://registry.yarnpkg.com/kubernetes-client/-/kubernetes-client-8.3.7.tgz#017692c7cfcc2c142502bad8dee9c6e92c57c4f2"
-  integrity sha512-A0rvfQAvwAuPTooBOSErpTcnwcQxhkmawjOm/gUdGDWCUZoYmAVgVGFnc/klda+X1tvHwleavDsLqmqaYscH2w==
+kubernetes-client@9.0.0:
+  version "9.0.0"
+  resolved "https://registry.yarnpkg.com/kubernetes-client/-/kubernetes-client-9.0.0.tgz#f72e6c71aaa20548b3d6466f1dc88dfa61fb3ba4"
+  integrity sha512-Qy8o42dZVHB9P+cIiKdWpQbz/65l/qW1fDYvlzzeSLftmL1Ne3HEiM+0TmKAwNuRW0pTJN2tRWhcccToclxJ8g==
   dependencies:
     "@kubernetes/client-node" "0.10.2"
     camelcase "^6.0.0"
@@ -10949,7 +10949,7 @@ kubernetes-client@8.3.7:
     pump "^3.0.0"
     qs "^6.9.0"
     request "^2.88.2"
-    swagger-fluent "^5.0.1"
+    swagger-fluent "^5.0.3"
     url-join "^4.0.1"
     ws "^7.2.3"
 
@@ -16939,12 +16939,13 @@ svgo@^1.0.0:
     unquote "~1.1.1"
     util.promisify "~1.0.0"
 
-swagger-fluent@^5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/swagger-fluent/-/swagger-fluent-5.0.1.tgz#117f1832e2e77a4e0ddb1c9930ca1df280f69d7a"
-  integrity sha512-KhFv4bo7ek7uIidzEf42wgCsxiUDmEHQ2KM553Alp+qGAZ6zyXkqH/r2wMUee50C0WXDXYlfpE3YQoYFklN7EA==
+swagger-fluent@^5.0.3:
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/swagger-fluent/-/swagger-fluent-5.0.3.tgz#48564e1ae4f3430488b00be40ffeab257a6f14c0"
+  integrity sha512-i43ADMtPi7dxAN75Lw50SlncMB31FgaVwXqKioR8SWs+Yon2RbiLU1J1PGMXA4N8cSt9Vz5RHzaoKjz/+iW88g==
   dependencies:
     deepmerge "^4.2.2"
+    is-plain-object "^3.0.0"
     request "^2.88.0"
 
 swagger-ui-dist@^3.18.1:
