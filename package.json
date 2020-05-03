@@ -156,7 +156,7 @@
     "filepond-plugin-image-exif-orientation": "1.0.8",
     "filepond-plugin-image-preview": "4.6.1",
     "filepond-plugin-image-resize": "2.0.4",
-    "filepond-plugin-image-transform": "3.7.2",
+    "filepond-plugin-image-transform": "3.7.3",
     "formidable": "1.2.2",
     "immer": "5.3.6",
     "intersection-observer": "0.10.0",
