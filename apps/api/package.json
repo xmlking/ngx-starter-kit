@@ -26,7 +26,7 @@
     "@nestjs/websockets": "7.0.9",
     "@nestjsx/crud": "4.5.0",
     "@xmlking/jwks-rsa": "1.4.3",
-    "cache-manager": "3.2.1",
+    "cache-manager": "3.3.0",
     "class-transformer": "0.2.3",
     "class-validator": "0.12.2",
     "cli-ux": "4.9.3",
