@@ -5386,7 +5386,27 @@ commander@^5.0.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
-commitizen@4.1.0, commitizen@^4.0.3:
+commitizen@4.1.1:
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-4.1.1.tgz#313f62072f53c11d0b92c2643739e5bd593ef9b4"
+  integrity sha512-hgNCxwP4RqScaQWyV1sYNlXs+QhKg4QVeASLKI1U217MIptnwVpN+2slQvWe5+wISNQzJQLEOPvEjRLcS6hORg==
+  dependencies:
+    cachedir "2.2.0"
+    cz-conventional-changelog "3.2.0"
+    dedent "0.7.0"
+    detect-indent "6.0.0"
+    find-node-modules "2.0.0"
+    find-root "1.1.0"
+    fs-extra "8.1.0"
+    glob "7.1.4"
+    inquirer "6.5.0"
+    is-utf8 "^0.2.1"
+    lodash "4.17.15"
+    minimist "1.2.5"
+    strip-bom "4.0.0"
+    strip-json-comments "3.0.1"
+
+commitizen@^4.0.3:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/commitizen/-/commitizen-4.1.0.tgz#57a01cf16243549f96d63264eb83e0a86ac3fa67"
   integrity sha512-AG58G01FSiYFISFDEILzUsULWfal9KBEEzj1D+u8IbaAshouTKRYUk8AE5EcyZ/Q9c+I/fEEfL09Tp4uuibrwg==
