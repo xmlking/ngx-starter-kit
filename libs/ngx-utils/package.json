@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/ngx-utils",
   "version": "0.0.8",
   "peerDependencies": {
-    "@angular/common": ">=9.1.3",
-    "@angular/core": ">=9.1.3",
+    "@angular/common": ">=9.1.4",
+    "@angular/core": ">=9.1.4",
     "date-fns": ">=2.1.0",
     "rxjs": ">=6.0.0"
   }
