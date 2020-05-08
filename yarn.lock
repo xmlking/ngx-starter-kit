@@ -1832,27 +1832,27 @@
     iterare "1.2.0"
     tslib "1.11.1"
 
-"@nestjsx/crud-request@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@nestjsx/crud-request/-/crud-request-4.5.0.tgz#fbc10705c7dae33262b4d2dcf5fd57045402d4d3"
-  integrity sha512-5YVL35geSVKaeyh0TfiQNsJ95oFv5iwb8s4wC0Tb9MZItEvos+DyVM9sCvl374Mzk3rt8DK60x2jnYeF7TtdHQ==
+"@nestjsx/crud-request@^4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@nestjsx/crud-request/-/crud-request-4.6.1.tgz#7dad476399ac61b9ba718139e81edb694d440fd3"
+  integrity sha512-nkq9+5vUtgUTECY76vlWmhli62RcUHpU820HlOK8+1iSBZjT0VFyhKNuZbVxGP7Py3qxwjxTulaLtvGydkYPEA==
   dependencies:
-    "@nestjsx/util" "^4.5.0"
+    "@nestjsx/util" "^4.6.1"
     qs "^6.8.0"
 
-"@nestjsx/crud@4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@nestjsx/crud/-/crud-4.5.0.tgz#3f6e1d964a80f6f13aded5504068c727f573148f"
-  integrity sha512-uhHceUwLDvoD3FDYhxfjzioDMBkCxAAzJJQHZBFiwmlw9FCEHkograFWwZ8uv6SXBTRyMOveuPpRwaPXkwNYZw==
+"@nestjsx/crud@4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@nestjsx/crud/-/crud-4.6.1.tgz#a0bd067564aae86201894bccf7547f17ddd92799"
+  integrity sha512-Sc17ExhOrOoQFi1odvVSPyL3nVEiE/bmd8UngZGRu20w62BTJ5zV9mTLs6nv2R6noY3tS97pVqB85Qez5thlMA==
   dependencies:
-    "@nestjsx/crud-request" "^4.5.0"
-    "@nestjsx/util" "^4.5.0"
+    "@nestjsx/crud-request" "^4.6.1"
+    "@nestjsx/util" "^4.6.1"
     deepmerge "^3.2.0"
 
-"@nestjsx/util@^4.5.0":
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/@nestjsx/util/-/util-4.5.0.tgz#1ea7755ccc4ab4372a0bf6463e7816ca61eb5987"
-  integrity sha512-Ci7ElrlUT2Uft+3olnA6EKKjTqzL7i6yA5nefk2D7FiEBho4ieHRI8HHKhM/0nK1CWkfXhPpEDB+CRb2Xwulqg==
+"@nestjsx/util@^4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@nestjsx/util/-/util-4.6.1.tgz#0fecb7618b26ec8d479d6d857f3a26523c2fafd4"
+  integrity sha512-HJkZj/1fF9Y6GEiklAfF5Sk3kkOwMZ6qGlQ+RqTKVidoocf7NeviuLLRCAeMi2/LOoLKDOdVayosGCl9tzklTg==
 
 "@ngtools/webpack@9.1.4":
   version "9.1.4"

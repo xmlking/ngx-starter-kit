@@ -24,7 +24,7 @@
     "@nestjs/terminus": "7.0.1",
     "@nestjs/typeorm": "7.0.0",
     "@nestjs/websockets": "7.0.9",
-    "@nestjsx/crud": "4.5.0",
+    "@nestjsx/crud": "4.6.1",
     "@xmlking/jwks-rsa": "1.4.3",
     "cache-manager": "3.3.0",
     "class-transformer": "0.2.3",
