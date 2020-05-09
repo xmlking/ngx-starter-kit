@@ -223,7 +223,7 @@
     "lite-server": "2.5.4",
     "prettier": "2.0.5",
     "semantic-release": "17.0.7",
-    "ts-jest": "25.4.0",
+    "ts-jest": "25.5.1",
     "webpack-bundle-analyzer": "3.7.0"
   },
   "resolutions": {
