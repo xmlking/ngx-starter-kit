@@ -114,7 +114,7 @@
     "@angular/common": "9.1.4",
     "@angular/compiler": "9.1.4",
     "@angular/core": "9.1.4",
-    "@angular/flex-layout": "9.0.0-beta.29",
+    "@angular/flex-layout": "9.0.0-beta.30",
     "@angular/forms": "9.1.4",
     "@angular/localize": "^9.1.4",
     "@angular/material": "9.2.2",
