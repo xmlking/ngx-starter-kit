@@ -44,7 +44,7 @@
     "sharp": "0.24.1",
     "swagger-ui-express": "4.1.4",
     "typeorm": "0.2.24",
-    "typescript": "~3.8.3",
+    "typescript": "~3.9.0",
     "web-push": "3.4.4"
   },
   "devDependencies": {
