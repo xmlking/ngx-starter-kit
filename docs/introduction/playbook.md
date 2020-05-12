@@ -229,6 +229,14 @@ yarn add @angular/flex-layout
 # Add in-memory-web-api
 yarn add angular-in-memory-web-api
 #---------------------------------
+ng add @twittwer/compodoc
+# adds a `compodoc` target to the specified project in your `angular.json`
+ng g @twittwer/compodoc:config <project> [options]
+ng g @twittwer/compodoc:config tools --workspaceDocs
+# Generate your docs:
+ng run <project>:compodoc
+ng run webapp:compodoc
+#---------------------------------
 # Add NGXS manually (prefered)
 yarn add @ngxs/devtools-plugin @ngxs/{store,router-plugin,form-plugin,storage-plugin,devtools-plugin}
 # Or Add NGXS Automatically
@@ -279,7 +287,6 @@ yarn add ngx-perfect-scrollbar smooth-scrollbar ngx-page-scroll screenfull
 # tools you needed in CI/CD inv
 yarn add -D loaders.css
 yarn add -D api-ai-javascript
-yarn add -D @compodoc/compodoc
 yarn add -D codecov
 yarn add -D rimraf
 

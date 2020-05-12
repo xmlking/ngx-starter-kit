@@ -13,18 +13,18 @@
     "build:prod": "ng build api --prod"
   },
   "dependencies": {
-    "@godaddy/terminus": "4.4.0",
+    "@godaddy/terminus": "4.4.1",
     "@nestjs/common": "7.0.9",
     "@nestjs/core": "7.0.9",
     "@nestjs/cqrs": "6.1.0",
     "@nestjs/passport": "7.0.0",
     "@nestjs/platform-express": "7.0.9",
     "@nestjs/platform-socket.io": "7.0.9",
-    "@nestjs/swagger": "4.5.4",
+    "@nestjs/swagger": "4.5.5",
     "@nestjs/terminus": "7.0.1",
     "@nestjs/typeorm": "7.0.0",
     "@nestjs/websockets": "7.0.9",
-    "@nestjsx/crud": "4.5.0",
+    "@nestjsx/crud": "4.6.1",
     "@xmlking/jwks-rsa": "1.4.3",
     "cache-manager": "3.3.0",
     "class-transformer": "0.2.3",
@@ -37,7 +37,7 @@
     "nodemailer": "6.4.6",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
-    "pg": "8.0.3",
+    "pg": "8.1.0",
     "pug": "2.0.4",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.5",
@@ -45,10 +45,10 @@
     "swagger-ui-express": "4.1.4",
     "typeorm": "0.2.24",
     "typescript": "~3.8.3",
-    "web-push": "3.4.3"
+    "web-push": "3.4.4"
   },
   "devDependencies": {
-    "@types/helmet": "0.0.46",
+    "@types/helmet": "0.0.47",
     "@types/nodemailer": "6.4.0",
     "@types/passport": "1.0.3",
     "@types/passport-jwt": "3.0.3",
