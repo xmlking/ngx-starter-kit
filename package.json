@@ -187,7 +187,7 @@
     "@nrwl/workspace": "9.2.4",
     "@twittwer/compodoc": "^1.1.1",
     "@types/google.analytics": "0.0.40",
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.2",
     "@types/jquery": "3.3.38",
     "@types/node": "^13.13.5",
     "@types/socket.io-client": "1.4.32",
