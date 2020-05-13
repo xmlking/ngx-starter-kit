@@ -8120,10 +8120,10 @@ filepond-plugin-file-validate-type@1.2.5:
   resolved "https://registry.yarnpkg.com/filepond-plugin-file-validate-type/-/filepond-plugin-file-validate-type-1.2.5.tgz#b3588088d2b0d5dbdf706d068c0ecdf28140a8e3"
   integrity sha512-SsdYD6N+PDnetrPrBHfl13ZC9jRv5BuGdai5cORfANhuE/N32OwU/IclCNQ4qlpIa88hzqBg9dj6IINkiW+4HA==
 
-filepond-plugin-image-crop@2.0.3:
-  version "2.0.3"
-  resolved "https://registry.yarnpkg.com/filepond-plugin-image-crop/-/filepond-plugin-image-crop-2.0.3.tgz#4be354a10a85d86946abc9ce738c6bda44e21a8c"
-  integrity sha512-+XV09yBoMHwNgww75zgMmA8imckNiOCvtAYTgtDE5sMcZ/lWTrK339SxwuLLxqV66tFAWO8pAL/nrYKKY1Ixpw==
+filepond-plugin-image-crop@2.0.4:
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-crop/-/filepond-plugin-image-crop-2.0.4.tgz#53cd0a92b0b357d02789d0f6dcc980f067b08848"
+  integrity sha512-Y5dv2rFd/UBwA3+sdJOFjuCv1t5ekLOJr2C3hsNjq58lw7kM9/twaT+qjyZW0LFj1Yq4DccynuqS3BG50oHBoQ==
 
 filepond-plugin-image-exif-orientation@1.0.8:
   version "1.0.8"
