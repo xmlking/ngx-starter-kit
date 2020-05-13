@@ -153,7 +153,7 @@
     "filepond-plugin-file-validate-size": "2.2.1",
     "filepond-plugin-file-validate-type": "1.2.5",
     "filepond-plugin-image-crop": "2.0.4",
-    "filepond-plugin-image-exif-orientation": "1.0.8",
+    "filepond-plugin-image-exif-orientation": "1.0.9",
     "filepond-plugin-image-preview": "4.6.2",
     "filepond-plugin-image-resize": "2.0.6",
     "filepond-plugin-image-transform": "3.7.3",
