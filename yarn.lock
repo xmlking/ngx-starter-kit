@@ -3408,10 +3408,10 @@ angular-cli-ghpages@0.6.2:
     fs-extra "^8.1.0"
     gh-pages "^2.1.0"
 
-angular-in-memory-web-api@0.10.0:
-  version "0.10.0"
-  resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.10.0.tgz#6b56a9b355ce073bca0daf2e097742647bd9e2bb"
-  integrity sha512-GzY4lHPR8suREYfgiYiJSBrgq0bdCiFw/LuqW5IsOQfRx98AvS69A5Ehz12oMLy9ABzoGpqmNC5fcFtClDAPqQ==
+angular-in-memory-web-api@0.11.0:
+  version "0.11.0"
+  resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.11.0.tgz#46e4ad896b36d669f36801fc8cafa7db8278d078"
+  integrity sha512-QV1qYHm+Zd+wrvlcPLnAcqqGpOmCN1EUj4rRuYHpek8+QqFFdxBNuPZOJCKvU7I97z5QSKHsdc6PNKlpUQr3UA==
 
 angular-oauth2-oidc@9.2.2:
   version "9.2.2"
