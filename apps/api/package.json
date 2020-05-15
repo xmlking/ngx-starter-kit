@@ -52,7 +52,7 @@
     "@types/nodemailer": "6.4.0",
     "@types/passport": "1.0.3",
     "@types/passport-jwt": "3.0.3",
-    "@types/socket.io": "2.1.4",
+    "@types/socket.io": "2.1.5",
     "@types/supertest": "2.0.9",
     "@types/web-push": "3.3.0"
   },
