@@ -191,7 +191,7 @@
     "@types/jquery": "3.3.38",
     "@types/node": "^13.13.5",
     "@types/socket.io-client": "1.4.32",
-    "codecov": "3.6.5",
+    "codecov": "3.7.0",
     "codelyzer": "^5.2.2",
     "loaders.css": "0.1.2",
     "ng-packagr": "^9.1.3",
