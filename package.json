@@ -226,7 +226,7 @@
     "prettier": "2.0.5",
     "semantic-release": "17.0.7",
     "ts-jest": "25.5.1",
-    "webpack-bundle-analyzer": "3.7.0"
+    "webpack-bundle-analyzer": "3.8.0"
   },
   "resolutions": {
     "d3": "4.13.0",
