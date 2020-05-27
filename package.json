@@ -158,7 +158,7 @@
     "filepond-plugin-image-resize": "2.0.7",
     "filepond-plugin-image-transform": "3.7.3",
     "formidable": "1.2.2",
-    "immer": "5.3.6",
+    "immer": "6.0.9",
     "intersection-observer": "0.10.0",
     "keycloak-js": "10.0.1",
     "ngx-auto-unsubscribe": "3.0.1",
@@ -231,6 +231,6 @@
   "resolutions": {
     "d3": "4.13.0",
     "d3-selection": "1.3.0",
-    "immer": "5.3.6"
+    "immer": "6.0.9"
   }
 }
