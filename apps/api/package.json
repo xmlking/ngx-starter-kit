@@ -34,7 +34,7 @@
     "helmet": "3.22.0",
     "kubernetes-client": "9.0.0",
     "nest-router": "1.0.9",
-    "nodemailer": "6.4.6",
+    "nodemailer": "6.4.8",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pg": "8.2.1",
