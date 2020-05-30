@@ -147,7 +147,7 @@
     "core-js": "3.6.5",
     "d3": "4.13.0",
     "d3-selection-multi": "1.0.1",
-    "date-fns": "2.13.0",
+    "date-fns": "2.14.0",
     "filepond": "4.14.0",
     "filepond-plugin-file-encode": "2.1.5",
     "filepond-plugin-file-validate-size": "2.2.1",
