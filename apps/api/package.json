@@ -38,7 +38,7 @@
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pg": "8.2.1",
-    "pug": "2.0.4",
+    "pug": "3.0.0",
     "reflect-metadata": "0.1.13",
     "rxjs": "6.5.5",
     "sharp": "0.24.1",
