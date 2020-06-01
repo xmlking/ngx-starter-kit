@@ -1808,10 +1808,10 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.1.1.tgz#1896e4898688f8b0c527a76c5b090882de268b39"
-  integrity sha512-ZcFbHw2LEkTG9lR84ysNutHnrZPiRYjdjHM7nDCz0zXra98Cu4mKw0wOdoMmtd6WFtpVaSd9JVMXYWvHleFzmw==
+"@nestjs/common@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.1.2.tgz#81c77dcc5ccd7fac65f184ee9a157010296cc3a3"
+  integrity sha512-0av5fJCxqbcw7GESQ5tKwVxgBNS7mCn13JyK7jXhwbLAPb0iU1xdCdNv6NEdXy4+QD05UaCaIsTH4ohwHX3yqA==
   dependencies:
     axios "0.19.2"
     cli-color "2.0.0"
@@ -1819,10 +1819,10 @@
     tslib "2.0.0"
     uuid "8.0.0"
 
-"@nestjs/core@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.1.1.tgz#ff1fef34ed9c81d8a58ad584a928fb465eb85d1a"
-  integrity sha512-YOMyjWAOtYy1pzz4OsEKSujLKEeY0YML3HPekQPpC2fcgWHBtt0CMJ9RK4385FSltcFW13PgHUzLmcqUgrJTNQ==
+"@nestjs/core@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.1.2.tgz#a12fb9c8f55625b06cbb0c68a91b18bc8a97e693"
+  integrity sha512-M2QicUsKBdD4JSld8JpXTsL799kpeAf9lIdea5MrhxDCY5eSPbx1AaA7hbFuz25nkyM/NIs1wPaqyrt6KtSfqA==
   dependencies:
     "@nuxtjs/opencollective" "0.2.2"
     fast-safe-stringify "2.0.7"
@@ -1847,10 +1847,10 @@
   resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-7.0.0.tgz#c59617779b7e5888a0c72039a6980e28fd659518"
   integrity sha512-ZJk08zqLxSXY1rXIt9dAK7tcCos3DETQ88Nn/UGmA136SHMG5P0sbw+PU1zfLQyEsU5uHyr7MTD+/S+aOxXS6w==
 
-"@nestjs/platform-express@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.1.1.tgz#25a5b2c84adf87da5a68c74fdbe1cc28567a39d9"
-  integrity sha512-g8XNSFTtzsABelQ0uBveCeh6Jf7mUDfGHOXDybaEP//tM+cLU2vbzDYJSHaL68PfGCbhtvzaMiK9ezIWdW9rWg==
+"@nestjs/platform-express@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.1.2.tgz#4524a56228e3a3671892bcc44f3263022068469c"
+  integrity sha512-GkpuBReOV6mOqkgQpku0PsOwZS0Xbs3ErRlRKK5vIX+Wsl9Y9YUiaW4jRgbtkN8mWrT/n88zMmIbjagenPXkQw==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
@@ -1858,10 +1858,10 @@
     multer "1.4.2"
     tslib "2.0.0"
 
-"@nestjs/platform-socket.io@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.1.1.tgz#620f7f87f426b13d4e2facdf90c9642f3067de5a"
-  integrity sha512-PhJ84BdoAUK7fmAIpXlsdlx9Fle7yHpi7OJFYkNx+a3Vc3hHsHA9rcAk3VqnZWbhvrxn+qK2TDN6UOrEFWE4Zw==
+"@nestjs/platform-socket.io@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.1.2.tgz#09a95a407b81b89b1b17c696eccc83cef09d4073"
+  integrity sha512-CgkUav133FW8tPxNAkiJA8nGMJJLnK3x/5zugBA69rrzDbd0HU6Hr61ZCa9YPreGGXgmdTaHh0xdQEIZJKmmgQ==
   dependencies:
     socket.io "2.3.0"
     tslib "2.0.0"
@@ -1901,10 +1901,10 @@
     check-disk-space "2.1.0"
     deprecate "^1.1.1"
 
-"@nestjs/testing@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.1.1.tgz#6286568724a5f567ae824c5592e63c029ce7e0c6"
-  integrity sha512-J/cdpmUUikYoIwat2LY5eE6ebKDHfcOJXyzDN+7BU8pTINik3Tu6UlguR2C/OnmE6nRCw63yOSuTuFeAWuVa4w==
+"@nestjs/testing@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.1.2.tgz#0f253bbbcbe664285b511bc76a6e1c4563c32894"
+  integrity sha512-S/ruJRKIyO71naguaXxBsTcac94qnDv2wqagGv9Q3HDjH/Z2wLIHBB5zSdZg0p+rFN2U1/dFkTw5Ok3lp8kixA==
   dependencies:
     optional "0.1.4"
     tslib "2.0.0"
@@ -1916,10 +1916,10 @@
   dependencies:
     uuid "8.1.0"
 
-"@nestjs/websockets@7.1.1":
-  version "7.1.1"
-  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-7.1.1.tgz#ef3d837a3a5219451331e34e3bb1321e475c3495"
-  integrity sha512-/3ER9WWAA+RADYANqnbioXtuM1DsfZLzCHNuL+KMkgwD+xar4hcskgfDJx56EWSYqyyh20SMfOTDDRSF+MZe7Q==
+"@nestjs/websockets@7.1.2":
+  version "7.1.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-7.1.2.tgz#26319d0db9bfc88358e59defaee0b31f39337111"
+  integrity sha512-Xaz8nFcC9xFwYyL44xl8KcbApQ4WLGddZOAoCjY+fJrNy8f2Iw6HA/76TwJww9KGAx1m7veKOHDUVMU+hNYHug==
   dependencies:
     iterare "1.2.0"
     tslib "2.0.0"
