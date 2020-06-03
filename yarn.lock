@@ -1936,24 +1936,24 @@
     rxjs "6.5.4"
     webpack-sources "1.4.3"
 
-"@ngx-formly/core@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.6.2.tgz#f3f5d24c9087f0bb32e33fe1266e511ecc1599ab"
-  integrity sha512-DgOHw06H2w98ilKBPGde83mwHIqbFCtRnxjDoB2gVB5fYAfzZ8WsWGxtd9RUW9cjw+F1EpON9Lq9e7wi84CF2Q==
+"@ngx-formly/core@5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.7.1.tgz#eb368355434a8518261dc7a2418217233b4c3280"
+  integrity sha512-DuCNB7I/UIpHxpU5PoxQpvzL5L3dCpW5oPLkINrMJq+KnjmAsaP6DmnMFGi1R/lSoyTk0cE2uDgO9owtZbeDFg==
   dependencies:
     tslib "^1.7.1"
 
-"@ngx-formly/material@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.6.2.tgz#b2027ae947d407b9002a519955773ac91e79c373"
-  integrity sha512-oYxRkHySPUU0CZ1cV9U9CPU+/iPjfWTKsFRVzppS/Ltj2Lo1BGzEhySN+ycRa81rUl+THi2O3DsIh9FlAgdIEw==
+"@ngx-formly/material@5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.7.1.tgz#12683b4ee9fef55035f3e6f34ca7680909943447"
+  integrity sha512-F+guaXqz+5y8Z14Gb8j1y5EBRmv9hIjW5/TNLtHtuyOocSNVhq3WP2daUeRRu/iiaP1F55RKZsOL0KN4CbsKgQ==
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/schematics@5.6.2":
-  version "5.6.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/schematics/-/schematics-5.6.2.tgz#7210de4eaa26b4e2a06f701c57876129475175c0"
-  integrity sha512-qchyHdfdbd3lt25wiC+s7yU7NCtNj/nEjeaihT36scqboA7lmqOIbHoTtO2kWH3O0kRD3s8LpyzUWg2Tj0IaHQ==
+"@ngx-formly/schematics@5.7.1":
+  version "5.7.1"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/schematics/-/schematics-5.7.1.tgz#f7c1cc05e7e054ac760c26aa8469d9a63ef20b02"
+  integrity sha512-cKHgFF+aC8pknupRs7zA99t6XBNpPrE7TkUisDLDtPGNzg1OcUIh27l3ngg4gr1Bbhs1DnqGaxhlSwQndRSypA==
   dependencies:
     "@angular-devkit/core" "^0.6.5"
     "@angular-devkit/schematics" "^0.6.5"
