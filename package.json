@@ -201,7 +201,7 @@
     "ts-node": "8.10.2",
     "tsconfig-paths": "3.9.0",
     "tslint": "6.1.2",
-    "typescript": "3.9.2"
+    "typescript": "3.9.5"
   },
   "optionalDependencies": {
     "@commitlint/cli": "8.3.5",
