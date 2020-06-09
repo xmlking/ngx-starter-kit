@@ -8089,10 +8089,10 @@ filenamify@^1.0.0:
     strip-outer "^1.0.0"
     trim-repeated "^1.0.0"
 
-filepond-plugin-file-encode@2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/filepond-plugin-file-encode/-/filepond-plugin-file-encode-2.1.5.tgz#9bf6c3b868a02eb19d4a6b277f63d7ed1d705e42"
-  integrity sha512-zZE+CWjMV0GJHyy54541AjAV3tRThQgYt9IZWlnBFs8bZFFrKULQCoJ8pBwTXpt/Lwx0M55u0lMLu2otBJkc6g==
+filepond-plugin-file-encode@2.1.6:
+  version "2.1.6"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-file-encode/-/filepond-plugin-file-encode-2.1.6.tgz#a180c7c7f2b940090ab6d47af7b512ac77bcbf2a"
+  integrity sha512-x9U0yVNFEF1T3B4J1RmA/fDVM/RnsMZTGAJMODWOwaNR5ui912qjaInmxvSxk/LYtGTG4NF4swI23MGupER9Pg==
 
 filepond-plugin-file-validate-size@2.2.1:
   version "2.2.1"
