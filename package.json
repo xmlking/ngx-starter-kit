@@ -224,7 +224,7 @@
     "lint-staged": "10.2.9",
     "lite-server": "2.5.4",
     "prettier": "2.0.5",
-    "semantic-release": "17.0.7",
+    "semantic-release": "17.1.1",
     "ts-jest": "25.5.1",
     "webpack-bundle-analyzer": "3.7.0"
   },
