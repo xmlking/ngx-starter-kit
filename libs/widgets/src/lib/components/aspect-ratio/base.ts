@@ -5,10 +5,11 @@
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-import { ElementRef, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges } from '@angular/core';
+import { ElementRef, OnChanges, OnDestroy, OnInit, SimpleChange, SimpleChanges, Directive } from '@angular/core';
 import { MediaMarshaller, MediaQuerySubscriber, StyleBuilder, StyleDefinition, StyleUtils } from '@angular/flex-layout';
 import { buildLayoutCSS } from './layout-validator';
 
+@Directive()
 export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   /** MediaQuery Activation Tracker */
   protected mqActivation?: any; // ResponsiveActivation;

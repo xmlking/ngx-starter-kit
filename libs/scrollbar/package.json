@@ -7,5 +7,6 @@
   },
   "dependencies": {
     "smooth-scrollbar": ">=8.5.2"
-  }
+  ,    "tslib": "^2.0.0"
+}
 }

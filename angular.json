@@ -5,7 +5,6 @@
     "defaultCollection": "@nrwl/angular",
     "packageManager": "yarn",
     "warnings": {
-      "typescriptMismatch": false,
       "versionMismatch": false
     }
   },

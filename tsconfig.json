@@ -1,66 +1,194 @@
+/*
+  This is a "Solution Style" tsconfig.json file, and is used by editors and TypeScript’s language server to improve development experience.
+  It is not intended to be used to perform a compilation.
+
+  To learn more about this file see: https://angular.io/config/solution-tsconfig.
+*/
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "./dist/out-tsc",
-    "sourceMap": true,
-    "declaration": false,
-    "downlevelIteration": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "importHelpers": true,
-    "target": "es2015",
-    "typeRoots": ["node_modules/@types"],
-    "lib": ["dom", "es2019"],
-    "resolveJsonModule": true,
-    "rootDir": ".",
-    "paths": {
-      "@env-api/environment": ["apps/api/src/environments/environment.ts"],
-      "@env/*": ["apps/webapp/src/environments/*"],
-      "@ngx-starter-kit/admin": ["libs/admin/src/index.ts"],
-      "@ngx-starter-kit/animations": ["libs/animations/src/index.ts"],
-      "@ngx-starter-kit/app-confirm": ["libs/app-confirm/src/index.ts"],
-      "@ngx-starter-kit/auth": ["libs/auth/src/index.ts"],
-      "@ngx-starter-kit/breadcrumbs": ["libs/breadcrumbs/src/index.ts"],
-      "@ngx-starter-kit/chat-box": ["libs/chat-box/src/index.ts"],
-      "@ngx-starter-kit/clap": ["libs/clap/src/index.ts"],
-      "@ngx-starter-kit/context-menu": ["libs/context-menu/src/index.ts"],
-      "@ngx-starter-kit/core": ["libs/core/src/index.ts"],
-      "@ngx-starter-kit/dashboard": ["libs/dashboard/src/index.ts"],
-      "@ngx-starter-kit/draggable": ["libs/draggable/src/index.ts"],
-      "@ngx-starter-kit/experiments": ["libs/experiments/src/index.ts"],
-      "@ngx-starter-kit/grid": ["libs/grid/src/index.ts"],
-      "@ngx-starter-kit/home": ["libs/home/src/index.ts"],
-      "@ngx-starter-kit/image-comparison": ["libs/image-comparison/src/index.ts"],
-      "@ngx-starter-kit/json-diff": ["libs/json-diff/src/index.ts"],
-      "@ngx-starter-kit/led": ["libs/led/src/index.ts"],
-      "@ngx-starter-kit/loading-overlay": ["libs/loading-overlay/src/index.ts"],
-      "@ngx-starter-kit/models": ["libs/models/src/index.ts"],
-      "@ngx-starter-kit/navigator": ["libs/navigator/src/index.ts"],
-      "@ngx-starter-kit/ngx-utils": ["libs/ngx-utils/src/index.ts"],
-      "@ngx-starter-kit/not-found": ["libs/not-found/src/index.ts"],
-      "@ngx-starter-kit/notifications": ["libs/notifications/src/index.ts"],
-      "@ngx-starter-kit/quickpanel": ["libs/quickpanel/src/index.ts"],
-      "@ngx-starter-kit/scroll-to-top": ["libs/scroll-to-top/src/index.ts"],
-      "@ngx-starter-kit/scrollbar": ["libs/scrollbar/src/index.ts"],
-      "@ngx-starter-kit/shared": ["libs/shared/src/index.ts"],
-      "@ngx-starter-kit/sidenav": ["libs/sidenav/src/index.ts"],
-      "@ngx-starter-kit/socketio-plugin": ["libs/socketio-plugin/src/index.ts"],
-      "@ngx-starter-kit/svg-viewer": ["libs/svg-viewer/src/index.ts"],
-      "@ngx-starter-kit/theme-picker": ["libs/theme-picker/src/index.ts"],
-      "@ngx-starter-kit/toolbar": ["libs/toolbar/src/index.ts"],
-      "@ngx-starter-kit/tree": ["libs/tree/src/index.ts"],
-      "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"],
-      "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"]
+  "files": [],
+  "references": [
+    {
+      "path": "./libs/admin/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/animations/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/api/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/api/e2e/tsconfig.json"
+    },
+    {
+      "path": "./apps/api/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/app-confirm/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/app-confirm/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/auth/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/backend/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/backend/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/breadcrumbs/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/breadcrumbs/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/chat-box/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/chat-box/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/clap/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/clap/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/context-menu/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/context-menu/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/core/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/dashboard/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/draggable/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/draggable/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/experiments/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/grid/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/home/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/image-comparison/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/image-comparison/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/json-diff/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/json-diff/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/led/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/led/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/loading-overlay/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/loading-overlay/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/models/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/navigator/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/ngx-utils/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/ngx-utils/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/not-found/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/notifications/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/notifications/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/quickpanel/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/scroll-to-top/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/scroll-to-top/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/scrollbar/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/scrollbar/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/shared/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/sidenav/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/socketio-plugin/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/socketio-plugin/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/svg-viewer/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/svg-viewer/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/theme-picker/tsconfig.lib.json"
+    },
+    {
+      "path": "./libs/theme-picker/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/toolbar/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/tree/tsconfig.spec.json"
+    },
+    {
+      "path": "./libs/utils/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/webapp/tsconfig.app.json"
+    },
+    {
+      "path": "./apps/webapp/e2e/tsconfig.e2e.json"
+    },
+    {
+      "path": "./apps/webapp/tsconfig.spec.json"
+    },
+    {
+      "path": "./apps/webapp/tsconfig.compodoc.json"
+    },
+    {
+      "path": "./libs/widgets/tsconfig.spec.json"
     }
-  },
-  "angularCompilerOptions": {
-    // FIXME: remove me https://github.com/angular/angular-cli/issues/16071
-    "disableTypeScriptVersionCheck": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
-  },
-  "exclude": ["coverage/**/*", "dist/**/*", "node_modules", "tmp", "todo/**/*", "tools/**/_*files/**/*"]
+  ]
 }
