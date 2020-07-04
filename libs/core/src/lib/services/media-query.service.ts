@@ -13,19 +13,19 @@ export class MediaQueryService {
       .asObservable()
       .pipe(
         filter((changes: MediaChange[]) => changes.length > 0),
-        map((changes: MediaChange[]) => changes[0]),
+        map((changes: MediaChange[]) => changes[0])
       )
       .subscribe(
-        res => this.changesPrivate$.next(res),
-        err => this.changesPrivate$.error(err),
-        () => this.changesPrivate$.complete(),
+        (res) => this.changesPrivate$.next(res),
+        (err) => this.changesPrivate$.error(err),
+        () => this.changesPrivate$.complete()
       );
 
-    this.changesPrivate$.subscribe(change => {
+    this.changesPrivate$.subscribe((change) => {
       this.lowerThanMedium.next(change.mqAlias === 'xs' || change.mqAlias === 'sm');
     });
 
-    this.changesPrivate$.subscribe(change => {
+    this.changesPrivate$.subscribe((change) => {
       this.lowerThanLarge.next(change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md');
     });
   }

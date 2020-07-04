@@ -20,9 +20,8 @@ export class HealthController {
     private readonly db: TypeOrmHealthIndicator,
     private readonly memory: MemoryHealthIndicator,
     private readonly disk: DiskHealthIndicator,
-    private readonly kubernetes: KubernetesHealthIndicator
-  ) // private readonly grpc: GRPCHealthIndicator,
-  {}
+    private readonly kubernetes: KubernetesHealthIndicator // private readonly grpc: GRPCHealthIndicator,
+  ) {}
 
   @ApiOperation({ summary: 'Readiness prod' })
   @Allow()

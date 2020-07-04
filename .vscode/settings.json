@@ -31,8 +31,8 @@
   // "terminal.integrated.fontSize": 16,
   "terminal.integrated.rendererType": "experimentalWebgl",
   // Workbench
-    "workbench.editor.limit.enabled": true,
-    "workbench.editor.limit.value": 8,
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 8,
   "workbench.editor.highlightModifiedTabs": true,
   // File settings
   "files.autoSave": "afterDelay",
@@ -58,15 +58,15 @@
   // Prettier settings
   "prettier.singleQuote": true,
   "prettier.printWidth": 100,
-    // Proto
-    "clang-format.style": "google",
-    "protoc": {
-      "options": [
-        "--proto_path=${workspaceRoot}/proto",
-        "--proto_path=${workspaceRoot}/third_party/proto",
-        "--proto_path=${env.GOPATH}/src"
-      ]
-    },
+  // Proto
+  "clang-format.style": "google",
+  "protoc": {
+    "options": [
+      "--proto_path=${workspaceRoot}/proto",
+      "--proto_path=${workspaceRoot}/third_party/proto",
+      "--proto_path=${env.GOPATH}/src"
+    ]
+  },
   // REST client
   "rest-client.environmentVariables": {
     "$shared": {

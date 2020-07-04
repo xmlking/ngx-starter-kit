@@ -61,7 +61,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
     protected mediaMarshaller: MediaMarshaller,
     protected elementRef: ElementRef,
     protected styler: StyleUtils,
-    protected styleBuilder: StyleBuilder,
+    protected styleBuilder: StyleBuilder
   ) {}
 
   /**
@@ -185,7 +185,7 @@ export abstract class BaseDirective implements OnInit, OnDestroy, OnChanges {
   protected _applyStyleToElement(
     style: StyleDefinition,
     value?: string | number,
-    element: HTMLElement = this.nativeElement,
+    element: HTMLElement = this.nativeElement
   ) {
     this.styler.applyStyleToElement(element, style, value);
   }

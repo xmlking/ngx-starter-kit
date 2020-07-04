@@ -25,16 +25,16 @@ export class AuthService {
     private router: Router,
     private dialog: MatDialog,
     private ropcService: ROPCService,
-    private oauthService: OAuthService,
+    private oauthService: OAuthService
   ) {
-    this.authMode$.subscribe(authMode => {
+    this.authMode$.subscribe((authMode) => {
       console.log(`Auth Mode Changed: ${this.authMode} => ${authMode}`);
       this.authMode = authMode;
     });
   }
 
   private monitorSessionActivities() {
-    this.monitorer = this.oauthService.events.subscribe(e => {
+    this.monitorer = this.oauthService.events.subscribe((e) => {
       switch (e.type) {
         case 'logout':
         case 'session_terminated':

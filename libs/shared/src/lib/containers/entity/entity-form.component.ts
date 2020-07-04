@@ -11,7 +11,7 @@ export abstract class EntityFormComponent<TEntity extends Entity> implements OnI
 
   constructor(
     @Inject(MAT_DIALOG_DATA) protected data: { title: string; payload: TEntity },
-    protected dialogRef: MatDialogRef<EntityFormComponent<TEntity>>,
+    protected dialogRef: MatDialogRef<EntityFormComponent<TEntity>>
   ) {
     this.title = data.title;
     this.entity = data.payload;

@@ -14,7 +14,7 @@ class TestComponent implements OnDestroy {
   sub: Subscription;
 
   constructor() {
-    this.sub = this.test$.pipe(untilDestroy(this)).subscribe(a => (this.test = a));
+    this.sub = this.test$.pipe(untilDestroy(this)).subscribe((a) => (this.test = a));
   }
 
   ngOnDestroy() {}
@@ -60,17 +60,17 @@ describe('untilDestroy', () => {
       sub: Subscription;
 
       constructor() {
-        this.sub = this.test$.pipe(untilDestroy(this)).subscribe(a => (this.test = a));
+        this.sub = this.test$.pipe(untilDestroy(this)).subscribe((a) => (this.test = a));
       }
     }
     expect(() => new ErrorComponent()).toThrowError(
-      'untilDestroy operator needs the component to have an ngOnDestroy method',
+      'untilDestroy operator needs the component to have an ngOnDestroy method'
     );
   });
 
   it('should ensure symbol $destroy on component', () => {
     // TODO: Add Angular decorator.
-class Test2Component implements OnDestroy {
+    class Test2Component implements OnDestroy {
       test$ = new Subject<number>();
       constructor() {
         this.test$.pipe(untilDestroy(this)).subscribe();
