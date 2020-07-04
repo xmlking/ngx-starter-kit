@@ -1411,6 +1411,12 @@
               "exportFormat": "json"
             }
           }
+        },
+        "analyze": {
+          "builder": "@ngx-builders/analyze:analyze",
+          "options": {
+            "outputPath": "dist/apps/webapp"
+          }
         }
       },
       "prefix": "ngx",

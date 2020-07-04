@@ -66,7 +66,7 @@ Run `yarn doc:serve` to serve docs.
 
 Run `yarn deploy:mock` to deploy demo app to gp-pages.
 
-Analyzing bundle size `yarn bundle-report`
+Analyzing bundle size `ng run webapp:analyze`
 
 Analyzing and Visualizing the Dependency Graph (affected modules by uncommitted changes)
 

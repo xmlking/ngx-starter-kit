@@ -27,7 +27,6 @@
     "build:prod": "ng build webapp -c=production",
     "deploy": "ng deploy --base-href=/ngx-starter-kit/ --configuration=mock",
     "deploy:mock": "ng deploy --base-href=/ngx-starter-kit/ --configuration=mock",
-    "bundle-report": "ng build -c=production --stats-json && webpack-bundle-analyzer dist/apps/webapp/stats-es2015.json",
     "report-coverage": "codecov --token=$CODECOV_TOKEN",
     "// - RELEASE": "release Apps and Libs",
     "commit": "git-cz",
@@ -183,6 +182,7 @@
     "@angular/compiler-cli": "10.0.2",
     "@angular/language-service": "10.0.2",
     "@compodoc/compodoc": "*",
+    "@ngx-builders/analyze": "^2.0.0",
     "@nrwl/angular": "9.5.1",
     "@nrwl/nest": "9.5.1",
     "@nrwl/workspace": "9.5.1",
@@ -226,8 +226,7 @@
     "lite-server": "2.5.4",
     "prettier": "2.0.5",
     "semantic-release": "17.1.1",
-    "ts-jest": "26.1.1",
-    "webpack-bundle-analyzer": "3.8.0"
+    "ts-jest": "26.1.1"
   },
   "resolutions": {
     "d3": "4.13.0",
