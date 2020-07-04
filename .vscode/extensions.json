@@ -1,14 +1,15 @@
 {
   "recommendations": [
-    "johnpapa.angular-essentials",
-    "DavidAnson.vscode-markdownlint",
-    "ms-azuretools.vscode-docker",
-    "donjayamanne.githistory",
-    "eamodio.gitlens",
-    "humao.rest-client",
     "nrwl.angular-console",
     "angular.ng-template",
     "ms-vscode.vscode-typescript-tslint-plugin",
-    "esbenp.prettier-vscode"
+    "humao.rest-client",
+    "zxh404.vscode-proto3",
+    "xaver.clang-format",
+    "esbenp.prettier-vscode",
+    "PKief.material-icon-theme",
+    "hediet.vscode-drawio",
+    "github.github-vscode-theme",
+    "github.vscode-pull-request-github"
   ]
 }
