@@ -2,9 +2,9 @@
   "name": "@ngx-starter-kit/app-confirm",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=9.1.4",
-    "@angular/core": ">=9.1.4",
-    "@angular/cdk": ">=9.2.2",
-    "@angular/material": ">=9.2.2"
+    "@angular/common": ">=9.1.9",
+    "@angular/core": ">=9.1.9",
+    "@angular/cdk": ">=9.2.4",
+    "@angular/material": ">=9.2.4"
   }
 }
