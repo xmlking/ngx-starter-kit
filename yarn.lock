@@ -3672,10 +3672,10 @@ angular-in-memory-web-api@0.11.0:
   resolved "https://registry.yarnpkg.com/angular-in-memory-web-api/-/angular-in-memory-web-api-0.11.0.tgz#46e4ad896b36d669f36801fc8cafa7db8278d078"
   integrity sha512-QV1qYHm+Zd+wrvlcPLnAcqqGpOmCN1EUj4rRuYHpek8+QqFFdxBNuPZOJCKvU7I97z5QSKHsdc6PNKlpUQr3UA==
 
-angular-oauth2-oidc@10.0.2:
-  version "10.0.2"
-  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-10.0.2.tgz#693fe6607af330512214c31b35bcf8347e6ea591"
-  integrity sha512-YorZuNzCI1MEDXZeSM6SyEYrjOp7E/KYgtVGqby1SuZytJKYxenUoXjXEnU4lMnynHG5NLkOiKEwfJ+1k25EPw==
+angular-oauth2-oidc@10.0.3:
+  version "10.0.3"
+  resolved "https://registry.yarnpkg.com/angular-oauth2-oidc/-/angular-oauth2-oidc-10.0.3.tgz#612ef75c2e07b56592d2506f9618ee6a61857ad9"
+  integrity sha512-9wC8I3e3cN6rMBOlo5JB2y3Fd2erp8pJ67t4vEVzyPbnRG6BJ4rreSOznSL9zw/2SjhC9kRV2OfFie29CUCzEg==
   dependencies:
     tslib "^2.0.0"
 
