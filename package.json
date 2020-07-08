@@ -122,7 +122,7 @@
     "@angular/platform-browser-dynamic": "10.0.2",
     "@angular/router": "10.0.2",
     "@angular/service-worker": "10.0.2",
-    "@fortawesome/angular-fontawesome": "0.6.1",
+    "@fortawesome/angular-fontawesome": "0.7.0",
     "@fortawesome/fontawesome-svg-core": "1.2.29",
     "@fortawesome/free-brands-svg-icons": "5.13.1",
     "@fortawesome/free-solid-svg-icons": "5.13.1",
