@@ -205,8 +205,8 @@
     "typescript": "3.9.6"
   },
   "optionalDependencies": {
-    "@commitlint/cli": "9.0.1",
-    "@commitlint/config-conventional": "9.0.1",
+    "@commitlint/cli": "9.1.1",
+    "@commitlint/config-conventional": "9.1.1",
     "@compodoc/compodoc": "1.1.11",
     "@ngx-formly/schematics": "5.8.1",
     "@ngxs/schematics": "0.0.1-alpha.5",
