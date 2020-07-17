@@ -226,7 +226,7 @@
     "lite-server": "2.5.4",
     "prettier": "2.0.5",
     "semantic-release": "17.1.1",
-    "ts-jest": "26.1.2"
+    "ts-jest": "26.1.3"
   },
   "resolutions": {
     "d3": "4.13.0",
