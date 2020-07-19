@@ -12863,10 +12863,12 @@ ngx-page-scroll-core@7.0.1:
   resolved "https://registry.yarnpkg.com/ngx-page-scroll-core/-/ngx-page-scroll-core-7.0.1.tgz#2412d68e67baa688fd6e96b18bad21e0bad48abe"
   integrity sha512-nWe2X8H23xItcGr+gvizLafErQyajQJtVAW50wPlBb5Xr9LVAjpv5uYwYp508N5c4YUdRu9IRX0rkKvrjrJv4w==
 
-ngx-page-scroll@7.0.1:
-  version "7.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-page-scroll/-/ngx-page-scroll-7.0.1.tgz#80d30641b248ef2bf20bb2c081b6f001267b734d"
-  integrity sha512-8AjleaS0SMxvstYHQjiQukLoddw45ajLIyUmcXJigWVxXPoyJ0e86dYnNyVDgKh2LvZf+6eXQtfKHE1ToNjqsQ==
+ngx-page-scroll@7.0.2:
+  version "7.0.2"
+  resolved "https://registry.yarnpkg.com/ngx-page-scroll/-/ngx-page-scroll-7.0.2.tgz#feb7049723d75d2b101b17ac10adcf7f5d84590d"
+  integrity sha512-zsLRTMF+Z9UbksCO9D4O6hRIemCtafa0qFfgBjmstIhtPfxRna3Y1x+3wY6ZztwloUemgASMNR5GYAroUXW7pQ==
+  dependencies:
+    tslib "^2.0.0"
 
 ngx-perfect-scrollbar@9.0.0:
   version "9.0.0"
