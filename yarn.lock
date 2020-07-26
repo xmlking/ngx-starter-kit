@@ -2135,24 +2135,24 @@
     "@angular-devkit/core" "10.0.1"
     schematics-utilities "^2.0.1"
 
-"@ngx-formly/core@5.9.2":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.9.2.tgz#4d90af55582121f0eabb5f9ca8189978b1465149"
-  integrity sha512-ZxVEtO8kTO7pAL4G23d9yja4dHzHRXRpXgHUSIuA2o7eMjB7SS7QzNjwZyRvtc6mFGkhCFUnHb1/diyJ0lnp4Q==
+"@ngx-formly/core@5.9.3":
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/core/-/core-5.9.3.tgz#69adfa0b114b21c03e2e1642de2d48afd12ac60e"
+  integrity sha512-hHS7TXxc6mXWTaIFCIdi8piIumM0nHtCIxGs9zmzwevvLZ/goLS9Wc6ruuROsoatBLAq9KyNHej43gJ3Yhq3xw==
   dependencies:
     tslib "^1.7.1"
 
-"@ngx-formly/material@5.9.2":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.9.2.tgz#a335a84f812cc5b55bc4ef27bb826a73ae0615e8"
-  integrity sha512-INix59XZrFUsZ5nFPowDEE16KfrL1jbGNFBQMfO6eyiVZqFAeoOhILpK8hcnuXsaG8+4X89m+d8NYPLHYebGqQ==
+"@ngx-formly/material@5.9.3":
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/material/-/material-5.9.3.tgz#2154556ca754e3f9f7a0e3f3918b6da014327f62"
+  integrity sha512-IcSkTD+q2UA3ou/TFYFcGxxtaX6jGy1CpLulz/u2qKI1VMVg9pJwIfI++8Z8Y4E/Ok/de6ePlsr2oFhTLpCNYQ==
   dependencies:
     tslib "^1.9.0"
 
-"@ngx-formly/schematics@5.9.2":
-  version "5.9.2"
-  resolved "https://registry.yarnpkg.com/@ngx-formly/schematics/-/schematics-5.9.2.tgz#f30affa5e2352d04b64836af16370bfdedd2805a"
-  integrity sha512-Jnva0cmWVe2YRcl4wr/gBxu3tjrBfrN+YFBcvPwzwm17zOSy8BMZZ1FvspyWuNXK2tDwhNHS73ZzwlYV6J7YFw==
+"@ngx-formly/schematics@5.9.3":
+  version "5.9.3"
+  resolved "https://registry.yarnpkg.com/@ngx-formly/schematics/-/schematics-5.9.3.tgz#0ff1b8210068c2c9d1e8d39ddcb253fa6fa42de1"
+  integrity sha512-1fkxH1/0Ex7dQHnvWHDrsxeEyj49Ux6/+ZnDR59o1RMGQZoL6IITVYdxhFTAgEdRzd4EPFuQFGTIjx7dfHVzqA==
   dependencies:
     "@angular-devkit/core" "^0.6.5"
     "@angular-devkit/schematics" "^0.6.5"
