@@ -12936,13 +12936,14 @@ ngx-page-scroll@7.0.3:
   dependencies:
     tslib "^2.0.0"
 
-ngx-perfect-scrollbar@9.0.0:
-  version "9.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-perfect-scrollbar/-/ngx-perfect-scrollbar-9.0.0.tgz#361c75010d2a560dd8aaadb799bdf04db5a1824b"
-  integrity sha512-jiFrOLONf/w2PjSKkEjQeTnMdlMVcQgjzIrYcsor1HWTmE+95J2sZAd/WF4zoutbpIqfU8VQQoAp8HOa7U1c/g==
+ngx-perfect-scrollbar@10.0.1:
+  version "10.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-perfect-scrollbar/-/ngx-perfect-scrollbar-10.0.1.tgz#02e4a8b32413f790c7d0b74e80d9c9f2a719fb0c"
+  integrity sha512-01Li+Cx1OwNQ3WPHeavImS+p1ifK2UEdKly6JkdVw/s7rMxbjXkraOcj7FH+I141lpvxCmNlsWS5iiIA5GAnDg==
   dependencies:
     perfect-scrollbar "1.5.0"
     resize-observer-polyfill "^1.5.0"
+    tslib "^2.0.0"
 
 ngx-quicklink@^0.2.3:
   version "0.2.3"
