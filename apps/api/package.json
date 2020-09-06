@@ -40,7 +40,7 @@
     "pg": "8.2.1",
     "pug": "3.0.0",
     "reflect-metadata": "0.1.13",
-    "rxjs": "6.6.0",
+    "rxjs": "6.6.3",
     "sharp": "0.25.4",
     "swagger-ui-express": "4.1.4",
     "typeorm": "0.2.25",
