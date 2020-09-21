@@ -2022,10 +2022,10 @@
   resolved "https://registry.yarnpkg.com/@nestjs/cqrs/-/cqrs-7.0.0.tgz#12b70af5f06ca5ffde5fb1493f17dcfc6eed5e1d"
   integrity sha512-ZqsQuTdTzgqpizFEgacwHXvfz2+ekGLbMWuPcXk5uDS0+rY1R1rkY8oVkHA7SG700PaV4CccG93THxGfRM9mBQ==
 
-"@nestjs/mapped-types@0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.0.5.tgz#0c3462de4125eea0e85e3a520f0de4e7e8dcfa40"
-  integrity sha512-QjZCSMHHy8IW4UUTS49QJQ0NrA8MHv6XevNrPLJwh4n3lN7wY9aSRwd1+cBIUDBXEHRKngcYdPtC4oG0fimw+A==
+"@nestjs/mapped-types@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.1.0.tgz#248435b4af4305bf6d1214d228c84926be56125a"
+  integrity sha512-FfQsZK5K1OvvGqjPHCJtrNTLlKLg7bLuphtCRTFb5K2P98JTfslauMbT7bS8huOoK/86HMNmNoHR/EVLAd4FzA==
 
 "@nestjs/passport@7.1.0":
   version "7.1.0"
@@ -2069,13 +2069,13 @@
     "@angular-devkit/schematics" "7.3.8"
     fs-extra "8.1.0"
 
-"@nestjs/swagger@4.5.12":
-  version "4.5.12"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.5.12.tgz#e8aa65fbb0033007ece1d494b002f47ff472c20b"
-  integrity sha512-MVJ9JbCiIo5g6V3tjDPNHjoCjVO1J351dHkMj7/yjIHQi5CCB3AzZoA/BQEipUSjsX34ungfZIxRXt2Im4FF7A==
+"@nestjs/swagger@4.6.1":
+  version "4.6.1"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.6.1.tgz#dab7d09ed2579b05b42d1a724de6008745d1d36c"
+  integrity sha512-ClJmY7w70fhS0ET3O84IGTyFzKult9T0BlwjyfFeyd9Y02bsX4vYNuJ3YXoOgiHJYsFPUBqpc8DAi4k6AkCdfw==
   dependencies:
-    "@nestjs/mapped-types" "0.0.5"
-    lodash "4.17.15"
+    "@nestjs/mapped-types" "0.1.0"
+    lodash "4.17.20"
     path-to-regexp "3.2.0"
 
 "@nestjs/terminus@7.0.1":
@@ -12006,6 +12006,11 @@ lodash@4.17.15, lodash@^4.15.0, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.1
   version "4.17.15"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+
+lodash@4.17.20:
+  version "4.17.20"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
 
 lodash@^4.17.19:
   version "4.17.19"
