@@ -13,6 +13,7 @@ Deploying **KeyCloak** on kubernetes and/or OpenShift
 ## Deploy
 
 ### TLS Certs
+
 > first time only: generate a self-signed certificate to configure Ingress
 
 ```bash
@@ -36,7 +37,6 @@ kubectl create -f 02-keycloak-secrets-tls.yml --namespace default
 Follow instructions from [manual](./manual) or [helm](./helm)
 
 Then continue steps below.
-
 
 #### Environment Variables
 
@@ -79,6 +79,7 @@ Refer <https://stackoverflow.com/questions/53550321/keycloak-gatekeeper-aud-clai
 3. for `ngxapi` client, add `ngxapi-audience` at **Client Scopes** tab (for Swagger API Docs)
 
 Refer <https://www.kodnito.com/posts/microprofile-jwt-with-keycloak/>
+
 4. Click on Clients and find the `ngxweb/ngxapi` and click on **Mappers** tab and click on **Add Builtin** button and add the **groups** mapper to the client.
 
 ---
@@ -113,6 +114,7 @@ kubectl cp $POD_NAME:/tmp/sumo /Developer/Work/SPA/ngx-starter-kit/.deploy/keycl
 ```
 
 ---
+
 ## MicroProfile JWT with Keycloak
 
 **how to secure API/services using MicroProfile JWT and Keycloak?**
@@ -121,7 +123,6 @@ Follow [blog](https://kodnito.com/posts/microprofile-jwt-with-keycloak/)
 You find the public key here https://keycloak.traefik.k8s/auth/realms/ngx/
 
 ---
-
 
 ## Troubleshooting
 
@@ -135,8 +136,6 @@ exists. You can ignore this warning.
 
 ## Reference
 
-- Secure a Spring Boot Rest app with Spring Security and Keycloak
-
-  - https://sandor-nemeth.github.io/java/spring/2017/06/15/spring-boot-with-keycloak.html
-
+- [Secure a Spring Boot Rest app with Spring Security and Keycloak](https://sandor-nemeth.github.io/java/spring/2017/06/15/spring-boot-with-keycloak.html)
 - https://github.com/clevercloud-jhipster/clevercloud-keycloak-jhipster-ldap/blob/master/Dockerfile
+- [Using Keycloak for Multi-Tenancy With One Realm]([Keycloak](https://medium.com/swlh/using-keycloak-for-multi-tenancy-with-one-realm-7be81583ed7b)

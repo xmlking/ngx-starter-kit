@@ -39,3 +39,8 @@ multiple conversations inspired by [weave.works](https://www.weave.works/)
 ```html
 <Message data="messageObject"></Message> <ChoiceMessage data="messageObject"></ChoiceMessage>
 ```
+
+### Reference
+
+- https://github.com/beeman/angular-elements-chat-widget
+- [Build Your First Voice-Driven Web Application](https://luixaviles.com/2020/07/build-your-first-voice-driven-web-app/)

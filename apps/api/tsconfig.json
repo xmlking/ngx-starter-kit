@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     // FIXME: Temp fix https://github.com/DefinitelyTyped/DefinitelyTyped/issues/23976
     "skipLibCheck": true,

@@ -1,5 +1,5 @@
-import { AuthConfig } from 'angular-oauth2-oidc';
 import { environment } from '@env/environment';
+import { AuthConfig } from 'angular-oauth2-oidc';
 
 const authConfig: AuthConfig = {
   // Url of the Identity Provider
@@ -30,6 +30,7 @@ export const authConfigImplicit: AuthConfig = {
 
   // `oidc` should be `true`(default) for ImplicitFlow, `false` for Resource Owner Password Credentials (ROPC) Flow
   oidc: true,
+  responseType: 'id_token token',
 
   // Activate Session Checks: (use only for non-ROPC Flow)
   sessionChecksEnabled: true,
