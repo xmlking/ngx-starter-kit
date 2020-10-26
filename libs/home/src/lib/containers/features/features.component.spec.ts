@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FeaturesComponent } from './features.component';
 import { SharedModule } from '@ngx-starter-kit/shared';
 import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
@@ -16,12 +16,14 @@ describe('FeaturesComponent', () => {
     // });
   });
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [SharedModule],
-      declarations: [FeaturesComponent],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SharedModule],
+        declarations: [FeaturesComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FeaturesComponent);

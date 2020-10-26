@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CoreModule } from '@ngx-starter-kit/core';
 import { ScrollToTopModule } from '@ngx-starter-kit/scroll-to-top';
@@ -12,12 +12,14 @@ describe('HomeLayoutComponent', () => {
   let component: HomeLayoutComponent;
   let fixture: ComponentFixture<HomeLayoutComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [SharedModule, CoreModule, ScrollToTopModule, ThemePickerModule, RouterTestingModule],
-      declarations: [HomeLayoutComponent, HeaderComponent, FooterComponent]
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [SharedModule, CoreModule, ScrollToTopModule, ThemePickerModule, RouterTestingModule],
+        declarations: [HomeLayoutComponent, HeaderComponent, FooterComponent],
+      }).compileComponents();
+    })
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(HomeLayoutComponent);

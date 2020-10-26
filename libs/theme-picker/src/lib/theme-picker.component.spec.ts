@@ -1,13 +1,15 @@
-import { async, TestBed } from '@angular/core/testing';
+import { waitForAsync, TestBed } from '@angular/core/testing';
 import { ThemePickerComponent } from './theme-picker.component';
 import { ThemePickerModule } from './theme-picker.module';
 
 describe('ThemePickerComponent', () => {
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      imports: [ThemePickerModule],
-    }).compileComponents();
-  }));
+  beforeEach(
+    waitForAsync(() => {
+      TestBed.configureTestingModule({
+        imports: [ThemePickerModule],
+      }).compileComponents();
+    })
+  );
 
   it('should install theme based on href', () => {
     const fixture = TestBed.createComponent(ThemePickerComponent);

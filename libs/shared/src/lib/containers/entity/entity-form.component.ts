@@ -4,6 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { FormGroup } from '@angular/forms';
 
 @Directive()
+// tslint:disable-next-line: directive-class-suffix
 export abstract class EntityFormComponent<TEntity extends Entity> implements OnInit {
   title: string;
   entity: TEntity;

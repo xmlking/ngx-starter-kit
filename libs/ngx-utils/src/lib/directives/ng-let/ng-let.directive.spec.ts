@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, NgModule, ViewChild } from '@angular/core';
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { waitForAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { Observable, of } from 'rxjs';
 import { NgLetDirective } from './ng-let.directive';
@@ -46,70 +46,88 @@ describe('ngLet directive', () => {
     expect(new NgLetModule()).toBeTruthy();
   });
 
-  it('should work in a template attribute', async(() => {
-    const template = '<span *ngLet="test as i">hello{{ i }}</span>';
-    fixture = createTestComponent(template);
-    getComponent().test = 7;
-    fixture.detectChanges();
-    expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
-    expect(fixture.nativeElement.textContent).toBe('hello7');
-  }));
+  it(
+    'should work in a template attribute',
+    waitForAsync(() => {
+      const template = '<span *ngLet="test as i">hello{{ i }}</span>';
+      fixture = createTestComponent(template);
+      getComponent().test = 7;
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
+      expect(fixture.nativeElement.textContent).toBe('hello7');
+    })
+  );
 
-  it('should work on a template element', async(() => {
-    const template = '<ng-template [ngLet]="test" let-i>hello{{ i }}</ng-template>';
-    fixture = createTestComponent(template);
-    getComponent().test = 5;
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toBe('hello5');
-  }));
+  it(
+    'should work on a template element',
+    waitForAsync(() => {
+      const template = '<ng-template [ngLet]="test" let-i>hello{{ i }}</ng-template>';
+      fixture = createTestComponent(template);
+      getComponent().test = 5;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.textContent).toBe('hello5');
+    })
+  );
 
-  it('should handle nested ngLet correctly', async(() => {
-    const template = '<div *ngLet="test as i"><span *ngLet="nestedTest as k">hello{{ i + k }}</span></div>';
+  it(
+    'should handle nested ngLet correctly',
+    waitForAsync(() => {
+      const template = '<div *ngLet="test as i"><span *ngLet="nestedTest as k">hello{{ i + k }}</span></div>';
 
-    fixture = createTestComponent(template);
+      fixture = createTestComponent(template);
 
-    getComponent().test = 3;
-    getComponent().nestedTest = 5;
-    fixture.detectChanges();
-    expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
-    expect(fixture.nativeElement.textContent).toBe('hello8');
-  }));
+      getComponent().test = 3;
+      getComponent().nestedTest = 5;
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
+      expect(fixture.nativeElement.textContent).toBe('hello8');
+    })
+  );
 
-  it('should update several nodes', async(() => {
-    const template =
-      '<span *ngLet="test + 1; let i">helloNumber{{ i }}</span>' +
-      '<span *ngLet="functionTest(5, 8) as j">helloFunction{{ j }}</span>';
+  it(
+    'should update several nodes',
+    waitForAsync(() => {
+      const template =
+        '<span *ngLet="test + 1; let i">helloNumber{{ i }}</span>' +
+        '<span *ngLet="functionTest(5, 8) as j">helloFunction{{ j }}</span>';
 
-    fixture = createTestComponent(template);
+      fixture = createTestComponent(template);
 
-    getComponent().test = 4;
-    fixture.detectChanges();
-    expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(2);
-    expect(fixture.nativeElement.textContent).toContain('helloNumber5helloFunction13');
-  }));
+      getComponent().test = 4;
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(2);
+      expect(fixture.nativeElement.textContent).toContain('helloNumber5helloFunction13');
+    })
+  );
 
-  it('should work on async pipe', async(() => {
-    const template = '<span *ngLet="test$ | async as t">helloAsync{{ t }}</span>';
+  it(
+    'should work on async pipe',
+    waitForAsync(() => {
+      const template = '<span *ngLet="test$ | async as t">helloAsync{{ t }}</span>';
 
-    fixture = createTestComponent(template);
+      fixture = createTestComponent(template);
 
-    getComponent().test$ = of(15);
-    fixture.detectChanges();
-    expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
-    expect(fixture.nativeElement.textContent).toContain('helloAsync15');
-  }));
+      getComponent().test$ = of(15);
+      fixture.detectChanges();
+      expect(fixture.debugElement.queryAll(By.css('span')).length).toEqual(1);
+      expect(fixture.nativeElement.textContent).toContain('helloAsync15');
+    })
+  );
 
-  it('should accept input', async(() => {
-    const template = '<span *ngLet="test as i">hello{{ i }}</span>';
+  it(
+    'should accept input',
+    waitForAsync(() => {
+      const template = '<span *ngLet="test as i">hello{{ i }}</span>';
 
-    fixture = createTestComponent(template);
-    fixture.detectChanges();
+      fixture = createTestComponent(template);
+      fixture.detectChanges();
 
-    expect(getComponent().ngLetDirective).toBeTruthy();
-    getComponent().ngLetDirective.ngLet = 21;
-    fixture.detectChanges();
-    expect(fixture.nativeElement.textContent).toContain('hello21');
-  }));
+      expect(getComponent().ngLetDirective).toBeTruthy();
+      getComponent().ngLetDirective.ngLet = 21;
+      fixture.detectChanges();
+      expect(fixture.nativeElement.textContent).toContain('hello21');
+    })
+  );
 });
 
 function createTestComponent(template: string): ComponentFixture<TestComponent> {
