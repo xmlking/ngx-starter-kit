@@ -235,6 +235,6 @@
     "node-forge": "0.10.0",
     "webpack-subresource-integrity": "1.5.1",
     "yargs-parser": "20.2.3",
-    "mem": "4.0.0"
+    "mem": "4.3.0"
   }
 }
