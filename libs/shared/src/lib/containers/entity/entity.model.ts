@@ -9,7 +9,9 @@ export abstract class Entity {
 }
 
 export class EntityColumnDef<T> {
-  readonly property: string;
+  // Notice this '!' modifier.
+  // This is the "definite assignment assertion"
+  readonly property!: string;
   readonly header = this.property;
   public visible = true;
   readonly sticky?: 'start' | 'end';

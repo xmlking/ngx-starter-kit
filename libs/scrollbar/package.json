@@ -6,7 +6,7 @@
     "@angular/core": ">=9.1.9"
   },
   "dependencies": {
-    "smooth-scrollbar": ">=8.5.2",
-    "tslib": "^2.0.0"
+    "smooth-scrollbar": ">=8.5.3",
+    "tslib": "^2.0.3"
   }
 }
