@@ -230,7 +230,7 @@
   },
   "resolutions": {
     "d3": "4.13.0",
-    "d3-selection": "1.4.2",
+    "d3-selection": "2.0.0",
     "object-path": "0.11.5",
     "node-forge": "0.10.0",
     "webpack-subresource-integrity": "1.5.1",
