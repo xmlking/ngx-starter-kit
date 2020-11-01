@@ -31,7 +31,7 @@
     "class-validator": "0.12.2",
     "cli-ux": "5.5.0",
     "cls-hooked": "4.2.2",
-    "helmet": "4.1.1",
+    "helmet": "4.2.0",
     "kubernetes-client": "9.0.0",
     "nest-router": "1.0.9",
     "nodemailer": "6.4.14",
