@@ -220,7 +220,7 @@
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "8.2.0",
     "husky": "4.3.0",
-    "jest": "26.6.1",
+    "jest": "26.6.3",
     "jest-preset-angular": "8.3.2",
     "lint-staged": "10.4.2",
     "lite-server": "2.5.4",
