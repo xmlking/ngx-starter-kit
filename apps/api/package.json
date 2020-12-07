@@ -57,7 +57,7 @@
     "@types/web-push": "3.3.0"
   },
   "optionalDependencies": {
-    "@nestjs/schematics": "7.1.2",
+    "@nestjs/schematics": "7.2.5",
     "@nestjs/testing": "7.4.4",
     "nodemon": "2.0.6",
     "supertest": "5.0.0"
