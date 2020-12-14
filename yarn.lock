@@ -8545,10 +8545,10 @@ filepond-plugin-image-transform@3.7.4:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.7.4.tgz#8b81bea9ede2c3a40a11c20b39549139b18c9ef1"
   integrity sha512-4slNgfKW7BrbSPF/ie02miNPttk6Mit1V9phLzup0DPLo9gQGqvaXi/md2291+2EA+yjeyLeJ3JBUVQ/ymPrUg==
 
-filepond@4.21.1:
-  version "4.21.1"
-  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.21.1.tgz#b92dfa654732d504864cc770c6f9407429df6626"
-  integrity sha512-mVCc4lR63dSP6a0LW9bRlRGIrAgRuuQAWDxdDJzAXQ9JWtUQtyvFlxgaU/02jYrBIBYvnQV+AJ/dgG9HOKfCKw==
+filepond@4.25.1:
+  version "4.25.1"
+  resolved "https://registry.yarnpkg.com/filepond/-/filepond-4.25.1.tgz#426e7cce3d0cdccb2d5623bedc5a8db772ae167b"
+  integrity sha512-8UPPTzfpHZRUtJl3dEcGMLYOygg8taJZpYTv1WaEkvzeI+X0JX9+agMJ+5Lu1EKtdt9dGq/9Gud+EnNRBaGl1A==
 
 fill-range@^4.0.0:
   version "4.0.0"

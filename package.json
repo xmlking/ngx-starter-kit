@@ -148,7 +148,7 @@
     "d3": "6.2.0",
     "d3-selection-multi": "1.0.1",
     "date-fns": "2.16.1",
-    "filepond": "4.21.1",
+    "filepond": "4.25.1",
     "filepond-plugin-file-encode": "2.1.9",
     "filepond-plugin-file-validate-size": "2.2.2",
     "filepond-plugin-file-validate-type": "1.2.5",
