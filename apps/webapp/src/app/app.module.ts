@@ -44,8 +44,7 @@ import { AppComponent } from './app.component';
         anchorScrolling: 'enabled',
         preloadingStrategy: QuicklinkStrategy,
         paramsInheritanceStrategy: 'always',
-        // enableTracing: true, // enable to debug routing during development
-        // onSameUrlNavigation: 'reload'
+        relativeLinkResolution: 'legacy',
       }
     ),
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),

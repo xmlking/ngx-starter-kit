@@ -1187,7 +1187,6 @@
                 }
               ],
               "buildOptimizer": true,
-              "extractCss": true,
               "extractLicenses": true,
               "fileReplacements": [
                 {
@@ -1266,7 +1265,6 @@
                 }
               ],
               "buildOptimizer": true,
-              "extractCss": true,
               "extractLicenses": true,
               "fileReplacements": [
                 {
@@ -1293,7 +1291,6 @@
                   "maximumWarning": "6kb"
                 }
               ],
-              "extractCss": true,
               "preserveSymlinks": true
             }
           },

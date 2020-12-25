@@ -1,10 +1,10 @@
 export function waitUntil(condition, timeout = 2000) {
   return new Promise((resolve, reject) => {
-    setTimeout(_ => reject(), timeout);
+    setTimeout((_) => reject(), timeout);
 
     function loop() {
       if (condition()) {
-        resolve();
+        resolve(undefined);
       }
       setTimeout(loop, 0);
     }
