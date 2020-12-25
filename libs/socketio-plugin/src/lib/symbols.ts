@@ -1,5 +1,5 @@
 import { InjectionToken } from '@angular/core';
-import ConnectOpts = SocketIOClient.ConnectOpts;
+import { ManagerOptions, SocketOptions } from 'socket.io-client';
 
 export const NGXS_WEBSOCKET_OPTIONS = new InjectionToken('NGXS_WEBSOCKET_OPTIONS');
 
@@ -9,7 +9,7 @@ export interface NgxsWebsocketPluginOptions {
    */
   url?: string;
 
-  connectOpts?: ConnectOpts;
+  connectOpts?: Partial<ManagerOptions & SocketOptions>;
 
   tokenFn?: () => string;
 

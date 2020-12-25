@@ -158,7 +158,7 @@
     "filepond-plugin-image-resize": "2.0.7",
     "filepond-plugin-image-transform": "3.7.4",
     "formidable": "1.2.2",
-    "immer": "7.0.14",
+    "immer": "8.0.0",
     "intersection-observer": "0.12.0",
     "keycloak-js": "12.0.1",
     "ngx-auto-unsubscribe": "3.0.1",
@@ -170,7 +170,7 @@
     "rxjs": "6.6.3",
     "screenfull": "5.1.0",
     "smooth-scrollbar": "8.5.3",
-    "socket.io-client": "2.3.1",
+    "socket.io-client": "3.0.4",
     "tslib": "^2.0.0",
     "uuid": "8.3.2",
     "zone.js": "~0.11.3"
@@ -190,7 +190,6 @@
     "@types/jest": "26.0.19",
     "@types/jquery": "3.5.5",
     "@types/node": "14.14.16",
-    "@types/socket.io-client": "1.4.34",
     "codecov": "3.8.1",
     "codelyzer": "6.0.1",
     "loaders.css": "0.1.2",
@@ -233,7 +232,6 @@
     "object-path": "0.11.5",
     "node-forge": "0.10.0",
     "webpack-subresource-integrity": "1.5.2",
-    "yargs-parser": "20.2.4",
-    "mem": "4.3.0"
+    "yargs-parser": "20.2.4"
   }
 }

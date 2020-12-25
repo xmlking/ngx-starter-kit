@@ -1,9 +1,6 @@
 import { NextObserver, Observable, Observer, Subscriber, Subscription, Subject } from 'rxjs';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
-import * as io_ from 'socket.io-client';
-import ConnectOpts = SocketIOClient.ConnectOpts;
-
-const io = io_;
+import { io, Socket, SocketOptions, ManagerOptions } from 'socket.io-client';
 
 // TODO https://github.com/arjitkhullar/ocr/blob/master/src/app/socket.service.ts
 
@@ -11,7 +8,7 @@ export interface RxSocketioSubjectConfig<T> {
   /** The url of the socket server to connect to */
   url: string;
   /** connect options for Socket.io */
-  connectOpts?: ConnectOpts;
+  connectOpts?: Partial<ManagerOptions & SocketOptions>;
   /** auth token access callback function */
   tokenFn?: () => string;
   /** The protocol to use to connect */
@@ -62,7 +59,7 @@ export type WebSocketMessage = string | ArrayBuffer | Blob | ArrayBufferView;
 export class RxSocketioSubject<T> extends AnonymousSubject<T> {
   private outputPrivate: Subject<T>;
   private configPrivate: RxSocketioSubjectConfig<T>;
-  private socketPrivate: SocketIOClient.Socket;
+  private socketPrivate: Socket;
 
   constructor(urlConfigOrSource: string | RxSocketioSubjectConfig<T> | Observable<T>, destination?: Observer<T>) {
     super();
@@ -90,17 +87,20 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
     this.socketPrivate = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
 
-    this.socketPrivate.on('connect', event =>
-      config.openObserver.next(new CustomEvent('opened', { detail: { id: this.socketPrivate.id } })),
+    this.socketPrivate.on('connect', (event) =>
+      config.openObserver.next(new CustomEvent('opened', { detail: { id: this.socketPrivate.id } }))
     );
 
-    this.socketPrivate.on('disconnect', event => config.closeObserver.next(event));
+    this.socketPrivate.on('disconnect', (event) => config.closeObserver.next(event));
 
-    this.socketPrivate.on('actions', data => this.outputPrivate.next(data));
+    this.socketPrivate.on('actions', (data) => this.outputPrivate.next(data));
 
     this.socketPrivate.on('reconnect_attempt', () => {
       if (config.tokenFn && typeof config.tokenFn === 'function') {
-        (this.socketPrivate.io.opts.query as any).token = config.tokenFn();
+        // FIXME: https://github.com/socketio/socket.io-client/issues/1118
+        // (this.socketPrivate.io.opts.query as any).token = config.tokenFn();
+        this.socketPrivate.io.engine.query.token = config.tokenFn();
+        this.socketPrivate.io.engine.transport.query.token = config.tokenFn();
       }
     });
 
@@ -108,7 +108,7 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
       (message: T) => {
         this.socketPrivate.emit((message as any).event, (message as any).data);
       },
-      error => {
+      (error) => {
         this.socketPrivate.close();
         const errorEvent = new ErrorEvent('', {
           message: 'Error in data stream.',
@@ -124,7 +124,7 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
           wasClean: true,
         });
         config.closeObserver.next(closeEvent);
-      },
+      }
     );
   }
 
