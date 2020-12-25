@@ -232,6 +232,9 @@
     "object-path": "0.11.5",
     "node-forge": "0.10.0",
     "webpack-subresource-integrity": "1.5.2",
-    "yargs-parser": "20.2.4"
+    "yargs-parser": "20.2.4",
+    "mem": "8.0.0",
+    "engine.io-client": "4.0.5",
+    "debug": "4.3.1"
   }
 }
