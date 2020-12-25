@@ -145,7 +145,7 @@
     "chart.js": "2.9.4",
     "chart.piecelabel.js": "0.15.0",
     "core-js": "3.8.1",
-    "d3": "6.2.0",
+    "d3": "6.3.1",
     "d3-selection-multi": "1.0.1",
     "date-fns": "2.16.1",
     "filepond": "4.25.1",
@@ -227,7 +227,7 @@
     "ts-jest": "26.4.4"
   },
   "resolutions": {
-    "d3": "4.13.0",
+    "d3": "6.3.1",
     "d3-selection": "1.4.2",
     "object-path": "0.11.5",
     "node-forge": "0.10.0",
