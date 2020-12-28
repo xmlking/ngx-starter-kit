@@ -12824,12 +12824,12 @@ ngx-deploy-npm@1.3.2:
   resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-1.3.2.tgz#9e3b6c141a6af1ebc6fb8e114dd637a23724d74c"
   integrity sha512-/w2V6Xx2nyrZDGj2QGa+Yw44Oi/bGqE3L43vf8UM3t+vqJtyGvx2XHs6SZBp8QeOpwRFLA5HRW8QYXyfH0eSig==
 
-ngx-filepond@5.0.1:
-  version "5.0.1"
-  resolved "https://registry.yarnpkg.com/ngx-filepond/-/ngx-filepond-5.0.1.tgz#0b6797be56e4382aa37b301fcb524f90b74f2035"
-  integrity sha512-ohilvQVFE6uv+MPV6zx0H7roKGb5jXuAuzsfFouH3u4fpKzISZyWa0bvIzKW+UNTpzFQ6pIdCn8yBCA9MaSkCg==
+ngx-filepond@6.0.0:
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/ngx-filepond/-/ngx-filepond-6.0.0.tgz#df662d8193dd12df5e4303c3087cd7b3e6196ac5"
+  integrity sha512-wlDaUD5JFOH7NIdB89FyaGw2RlPj7Lb5xUj6ksayVhMXfUM00Iz7LM7HyOw5Rz+1X2f3FH6sgy7dK4w8v6Ttog==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^1.10.0"
 
 ngx-page-scroll-core@7.0.3:
   version "7.0.3"
