@@ -1951,10 +1951,10 @@
     fs-extra "9.0.1"
     pluralize "8.0.0"
 
-"@nestjs/swagger@4.7.8":
-  version "4.7.8"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.7.8.tgz#4a7512263edd7d29165797bbddbf4e5763a9197e"
-  integrity sha512-mX955BiwkHUn8IKpqijCDGubx/vmUmADbK1D5pqo9o4hIdweKdqFK8ie6NkL5JNTxO2XOZfj6Dh6WUnDdCCEQg==
+"@nestjs/swagger@4.7.9":
+  version "4.7.9"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-4.7.9.tgz#062305c0f8875cd1af1924f210ee3f4bcd2f397e"
+  integrity sha512-5WjtrrbWriHCBN9eDCgr43eTU1S/adlF7RaXjS9YDY553vFABqESfs7riZZy4WhBJ35ldfpzgYoyZv3Z/+DyHQ==
   dependencies:
     "@nestjs/mapped-types" "0.1.1"
     lodash "4.17.20"
