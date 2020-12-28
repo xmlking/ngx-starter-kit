@@ -50,7 +50,7 @@
   "devDependencies": {
     "@types/helmet": "4.0.0",
     "@types/nodemailer": "6.4.0",
-    "@types/passport": "1.0.4",
+    "@types/passport": "1.0.5",
     "@types/passport-jwt": "3.0.3",
     "@types/socket.io": "2.1.12",
     "@types/supertest": "2.0.10",
