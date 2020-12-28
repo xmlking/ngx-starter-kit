@@ -1941,7 +1941,17 @@
     socket.io "2.3.0"
     tslib "2.0.3"
 
-"@nestjs/schematics@7.2.5", "@nestjs/schematics@^7.0.0":
+"@nestjs/schematics@7.2.6":
+  version "7.2.6"
+  resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.2.6.tgz#cc2c029927550f9b551947053849ebff66c99803"
+  integrity sha512-4geGO9pjYG4Sc4Qi+pkUVIbaxPEeySHi/z17po8nP9uaPPo8AUKP9rXjNL+mhMrXqFlB/hhN6xBBYtMyL5pB2Q==
+  dependencies:
+    "@angular-devkit/core" "11.0.5"
+    "@angular-devkit/schematics" "11.0.5"
+    fs-extra "9.0.1"
+    pluralize "8.0.0"
+
+"@nestjs/schematics@^7.0.0":
   version "7.2.5"
   resolved "https://registry.yarnpkg.com/@nestjs/schematics/-/schematics-7.2.5.tgz#60945ee12136dde78cf01c706413e7676e4bf494"
   integrity sha512-RwoPNV6ot1sCq+/CDH9fDAE/NX/r6UtzDGn+S/XiEIP4AuRqUphKPyAMxXc8k4dLi3VFRCchAshYQfaOgDc9Qg==
