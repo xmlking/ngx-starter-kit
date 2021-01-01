@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/loading-overlay",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=10.2.0",
-    "@angular/core": ">=10.2.0"
+    "@angular/common": ">=11.0.5",
+    "@angular/core": ">=11.0.5"
   },
   "dependencies": {
     "tslib": "^2.0.3"

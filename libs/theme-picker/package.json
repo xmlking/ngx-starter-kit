@@ -2,8 +2,8 @@
   "name": "@ngx-starter-kit/theme-picker",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=10.2.0",
-    "@angular/core": ">=10.2.0",
+    "@angular/common": ">=11.0.5",
+    "@angular/core": ">=11.0.5",
     "@angular/cdk": ">=10.2.5",
     "@angular/material": ">=10.2.5"
   },
