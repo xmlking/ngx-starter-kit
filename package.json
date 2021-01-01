@@ -60,6 +60,7 @@
     "update": "ng update @nrwl/workspace",
     "update:check": "ng update",
     "workspace-schematic": "nx workspace-schematic",
+    "typecheck": "tsc --noEmit --skipLibCheck",
     "dep-graph": "nx dep-graph",
     "help": "nx help",
     "nx": "nx",
@@ -84,7 +85,8 @@
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,scss,html}": [
       "yarn affected:lint --uncommitted --parallel --fix=true",
-      "yarn format:write --uncommitted"
+      "yarn format:write --uncommitted",
+      "git add"
     ]
   },
   "release": {
@@ -162,7 +164,7 @@
     "intersection-observer": "0.12.0",
     "keycloak-js": "12.0.1",
     "ngx-auto-unsubscribe": "3.0.1",
-    "ngx-filepond": "5.0.1",
+    "ngx-filepond": "6.0.0",
     "ngx-page-scroll": "7.0.3",
     "ngx-page-scroll-core": "7.0.3",
     "ngx-perfect-scrollbar": "10.0.1",
@@ -182,21 +184,21 @@
     "@angular/language-service": "11.0.5",
     "@compodoc/compodoc": "*",
     "@ngx-builders/analyze": "^2.1.0",
-    "@nrwl/angular": "11.0.18",
-    "@nrwl/nest": "11.0.18",
-    "@nrwl/workspace": "11.0.18",
+    "@nrwl/angular": "11.0.20",
+    "@nrwl/nest": "11.0.20",
+    "@nrwl/workspace": "11.0.20",
     "@twittwer/compodoc": "^1.5.1",
     "@types/google.analytics": "0.0.41",
     "@types/jest": "26.0.19",
     "@types/jquery": "3.5.5",
-    "@types/node": "14.14.16",
+    "@types/node": "14.14.19",
     "codecov": "3.8.1",
     "codelyzer": "6.0.1",
     "loaders.css": "0.1.2",
     "ng-packagr": "^11.0.3",
     "ngx-deploy-npm": "1.3.2",
     "rimraf": "3.0.2",
-    "ts-loader": "8.0.12",
+    "ts-loader": "8.0.13",
     "ts-node": "9.1.1",
     "tsconfig-paths": "3.9.0",
     "tslint": "6.1.3",
@@ -223,7 +225,7 @@
     "lint-staged": "10.5.3",
     "lite-server": "2.6.1",
     "prettier": "2.2.1",
-    "semantic-release": "17.3.0",
+    "semantic-release": "17.3.1",
     "ts-jest": "26.4.4"
   },
   "resolutions": {

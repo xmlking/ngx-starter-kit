@@ -135,7 +135,7 @@ ng config schematics.@schematics/angular:component.prefix yeti
 ng config schematics.@schematics/angular:component.changeDetection OnPush
 
 # make sure we are up-to-date
-ng update --next
+nx migrate latest
 
 # and update as suggested. e.g.,
 ng update @angular/cli --next

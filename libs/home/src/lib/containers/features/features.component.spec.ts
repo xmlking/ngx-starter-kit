@@ -4,7 +4,7 @@ import { SharedModule } from '@ngx-starter-kit/shared';
 import { SvgViewerModule } from '@ngx-starter-kit/svg-viewer';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { LandingComponent } from '@ngx-starter-kit/home/src/lib/containers/landing/landing.component';
+import { LandingComponent } from '../landing/landing.component';
 
 describe('FeaturesComponent', () => {
   let component: FeaturesComponent;
