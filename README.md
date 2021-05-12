@@ -8,6 +8,7 @@
 
 ### Quality
 
+[![CodeQL](https://github.com/xmlking/ngx-starter-kit/workflows/CodeQL/badge.svg?event=push)](https://github.com/xmlking/ngx-starter-kit/actions?query=workflow%3ACodeQL)
 [![Codecov](https://codecov.io/gh/xmlking/ngx-starter-kit/branch/develop/graph/badge.svg)](https://codecov.io/gh/xmlking/ngx-starter-kit)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/xmlking/ngx-starter-kit.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xmlking/ngx-starter-kit/alerts/)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/xmlking/ngx-starter-kit.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/xmlking/ngx-starter-kit/context:javascript)
