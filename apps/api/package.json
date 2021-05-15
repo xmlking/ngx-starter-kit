@@ -59,7 +59,7 @@
   "optionalDependencies": {
     "@nestjs/schematics": "7.2.6",
     "@nestjs/testing": "7.6.5",
-    "nodemon": "2.0.6",
+    "nodemon": "2.0.7",
     "supertest": "6.0.1"
   }
 }
