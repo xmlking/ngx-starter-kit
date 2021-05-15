@@ -236,7 +236,7 @@
     "webpack-subresource-integrity": "1.5.2",
     "yargs-parser": "20.2.4",
     "mem": "8.0.0",
-    "engine.io-client": "4.0.5",
+    "engine.io-client": "4.1.4",
     "debug": "4.3.1"
   }
 }
