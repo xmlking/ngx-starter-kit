@@ -191,7 +191,7 @@
     "@types/google.analytics": "0.0.41",
     "@types/jest": "26.0.19",
     "@types/jquery": "3.5.5",
-    "@types/node": "14.14.19",
+    "@types/node": "14.17.0",
     "codecov": "3.8.1",
     "codelyzer": "6.0.1",
     "loaders.css": "0.1.2",
