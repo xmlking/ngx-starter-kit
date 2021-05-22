@@ -71,7 +71,7 @@ replication:
   slaveReplicas: 1
   ## Set synchronous commit mode: on, off, remote_apply, remote_write and local
   ## ref: https://www.postgresql.org/docs/9.6/runtime-config-wal.html#GUC-WAL-LEVEL
-  synchronousCommit: "off"
+  synchronousCommit: 'off'
   ## From the number of `slaveReplicas` defined above, set the number of those that will have synchronous replication
   ## NOTE: It cannot be > slaveReplicas
   numSynchronousReplicas: 0
@@ -112,7 +112,6 @@ postgresqlDataDir: /bitnami/postgresql
 ## ref: https://github.com/bitnami/bitnami-docker-postgresql/blob/master/README.md
 ##
 # postgresqlInitdbWalDir:
-
 
 ## PostgreSQL configuration
 ## Specify runtime configuration parameters as a dict, using camelCase, e.g.
@@ -284,8 +283,8 @@ metrics:
   service:
     type: ClusterIP
     annotations:
-      prometheus.io/scrape: "true"
-      prometheus.io/port: "9187"
+      prometheus.io/scrape: 'true'
+      prometheus.io/port: '9187'
     loadBalancerIP:
   image:
     registry: docker.io

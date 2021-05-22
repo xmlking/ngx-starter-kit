@@ -26,18 +26,18 @@ keycloak:
 
           echo 'PostgreSQL OK ✓'
 
-# use `service` for prod and `ingress` for dev. Comment other before install.
-#  service:
-#    type: NodePort
-#    nodePort: 32080
+  # use `service` for prod and `ingress` for dev. Comment other before install.
+  #  service:
+  #    type: NodePort
+  #    nodePort: 32080
   ingress:
     enabled: true
     path: /
     annotations:
       kubernetes.io/ingress.class: traefik
-      traefik.frontend.passHostHeader: "true"
-      traefik.ingress.kubernetes.io/preserve-host: "true"
-#      ingress.kubernetes.io/ssl-proxy-headers: "X-Forwarded-Proto: https"
+      traefik.frontend.passHostHeader: 'true'
+      traefik.ingress.kubernetes.io/preserve-host: 'true'
+    #      ingress.kubernetes.io/ssl-proxy-headers: "X-Forwarded-Proto: https"
     hosts:
       - keycloak.traefik.k8s
     tls:

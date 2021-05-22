@@ -17,11 +17,11 @@ export class FindSubscriptionsDto extends PaginationParams<Subscription> {
   @IsOptional()
   @ArrayUnique()
   @IsString({ each: true })
-  @Transform(value => (value ? value.split(',') : []))
+  @Transform(({ value }) => (value ? value.split(',') : []))
   readonly topics?: string[];
 
   @IsOptional()
-  @Transform((val: string) => ({ createdAt: val === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
+  @Transform(({ value }) => ({ createdAt: value === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
   readonly order = {
     createdAt: OrderType.DESC,
   };

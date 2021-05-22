@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 services:
   keycloak:
     image: jboss/keycloak:9.0.3
@@ -12,7 +12,7 @@ services:
       KEYCLOAK_USER: admin
       KEYCLOAK_PASSWORD: admin123
       KEYCLOAK_LOGLEVEL: INFO
-      PROXY_ADDRESS_FORWARDING: "true"
+      PROXY_ADDRESS_FORWARDING: 'true'
       # Uncomment the line below if you want to specify JDBC parameters. The parameter below is just an example, and it shouldn't be used in production without knowledge. It is highly recommended that you read the PostgreSQL JDBC driver documentation in order to use it.
       #JDBC_PARAMS: "ssl=true"
     ports:
@@ -31,12 +31,12 @@ services:
       KEYCLOAK_DB_USER: keycloak
       KEYCLOAK_DB_PASSWORD: keycloak123
     ports:
-      - "31432:5432"
+      - '31432:5432'
     healthcheck:
       test:
         [
-          "CMD-SHELL",
-          "psql postgres://$${POSTGRES_USER}:$${POSTGRES_PASSWORD}@localhost:5432/$${POSTGRES_DB} || exit 1",
+          'CMD-SHELL',
+          'psql postgres://$${POSTGRES_USER}:$${POSTGRES_PASSWORD}@localhost:5432/$${POSTGRES_DB} || exit 1',
         ]
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -54,7 +54,7 @@ services:
     environment:
       NODE_TLS_REJECT_UNAUTHORIZED: 0
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - postgres
 
@@ -68,7 +68,7 @@ services:
     volumes:
       - .deploy/webapp/nginx.dev.conf:/etc/nginx/conf.d/nginx.conf:ro
     ports:
-      - "4200:8080"
+      - '4200:8080'
     depends_on:
       - keycloak
       - api
@@ -85,28 +85,28 @@ services:
     environment:
       discovery.type: single-node
     ports:
-      - "9200:9200"
+      - '9200:9200'
     links:
-      - "postgres"
+      - 'postgres'
   kibana:
     image: docker.elastic.co/kibana/kibana:6.8.13
     container_name: kibana
     #    volumes:
     #    - ./kibana.yml:/usr/share/kibana/config/kibana.yml
     links:
-      - "elasticsearch"
+      - 'elasticsearch'
     ports:
-      - "5601:5601"
+      - '5601:5601'
   transporter:
     image: xmlking/postgres-to-es-transporter:latest
     container_name: transporter
     environment:
       DB_NAME: cockpit
-      POSTGRES_URI: "postgres://postgres:postgres321@postgres:5432"
-      ELASTICSEARCH_URI: "http://elasticsearch:9200"
+      POSTGRES_URI: 'postgres://postgres:postgres321@postgres:5432'
+      ELASTICSEARCH_URI: 'http://elasticsearch:9200'
     links:
-      - "postgres"
-      - "elasticsearch"
+      - 'postgres'
+      - 'elasticsearch'
 
 volumes:
   uploads:

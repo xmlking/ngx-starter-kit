@@ -29,7 +29,7 @@ export class FindProjectsDto extends PaginationParams<Project> {
   @IsOptional()
   @ArrayUnique()
   @IsString({ each: true })
-  @Transform(value => (value ? value.split(',') : []))
+  @Transform(({ value }) => (value ? value.split(',') : []))
   readonly groups?: string[];
 
   @IsOptional()
@@ -49,13 +49,15 @@ export class FindProjectsDto extends PaginationParams<Project> {
   @Type(() => Labels)
   readonly labels?: Labels;
 
-  @Transform((val: string) => val === 'true')
+  @Transform(({ value }) =>
+    typeof value === 'string' ? ['true', '1', 'yes'].includes(value.toLowerCase()) : Boolean(value)
+  )
   @IsOptional()
   @IsBoolean()
   readonly isActive?: boolean = true;
 
   @IsOptional()
-  @Transform((val: string) => ({ createdAt: val === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
+  @Transform(({ value }) => ({ createdAt: value === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
   readonly order = {
     createdAt: OrderType.DESC,
   };

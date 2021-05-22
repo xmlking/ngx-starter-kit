@@ -14,7 +14,8 @@ import { EntityService } from './entity.service';
 @Directive()
 // tslint:disable-next-line: directive-class-suffix
 export abstract class EntitiesComponent<TEntity extends Entity, TService extends EntityService<TEntity>>
-  implements OnInit, OnDestroy, AfterViewInit {
+  implements OnInit, OnDestroy, AfterViewInit
+{
   dataSource = new MatTableDataSource<TEntity>([]);
   selection = new SelectionModel<TEntity>(false, []);
 

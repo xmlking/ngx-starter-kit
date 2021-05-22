@@ -5,7 +5,7 @@ import { Project } from '../project.entity';
 
 export class FindOwnProjectsDto extends PaginationParams<Project> {
   @IsOptional()
-  @Transform((val: string) => ({ createdAt: val === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
+  @Transform(({ value }) => ({ createdAt: value === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
   readonly order = {
     createdAt: OrderType.DESC,
   };

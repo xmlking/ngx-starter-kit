@@ -16,11 +16,7 @@ export class Image extends Base implements IImage {
   @IsEnum(ImageType)
   type: ImageType;
 
-  @ManyToOne(
-    type => User,
-    user => user.images,
-    { onDelete: 'CASCADE', nullable: false },
-  )
+  @ManyToOne((type) => User, (user) => user.images, { onDelete: 'CASCADE', nullable: false })
   user: User;
 
   @ApiProperty({ type: 'string', format: 'date-time', example: '2018-11-21T06:20:32.232Z' })
@@ -28,7 +24,7 @@ export class Image extends Base implements IImage {
   createdAt?: Date;
 
   @IsOptional()
-  @Transform(value => value.toString('base64'), { toPlainOnly: true })
+  @Transform(({ value }) => value.toString('base64'), { toPlainOnly: true })
   @Column({ type: 'bytea', nullable: true })
   data?: Buffer;
 

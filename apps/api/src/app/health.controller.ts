@@ -1,22 +1,23 @@
-import { Controller, Get, UseGuards } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
+import { ApiOperation } from '@nestjs/swagger';
 import {
   DiskHealthIndicator,
-  DNSHealthIndicator,
+
   // GRPCHealthIndicator,
   HealthCheck,
   HealthCheckService,
+  HttpHealthIndicator,
   MemoryHealthIndicator,
   TypeOrmHealthIndicator,
 } from '@nestjs/terminus';
-import { KubernetesHealthIndicator } from './project';
 import { Allow } from './auth';
-import { ApiOperation } from '@nestjs/swagger';
+import { KubernetesHealthIndicator } from './project';
 
 @Controller('health')
 export class HealthController {
   constructor(
     private readonly health: HealthCheckService,
-    private readonly dns: DNSHealthIndicator,
+    private readonly dns: HttpHealthIndicator,
     private readonly db: TypeOrmHealthIndicator,
     private readonly memory: MemoryHealthIndicator,
     private readonly disk: DiskHealthIndicator,

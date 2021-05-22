@@ -1,4 +1,4 @@
-import { Transform } from 'class-transformer';
+import { Transform, TransformFnParams } from 'class-transformer';
 import { IsAscii, IsBoolean, IsEnum, IsNotEmpty, IsOptional, MaxLength, MinLength } from 'class-validator';
 import { OrderType, PaginationParams } from '../../../core';
 import { Notification, TargetType } from '../notification.entity';
@@ -16,18 +16,22 @@ export class FindNotificationsDto extends PaginationParams<Notification> {
   @IsEnum(TargetType)
   readonly targetType?: string;
 
-  @Transform((val: string) => val === 'true')
+  @Transform(({ value }) =>
+    typeof value === 'string' ? ['true', '1', 'yes'].includes(value.toLowerCase()) : Boolean(value)
+  )
   @IsOptional()
   @IsBoolean()
   readonly read?: boolean = false;
 
-  @Transform((val: string) => val === 'true')
+  @Transform(({ value }) =>
+    typeof value === 'string' ? ['true', '1', 'yes'].includes(value.toLowerCase()) : Boolean(value)
+  )
   @IsOptional()
   @IsBoolean()
   readonly isActive?: boolean = true;
 
   @IsOptional()
-  @Transform((val: string) => ({ createdAt: val === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
+  @Transform(({ value }) => ({ createdAt: value === OrderType.ASC ? OrderType.ASC : OrderType.DESC }))
   readonly order = {
     createdAt: OrderType.DESC,
   };
@@ -36,4 +40,9 @@ export class FindNotificationsDto extends PaginationParams<Notification> {
     super();
     Object.assign(this, values);
   }
+}
+
+export function parseBoolean(params: TransformFnParams): boolean {
+  let value = params.obj[params.key];
+  return JSON.parse(value);
 }
