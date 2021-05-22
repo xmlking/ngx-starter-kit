@@ -236,6 +236,7 @@
     "ua-parser-js": "0.7.24",
     "underscore": "1.12.1",
     "jose":"1.28.1",
-    "elliptic": "6.5.4"
+    "elliptic": "6.5.4",
+    "yargs-parser": "13.1.2"
   }
 }
