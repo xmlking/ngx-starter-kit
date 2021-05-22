@@ -1,4 +1,4 @@
-import 'jest-preset-angular';
+import 'jest-preset-angular/setup-jest';
 
 // move this to ./jest-global-mocks.ts
 // @ts-ignore
