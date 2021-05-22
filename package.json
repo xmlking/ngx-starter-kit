@@ -230,6 +230,12 @@
   },
   "resolutions": {
     "d3": "4.13.0",
-    "d3-selection": "1.4.2"
+    "d3-selection": "1.4.2",
+    "lodash": "4.17.21",
+    "handlebars": "4.7.7",
+    "ua-parser-js": "0.7.24",
+    "underscore": "1.12.1",
+    "jose":"1.28.1",
+    "elliptic": "6.5.4"
   }
 }
