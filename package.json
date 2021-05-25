@@ -162,7 +162,7 @@
     "formidable": "1.2.2",
     "immer": "9.0.2",
     "intersection-observer": "0.12.0",
-    "keycloak-js": "13.0.0",
+    "keycloak-js": "13.0.1",
     "ngx-auto-unsubscribe": "3.0.1",
     "ngx-filepond": "6.0.0",
     "ngx-page-scroll": "7.0.4",
