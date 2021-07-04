@@ -24,7 +24,8 @@ export const untilDestroy = <T>(component: any): MonoTypeOperatorFunction<T> => 
  * @internal
  */
 export function addDestroyObservableToComponent(component: any) {
-  component[destroy$] = new Observable<void>(observer => {
+  // @ts-ignore
+  component[destroy$] = new Observable<void>((observer) => {
     // keep track of the original destroy function,
     // the user might do something in there
     const orignalDestroy = component.ngOnDestroy;

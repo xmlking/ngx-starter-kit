@@ -1,4 +1,5 @@
-import * as packageJson from '../../../../package.json';
+import packageJson from '../../../../package.json';
+// import packageJson from '../../../../package.json' assert { type: "json" };
 
 const base = document.querySelector('base');
 

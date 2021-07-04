@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/app-confirm/ng-package.json",
+        "tsConfig": "libs/app-confirm/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/app-confirm/**/*"],
+        "tsConfig": ["libs/app-confirm/tsconfig.lib.json", "libs/app-confirm/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/app-confirm/jest.config.js",
+        "setupFile": "libs/app-confirm/src/test-setup.ts",
+        "tsConfig": "libs/app-confirm/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/app-confirm",
+  "sourceRoot": "libs/app-confirm/src",
+  "tags": ["public-module"]
+}

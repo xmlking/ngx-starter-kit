@@ -1,0 +1,23 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/animations/**/*"],
+        "tsConfig": ["libs/animations/tsconfig.lib.json", "libs/animations/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/animations/jest.config.js",
+        "tsConfig": "libs/animations/tsconfig.spec.json"
+      }
+    }
+  },
+  "projectType": "library",
+  "root": "libs/animations",
+  "generators": {},
+  "sourceRoot": "libs/animations/src",
+  "tags": ["utils"]
+}

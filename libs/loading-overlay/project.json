@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/loading-overlay/ng-package.json",
+        "tsConfig": "libs/loading-overlay/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/loading-overlay/**/*"],
+        "tsConfig": ["libs/loading-overlay/tsconfig.lib.json", "libs/loading-overlay/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/loading-overlay/jest.config.js",
+        "setupFile": "libs/loading-overlay/src/test-setup.ts",
+        "tsConfig": "libs/loading-overlay/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/loading-overlay",
+  "sourceRoot": "libs/loading-overlay/src",
+  "tags": ["public-module"]
+}

@@ -1,0 +1,96 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "configurations": {
+        "mock": {
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/api/src/environments/environment.ts",
+              "with": "apps/api/src/environments/environment.mock.ts"
+            }
+          ],
+          "inspect": false,
+          "optimization": true,
+          "sourceMap": false
+        },
+        "production": {
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/api/src/environments/environment.ts",
+              "with": "apps/api/src/environments/environment.prod.ts"
+            }
+          ],
+          "inspect": false,
+          "optimization": true,
+          "sourceMap": false
+        }
+      },
+      "options": {
+        "assets": ["apps/api/src/assets"],
+        "main": "apps/api/src/main.ts",
+        "outputPath": "dist/apps/api",
+        "showCircularDependencies": false,
+        "sourceMap": true,
+        "tsConfig": "apps/api/tsconfig.app.json"
+      }
+    },
+    "e2e": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/api/e2e/jest.config.js",
+        "tsConfig": "apps/api/e2e/tsconfig.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/*.json", "**/node_modules/**", "!apps/api/**/*"],
+        "tsConfig": ["apps/api/e2e/tsconfig.json", "apps/api/tsconfig.app.json", "apps/api/tsconfig.spec.json"]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "configurations": {
+        "mock": {
+          "buildTarget": "api:build:mock"
+        },
+        "production": {
+          "buildTarget": "api:build:production"
+        }
+      },
+      "options": {
+        "buildTarget": "api:build"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/api/jest.config.js",
+        "tsConfig": "apps/api/tsconfig.spec.json"
+      }
+    },
+    "typeorm": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          {
+            "command": "echo $PWD"
+          },
+          {
+            "command": "ts-node -r tsconfig-paths/register --project apps/api/tsconfig.app.json node_modules/.bin/typeorm migration:create"
+          }
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "prefix": "api",
+  "projectType": "application",
+  "root": "apps/api",
+  "generators": {},
+  "sourceRoot": "apps/api/src",
+  "tags": ["api-module"]
+}

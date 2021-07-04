@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'fu/var';
 
 :host {
@@ -26,7 +28,7 @@
 
 :host ::ng-deep {
   .ngx-chart-widget-header {
-    padding: $spacing/1.5 $spacing;
+    padding: math.div($spacing, 1.5) $spacing; //$spacing/1.5 $spacing;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -60,7 +62,7 @@
   }
 
   .ngx-chart-widget-content {
-    padding: $spacing/1.5 $spacing $spacing;
+    padding: math.div($spacing, 1.5) $spacing $spacing;
     display: flex;
     flex-direction: column;
     flex: 1 1 auto;

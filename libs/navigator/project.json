@@ -1,0 +1,30 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/navigator/**/*"],
+        "tsConfig": ["libs/navigator/tsconfig.lib.json", "libs/navigator/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/navigator/jest.config.js",
+        "setupFile": "libs/navigator/src/test-setup.ts",
+        "tsConfig": "libs/navigator/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/navigator",
+  "sourceRoot": "libs/navigator/src",
+  "tags": ["private-module", "core-module"]
+}

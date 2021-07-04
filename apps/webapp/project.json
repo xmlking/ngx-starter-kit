@@ -1,0 +1,246 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "configurations": {
+        "mock": {
+          "aot": true,
+          "baseHref": "/ngx-starter-kit/",
+          "budgets": [
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/webapp/src/environments/environment.ts",
+              "with": "apps/webapp/src/environments/environment.mock.ts"
+            }
+          ],
+          "namedChunks": false,
+          "optimization": {
+            "scripts": true,
+            "styles": true
+          },
+          "outputHashing": "all",
+          "serviceWorker": true,
+          "sourceMap": {
+            "hidden": true,
+            "scripts": true,
+            "styles": true
+          },
+          "vendorChunk": false
+        },
+        "production": {
+          "aot": true,
+          "budgets": [
+            {
+              "baseline": "1.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "vendor",
+              "type": "bundle"
+            },
+            {
+              "baseline": "5.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "minimumError": "20%",
+              "minimumWarning": "10%",
+              "type": "allScript"
+            },
+            {
+              "baseline": "2.5mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "type": "initial"
+            },
+            {
+              "baseline": "300kb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "polyfills",
+              "type": "bundle"
+            },
+            {
+              "baseline": "350kb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "styles",
+              "type": "bundle"
+            },
+            {
+              "baseline": "11mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "type": "all"
+            },
+            {
+              "baseline": "8mb",
+              "maximumError": "20%",
+              "maximumWarning": "10%",
+              "name": "main",
+              "type": "bundle"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "buildOptimizer": true,
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/webapp/src/environments/environment.ts",
+              "with": "apps/webapp/src/environments/environment.prod.ts"
+            }
+          ],
+          "namedChunks": false,
+          "ngswConfigPath": "apps/webapp/ngsw-config.json",
+          "optimization": true,
+          "outputHashing": "all",
+          "serviceWorker": true,
+          "sourceMap": {
+            "hidden": true,
+            "scripts": true,
+            "styles": true
+          },
+          "vendorChunk": false
+        },
+        "serve": {
+          "budgets": [
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "6kb"
+            }
+          ],
+          "preserveSymlinks": true
+        }
+      },
+      "options": {
+        "aot": true,
+        "assets": [
+          "apps/webapp/src/assets",
+          "apps/webapp/src/favicon.ico",
+          "apps/webapp/src/manifest.json",
+          "apps/webapp/src/silent-refresh.html"
+        ],
+        "index": "apps/webapp/src/index.html",
+        "main": "apps/webapp/src/main.ts",
+        "outputPath": "dist/apps/webapp",
+        "polyfills": "apps/webapp/src/polyfills.ts",
+        "scripts": [],
+        "stylePreprocessorOptions": {
+          "includePaths": ["apps/webapp/src/styles"]
+        },
+        "styles": [
+          "apps/webapp/src/styles.scss",
+          {
+            "bundleName": "deeppurple-amber",
+            "input": "apps/webapp/src/styles/themes/deeppurple-amber.scss",
+            "inject": false
+          },
+          {
+            "bundleName": "indigo-pink",
+            "input": "apps/webapp/src/styles/themes/indigo-pink.scss",
+            "inject": false
+          },
+          {
+            "bundleName": "pink-bluegrey",
+            "input": "apps/webapp/src/styles/themes/pink-bluegrey.scss",
+            "inject": false
+          },
+          {
+            "bundleName": "purple-green",
+            "input": "apps/webapp/src/styles/themes/purple-green.scss",
+            "inject": false
+          }
+        ],
+        "tsConfig": "apps/webapp/tsconfig.app.json"
+      }
+    },
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "configurations": {
+        "production": {
+          "devServerTarget": "webapp:serve:production"
+        }
+      },
+      "options": {
+        "cypressConfig": "apps/webapp/e2e/cypress.json",
+        "devServerTarget": "webapp:serve",
+        "tsConfig": "apps/webapp/e2e/tsconfig.e2e.json"
+      }
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "webapp:build"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/*.json", "**/node_modules/**", "!apps/webapp/**/*"],
+        "tsConfig": ["apps/webapp/e2e/tsconfig.json", "apps/webapp/tsconfig.app.json", "apps/webapp/tsconfig.spec.json"]
+      }
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "mock": {
+          "browserTarget": "webapp:build:mock"
+        },
+        "production": {
+          "browserTarget": "webapp:build:production"
+        }
+      },
+      "options": {
+        "browserTarget": "webapp:build",
+        "proxyConfig": "apps/webapp/proxy.conf.json"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/webapp/jest.config.js",
+        "setupFile": "apps/webapp/src/test-setup.ts",
+        "tsConfig": "apps/webapp/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "angular-cli-ghpages:deploy",
+      "options": {
+        "baseHref": "/ngx-starter-kit/",
+        "configuration": "mock"
+      }
+    },
+    "compodoc": {
+      "executor": "@twittwer/compodoc:compodoc",
+      "options": {
+        "tsConfig": "apps/webapp/tsconfig.compodoc.json",
+        "outputPath": "dist/compodoc/webapp",
+        "workspaceDocs": true
+      },
+      "configurations": {
+        "json": {
+          "exportFormat": "json"
+        }
+      }
+    },
+    "analyze": {
+      "executor": "@ngx-builders/analyze:analyze",
+      "options": {
+        "outputPath": "dist/apps/webapp"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "application",
+  "root": "apps/webapp",
+  "sourceRoot": "apps/webapp/src",
+  "tags": ["app-module"]
+}

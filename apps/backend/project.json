@@ -1,0 +1,50 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:build",
+      "configurations": {
+        "production": {
+          "extractLicenses": true,
+          "fileReplacements": [
+            {
+              "replace": "apps/backend/src/environments/environment.ts",
+              "with": "apps/backend/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true
+        }
+      },
+      "options": {
+        "main": "apps/backend/src/main.ts",
+        "outputPath": "dist/apps/backend",
+        "tsConfig": "apps/backend/tsconfig.app.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!apps/backend/**/*"],
+        "tsConfig": ["apps/backend/tsconfig.app.json", "apps/backend/tsconfig.spec.json"]
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/node:execute",
+      "options": {
+        "buildTarget": "backend:build"
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "apps/backend/jest.config.js",
+        "tsConfig": "apps/backend/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "application",
+  "root": "apps/backend",
+  "generators": {},
+  "sourceRoot": "apps/backend/src",
+  "tags": ["api-module"]
+}

@@ -7,122 +7,7 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {
-    "webapp": {
-      "tags": ["app-module"]
-    },
-    "api": {
-      "tags": ["api-module"]
-    },
-    "backend": {
-      "tags": ["api-module"]
-    },
-    "navigator": {
-      "tags": ["private-module", "core-module"]
-    },
-    "socketio-plugin": {
-      "tags": ["public-module"]
-    },
-    "tree": {
-      "tags": ["utils"]
-    },
-    "home": {
-      "tags": ["layout", "entry-module"]
-    },
-    "dashboard": {
-      "tags": ["layout", "entry-module"]
-    },
-    "not-found": {
-      "tags": ["entry-module"]
-    },
-    "experiments": {
-      "tags": ["child-module"]
-    },
-    "widgets": {
-      "tags": ["child-module"]
-    },
-    "animations": {
-      "tags": ["utils"]
-    },
-    "utils": {
-      "tags": ["utils"]
-    },
-    "auth": {
-      "tags": ["private-module", "core-module"]
-    },
-    "shared": {
-      "tags": ["shared-module"]
-    },
-    "app-confirm": {
-      "tags": ["public-module"]
-    },
-    "draggable": {
-      "tags": ["public-module"]
-    },
-    "breadcrumbs": {
-      "tags": ["public-module"]
-    },
-    "scroll-to-top": {
-      "tags": ["public-module"]
-    },
-    "scrollbar": {
-      "tags": ["public-module"]
-    },
-    "context-menu": {
-      "tags": ["public-module"]
-    },
-    "theme-picker": {
-      "tags": ["public-module"]
-    },
-    "quickpanel": {
-      "tags": ["private-module"]
-    },
-    "svg-viewer": {
-      "tags": ["public-module"]
-    },
-    "led": {
-      "tags": ["public-module"]
-    },
-    "chat-box": {
-      "tags": ["public-module"]
-    },
-    "json-diff": {
-      "tags": ["public-module"]
-    },
-    "toolbar": {
-      "tags": ["private-module"]
-    },
-    "sidenav": {
-      "tags": ["private-module"]
-    },
-    "loading-overlay": {
-      "tags": ["public-module"]
-    },
-    "grid": {
-      "tags": ["child-module"]
-    },
-    "notifications": {
-      "tags": ["public-module"]
-    },
-    "core": {
-      "tags": ["core-module"]
-    },
-    "clap": {
-      "tags": ["public-module"]
-    },
-    "image-comparison": {
-      "tags": ["public-module"]
-    },
-    "ngx-utils": {
-      "tags": ["public-module", "utils"]
-    },
-    "admin": {
-      "tags": ["entry-module"]
-    },
-    "models": {
-      "tags": ["utils"]
-    }
-  },
+  "projects": {},
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -130,5 +15,15 @@
         "cacheableOperations": ["build", "lint", "test", "e2e", "compodoc"]
       }
     }
+  },
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "newProjectRoot": "",
+  "targetDependencies": {
+    "build": [
+      {
+        "target": "build",
+        "projects": "dependencies"
+      }
+    ]
   }
 }

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 html,
 body {
   min-height: 100%;
@@ -27,17 +29,17 @@ div {
 }
 
 .ngx-page-padding {
-  padding: $spacing/1.5;
+  padding: math.div($spacing, 1.5);
 
   @include media-xs {
-    padding: $spacing/3;
+    padding: math.div($spacing, 3);
   }
 
   > .scroll-content {
     padding-bottom: $spacing * 2;
 
     @include media-xs {
-      padding-bottom: ($spacing/3) * 2;
+      padding-bottom: math.div($spacing, 3) * 2;
     }
   }
 }
@@ -82,24 +84,24 @@ ngx-scrollbar > .scroll-content {
 
 .mat-menu-panel.ngx-inbox-mail-label-list-menu {
   max-height: 350px;
-  padding-top: $spacing/3;
+  padding-top: math.div($spacing, 3);
 
   .ngx-inbox-mail-label-list-menu-subheading {
     @include mat-typography-level-to-styles($config, caption);
     color: $theme-secondary-text;
     font-weight: 500;
-    padding-left: $spacing/2;
-    padding-right: $spacing/2;
-    margin-bottom: $spacing/3;
+    padding-left: $spacing * 0.5;
+    padding-right: $spacing * 0.5;
+    margin-bottom: math.div($spacing, 3);
   }
 
   .mat-checkbox {
-    margin-right: $spacing/2;
+    margin-right: $spacing * 0.5;
   }
 
   .ngx-inbox-mail-label-list-create {
-    padding-left: $spacing/2;
-    padding-right: $spacing/2;
+    padding-left: $spacing * 0.5;
+    padding-right: $spacing * 0.5;
   }
 
   .ngx-inbox-mail-label-list-color,
@@ -116,7 +118,7 @@ ngx-scrollbar > .scroll-content {
     height: 16px;
     border-radius: 50%;
     display: inline-block;
-    margin-right: $spacing/2;
+    margin-right: $spacing * 0.5;
     vertical-align: middle;
   }
 }

@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/sidenav/**/*"],
+        "tsConfig": ["libs/sidenav/tsconfig.lib.json", "libs/sidenav/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/sidenav/jest.config.js",
+        "setupFile": "libs/sidenav/src/test-setup.ts",
+        "tsConfig": "libs/sidenav/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/sidenav",
+  "sourceRoot": "libs/sidenav/src",
+  "tags": ["private-module"]
+}

@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/dashboard/**/*"],
+        "tsConfig": ["libs/dashboard/tsconfig.lib.json", "libs/dashboard/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/dashboard/jest.config.js",
+        "setupFile": "libs/dashboard/src/test-setup.ts",
+        "tsConfig": "libs/dashboard/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/dashboard",
+  "sourceRoot": "libs/dashboard/src",
+  "tags": ["layout", "entry-module"]
+}

@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/not-found/**/*"],
+        "tsConfig": ["libs/not-found/tsconfig.lib.json", "libs/not-found/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/not-found/jest.config.js",
+        "setupFile": "libs/not-found/src/test-setup.ts",
+        "tsConfig": "libs/not-found/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/not-found",
+  "sourceRoot": "libs/not-found/src",
+  "tags": ["entry-module"]
+}

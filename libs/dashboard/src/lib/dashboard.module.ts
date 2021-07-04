@@ -49,7 +49,7 @@ registerPlugin(
   FilePondPluginImagePreview,
   FilePondPluginImageCrop,
   FilePondPluginImageResize,
-  FilePondPluginImageTransform,
+  FilePondPluginImageTransform
 );
 
 const matModules = [
@@ -105,19 +105,21 @@ const matModules = [
           },
           {
             path: 'grid',
-            loadChildren: () => import('@ngx-starter-kit/grid').then(module => module.GridModule),
+            loadChildren: () => import('@ngx-starter-kit/grid').then((module) => module.GridModule),
             data: { title: 'Grid', depth: 2, preload: false },
           },
           {
             path: 'experiments',
-            loadChildren: () => import('@ngx-starter-kit/experiments').then(module => module.ExperimentsModule),
+            loadChildren: () => import('@ngx-starter-kit/experiments').then((module) => module.ExperimentsModule),
             data: { title: 'Experiments', depth: 2, preload: false },
           },
+          /*
           {
             path: 'widgets',
             loadChildren: () => import('@ngx-starter-kit/widgets').then(module => module.WidgetsModule),
             data: { title: 'Widgets', depth: '2', preload: false },
           },
+          */
         ],
       },
     ]),

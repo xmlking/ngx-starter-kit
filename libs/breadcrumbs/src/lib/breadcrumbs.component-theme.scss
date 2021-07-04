@@ -1,3 +1,4 @@
+@use "sass:math";
 @import '~@angular/material/theming';
 
 @mixin ngx-breadcrumbs-component-theme($theme) {
@@ -36,8 +37,8 @@
       font-size: 18px;
       height: 18px;
       width: 18px;
-      margin-left: $spacing/4;
-      margin-right: $spacing/4;
+      margin-left: math.div($spacing, 4);
+      margin-right: math.div($spacing, 4);
     }
 
     .crumb.current,

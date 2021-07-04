@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/clap/ng-package.json",
+        "tsConfig": "libs/clap/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/clap/**/*"],
+        "tsConfig": ["libs/clap/tsconfig.lib.json", "libs/clap/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/clap/jest.config.js",
+        "setupFile": "libs/clap/src/test-setup.ts",
+        "tsConfig": "libs/clap/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/clap",
+  "sourceRoot": "libs/clap/src",
+  "tags": ["public-module"]
+}

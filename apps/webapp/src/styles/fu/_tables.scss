@@ -7,7 +7,7 @@ $table-header-font-color: #757575;
 
 //$table-cell-padding:            1.6rem;
 $table-cell-padding: 16px;
-$table-condensed-cell-padding: $table-cell-padding/2;
+$table-condensed-cell-padding: $table-cell-padding * 0.5;
 
 $table-bg: #fff;
 $table-bg-accent: #f5f5f5;

@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/draggable/ng-package.json",
+        "tsConfig": "libs/draggable/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/draggable/**/*"],
+        "tsConfig": ["libs/draggable/tsconfig.lib.json", "libs/draggable/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/draggable/jest.config.js",
+        "setupFile": "libs/draggable/src/test-setup.ts",
+        "tsConfig": "libs/draggable/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/draggable",
+  "sourceRoot": "libs/draggable/src",
+  "tags": ["public-module"]
+}

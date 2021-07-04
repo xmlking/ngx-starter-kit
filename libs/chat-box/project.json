@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/chat-box/ng-package.json",
+        "tsConfig": "libs/chat-box/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/chat-box/**/*"],
+        "tsConfig": ["libs/chat-box/tsconfig.lib.json", "libs/chat-box/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/chat-box/jest.config.js",
+        "setupFile": "libs/chat-box/src/test-setup.ts",
+        "tsConfig": "libs/chat-box/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/chat-box",
+  "sourceRoot": "libs/chat-box/src",
+  "tags": ["public-module"]
+}

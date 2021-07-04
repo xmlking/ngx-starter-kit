@@ -58,7 +58,7 @@ export class WizdashService {
 
     // Simulating request from local data
     return of({ labels: salesChartDemoLabels(), data: salesChartDemoValues }).pipe(
-      map(values => this.toSalesChartData(values)),
+      map((values) => this.toSalesChartData(values))
     );
   }
 
@@ -81,11 +81,12 @@ export class WizdashService {
   getVisits() {
     // Simulating request from local data
     return of({ labels: visitsChartDemoLabels(), data: visitsChartDemoValues }).pipe(
-      map(values => this.toVisitsChartData(values)),
+      map((values) => this.toVisitsChartData(values))
     );
   }
 
   toVisitsChartData(chartData: { labels: string[]; data: number[] }) {
+    // @ts-ignore
     return {
       labels: chartData.labels,
       datasets: [
@@ -105,7 +106,7 @@ export class WizdashService {
   getClicks() {
     // Simulating request from local data
     return of({ labels: clicksChartDemoLabels(), data: clicksChartDemoValues }).pipe(
-      map(values => this.toClicksChartData(values)),
+      map((values) => this.toClicksChartData(values))
     );
   }
 
@@ -128,7 +129,7 @@ export class WizdashService {
   getConversions() {
     // Simulating request from local data
     return of({ labels: conversionsChartDemoLabels(), data: conversionsChartDemoValues }).pipe(
-      map(values => this.toConversionsChartData(values)),
+      map((values) => this.toConversionsChartData(values))
     );
   }
 
@@ -153,7 +154,7 @@ export class WizdashService {
   getSalesSummary() {
     // Simulating request from local data
     return of({ labels: salesSummaryDemoLabels(), data: salesSummaryDemoData }).pipe(
-      map(values => this.toSalesSummaryChartData(values)),
+      map((values) => this.toSalesSummaryChartData(values))
     );
   }
 
@@ -177,15 +178,15 @@ export class WizdashService {
 
   getTop5Categories() {
     // Simulating request from local data
-    return of(top5CategoriesDemoData).pipe(map(values => this.toTop5CategoriesChartData(values)));
+    return of(top5CategoriesDemoData).pipe(map((values) => this.toTop5CategoriesChartData(values)));
   }
 
   toTop5CategoriesChartData(chartData: { label: string; value: number }[]) {
     return {
-      labels: chartData.map(data => data.label),
+      labels: chartData.map((data) => data.label),
       datasets: [
         {
-          data: chartData.map(data => data.value),
+          data: chartData.map((data) => data.value),
           backgroundColor: ['#2196F3', '#009688', '#4CAF50', '#607D8B', '#E91E63'],
         },
       ],
@@ -197,7 +198,7 @@ export class WizdashService {
     return of({
       labels: audienceOverviewUsersDemoLabels(),
       data: { thisWeek: audienceOverviewUsersDemoData, lastWeek: audienceOverviewUsersDemoDataLastWeek },
-    }).pipe(map(values => this.toAudienceOverviewUsersChartData(values)));
+    }).pipe(map((values) => this.toAudienceOverviewUsersChartData(values)));
   }
 
   toAudienceOverviewUsersChartData(chartData: { labels: string[]; data: { [set: string]: number[] } }) {
@@ -230,7 +231,7 @@ export class WizdashService {
     return of({
       labels: audienceOverviewSessionsDemoLabels(),
       data: { thisWeek: audienceOverviewSessionsDemoData, lastWeek: audienceOverviewSessionsDemoDataLastWeek },
-    }).pipe(map(values => this.toAudienceOverviewSessionsChartData(values)));
+    }).pipe(map((values) => this.toAudienceOverviewSessionsChartData(values)));
   }
 
   toAudienceOverviewSessionsChartData(chartData: { labels: string[]; data: { [set: string]: number[] } }) {
@@ -263,7 +264,7 @@ export class WizdashService {
     return of({
       labels: audienceOverviewBounceRateDemoLabels(),
       data: { thisWeek: audienceOverviewBounceRateDemoData, lastWeek: audienceOverviewBounceRateDemoDataLastWeek },
-    }).pipe(map(values => this.toAudienceOverviewBounceRateChartData(values)));
+    }).pipe(map((values) => this.toAudienceOverviewBounceRateChartData(values)));
   }
 
   toAudienceOverviewBounceRateChartData(chartData: { labels: string[]; data: { [set: string]: number[] } }) {
@@ -299,7 +300,7 @@ export class WizdashService {
         thisWeek: audienceOverviewSessionDurationDemoData,
         lastWeek: audienceOverviewSessionDurationDemoLastWeek,
       },
-    }).pipe(map(values => this.toAudienceOverviewSessionDurationChartData(values)));
+    }).pipe(map((values) => this.toAudienceOverviewSessionDurationChartData(values)));
   }
 
   toAudienceOverviewSessionDurationChartData(chartData: { labels: string[]; data: { [set: string]: number[] } }) {
@@ -336,7 +337,7 @@ export class WizdashService {
     return of({
       labels: recentSalesChartDemoLabels(),
       data: recentSalesChartDemoValues,
-    }).pipe(map(values => this.toRecentSalesChartData(values)));
+    }).pipe(map((values) => this.toRecentSalesChartData(values)));
   }
 
   toRecentSalesChartData(chartData: { labels: string[]; data: number[] }) {
@@ -358,7 +359,7 @@ export class WizdashService {
     return of({
       labels: advancedPieChartDemoLabels,
       data: advancedPieChartDemoValues,
-    }).pipe(map(values => this.toAdvancedPieChartData(values)));
+    }).pipe(map((values) => this.toAdvancedPieChartData(values)));
   }
 
   toAdvancedPieChartData(chartData: { labels: string[]; data: number[] }) {

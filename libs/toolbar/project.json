@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/toolbar/**/*"],
+        "tsConfig": ["libs/toolbar/tsconfig.lib.json", "libs/toolbar/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/toolbar/jest.config.js",
+        "setupFile": "libs/toolbar/src/test-setup.ts",
+        "tsConfig": "libs/toolbar/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/toolbar",
+  "sourceRoot": "libs/toolbar/src",
+  "tags": ["private-module"]
+}

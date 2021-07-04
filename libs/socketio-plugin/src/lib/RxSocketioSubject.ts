@@ -87,10 +87,11 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
 
     this.socketPrivate = config.connectOpts ? io(config.url, config.connectOpts) : io(config.url);
 
-    this.socketPrivate.on('connect', (event) =>
+    this.socketPrivate.on('connect', () =>
       config.openObserver.next(new CustomEvent('opened', { detail: { id: this.socketPrivate.id } }))
     );
 
+    // @ts-ignore
     this.socketPrivate.on('disconnect', (event) => config.closeObserver.next(event));
 
     this.socketPrivate.on('actions', (data) => this.outputPrivate.next(data));

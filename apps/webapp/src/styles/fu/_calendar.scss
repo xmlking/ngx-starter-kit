@@ -1,7 +1,9 @@
+@use "sass:math";
+
 .cal-month-view {
   .cal-header .cal-cell {
-    padding-top: $spacing/2;
-    padding-bottom: $spacing/2;
+    padding-top: $spacing * 0.5;
+    padding-bottom: $spacing * 0.5;
   }
 
   .cal-open-day-events {
@@ -19,7 +21,7 @@
       @include mat-elevation($card-elevation);
 
       & + div {
-        margin-top: $spacing/2;
+        margin-top: $spacing * 0.5;
       }
 
       mwl-calendar-event-title {
@@ -30,7 +32,7 @@
         .cal-event-title {
           color: $theme-text;
           flex: 1;
-          padding: $spacing/2;
+          padding: $spacing * 0.5;
         }
       }
 
@@ -38,7 +40,7 @@
         color: $theme-icon;
 
         & + .cal-event-action {
-          margin-left: $spacing/2;
+          margin-left: $spacing * 0.5;
         }
       }
     }
@@ -84,7 +86,7 @@
 
         .icon {
           font-size: 18px;
-          padding: $spacing/4 $spacing/6;
+          padding: $spacing * 0.25 math.div($spacing, 6);
         }
       }
     }

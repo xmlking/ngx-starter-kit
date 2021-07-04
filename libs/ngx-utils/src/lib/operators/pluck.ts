@@ -12,13 +12,13 @@ export function pluck<A, B extends keyof A, C extends keyof A[B]>(s1: B, s2: C):
 export function pluck<A, B extends keyof A, C extends keyof A[B], D extends keyof A[B][C]>(
   s1: B,
   s2: C,
-  s3: D,
+  s3: D
 ): OperatorFunction<A, A[B][C][D]>;
 export function pluck<A, B extends keyof A, C extends keyof A[B], D extends keyof A[B][C], E extends keyof A[B][C][D]>(
   s1: B,
   s2: C,
   s3: D,
-  s4: E,
+  s4: E
 ): OperatorFunction<A, A[B][C][D][E]>;
 export function pluck<
   A,
@@ -39,5 +39,6 @@ export function pluck<
 >(s1: B, s2: C, s3: D, s4: E, s5: F, s6: G): OperatorFunction<A, A[B][C][D][E][F][G]>;
 export function pluck<T, V>(...props: string[]): OperatorFunction<T, V>;
 export function pluck<T, V>(...props: string[]): OperatorFunction<T, V> {
+  // @ts-ignore
   return plucker<T, V>(...props);
 }

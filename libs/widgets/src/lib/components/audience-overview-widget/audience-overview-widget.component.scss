@@ -9,7 +9,7 @@
     .label {
       @include mat-typography-level-to-styles($config, body-1);
       color: $theme-secondary-text;
-      padding-bottom: $spacing/4;
+      padding-bottom: $spacing * 0.25;
     }
 
     .value {

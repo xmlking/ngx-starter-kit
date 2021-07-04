@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/core/**/*"],
+        "tsConfig": ["libs/core/tsconfig.lib.json", "libs/core/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/core/jest.config.js",
+        "setupFile": "libs/core/src/test-setup.ts",
+        "tsConfig": "libs/core/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/core",
+  "sourceRoot": "libs/core/src",
+  "tags": ["core-module"]
+}

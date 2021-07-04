@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/json-diff/ng-package.json",
+        "tsConfig": "libs/json-diff/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/json-diff/**/*"],
+        "tsConfig": ["libs/json-diff/tsconfig.lib.json", "libs/json-diff/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/json-diff/jest.config.js",
+        "setupFile": "libs/json-diff/src/test-setup.ts",
+        "tsConfig": "libs/json-diff/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/json-diff",
+  "sourceRoot": "libs/json-diff/src",
+  "tags": ["public-module"]
+}

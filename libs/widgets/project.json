@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/widgets/**/*"],
+        "tsConfig": ["libs/widgets/tsconfig.lib.json", "libs/widgets/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/widgets/jest.config.js",
+        "setupFile": "libs/widgets/src/test-setup.ts",
+        "tsConfig": "libs/widgets/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/widgets",
+  "sourceRoot": "libs/widgets/src",
+  "tags": ["child-module"]
+}

@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/svg-viewer/ng-package.json",
+        "tsConfig": "libs/svg-viewer/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/svg-viewer/**/*"],
+        "tsConfig": ["libs/svg-viewer/tsconfig.lib.json", "libs/svg-viewer/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/svg-viewer/jest.config.js",
+        "setupFile": "libs/svg-viewer/src/test-setup.ts",
+        "tsConfig": "libs/svg-viewer/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/svg-viewer",
+  "sourceRoot": "libs/svg-viewer/src",
+  "tags": ["public-module"]
+}

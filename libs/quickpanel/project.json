@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/quickpanel/**/*"],
+        "tsConfig": ["libs/quickpanel/tsconfig.lib.json", "libs/quickpanel/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/quickpanel/jest.config.js",
+        "setupFile": "libs/quickpanel/src/test-setup.ts",
+        "tsConfig": "libs/quickpanel/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/quickpanel",
+  "sourceRoot": "libs/quickpanel/src",
+  "tags": ["private-module"]
+}

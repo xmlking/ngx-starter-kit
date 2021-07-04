@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'var';
 @import '~@angular/material/theming';
 
@@ -97,7 +99,7 @@ input[type='search'] {
   .search-dropdown {
     background: white;
     position: absolute;
-    top: (($height__main_toolbar - 36px) / 2) + 36px; // 36px is the height of the search-bar
+    top: math.div($height--main-toolbar - 36px, 2) + 36px; // 36px is the height of the search-bar
     width: 100%;
     z-index: -1;
     transform: translateY(-110%);

@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $theme-picker-menu-padding: 8px;
 $theme-picker-grid-cell-size: 48px;
 $theme-picker-grid-cells-per-row: 2;
@@ -19,7 +21,7 @@ $theme-picker-accent-stripe-size: 6px;
     position: relative;
     width: $theme-picker-swatch-size;
     height: $theme-picker-swatch-size;
-    margin: ($theme-picker-grid-cell-size - $theme-picker-swatch-size) / 2;
+    margin: math.div($theme-picker-grid-cell-size - $theme-picker-swatch-size, 2);
     border-radius: 50%;
     overflow: hidden;
 

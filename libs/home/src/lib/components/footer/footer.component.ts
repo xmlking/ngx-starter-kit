@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { environment } from '@env/environment';
-import { version as appVersion } from '../../../../../../package.json';
+import packageJson from '../../../../../../package.json';
 
 @Component({
   selector: 'ngx-footer',
@@ -14,8 +14,8 @@ export class FooterComponent implements OnInit {
   ngOnInit() {}
 
   get version() {
-    if (appVersion) {
-      return appVersion;
+    if (packageJson.version) {
+      return packageJson.version;
     }
     return '';
   }

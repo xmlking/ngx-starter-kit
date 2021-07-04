@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'fu/var';
 
 :host ::ng-deep {
@@ -114,12 +116,12 @@
       .mat-row {
         flex-direction: column;
         align-items: start;
-        padding: $spacing/3 $spacing;
+        padding: math.div($spacing, 3) $spacing;
         min-height: auto;
       }
 
       .mat-cell {
-        padding-top: $spacing/3;
+        padding-top: math.div($spacing, 3);
       }
     }
   }

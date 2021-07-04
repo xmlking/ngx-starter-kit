@@ -1,0 +1,23 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/models/**/*"],
+        "tsConfig": ["libs/models/tsconfig.lib.json", "libs/models/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/models/jest.config.js",
+        "tsConfig": "libs/models/tsconfig.spec.json"
+      }
+    }
+  },
+  "projectType": "library",
+  "root": "libs/models",
+  "generators": {},
+  "sourceRoot": "libs/models/src",
+  "tags": ["utils"]
+}

@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/grid/**/*"],
+        "tsConfig": ["libs/grid/tsconfig.lib.json", "libs/grid/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/grid/jest.config.js",
+        "setupFile": "libs/grid/src/test-setup.ts",
+        "tsConfig": "libs/grid/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/grid",
+  "sourceRoot": "libs/grid/src",
+  "tags": ["child-module"]
+}

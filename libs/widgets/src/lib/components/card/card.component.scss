@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import 'fu/var';
 
 :host {
@@ -78,13 +80,13 @@
   }
 
   .ngx-card-actions {
-    padding: $spacing/3 $spacing/1.5;
+    padding: math.div($spacing, 3) math.div($spacing, 1.5);
     border-top: 1px solid $theme-divider;
     display: flex;
     flex-direction: row;
 
     button + button {
-      margin-left: $spacing/3;
+      margin-left: math.div($spacing, 3);
     }
 
     &.ngx-card-actions-align-end {

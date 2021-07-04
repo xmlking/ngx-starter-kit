@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/theme-picker/ng-package.json",
+        "tsConfig": "libs/theme-picker/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/theme-picker/**/*"],
+        "tsConfig": ["libs/theme-picker/tsconfig.lib.json", "libs/theme-picker/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/theme-picker/jest.config.js",
+        "setupFile": "libs/theme-picker/src/test-setup.ts",
+        "tsConfig": "libs/theme-picker/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/theme-picker",
+  "sourceRoot": "libs/theme-picker/src",
+  "tags": ["public-module"]
+}

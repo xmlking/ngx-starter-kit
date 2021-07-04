@@ -1,7 +1,9 @@
+@use "sass:math";
+
 @import 'fu/var';
 
 .gain {
-  margin-left: $spacing/3;
+  margin-left: math.div($spacing, 3);
   @include mat-typography-level-to-styles($config, caption);
 
   .mat-icon {
@@ -37,7 +39,7 @@
         @include mat-typography-level-to-styles($config, display-1);
 
         .indicator {
-          margin-left: $spacing/8;
+          margin-left: math.div($spacing, 8);
           font-size: 32px;
           height: 32px;
           width: 32px;

@@ -8,6 +8,6 @@
     "ngx-page-scroll": ">=7.0.0"
   },
   "dependencies": {
-    "tslib": "^2.2.0"
+    "tslib": "^2.3.0"
   }
 }

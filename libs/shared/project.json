@@ -1,0 +1,24 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/shared/**/*"],
+        "tsConfig": ["libs/shared/tsconfig.lib.json", "libs/shared/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/shared/jest.config.js",
+        "setupFile": "libs/shared/src/test-setup.ts",
+        "tsConfig": "libs/shared/tsconfig.spec.json"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/shared",
+  "sourceRoot": "libs/shared/src",
+  "tags": ["shared-module"]
+}

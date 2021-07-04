@@ -1,0 +1,29 @@
+{
+  "targets": {
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/tree/**/*"],
+        "tsConfig": ["libs/tree/tsconfig.lib.json", "libs/tree/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/tree/jest.config.js",
+        "tsConfig": "libs/tree/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "projectType": "library",
+  "root": "libs/tree",
+  "generators": {},
+  "sourceRoot": "libs/tree/src",
+  "tags": ["utils"]
+}

@@ -1,0 +1,37 @@
+{
+  "targets": {
+    "build": {
+      "executor": "@nrwl/angular:package",
+      "options": {
+        "project": "libs/scroll-to-top/ng-package.json",
+        "tsConfig": "libs/scroll-to-top/tsconfig.lib.json"
+      }
+    },
+    "lint": {
+      "executor": "@angular-devkit/build-angular:tslint",
+      "options": {
+        "exclude": ["**/node_modules/**", "!libs/scroll-to-top/**/*"],
+        "tsConfig": ["libs/scroll-to-top/tsconfig.lib.json", "libs/scroll-to-top/tsconfig.spec.json"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "options": {
+        "jestConfig": "libs/scroll-to-top/jest.config.js",
+        "setupFile": "libs/scroll-to-top/src/test-setup.ts",
+        "tsConfig": "libs/scroll-to-top/tsconfig.spec.json"
+      }
+    },
+    "deploy": {
+      "executor": "ngx-deploy-npm:deploy",
+      "options": {
+        "access": "public"
+      }
+    }
+  },
+  "prefix": "ngx",
+  "projectType": "library",
+  "root": "libs/scroll-to-top",
+  "sourceRoot": "libs/scroll-to-top/src",
+  "tags": ["public-module"]
+}

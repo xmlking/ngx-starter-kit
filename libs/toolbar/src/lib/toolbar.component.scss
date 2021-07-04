@@ -1,3 +1,5 @@
+@use "sass:math";
+
 @import '~@angular/material/theming';
 
 $config: mat-typography-config();
@@ -13,7 +15,7 @@ $config: mat-typography-config();
   background: $toolbar-background;
   padding-right: 0;
   height: $toolbar-height;
-  padding-left: $spacing/1.5;
+  padding-left: math.div($spacing, 1.5);
   max-width: 100%;
 
   @include mat-elevation($toolbar-elevation);
@@ -24,6 +26,6 @@ $config: mat-typography-config();
   }
 
   @include media-xs {
-    padding-left: $spacing/3;
+    padding-left: math.div($spacing, 3);
   }
 }
