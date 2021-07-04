@@ -237,6 +237,8 @@
     "underscore": "1.13.1",
     "jose": "3.14.0",
     "elliptic": "6.5.4",
-    "yargs-parser": "20.2.9"
+    "yargs-parser": "20.2.9",
+    "glob-parent": "6.0.0",
+    "ini": "2.0.0"
   }
 }
