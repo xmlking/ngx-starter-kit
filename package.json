@@ -141,7 +141,7 @@
     "@ngxs/storage-plugin": "3.7.2",
     "@ngxs/store": "3.7.2",
     "@xmlking/api-ai-javascript": "2.0.0-beta.22",
-    "@xmlking/ngx-knob": "1.0.1",
+    "@xmlking/ngx-knob": "1.1.1",
     "angular-in-memory-web-api": "0.11.0",
     "angular-oauth2-oidc": "10.0.3",
     "chart.js": "3.4.1",
