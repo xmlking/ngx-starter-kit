@@ -5,7 +5,7 @@
 ## Image
 image:
   repository: nginxinc/nginx-unprivileged
-  tag: 1.19.6
+  tag: 1.21.0
   pullPolicy: IfNotPresent
 
 nameOverride: ''
