@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartConfiguration, ChartData } from 'chart.js';
+import { Chart, ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
 import { AdvancedPieChartWidgetOptions } from './advanced-pie-chart-widget-options.interface';
@@ -76,7 +75,7 @@ export class AdvancedPieChartWidgetComponent implements OnInit, AfterViewInit {
             display: false,
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
   }

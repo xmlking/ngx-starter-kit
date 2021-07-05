@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartConfiguration, ChartData, ChartDataSets } from 'chart.js';
+import { Chart, ChartConfiguration, ChartData, ChartDataset } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
 import { LineChartWidgetOptions } from './line-chart-widget-options.interface';
@@ -34,9 +33,10 @@ export class LineChartWidgetComponent implements AfterViewInit {
         gradient.addColorStop(0, that.options.gradientFill.from);
         gradient.addColorStop(1, that.options.gradientFill.to);
 
-        that.chart.data.datasets.forEach((dataset: ChartDataSets) => {
-          dataset.fill = 'origin';
-          dataset.pointBackgroundColor = dataset.backgroundColor;
+        that.chart.data.datasets.forEach((dataset: ChartDataset) => {
+          // FIXME
+          // dataset.fill = 'origin';
+          // dataset.pointBackgroundColor = dataset.backgroundColor;
           dataset.backgroundColor = gradient;
         });
 
@@ -66,7 +66,7 @@ export class LineChartWidgetComponent implements AfterViewInit {
             intersect: true,
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
   }

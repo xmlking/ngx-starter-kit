@@ -113,13 +113,11 @@ const matModules = [
             loadChildren: () => import('@ngx-starter-kit/experiments').then((module) => module.ExperimentsModule),
             data: { title: 'Experiments', depth: 2, preload: false },
           },
-          /*
           {
             path: 'widgets',
-            loadChildren: () => import('@ngx-starter-kit/widgets').then(module => module.WidgetsModule),
+            loadChildren: () => import('@ngx-starter-kit/widgets').then((module) => module.WidgetsModule),
             data: { title: 'Widgets', depth: '2', preload: false },
           },
-          */
         ],
       },
     ]),

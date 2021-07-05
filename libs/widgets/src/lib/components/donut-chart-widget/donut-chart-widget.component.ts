@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartConfiguration, ChartData } from 'chart.js';
+import { Chart, ChartConfiguration, ChartData } from 'chart.js';
 import * as ChartJSPieceLabelPlugin from 'chart.piecelabel.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
@@ -46,7 +45,7 @@ export class DonutChartWidgetComponent implements AfterViewInit {
             fontColor: '#FFFFFF',
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
   }

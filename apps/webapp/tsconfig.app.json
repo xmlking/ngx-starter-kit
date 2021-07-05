@@ -11,7 +11,8 @@
     "../../libs/experiments/src/index.ts",
     "../../libs/grid/src/index.ts",
     "../../libs/not-found/src/index.ts",
-    "../../libs/admin/src/index.ts"
-    //    "../../libs/widgets/src/index.ts",
+    "../../libs/admin/src/index.ts",
+    // FIXME
+    "../../libs/widgets/src/index.ts"
   ]
 }

@@ -1,7 +1,6 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import * as Chart from 'chart.js';
-import { ChartConfiguration } from 'chart.js';
+import { Chart, ChartConfiguration } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { BehaviorSubject } from 'rxjs';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
@@ -29,7 +28,7 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
     if (options) {
       this.optionsPrivate = options;
 
-      options.forEach(option => {
+      options.forEach((option) => {
         if (!option.sum) {
           const data = option.data.datasets[0].data as number[];
           option.sum = data.reduce((sum: number, x: number) => sum + x);
@@ -117,13 +116,13 @@ export class AudienceOverviewWidgetComponent implements AfterViewInit {
             intersect: true,
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
 
-    this.activeOptionsPrivate.asObservable().subscribe(value => {
+    this.activeOptionsPrivate.asObservable().subscribe((value) => {
       this.chart.data = value.data;
-      this.chart.update(1000);
+      this.chart.update();
     });
   }
 

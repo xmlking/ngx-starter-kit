@@ -55,16 +55,9 @@
       "@ngx-starter-kit/theme-picker": ["libs/theme-picker/src/index.ts"],
       "@ngx-starter-kit/toolbar": ["libs/toolbar/src/index.ts"],
       "@ngx-starter-kit/tree": ["libs/tree/src/index.ts"],
-      "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"]
-      // FIXME
-      // "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"]
+      "@ngx-starter-kit/utils": ["libs/utils/src/index.ts"],
+      "@ngx-starter-kit/widgets": ["libs/widgets/src/index.ts"]
     }
-  },
-  "angularCompilerOptions": {
-    // FIXME: remove me https://github.com/angular/angular-cli/issues/16071
-    "disableTypeScriptVersionCheck": true,
-    "fullTemplateTypeCheck": true,
-    "strictInjectionParameters": true
   },
   "exclude": ["coverage/**/*", "dist/**/*", "node_modules", "tmp", "todo/**/*", "tools/**/_*files/**/*"]
 }

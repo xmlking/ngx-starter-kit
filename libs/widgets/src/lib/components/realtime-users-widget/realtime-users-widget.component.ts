@@ -1,6 +1,5 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { Chart, ChartConfiguration, ChartOptions } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { Observable } from 'rxjs';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
@@ -48,12 +47,12 @@ export class RealtimeUsersWidgetComponent implements AfterViewInit {
             intersect: true,
           },
         } as ChartOptions,
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
 
     const first = true;
-    this.data$.subscribe(newData => {
+    this.data$.subscribe((newData) => {
       const oldData = this.chart.data.datasets[0].data as any;
       this.addData(newData);
 

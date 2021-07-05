@@ -97,7 +97,7 @@ export class WizdashService {
           fill: false,
           borderColor: '#FFFFFF',
           borderWidth: 2,
-          lineTension: 0,
+          tension: 0,
         },
       ],
     } as ChartData;
@@ -145,7 +145,7 @@ export class WizdashService {
           borderColor: '#FFFFFF',
           borderWidth: 2,
           pointRadius: 0,
-          lineTension: 0,
+          tension: 0,
         },
       ],
     } as ChartData;
@@ -216,7 +216,7 @@ export class WizdashService {
         {
           label: 'Users - Last Week',
           data: chartData.data.lastWeek,
-          lineTension: 0,
+          tension: 0,
           fill: false,
           borderColor: 'rgba(66, 133, 244, 0.3)',
           borderDash: [3, 5],
@@ -249,7 +249,7 @@ export class WizdashService {
         {
           label: 'Sessions - Last Week',
           data: chartData.data.lastWeek,
-          lineTension: 0,
+          tension: 0,
           fill: false,
           borderColor: 'rgba(66, 133, 244, 0.3)',
           borderDash: [3, 5],
@@ -282,7 +282,7 @@ export class WizdashService {
         {
           label: 'Bounce Rate - Last Week',
           data: chartData.data.lastWeek,
-          lineTension: 0,
+          tension: 0,
           fill: false,
           borderColor: 'rgba(66, 133, 244, 0.3)',
           borderDash: [3, 5],
@@ -318,7 +318,7 @@ export class WizdashService {
         {
           label: 'Session Duration - Last Week',
           data: chartData.data.lastWeek,
-          lineTension: 0,
+          tension: 0,
           fill: false,
           borderColor: 'rgba(66, 133, 244, 0.3)',
           borderDash: [3, 5],

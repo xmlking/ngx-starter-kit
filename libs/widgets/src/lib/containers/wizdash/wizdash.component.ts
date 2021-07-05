@@ -16,6 +16,7 @@ import { RecentSalesWidgetOptions } from '../../components/recent-sales-widget/r
 // tslint:disable-next-line
 import { SalesSummaryWidgetOptions } from '../../components/sales-summary-widget/sales-summary-widget-options.interface';
 import { WizdashService } from './wizdash.service';
+import { Chart, registerables } from 'chart.js';
 
 @Component({
   selector: 'ngx-wizdash',
@@ -248,5 +249,7 @@ export class WizdashComponent implements OnInit {
     this.recentSalesData$ = this.wizdashService.getRecentSalesData();
 
     this.advancedPieChartData$ = this.wizdashService.getAdvancedPieChartData();
+
+    Chart.register(...registerables);
   }
 }

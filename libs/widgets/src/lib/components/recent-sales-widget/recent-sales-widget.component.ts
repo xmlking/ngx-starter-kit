@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartData } from 'chart.js';
+import { Chart, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
 import { ListColumn } from '../list/list-column.model';
@@ -50,7 +49,7 @@ export class RecentSalesWidgetComponent implements OnInit, AfterViewInit {
             },
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     });
   }

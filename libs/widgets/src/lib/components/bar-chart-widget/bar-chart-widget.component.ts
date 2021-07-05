@@ -1,6 +1,5 @@
 import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
-import { ChartConfiguration, ChartData } from 'chart.js';
+import { Chart, ChartConfiguration, ChartData } from 'chart.js';
 import defaultsDeep from 'lodash-es/defaultsDeep';
 import { defaultChartOptions } from '../chart-widget/chart-widget-defaults';
 import { BarChartWidgetOptions } from './bar-chart-widget-options.interface';
@@ -54,7 +53,7 @@ export class BarChartWidgetComponent implements AfterViewInit {
             intersect: true,
           },
         },
-        defaultChartOptions,
+        defaultChartOptions
       ),
     } as ChartConfiguration);
   }
