@@ -230,7 +230,7 @@
   },
   "resolutions": {
     "d3": "4.13.0",
-    "d3-selection": "1.4.2",
+    "d3-selection": "3.0.0",
     "lodash": "4.17.21",
     "handlebars": "4.7.7",
     "ua-parser-js": "0.7.28",
