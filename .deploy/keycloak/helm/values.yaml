@@ -1,7 +1,7 @@
 init:
   image:
     repository: alpine
-    tag: 3.12
+    tag: 3.14
     pullPolicy: IfNotPresent
 
 clusterDomain: cluster.local
