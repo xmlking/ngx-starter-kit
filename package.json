@@ -219,7 +219,7 @@
     "cypress": "7.6.0",
     "cz-conventional-changelog": "3.3.0",
     "dotenv": "10.0.0",
-    "husky": "7.0.0",
+    "husky": "7.0.1",
     "jest": "27.0.6",
     "jest-preset-angular": "9.0.4",
     "lint-staged": "11.0.0",
