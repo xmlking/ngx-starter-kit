@@ -188,7 +188,7 @@
     "@nrwl/nest": "12.5.6",
     "@nrwl/workspace": "12.5.6",
     "@twittwer/compodoc": "^1.5.3",
-    "@types/google.analytics": "0.0.41",
+    "@types/google.analytics": "0.0.42",
     "@types/jest": "26.0.23",
     "@types/jquery": "3.5.5",
     "@types/node": "16.0.0",
