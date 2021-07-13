@@ -5804,10 +5804,15 @@ commander@^5.1.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
-commander@^7.0.0, commander@^7.1.0, commander@^7.2.0:
+commander@^7.1.0, commander@^7.2.0:
   version "7.2.0"
   resolved "https://registry.yarnpkg.com/commander/-/commander-7.2.0.tgz#a36cb57d0b501ce108e4d20559a150a391d97ab7"
   integrity sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==
+
+commander@^8.0.0:
+  version "8.0.0"
+  resolved "https://registry.yarnpkg.com/commander/-/commander-8.0.0.tgz#1da2139548caef59bd23e66d18908dfb54b02258"
+  integrity sha512-Xvf85aAtu6v22+E5hfVoLHqyul/jyxh91zvqk/ioJTQuJR7Z78n7H558vMPKanPSRgIEeZemT92I2g9Y8LPbSQ==
 
 commitizen@4.2.4, commitizen@^4.0.3:
   version "4.2.4"
@@ -12626,10 +12631,10 @@ next-tick@~1.0.0:
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
   integrity sha1-yobR/ogoFpsBICCOPchCS524NCw=
 
-ng-packagr@12.1.0:
-  version "12.1.0"
-  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-12.1.0.tgz#b8fe8aa5f2c4ae4f0ffe32cfc7a1005807a41d72"
-  integrity sha512-1GrYYfOYHUXNsfuKrjALy6yywcMvOoBcF8genphqvEqJcT5B78mAjGFRxbtuhbxXMXDJUviMLiSfOOcs0Rj2yg==
+ng-packagr@12.1.2:
+  version "12.1.2"
+  resolved "https://registry.yarnpkg.com/ng-packagr/-/ng-packagr-12.1.2.tgz#602e204e62e84a6273565cf053ad078a11049ea9"
+  integrity sha512-LXBHauu2LIft7RvzvI0/O+O5xeKvNgoJR3AVkCH5yNtxHTlGNzx5tJMvFqHbcxleXwT59QCRx+WhZXP8xonwew==
   dependencies:
     "@rollup/plugin-commonjs" "^19.0.0"
     "@rollup/plugin-json" "^4.1.0"
@@ -12639,7 +12644,7 @@ ng-packagr@12.1.0:
     browserslist "^4.16.1"
     cacache "^15.0.6"
     chokidar "^3.5.1"
-    commander "^7.0.0"
+    commander "^8.0.0"
     cssnano "^5.0.0"
     dependency-graph "^0.11.0"
     find-cache-dir "^3.3.1"
