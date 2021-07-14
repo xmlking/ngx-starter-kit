@@ -35,7 +35,7 @@
     "helmet": "4.6.0",
     "kubernetes-client": "9.0.0",
     "nest-router": "1.0.9",
-    "nodemailer": "6.6.2",
+    "nodemailer": "6.6.3",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
     "pg": "8.6.0",
@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@types/helmet": "4.0.0",
-    "@types/nodemailer": "6.4.2",
+    "@types/nodemailer": "6.4.4",
     "@types/passport": "1.0.6",
     "@types/passport-jwt": "3.0.5",
     "@types/socket.io": "3.0.2",
