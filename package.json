@@ -207,7 +207,7 @@
   "optionalDependencies": {
     "@commitlint/cli": "13.0.0",
     "@commitlint/config-conventional": "13.0.0",
-    "@compodoc/compodoc": "1.1.11",
+    "@compodoc/compodoc": "1.1.14",
     "@ngx-formly/schematics": "5.10.21",
     "@ngxs/schematics": "0.0.1-alpha.5",
     "@semantic-release/changelog": "5.0.1",
