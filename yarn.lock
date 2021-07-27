@@ -1873,27 +1873,27 @@
     call-me-maybe "^1.0.1"
     glob-to-regexp "^0.3.0"
 
-"@nestjs/common@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-7.6.18.tgz#d89e6d248985eec13af60507a8725cb2142d660a"
-  integrity sha512-BUJQHNhWzwWOkS4Ryndzd4HTeRObcAWV2Fh+ermyo3q3xYQQzNoEWclJVL/wZec8AONELwIJ+PSpWI53VP0leg==
+"@nestjs/common@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-8.0.5.tgz#d79a0f5c5e8b875b07757effb77aa66898a13718"
+  integrity sha512-RThK+LS10jN14Ly7L7v8IXZyoa9e+dGTEcqxZnYHWH5atufundo2K7wgtRJVlzUmYeHAh7Ra2HCo4tGI2g8o3g==
   dependencies:
     axios "0.21.1"
     iterare "1.2.1"
-    tslib "2.2.0"
+    tslib "2.3.0"
     uuid "8.3.2"
 
-"@nestjs/core@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-7.6.18.tgz#36448f0ae7f7d08f032e1e7e53b4a4c82ae844d7"
-  integrity sha512-CGu20OjIxgFDY7RJT5t1TDGL8wSlTSlbZEkn8U5OlICZEB3WIpi98G7ajJpnRWmEgW8S4aDJmRKGjT+Ntj5U4A==
+"@nestjs/core@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/core/-/core-8.0.5.tgz#e11b6e2483099774f6ab20cc681c23f0f2d88fa4"
+  integrity sha512-PzPWcGcTKb/LoXViviFa3qp8GyVx8dd0fRVSXOr48tK/GR5SiIiZ9hhYGonKf02mE9+WY8yn9mI5xAsglN49Yg==
   dependencies:
     "@nuxtjs/opencollective" "0.3.2"
-    fast-safe-stringify "2.0.7"
+    fast-safe-stringify "2.0.8"
     iterare "1.2.1"
-    object-hash "2.1.1"
+    object-hash "2.2.0"
     path-to-regexp "3.2.0"
-    tslib "2.2.0"
+    tslib "2.3.0"
     uuid "8.3.2"
 
 "@nestjs/cqrs@7.0.1":
@@ -1906,38 +1906,38 @@
   resolved "https://registry.yarnpkg.com/@nestjs/mapped-types/-/mapped-types-0.4.1.tgz#e7fe038f0bdda7b8f858fa79ca8516b8f9069b1a"
   integrity sha512-JXrw2LMangSU3vnaXWXVX47GRG1FbbNh4aVBbidDjxT3zlghsoNQY6qyWtT001MCl8lJGo8I6i6+DurBRRxl/Q==
 
-"@nestjs/microservices@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/microservices/-/microservices-7.6.18.tgz#3661bc5ea24a77feccaec766f07995c1568f6bf9"
-  integrity sha512-vSSl9hgHgBtTye57f2PZIg36MLcv5TRdqu3QEsS50WlUmxIjISCfAeCMLk+hWQNM8zjvlLwNbKUJW+NOZ2aovA==
+"@nestjs/microservices@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/microservices/-/microservices-8.0.5.tgz#3610cc2dc0374bd65fe16a59ea248e571327d89b"
+  integrity sha512-fSPoEYhC77i6Zrv0+/+sxMC1HomoMXnFnowNkZqhmpGV0Aua/B8wzysHhtQs/U1SAwZvUHjIWr+Y8EcXDWSt1w==
   dependencies:
     iterare "1.2.1"
     json-socket "0.3.0"
-    tslib "2.2.0"
+    tslib "2.3.0"
 
 "@nestjs/passport@7.1.6":
   version "7.1.6"
   resolved "https://registry.yarnpkg.com/@nestjs/passport/-/passport-7.1.6.tgz#608bb265dfd85602aa74bbceacc012ffb2e9d25d"
   integrity sha512-iHD/4D01CsKKWg7kUzo4yGNS4m90z1an0eUz+6nBlE5VeEOuCzhGFoBKAt0OKLJLOTEsJKuj4C2b5QfjqXVTyQ==
 
-"@nestjs/platform-express@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-7.6.18.tgz#cdf442dfd85948fc7b67bbc4007dddef83cdd4b9"
-  integrity sha512-Dty2bBhsW7EInMRPS1pkXKJ3GBBusEj6fnEpb0UfkaT3E7asay9c64kCmZE+8hU430qQjY+fhBb1RNWWPnUiwQ==
+"@nestjs/platform-express@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-express/-/platform-express-8.0.5.tgz#b8443886ec4ac0f5c75e580004c8b32a834c9dca"
+  integrity sha512-ystcQWv1Hm/V2IoiDrAYzOxZ+fi0HWUM+A4boI+8Vjl8aBqvMC1PwI1+QxhXnVsnR0nT8OJuJ2z77a9WvfT9uA==
   dependencies:
     body-parser "1.19.0"
     cors "2.8.5"
     express "4.17.1"
     multer "1.4.2"
-    tslib "2.2.0"
+    tslib "2.3.0"
 
-"@nestjs/platform-socket.io@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-7.6.18.tgz#7c866d4fa6eae2e2f2b17b7555afee31c34facbb"
-  integrity sha512-0zNALNCt3OO+pWE0t4Cd71FIUyKlsTQvaOE0V2Kkn1aDMFj90xli1Dvc/Zd2iYGuwP4QFKjWX+BxBXq6qbHgow==
+"@nestjs/platform-socket.io@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/platform-socket.io/-/platform-socket.io-8.0.5.tgz#adeb1d504be0f1896d7aa28f62e2aa2aeec95ee9"
+  integrity sha512-p7pT1zdKkZFKuFZgBxq1d0J3I4b37Zefl0Aj+c/sLE0wp8g8lMwrC1eGaKxudtijuSpffKA5Zn67nSiRlV+ydw==
   dependencies:
-    socket.io "2.4.1"
-    tslib "2.2.0"
+    socket.io "4.1.3"
+    tslib "2.3.0"
 
 "@nestjs/schematics@7.3.1", "@nestjs/schematics@^7.0.0":
   version "7.3.1"
@@ -1967,13 +1967,13 @@
     check-disk-space "2.1.0"
     deprecate "^1.1.1"
 
-"@nestjs/testing@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.18.tgz#b4c137b5b6c2fb18c51602d33a083cd97c648283"
-  integrity sha512-1AVk9vWZlPpx4CmzY6z9z0DHFgGCadfr01QdisGFAN740JwKqZWEqz12cVd+nsXDlYQPFRkp2ICBIS/6k1qZGQ==
+"@nestjs/testing@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-8.0.5.tgz#9b595a1896470dfe0858e3a146261d7064ad23c3"
+  integrity sha512-MfpIEgGh1nNGkCB/Ss7VitnxcjHIDlSTULaUFRB4jTHiD1IADQ550M/IaM8i/Tk8MlwFTkyxxeSoE2QxK+vAMg==
   dependencies:
     optional "0.1.4"
-    tslib "2.2.0"
+    tslib "2.3.0"
 
 "@nestjs/typeorm@7.1.5":
   version "7.1.5"
@@ -1982,13 +1982,14 @@
   dependencies:
     uuid "8.3.1"
 
-"@nestjs/websockets@7.6.18":
-  version "7.6.18"
-  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-7.6.18.tgz#504426eb241ce528226a8d3ed308c6793cbe4d6c"
-  integrity sha512-QBp+zVAGMksNKa5HnfpZfXzO8FbDO+vGcGbxuXLPqEeH2/HsS1O09uPvi4uG02WtGWIJ+DewWdq/odsukl4lDg==
+"@nestjs/websockets@8.0.5":
+  version "8.0.5"
+  resolved "https://registry.yarnpkg.com/@nestjs/websockets/-/websockets-8.0.5.tgz#0bbe29e50e0165555bfe0863f53907f6c5ec44ac"
+  integrity sha512-YNtOzg7XxnO/SjRsQgTfachfUvDA2hEWb4xCFYZ7feIIHZcZwdaDHlKp7RNkBdxmbefd0JabCAAOgh44gcRc9w==
   dependencies:
     iterare "1.2.1"
-    tslib "2.2.0"
+    object-hash "2.2.0"
+    tslib "2.3.0"
 
 "@nestjsx/crud-request@^5.0.0-alpha.3":
   version "5.0.0-alpha.3"
@@ -2970,6 +2971,11 @@
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@types/cookiejar/-/cookiejar-2.1.2.tgz#66ad9331f63fe8a3d3d9d8c6e3906dd10f6446e8"
   integrity sha512-t73xJJrvdTjXrn4jLS9VSGRbz0nUY3cl2DMGDU48lKl+HR9dbbjW2A9r3g40VA++mQpy6uuHg33gy7du2BKpog==
+
+"@types/cors@^2.8.10":
+  version "2.8.12"
+  resolved "https://registry.yarnpkg.com/@types/cors/-/cors-2.8.12.tgz#6b2c510a7ad7039e98e7b8d3d6598f4359e5c080"
+  integrity sha512-vt+kDhq/M2ayberEtJcIN/hxXy1Pk+59g2FV/ZQceeaTyCtCucjL2Q7FXlFjtWn4n15KCr1NE2lNNFhp0lEThw==
 
 "@types/cors@^2.8.8":
   version "2.8.10"
@@ -7852,7 +7858,7 @@ engine.io@~3.5.0:
     engine.io-parser "~2.2.0"
     ws "~7.4.2"
 
-engine.io@~5.1.0:
+engine.io@~5.1.0, engine.io@~5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/engine.io/-/engine.io-5.1.1.tgz#a1f97e51ddf10cbd4db8b5ff4b165aad3760cdd3"
   integrity sha512-aMWot7H5aC8L4/T8qMYbLdvKlZOdJTH54FxfdFunTGvhMx1BHkJOntWArsVfgAZVwAO9LC2sryPWRcEeUzCe5w==
@@ -8492,7 +8498,12 @@ fast-levenshtein@~2.0.6:
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
   integrity sha1-PYpcZog6FqMMqGQ+hR8Zuqd5eRc=
 
-fast-safe-stringify@2.0.7, fast-safe-stringify@^2.0.7:
+fast-safe-stringify@2.0.8:
+  version "2.0.8"
+  resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.0.8.tgz#dc2af48c46cf712b683e849b2bbd446b32de936f"
+  integrity sha512-lXatBjf3WPjmWD6DpIZxkeSsCOwqI0maYMpgDlx8g4U2qi4lbjA9oH/HD2a87G+KfsUmo5WbJFmqBZlPxtptag==
+
+fast-safe-stringify@^2.0.7:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/fast-safe-stringify/-/fast-safe-stringify-2.0.7.tgz#124aa885899261f68aedb42a7c080de9da608743"
   integrity sha512-Utm6CdzT+6xsDk2m8S6uL8VHxNwI6Jub+e9NYTcAms28T84pTa25GJQV9j0CY0N1rM8hK4x6grpF2BQf+2qwVA==
@@ -13171,12 +13182,7 @@ object-copy@^0.1.0:
     define-property "^0.2.5"
     kind-of "^3.0.3"
 
-object-hash@2.1.1:
-  version "2.1.1"
-  resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.1.1.tgz#9447d0279b4fcf80cff3259bf66a1dc73afabe09"
-  integrity sha512-VOJmgmS+7wvXf8CjbQmimtCnEx3IAoLxI3fp2fbWehxrWBcAQFbk+vcwb6vzR0VZv/eNCJ/27j151ZTwqW/JeQ==
-
-object-hash@^2.0.1:
+object-hash@2.2.0, object-hash@^2.0.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/object-hash/-/object-hash-2.2.0.tgz#5ad518581eefc443bd763472b8ff2e9c2c0d54a5"
   integrity sha512-gScRMn0bS5fH+IuwyIFgnh9zBdo4DV+6GhygmWM9HyNJSgS0hScp1f5vjtm7oIIOiT9trXrShAkLFSc2IqKNgw==
@@ -16293,7 +16299,7 @@ socket.io-adapter@~1.1.0:
   resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-1.1.2.tgz#ab3f0d6f66b8fc7fca3959ab5991f82221789be9"
   integrity sha512-WzZRUj1kUjrTIrUKpZLEzFZ1OLj5FwLlAFQs9kuZJzJi5DKdU7FsWc36SNmA8iDOtwBQyT8FkrriRM8vXLYz8g==
 
-socket.io-adapter@~2.3.0:
+socket.io-adapter@~2.3.0, socket.io-adapter@~2.3.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/socket.io-adapter/-/socket.io-adapter-2.3.1.tgz#a442720cb09a4823cfb81287dda1f9b52d4ccdb2"
   integrity sha512-8cVkRxI8Nt2wadkY6u60Y4rpW3ejA1rxgcK2JuyIhmF+RMNpTy1QRtkHIDUOf3B4HlQwakMsWbKftMv/71VMmw==
@@ -16382,17 +16388,20 @@ socket.io@2.4.0:
     socket.io-client "2.4.0"
     socket.io-parser "~3.4.0"
 
-socket.io@2.4.1:
-  version "2.4.1"
-  resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-2.4.1.tgz#95ad861c9a52369d7f1a68acf0d4a1b16da451d2"
-  integrity sha512-Si18v0mMXGAqLqCVpTxBa8MGqriHGQh8ccEOhmsmNS3thNCGBwO8WGrwMibANsWtQQ5NStdZwHqZR3naJVFc3w==
+socket.io@4.1.3:
+  version "4.1.3"
+  resolved "https://registry.yarnpkg.com/socket.io/-/socket.io-4.1.3.tgz#d114328ef27ab31b889611792959c3fa6d502500"
+  integrity sha512-tLkaY13RcO4nIRh1K2hT5iuotfTaIQw7cVIe0FUykN3SuQi0cm7ALxuyT5/CtDswOMWUzMGTibxYNx/gU7In+Q==
   dependencies:
-    debug "~4.1.0"
-    engine.io "~3.5.0"
-    has-binary2 "~1.0.2"
-    socket.io-adapter "~1.1.0"
-    socket.io-client "2.4.0"
-    socket.io-parser "~3.4.0"
+    "@types/cookie" "^0.4.0"
+    "@types/cors" "^2.8.10"
+    "@types/node" ">=10.0.0"
+    accepts "~1.3.4"
+    base64id "~2.0.0"
+    debug "~4.3.1"
+    engine.io "~5.1.1"
+    socket.io-adapter "~2.3.1"
+    socket.io-parser "~4.0.4"
 
 sockjs-client@^1.5.0:
   version "1.5.1"

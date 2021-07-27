@@ -14,17 +14,17 @@
   },
   "dependencies": {
     "@godaddy/terminus": "4.9.0",
-    "@nestjs/common": "7.6.18",
-    "@nestjs/core": "7.6.18",
-    "@nestjs/microservices": "7.6.18",
-    "@nestjs/platform-express": "7.6.18",
+    "@nestjs/common": "8.0.5",
+    "@nestjs/core": "8.0.5",
+    "@nestjs/microservices": "8.0.5",
+    "@nestjs/platform-express": "8.0.5",
     "@nestjs/swagger": "4.8.2",
     "@nestjs/cqrs": "7.0.1",
     "@nestjs/passport": "7.1.6",
-    "@nestjs/platform-socket.io": "7.6.18",
+    "@nestjs/platform-socket.io": "8.0.5",
     "@nestjs/terminus": "7.2.0",
     "@nestjs/typeorm": "7.1.5",
-    "@nestjs/websockets": "7.6.18",
+    "@nestjs/websockets": "8.0.5",
     "@nestjsx/crud": "5.0.0-alpha.3",
     "@xmlking/jwks-rsa": "1.4.3",
     "cache-manager": "3.4.4",
@@ -59,7 +59,7 @@
   },
   "optionalDependencies": {
     "@nestjs/schematics": "7.3.1",
-    "@nestjs/testing": "7.6.18",
+    "@nestjs/testing": "8.0.5",
     "nodemon": "2.0.9",
     "supertest": "6.1.3"
   }
