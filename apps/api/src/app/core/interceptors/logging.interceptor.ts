@@ -4,6 +4,7 @@ import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
+  // @ts-ignore
   private readonly logger = new Logger(LoggingInterceptor.name, true);
 
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {

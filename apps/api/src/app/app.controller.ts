@@ -1,4 +1,5 @@
-import { All, Controller, Get, HttpService, Req } from '@nestjs/common';
+import { All, Controller, Get, Req } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { ApiOperation } from '@nestjs/swagger';
 import * as https from 'https';
 import { Observable } from 'rxjs';
@@ -31,6 +32,6 @@ export class AppController {
     const { headers, ip, method, params, body } = req;
     return this.http
       .request({ url, headers, method, params, data: body, httpsAgent })
-      .pipe(map(res => ({ httpbin: res.data, ip })));
+      .pipe(map((res) => ({ httpbin: res.data, ip })));
   }
 }

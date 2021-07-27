@@ -1,12 +1,5 @@
-import {
-  BadRequestException,
-  HttpException,
-  HttpService,
-  HttpStatus,
-  Injectable,
-  Logger,
-  NotFoundException,
-} from '@nestjs/common';
+import { BadRequestException, HttpException, HttpStatus, Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { HttpService } from '@nestjs/axios';
 import { AxiosError, AxiosResponse } from 'axios';
 import { Observable, throwError } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
@@ -29,9 +22,9 @@ export class WeatherService extends BaseRemoteService {
     return this.http
       .get(`${this.baseUrl}/weather?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders())
       .pipe(
-        tap(res => this.logger.log(`Status: ${res.status}`)),
-        map(res => res.data),
-        catchError(this.handleError),
+        tap((res) => this.logger.log(`Status: ${res.status}`)),
+        map((res) => res.data),
+        catchError(this.handleError)
       );
   }
 
@@ -41,9 +34,9 @@ export class WeatherService extends BaseRemoteService {
     return this.http
       .get(`${this.baseUrl}/forecast?zip=${zip},${countryCode}&appid=${env.weather.apiKey}`, this.getHeaders())
       .pipe(
-        tap(res => this.logger.log(`Status: ${res.status}`)),
-        map(res => res.data),
-        catchError(this.handleError),
+        tap((res) => this.logger.log(`Status: ${res.status}`)),
+        map((res) => res.data),
+        catchError(this.handleError)
       );
   }
 

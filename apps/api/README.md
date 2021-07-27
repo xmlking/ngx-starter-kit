@@ -62,12 +62,12 @@ $ kubectl port-forward $POD_NAME 5432:5432
 
 ```bash
 # start in watch mode
-ng serve api
+nx serve api
 # to turn on logging for `request`
-NODE_DEBUG=request ng serve api
-DEBUG=typeorm:* ng serve api
+NODE_DEBUG=request nx serve api
+DEBUG=typeorm:* nx serve api
 # optionally you can run with prod env(environment.prod.ts) for tesrting! use this for testing only.
-ng serve api --prod
+nx serve api --prod
 ```
 
 #### Run Prod Mode

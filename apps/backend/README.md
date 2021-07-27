@@ -3,7 +3,7 @@
 ### Run
 
 ```bash
- ng serve backend
+nx serve backend
 ```
 
 Use `Experiments/Upload` UI or postman to test File [upload](https://stackoverflow.com/questions/16015548/tool-for-sending-multipart-form-data-request)

@@ -3,7 +3,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { useContainer } from 'class-validator';
-import * as helmet from 'helmet';
+import helmet from 'helmet';
 import { AppModule } from './app/app.module';
 import { ConfigService } from './app/config';
 // import { join } from 'path';
@@ -19,7 +19,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
       skipMissingProperties: false,
       forbidUnknownValues: true,
-    }),
+    })
   );
 
   // Link DI container to class-validator

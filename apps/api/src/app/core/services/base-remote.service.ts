@@ -1,4 +1,4 @@
-import { HttpService } from '@nestjs/common/http';
+import { HttpService } from '@nestjs/axios';
 import { AxiosError, AxiosResponse } from 'axios';
 import { throwError } from 'rxjs';
 import {

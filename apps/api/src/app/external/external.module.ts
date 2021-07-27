@@ -1,4 +1,5 @@
-import { forwardRef, HttpModule, Module, CacheModule } from '@nestjs/common';
+import { forwardRef, Module, CacheModule } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { SharedModule } from '../shared';
 import { WeatherController } from './weather/weather.controller';
 import { WeatherService } from './weather/weather.service';

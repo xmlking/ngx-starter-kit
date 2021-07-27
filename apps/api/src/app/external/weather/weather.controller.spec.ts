@@ -1,4 +1,5 @@
-import { CacheInterceptor, HttpModule } from '@nestjs/common';
+import { CacheInterceptor } from '@nestjs/common';
+import { HttpModule } from '@nestjs/axios';
 import { Test, TestingModule } from '@nestjs/testing';
 import { CacheModule } from '../../cache';
 import { WeatherController } from './weather.controller';

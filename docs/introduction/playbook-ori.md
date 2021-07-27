@@ -603,17 +603,17 @@ NODE_OPTIONS=--max-old-space-size=4096 ng build webapp --prod
 
 ```bash
 # dev run
-ng serve
+nx serve
 # run mock mode
-ng serve -c=mock
+nx serve -c=mock
 # use proxy (if you have CORS disabled backend API)
-ng serve -c=mock --proxy-config proxy.conf.js
+nx serve -c=mock --proxy-config proxy.conf.js
 # to bind to host IP, to demo from laptop
 ng s --host
 # ES2015 support: Set tsconfig.json target value as "es2015" and  use --aot
-ng serve -c=mock --aot -o
+nx serve -c=mock --aot -o
 # run prod mode
-ng serve -c=prod
+nx serve -c=prod
 
 # build and run web
 docker-compose up --build web
