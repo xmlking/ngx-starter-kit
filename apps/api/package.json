@@ -39,7 +39,7 @@
     "nodemailer": "6.6.3",
     "passport": "0.4.1",
     "passport-jwt": "4.0.0",
-    "pg": "8.7.0",
+    "pg": "8.7.1",
     "pug": "3.0.2",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.2.0",
