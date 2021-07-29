@@ -19,7 +19,7 @@
     "@nestjs/axios": "0.0.1",
     "@nestjs/microservices": "8.0.5",
     "@nestjs/platform-express": "8.0.5",
-    "@nestjs/swagger": "5.0.8",
+    "@nestjs/swagger": "5.0.9",
     "@nestjs/cqrs": "8.0.0",
     "@nestjs/passport": "8.0.0",
     "@nestjs/platform-socket.io": "8.0.5",
