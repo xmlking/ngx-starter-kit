@@ -8910,10 +8910,10 @@ filepond-plugin-image-resize@2.0.10:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-resize/-/filepond-plugin-image-resize-2.0.10.tgz#23c1ac8956191d7dd6750565db9cf47a7dc9cfd0"
   integrity sha512-irX+J275u8Ph1KcciCeSQmxeFjbu0+co5XVCkiwdSNnz6KiqrCKN7RXTvEbdgSdDzyi5omr2oP1rKWps5L1RsQ==
 
-filepond-plugin-image-transform@3.8.6:
-  version "3.8.6"
-  resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.8.6.tgz#016ec48f5fdde6ee0fa800a47352dac5e80f9452"
-  integrity sha512-P2YREIBHb+ywH8AWs5SIucuRUgwGIh0vYl+blcf+Otc7SvfcZjl//1cnMPvdGSWQhqL2brDvbE5EM1ctpdr0kA==
+filepond-plugin-image-transform@3.8.7:
+  version "3.8.7"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-transform/-/filepond-plugin-image-transform-3.8.7.tgz#6d32fff899366359a77b158f9ac75ae5971e768a"
+  integrity sha512-vgKwyIDG2y5twanf7YpqZvxkaLudTjwd9vRcoq5sQDB8egUlX5/NA0bQ0823pocrm0fjbFeetICu44mkqeDkIA==
 
 filepond@4.28.2:
   version "4.28.2"
