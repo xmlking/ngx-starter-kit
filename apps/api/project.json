@@ -33,6 +33,14 @@
         "main": "apps/api/src/main.ts",
         "outputPath": "dist/apps/api",
         "sourceMap": true,
+        "tsPlugins": [
+          {
+            "name": "@nestjs/swagger/plugin",
+            "options": {
+              "dtoFileNameSuffix": [".dto.ts", ".vm.ts"]
+            }
+          }
+        ],
         "tsConfig": "apps/api/tsconfig.app.json"
       }
     },
