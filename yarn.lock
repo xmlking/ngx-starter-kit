@@ -9130,10 +9130,10 @@ filepond-plugin-image-exif-orientation@1.0.11:
   resolved "https://registry.yarnpkg.com/filepond-plugin-image-exif-orientation/-/filepond-plugin-image-exif-orientation-1.0.11.tgz#c46b522e8873e2ad5b9c7e2bbbe71176c9df58b2"
   integrity sha512-hLBc12Fk6Zkj3L8mSAn+elugHOqT5rLUbgVXQQIQjMe0FsGjtpoxqeVR6jt4IWHGat2L9sFAgU2TGmd1mqosCg==
 
-filepond-plugin-image-preview@4.6.9:
-  version "4.6.9"
-  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.9.tgz#e36162be07e50d10eea86e6fde932b4edafafb10"
-  integrity sha512-XiW6AEcZC6ie1I6KE9LMF26KKFCVHoHGT1yToobWdGGAgWxFNJrAzm1aL4CLXfyGeU9Xi49TIISkVxtHTmBYXw==
+filepond-plugin-image-preview@4.6.10:
+  version "4.6.10"
+  resolved "https://registry.yarnpkg.com/filepond-plugin-image-preview/-/filepond-plugin-image-preview-4.6.10.tgz#6e7ecc0997b1b6295e06d3824c37de3111a40c1f"
+  integrity sha512-C7Q5Sr/d4RQb2nMNQR93OiMt91OHxpvmIBGl+CO1dZE46lM49NUfI08dyElAOxTslDcA8pAfjFFCKo0sNYbrBg==
 
 filepond-plugin-image-resize@2.0.10:
   version "2.0.10"
