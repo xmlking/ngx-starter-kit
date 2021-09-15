@@ -13402,10 +13402,10 @@ ngx-deploy-npm@2.1.0:
   resolved "https://registry.yarnpkg.com/ngx-deploy-npm/-/ngx-deploy-npm-2.1.0.tgz#7e128f1bbc29658b4b1235af9453278c3ae832ca"
   integrity sha512-hmpH7RY1UMRfKjsPg0fnMzv6KoGtfgO9be4nvc6AussP9gkUDYnL79qRLPrnbZ9SjYdVM+S/d9rDE6AtdnXgzA==
 
-ngx-filepond@6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/ngx-filepond/-/ngx-filepond-6.0.0.tgz#df662d8193dd12df5e4303c3087cd7b3e6196ac5"
-  integrity sha512-wlDaUD5JFOH7NIdB89FyaGw2RlPj7Lb5xUj6ksayVhMXfUM00Iz7LM7HyOw5Rz+1X2f3FH6sgy7dK4w8v6Ttog==
+ngx-filepond@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/ngx-filepond/-/ngx-filepond-6.0.1.tgz#860edd6f97f825b40a9b83e6f90c7c12ab66b1f7"
+  integrity sha512-KcMv+y9vYidj5wnincOeKllntLGFE6ltg/o5AfwT7op8kRiO2br1/JiSUmpiH57Z125RG1KQ+5KZ0rrq8r4FPQ==
   dependencies:
     tslib "^1.10.0"
 
