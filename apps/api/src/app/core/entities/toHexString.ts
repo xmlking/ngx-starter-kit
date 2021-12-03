@@ -4,7 +4,7 @@ export default function toHexString(value) {
     hexTable[i] = (i <= 15 ? '0' : '') + i.toString(16);
   }
 
-  const id = Object.keys(value.id).map(key => value.id[key]);
+  const id = Object.keys(value.id).map((key) => value.id[key]);
 
   let hexString = '';
   for (const el of id) {

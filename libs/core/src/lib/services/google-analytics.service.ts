@@ -28,10 +28,10 @@ export class GoogleAnalyticsService {
   public initPageViewTracking() {
     this.router.events
       .pipe(
-        filter(event => event instanceof NavigationEnd),
+        filter((event) => event instanceof NavigationEnd),
         distinctUntilChanged((previous: any, current: RouterEvent) => {
           return previous.url === current.url;
-        }),
+        })
       )
       .subscribe((event: NavigationEnd) => {
         this.setPage(event.urlAfterRedirects);

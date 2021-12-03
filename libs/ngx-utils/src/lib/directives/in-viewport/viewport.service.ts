@@ -22,11 +22,11 @@ export class ViewportService {
 
     return this.callback$.asObservable().pipe(
       filter((entry: IntersectionObserverEntry) => entry.target === element),
-      finalize(() => this.observer.unobserve(element)),
+      finalize(() => this.observer.unobserve(element))
     );
   }
 
   private handler(entries: Array<IntersectionObserverEntry>): void {
-    entries.forEach(entry => this.callback$.next(entry));
+    entries.forEach((entry) => this.callback$.next(entry));
   }
 }

@@ -16,7 +16,7 @@ export class EmailService {
   constructor(@Inject('EMAIL_CONFIG') private readonly mailerConfig: EmailModuleOptions) {
     if (!mailerConfig.transport || Object.keys(mailerConfig.transport).length < 1) {
       throw new Error(
-        'Make sure to provide a nodemailer transport configuration object, connection url or a transport plugin instance',
+        'Make sure to provide a nodemailer transport configuration object, connection url or a transport plugin instance'
       );
     }
 
@@ -49,7 +49,7 @@ export class EmailService {
           mail.data.html = body;
 
           return callback();
-        },
+        }
       );
     };
   }

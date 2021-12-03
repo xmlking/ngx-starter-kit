@@ -37,11 +37,11 @@ export interface ProfileStateModel {
     profile: undefined,
     error: undefined,
     loading: false,
-    progress: undefined
-  }
+    progress: undefined,
+  },
 })
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileState implements NgxsAfterBootstrap {
   constructor(private profileService: ProfileService) {}
@@ -72,8 +72,8 @@ export class ProfileState implements NgxsAfterBootstrap {
   fetchProfile(ctx: StateContext<ProfileStateModel>) {
     ctx.setState(startLoading());
     return this.profileService.getMyProfile().pipe(
-      tap(profile => ctx.setState(patch({ profile }))),
-      catchError(error => {
+      tap((profile) => ctx.setState(patch({ profile }))),
+      catchError((error) => {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
@@ -86,15 +86,15 @@ export class ProfileState implements NgxsAfterBootstrap {
     ctx.setState(setProgress(0));
     ctx.setState(startLoading());
     return this.profileService.create(payload).pipe(
-      map(event => event.type),
-      map(event => this.getStatusMessage(ctx, event)),
+      map((event) => event.type),
+      map((event) => this.getStatusMessage(ctx, event)),
       tap({
-        next: message => console.log(message),
-        complete: () => console.log('competed request!')
+        next: (message) => console.log(message),
+        complete: () => console.log('competed request!'),
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
-      catchError(error => {
+      catchError((error) => {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
@@ -107,14 +107,14 @@ export class ProfileState implements NgxsAfterBootstrap {
     ctx.setState(setProgress(0));
     ctx.setState(startLoading());
     return this.profileService.update(payload.id, payload.profile).pipe(
-      map(event => this.getStatusMessage(ctx, event)),
+      map((event) => this.getStatusMessage(ctx, event)),
       tap({
-        next: message => console.log(message),
-        complete: () => console.log('competed request!')
+        next: (message) => console.log(message),
+        complete: () => console.log('competed request!'),
       }),
       last(),
       tap((profile: Profile) => ctx.setState(patch({ profile }))),
-      catchError(error => {
+      catchError((error) => {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),
@@ -126,8 +126,8 @@ export class ProfileState implements NgxsAfterBootstrap {
   public deleteProfile(ctx: StateContext<ProfileStateModel>, { payload }: DeleteProfile) {
     ctx.setState(startLoading());
     return this.profileService.delete(payload).pipe(
-      tap(_ => ctx.setState(patch({ profile: undefined }))),
-      catchError(error => {
+      tap((_) => ctx.setState(patch({ profile: undefined }))),
+      catchError((error) => {
         ctx.setState(patch({ error }));
         return throwError(error);
       }),

@@ -38,7 +38,7 @@ export class AuthState {
     private authService: AuthService,
     private oauthService: OAuthService,
     private router: Router,
-    private zone: NgZone,
+    private zone: NgZone
   ) {}
 
   @Selector()
@@ -118,14 +118,14 @@ export class AuthState {
     // HINT: don't escape form zone https://github.com/angular/material2/issues/13640
     return this.zone.run(() =>
       this.authService.login(payload).pipe(
-        map(profile => {
+        map((profile) => {
           if (profile === false) {
             dispatch(new LoginCanceled());
           } else {
             dispatch(new LoginSuccess(profile));
           }
-        }),
-      ),
+        })
+      )
     );
   }
 }

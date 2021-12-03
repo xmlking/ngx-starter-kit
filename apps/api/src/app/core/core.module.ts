@@ -26,7 +26,7 @@ export function isClass(obj) {
 function requireAllClasses(rc) {
   return rc
     .keys()
-    .flatMap(key => Object.values(rc(key)))
+    .flatMap((key) => Object.values(rc(key)))
     .filter(isClass);
 }
 

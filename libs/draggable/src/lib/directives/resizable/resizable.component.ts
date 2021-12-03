@@ -104,7 +104,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     private el: ElementRef,
     private store: Store,
     private renderer: Renderer2,
-    private rState: ResizableState,
+    private rState: ResizableState
   ) {}
 
   ngOnInit() {
@@ -165,7 +165,7 @@ export class ResizableComponent implements OnInit, OnChanges {
         width: this.el.nativeElement.offsetWidth,
         height: this.el.nativeElement.offsetHeight,
       },
-      dir,
+      dir
     );
     this.emitEvent(this.resizeStart);
   }
@@ -180,7 +180,7 @@ export class ResizableComponent implements OnInit, OnChanges {
     mousePosition: IPoint,
     startPosition?: IPoint,
     startSize?: ISize,
-    startDirection?: string,
+    startDirection?: string
   ) {
     const options: IOptions = {
       minSize: { width: this.minWidth, height: this.minHeight },

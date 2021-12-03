@@ -3,12 +3,14 @@
 Deploying `KeyCloak` to `Google Kubernetes Engine` via `Helm`
 
 ## Set Env
+
 ```bash
 export PROJECT_ID=ngx-starter-kit
 cd .deploy/keycloak/helm
 ```
 
 ## Push keycloak to GCR
+
 ```bash
 # Authenticate to the Google Container Registry (first time)
 gcloud auth configure-docker
@@ -37,9 +39,9 @@ gcloud compute ssl-certificates describe  mcrt-xxx...
 
 ## Deploy
 
-### With Tiller 
+### With Tiller
 
-> make sure `postgres-init-scripts`  via `kubectl create -f postgres-init-scripts.yaml` before next step.
+> make sure `postgres-init-scripts` via `kubectl create -f postgres-init-scripts.yaml` before next step.
 > remove **Load balancing** manually from `Google Cloud Console` before next step.
 
 ```bash
@@ -74,15 +76,15 @@ helm delete keycloak --purge  # delete keycloak and purge
 kubectl scale statefulset keycloak --replicas=0
 ```
 
-
 > Ingress would consume a good amount of time to have the GCP load balancing functioning.
 
-
 ## Cleaning up
+
 ```bash
 gcloud compute ssl-certificates delete keycloak
 ```
 
 ## Reference
+
 1. [Cloud DNS](https://cloud.google.com/dns/records/)
 2. [Migrating to Cloud DNS](https://cloud.google.com/dns/docs/migrating)

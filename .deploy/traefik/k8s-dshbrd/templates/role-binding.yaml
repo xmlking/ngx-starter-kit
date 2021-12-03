@@ -8,6 +8,6 @@ roleRef:
   kind: Role
   name: kubernetes-dashboard-minimal
 subjects:
-- kind: ServiceAccount
-  name: kubernetes-dashboard
-  namespace: kube-system
+  - kind: ServiceAccount
+    name: kubernetes-dashboard
+    namespace: kube-system

@@ -66,7 +66,7 @@ export class MenuService {
   isLowerThanLarge: boolean;
 
   constructor(@Inject(MENU_ITEMS) private menuItems: MenuItem[], private router: Router, mediaObserver: MediaObserver) {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.setCurrentlyOpenByRoute(event.url);
 
@@ -82,9 +82,9 @@ export class MenuService {
       .pipe(
         filter((changes: MediaChange[]) => changes.length > 0),
         map((changes: MediaChange[]) => changes[0]),
-        map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md'),
+        map((change: MediaChange) => change.mqAlias === 'xs' || change.mqAlias === 'sm' || change.mqAlias === 'md')
       )
-      .subscribe(isLowerThanLarge => {
+      .subscribe((isLowerThanLarge) => {
         this.isLowerThanLarge = isLowerThanLarge;
         if (
           isLowerThanLarge &&
@@ -124,7 +124,7 @@ export class MenuService {
 
   // private setCurrentlyOpenByRoute(route: string) {
   public setCurrentlyOpenByRoute(route: string) {
-    const item = this.treePrivate.findByPredicateBFS(node => {
+    const item = this.treePrivate.findByPredicateBFS((node) => {
       return node.link === route;
     });
     let currentlyOpen = [];
@@ -139,7 +139,7 @@ export class MenuService {
   }
 
   getItemByRoute(route: string) {
-    return this.treePrivate.findByPredicateBFS(node => {
+    return this.treePrivate.findByPredicateBFS((node) => {
       return node.link === route;
     });
   }

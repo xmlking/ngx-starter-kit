@@ -23,7 +23,7 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
       this.matchExp = v;
     } else {
       throw new TypeError(
-        `Unexpected type '${typeof v}' of value for ` + `input of routerLinkMatch directive, expected 'object'`,
+        `Unexpected type '${typeof v}' of value for ` + `input of routerLinkMatch directive, expected 'object'`
       );
     }
   }
@@ -32,10 +32,10 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
     combineLatest([router.events, this.onChangesHook])
       .pipe(
         map(([e]) => e),
-        filter(e => e instanceof NavigationEnd),
-        untilDestroy(this),
+        filter((e) => e instanceof NavigationEnd),
+        untilDestroy(this)
       )
-      .subscribe(e => {
+      .subscribe((e) => {
         this.curRoute = (e as NavigationEnd).urlAfterRedirects;
 
         this._updateClass(this.matchExp);
@@ -49,7 +49,7 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
   }
 
   private _updateClass(v: MatchExp): void {
-    Object.keys(v).forEach(cls => {
+    Object.keys(v).forEach((cls) => {
       if (v[cls] && typeof v[cls] === 'string') {
         const regexp = new RegExp(v[cls]);
         if (this.curRoute.match(regexp)) {
@@ -61,7 +61,7 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
         throw new TypeError(
           `Could not convert match value to Regular Expression. ` +
             `Unexpected type '${typeof v[cls]}' for value of key '${cls}' ` +
-            `in routerLinkMatch directive match expression, expected 'non-empty string'`,
+            `in routerLinkMatch directive match expression, expected 'non-empty string'`
         );
       }
     });
@@ -70,7 +70,7 @@ export class RouterLinkMatchDirective implements OnDestroy, OnChanges {
   private _toggleClass(classes: string, enabled: boolean): void {
     classes = classes.trim();
 
-    classes.split(/\s+/g).forEach(cls => {
+    classes.split(/\s+/g).forEach((cls) => {
       if (enabled) {
         this.renderer.addClass(this.ngEl.nativeElement, cls);
       } else {

@@ -3,12 +3,14 @@
 Deploying `NgxApi` to `Google Kubernetes Engine` via `Helm`
 
 ## Set Env
+
 ```bash
 export PROJECT_ID=ngx-starter-kit
 export BUILD_VERSION=2.0.4-SNAPSHOT
 ```
 
 ## Push NgxApi to GCR
+
 ```bash
 # Authenticate to the Google Container Registry (first time)
 gcloud auth configure-docker
@@ -18,7 +20,7 @@ docker push gcr.io/${PROJECT_ID}/ngxapi:${BUILD_VERSION}
 
 ## Deploy
 
-### With Tiller 
+### With Tiller
 
 ```bash
 cd .deploy/api/helm
@@ -37,7 +39,7 @@ POD_NAME=$(kubectl get pods  -lapp.kubernetes.io/instance=ngxapi -o jsonpath='{.
 kubectl exec -it $POD_NAME -- /bin/sh
 kubectl logs $POD_NAME -f
 
-# To update 
+# To update
 helm upgrade --namespace=default -f values-gke.yaml -f secrets.gke.yaml ngxapi ./nodeapp
 
 # To uninstall/delete the `ngxapi` release
@@ -51,11 +53,13 @@ kubectl scale deployment ngxapi-nodeapp --replicas=0
 > Ingress would consume a good amount of time to have the GCP load balancing functioning.
 
 ## Cleaning up
+
 ```bash
 helm delete ngxapi --purge
 gcloud compute ssl-certificates delete ngxapi-nodeapp
 ```
 
 ## Reference
+
 1. [Cloud DNS](https://cloud.google.com/dns/records/)
 1. [Migrating to Cloud DNS](https://cloud.google.com/dns/docs/migrating)

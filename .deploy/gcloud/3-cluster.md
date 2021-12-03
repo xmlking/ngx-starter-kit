@@ -2,7 +2,6 @@
 
 Creating VPC-native private Kubernetes cluster
 
-
 ## Prerequisites
 
 1. Active Google Cloud Platform (GCP) Account.
@@ -37,7 +36,7 @@ gcloud config set compute/zone $COMPUTE_ZONE
 ```bash
 gcloud compute networks create ${NETWORK_NAME} \
   --project ${PROJECT_ID} \
-  --subnet-mode custom 
+  --subnet-mode custom
 ```
 
 ### Step 2: Create a subnet for GKE cluster
@@ -55,7 +54,7 @@ gcloud compute networks subnets list --network ${NETWORK_NAME}
 gcloud compute networks subnets describe ${SUBNET_NAME}
 ```
 
-### Step 3: Create GKE cluster 
+### Step 3: Create GKE cluster
 
 ```bash
 gcloud container clusters create ${CLUSTER_NAME} \
@@ -79,7 +78,7 @@ gcloud container clusters create ${CLUSTER_NAME} \
   --no-issue-client-certificate \
   --scopes bigtable,sql-admin,gke-default \
   --preemptible
-  
+
 # Verify
 gcloud container clusters describe ${CLUSTER_NAME}
 ```
@@ -90,7 +89,6 @@ gcloud container clusters describe ${CLUSTER_NAME}
 --enable-master-authorized-networks \
 --master-authorized-networks [cloudshell-ip-address]
 ```
-
 
 > To enable to dashboard:
 
@@ -110,11 +108,13 @@ gcloud container clusters get-credentials ${CLUSTER_NAME} \
 ```
 
 > To switch the current context to my-cluster
+
 ```bash
 gcloud container clusters get-credentials my-cluster
 ```
 
 > Verify if kubectl working
+
 ```bash
 kubectl cluster-info
 kubectl get nodes --output wide
@@ -137,21 +137,23 @@ helm --tls --tls-verify --tiller-namespace kube-system install stable/nginx-ingr
 ### Step 6: Create Ingress
 
 > After installing `keycloak`, `ngxapi`, `ngxweb` Helm charts, as final step, install Global Ingress
+
 ```bash
 kubectl apply -f gke-kashmora-ingress.yaml
-``` 
+```
 
-> ***Ingress would consume a good amount of time to have the GCP load balancing functioning.
+> \*\*\*Ingress would consume a good amount of time to have the GCP load balancing functioning.
 
 ## Cleaning up
+
 ```bash
 gcloud container clusters delete -q ${CLUSTER_NAME}
 gcloud compute networks subnets delete ${SUBNET_NAME}
 gcloud compute networks delete ${NETWORK_NAME}
 ```
 
-
 ## Tips
+
 ```bash
 gcloud compute machine-types list | grep us-west2
 ```

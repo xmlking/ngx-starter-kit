@@ -14,7 +14,7 @@
     <div class="section">
       <div class="heading">Top Active Pages</div>
       <div class="pages" fxLayout="column">
-        <div class="page" *ngFor="let page of (pages$ | async)">{{ page.page }}</div>
+        <div class="page" *ngFor="let page of pages$ | async">{{ page.page }}</div>
       </div>
     </div>
   </ngx-card-content>

@@ -37,21 +37,21 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
     private mediaObserver: MediaObserver,
     private oauthService: OAuthService,
     // private authService: AuthService,
-    @Inject(WINDOW) private window: Window,
+    @Inject(WINDOW) private window: Window
   ) {}
 
   ngOnInit() {
     this.crumbs$ = this.store
       .select<any>(RouterState.state)
-      .pipe(map(state => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
+      .pipe(map((state) => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
 
-    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map(state => state.data.depth));
+    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map((state) => state.data.depth));
 
     this.mediaObserver
       .asObservable()
       .pipe(
         filter((changes: MediaChange[]) => changes.length > 0),
-        map((changes: MediaChange[]) => changes[0]),
+        map((changes: MediaChange[]) => changes[0])
       )
       .subscribe((change: MediaChange) => {
         const isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';
@@ -61,7 +61,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
         this.sidenavOpen = !isMobile;
       });
 
-    this.router.events.pipe().subscribe(event => {
+    this.router.events.pipe().subscribe((event) => {
       if (event instanceof NavigationEnd && this.isMobile) {
         this.sidenav.close();
       }
@@ -77,7 +77,7 @@ export class DashboardLayoutComponent implements OnInit, OnDestroy {
         new ConnectWebSocket({
           url: environment.WS_EVENT_BUS_URL,
           tokenFn: () => this.oauthService.getAccessToken(), // this.authService.getToken(),
-        }),
+        })
       );
     }
   }

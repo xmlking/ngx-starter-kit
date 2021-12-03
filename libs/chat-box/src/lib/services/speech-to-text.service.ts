@@ -26,62 +26,60 @@ export class SpeechToTextService {
   }
 
   public getVoiceMessage(): Promise<string> {
-    return new Promise(
-      (resolve: any, reject: any): void => {
-        this.speechRecognition.onresult = (speech: any): void => {
-          let sentence = '';
-          if (speech.results) {
-            const result = speech.results[speech.resultIndex];
-            const transcript = result[0].transcript;
-            if (result.isFinal) {
-              if (result[0].confidence < 0.1) {
-                console.log('Unrecognized result - Please try again');
-              } else {
-                sentence = transcript.trim();
-                console.log(`Sentence: ${sentence}`);
-                console.log(`Confidence: ${result[0].confidence}`);
-                // console.log(`Did you said? -> ${sentence}, If not, try again...`);
-                resolve(sentence);
-              }
+    return new Promise((resolve: any, reject: any): void => {
+      this.speechRecognition.onresult = (speech: any): void => {
+        let sentence = '';
+        if (speech.results) {
+          const result = speech.results[speech.resultIndex];
+          const transcript = result[0].transcript;
+          if (result.isFinal) {
+            if (result[0].confidence < 0.1) {
+              console.log('Unrecognized result - Please try again');
+            } else {
+              sentence = transcript.trim();
+              console.log(`Sentence: ${sentence}`);
+              console.log(`Confidence: ${result[0].confidence}`);
+              // console.log(`Did you said? -> ${sentence}, If not, try again...`);
+              resolve(sentence);
             }
           }
-        };
+        }
+      };
 
-        this.speechRecognition.onspeechend = (ev: Event): void => {
-          this.speechRecognition.stop();
-        };
+      this.speechRecognition.onspeechend = (ev: Event): void => {
+        this.speechRecognition.stop();
+      };
 
-        this.speechRecognition.onnomatch = (err: any): void => {
-          console.log('No Match');
-          // prettier-ignore
-          reject('I didn\'t recognise your question.');
-        };
+      this.speechRecognition.onnomatch = (err: any): void => {
+        console.log('No Match');
+        // prettier-ignore
+        reject('I didn\'t recognise your question.');
+      };
 
-        this.speechRecognition.onerror = (err: any): void => {
-          console.log('Error: ' + err.error);
-          reject(err.error);
-        };
+      this.speechRecognition.onerror = (err: any): void => {
+        console.log('Error: ' + err.error);
+        reject(err.error);
+      };
 
-        // [
-        //     'onaudiostart',
-        //     'onaudioend',
-        //     'onend',
-        //     'onerror',
-        //     'onnomatch',
-        //     'onresult',
-        //     'onsoundstart',
-        //     'onsoundend',
-        //     'onspeechend',
-        //     'onstart',
-        // ].forEach((eventName: string): void  => {
-        //     this.speechRecognition[eventName] = (e: Event): void => {
-        //         console.log(eventName, e);
-        //     };
-        // });
+      // [
+      //     'onaudiostart',
+      //     'onaudioend',
+      //     'onend',
+      //     'onerror',
+      //     'onnomatch',
+      //     'onresult',
+      //     'onsoundstart',
+      //     'onsoundend',
+      //     'onspeechend',
+      //     'onstart',
+      // ].forEach((eventName: string): void  => {
+      //     this.speechRecognition[eventName] = (e: Event): void => {
+      //         console.log(eventName, e);
+      //     };
+      // });
 
-        this.speechRecognition.start();
-        // console.log("I'm listening...");
-      },
-    );
+      this.speechRecognition.start();
+      // console.log("I'm listening...");
+    });
   }
 }

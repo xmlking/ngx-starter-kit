@@ -26,7 +26,7 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
 
   public async findOne(
     id: string | number | FindOneOptions<T> | FindConditions<T>,
-    options?: FindOneOptions<T>,
+    options?: FindOneOptions<T>
   ): Promise<T> {
     const record = await this.repository.findOne(id as any, options);
     if (!record) {
@@ -69,14 +69,14 @@ export abstract class CrudService<T extends Base> implements ICrudService<T> {
    * e.g., findOneById(id).pipe(map(entity => entity.id), entityNotFound())
    */
   private entityNotFound() {
-    return stream$ =>
+    return (stream$) =>
       stream$.pipe(
-        mergeMap(signal => {
+        mergeMap((signal) => {
           if (!signal) {
             return throwError(new NotFoundException(`The requested record was not found`));
           }
           return of(signal);
-        }),
+        })
       );
   }
 }

@@ -26,7 +26,7 @@ export class InViewportDirective implements OnInit, OnDestroy {
     private readonly elementRef: ElementRef,
     private viewportService: ViewportService,
     // tslint:disable-next-line: ban-types
-    @Inject(PLATFORM_ID) private platformId: Object,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {}
 
   public ngOnInit() {
@@ -36,8 +36,8 @@ export class InViewportDirective implements OnInit, OnDestroy {
           .observe(this.elementRef.nativeElement)
           .pipe(
             untilDestroy(this),
-            filter(entry => entry.intersectionRatio >= 0.5),
-            take(1),
+            filter((entry) => entry.intersectionRatio >= 0.5),
+            take(1)
           )
           .subscribe((entry: IntersectionObserverEntry) => {
             this.inViewport.emit(entry);

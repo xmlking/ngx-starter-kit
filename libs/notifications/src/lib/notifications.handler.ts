@@ -12,13 +12,13 @@ export class NotificationsHandler {
   constructor(private actions$: Actions, private store: Store, private readonly swPush: SwPush) {
     this.actions$
       .pipe(ofActionSuccessful(DeleteNotification))
-      .subscribe(action => this.store.dispatch(new SendWebSocketAction(action)));
+      .subscribe((action) => this.store.dispatch(new SendWebSocketAction(action)));
     this.actions$
       .pipe(ofActionSuccessful(MarkAsRead))
-      .subscribe(action => this.store.dispatch(new SendWebSocketAction(action)));
+      .subscribe((action) => this.store.dispatch(new SendWebSocketAction(action)));
     this.actions$
       .pipe(ofActionSuccessful(MarkAllAsRead))
-      .subscribe(action => this.store.dispatch(new SendWebSocketAction(action)));
+      .subscribe((action) => this.store.dispatch(new SendWebSocketAction(action)));
 
     if (this.swPush.isEnabled) {
       this.swPush.messages.subscribe((message: { notification: Notification }) => {

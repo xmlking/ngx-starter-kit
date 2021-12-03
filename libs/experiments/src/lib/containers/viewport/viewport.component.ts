@@ -66,29 +66,25 @@ export class ViewportComponent implements OnInit {
   ngOnInit() {}
 
   get totalImagesShown(): number {
-    return (this.imageItemCollection.filter(imageItem => imageItem.show) || []).length;
+    return (this.imageItemCollection.filter((imageItem) => imageItem.show) || []).length;
   }
 
   show(event: Partial<IntersectionObserverEntry>, image: ImageItem) {
     if (event.intersectionRatio >= 0.5) {
       image.show = true;
       console.log(
-        `in-view ==> image: ${image.id}, intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${
-          event.isIntersecting
-        }`,
+        `in-view ==> image: ${image.id}, intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${event.isIntersecting}`
       );
     } else {
       console.log(
-        `out-of-view <== image: ${image.id}, intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${
-          event.isIntersecting
-        }`,
+        `out-of-view <== image: ${image.id}, intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${event.isIntersecting}`
       );
     }
   }
 
   anim(event: Partial<IntersectionObserverEntry>, element: string) {
     console.log(
-      `anim: ${element} intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${event.isIntersecting}`,
+      `anim: ${element} intersectionRatio: ${event.intersectionRatio}, isIntersecting: ${event.isIntersecting}`
     );
     if (event.intersectionRatio >= 0.5) {
       event.target.classList.add('fancy');

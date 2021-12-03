@@ -6,7 +6,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { FormlyFieldConfig, FormlyFormOptions } from '@ngx-formly/core';
 
 function enumToOptions(enumType): { label: string; value: any }[] {
-  return Object.keys(enumType).map(key => ({ label: key, value: enumType[key] }));
+  return Object.keys(enumType).map((key) => ({ label: key, value: enumType[key] }));
 }
 
 @Component({
@@ -21,7 +21,7 @@ export class NotificationEditComponent extends EntityFormComponent<AppNotificati
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string; payload: AppNotification },
     public dialogRef: MatDialogRef<NotificationEditComponent>,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
     super(data, dialogRef);
   }

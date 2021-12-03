@@ -17,4 +17,4 @@ platformBrowserDynamic()
   //   const appComponent = applicationRef.components[0];
   //   enableDebugTools(appComponent);
   // })
-  .catch(err => console.error(err));
+  .catch((err) => console.error(err));

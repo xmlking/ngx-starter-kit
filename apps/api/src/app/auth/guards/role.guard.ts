@@ -59,7 +59,7 @@ export class RoleGuard implements CanActivate {
   }
 
   private isRoleOverlay(userRoles, authRoles) {
-    return authRoles.every(val => userRoles.includes(val));
+    return authRoles.every((val) => userRoles.includes(val));
   }
 
   private resolveUsername(request: any) {

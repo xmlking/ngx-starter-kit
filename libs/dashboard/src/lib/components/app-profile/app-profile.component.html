@@ -20,7 +20,7 @@
   <mat-card-content>
     <form [formGroup]="formGroup" (ngSubmit)="save()">
       <mat-list role="list">
-        <mat-list-item *ngFor="let entry of (oidcProfile | keyvalue)" role="listitem">
+        <mat-list-item *ngFor="let entry of oidcProfile | keyvalue" role="listitem">
           <div class="thick" fxFlex="40">
             {{ entry.key }}
           </div>
@@ -34,7 +34,7 @@
             <ng-container *ngSwitchCase="true">
               <mat-form-field floatLabel="never" fxFlex="40">
                 <mat-select name="gender" formControlName="gender" placeholder="Gender">
-                  <mat-option *ngFor="let gender of (genderOptions | keyvalue)" [value]="gender.value">
+                  <mat-option *ngFor="let gender of genderOptions | keyvalue" [value]="gender.value">
                     {{ gender.key }}
                   </mat-option>
                 </mat-select>
@@ -62,7 +62,7 @@
               <div fxFlex="60">{{ formGroup.controls['mobilePhone'].value }}</div>
             </ng-container>
           </mat-list-item>
-          <mat-list-item role="listitem" style="height: auto;">
+          <mat-list-item role="listitem" style="height: auto">
             <div class="thick" fxFlex="40">Avatar</div>
             <ng-container *ngSwitchCase="true">
               <!--              <mat-form-field>-->

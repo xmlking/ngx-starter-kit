@@ -24,7 +24,7 @@ const createPassportContext = (request, response) => (type, options) =>
       } catch (err) {
         reject(err);
       }
-    })(request, response, resolve),
+    })(request, response, resolve)
   );
 
 // TODO like https://github.com/nestjs/nest/blob/master/sample/19-auth/src/auth/guards/jwt-auth.guard.ts

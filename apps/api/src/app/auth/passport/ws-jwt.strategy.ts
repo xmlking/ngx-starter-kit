@@ -8,7 +8,7 @@ import { environment as env } from '@env-api/environment';
 import { JwtToken } from '@ngx-starter-kit/models';
 import { UserService } from '../../user';
 
-const extractJwtFromWsQuery = req => {
+const extractJwtFromWsQuery = (req) => {
   let token = null;
   if (req.handshake.query && req.handshake.query.token) {
     {

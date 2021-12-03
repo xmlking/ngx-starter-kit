@@ -41,7 +41,7 @@ export class TextToSpeechPreferencesComponent implements OnInit {
         dirty: false,
         status: 'VALID',
         errors: {},
-      }),
+      })
     );
   }
 }

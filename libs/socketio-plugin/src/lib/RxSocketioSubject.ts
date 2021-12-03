@@ -99,8 +99,8 @@ export class RxSocketioSubject<T> extends AnonymousSubject<T> {
     this.socketPrivate.on('reconnect_attempt', () => {
       if (config.tokenFn && typeof config.tokenFn === 'function') {
         // FIXME: https://github.com/socketio/socket.io-client/issues/1118
-        // (this.socketPrivate.io.opts.query as any).token = config.tokenFn();
-        this.socketPrivate.io.engine.query.token = config.tokenFn();
+        (this.socketPrivate.io.opts.query as any).token = config.tokenFn();
+        // this.socketPrivate.io.engine.query.token = config.tokenFn();
         this.socketPrivate.io.engine.transport.query.token = config.tokenFn();
       }
     });

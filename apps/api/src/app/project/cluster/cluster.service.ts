@@ -12,14 +12,14 @@ import { map } from 'rxjs/operators';
 export class ClusterService extends CrudService<Cluster> {
   constructor(
     @InjectRepository(Cluster) private readonly clusterRepository: Repository<Cluster>,
-    private cacheService: CacheService,
+    private cacheService: CacheService
   ) {
     super(clusterRepository);
   }
 
   @Cache<string[]>({ ttl: 60 * 60 * 3 })
   getClusterNames() {
-    return from(super.findAll()).pipe(map(({ items, total }) => items.map(c => c.name)));
+    return from(super.findAll()).pipe(map(({ items, total }) => items.map((c) => c.name)));
   }
 
   /**

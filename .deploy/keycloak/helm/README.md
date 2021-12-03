@@ -4,7 +4,7 @@ Deploying `KeyCloak` to `Kubernetes` via `Helm`
 
 we will be using charts from [codecentric](https://github.com/codecentric/helm-charts) Repo.
 
-> Follow extra instructions for [OPENSHIFT](./OPENSHIFT4.md) and  [GCLOUD](./GCLOUD.md)
+> Follow extra instructions for [OPENSHIFT](./OPENSHIFT4.md) and [GCLOUD](./GCLOUD.md)
 
 ### With Tiller
 

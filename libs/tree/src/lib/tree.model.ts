@@ -61,7 +61,7 @@ export class Tree<T extends TreeNode<T>> implements Iterable<T> {
       }
 
       // add a parent link to a child structure
-      parent.children.forEach(d => {
+      parent.children.forEach((d) => {
         // each child gets marked with a parent
         d.parent = parent;
         // then marks its own children with itself

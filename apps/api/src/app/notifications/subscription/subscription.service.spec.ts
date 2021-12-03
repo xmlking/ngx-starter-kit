@@ -7,10 +7,10 @@ describe('SubscriptionService', () => {
   let service: SubscriptionService;
   const MockRepository = jest.fn().mockImplementation(() => ({
     find: jest.fn(() => Promise.resolve([])),
-    findOne: jest.fn(id => (id > 0 ? Promise.resolve({ id }) : Promise.resolve())),
-    save: jest.fn(dto => Promise.resolve(dto)),
-    delete: jest.fn(id =>
-      id > 0 ? Promise.resolve({ raw: [], affected: 1 }) : Promise.resolve({ raw: [], affected: 0 }),
+    findOne: jest.fn((id) => (id > 0 ? Promise.resolve({ id }) : Promise.resolve())),
+    save: jest.fn((dto) => Promise.resolve(dto)),
+    delete: jest.fn((id) =>
+      id > 0 ? Promise.resolve({ raw: [], affected: 1 }) : Promise.resolve({ raw: [], affected: 0 })
     ),
   }));
 

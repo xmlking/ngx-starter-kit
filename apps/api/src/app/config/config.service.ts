@@ -43,9 +43,7 @@ export class ConfigService {
       return response.data;
     } catch (err) {
       this.logger.error(
-        `Unable to fetch config from ${
-          this.config.auth.issuerExternalUrl
-        }/.well-known/openid-configuration, \nError: ${err}`,
+        `Unable to fetch config from ${this.config.auth.issuerExternalUrl}/.well-known/openid-configuration, \nError: ${err}`
       );
       this.logger.error('Check if OIDC Server is UP');
     }

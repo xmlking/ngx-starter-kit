@@ -26,14 +26,14 @@ export abstract class AuditBase {
   @UpdateDateColumn({ type: 'timestamptz' })
   updatedAt?: Date;
 
-  @ManyToOne(type => User, {
+  @ManyToOne((type) => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
     nullable: false,
   })
   createdBy?: User;
 
-  @ManyToOne(type => User, {
+  @ManyToOne((type) => User, {
     onDelete: 'NO ACTION',
     onUpdate: 'CASCADE',
     nullable: true,

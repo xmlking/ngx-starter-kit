@@ -26,18 +26,18 @@ export class FileUploadComponent {
       formData.append(fieldName, file, file.name);
       formData.append(fieldName, JSON.stringify(metadata));
       this.uploadService.uploadFile(file, {}, 'tenant1').subscribe(
-        data => {
+        (data) => {
           this.myPond.removeFiles();
           this.snackBar.open(`Uploaded Successfully`, '', {
             duration: 3000,
           });
         },
-        err => {
+        (err) => {
           console.error(`File Upload Error: ${err.message}`);
           this.snackBar.open(`File Upload Error: ${err.message}`, '', {
             duration: 3000,
           });
-        },
+        }
       );
 
       // Progress indicator supported, set progress to 25% of 1

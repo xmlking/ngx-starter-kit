@@ -5,13 +5,13 @@ metadata:
   labels:
     app: postgresql
   annotations:
-    trident.netapp.io/reclaimPolicy: "Retain"
-    trident.netapp.io/snapshotDirectory: "false"
-    trident.netapp.io/snapshotPolicy: "default"
+    trident.netapp.io/reclaimPolicy: 'Retain'
+    trident.netapp.io/snapshotDirectory: 'false'
+    trident.netapp.io/snapshotPolicy: 'default'
 spec:
-# use hostpath when deploying local k8s and use nas-thin for k8s cluster
+  # use hostpath when deploying local k8s and use nas-thin for k8s cluster
   storageClassName: hostpath
-#  storageClassName: nas-thin
+  #  storageClassName: nas-thin
   accessModes:
     - ReadWriteMany
   resources:

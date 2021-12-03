@@ -17,7 +17,7 @@ export const resizeReducer = (
   startPosition: IPoint,
   options: IOptions,
   initialSize?: ISize,
-  initialResizeDir?: string,
+  initialResizeDir?: string
 ): IResizeState => {
   if (options.disabled) {
     return currentState;
@@ -52,14 +52,17 @@ export const resizeReducer = (
       let nextTop = currentPos.y;
 
       if (/right/.test(currentState.direction)) {
-        nextWidth = resizeRight(mousePosition.x - startPos.x + startSize.width, options, currentState.currentPosition)
-          .nextWidth;
+        nextWidth = resizeRight(
+          mousePosition.x - startPos.x + startSize.width,
+          options,
+          currentState.currentPosition
+        ).nextWidth;
       }
       if (/bottom/.test(currentState.direction)) {
         nextHeight = resizeBottom(
           mousePosition.y - startPos.y + startSize.height,
           options,
-          currentState.currentPosition,
+          currentState.currentPosition
         ).nextHeight;
       }
       if (/top/.test(currentState.direction)) {
@@ -79,7 +82,7 @@ export const resizeReducer = (
           currentPos,
           currentSize,
           currentState.direction,
-          currentState.currentPosition,
+          currentState.currentPosition
         );
         nextLeft = fixedSize.nextLeft;
         nextTop = fixedSize.nextTop;

@@ -47,10 +47,10 @@ export class FormatTimeInWordsPipe implements PipeTransform, OnDestroy {
     let nextBackoff = this.backoff(date);
     return of(true).pipe(
       // will not recheck input until delay completes
-      repeatWhen(notify => notify.pipe(delayWhen(() => interval(nextBackoff)))),
-      takeWhile(_ => !this.isDestroyed),
-      map(_ => formatDistance(this.stringToDate(date), new Date(), options)),
-      tap(_ => (nextBackoff = this.backoff(date)))
+      repeatWhen((notify) => notify.pipe(delayWhen(() => interval(nextBackoff)))),
+      takeWhile((_) => !this.isDestroyed),
+      map((_) => formatDistance(this.stringToDate(date), new Date(), options)),
+      tap((_) => (nextBackoff = this.backoff(date)))
     );
   }
 

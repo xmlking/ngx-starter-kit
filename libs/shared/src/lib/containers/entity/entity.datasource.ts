@@ -6,7 +6,8 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { Filter } from './entity.service';
 
 export abstract class EntityDataSource<TEntity extends Entity, TService extends EntityService<TEntity>>
-  implements DataSource<TEntity> {
+  implements DataSource<TEntity>
+{
   private entitiesSubject: BehaviorSubject<Array<TEntity>> = new BehaviorSubject([]);
 
   constructor(protected entityService: TService) {}
@@ -15,7 +16,7 @@ export abstract class EntityDataSource<TEntity extends Entity, TService extends 
     this.entityService
       .findAll(filter, sortDirection, pageIndex, pageSize)
       .pipe(catchError(() => of([])))
-      .subscribe(entities => this.entitiesSubject.next(entities));
+      .subscribe((entities) => this.entitiesSubject.next(entities));
   }
 
   connect(collectionViewer: CollectionViewer): Observable<TEntity[]> {

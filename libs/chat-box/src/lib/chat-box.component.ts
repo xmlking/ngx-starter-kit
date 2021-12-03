@@ -74,14 +74,18 @@ export class ChatBoxComponent implements OnInit, OnDestroy {
     const keyDowns = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keydown');
     const enterUp = fromEvent<KeyboardEvent>(this.input.nativeElement, 'keyup').pipe(
       filter((x: any) => x.key === 'Enter'),
-      take(1),
+      take(1)
     );
 
     const typing = keyDowns
       .pipe(
         // map(true),
-        takeUntil(enterUp),
+        takeUntil(enterUp)
       )
-      .subscribe(() => (this.typing = true), () => (this.typing = false), () => (this.typing = false));
+      .subscribe(
+        () => (this.typing = true),
+        () => (this.typing = false),
+        () => (this.typing = false)
+      );
   }
 }

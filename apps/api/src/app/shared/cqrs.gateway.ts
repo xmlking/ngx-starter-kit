@@ -32,7 +32,7 @@ export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
 
   constructor(
     private readonly eventBus: EventBus,
-    private readonly commandBus: CommandBus /*private userService: UserService*/,
+    private readonly commandBus: CommandBus /*private userService: UserService*/
   ) {}
 
   afterInit(server) {}
@@ -46,7 +46,7 @@ export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
   handleDisconnect(client: ISocket) {
     // this.logger.log(`Client disconnected => ${client.id}`);
     // FIXME: remove any. only needed for docker build
-    this.clients = this.clients.filter(c => (c as any).id !== (client as any).id);
+    this.clients = this.clients.filter((c) => (c as any).id !== (client as any).id);
   }
 
   @UseGuards(WsAuthGuard)
@@ -81,30 +81,30 @@ export class CQRSGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
     const clients = this.getSocketsForUser(user);
     const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
-    clients.forEach(socket => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
+    clients.forEach((socket) => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
   }
 
   sendCommandToAll<T>(action: any): void {
     const type = this.getActionTypeFromInstance(action);
     // FIXME: remove any. only needed for docker build
-    this.clients.forEach(socket => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
+    this.clients.forEach((socket) => (socket as any).emit(CQRSGateway.COMMANDS, { ...action, type }));
   }
 
   sendEventToUser<T>(user: User, event: any): void {
     const clients = this.getSocketsForUser(user);
     const type = this.getActionTypeFromInstance(event);
     // FIXME: remove any. only needed for docker build
-    clients.forEach(socket => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
+    clients.forEach((socket) => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
   }
 
   sendEventToAll<T>(event: any): void {
     const type = this.getActionTypeFromInstance(event);
     // FIXME: remove any. only needed for docker build
-    this.clients.forEach(socket => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
+    this.clients.forEach((socket) => (socket as any).emit(CQRSGateway.EVENTS, { ...event, type }));
   }
 
   private getSocketsForUser(user: User): ISocket[] {
-    return this.clients.filter(c => c.user && c.user.username === user.username);
+    return this.clients.filter((c) => c.user && c.user.username === user.username);
   }
 
   private getActionTypeFromInstance(action: any): string {

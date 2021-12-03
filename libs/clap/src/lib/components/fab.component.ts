@@ -4,9 +4,7 @@ import { pulseAnimation } from '../animations';
 
 @Component({
   selector: 'ngx-fab',
-  template: `
-    <i class="material-icons">pan_tool</i>
-  `,
+  template: ` <i class="material-icons">pan_tool</i> `,
   styles: [
     `
       :host {
@@ -33,7 +31,7 @@ import { pulseAnimation } from '../animations';
             timings: '400ms cubic-bezier(.11,.99,.83,.43)',
             scale: 1.05,
           },
-        }),
+        })
       ),
     ]),
   ],

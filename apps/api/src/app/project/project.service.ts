@@ -19,7 +19,7 @@ export class ProjectService extends CrudService<Project> implements OnModuleInit
   constructor(
     @InjectRepository(Project) private readonly projectRepository: Repository<Project>,
     private readonly clusterService: ClusterService,
-    private readonly kservice: KubernetesService,
+    private readonly kservice: KubernetesService
   ) {
     super(projectRepository);
   }

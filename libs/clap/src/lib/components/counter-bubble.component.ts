@@ -4,9 +4,7 @@ import { pulseAnimation, slideInAnimation, slideOutAnimation } from '../animatio
 
 @Component({
   selector: 'ngx-counter-bubble',
-  template: `
-    +{{ counter }}
-  `,
+  template: ` +{{ counter }} `,
   styles: [
     `
       :host {
@@ -47,7 +45,7 @@ import { pulseAnimation, slideInAnimation, slideOutAnimation } from '../animatio
             timings: '200ms',
             scale: 1.2,
           },
-        }),
+        })
       ),
     ]),
   ],

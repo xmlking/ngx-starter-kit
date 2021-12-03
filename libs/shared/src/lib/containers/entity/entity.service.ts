@@ -21,7 +21,7 @@ export abstract class EntityService<T extends Entity> {
   getById(id: number | string) {
     // this.loadingSubject.next(true);
     return this.httpClient.get<T>(`${this.baseUrl}/${this.entityPath}/${id}`).pipe(
-      catchError(this.handleError),
+      catchError(this.handleError)
       // finalize(() => this.loadingSubject.next(false))
     );
   }
@@ -40,7 +40,7 @@ export abstract class EntityService<T extends Entity> {
       .pipe(
         retry(3), // retry a failed request up to 3 times
         catchError(this.handleError),
-        finalize(() => this.loadingSubject.next(false)),
+        finalize(() => this.loadingSubject.next(false))
       );
   }
 
@@ -50,7 +50,7 @@ export abstract class EntityService<T extends Entity> {
     return this.httpClient.get<T[]>(`${this.baseUrl}/${this.entityPath}`).pipe(
       retry(3), // retry a failed request up to 3 times
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 
@@ -58,7 +58,7 @@ export abstract class EntityService<T extends Entity> {
     this.loadingSubject.next(true);
     return this.httpClient.delete(`${this.baseUrl}/${this.entityPath}/${id}`).pipe(
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 
@@ -66,7 +66,7 @@ export abstract class EntityService<T extends Entity> {
     this.loadingSubject.next(true);
     return this.httpClient.post(`${this.baseUrl}/${this.entityPath}`, entity).pipe(
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 
@@ -75,7 +75,7 @@ export abstract class EntityService<T extends Entity> {
     this.loadingSubject.next(true);
     return this.httpClient.put(`${this.baseUrl}/${this.entityPath}/${id}`, entity).pipe(
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 
@@ -102,7 +102,7 @@ export abstract class EntityService<T extends Entity> {
 
   protected convertToJson(body: any) {
     const temporalFunctionToJson = Date.prototype.toJSON;
-    Date.prototype.toJSON = function() {
+    Date.prototype.toJSON = function () {
       return format(this, 'YYYY-MM-DD');
     };
 

@@ -9,7 +9,7 @@ describe('StyleManagerService', () => {
     TestBed.configureTestingModule({
       imports: [HttpClientModule],
       providers: [StyleManagerService],
-    }),
+    })
   );
 
   beforeEach(inject([StyleManagerService], (sm: StyleManagerService) => {

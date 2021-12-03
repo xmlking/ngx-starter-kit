@@ -8,16 +8,16 @@ spec:
     fsGroup: 53134
   restartPolicy: Never
   containers:
-  - name: debug-busybox
-    image: busybox
-    args:
-    - sleep
-    - "100000"
-    volumeMounts:
-    - mountPath: /data
-      name: postgres-data-volume
-      readOnly: false
+    - name: debug-busybox
+      image: busybox
+      args:
+        - sleep
+        - '100000'
+      volumeMounts:
+        - mountPath: /data
+          name: postgres-data-volume
+          readOnly: false
   volumes:
-  - name: postgres-data-volume
-    persistentVolumeClaim:
-      claimName: postgres
+    - name: postgres-data-volume
+      persistentVolumeClaim:
+        claimName: postgres

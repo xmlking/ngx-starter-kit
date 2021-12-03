@@ -4,7 +4,7 @@ import { map } from 'rxjs/operators';
 
 // generated using https://transform.now.sh/json-to-ts-interface/
 export interface ResponseObject {
-  results?: (RandomAccount)[] | null;
+  results?: RandomAccount[] | null;
   info: Info;
 }
 
@@ -76,10 +76,7 @@ export interface Picture {
 export class RandomAccountService {
   // public url = 'https://randomuser.me/api/?nat=us&results=100&exc=login,registered&seed=sumo';
   public baseUrl = 'https://randomuser.me/api/';
-  params = new HttpParams()
-    .append('seed', 'sumo')
-    .append('nat', 'us')
-    .append('exc', 'login,registered');
+  params = new HttpParams().append('seed', 'sumo').append('nat', 'us').append('exc', 'login,registered');
 
   constructor(private httpClient: HttpClient) {}
 

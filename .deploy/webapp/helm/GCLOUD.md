@@ -3,12 +3,14 @@
 Deploying `WebApp` to `Google Kubernetes Engine` via `Helm`
 
 ## Set Env
+
 ```bash
 export PROJECT_ID=ngx-starter-kit
 export BUILD_VERSION=2.0.4-SNAPSHOT
 ```
 
 ## Push NgxApi to GCR
+
 ```bash
 # Authenticate to the Google Container Registry (first time)
 gcloud auth configure-docker
@@ -18,7 +20,7 @@ docker push gcr.io/${PROJECT_ID}/ngxweb:${BUILD_VERSION}
 
 ## Deploy
 
-### With Tiller 
+### With Tiller
 
 ```bash
 cd .deploy/webapp/helm
@@ -38,9 +40,9 @@ POD_NAME=$(kubectl get pods  -lapp.kubernetes.io/instance=ngxweb -o jsonpath='{.
 kubectl exec -it $POD_NAME -- /bin/sh
 kubectl logs $POD_NAME -f
 echo | openssl s_client -showcerts -connect ngxweb.traefik.k8s:443 2>/dev/null
- 
 
-# To update 
+
+# To update
 helm upgrade --namespace=default -f values-gke.yaml ngxweb ./anginx
 
 # To uninstall/delete the `ngxweb` release
@@ -54,10 +56,12 @@ kubectl scale deployment ngxweb-anginx --replicas=0
 > Ingress would consume a good amount of time to have the GCP load balancing functioning.
 
 ## Cleaning up
+
 ```bash
 gcloud compute ssl-certificates delete ngxweb-nodeapp
 ```
 
 ## Reference
+
 1. [Cloud DNS](https://cloud.google.com/dns/records/)
 1. [Migrating to Cloud DNS](https://cloud.google.com/dns/docs/migrating)

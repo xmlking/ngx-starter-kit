@@ -8,7 +8,7 @@ import { Image } from './image.entity';
 
 @Entity('profile')
 export class Profile extends Base implements IProfile {
-  @OneToOne(_ => Image, { cascade: ['insert', 'update'], eager: true, nullable: true, onDelete: 'SET NULL' })
+  @OneToOne((_) => Image, { cascade: ['insert', 'update'], eager: true, nullable: true, onDelete: 'SET NULL' })
   @JoinColumn()
   avatar?: Image;
 

@@ -12,10 +12,7 @@ export class FilterPipe implements PipeTransform {
     filterBy = filterBy.toString();
     return itemList.filter((item: any) => {
       if (item[filterBy]) {
-        return item[filterBy]
-          .toString()
-          .toLowerCase()
-          .includes(filterTerm.toLowerCase());
+        return item[filterBy].toString().toLowerCase().includes(filterTerm.toLowerCase());
       }
     });
   }

@@ -5,7 +5,7 @@ metadata:
   labels:
     app: postgresql
   annotations:
-    "helm.sh/resource-policy": keep
+    'helm.sh/resource-policy': keep
 type: Opaque
 stringData:
   keycloak-db-password: keycloak123
@@ -13,4 +13,3 @@ stringData:
     CREATE ROLE keycloak WITH PASSWORD 'keycloak123' NOSUPERUSER LOGIN;
     CREATE DATABASE keycloak;
     GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
-

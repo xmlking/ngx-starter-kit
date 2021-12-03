@@ -78,7 +78,7 @@ export const manageRatio = (
   currentPos: IPoint,
   currentSize: ISize,
   direction: string,
-  currentElementPosition: IPoint,
+  currentElementPosition: IPoint
 ) => {
   let data: any;
   const bound = options.bound;

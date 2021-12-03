@@ -1,5 +1,4 @@
-Transporter
-===========
+# Transporter
 
 This is a docker image, which includes a `Transporter` application with a predefined, parameterized pipeline definition.
 
@@ -9,8 +8,8 @@ The predefined pipeline migrates the current state of a PostgreSQL database into
     | postgres |---->| transporter |---->| elasticsearch |
     +----------+     +-------------+     +---------------+
 
-
 ### Build
+
 ```bash
 # build postgres-to-es transporter docker image
 cd .deploy/transporter
@@ -36,12 +35,12 @@ The configuration parameters for run:
   Use one of the following formats: `http://<user>:password@host:port` or `http://host:port`.
   Default: `http://localhost:9200`.
 
-
 ```bash
     docker run -it --rm xmlking/postgres-to-es-transporter:latest
 ```
- 
+
 ### Docker Compose
+
 ```bash
 docker-compose up postgres
 docker-compose up elasticsearch
@@ -50,5 +49,6 @@ docker-compose up transporter
 ```
 
 ### Ref
-* https://github.com/bitnami/bitnami-docker-mongodb
-* https://github.com/debezium/docker-images/blob/master/examples/mongodb/0.9/init-inventory.sh
+
+- https://github.com/bitnami/bitnami-docker-mongodb
+- https://github.com/debezium/docker-images/blob/master/examples/mongodb/0.9/init-inventory.sh

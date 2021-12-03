@@ -52,7 +52,7 @@ export class IconSidenavDirective implements OnInit, OnDestroy {
       .asObservable()
       .pipe(
         filter((changes: MediaChange[]) => changes.length > 0),
-        map((changes: MediaChange[]) => changes[0]),
+        map((changes: MediaChange[]) => changes[0])
       )
       .subscribe((change: MediaChange) => {
         this.isMobile = change.mqAlias === 'xs' || change.mqAlias === 'sm';

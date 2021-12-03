@@ -28,7 +28,7 @@ export class LoginComponent {
     private oauthService: OAuthService,
     private ropcService: ROPCService,
     @Inject(MAT_DIALOG_DATA) public data: { infoMsg: string },
-    public dialogRef: MatDialogRef<LoginComponent>,
+    public dialogRef: MatDialogRef<LoginComponent>
   ) {
     if (data) {
       this.infoMsg = data.infoMsg;

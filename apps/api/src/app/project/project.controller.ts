@@ -9,7 +9,7 @@ import {
   ParseUUIDPipe,
   Post,
   Put,
-  Query
+  Query,
 } from '@nestjs/common';
 import { ApiOAuth2, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from '@ngx-starter-kit/models';
@@ -45,7 +45,7 @@ export class ProjectController extends CrudController<Project> {
 
   @ApiOperation({
     summary: 'Search all Projects. Admins only',
-    description: 'Ref: https://github.com/rjlopezdev/typeorm-express-query-builder'
+    description: 'Ref: https://github.com/rjlopezdev/typeorm-express-query-builder',
   })
   @ApiTags('Admin')
   @Roles(RolesEnum.ADMIN)

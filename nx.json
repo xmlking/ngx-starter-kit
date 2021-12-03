@@ -7,7 +7,6 @@
     "tslint.json": "*",
     "nx.json": "*"
   },
-  "projects": {},
   "tasksRunnerOptions": {
     "default": {
       "runner": "@nrwl/workspace/tasks-runners/default",
@@ -25,5 +24,29 @@
         "projects": "dependencies"
       }
     ]
-  }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/angular",
+    "packageManager": "yarn",
+    "warnings": {
+      "versionMismatch": false
+    }
+  },
+  "generators": {
+    "@nrwl/angular:application": {
+      "e2eTestRunner": "cypress",
+      "unitTestRunner": "jest"
+    },
+    "@nrwl/angular:component": {
+      "prefix": "ngx",
+      "styleext": "scss"
+    },
+    "@nrwl/angular:directive": {
+      "prefix": "ngx"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "webapp"
 }

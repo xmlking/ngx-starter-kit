@@ -113,7 +113,7 @@ export class ImageComparison {
   _setEvents() {
     const comparison = this;
 
-    comparison.container.addEventListener('click', event => {
+    comparison.container.addEventListener('click', (event) => {
       comparison._calcPosition(event);
     });
 
@@ -125,7 +125,7 @@ export class ImageComparison {
       comparison.comparisonSeparator.classList.remove('actived');
     });
 
-    Utils.setMultiEvents(document.body, ['mousemove', 'touchmove'], event => {
+    Utils.setMultiEvents(document.body, ['mousemove', 'touchmove'], (event) => {
       if (comparison.comparisonSeparator.classList.contains('actived')) {
         comparison._calcPosition(event);
         if (document.getSelection()) {
@@ -140,7 +140,7 @@ export class ImageComparison {
 
     // tslint:disable-next-line: prefer-for-of
     for (let i = 0; i < comparison.images.length; i++) {
-      comparison.images[i].addEventListener('dragstart', e => {
+      comparison.images[i].addEventListener('dragstart', (e) => {
         e.preventDefault();
       });
     }

@@ -11,7 +11,7 @@ import {
   OneToOne,
   RelationId,
   UpdateDateColumn,
-  VersionColumn
+  VersionColumn,
 } from 'typeorm';
 import { Base } from '../core/entities/base';
 import { Image } from './profile/image.entity';
@@ -56,14 +56,11 @@ export class User extends Base implements IUser {
   @VersionColumn()
   version?: number;
 
-  @OneToMany(
-    _ => Image,
-    image => image.user
-  )
+  @OneToMany((_) => Image, (image) => image.user)
   images?: Image[];
 
   // FIXME: OneToOne downward cascade delete not implemented
-  @OneToOne(type => Profile, { cascade: ['insert', 'remove'], nullable: true, onDelete: 'SET NULL' })
+  @OneToOne((type) => Profile, { cascade: ['insert', 'remove'], nullable: true, onDelete: 'SET NULL' })
   @JoinColumn()
   profile?: Profile;
 

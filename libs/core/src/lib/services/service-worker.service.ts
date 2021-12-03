@@ -6,7 +6,7 @@ import { WINDOW } from './window.token';
 
 /** @dynamic */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ServiceWorkerService {
   constructor(private swUpdate: SwUpdate, @Inject(WINDOW) private window: Window, private snackBar: MatSnackBar) {}
@@ -15,7 +15,7 @@ export class ServiceWorkerService {
   checkSWUpdate(): void {
     if (environment.production) {
       // Subscribe new worker is available
-      this.swUpdate.available.subscribe(event => {
+      this.swUpdate.available.subscribe((event) => {
         console.log('Current version is', event.current);
         console.log('Available version is', event.available);
         // update available: ask the user to reload
@@ -26,7 +26,7 @@ export class ServiceWorkerService {
         });
       });
 
-      this.swUpdate.activated.subscribe(event => {
+      this.swUpdate.activated.subscribe((event) => {
         console.log('Old version was', event.previous);
         console.log('New version is', event.current);
       });

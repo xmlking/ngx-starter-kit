@@ -41,13 +41,13 @@ export class SettingsComponent implements OnInit, OnDestroy {
 
     this.settingsForm
       .get('selectedLanguage')
-      .valueChanges.subscribe(selectedLanguage => this.store.dispatch(new ChangeLanguage(selectedLanguage)));
+      .valueChanges.subscribe((selectedLanguage) => this.store.dispatch(new ChangeLanguage(selectedLanguage)));
 
     this.settingsForm
       .get('selectedTheme')
-      .valueChanges.subscribe(selectedTheme => this.store.dispatch(new ChangeTheme(selectedTheme)));
+      .valueChanges.subscribe((selectedTheme) => this.store.dispatch(new ChangeTheme(selectedTheme)));
 
-    this.settingsForm.get('enableNotifications').valueChanges.subscribe(async enableNotifications => {
+    this.settingsForm.get('enableNotifications').valueChanges.subscribe(async (enableNotifications) => {
       if (enableNotifications) {
         await this.pnServ.register();
         this.store.dispatch(new EnableNotifications());

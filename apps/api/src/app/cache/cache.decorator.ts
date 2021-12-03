@@ -16,22 +16,22 @@ export function Cache<T>(options?: CacheManagerOptions) {
     // }
 
     // @ts-ignore
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function (...args: any[]) {
       const cache = this.cacheService;
       if (!cache || !(cache instanceof CacheService)) {
         // TODO: Can we do design time check if CacheService injected?
         throw new InternalServerErrorException('Target Class should inject CacheService');
       } else {
-        const cacheKey = `${className}:${methodName}:${args.map(a => JSON.stringify(a)).join()}`;
+        const cacheKey = `${className}:${methodName}:${args.map((a) => JSON.stringify(a)).join()}`;
 
         return from(cache.get<T>(cacheKey)).pipe(
-          switchMap(res =>
+          switchMap((res) =>
             res
               ? of(res)
               : originalMethod
                   .apply(this, args)
-                  .pipe(tap((methodResult: T) => cache.set<T>(cacheKey, methodResult, options))),
-          ),
+                  .pipe(tap((methodResult: T) => cache.set<T>(cacheKey, methodResult, options)))
+          )
         );
       }
     };
@@ -44,7 +44,7 @@ export function CacheBuster<T>(cacheKey: string) {
   return (target: any, methodName: string, descriptor: TypedPropertyDescriptor<Cacheable<T>>) => {
     const originalMethod = descriptor.value;
 
-    descriptor.value = function(...args: any[]) {
+    descriptor.value = function (...args: any[]) {
       return originalMethod.apply(this, args).pipe(tap(this.cacheService.del(cacheKey)));
     };
     return descriptor;

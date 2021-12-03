@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import * as screenfull from 'screenfull';
+import screenfull from 'screenfull';
 
 @Component({
   selector: 'ngx-fullscreen-toggle',

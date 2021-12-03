@@ -37,11 +37,7 @@ export class Project extends AuditBase implements IProject {
   @Column({ default: true })
   isActive?: boolean;
 
-  @ManyToOne(
-    type => Cluster,
-    cluster => cluster.projects,
-    { onDelete: 'CASCADE', nullable: false },
-  )
+  @ManyToOne((type) => Cluster, (cluster) => cluster.projects, { onDelete: 'CASCADE', nullable: false })
   cluster: Cluster;
 
   @Column('jsonb')

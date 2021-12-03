@@ -18,7 +18,7 @@ const STEPS_ALL: any[] = [
         animate('0.2s ease-in-out', style({ transform: 'translateY(-3%)', opacity: 0 })),
         style({ position: 'fixed' }),
       ],
-      { optional: true },
+      { optional: true }
     ),
     query(
       ':enter > *',
@@ -30,7 +30,7 @@ const STEPS_ALL: any[] = [
         }),
         animate('0.5s ease-in-out', style({ transform: 'translateY(0%)', opacity: 1 })),
       ],
-      { optional: true },
+      { optional: true }
     ),
   ]),
   query(
@@ -39,7 +39,7 @@ const STEPS_ALL: any[] = [
       style({ transform: 'translateY(15%)', opacity: 0 }),
       animate('0.5s ease-in-out', style({ transform: 'translateY(0%)', opacity: 1 })),
     ]),
-    { optional: true },
+    { optional: true }
   ),
 ];
 const STEPS_NONE = [];

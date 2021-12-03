@@ -7,15 +7,15 @@ metadata:
   labels:
     app: postgresql
     chart: postgresql-3.11.7
-    release: "ngxdb"
-    heritage: "Tiller"
+    release: 'ngxdb'
+    heritage: 'Tiller'
 spec:
   type: ClusterIP
   clusterIP: None
   ports:
-  - name: postgresql
-    port: 5432
-    targetPort: postgresql
+    - name: postgresql
+      port: 5432
+      targetPort: postgresql
   selector:
     app: postgresql
-    release: "ngxdb"
+    release: 'ngxdb'

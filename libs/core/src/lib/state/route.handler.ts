@@ -15,7 +15,7 @@ export class RouteHandler {
     private router: Router,
     private actions$: Actions,
     private analytics: GoogleAnalyticsService,
-    private pageTitle: PageTitleService,
+    private pageTitle: PageTitleService
   ) {
     this.actions$
       .pipe(
@@ -23,9 +23,9 @@ export class RouteHandler {
         map((action: RouterNavigation) => action.routerState as any),
         distinctUntilChanged((previous: RouterStateData, current: RouterStateData) => {
           return previous.url === current.url;
-        }),
+        })
       )
-      .subscribe(data => {
+      .subscribe((data) => {
         this.pageTitle.setTitle(data.breadcrumbs);
         this.analytics.setPage(data.url);
       });

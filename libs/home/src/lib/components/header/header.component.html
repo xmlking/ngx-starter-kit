@@ -38,7 +38,7 @@
     </button>
 
     <mat-menu #menu="matMenu">
-      <ng-container *ngLet="(isLoggedIn$ | async) as isLoggedIn">
+      <ng-container *ngLet="isLoggedIn$ | async as isLoggedIn">
         <button (click)="login()" mat-menu-item [disabled]="isLoggedIn">
           <mat-icon>fingerprint</mat-icon>
           <span>Login</span>
@@ -50,7 +50,7 @@
         <button (click)="logout()" mat-menu-item [disabled]="!isLoggedIn">
           <mat-icon>lock_open</mat-icon>
           <!--FIXME:          <span style="padding-right: 40px;" ngStyle.lt-sm="padding-right: 10px;">Logout</span>-->
-          <span style="padding-right: 40px;" style.lt-sm="padding-right: 10px;">Logout</span>
+          <span style="padding-right: 40px" style.lt-sm="padding-right: 10px;">Logout</span>
         </button>
       </ng-container>
     </mat-menu>

@@ -17,7 +17,7 @@ replication:
   user: repl_user
   password: repl_password
   slaveReplicas: 2
-  synchronousCommit: "on"
+  synchronousCommit: 'on'
   numSynchronousReplicas: 1
 
 networkPolicy:

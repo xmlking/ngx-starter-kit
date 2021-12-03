@@ -1,14 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 2,
-  "cli": {
-    "defaultCollection": "@nrwl/angular",
-    "packageManager": "yarn",
-    "warnings": {
-      "versionMismatch": false
-    }
-  },
-  "defaultProject": "webapp",
   "newProjectRoot": "",
   "projects": {
     "admin": "libs/admin",
@@ -48,21 +40,5 @@
     "tree": "libs/tree",
     "utils": "libs/utils",
     "webapp": "apps/webapp"
-  },
-  "generators": {
-    "@nrwl/angular:application": {
-      "e2eTestRunner": "cypress",
-      "unitTestRunner": "jest"
-    },
-    "@nrwl/angular:component": {
-      "prefix": "ngx",
-      "styleext": "scss"
-    },
-    "@nrwl/angular:directive": {
-      "prefix": "ngx"
-    },
-    "@nrwl/angular:library": {
-      "unitTestRunner": "jest"
-    }
   }
 }

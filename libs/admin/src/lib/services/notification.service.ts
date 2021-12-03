@@ -26,7 +26,7 @@ export class NotificationService extends EntityService<AppNotification> {
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
       // return without count
-      map(data => data.items),
+      map((data) => data.items)
     );
   }
 
@@ -34,7 +34,7 @@ export class NotificationService extends EntityService<AppNotification> {
     this.loadingSubject.next(true);
     return this.httpClient.delete(`${this.baseUrl}/${this.entityPath}/${id}`).pipe(
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 
@@ -42,7 +42,7 @@ export class NotificationService extends EntityService<AppNotification> {
     this.loadingSubject.next(true);
     return this.httpClient.post(`${this.baseUrl}/${this.entityPath}/send`, { id }).pipe(
       catchError(this.handleError),
-      finalize(() => this.loadingSubject.next(false)),
+      finalize(() => this.loadingSubject.next(false))
     );
   }
 }

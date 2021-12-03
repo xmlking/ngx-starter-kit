@@ -5,7 +5,7 @@ metadata:
   labels:
     app: keycloak
 spec:
-# use hostpath when deploying local k8s and use nas-thin for k8s cluster
+  # use hostpath when deploying local k8s and use nas-thin for k8s cluster
   storageClassName: hostpath
   #  storageClassName: nas-thin
   accessModes:

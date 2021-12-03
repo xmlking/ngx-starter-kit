@@ -24,7 +24,7 @@ const createPassportContext = (request, response) => (type, options) =>
       } catch (err) {
         reject(err);
       }
-    })(request, response, resolve),
+    })(request, response, resolve)
   );
 
 @Injectable()

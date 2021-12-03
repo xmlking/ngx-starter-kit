@@ -18,7 +18,7 @@ keycloak:
     dbHost: 10.141.176.3
     existingSecret: postgres-init-scripts
     existingSecretKey: keycloak-db-password
-# service.type has to be NodePort and ingress.path has to be /* for GKE
+  # service.type has to be NodePort and ingress.path has to be /* for GKE
   service:
     type: NodePort
     nodePort: 32080
@@ -28,6 +28,6 @@ keycloak:
     annotations:
       kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
       networking.gke.io/managed-certificates: keycloak-certificate
-      kubernetes.io/ingress.allow-http: "false"
+      kubernetes.io/ingress.allow-http: 'false'
     hosts:
       - keycloak.kashmora.com

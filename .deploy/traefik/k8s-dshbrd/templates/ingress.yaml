@@ -7,9 +7,9 @@ metadata:
     kubernetes.io/ingress.class: traefik
 spec:
   rules:
-  - host: web.traefik.k8s
-    http:
-      paths:
-      - backend:
-          serviceName: kubernetes-dashboard
-          servicePort: 80
+    - host: web.traefik.k8s
+      http:
+        paths:
+          - backend:
+              serviceName: kubernetes-dashboard
+              servicePort: 80

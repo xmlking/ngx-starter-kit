@@ -59,7 +59,7 @@
       </button>
     </mat-toolbar>
 
-    <mat-progress-bar *ngIf="(loading$ | async)" mode="indeterminate"></mat-progress-bar>
+    <mat-progress-bar *ngIf="loading$ | async" mode="indeterminate"></mat-progress-bar>
 
     <mat-table #table [dataSource]="dataSource" matSort>
       <!-- Checkbox Column -->

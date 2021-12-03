@@ -1,6 +1,5 @@
 # Cloud SDK
 
-
 ### Step 1: Install
 
 Download latest [cloud-sdk](https://cloud.google.com/sdk/docs/quickstart-macos) and unpack into `/Developer/Applications/google-cloud-sdk`

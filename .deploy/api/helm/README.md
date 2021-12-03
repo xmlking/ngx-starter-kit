@@ -7,7 +7,7 @@ Deploying `NgxApi` to `Kubernetes` via `Helm`
 1. Helm command line and Tiller backend [installed](../../helm/README.md).
 2. `helm-secrets` [installed](../../helm/README.md#managing-helm-chart-secrets-with-helm-secrets).
 
-first create plain `secrets.dev.yaml` e.g., 
+first create plain `secrets.dev.yaml` e.g.,
 
 ```yaml
 envSecrets:
@@ -20,16 +20,16 @@ envSecrets:
 ```
 
 encrypt before check-in to Git.
- 
+
 ```bash
 helm secrets enc secrets.dev.yaml
-# verify 
+# verify
 helm secrets view secrets.dev.yaml
 ```
 
 ## Deploy
 
-### With Tiller 
+### With Tiller
 
 ```bash
 cd .deploy/api/helm
@@ -50,9 +50,9 @@ POD_NAME=$(kubectl get pods  -lapp.kubernetes.io/instance=ngxapi -o jsonpath='{.
 kubectl exec -it $POD_NAME -- /bin/sh
 kubectl logs $POD_NAME -f
 echo | openssl s_client -showcerts -connect ngxapi.traefik.k8s:443 2>/dev/null
- 
- 
-# To update 
+
+
+# To update
 helm secrets upgrade --namespace=default -f values-dev.yaml -f secrets.dev.yaml ngxapi ./nodeapp
 
 # To uninstall/delete the `ngxapi` release
@@ -78,24 +78,23 @@ helm secrets template ./nodeapp \
 kubectl apply --recursive -f generated/nodeapp/* --namespace default
 ```
 
-
 ### Access NgxApi
 
 ngxapi can be accessed:
 
-* Within your cluster, at the following DNS name at port 3000:
+- Within your cluster, at the following DNS name at port 3000:
 
   ```
   ngxapi-nodeapp.default.svc.cluster.local
   ```
 
-* From outside the cluster:
+- From outside the cluster:
 
   ```
    - https://ngxapi.traefik.k8s
   ```
 
-* From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
+- From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
 
   ```bash
   export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services ngxapi-nodeapp)
@@ -104,6 +103,7 @@ ngxapi can be accessed:
   ```
 
 ## Test
+
 ```bash
 curl -X  GET "https://ngxapi.traefik.k8s/" -k -H  "accept: application/json"
 curl -X  GET "https://ngxapi.traefik.k8s/echo?sumo=demo" -k -H  "accept: application/json"

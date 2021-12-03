@@ -4,10 +4,10 @@ test:
 resources:
   limits:
     cpu: 4
-    memory: "4096Mi"
+    memory: '4096Mi'
   requests:
     cpu: 2
-    memory: "2048Mi"
+    memory: '2048Mi'
 
 image:
   repository: xmlking/ngxapi
@@ -82,7 +82,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.passHostHeader: "true"
+    traefik.frontend.passHostHeader: 'true'
   hosts:
     - host: ngxapi.traefik.k8s
       paths: [/]

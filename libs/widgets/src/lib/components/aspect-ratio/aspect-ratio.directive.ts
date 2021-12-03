@@ -46,7 +46,7 @@ export class AspectRatioDirective extends BaseDirective implements OnInit, After
     protected renderer: Renderer2,
     protected elementRef: ElementRef,
     protected cd: ChangeDetectorRef,
-    @Optional() protected styleBuilder: AspectRatioStyleBuilder,
+    @Optional() protected styleBuilder: AspectRatioStyleBuilder
   ) {
     super(marshal, elementRef, styler, styleBuilder);
 

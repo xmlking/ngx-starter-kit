@@ -11,7 +11,7 @@ export function requireAllClasses(rc) {
     rc
       .keys()
       // .filter(filePath => !filePath.includes('base'))
-      .flatMap(key => Object.values(rc(key)))
+      .flatMap((key) => Object.values(rc(key)))
       .filter(isClass)
   );
 }

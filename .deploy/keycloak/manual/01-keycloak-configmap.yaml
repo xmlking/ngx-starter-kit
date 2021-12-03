@@ -8,7 +8,7 @@ data:
   DB_VENDOR: POSTGRES
   DB_ADDR: postgres
   DB_PORT: '5432'
-# https://issues.jboss.org/browse/KEYCLOAK-7739
+  # https://issues.jboss.org/browse/KEYCLOAK-7739
   POSTGRES_PORT: '5432'
   DB_DATABASE: keycloak
   DB_USER: keycloak

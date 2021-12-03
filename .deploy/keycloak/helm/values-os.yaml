@@ -15,7 +15,8 @@ keycloak:
       memory: 512M
   route:
     enabled: true
-    annotations: {}
+    annotations:
+      {}
       # kubernetes.io/tls-acme: "true"
       # haproxy.router.openshift.io/disable_cookies: "true"
       # haproxy.router.openshift.io/balance: roundrobin
@@ -23,4 +24,3 @@ keycloak:
       enabled: true
       insecureEdgeTerminationPolicy: Redirect
       termination: edge
-

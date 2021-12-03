@@ -89,7 +89,7 @@ export class VirtualScrollComponent implements OnInit {
   sortBy(prop: 'name' | 'capital') {
     this.statesObservable.next(
       this.states
-        .map(s => ({ ...s }))
+        .map((s) => ({ ...s }))
         .sort((a, b) => {
           const aProp = a[prop];
           const bProp = b[prop];
@@ -99,7 +99,7 @@ export class VirtualScrollComponent implements OnInit {
             return 1;
           }
           return 0;
-        }),
+        })
     );
   }
 }

@@ -4,7 +4,7 @@ Deploying `WebApp` to `Kubernetes` via `Helm`
 
 ## Deploy
 
-### With Tiller 
+### With Tiller
 
 ```bash
 cd .deploy/webapp/helm
@@ -24,9 +24,9 @@ POD_NAME=$(kubectl get pods  -lapp.kubernetes.io/instance=ngxweb -o jsonpath='{.
 kubectl exec -it $POD_NAME -- /bin/sh
 kubectl logs $POD_NAME -f
 echo | openssl s_client -showcerts -connect ngxweb.traefik.k8s:443 2>/dev/null
- 
- 
-# To update 
+
+
+# To update
 helm upgrade --namespace=default -f values-dev.yaml ngxweb ./anginx
 
 # To uninstall/delete the `ngxweb` release
@@ -51,24 +51,23 @@ helm template ./anginx \
 kubectl apply --recursive -f generated/anginx/* --namespace default
 ```
 
-
 ### Access NgxWeb
 
 ngxweb can be accessed:
 
-* Within your cluster, at the following DNS name at port 80:
+- Within your cluster, at the following DNS name at port 80:
 
   ```
   ngxweb-anginx.default.svc.cluster.local
   ```
 
-* From outside the cluster:
+- From outside the cluster:
 
   ```
    - https://ngxweb.traefik.k8s
   ```
 
-* From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
+- From outside the cluster, run these commands in the same shell: (`when NodePort used in values.yaml`)
 
   ```bash
   export NODE_PORT=$(kubectl get --namespace default -o jsonpath="{.spec.ports[0].nodePort}" services ngxweb-anginx)
@@ -77,6 +76,7 @@ ngxweb can be accessed:
   ```
 
 ## Test
+
 ```bash
 open https://ngxweb.traefik.k8s
 ```

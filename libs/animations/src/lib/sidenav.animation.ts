@@ -12,7 +12,7 @@ export const sidenavAnimation = trigger('sidenavAnimation', [
       width: '270px',
       transform: 'translate3d(-270px, 0, 0)',
       visibility: 'hidden',
-    }),
+    })
   ),
   state(
     SidenavState.MobileOpen,
@@ -21,7 +21,7 @@ export const sidenavAnimation = trigger('sidenavAnimation', [
       width: '270px',
       transform: 'translate3d(0, 0, 0)',
       visibility: 'visible',
-    }),
+    })
   ),
   transition(`${SidenavState.Expanded} => ${SidenavState.CollapsedHover}`, [
     style({ position: 'absolute' }),
@@ -36,7 +36,7 @@ export const sidenavAnimation = trigger('sidenavAnimation', [
   ]),
   transition(
     `${SidenavState.Collapsed} => ${SidenavState.CollapsedHover}`,
-    animate('300ms cubic-bezier(.35, 0, .25, 1)'),
+    animate('300ms cubic-bezier(.35, 0, .25, 1)')
   ),
   transition(`${SidenavState.Mobile} => ${SidenavState.MobileOpen}`, animate('300ms cubic-bezier(.35, 0, .25, 1)')),
   transition(`${SidenavState.MobileOpen} => ${SidenavState.Mobile}`, animate('300ms cubic-bezier(.35, 0, .25, 1)')),

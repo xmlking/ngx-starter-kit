@@ -58,7 +58,7 @@ export class NotificationController extends CrudController<Notification> {
   async update(
     @Param('id') id: string,
     @Body() entity: UpdateNotificationDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ): Promise<any> {
     return this.notificationService.update(id, entity);
   }

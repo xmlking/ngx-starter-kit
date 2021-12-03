@@ -18,10 +18,10 @@ export class ProfileService {
   getMyProfile() {
     return this.httpClient.get<Profile>(`${this.baseUrl}/${this.entityPath}/myprofile`).pipe(
       retryWithBackoff(1000, 3),
-      catchError(error => {
+      catchError((error) => {
         this.handleError(error);
         return EMPTY;
-      }),
+      })
       // catchError(this.handleError)
     );
   }

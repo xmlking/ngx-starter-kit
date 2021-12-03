@@ -5,7 +5,7 @@ import {
   Input,
   OnDestroy,
   OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -16,7 +16,7 @@ import { Gender, Profile } from '@ngx-starter-kit/models';
   selector: 'ngx-app-profile',
   templateUrl: './app-profile.component.html',
   styleUrls: ['./app-profile.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppProfileComponent implements OnInit, OnDestroy {
   readonly genderOptions = Gender;
@@ -43,7 +43,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     restore: (uniqueFileId, load, error, progress, abort, headers) => {},
     load: (source, load, error, progress, abort, headers) => {
       fetch(`data:${this.appProfile.avatar.mimeType};base64,${this.appProfile.avatar.data}`)
-        .then(r => r.blob())
+        .then((r) => r.blob())
         .then(load)
         .catch(error);
       return { abort };
@@ -60,7 +60,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       request.open('POST', '/ajax/image-upload/xxxxxx');
       // request.setRequestHeader('X-CSRF-TOKEN' , $('meta[name="csrf-token"]').attr('content'));
 
-      request.upload.onprogress = e => {
+      request.upload.onprogress = (e) => {
         progress(e.lengthComputable, e.loaded, e.total);
       };
 
@@ -77,7 +77,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         abort: () => {
           request.abort();
           abort();
-        }
+        },
       };
     },
 
@@ -103,9 +103,9 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         abort: () => {
           request.abort();
           // abort();
-        }
+        },
       };
-    }
+    },
   };
 
   pondOptions = {
@@ -118,7 +118,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     server: {
       timeout: 7000,
       load: this.loadHandler.bind(this),
-      process: this.processHandler.bind(this)
+      process: this.processHandler.bind(this),
     },
     imagePreviewHeight: 170,
     imageCropAspectRatio: '1:1',
@@ -128,7 +128,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     styleLoadIndicatorPosition: 'center bottom',
     styleProgressIndicatorPosition: 'right bottom',
     styleButtonRemoveItemPosition: 'left bottom',
-    styleButtonProcessItemPosition: 'right bottom'
+    styleButtonProcessItemPosition: 'right bottom',
   };
 
   constructor(private fb: FormBuilder, private cd: ChangeDetectorRef, private sanitizer: DomSanitizer) {}
@@ -138,13 +138,13 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       this.formGroup = this.fb.group({
         file: [],
         gender: [this.appProfile.gender],
-        mobilePhone: [this.appProfile.mobilePhone]
+        mobilePhone: [this.appProfile.mobilePhone],
       });
     } else {
       this.formGroup = this.fb.group({
         file: [],
         gender: [],
-        mobilePhone: []
+        mobilePhone: [],
       });
     }
 
@@ -153,9 +153,9 @@ export class AppProfileComponent implements OnInit, OnDestroy {
         {
           source: this.appProfile.avatar.title,
           options: {
-            type: 'local'
-          }
-        }
+            type: 'local',
+          },
+        },
       ];
 
       this.imagePath = this.sanitizer.bypassSecurityTrustResourceUrl(
@@ -169,13 +169,13 @@ export class AppProfileComponent implements OnInit, OnDestroy {
   loadHandler(source, load, error, progress, abort, headers) {
     if (this.appProfile && this.appProfile.avatar) {
       fetch(`data:${this.appProfile.avatar.mimeType};base64,${this.appProfile.avatar.data}`)
-        .then(r => r.blob())
+        .then((r) => r.blob())
         .then(load)
         .catch(error);
       return { abort };
     } else {
       return {
-        abort
+        abort,
       };
     }
   }
@@ -191,7 +191,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
     request.open('POST', '/ajax/image-upload/xxxxxx');
     // request.setRequestHeader('X-CSRF-TOKEN' , $('meta[name="csrf-token"]').attr('content'));
 
-    request.upload.onprogress = e => {
+    request.upload.onprogress = (e) => {
       progress(e.lengthComputable, e.loaded, e.total);
     };
 
@@ -208,7 +208,7 @@ export class AppProfileComponent implements OnInit, OnDestroy {
       abort: () => {
         request.abort();
         abort();
-      }
+      },
     };
   }
 
@@ -236,14 +236,14 @@ export class AppProfileComponent implements OnInit, OnDestroy {
 
   createProfile() {
     console.log(this.myPond.server);
-    this.myPond.processFile().then(file => {
+    this.myPond.processFile().then((file) => {
       // File has been processed
     });
   }
 
   updateProfile() {
     // const files = this.myPond.getFile();
-    this.myPond.processFile(/* id */).then(file => {
+    this.myPond.processFile(/* id */).then((file) => {
       // File has been processed
     });
   }

@@ -63,21 +63,21 @@ export class DraggableDirective implements AfterViewInit, OnDestroy {
       const end$ = merge(mouseup$, touchend$);
 
       const drag$ = start$.pipe(
-        switchMap(start => {
+        switchMap((start) => {
           const startX = start.x;
           const startY = start.y;
 
           return move$.pipe(
-            map(move => {
+            map((move) => {
               this.delta = {
                 x: move.x - startX,
                 y: move.y - startY,
               };
             }),
-            takeUntil(end$),
+            takeUntil(end$)
           );
         }),
-        untilDestroy(this),
+        untilDestroy(this)
       );
 
       drag$.subscribe(() => {

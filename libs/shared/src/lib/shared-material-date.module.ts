@@ -19,6 +19,9 @@ const DATE_FORMATS: MatDateFormats = {
 
 @NgModule({
   exports: MODULE_EXPORTS,
-  providers: [{ provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS }, { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }],
+  providers: [
+    { provide: MAT_DATE_FORMATS, useValue: DATE_FORMATS },
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
+  ],
 })
 export class SharedMaterialDateModule {}

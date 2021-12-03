@@ -1,17 +1,16 @@
-Style Guide
-===========
+# Style Guide
 
 Below are suggestions for naming and style conventions.
 
+1. Theme files naming conversion
 
-1. Theme files naming conversion 
-``` 
+```
 about.component.scss
 about.component.scss-theme.scss
 ```
 
-
 2. Apply padding for content if needed
+
 ```scss
 :host {
   display: block;
@@ -21,9 +20,8 @@ about.component.scss-theme.scss
 ```
 
 3. How to generate test data?
-> use  https://next.json-generator.com
-> https://next.json-generator.com/4Js2XUryH
-> https://randomuser.me/api/?nat=us&results=100&exc=login,registered&seed=sumo
+   > use https://next.json-generator.com > https://next.json-generator.com/4Js2XUryH > https://randomuser.me/api/?nat=us&results=100&exc=login,registered&seed=sumo
+
 ```
 [
   {
@@ -59,12 +57,13 @@ about.component.scss-theme.scss
 4. How to generate TypeScript interfaces from given JSON?
 
 ### Online Tools
-* https://jvilk.com/MakeTypes/
-* http://json2ts.com/
 
-5. NGXS naming conventions 
-> Ref: https://github.com/amcdnl/ngxs#style-guide
+- https://jvilk.com/MakeTypes/
+- http://json2ts.com/
 
-* Stores should always have the `Store` suffix. Right: `ZooStore` Wrong: `Zoo`
-* Stores should have a `.store.ts` suffix for the filename
-* Selects should have a `$` suffix. Right: `animals$` Wrong: `animals`
+5. NGXS naming conventions
+   > Ref: https://github.com/amcdnl/ngxs#style-guide
+
+- Stores should always have the `Store` suffix. Right: `ZooStore` Wrong: `Zoo`
+- Stores should have a `.store.ts` suffix for the filename
+- Selects should have a `$` suffix. Right: `animals$` Wrong: `animals`

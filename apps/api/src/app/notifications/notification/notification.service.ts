@@ -20,7 +20,7 @@ export class NotificationService extends CrudService<Notification> implements On
     private readonly cqrsGateway: CQRSGateway,
     private readonly subscriptionService: SubscriptionService,
     @InjectRepository(Notification) private readonly notificationsRepository: Repository<Notification>,
-    @InjectRepository(Subscription) private readonly subscriptionRepository: Repository<Subscription>,
+    @InjectRepository(Subscription) private readonly subscriptionRepository: Repository<Subscription>
   ) {
     super(notificationsRepository);
   }
@@ -58,14 +58,14 @@ export class NotificationService extends CrudService<Notification> implements On
         // FIXME: https://github.com/typeorm/typeorm/issues/3150
         subscriptions = await this.subscriptionRepository.find({
           // where: { topics: Any([notification.target]) },
-          where: { topics: Raw(alias => `${alias} && '{${notification.target}}'::text[]`) },
+          where: { topics: Raw((alias) => `${alias} && '{${notification.target}}'::text[]`) },
         });
         break;
       case TargetType.ALL:
         subscriptions = await this.subscriptionRepository.find({ take: 10 }); // TODO: for now, lets send to 10
         break;
     }
-    subscriptions.forEach(subscription => {
+    subscriptions.forEach((subscription) => {
       const { endpoint, p256dh, auth } = subscription;
       return this.pushService.sendNotification({ endpoint, keys: { p256dh, auth } }, pushNotification as any);
     });
@@ -74,7 +74,7 @@ export class NotificationService extends CrudService<Notification> implements On
   async onMarkAsRead(command: NotificationsMarkAsReadCommand) {
     await this.update(
       { id: command.payload.id, targetType: TargetType.USER, target: command.user.username },
-      { read: true },
+      { read: true }
     );
   }
 
@@ -85,7 +85,7 @@ export class NotificationService extends CrudService<Notification> implements On
   async onDeleteNotification(command: NotificationsDeleteCommand) {
     await this.update(
       { id: command.payload.id, targetType: TargetType.USER, target: command.user.username },
-      { isActive: false },
+      { isActive: false }
     );
   }
 }

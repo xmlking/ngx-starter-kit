@@ -16,7 +16,7 @@ export class SearchBarComponent implements OnInit {
   constructor(private router: Router, private sidenavService: MenuService) {}
 
   ngOnInit() {
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         const item = this.sidenavService.getItemByRoute(event.urlAfterRedirects);
 

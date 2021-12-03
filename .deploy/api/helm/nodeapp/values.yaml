@@ -10,8 +10,8 @@ image:
   tag: stable
   pullPolicy: IfNotPresent
 
-nameOverride: ""
-fullnameOverride: ""
+nameOverride: ''
+fullnameOverride: ''
 
 service:
   type: ClusterIP
@@ -20,7 +20,8 @@ service:
 ## Use either ingress or NodePort
 ingress:
   enabled: false
-  annotations: {}
+  annotations:
+    {}
     ## If you do want to specify ingress, uncomment the following
     ## lines, adjust them as necessary, and remove the curly braces after 'ingress:'.
     # kubernetes.io/ingress.class: nginx

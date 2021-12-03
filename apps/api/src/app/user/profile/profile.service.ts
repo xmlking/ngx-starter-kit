@@ -28,15 +28,10 @@ export class ProfileService extends CrudService<Profile> {
         title: file.originalname,
         type: ImageType.Profile,
         user,
-        data: await sharp(file.buffer)
-          .resize(100)
-          .toBuffer(),
-        checksum: crypto
-          .createHash('sha1')
-          .update(file.buffer)
-          .digest('hex'),
+        data: await sharp(file.buffer).resize(100).toBuffer(),
+        checksum: crypto.createHash('sha1').update(file.buffer).digest('hex'),
         mimeType: file.mimetype,
-        size: file.size
+        size: file.size,
       };
       profile = await super.create({ avatar, ...entity });
     } else {
@@ -58,29 +53,19 @@ export class ProfileService extends CrudService<Profile> {
       ? {
           id: profile.avatar.id,
           title: file.originalname,
-          data: await sharp(file.buffer)
-            .resize(100)
-            .toBuffer(),
-          checksum: crypto
-            .createHash('sha1')
-            .update(file.buffer)
-            .digest('hex'),
+          data: await sharp(file.buffer).resize(100).toBuffer(),
+          checksum: crypto.createHash('sha1').update(file.buffer).digest('hex'),
           mimeType: file.mimetype,
-          size: file.size
+          size: file.size,
         }
       : {
           title: file.originalname,
           type: ImageType.Profile,
           user,
-          data: await sharp(file.buffer)
-            .resize(100)
-            .toBuffer(),
-          checksum: crypto
-            .createHash('sha1')
-            .update(file.buffer)
-            .digest('hex'),
+          data: await sharp(file.buffer).resize(100).toBuffer(),
+          checksum: crypto.createHash('sha1').update(file.buffer).digest('hex'),
           mimeType: file.mimetype,
-          size: file.size
+          size: file.size,
         };
 
     return this.profileRepository.save({ id, ...entity, avatar });

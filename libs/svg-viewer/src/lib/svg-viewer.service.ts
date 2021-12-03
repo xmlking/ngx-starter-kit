@@ -48,7 +48,7 @@ export class SvgViewerService {
         const svgEl = this.svgElementFromString(svgText);
         SvgViewerService.cache.set(absUrl, svgEl);
         return this.cloneSVG(svgEl);
-      }),
+      })
     );
 
     SvgViewerService.inProgressReqs.set(absUrl, req);

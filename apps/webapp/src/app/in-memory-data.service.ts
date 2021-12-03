@@ -6,7 +6,7 @@ import {
   RequestInfo,
   RequestInfoUtilities,
   ResponseOptions,
-  STATUS
+  STATUS,
 } from 'angular-in-memory-web-api';
 
 // /api/accounts/1
@@ -29,18 +29,18 @@ export class InMemoryDataService implements InMemoryDbService {
       {
         id: 1,
         code: 'MSFT',
-        entity: 'Microsoft'
+        entity: 'Microsoft',
       },
       {
         id: 2,
         code: 'AAPL',
-        entity: 'Apple'
+        entity: 'Apple',
       },
       {
         id: 3,
         code: 'GOOG',
-        entity: 'Google'
-      }
+        entity: 'Google',
+      },
     ];
 
     return { accounts, symbols, notifications, subscription };
@@ -64,14 +64,14 @@ export class InMemoryDataService implements InMemoryDbService {
     if (collectionName === 'accounts') {
       (reqInfo.req as any).body = { id: reqInfo.id, ...(reqInfo.req as any).body };
     } else if (collectionName === 'notifications' || collectionName === 'subscription') {
-      reqInfo.collection[0].map(item => {
+      reqInfo.collection[0].map((item) => {
         if (item.id === reqInfo.id) {
           return { id: reqInfo.id, ...(reqInfo.req as any).body };
         }
         return item;
       });
       const options: ResponseOptions = {
-        status: STATUS.ACCEPTED
+        status: STATUS.ACCEPTED,
       };
       return reqInfo.utils.createResponse$(() => {
         return this.finishOptions(options, reqInfo);
@@ -87,7 +87,7 @@ export class InMemoryDataService implements InMemoryDbService {
       reqInfo.collection[0].push((reqInfo.req as any).body);
       reqInfo.collection[1] = reqInfo.collection[1] + 1;
       const options: ResponseOptions = {
-        status: STATUS.CREATED
+        status: STATUS.CREATED,
       };
       return reqInfo.utils.createResponse$(() => {
         return this.finishOptions(options, reqInfo);

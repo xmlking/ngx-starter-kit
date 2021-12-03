@@ -41,7 +41,7 @@ keycloak:
 
           echo 'PostgreSQL OK ✓'
 
-# use `service` for prod and `ingress` for dev. Comment other before install.
+  # use `service` for prod and `ingress` for dev. Comment other before install.
   service:
     type: NodePort
     nodePort: 32080

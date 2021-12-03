@@ -20,7 +20,7 @@ export const fadeOutAnimation = trigger('fadeOutAnimation', [
       'flex-direction': 'column',
       flex: '1',
       height: '100%',
-    }),
+    })
   ),
   state(
     'void',
@@ -33,7 +33,7 @@ export const fadeOutAnimation = trigger('fadeOutAnimation', [
       'flex-direction': 'column',
       flex: '1',
       height: '100%',
-    }),
+    })
   ),
   transition('* => void', [
     style({
@@ -43,7 +43,7 @@ export const fadeOutAnimation = trigger('fadeOutAnimation', [
       '150ms linear',
       style({
         opacity: 0,
-      }),
+      })
     ),
   ]),
 ]);

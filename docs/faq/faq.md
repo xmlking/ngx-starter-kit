@@ -29,6 +29,7 @@
   - [Do I have to use Immutable.JS?](/docs/faq/ImmutableData.md#do-i-have-to-use-immutable-js)
   - [What are the issues with using ES6 for immutable operations?](/docs/faq/ImmutableData.md#issues-with-es6-for-immutable-ops)
 - **Using Immutable.JS with Redux**
+
   - [Why should I use an immutable-focused library such as Immutable.JS?](/docs/recipes/UsingImmutableJS.md#why-use-immutable-library)
   - [Why should I choose Immutable.JS as an immutable library?](/docs/recipes/UsingImmutableJS.md#why-choose-immutable-js)
   - [What are the issues with using Immutable.JS?](/docs/recipes/UsingImmutableJS.md#issues-with-immutable-js)

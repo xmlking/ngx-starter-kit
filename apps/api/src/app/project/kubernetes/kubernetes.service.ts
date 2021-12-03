@@ -47,7 +47,7 @@ export class KubernetesService implements OnModuleInit {
     const { total: size, items: clusters } = await this.clusterService.findAll();
     this.logger.log(`Refreshed ${size} Kubernetes Clusters`);
     this.clusters = new Map(
-      clusters.map<[string, Api.ApiRoot]>(cluster => [
+      clusters.map<[string, Api.ApiRoot]>((cluster) => [
         cluster.name,
         new Client({
           backend: new Request({
@@ -61,7 +61,7 @@ export class KubernetesService implements OnModuleInit {
           }),
           version: cluster.version || '1.13',
         }),
-      ]),
+      ])
     );
   }
 
@@ -80,10 +80,7 @@ export class KubernetesService implements OnModuleInit {
 
   async hasNamespace({ cluster, namespace }: KubeContext) {
     try {
-      const foundNamespace = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .get();
+      const foundNamespace = await this.clusters.get(cluster).api.v1.namespaces(namespace).get();
       return !!foundNamespace;
     } catch (error) {
       if (error.code === 404) {
@@ -95,10 +92,7 @@ export class KubernetesService implements OnModuleInit {
 
   async getNamespace({ cluster, namespace }: KubeContext) {
     try {
-      const response = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .get();
+      const response = await this.clusters.get(cluster).api.v1.namespaces(namespace).get();
       return response.body;
     } catch (error) {
       this.handleError(error);
@@ -128,10 +122,7 @@ export class KubernetesService implements OnModuleInit {
 
   async deleteNamespace({ cluster, namespace }: KubeContext) {
     try {
-      return await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .delete();
+      return await this.clusters.get(cluster).api.v1.namespaces(namespace).delete();
     } catch (error) {
       this.handleError(error);
     }
@@ -149,10 +140,7 @@ export class KubernetesService implements OnModuleInit {
     };
 
     try {
-      return await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .serviceaccounts.post(request);
+      return await this.clusters.get(cluster).api.v1.namespaces(namespace).serviceaccounts.post(request);
     } catch (error) {
       this.handleError(error);
     }
@@ -160,11 +148,7 @@ export class KubernetesService implements OnModuleInit {
 
   async deleteServiceAccount({ cluster, namespace }: KubeContext, serviceAccountName: string) {
     try {
-      return await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .serviceaccounts(serviceAccountName)
-        .delete();
+      return await this.clusters.get(cluster).api.v1.namespaces(namespace).serviceaccounts(serviceAccountName).delete();
     } catch (error) {
       this.handleError(error);
     }
@@ -233,7 +217,7 @@ export class KubernetesService implements OnModuleInit {
   async createClusterRoleBindingForServiceAccount(
     { cluster, namespace, labels: { name = namespace } }: KubeContext,
     serviceAccountName: string,
-    role: string,
+    role: string
   ) {
     const request = {
       body: {
@@ -272,7 +256,7 @@ export class KubernetesService implements OnModuleInit {
 
   async createClusterRoleBindingForDashboardUsers(
     { cluster, namespace, labels: { name = namespace } }: KubeContext,
-    username: string,
+    username: string
   ) {
     const request = {
       body: {
@@ -332,10 +316,7 @@ export class KubernetesService implements OnModuleInit {
     };
 
     try {
-      return await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .resourcequotas.post(request);
+      return await this.clusters.get(cluster).api.v1.namespaces(namespace).resourcequotas.post(request);
     } catch (error) {
       this.handleError(error);
     }
@@ -379,10 +360,7 @@ export class KubernetesService implements OnModuleInit {
     };
 
     try {
-      return await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .limitranges.post(request);
+      return await this.clusters.get(cluster).api.v1.namespaces(namespace).limitranges.post(request);
     } catch (error) {
       this.handleError(error);
     }
@@ -390,10 +368,7 @@ export class KubernetesService implements OnModuleInit {
 
   async listDeployments({ cluster, namespace }: KubeContext) {
     try {
-      const deployments = await this.clusters
-        .get(cluster)
-        .apis.apps.v1.namespaces(namespace)
-        .deployments.get();
+      const deployments = await this.clusters.get(cluster).apis.apps.v1.namespaces(namespace).deployments.get();
       return deployments.body.items;
     } catch (error) {
       this.handleError(error);
@@ -418,10 +393,7 @@ export class KubernetesService implements OnModuleInit {
   async myServiceAccounts(context: KubeContext) {
     const { cluster, namespace } = context;
     try {
-      const namespaces = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .serviceaccounts.get();
+      const namespaces = await this.clusters.get(cluster).api.v1.namespaces(namespace).serviceaccounts.get();
       return namespaces.body.items;
     } catch (error) {
       this.handleError(error);
@@ -432,38 +404,14 @@ export class KubernetesService implements OnModuleInit {
     const { cluster, namespace } = context;
     const data: any = {};
     try {
-      const services = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .services.get();
-      const endpoints = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .endpoints.get();
-      const ingresses = await this.clusters
-        .get(cluster)
-        .apis.extensions.v1beta1.namespaces(namespace)
-        .ingresses.get();
-      const pods = await this.clusters
-        .get(cluster)
-        .api.v1.namespaces(namespace)
-        .pods.get();
-      const deployments = await this.clusters
-        .get(cluster)
-        .apis.apps.v1.namespaces(namespace)
-        .deployments.get();
-      const replicasets = await this.clusters
-        .get(cluster)
-        .apis.apps.v1.namespaces(namespace)
-        .replicasets.get();
-      const daemonsets = await this.clusters
-        .get(cluster)
-        .apis.apps.v1.namespaces(namespace)
-        .daemonsets.get();
-      const statefulsets = await this.clusters
-        .get(cluster)
-        .apis.apps.v1.namespaces(namespace)
-        .statefulsets.get();
+      const services = await this.clusters.get(cluster).api.v1.namespaces(namespace).services.get();
+      const endpoints = await this.clusters.get(cluster).api.v1.namespaces(namespace).endpoints.get();
+      const ingresses = await this.clusters.get(cluster).apis.extensions.v1beta1.namespaces(namespace).ingresses.get();
+      const pods = await this.clusters.get(cluster).api.v1.namespaces(namespace).pods.get();
+      const deployments = await this.clusters.get(cluster).apis.apps.v1.namespaces(namespace).deployments.get();
+      const replicasets = await this.clusters.get(cluster).apis.apps.v1.namespaces(namespace).replicasets.get();
+      const daemonsets = await this.clusters.get(cluster).apis.apps.v1.namespaces(namespace).daemonsets.get();
+      const statefulsets = await this.clusters.get(cluster).apis.apps.v1.namespaces(namespace).statefulsets.get();
       const persistentvolumeclaims = await this.clusters
         .get(cluster)
         .api.v1.namespaces(namespace)

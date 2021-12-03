@@ -29,7 +29,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
   constructor(
     private pageScrollService: PageScrollService,
     @Inject(DOCUMENT) private document: any,
-    @Inject(WINDOW) private window: Window,
+    @Inject(WINDOW) private window: Window
   ) {}
 
   ngAfterViewInit() {
@@ -41,7 +41,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
     const scroll$ = fromEvent(this.window, 'scroll').pipe(
       throttleTime(10),
       map(() => this.window.pageYOffset),
-      map(y => {
+      map((y) => {
         if (y > 100) {
           return ShowStatus.show;
         } else {
@@ -50,7 +50,7 @@ export class ScrollToTopComponent implements AfterViewInit, OnDestroy {
       }),
       distinctUntilChanged(),
       share(),
-      tap(state => this.stateSubject.next(state)),
+      tap((state) => this.stateSubject.next(state))
     );
     scroll$.subscribe();
   }

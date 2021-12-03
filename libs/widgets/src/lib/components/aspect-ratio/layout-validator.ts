@@ -25,7 +25,7 @@ export function validateValue(value: string): [string, string, boolean] {
   let [direction, wrap, inline] = value.split(' ');
 
   // First value must be the `flex-direction`
-  if (!LAYOUT_VALUES.find(x => x === direction)) {
+  if (!LAYOUT_VALUES.find((x) => x === direction)) {
     direction = LAYOUT_VALUES[0];
   }
 

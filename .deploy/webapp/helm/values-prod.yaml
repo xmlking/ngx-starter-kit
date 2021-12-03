@@ -23,7 +23,7 @@ ingress:
   enabled: true
   annotations:
     kubernetes.io/ingress.class: traefik
-    traefik.frontend.passHostHeader: "true"
+    traefik.frontend.passHostHeader: 'true'
   hosts:
     - host: ngxweb.traefik.k8s
       paths: [/]

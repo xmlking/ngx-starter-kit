@@ -22,7 +22,7 @@ gcloud config set compute/zone $COMPUTE_ZONE
 
 ### Step 1: Create Postgres Instance
 
-> this will also create a default database:  `postgres` and default user: `postgres`
+> this will also create a default database: `postgres` and default user: `postgres`
 
 ```bash
 gcloud sql instances create ${INSTANCE_NAME} \
@@ -33,7 +33,7 @@ gcloud sql instances create ${INSTANCE_NAME} \
   --storage-size ${DISK_SIZE} \
   --network ${NETWORK_NAME}  \
   --database-version ${DATABASE_VERSION}
-  
+
 # Verify
 gcloud sql instances describe ${INSTANCE_NAME}
 ```
@@ -48,7 +48,9 @@ gcloud sql users set-password postgres \
 ```
 
 ### Step 3: Create keycloak DB
+
 keycloak123
+
 ```bash
 # Listing your databases
 gcloud sql databases list --instance=${INSTANCE_NAME}
@@ -64,12 +66,14 @@ gcloud sql databases create keycloak --instance=${INSTANCE_NAME} --charset=UTF8 
 ```bash
  gcloud sql connect ngxdb --user=postgres --quiet
 ```
+
 ```sql
 CREATE ROLE keycloak WITH PASSWORD 'keycloak123' NOSUPERUSER LOGIN;
 GRANT ALL PRIVILEGES ON DATABASE keycloak TO keycloak;
 ```
 
 ### Cleaning up
+
 ```bash
 # Warning: All data on an instance, including backups, is permanently lost when that instance is deleted.
 gcloud sql databases delete ${DATABASE_NAME} --instance=${INSTANCE_NAME} --project ${PROJECT_ID}

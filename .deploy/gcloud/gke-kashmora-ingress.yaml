@@ -5,10 +5,10 @@ metadata:
   labels:
     app: keycloak
   annotations:
-#    kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
+    #    kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
     kubernetes.io/ingress.global-static-ip-name: keycloak-ip-address
-    networking.gke.io/managed-certificates: "ngxweb-anginx,ngxapi-nodeapp,keycloak"
-    kubernetes.io/ingress.allow-http: "false"
+    networking.gke.io/managed-certificates: 'ngxweb-anginx,ngxapi-nodeapp,keycloak'
+    kubernetes.io/ingress.allow-http: 'false'
 spec:
   backend:
     serviceName: ngxweb-anginx

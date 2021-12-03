@@ -76,9 +76,9 @@ export class ProfileController extends CrudController<Profile> {
         if (ALLOWED_MIME_TYPES.indexOf(file.mimetype) === -1) {
           return cb(
             new BadRequestException(
-              `Error! Incorrect mimetype '${file.mimetype}'. Correct: ${ALLOWED_MIME_TYPES.join(', ')}`,
+              `Error! Incorrect mimetype '${file.mimetype}'. Correct: ${ALLOWED_MIME_TYPES.join(', ')}`
             ),
-            false,
+            false
           );
         }
         cb(null, true);
@@ -86,7 +86,7 @@ export class ProfileController extends CrudController<Profile> {
       limits: {
         fileSize: 1024000,
       },
-    }),
+    })
   )
   @Post()
   async create(@Body() entity: CreateProfileDto, @UploadedFile() file, @CurrentUser() user: User): Promise<Profile> {
@@ -105,9 +105,9 @@ export class ProfileController extends CrudController<Profile> {
         if (ALLOWED_MIME_TYPES.indexOf(file.mimetype) === -1) {
           return cb(
             new BadRequestException(
-              `Error! Incorrect mimetype '${file.mimetype}'. Correct: ${ALLOWED_MIME_TYPES.join(', ')}`,
+              `Error! Incorrect mimetype '${file.mimetype}'. Correct: ${ALLOWED_MIME_TYPES.join(', ')}`
             ),
-            false,
+            false
           );
         }
         cb(null, true);
@@ -115,14 +115,14 @@ export class ProfileController extends CrudController<Profile> {
       limits: {
         fileSize: 1024000,
       },
-    }),
+    })
   )
   @Put(':id')
   async update(
     @Param('id') id: string,
     @Body() entity: CreateProfileDto,
     @UploadedFile() file,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ): Promise<any> {
     if (!user.profileId) {
       throw new ForbiddenException('Current User dont have profile');

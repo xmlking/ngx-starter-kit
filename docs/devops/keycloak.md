@@ -1,23 +1,21 @@
-KeyCloak
-========
+# KeyCloak
 
 Pre-configured KeyCloak OpenID Connect server for testing.
 
-* **Realm**: ngx
-* **Client ID**: ngxweb, ngxapi
-* **Accounts**:
-  * *ROLE_ADMIN*
+- **Realm**: ngx
+- **Client ID**: ngxweb, ngxapi
+- **Accounts**:
+  - _ROLE_ADMIN_
     1. ngxadmin : ngxadmin
-  * *ROLE_USER*
+  - _ROLE_USER_
     1. sumo: demo
     2. sumo1: demo
     3. sumo2: demo
     4. sumo3: demo
 
-
 ### Configure SPA Client
 
-> set issuer, clientId in apps/webapp/src/environments/environment.ts 
+> set issuer, clientId in apps/webapp/src/environments/environment.ts
 
 ```json
   auth: {
@@ -41,19 +39,19 @@ docker-compose down
 docker-compose exec keycloak sh
 ```
 
-
 ### Use
 
 http://localhost:8080/
+
 > admin: admin123
 
 ### Setup
 
 > Do import config. (first time only...)
+
 1. login to keycloak admin console
 2. create new realm `ngx`
 3. import pre-set [config](../.deploy/keycloak/realm-manual-import.json)
-
 
 ### Test
 
@@ -92,15 +90,16 @@ echo $refresh_token
 curl -X POST $OIDC_ISSUER_URL/protocol/openid-connect/userinfo \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d "access_token=$access_token" | jq .
- 
+
 # Logout
 curl -X POST  $OIDC_ISSUER_URL/protocol/openid-connect/logout \
  -H "Content-Type: application/x-www-form-urlencoded" \
  -d client_id=$OIDC_CLIENT \
  -d "refresh_token=$refresh_token" | jq .
- ```
+```
 
 #### Example Access Token
+
 ```json
 {
   "jti": "bcd8138f-cba9-49e4-a4fa-86f688ba2730",
@@ -115,13 +114,9 @@ curl -X POST  $OIDC_ISSUER_URL/protocol/openid-connect/logout \
   "auth_time": 0,
   "session_state": "92cc97ad-3be7-48e0-9ee9-4329b2a66f07",
   "acr": "1",
-  "allowed-origins": [
-    "*"
-  ],
+  "allowed-origins": ["*"],
   "realm_access": {
-    "roles": [
-      "ROLE_USER"
-    ]
+    "roles": ["ROLE_USER"]
   },
   "scope": "openid email ngxapi_audience profile",
   "email_verified": true,

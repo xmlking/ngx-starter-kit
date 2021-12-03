@@ -2,7 +2,7 @@ export enum AuthMode {
   ImplicitFLow = 'ImplicitFLow',
   PasswordFlow = 'ROPCFlow',
   CodeFLow = 'CodeFLow',
-  HybridFlow = 'HybridFlow'
+  HybridFlow = 'HybridFlow',
 }
 
 //  Commands

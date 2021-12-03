@@ -111,12 +111,12 @@ export class MenuState implements NgxsAfterBootstrap {
   @Action(ToggleCurrentlyOpenedByRoute)
   toggleCurrentlyOpenedByRoute(
     { getState, patchState }: StateContext<MenuStateModel>,
-    { payload }: ToggleCurrentlyOpenedByRoute,
+    { payload }: ToggleCurrentlyOpenedByRoute
   ) {
     const { tree } = getState();
     let currentlyOpened: MenuItem[] = [];
 
-    const item = tree.findByPredicateBFS(node => {
+    const item = tree.findByPredicateBFS((node) => {
       return node.link === payload;
     });
 

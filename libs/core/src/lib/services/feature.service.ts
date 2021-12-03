@@ -72,7 +72,7 @@ export class FeatureService {
   }
 
   detectFeatures(): Array<BrowserFeature> {
-    return Object.keys(this.features).map(key => new BrowserFeature(key, this.features[key]));
+    return Object.keys(this.features).map((key) => new BrowserFeature(key, this.features[key]));
   }
 
   detectFeature(feature: BrowserFeatureKey): BrowserFeature {

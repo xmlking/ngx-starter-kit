@@ -25,7 +25,7 @@ export class NotificationsService extends EntityService<AppNotification> {
       catchError(this.handleError),
       finalize(() => this.loadingSubject.next(false)),
       // return without count
-      map(data => data.items),
+      map((data) => data.items)
     );
   }
 

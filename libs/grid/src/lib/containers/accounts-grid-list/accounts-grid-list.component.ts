@@ -35,7 +35,7 @@ export class AccountsGridListComponent implements OnInit, OnDestroy {
     this.accountService
       .getAll()
       .toPromise()
-      .then(accounts => {
+      .then((accounts) => {
         this.accountDataSource = new MatTableDataSource<Partial<RandomAccount>>(accounts);
         this.accountDataSource.paginator = this.paginator;
         this.renderData = this.accountDataSource.connect();

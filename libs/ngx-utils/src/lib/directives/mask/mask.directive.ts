@@ -142,7 +142,7 @@ export class MaskDirective implements OnInit, ControlValueAccessor {
         this.maskOptions,
         this.cursorOnPaste,
         clipboardData,
-        this.selection,
+        this.selection
       );
 
       this.setCursorPosition(this.maskHelper.cursor);
@@ -157,7 +157,7 @@ export class MaskDirective implements OnInit, ControlValueAccessor {
               this.value,
               this.maskOptions,
               currentCursorPos - 1,
-              this.selection,
+              this.selection
             )
           : this.maskHelper.parseValueByMask(this.value, this.maskOptions, currentCursorPos - 1);
 

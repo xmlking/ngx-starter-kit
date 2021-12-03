@@ -23,87 +23,87 @@ spec:
       securityContext:
         fsGroup: 1001
       initContainers:
-      - name: init-chmod-data
-        image: docker.io/bitnami/minideb:latest
-        imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 250m
-            memory: 256Mi
-          
-        command:
-          - sh
-          - -c
-          - |
-            chown -R 1001:1001 /bitnami
-            if [ -d /bitnami/postgresql/data ]; then
-              chmod  0700 /bitnami/postgresql/data;
-            fi
-        securityContext:
-          runAsUser: 0
-        volumeMounts:
-        - name: data
-          mountPath: /bitnami/postgresql
+        - name: init-chmod-data
+          image: docker.io/bitnami/minideb:latest
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+
+          command:
+            - sh
+            - -c
+            - |
+              chown -R 1001:1001 /bitnami
+              if [ -d /bitnami/postgresql/data ]; then
+                chmod  0700 /bitnami/postgresql/data;
+              fi
+          securityContext:
+            runAsUser: 0
+          volumeMounts:
+            - name: data
+              mountPath: /bitnami/postgresql
       containers:
-      - name: ngxdb-postgresql
-        image: docker.io/bitnami/postgresql:10.7.0
-        imagePullPolicy: IfNotPresent
-        resources:
-          requests:
-            cpu: 250m
-            memory: 256Mi
-        securityContext:
-          runAsUser: 1001
-        env:
-        - name: PGDATA
-          value: "/bitnami/postgresql"
-        - name: POSTGRES_USER
-          value: "postgres"
-        - name: POSTGRES_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: ngxdb-postgresql
-              key: postgresql-password
-        ports:
-        - name: postgresql
-          containerPort: 5432
-        livenessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - exec pg_isready -U "postgres" -h localhost
-          initialDelaySeconds: 30
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 1
-          failureThreshold: 6
-        readinessProbe:
-          exec:
-            command:
-            - sh
-            - -c
-            - exec pg_isready -U "postgres" -h localhost
-          initialDelaySeconds: 5
-          periodSeconds: 10
-          timeoutSeconds: 5
-          successThreshold: 1
-          failureThreshold: 6
-        volumeMounts:
-        - name: custom-init-scripts-secret
-          mountPath: /docker-entrypoint-initdb.d/secret
-        - name: data
-          mountPath: /bitnami/postgresql
+        - name: ngxdb-postgresql
+          image: docker.io/bitnami/postgresql:10.7.0
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              cpu: 250m
+              memory: 256Mi
+          securityContext:
+            runAsUser: 1001
+          env:
+            - name: PGDATA
+              value: '/bitnami/postgresql'
+            - name: POSTGRES_USER
+              value: 'postgres'
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: ngxdb-postgresql
+                  key: postgresql-password
+          ports:
+            - name: postgresql
+              containerPort: 5432
+          livenessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - exec pg_isready -U "postgres" -h localhost
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          readinessProbe:
+            exec:
+              command:
+                - sh
+                - -c
+                - exec pg_isready -U "postgres" -h localhost
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 5
+            successThreshold: 1
+            failureThreshold: 6
+          volumeMounts:
+            - name: custom-init-scripts-secret
+              mountPath: /docker-entrypoint-initdb.d/secret
+            - name: data
+              mountPath: /bitnami/postgresql
       volumes:
-      - name: custom-init-scripts-secret
-        secret:
-          secretName: postgres-init-scripts
+        - name: custom-init-scripts-secret
+          secret:
+            secretName: postgres-init-scripts
   volumeClaimTemplates:
     - metadata:
         name: data
       spec:
         accessModes:
-          - "ReadWriteOnce"
+          - 'ReadWriteOnce'
         resources:
           requests:
-            storage: "8Gi"
+            storage: '8Gi'

@@ -19,7 +19,7 @@ export class AppHandler {
     private readonly swPush: SwPush,
     private analytics: GoogleAnalyticsService,
     private rendererFactory: RendererFactory2,
-    @Inject(WINDOW) private readonly window: Window,
+    @Inject(WINDOW) private readonly window: Window
   ) {
     this.renderer = rendererFactory.createRenderer(this.window, null);
     this.renderer.listen(this.window, 'online', () => {
@@ -31,13 +31,13 @@ export class AppHandler {
 
     const installed = this.store.selectSnapshot(AppState.installed);
     if (!installed) {
-      this.renderer.listen(this.window, 'beforeinstallprompt', event => {
+      this.renderer.listen(this.window, 'beforeinstallprompt', (event) => {
         event.preventDefault(); // Prevent default for older Chrome versions to prevent double install prompt
         this.analytics.emitEvent(EventCategory.Install, 'available');
         // this.snackBar.open('You can add this PWA to your homescreen', '', {duration: 3000});
         this.store.dispatch(new SetInstallPrompt(event));
       });
-      this.renderer.listen(this.window, 'appinstalled', event => {
+      this.renderer.listen(this.window, 'appinstalled', (event) => {
         event.preventDefault(); // Prevent default for older Chrome versions to prevent double install prompt
         this.analytics.emitEvent(EventCategory.Install, 'installed');
         this.store.dispatch(new ChangeInstallStatus(true));
@@ -65,7 +65,7 @@ export class AppHandler {
 
     if (this.swPush.isEnabled) {
       // subscribe for new messages for testing
-      this.swPush.messages.subscribe(message => {
+      this.swPush.messages.subscribe((message) => {
         console.log('received push notification', message);
       });
     }

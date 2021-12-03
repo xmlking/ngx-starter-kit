@@ -24,7 +24,7 @@ export class AccountEditComponent extends EntityFormComponent<Account> {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: { title: string; payload: Account },
     public dialogRef: MatDialogRef<AccountEditComponent>,
-    private fb: FormBuilder,
+    private fb: FormBuilder
   ) {
     super(data, dialogRef);
   }
@@ -35,12 +35,12 @@ export class AccountEditComponent extends EntityFormComponent<Account> {
     super.ngOnInit();
     this.filteredStates = this.entityForm.get('address.state').valueChanges.pipe(
       startWith(''),
-      map(state => (state ? this.filterStates(state) : this.states.slice())),
+      map((state) => (state ? this.filterStates(state) : this.states.slice()))
     );
   }
 
   private filterStates(name: string) {
-    return this.states.filter(state => state.toLowerCase().indexOf(name.toLowerCase()) === 0);
+    return this.states.filter((state) => state.toLowerCase().indexOf(name.toLowerCase()) === 0);
   }
 
   buildForm(item: Account) {
@@ -61,7 +61,7 @@ export class AccountEditComponent extends EntityFormComponent<Account> {
           zip: [item.address.zip || '', Validators.required],
         }),
       },
-      { updateOn: 'blur' },
+      { updateOn: 'blur' }
     );
   }
 }

@@ -15,7 +15,7 @@ export class SvgViewerComponent implements OnInit {
   constructor(
     private elementRef: ElementRef,
     private renderer: Renderer2,
-    private svgViewerService: SvgViewerService,
+    private svgViewerService: SvgViewerService
   ) {}
 
   ngOnInit() {

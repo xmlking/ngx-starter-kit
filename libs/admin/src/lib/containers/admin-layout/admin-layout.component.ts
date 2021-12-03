@@ -23,9 +23,9 @@ export class AdminLayoutComponent implements OnInit {
   ngOnInit() {
     this.crumbs$ = this.store
       .select<any>(RouterState.state)
-      .pipe(map(state => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
+      .pipe(map((state) => Array.from(state.breadcrumbs, ([key, value]) => ({ name: key, link: '/' + value }))));
 
-    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map(state => state.data.depth));
+    this.depth$ = this.store.select<RouterStateData>(RouterState.state).pipe(map((state) => state.data.depth));
   }
 
   onActivate(componentRef: ComponentRef<any>) {

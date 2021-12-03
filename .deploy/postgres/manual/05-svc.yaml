@@ -7,16 +7,16 @@ metadata:
   labels:
     app: postgresql
     chart: postgresql-3.11.7
-    release: "ngxdb"
-    heritage: "Tiller"
+    release: 'ngxdb'
+    heritage: 'Tiller'
 spec:
   type: NodePort
   ports:
-  - name: postgresql
-    port: 5432
-    targetPort: postgresql
-    nodePort: 31432
+    - name: postgresql
+      port: 5432
+      targetPort: postgresql
+      nodePort: 31432
   selector:
     app: postgresql
-    release: "ngxdb"
+    release: 'ngxdb'
     role: master

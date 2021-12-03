@@ -20,16 +20,16 @@ export class WebSocketHandler {
     store: Store,
     actions: Actions,
     socket: WebSocketSubject,
-    @Inject(NGXS_WEBSOCKET_OPTIONS) config: NgxsWebsocketPluginOptions,
+    @Inject(NGXS_WEBSOCKET_OPTIONS) config: NgxsWebsocketPluginOptions
   ) {
-    actions.pipe(ofActionDispatched(ConnectWebSocket)).subscribe(event => socket.connect(event.payload));
-    actions.pipe(ofActionDispatched(DisconnectWebSocket)).subscribe(event => socket.disconnect());
+    actions.pipe(ofActionDispatched(ConnectWebSocket)).subscribe((event) => socket.connect(event.payload));
+    actions.pipe(ofActionDispatched(DisconnectWebSocket)).subscribe((event) => socket.disconnect());
     actions.pipe(ofActionDispatched(SendWebSocketAction)).subscribe(({ payload }) => {
       const type = getActionTypeFromInstance(payload);
       socket.send({ ...payload, type });
     });
-    actions.pipe(ofActionDispatched(AuthenticateWebSocket)).subscribe(event => socket.auth({ sumo: 1 }));
-    socket.connectionStatus.pipe(distinctUntilChanged()).subscribe(status => {
+    actions.pipe(ofActionDispatched(AuthenticateWebSocket)).subscribe((event) => socket.auth({ sumo: 1 }));
+    socket.connectionStatus.pipe(distinctUntilChanged()).subscribe((status) => {
       if (status) {
         store.dispatch(new WebSocketConnected({ socketId: socket.id }));
       } else {
@@ -37,14 +37,14 @@ export class WebSocketHandler {
       }
     });
     socket.subscribe(
-      msg => {
+      (msg) => {
         const type = getValue(msg, config.typeKey);
         if (!type) {
           throw new Error(`Type ${type} not found on message`);
         }
         store.dispatch({ ...msg, type });
       },
-      err => store.dispatch(new WebsocketMessageError(err)),
+      (err) => store.dispatch(new WebsocketMessageError(err))
     );
   }
 }

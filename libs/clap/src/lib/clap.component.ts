@@ -5,7 +5,7 @@ import { debounceTime, mapTo } from 'rxjs/operators';
 @Component({
   selector: 'ngx-clap',
   template: `
-    <ngx-counter-bubble *ngIf="(showBubble$ | async)" [counter]="userCounter"> </ngx-counter-bubble>
+    <ngx-counter-bubble *ngIf="showBubble$ | async" [counter]="userCounter"> </ngx-counter-bubble>
     <ngx-total-counter *ngIf="(showBubble$ | async) === false" [counter]="totalCounter"> </ngx-total-counter>
     <ngx-fab (click)="userCounterChange.emit()" [counter]="userCounter"> </ngx-fab>
   `,
@@ -34,10 +34,7 @@ export class ClapComponent implements OnInit {
     const change$ = this.userCounterChange.asObservable();
 
     const showBubble$ = change$.pipe(mapTo(true));
-    const hideBubble$ = change$.pipe(
-      debounceTime(400),
-      mapTo(false),
-    );
+    const hideBubble$ = change$.pipe(debounceTime(400), mapTo(false));
 
     this.showBubble$ = merge(showBubble$, hideBubble$);
   }

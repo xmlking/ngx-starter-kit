@@ -34,10 +34,7 @@ export class Cluster extends AuditBase implements ICluster {
   @Column()
   token: string;
 
-  @OneToMany(
-    _ => Project,
-    project => project.cluster,
-  )
+  @OneToMany((_) => Project, (project) => project.cluster)
   projects?: Project[];
 
   @RelationId((cluster: Cluster) => cluster.createdBy)

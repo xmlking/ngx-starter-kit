@@ -25,10 +25,10 @@ export class AboutComponent implements OnInit, OnDestroy, AfterViewInit {
     fromEvent<Event>(this.window, 'resize')
       .pipe(
         debounceTime(100),
-        map(event => [(event.target as Window).innerWidth, (event.target as Window).innerHeight]),
-        distinctUntilChanged(),
+        map((event) => [(event.target as Window).innerWidth, (event.target as Window).innerHeight]),
+        distinctUntilChanged()
       )
-      .subscribe(res => {
+      .subscribe((res) => {
         // setTimeout(() => {this.renderCanvas() }, 1000)
         this.renderCanvas();
       });

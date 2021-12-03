@@ -15,10 +15,6 @@ export class PageTitleService {
   }
 
   public setTitle(breadcrumbs: Map<string, string>) {
-    this.bodyTitle.setTitle(
-      `${Array.from(breadcrumbs.keys())
-        .reverse()
-        .join(' | ')} | ${this.defaultTitle}`,
-    );
+    this.bodyTitle.setTitle(`${Array.from(breadcrumbs.keys()).reverse().join(' | ')} | ${this.defaultTitle}`);
   }
 }

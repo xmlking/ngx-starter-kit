@@ -7,7 +7,7 @@ export interface QueryParams {
 }
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DeepLinkService {
   constructor(private router: Router, private route: ActivatedRoute) {}
@@ -22,7 +22,7 @@ export class DeepLinkService {
     this.route.queryParams.subscribe((query: QueryParams) => {
       if (query.q) {
         form.setValue({
-          query: query.q
+          query: query.q,
         });
       }
     });
@@ -36,7 +36,7 @@ export class DeepLinkService {
   syncUrl(queryParams: Params) {
     this.router.navigate([], {
       relativeTo: this.route,
-      queryParams
+      queryParams,
     });
   }
 }

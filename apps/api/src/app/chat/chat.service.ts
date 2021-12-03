@@ -11,6 +11,6 @@ export class ChatService {
   }
 
   removeConnectedUser(user: User): void {
-    this.connectedUsers = this.connectedUsers.filter(obj => obj !== user);
+    this.connectedUsers = this.connectedUsers.filter((obj) => obj !== user);
   }
 }

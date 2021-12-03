@@ -1,16 +1,15 @@
-apiVersion: "v1"
-kind: "PersistentVolumeClaim"
+apiVersion: 'v1'
+kind: 'PersistentVolumeClaim'
 metadata:
-  name: "postgresql"
+  name: 'postgresql'
 spec:
   accessModes:
-    - "ReadWriteMany"
+    - 'ReadWriteMany'
   resources:
     requests:
-      storage: "10Gi"
+      storage: '10Gi'
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -25,7 +24,6 @@ spec:
     name: postgresql
 
 ---
-
 apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
@@ -95,4 +93,3 @@ spec:
   test: false
   triggers:
     - type: ConfigChange
-

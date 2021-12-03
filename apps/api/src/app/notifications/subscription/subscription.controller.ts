@@ -45,7 +45,7 @@ export class SubscriptionController extends CrudController<Subscription> {
   @Post()
   async create(@Body() entity: CreateSubscriptionDto, @CurrentUser() user: User): Promise<Subscription> {
     const { total, items } = await this.subscriptionService.findAll(
-      new FindSubscriptionsDto({ endpoint: entity.endpoint }),
+      new FindSubscriptionsDto({ endpoint: entity.endpoint })
     );
     if (total === 0) {
       return super.create({ ...entity, username: user.username });
@@ -59,7 +59,7 @@ export class SubscriptionController extends CrudController<Subscription> {
   async update(
     @Param('id') id: string,
     @Body() entity: UpdateSubscriptionDto,
-    @CurrentUser() user: User,
+    @CurrentUser() user: User
   ): Promise<any> {
     if (id.startsWith('http')) {
       return this.subscriptionService.update({ endpoint: id, username: user.username }, entity);

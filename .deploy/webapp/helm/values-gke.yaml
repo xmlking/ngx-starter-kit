@@ -3,9 +3,9 @@ test:
 
 resources:
   limits:
-    memory: "1024Mi"
+    memory: '1024Mi'
   requests:
-    memory: "512Mi"
+    memory: '512Mi'
 
 image:
   repository: gcr.io/ngx-starter-kit/ngxweb
@@ -27,7 +27,7 @@ ingress:
   annotations:
     kubernetes.io/ingress.global-static-ip-name: kashmora-static-ip
     networking.gke.io/managed-certificates: ngxweb-anginx
-    kubernetes.io/ingress.allow-http: "false"
+    kubernetes.io/ingress.allow-http: 'false'
   hosts:
     - host: kashmora.com
       paths: [/*]

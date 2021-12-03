@@ -12,11 +12,7 @@ import { Dialogflow } from './dialogflow';
 export class DialogflowService {
   private baseURL = environment.dialogFlow.baseUrl;
   private token: string = environment.dialogFlow.apiToken;
-  private sessionId =
-    '_' +
-    Math.random()
-      .toString(36)
-      .substr(2, 9);
+  private sessionId = '_' + Math.random().toString(36).substr(2, 9);
 
   constructor(private http: HttpClient) {}
 
