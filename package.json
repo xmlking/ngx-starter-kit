@@ -234,7 +234,7 @@
     "jest-preset-angular": "11.0.1",
     "lint-staged": "12.1.2",
     "lite-server": "2.6.1",
-    "prettier": "2.5.0",
+    "prettier": "2.5.1",
     "semantic-release": "18.0.1",
     "ts-jest": "27.0.7"
   },
