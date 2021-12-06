@@ -146,7 +146,7 @@
     "angular-oauth2-oidc": "13.0.1",
     "chart.js": "3.6.1",
     "chart.piecelabel.js": "0.15.0",
-    "core-js": "3.19.2",
+    "core-js": "3.19.3",
     "d3-selection-multi": "1.0.1",
     "d3": "4.13.0",
     "d3-selection": "1.4.2",
