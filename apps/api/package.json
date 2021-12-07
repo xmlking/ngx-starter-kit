@@ -31,7 +31,7 @@
     "cache-manager": "3.6.0",
     "class-transformer": "0.5.1",
     "class-validator": "0.13.2",
-    "cli-ux": "5.6.5",
+    "cli-ux": "5.6.6",
     "cls-hooked": "4.2.2",
     "helmet": "4.6.0",
     "kubernetes-client": "9.0.0",
