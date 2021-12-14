@@ -11,7 +11,7 @@ keycloak:
 
   image:
     repository: jboss/keycloak
-    tag: 14.0.0
+    tag: 15.1.0
     pullPolicy: IfNotPresent
 
     ## Optionally specify an array of imagePullSecrets.
