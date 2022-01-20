@@ -1,20 +1,35 @@
 {
   "migrations": [
     {
-      "version": "12.5.0-beta.1",
-      "description": "Rename the workspace-schematic script into workspace-generator script",
-      "factory": "./src/migrations/update-12-5-0/add-target-dependencies",
+      "version": "13.3.0-beta.0",
+      "description": "@nrwl/workspace:tsc is now @nrwl/js:tsc",
       "cli": "nx",
+      "implementation": "./src/migrations/update-13-3-0/update-tsc-executor-location",
       "package": "@nrwl/workspace",
-      "name": "add-target-dependencies"
+      "name": "13-3-0-tsc-location"
     },
     {
       "cli": "nx",
-      "version": "12.3.5-beta.0",
-      "description": "Convert targets using @nrwl/angular:webpack-browser with the buildTarget option set to use the @nrwl/angular:delegate-build executor instead.",
-      "factory": "./src/migrations/update-12-3-0/convert-webpack-browser-build-target-to-delegate-build",
+      "version": "13.3.0-beta.0",
+      "description": "In Angular version 13, the ESM became a first class citizen. This means the webpack config generated must be modified to support modules.",
+      "factory": "./src/migrations/update-13-3-0/update-mfe-webpack-config",
       "package": "@nrwl/angular",
-      "name": "convert-webpack-browser-build-target-to-delegate-build"
+      "name": "update-mfe-config-to-module-syntax"
+    },
+    {
+      "cli": "nx",
+      "version": "13.4.5-beta.7",
+      "description": "Remove the default for the invalid 'style' option for the library generator if configured.",
+      "factory": "./src/migrations/update-13-5-0/remove-library-generator-style-default",
+      "package": "@nrwl/angular",
+      "name": "remove-library-generator-style-default"
+    },
+    {
+      "version": "13.1.0-beta",
+      "description": "As of Angular version 13, `entryComponents` are no longer necessary.",
+      "factory": "./migrations/entry-components/index",
+      "package": "@angular/core",
+      "name": "migration-v13.1-entry-components"
     }
   ]
 }
