@@ -2,10 +2,10 @@
   "name": "@ngx-starter-kit/chat-box",
   "version": "0.0.1",
   "peerDependencies": {
-    "@angular/common": ">=12.0.1",
-    "@angular/core": ">=12.0.1",
-    "@angular/cdk": ">=12.1.1",
-    "@angular/material": ">=12.1.1"
+    "@angular/common": ">=13.1.3",
+    "@angular/core": ">=13.1.3",
+    "@angular/cdk": ">=13.1.3",
+    "@angular/material": ">=13.1.3"
   },
   "dependencies": {
     "tslib": "^2.3.1"
