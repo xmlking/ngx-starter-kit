@@ -74,7 +74,7 @@ services:
       - api
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.16.3
     container_name: elasticsearch
     #    ulimits:
     #      memlock:
