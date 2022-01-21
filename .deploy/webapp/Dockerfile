@@ -1,12 +1,12 @@
 ######################################################################
-FROM node:16-alpine as dev-dependencies
+FROM node:17-alpine as dev-dependencies
 ######################################################################
 WORKDIR /app
 COPY package.json yarn.lock ./
 RUN yarn --no-cache --ignore-optional --frozen-lockfile
 
 ######################################################################
-FROM node:16-alpine as builder
+FROM node:17-alpine as builder
 ######################################################################
 WORKDIR /app
 COPY --from=dev-dependencies /app /app

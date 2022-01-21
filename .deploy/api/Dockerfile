@@ -13,7 +13,7 @@ RUN mkdir /user && \
   echo 'nobody:x:65534:' > /user/group
 
 ######################################################################
-FROM node:16-alpine as prod-dependencies
+FROM node:17-alpine as prod-dependencies
 ######################################################################
 WORKDIR /app
 ENV NODE_ENV production
@@ -21,7 +21,7 @@ COPY apps/api/package.json yarn.lock ./
 RUN yarn --production --frozen-lockfile
 
 ######################################################################
-FROM node:16-alpine as dev-dependencies
+FROM node:17-alpine as dev-dependencies
 ######################################################################
 WORKDIR /app
 COPY apps/api/package.json apps/api/package.json
@@ -30,7 +30,7 @@ RUN yarn --no-cache --ignore-optional --frozen-lockfile && \
   yarn add typescript@3.7.0-beta -W
 
 ######################################################################
-FROM node:16-alpine as builder
+FROM node:17-alpine as builder
 ######################################################################
 WORKDIR /app
 COPY --from=dev-dependencies /app /app
@@ -45,7 +45,7 @@ RUN $(npm bin)/ng build api --prod
 ######################################################################
 # TODO: `distroless/nodejs` has an issue with `sharp` npm package
 # FROM gcr.io/distroless/nodejs as final
-FROM node:16-alpine as final
+FROM node:17-alpine as final
 ######################################################################
 # Import the user and group files from the first stage.
 COPY --from=utils /user/group /user/passwd /etc/
