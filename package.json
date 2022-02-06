@@ -229,7 +229,7 @@
     "commitizen": "4.2.4",
     "cypress": "9.3.1",
     "cz-conventional-changelog": "3.3.0",
-    "dotenv": "14.2.0",
+    "dotenv": "14.3.2",
     "husky": "7.0.4",
     "jest": "27.4.7",
     "jest-preset-angular": "11.1.0",
