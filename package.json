@@ -43,7 +43,7 @@
     "// - TEST": "Test unit and e2e",
     "test": "ng test webapp",
     "test:ci": "ng test webapp --ci --max-workers=4",
-    "test:affected": "yarn affected:test --uncommitted",
+    "test:affected": "npm run affected:test --uncommitted",
     "lint": "nx workspace-lint && ng lint",
     "e2e": "ng e2e webapp",
     "e2e:ci": "ng e2e webapp --headless",
@@ -88,8 +88,8 @@
   },
   "lint-staged": {
     "{apps,libs}/**/*.{ts,json,md,scss,html}": [
-      "yarn affected:lint --uncommitted --parallel --fix=true",
-      "yarn format:write --uncommitted",
+      "npm run affected:lint --uncommitted --parallel --fix=true",
+      "npm run format:write --uncommitted",
       "git add"
     ]
   },
