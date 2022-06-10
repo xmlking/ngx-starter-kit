@@ -1,7 +1,7 @@
 {
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/node:webpack",
       "configurations": {
         "production": {
           "extractLicenses": true,
@@ -28,7 +28,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "options": {
         "buildTarget": "backend:build"
       }

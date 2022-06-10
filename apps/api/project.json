@@ -1,7 +1,7 @@
 {
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/node:webpack",
       "configurations": {
         "mock": {
           "extractLicenses": true,
@@ -59,7 +59,7 @@
       }
     },
     "serve": {
-      "executor": "@nrwl/node:execute",
+      "executor": "@nrwl/node:node",
       "configurations": {
         "mock": {
           "buildTarget": "api:build:mock"

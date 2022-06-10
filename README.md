@@ -35,16 +35,16 @@ If you are interested in smaller example project: [Mini-starter-kit](https://git
 ```bash
 git clone https://github.com/xmlking/ngx-starter-kit.git my-project
 cd my-project
-yarn
+npm install --force 
 ```
 
 ## Development server
 
-Run `yarn start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm run start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-Run `yarn start:mock` for a mock server.
+Run `npm run start:mock` for a mock server.
 
-Run `yarn start -- --proxy-config proxy.conf.js` to start with proxy
+Run `npm run start -- --proxy-config proxy.conf.js` to start with proxy
 
 ## Build
 
@@ -52,20 +52,20 @@ Run `npm run build:prod` to build the project. The build artifacts will be store
 
 ## Running unit tests
 
-Run `yarn test <module>` to execute the unit tests via [Jest](https://jestjs.io/).
+Run `npm run test <module>` to execute the unit tests via [Jest](https://jestjs.io/).
 
 ## Running end-to-end tests
 
-Run `yarn e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/).
+Run `npm run e2e` to execute the end-to-end tests via [Cypress](https://www.cypress.io/).
 
 ## Docs
 
-Run `yarn doc:build` to build docs.
-Run `yarn doc:serve` to serve docs.
+Run `npm run doc:build` to build docs.
+Run `npm run doc:serve` to serve docs.
 
 ## Deploy
 
-Run `yarn deploy:mock` to deploy demo app to gp-pages.
+Run `npm run deploy:mock` to deploy demo app to gp-pages.
 
 Analyzing bundle size `ng run webapp:analyze`
 
