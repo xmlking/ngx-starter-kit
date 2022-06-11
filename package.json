@@ -245,7 +245,7 @@
     "lodash": "4.17.21",
     "handlebars": "4.7.7",
     "ua-parser-js": "0.7.28",
-    "underscore": "1.13.1",
+    "underscore": "1.13.4",
     "jose": "3.15.5",
     "elliptic": "6.5.4",
     "yargs-parser": "20.2.9",
