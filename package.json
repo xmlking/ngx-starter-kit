@@ -249,7 +249,7 @@
     "jose": "3.15.5",
     "elliptic": "6.5.4",
     "yargs-parser": "20.2.9",
-    "glob-parent": "6.0.1",
+    "glob-parent": "6.0.2",
     "ini": "2.0.0",
     "immer": "9.0.14",
     "rxjs": "7.5.5",
