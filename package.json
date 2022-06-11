@@ -255,6 +255,9 @@
     "rxjs": "7.5.5",
     "@angular/common": "14.0.1",
     "@angular/core": "14.0.1",
-    "@angular/forms": "14.0.1"
+    "@angular/forms": "14.0.1",
+    "lodash.template": ">=4.5.0",
+    "minimist": ">=1.2.6",
+    "minimatch": ">=3.0.2"
   }
 }
