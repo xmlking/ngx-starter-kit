@@ -220,15 +220,14 @@
     "@commitlint/config-conventional": "17.0.2",
     "@compodoc/compodoc": "1.1.19",
     "@ngx-formly/schematics": "5.12.5",
-    "@ngxs/schematics": "0.0.1-alpha.5",
     "@semantic-release/changelog": "6.0.1",
     "@semantic-release/git": "10.0.1",
     "@semantic-release/github": "8.0.4",
     "@semantic-release/npm": "9.0.1",
     "angular-cli-ghpages": "1.0.0",
-    "commitizen": "4.2.4",
+    "commitizen": "^1.0.4",
     "cypress": "10.1.0",
-    "cz-conventional-changelog": "3.3.0",
+    "cz-conventional-changelog": "^3.0.1",
     "dotenv": "16.0.1",
     "husky": "8.0.1",
     "jest": "28.1.1",
@@ -259,4 +258,3 @@
     "@angular/forms": "14.0.1"
   }
 }
-
