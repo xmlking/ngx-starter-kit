@@ -30,7 +30,7 @@
     "@xmlking/jwks-rsa": "1.4.3",
     "cache-manager": "4.0.1",
     "class-transformer": "0.5.1",
-    "class-validator": "0.13.2",
+    "class-validator": "0.14.0",
     "cli-ux": "6.0.8",
     "cls-hooked": "4.2.2",
     "helmet": "5.1.0",
